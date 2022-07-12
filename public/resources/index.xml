@@ -1,0 +1,1029 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Resources on ECON 480 — Econometrics</title>
+    <link>https://metricsf22.classes.ryansafner.com/resources/</link>
+    <description>Recent content in Resources on ECON 480 — Econometrics</description>
+    <generator>Source Themes academia (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 May 2019 00:00:00 +0100</lastBuildDate>
+    
+	    <atom:link href="https://metricsf22.classes.ryansafner.com/resources/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tips for Success in This Course</title>
+      <link>https://metricsf22.classes.ryansafner.com/resources/tips/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/resources/tips/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Take notes. On paper. Yes.&lt;/strong&gt; &lt;a href=&#34;https://journals.sagepub.com/doi/abs/10.1177/0956797614524581&#34;&gt;Studies show&lt;/a&gt; that using pen and paper trump taking notes on a device. The main reason is because &lt;em&gt;you cannot possibly write down everything I am saying by hand&lt;/em&gt;. This forces you to selectively filter my lecture to its most essential and important components &amp;ndash; an integral part of the learning and retention process. If you are taking notes on a laptop, you become a court stenographer, thoughtlessly transcribing everything I am saying. At the other extreme, do not assume &lt;em&gt;everything&lt;/em&gt; is written in my lecture slides. My lecture slides are visuals and cues to organize the content both for me and for you. I try hard to make sure that I have few words on slides, and even fewer answers to problems.
+&lt;ul&gt;
+&lt;li&gt;My suggestion: print out my lecture slides in advance (or follow along on your device) and take additional notes by hand.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;At least skim all of the readings.&lt;/strong&gt; I give out readings for a reason, and that reason is not to bore you or waste your time. The truth is, as a beginner, you can&amp;rsquo;t rely on heuristics or memory to &amp;ldquo;fill in the blanks.&amp;rdquo; You need the readings to provide context to what I am saying in class. I cannot help you if you are not going to try. Any professor also will lose patience at short notice when it&amp;rsquo;s discovered you haven&amp;rsquo;t done the reading.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Do the homeworks&lt;/strong&gt; (if there are any). You might be surprised that I need to say this, but I do. Students that do not do the homeworks do poorly on exams, which often are similar to homework questions. Homeworks are &lt;em&gt;the best&lt;/em&gt; practice for exams, they give you a sense of the relevant content areas that might come up, the type and style of questions that I ask, and you often get answer keys to help you &amp;ldquo;get inside my head&amp;rdquo; and study from. There is no good reason why you should have a low homework grade.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Work on assignments together and study together&lt;/strong&gt;. Recognize that you are not in this alone, and other students are just as anxious or uncertain as you are. More surprisingly, other students probably have some answers you are looking for, and you may have answers for some of their problems! You will learn better when you collaborate with others similar to you. More importantly, you don&amp;rsquo;t truly understand something unless you can explain it to others.^[Yes, that means I am doing a &lt;em&gt;ton&lt;/em&gt; of learning every time I teach!] As a wise woman once told me &amp;ldquo;whomever is doing the talking is doing the learning.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Learn how to learn&lt;/strong&gt;. The most important skill you learn in college is &lt;em&gt;how to learn&lt;/em&gt;. Taking a course on a subject will &lt;em&gt;not&lt;/em&gt; make you an expert on that subject. It a) helps you recognize that you do not know everything on that subject, and this prevents you from &lt;a href=&#34;http://www.smbc-comics.com/?id=2475&#34;&gt;actively saying stupid things&lt;/a&gt;; and b) gives you enough context and skills to figure out how to &lt;em&gt;actually&lt;/em&gt; fill those gaps. This is the actual skill that&amp;rsquo;s relevant in the real world.^[Yes, Google is your best friend. But you do not yet know how to ask the right questions, or understand what constitutes good answers.]&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Data Resources</title>
+      <link>https://metricsf22.classes.ryansafner.com/resources/data/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/resources/data/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#list-of-public-datasets-data-sources-and-r-apis&#34;&gt;List of Public Datasets, Data Sources, and R APIs&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#built-in-datasets&#34;&gt;Built-in Datasets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#general-databases-of-datasets&#34;&gt;General Databases of Datasets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#good-r-packages-for-getting-data-in-r-format&#34;&gt;Good R Packages for Getting Data in R Format&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#key-data-sources&#34;&gt;Key Data Sources&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;list-of-public-datasets-data-sources-and-r-apis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;List of Public Datasets, Data Sources, and R APIs&lt;/h2&gt;
+&lt;div id=&#34;built-in-datasets&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Built-in Datasets&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A &lt;a href=&#34;https://vincentarelbundock.github.io/Rdatasets/datasets.html&#34;&gt;near-comprehensive list&lt;/a&gt; of all existing data sets built-in to R or R packages&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;general-databases-of-datasets&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;General Databases of Datasets&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://toolbox.google.com/datasetsearch&#34;&gt;Google Database Search&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kaggle.com/datasets&#34;&gt;Kaggle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hls.harvard.edu/library/research/find-a-database/#hlsnav-databases-for-legal-and-law-related-research&#34;&gt;Harvard Law School: Find a Database&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;good-r-packages-for-getting-data-in-r-format&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Good R Packages for Getting Data in R Format&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Below are packages written by and for R users that link up with the API of key data sets for easy use in R. Each link goes to the documentation and description of each package.&lt;/p&gt;
+&lt;p&gt;Don’t forget to install&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt; first and then load it with &lt;code&gt;library()&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/piersyork/owidR&#34;&gt;&lt;code&gt;owidR&lt;/code&gt;&lt;/a&gt; for importing data from Our World in Data&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/wbstats/wbstats.pdf&#34;&gt;&lt;code&gt;wbstats&lt;/code&gt;&lt;/a&gt; provides access to all the data available on the &lt;strong&gt;World Bank&lt;/strong&gt; API, which is basically everything on their website. The World Bank keeps track of &lt;em&gt;many&lt;/em&gt; country-level indicators over time.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/tidycensus/tidycensus.pdf&#34;&gt;&lt;code&gt;tidycensus&lt;/code&gt;&lt;/a&gt; gives you access to data from the &lt;strong&gt;US Census&lt;/strong&gt; and the &lt;strong&gt;American Community Survey.&lt;/strong&gt; These are the largest high-quality data sets you’ll find of cross-sectional data on individual people in the US. You’ll need to get a (free) API key from the website (or ask me for mine).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/fredr/vignettes/fredr.html&#34;&gt;&lt;code&gt;fredr&lt;/code&gt;&lt;/a&gt; gets data from the &lt;strong&gt;Federal Reserve’s Economic Database (FRED)&lt;/strong&gt;. You’ll need to get a (free) API key from the website (or ask me for mine).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/tidyquant/index.html&#34;&gt;&lt;code&gt;tidyquant&lt;/code&gt;&lt;/a&gt; gets data from a number of financial sources (including &lt;code&gt;fredr&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/icpsrdata/icpsrdata.pdf&#34;&gt;&lt;code&gt;icpsrdata&lt;/code&gt;&lt;/a&gt; downloads data from the &lt;strong&gt;Inter-university Consortium for Political and Social Research&lt;/strong&gt; (you’ll need an account and a keycode). ICPSR is a database of datasets from published social science papers for the purposes of reproducibility.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/NHANES/NHANES.pdf&#34;&gt;&lt;code&gt;NHANES&lt;/code&gt;&lt;/a&gt; uses data from the &lt;strong&gt;US National Health and Nutrition Examination Survey.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/ipumsr/vignettes/ipums.html&#34;&gt;&lt;code&gt;ipumsr&lt;/code&gt;&lt;/a&gt; has &lt;strong&gt;census data&lt;/strong&gt; from &lt;em&gt;all around the world&lt;/em&gt;, in addition to the US census, &lt;strong&gt;American Community Survey&lt;/strong&gt;, and &lt;strong&gt;Current Population Survey&lt;/strong&gt;. If you’re doing international micro work, look at IPUMS. It’s also the easiest way to get the &lt;strong&gt;Current Population Survey (CPS)&lt;/strong&gt;, which is very popular for labor economics. Unfortunately ipumsr won’t get the data from within R; you’ll have to make your own data extract on the IPUMS website and download it. But ipumsr will read that file into R and preserve things like names and labels.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/UrbanInstitute/education-data-package-r&#34;&gt;&lt;code&gt;education-data-package-r&lt;/code&gt;&lt;/a&gt;&lt;a href=&#34;#fn4&#34; class=&#34;footnote-ref&#34; id=&#34;fnref4&#34;&gt;&lt;sup&gt;4&lt;/sup&gt;&lt;/a&gt; is the Urban Institute’s data data on educational institutions in the US, including colleges (in IPEDS) and K-12 schools (in CCD). This package also has data on county-level poverty rates from SAIPE.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/psidR/psidR.pdf&#34;&gt;&lt;code&gt;psidR&lt;/code&gt;&lt;/a&gt; is the &lt;strong&gt;Panel Study of Income Dynamics&lt;/strong&gt;. This study doesn’t just follow people over their lifetimes, it follows their children too, generationally! A great source for studying how things follow families through generations.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/web/packages/atus/atus.pdf&#34;&gt;&lt;code&gt;atus&lt;/code&gt;&lt;/a&gt; is th e &lt;strong&gt;American Time Use Survey&lt;/strong&gt;, which is a large cross-sectional data set with information on how people spend their time.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ilostat.github.io/Rilostat/index.html&#34;&gt;&lt;code&gt;Rilostat&lt;/code&gt;&lt;/a&gt; uses data from the &lt;strong&gt;International Labor Organization.&lt;/strong&gt; This contains lots of different statistics on labor, like employment, wage gaps, etc., generally aggregated to the national level and changing over time.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/xmarquez/democracyData&#34;&gt;&lt;code&gt;democracyData&lt;/code&gt;&lt;/a&gt;&lt;a href=&#34;#fn5&#34; class=&#34;footnote-ref&#34; id=&#34;fnref5&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&lt;/a&gt; is a great “package for accessing and manipulating existing measures of democracy.”&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.rstudio.com/web/packages/politicaldata/index.html&#34;&gt;&lt;code&gt;politicaldata&lt;/code&gt;&lt;/a&gt; provides useful functions for obtaining commonly-used data in political analysis and political science, including from sources such as the Comparative Agendas Project (which provides data on politics and policy from 20+ countries), the MIT Election and Data Science Lab, and FiveThirtyEight.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Below is a list of good data sources depending on the types of topics you might be interested in writing on:&lt;a href=&#34;#fn6&#34; class=&#34;footnote-ref&#34; id=&#34;fnref6&#34;&gt;&lt;sup&gt;6&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;key-data-sources&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Key Data Sources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Coronavirus Data: &lt;a href=&#34;https://github.com/CSSEGISandData/COVID-19&#34;&gt;John Hopkins CSSE Covid-19 data (definitive)&lt;/a&gt;, &lt;a href=&#34;https://github.com/owid/covid-19-data/tree/master/public/data&#34;&gt;Our World in Data&lt;/a&gt;, &lt;a href=&#34;https://github.com/nytimes/covid-19-data&#34;&gt;New York Times Covid data&lt;/a&gt;, &lt;a href=&#34;https://github.com/kjhealy/covdata&#34;&gt;&lt;code&gt;covdata&lt;/code&gt; r package&lt;/a&gt;, &lt;a href=&#34;https://github.com/joachim-gassen/tidycovid19&#34;&gt;Tidy Covid data&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://ourworldindata.org&#34;&gt;Our World in Data&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.aeaweb.org/resources/data&#34;&gt;American Economic Association Data&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.ipums.org/&#34;&gt;IPUMS&lt;/a&gt; (Integrated Public Use Microdata Series)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://inforumweb.umd.edu/econdata/econdata.html&#34;&gt;EconData from UMD&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.icpsr.umich.edu/web/pages/&#34;&gt;ICPSR&lt;/a&gt; (Inter-university Consortium for Political and Social Research)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.nber.org/research/data?page=1&amp;amp;perPage=50&#34;&gt;NBER’s Public Use Data Archive&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://www.historicalstatistics.org/&#34;&gt;Historical Macroeconomic Statistics&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://inforumweb.umd.edu/econdata/econdatacontents.html&#34;&gt;UMD’s Interindustry Forecasting&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://db.nomics.world/&#34;&gt;DB-nomics&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.upcdatabase.com/&#34;&gt;Internet UPC Database&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.macalester.edu/research/economics/PAGE/HAVEMAN/Trade.Resources/TradeData.html&#34;&gt;International Trade Data&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://ourworldindata.org/&#34;&gt;OurWorldinData.org&lt;/a&gt; (&lt;a href=&#34;https://github.com/owid/owid-datasets&#34;&gt;download datasets&lt;/a&gt;)&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://econ.sciences-po.fr/thierry-mayer/data&#34;&gt;SciencesPo International Trade Gravity Dataset&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://cid.econ.ucdavis.edu/&#34;&gt;Center for International Data&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://atlas.cid.harvard.edu/&#34;&gt;Atlas of Economic Complexity&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;http://hdr.undp.org/en&#34;&gt;U.N. World Development Reports&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://oec.world/en/&#34;&gt;Observatory of Economic Complexity&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://www.reddit.com/r/datasets/&#34;&gt;Reddit /r/datasets&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://cloud.google.com/public-datasets/&#34;&gt;Google Cloud Public Datasets&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;By Topic&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://qog.pol.gu.se/data/dataextras/datasources&#34;&gt;Quality of Government Data&lt;/a&gt; has an extremely wide range of data sources pertaining to measures of institutions. The data itself can be found &lt;a href=&#34;https://qog.pol.gu.se/data/datadownloads/qogstandarddata&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;National and State Accounts Data: &lt;a href=&#34;http://www.bea.doc.gov/&#34;&gt;Bureau of Economic Analysis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Labor Market and Price Data: &lt;a href=&#34;http://www.bls.gov/&#34;&gt;Bureau of Labor Statistics&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Macroeconomic Data: &lt;a href=&#34;https://fred.stlouisfed.org/&#34;&gt;Federal Reserve Economic Data (FRED)&lt;/a&gt;, &lt;a href=&#34;https://datacatalog.worldbank.org/dataset/world-development-indicators&#34;&gt;World Development Indicators (World Bank)&lt;/a&gt;, &lt;a href=&#34;https://www.rug.nl/ggdc/productivity/pwt/&#34;&gt;Penn World Table&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;International Data: &lt;a href=&#34;http://www.nationmaster.com/&#34;&gt;NationMaster.com&lt;/a&gt;, &lt;a href=&#34;http://rru.worldbank.org/DoingBusiness/&#34;&gt;Doing Business&lt;/a&gt;, &lt;a href=&#34;ttp://www.ciesin.org/data.html&#34;&gt;CIESIN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Census Data: &lt;a href=&#34;http://www.census.gov/&#34;&gt;U.S. Census Bureau&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Sports Data: &lt;a href=&#34;http://spotrac.com&#34;&gt;Spotrac&lt;/a&gt;, &lt;a href=&#34;https://sites.google.com/site/rodswebpages/codes&#34;&gt;Rodney Fort’s Sports Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Data Clearing House: &lt;a href=&#34;http://www.stat-usa.gov/&#34;&gt;Stat USA&lt;/a&gt;, &lt;a href=&#34;http://www.fedstats.gov/&#34;&gt;Fedstats&lt;/a&gt;, &lt;a href=&#34;http://www.census.gov/prod/www/statistical-abstract-us.html&#34;&gt;Statistical Abstract of the United States&lt;/a&gt;, &lt;a href=&#34;http://rfe.org&#34;&gt;Resources for Economists&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Political and Social Data: &lt;a href=&#34;http://www.icpsr.umich.edu/&#34;&gt;ICPSR&lt;/a&gt;, &lt;a href=&#34;http://fec.gov&#34;&gt;Federal Election Commission&lt;/a&gt;, &lt;a href=&#34;http://voteview.uh.edu/default_nomdata.htm&#34;&gt;Poole and Rosenthal Roll Call Data (Voting ideology)&lt;/a&gt;, &lt;a href=&#34;https://www.rochester.edu/college/faculty/hgoemans/data.htm&#34;&gt;Archigos Data on Political Leaders&lt;/a&gt;, &lt;a href=&#34;http://thomas.loc.gov/&#34;&gt;Library of Congress: Thomas (Legislation)&lt;/a&gt;, &lt;a href=&#34;http://www.biz.uiowa.edu/iem/&#34;&gt;Iowa Electronic Markets (Prediction Markets)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;War and Violence Data: &lt;a href=&#34;http://www.correlatesofwar.org/data-sets&#34;&gt;Correlates of War&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;State Level Data: &lt;a href=&#34;http://ippsr.msu.edu/public-policy/correlates-state-policy&#34;&gt;Correlates of State Policy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Health Data: &lt;a href=&#34;http://www.cdc.gov/scientific.htm&#34;&gt;Centers for Disease Control&lt;/a&gt;, &lt;a href=&#34;http://wonder.cdc.gov/DataSets.shtml&#34;&gt;CDC Wonder System&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Crime Data: &lt;a href=&#34;http://www.ojp.usdoj.gov/bjs/&#34;&gt;Bureau of Justice Statistics&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Education Data: &lt;a href=&#34;http://www.nces.ed.gov/&#34;&gt;National Center for Education Statistics&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Environmental Data: &lt;a href=&#34;http://www.epa.gov/ceisweb1/ceishome/&#34;&gt;EPA&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Religion Data: &lt;a href=&#34;http://www.arda.tm/&#34;&gt;American Religion Data Archiva (ARDA)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Financial Data: &lt;a href=&#34;http://www.cob.ohio-state.edu/cgi-bin/DB_Search/db_search.cgi?setup_file=finance.setup.cgi&#34;&gt;Financial Data Finder&lt;/a&gt;{Financial Data Finder}&lt;/li&gt;
+&lt;li&gt;Philanthropy Data: &lt;a href=&#34;http://nccs.urban.org/&#34;&gt;The Urban Institute&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Note: You should use these more for playing around with in R to boost your data wrangling skills. These should not be used for your projects in most circumstances.&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Some of these come from &lt;a href=&#34;http://www.nickchk.com/econometrics.html&#34;&gt;Nick Huntington-Klein’s excellent list&lt;/a&gt;.&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;&lt;code&gt;install.packages(&#34;name_of_package&#34;)&lt;/code&gt;&lt;a href=&#34;#fnref3&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn4&#34;&gt;&lt;p&gt;Note you will need to install &lt;code&gt;devtools&lt;/code&gt; package first, and then install the package directly from Github with the command &lt;code&gt;devtools::install_github(&#39;UrbanInstitute/education-data-package-r&#39;)&lt;/code&gt;&lt;a href=&#34;#fnref4&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn5&#34;&gt;&lt;p&gt;Note you will need to install &lt;code&gt;devtools&lt;/code&gt; package first, and then install the package directly from Github with the command &lt;code&gt;devtools::install_github(&#39;xmarquez/democracyData&#39;)&lt;/code&gt;&lt;a href=&#34;#fnref5&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn6&#34;&gt;&lt;p&gt;Some of these come from various sources, including &lt;a href=&#34;Awesomedata&amp;#39;s%20Awesome%20Public%20Datasets%20for%20Economics&#34;&gt;https://github.com/awesomedata/awesome-public-datasets#economics&lt;/a&gt;&lt;a href=&#34;#fnref6&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How to Make a PDF</title>
+      <link>https://metricsf22.classes.ryansafner.com/resources/pdfs/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/resources/pdfs/</guid>
+      <description>&lt;h2 id=&#34;using-an-app-on-your-phone&#34;&gt;Using an App on Your Phone&lt;/h2&gt;
+&lt;p&gt;There are many good apps out there that will allow you to take photos and convert them to PDFs. &lt;strong&gt;This is actually a &lt;em&gt;better&lt;/em&gt; method&lt;/strong&gt; than using your computer (described below), since theses apps optimize your photos for PDFs (using your computer to convert will often result in very large PDF file sizes!). Here are a few apps you can use:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://evernote.com/products/scannable&#34;&gt;Scannable &lt;i class=&#34;fab fa-apple&#34;&gt;&lt;/i&gt;&lt;/a&gt;^[If you use &lt;a href=&#34;https://evernote.com/&#34;&gt;Evernote&lt;/a&gt; for notes (I do, it&amp;rsquo;s amazing), this can sync up and store your PDFs in Evernote]&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://turboscanapp.com/index.html&#34;&gt;Turboscan &lt;i class=&#34;fab fa-apple&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-android&#34;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.innover.imagetopdf&amp;amp;hl=en_US&#34;&gt;Image to PDF Converter Free &lt;i class=&#34;fab fa-android&#34;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.twansoftware.pdfconverterpro&amp;amp;hl=en_US&#34;&gt;PDF Converter Pro &lt;i class=&#34;fab fa-android&#34;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://apps.apple.com/us/app/simple-scanner-doc-scan-app-for-scanning-document-as/id1035256307&#34;&gt;Simple Scan &lt;i class=&#34;fab fa-apple&#34;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Personally, I use Scannable — primarily because of its association with Evernote, if you wanted a recommendation. But note it does not exist on Android. I also have successfully used Turboscan in the past.&lt;/p&gt;
+&lt;p&gt;Additionally, as Hood students, you all have &lt;strong&gt;Onedrive&lt;/strong&gt;, you can use the app on your phone to scan documents with photos and convert them to PDFs.&lt;/p&gt;
+&lt;h2 id=&#34;using-images-sent-to-your-computer&#34;&gt;Using Images Sent to Your Computer&lt;/h2&gt;
+&lt;p&gt;Most modern versions of operating system have a built-in tool in the File Viewer (or Finder) menus, after clicking on one or multiple files, to create a PDF from the files.&lt;/p&gt;
+&lt;p&gt;So first take photos on your smartphone of your written work (one photo per page). &lt;strong&gt;Please try to frame your photos properly!&lt;/strong&gt; Put your paper flat on a solid surface (table, desk, the floor, etc). Get the whole page within the borders of the photo, and not too much background. I don&amp;rsquo;t need to see half of your desk or bed as you are taking the photo! Take a look at it and make sure it is legible.&lt;/p&gt;
+&lt;p&gt;Next, get the photos onto your computer (whether by Airdrop, email to yourself, Dropbox, etc.). Finally, depending on your OS, convert the files to a PDF:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. On a Windows PC&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Open the folder where your photos are currently, in the File Explorer. Select all of the photos, and right click, and select &lt;code&gt;Print&lt;/code&gt;. In the dialog box that pops up, select &lt;code&gt;Microsoft Print to PDF&lt;/code&gt; in the &lt;code&gt;Printer&lt;/code&gt; box, and then click &lt;code&gt;Print.&lt;/code&gt; This will save it as a &lt;code&gt;.pdf&lt;/code&gt; file in that folder. &lt;a href=&#34;https://www.howtogeek.com/361612/how-to-create-a-pdf-file-in-windows/&#34;&gt;See more information&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. On a Mac&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;As I use a Mac, I will show you how Mac OS has a neat feature built into Finder, which allows converting multiple files into a single PDF file as a Quick Action. I have written two pages in a notebook and taken two separate pictures of them, and airdropped them onto my computer.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/images/photos_to_pdf1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/images/photos_to_pdf2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/images/photos_to_pdf3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Here is the &lt;a href=&#34;../files/photos_to_pdf.pdf&#34;&gt;&lt;i class=&#34;fas fa-file-pdf&#34;&gt;&lt;/i&gt; example PDF&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. On Linux&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If you use Linux, I assume you know your way around a computer well enough to make a PDF! 🤖&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Installing R and R Studio</title>
+      <link>https://metricsf22.classes.ryansafner.com/resources/installing-r/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/resources/installing-r/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#installing-r&#34;&gt;Installing R&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#install-r-studio&#34;&gt;Install R Studio&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#r-studio-cloud&#34;&gt;R Studio Cloud&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We will do all of our work in this course with the free &amp;amp; open source programming language &lt;code&gt;R&lt;/code&gt;. While you can run everything you need directly in the command line using &lt;code&gt;R&lt;/code&gt;, it is a lot more convenient to use an integrated development environment (IDE) like &lt;code&gt;R Studio&lt;/code&gt;. Think of &lt;code&gt;R&lt;/code&gt; as the engine of a car, and &lt;code&gt;R Studio&lt;/code&gt; as the dashboard.&lt;/p&gt;
+&lt;p&gt;You will need to install &lt;em&gt;both&lt;/em&gt;, but we will ever only open &lt;code&gt;R Studio.&lt;/code&gt;&lt;/p&gt;
+&lt;div id=&#34;installing-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Installing R&lt;/h2&gt;
+&lt;p&gt;First you will need to download and install &lt;code&gt;R&lt;/code&gt; on your computer.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to the &lt;strong&gt;Comprehensive R Archive Network (CRAN)&lt;/strong&gt; that maintains &lt;code&gt;R&lt;/code&gt; and its official packages at: &lt;a href=&#34;https://cran.r-project.org&#34; class=&#34;uri&#34;&gt;https://cran.r-project.org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Click on “Download R for …” your operating system (Mac or Windows)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;If you use a Mac, scroll to the first &lt;code&gt;.pkg&lt;/code&gt; file listed on the left and download.&lt;/li&gt;
+&lt;li&gt;If you use Windows, click on &lt;code&gt;base&lt;/code&gt; (“This what you want to &lt;strong&gt;install R for the first time&lt;/strong&gt;”)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Install the downloaded package like you would any software application on your computer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Typically, open the file from your &lt;code&gt;Downloads&lt;/code&gt; folder (or whever you save downloaded files) and follow the prompts to install on your computer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;If you use a Mac, also download and install &lt;code&gt;XQuartz&lt;/code&gt; (&lt;a href=&#34;https://www.xquartz.org/&#34; class=&#34;uri&#34;&gt;https://www.xquartz.org/&lt;/a&gt;). You do not need to do this on Windows.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;install-r-studio&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Install R Studio&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Go to RStudio.com and download the &lt;a href=&#34;https://www.rstudio.com/products/rstudio/download/#download&#34;&gt;free desktop version&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The website should automatically detect your operating system and give you a large button to click to download the application.&lt;/li&gt;
+&lt;li&gt;Install the downloaded package like you would any software application on your computer.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div id=&#34;r-studio-cloud&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;R Studio Cloud&lt;/h2&gt;
+&lt;p&gt;R is free, but sometimes can be difficult to install and configure on your computer. To make things easier, and to ensure everyone has a consistent experience for class, you can (and should) use the free &lt;a href=&#34;https://rstudio.cloud&#34;&gt;Rstudio.Cloud&lt;/a&gt; service &lt;em&gt;initially&lt;/em&gt;. This allows you to run &lt;code&gt;R&lt;/code&gt; in your browser (i.e. Chrome, Firefox, Safari, etc), meaning you don’t need to worry about installing things on your computer.&lt;/p&gt;
+&lt;p&gt;Go to &lt;a href=&#34;https://rstudio.cloud&#34; class=&#34;uri&#34;&gt;https://rstudio.cloud&lt;/a&gt; and create an account (please use your first and last name). I will send you a link via email to join our class workspace.&lt;/p&gt;
+&lt;p&gt;R Studio Cloud is convenient, but is not designed to be as fully customizable and extensive as the main desktop version. I would start with the Cloud version if you have trouble with your own computer or computers on campus running R or R Studio. But ultimately, you will want to eventually do everything on your own computer and not the cloud version.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>List of Math &amp; R Appendices</title>
+      <link>https://metricsf22.classes.ryansafner.com/resources/appendices/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/resources/appendices/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+
+&lt;/div&gt;
+
+&lt;div id=&#34;list-of-math-and-r-appendices&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;List of Math and R Appendices&lt;/h1&gt;
+&lt;p&gt;The following list contains links to all appendices spread across the &lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content&#34;&gt;Class Content&lt;/a&gt; pages:&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;58%&#34; /&gt;
+&lt;col width=&#34;19%&#34; /&gt;
+&lt;col width=&#34;22%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Appendix&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Class&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Installing R and R Studio&lt;/td&gt;
+&lt;td&gt;R&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/1.2-content/#installing-r-and-r-studio&#34;&gt;1.2 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;R Packages&lt;/td&gt;
+&lt;td&gt;R&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/1.2-content/#r-packages&#34;&gt;1.2 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Getting Help for R&lt;/td&gt;
+&lt;td&gt;R&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/1.2-content/#other-useful-commands-to-know&#34;&gt;1.2 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Other Useful Commands to Know&lt;/td&gt;
+&lt;td&gt;R&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/1.2-content/#other-useful-commands-to-know&#34;&gt;1.2 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Suggested Style Guide for Coding&lt;/td&gt;
+&lt;td&gt;R&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/1.2-content/#suggested-style-guide-for-coding&#34;&gt;1.2 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;The Summation Operator&lt;/td&gt;
+&lt;td&gt;Math/Stats&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/2.1-content/#the-summation-operator&#34;&gt;2.1 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Useful Properties of Summation Operators&lt;/td&gt;
+&lt;td&gt;Math/Stats&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/2.1-content/#useful-properties-of-summation-operators&#34;&gt;2.1 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Useful Properties for Regression&lt;/td&gt;
+&lt;td&gt;Math/Stats&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/2.1-content/#useful-properties-for-regression&#34;&gt;2.1 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Properties of Expected Value and Variance&lt;/td&gt;
+&lt;td&gt;Math/Stats&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/2.2-content/#properties-of-expected-value-and-variance&#34;&gt;2.2 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Graphing Mathematical Functions&lt;/td&gt;
+&lt;td&gt;R&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/2.2-content/#graphing-mathematical-functions&#34;&gt;2.2 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Bult-in Statistical Functions&lt;/td&gt;
+&lt;td&gt;R&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/2.2-content/#bult-in-statistical-functions&#34;&gt;2.2 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Graphing Statistical Functions&lt;/td&gt;
+&lt;td&gt;R&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/2.2-content/#graphing-statistical-functions&#34;&gt;2.2 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Variance, Covariance, and Correlation&lt;/td&gt;
+&lt;td&gt;Math/Stats&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/2.3-content/#variance&#34;&gt;2.3 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Deriving the OLS Estimators&lt;/td&gt;
+&lt;td&gt;Math/Stats&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/2.4-content/#deriving-the-ols-estimators&#34;&gt;2.4 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Algebraic Properties of OLS Estimators&lt;/td&gt;
+&lt;td&gt;Math/Stats&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/2.4-content/#algebraic-properties-of-ols-estimators&#34;&gt;2.4 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Bias in &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_1}\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;Math/Stats&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/2.4-content/#bias-in-hatbeta_1&#34;&gt;2.4 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Proof of the Unbiasedness of &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_1}\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;Math/Stats&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/2.4-content/#proof-of-the-unbiasedness-of-hatbeta_1&#34;&gt;2.4 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Robust Standard Errors in R&lt;/td&gt;
+&lt;td&gt;R&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/2.5-content/#robust-standard-errors-in-r&#34;&gt;2.5 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Differences Between What We Learned in Class and Classical Statistics&lt;/td&gt;
+&lt;td&gt;R&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/2.6-content/#differences-between-what-we-learned-in-class-and-classical-statistics&#34;&gt;2.6 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;T-Test for Difference in Group Means&lt;/td&gt;
+&lt;td&gt;Math/Stats&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/3.6-content/#appendix-t-test-for-difference-in-group-means&#34;&gt;3.6 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Marginal Effects for Two-Continuous Variable Interactions&lt;/td&gt;
+&lt;td&gt;Math/Stats&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/3.7-content/#appendix-marginal-effects-for-two-continuous-variable-interactions&#34;&gt;3.7 class&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Statistics Resources</title>
+      <link>https://metricsf22.classes.ryansafner.com/resources/statistics/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/resources/statistics/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+
+&lt;/div&gt;
+
+&lt;div id=&#34;a-general-symbol-guide&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A General Symbol Guide&lt;/h2&gt;
+&lt;p&gt;There are a lot of symbols (often greek letters or ligatures on English letters) used in statistics and econometrics. Luckliy, most of them follow some standard patterns, and are consistent across textbooks and research (note there are exceptions!).&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;30%&#34; /&gt;
+&lt;col width=&#34;34%&#34; /&gt;
+&lt;col width=&#34;34%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Style&lt;/th&gt;
+&lt;th&gt;Examples&lt;/th&gt;
+&lt;th&gt;Meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Greek letters&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(\beta_0, \beta_1, \sigma, u\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;True &lt;em&gt;parameters&lt;/em&gt; of population&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Hats&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_0}, \hat{\beta_1}, \hat{\sigma}, \hat{u}\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;Our &lt;em&gt;statistical estimates&lt;/em&gt; of population parameters, from sample data&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;English capital letters&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(X_1, X_2, Y\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;(Random) variables in our sample data&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;English lowercase letters&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(x_{1i}, x_{2i}, y_i\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;Individual observations of variables in our sample data&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Modified capital letters&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(\bar{X}, \bar{Y}\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;Statistics calculated from our sample data (e.g. sample mean)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Bold capital letters&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(X= \begin{bmatrix} x_1, x_2, \cdots , x_n \\ \end{bmatrix}\)&lt;/span&gt; &lt;span class=&#34;math inline&#34;&gt;\(\mathbf{\beta} = \begin{bmatrix} \beta_1, \beta_2, \cdots , \beta_k \\ \end{bmatrix}\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;Vector or matrix&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;sample-statistics-vs-population-parameters-formulae&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Sample Statistics vs Population Parameters Formulae&lt;/h2&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;16%&#34; /&gt;
+&lt;col width=&#34;33%&#34; /&gt;
+&lt;col width=&#34;50%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;Sample&lt;/th&gt;
+&lt;th&gt;Population&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Population&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(n\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(N\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Mean&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(\bar{x} = \frac{1}{n} \displaystyle\sum^n_{i=1} x_i\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(\mu = \frac{1}{N} \displaystyle\sum^N_{i=1} x_i\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Variance&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(s^2=\frac{1}{n-1} \displaystyle\sum^n_{i=1} (x_i-\bar{x})^2\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(\sigma^2=\frac{1}{N} \displaystyle\sum^N_{i=1} (x_i-\mu)^2\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Standard Deviation&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(s = \sqrt{s^2}\)&lt;/span&gt;&lt;/td&gt;
+&lt;td&gt;&lt;span class=&#34;math inline&#34;&gt;\(\sigma = \sqrt{\sigma^2}\)&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A Quick Guide to Using Your Computer</title>
+      <link>https://metricsf22.classes.ryansafner.com/resources/computing/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/resources/computing/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+
+&lt;/div&gt;
+
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+## ✓ tibble  3.1.6     ✓ dplyr   1.0.7
+## ✓ tidyr   1.1.4     ✓ stringr 1.4.0
+## ✓ readr   2.1.1     ✓ forcats 0.5.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;downloading-saving-and-opening-files&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Downloading, Saving, and Opening Files&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div id=&#34;command-line&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Command Line&lt;/h3&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Data Wrangling Tips &amp; Tricks</title>
+      <link>https://metricsf22.classes.ryansafner.com/resources/wrangling/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/resources/wrangling/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+
+&lt;/div&gt;
+
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+## ✓ tibble  3.1.5     ✓ dplyr   1.0.7
+## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+## ✓ readr   2.0.0     ✓ forcats 0.5.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;importing-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Importing Data&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;janitor&lt;/code&gt; package&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cleannames()&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;generally makes lowercase names&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;dealing-with-missing-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Dealing with Missing Data&lt;/h2&gt;
+&lt;p&gt;When calculating statistics (e.g. with &lt;code&gt;summarize()&lt;/code&gt;), many calculations will give errors if your data contains &lt;code&gt;NA&lt;/code&gt;s.&lt;/p&gt;
+&lt;div id=&#34;example-calculating-mean&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Example: Calculating Mean&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data_missing &amp;lt;- tribble(
+  ~x, ~y,
+  2, 3,
+  1, 4,
+  NA, 2,
+  3, NA,
+  7, 8
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now if we were to get the mean of x:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data_missing %&amp;gt;% 
+  summarize(mean_x = mean(x))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1 × 1
+##   mean_x
+##    &amp;lt;dbl&amp;gt;
+## 1     NA&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It gives us &lt;code&gt;NA&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;One way to combat this is to &lt;em&gt;ignore&lt;/em&gt; all observations that contain &lt;code&gt;NA&lt;/code&gt; values. Most statistics functions (like &lt;code&gt;mean()&lt;/code&gt;) have an optional argument &lt;code&gt;na.rm&lt;/code&gt;, which if set to &lt;code&gt;TRUE&lt;/code&gt;, will ignore &lt;code&gt;NA&lt;/code&gt;s when performing the calculation:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data_missing %&amp;gt;%
+  summarize(mean_x = mean(x, na.rm = TRUE))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 1 × 1
+##   mean_x
+##    &amp;lt;dbl&amp;gt;
+## 1   3.25&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>R Packages We Use</title>
+      <link>https://metricsf22.classes.ryansafner.com/resources/r-packages/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/resources/r-packages/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;The following is a compendium of all R packages used in this course (in order of appearance), their main uses, and what we use them for&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. Each package name below is a &lt;strong&gt;link&lt;/strong&gt; to the package’s website and/or documentation.&lt;/p&gt;
+&lt;p&gt;You can install all of these packages at once with the following command:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(c(&amp;quot;tidyverse&amp;quot;, &amp;quot;ggrepel&amp;quot;, &amp;quot;broom&amp;quot;, &amp;quot;car&amp;quot;, &amp;quot;estimatr&amp;quot;, &amp;quot;lmtest&amp;quot;,
+                   &amp;quot;huxtable&amp;quot;, &amp;quot;infer&amp;quot;, &amp;quot;dagitty&amp;quot;, &amp;quot;ggdag&amp;quot;, &amp;quot;modelsummary&amp;quot;, &amp;quot;fixest&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;† Indicates package is part of the &lt;a href=&#34;https://tidyverse.org&#34;&gt;&lt;code&gt;tidyverse&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;19%&#34; /&gt;
+&lt;col width=&#34;19%&#34; /&gt;
+&lt;col width=&#34;41%&#34; /&gt;
+&lt;col width=&#34;19%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Name&lt;/th&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description/Reason(s) for Use&lt;/th&gt;
+&lt;th&gt;Classes Used&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;a href=&#34;https://ggplot2.tidyverse.org/&#34;&gt;&lt;code&gt;ggplot2&lt;/code&gt;†&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Plotting&lt;/td&gt;
+&lt;td&gt;For nice plots&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/1.3-content&#34;&gt;1.3&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;gganimate&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Plotting&lt;/td&gt;
+&lt;td&gt;For animating plots&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/1.3-content&#34;&gt;1.3&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;a href=&#34;https://haven.tidyverse.org/&#34;&gt;&lt;code&gt;haven&lt;/code&gt;†&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Data Wrangling&lt;/td&gt;
+&lt;td&gt;For importing nonstandard data files&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/1.4-content&#34;&gt;1.4&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;a href=&#34;https://dplyr.tidyverse.org/&#34;&gt;&lt;code&gt;dplyr&lt;/code&gt;†&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Data Wrangling&lt;/td&gt;
+&lt;td&gt;For manipulating data (part of tidyverse)&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/1.4-content&#34;&gt;1.4&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;a href=&#34;https://readr.tidyverse.org/&#34;&gt;&lt;code&gt;readr&lt;/code&gt;†&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Data Wrangling&lt;/td&gt;
+&lt;td&gt;For importing most data files&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/1.4-content&#34;&gt;1.4&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;a href=&#34;https://tidyr.tidyverse.org/&#34;&gt;&lt;code&gt;tidyr&lt;/code&gt;†&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Data Wrangling&lt;/td&gt;
+&lt;td&gt;For reshaping data (wide and long)&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/1.4-content&#34;&gt;1.4&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;a href=&#34;https://magrittr.tidyverse.org/&#34;&gt;&lt;code&gt;magrittr&lt;/code&gt;†&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Data Wrangling&lt;/td&gt;
+&lt;td&gt;For the pipe&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/1.4-content&#34;&gt;1.4&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;a href=&#34;https://tibble.tidyverse.org/&#34;&gt;&lt;code&gt;tibble&lt;/code&gt;†&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Data Wrangling&lt;/td&gt;
+&lt;td&gt;For a friendlier data.frame&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/1.4-content&#34;&gt;1.4&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;ggrepel&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Plotting&lt;/td&gt;
+&lt;td&gt;For annotating text that doesn’t cover observations&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/2.5-content&#34;&gt;1.4&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;broom&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Models&lt;/td&gt;
+&lt;td&gt;For tidying regression output&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/2.3-content&#34;&gt;2.3&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;car&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Models&lt;/td&gt;
+&lt;td&gt;For testing for outliers&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/2.5-content&#34;&gt;2.5&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;estimatr&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Models&lt;/td&gt;
+&lt;td&gt;For calculating heteroskedasticity-robust standard errors&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/2.5-content&#34;&gt;2.5&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;lmtest&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Models&lt;/td&gt;
+&lt;td&gt;For testing for heteroskedasticity&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/2.5-content&#34;&gt;2.5&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;huxtable&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Output&lt;/td&gt;
+&lt;td&gt;For making nice regression tables&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/2.5-content&#34;&gt;2.5&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;infer&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Models&lt;/td&gt;
+&lt;td&gt;For simulation and statistical inference&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/2.6-content&#34;&gt;2.6&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;dagitty&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Models&lt;/td&gt;
+&lt;td&gt;For working with DAGs in R&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/3.2-content&#34;&gt;3.2&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;ggdag&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Plotting&lt;/td&gt;
+&lt;td&gt;For plotting DAGs in ggplot&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/3.2-content&#34;&gt;3.2&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;modelsummary&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Output&lt;/td&gt;
+&lt;td&gt;For making nice regression tables&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/3.4-content&#34;&gt;3.5&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;fixest&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Models&lt;/td&gt;
+&lt;td&gt;For working with panel data&lt;/td&gt;
+&lt;td&gt;[&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/content/4.1-content&#34;&gt;4.1&lt;/a&gt;]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Note, many of these packages have multiple uses beyond our purposes!&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Unzipping Files</title>
+      <link>https://metricsf22.classes.ryansafner.com/resources/unzipping_files/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/resources/unzipping_files/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#unzipping-files-on-macos&#34;&gt;Unzipping files on macOS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#unzipping-files-on-windows&#34;&gt;Unzipping files on Windows&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Since R projects typically consist of multiple files (R scripts, datasets, images, etc.) the easiest way to distribute and send them is to combine all the different files in to a single compressed &lt;code&gt;.zip&lt;/code&gt; file. When you unzip a &lt;code&gt;.zip&lt;/code&gt; file, your computer extracts all the files contained inside to a new folder on your computer.&lt;/p&gt;
+&lt;p&gt;Unzipping files on macOS is simple, but unzipping files on Windows can cause problems if you don’t pay careful attention.&lt;/p&gt;
+&lt;div id=&#34;unzipping-files-on-macos&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Unzipping files on macOS&lt;/h2&gt;
+&lt;p&gt;Double click on the downloaded &lt;code&gt;.zip&lt;/code&gt; file. macOS will automatically create a new folder with the same name as the &lt;code&gt;.zip&lt;/code&gt; file, and all the file’s contents will be inside. Double click on the RStudio Project file (&lt;code&gt;.Rproj&lt;/code&gt;) to get started.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../images/unzip-mac.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;unzipping-files-on-windows&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Unzipping files on Windows&lt;/h2&gt;
+&lt;p&gt;A long story short: right click on the &lt;code&gt;.zip&lt;/code&gt; file, select “Extract All…”, and work with the resulting unzipped folder.&lt;/p&gt;
+&lt;p&gt;Unlike macOS, Windows does &lt;em&gt;not&lt;/em&gt; automatically unzip things for you. If you double click on the &lt;code&gt;.zip&lt;/code&gt; file, Windows will show you what’s inside, but it will do so without actually extracting anything. This is quite annoying. Here’s what it looks like—the only clues that this folder is really a &lt;code&gt;.zip&lt;/code&gt; file are that there’s a “Compressed Folder Tools” tab at the top with “Extract” in red.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../images/inside-zip-windows.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;It is tempting to just open files from this view, but this causes problems. If you open the R Project file, for instance, RStudio will point to a bizarre working directory buried deep in some temporary folder:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../images/temp-wd-windows.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Instead, you need to right click on the &lt;code&gt;.zip&lt;/code&gt; file and select “Extract All…”:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../images/extract-windows-1.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Then choose where you want to unzip all the files and click on “Extract”&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../images/extract-windows-2.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;You should then finally have a real folder with all the contents of the zipped file. Open the R Project file and RStudio will point to the correct working directory and everything will work.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../images/extract-windows-3.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ggplot2 Extensions</title>
+      <link>https://metricsf22.classes.ryansafner.com/resources/ggplot2/</link>
+      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/resources/ggplot2/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/plotly-binding/plotly.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/typedarray/typedarray.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/crosstalk/css/crosstalk.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/crosstalk/js/crosstalk.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/plotly-htmlwidgets-css/plotly-htmlwidgets.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/plotly-main/plotly-latest.min.js&#34;&gt;&lt;/script&gt;
+
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#extensions-to-ggplot2&#34;&gt;Extensions to ggplot2&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#working-with-scales&#34;&gt;Working with Scales&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#subsetting-data&#34;&gt;Subsetting Data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ggrepel&#34;&gt;ggrepel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#ggflag&#34;&gt;ggflag&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#plotly&#34;&gt;plotly&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#better-barplots&#34;&gt;Better barplots&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;extensions-to-ggplot2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Extensions to ggplot2&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;ggplot2&lt;/code&gt;, being one of the most popular packages, has a lot of user-made extensions that allow you to do lots of neat things with your plots, from plotting networks, Parliaments, dendrograms, and other types of graphs, to formatting and visual tools that help improve your figures.&lt;/p&gt;
+&lt;p&gt;For the following demonstrations, we will use the &lt;code&gt;gapminder&lt;/code&gt; data. Let’s start just by making a basic graph and saving it as an object called &lt;code&gt;p&lt;/code&gt;. I have decided to map (&lt;code&gt;aes()&lt;/code&gt;) each &lt;code&gt;geom_point&lt;/code&gt;’s &lt;code&gt;color&lt;/code&gt; to &lt;code&gt;continent&lt;/code&gt; and &lt;code&gt;size&lt;/code&gt; to &lt;code&gt;pop&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(gapminder)
+library(ggplot2)
+
+p&amp;lt;-ggplot(gapminder) +
+  aes(x = gdpPercap,
+      y = lifeExp) +
+  geom_point(aes(size = pop,
+                 color = continent))
+p&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/resources/ggplot2_files/figure-html/unnamed-chunk-1-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;div id=&#34;working-with-scales&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Working with Scales&lt;/h3&gt;
+&lt;p&gt;I don’t like the default choices &lt;code&gt;ggplot2&lt;/code&gt; has made for my point sizes for population, or the way it depicts them (in scientific notation) on the legend.&lt;/p&gt;
+&lt;p&gt;I will set my own scale by setting the &lt;code&gt;breaks&lt;/code&gt;&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; manually, according to a vector I define as: &lt;code&gt;c(100000, 1000000, 100000000, 1000000000)&lt;/code&gt;. So, I will use one point size for populations of 100 thousand, a bigger one for a million, a bigger one for 100 millions, and the biggest for 1 billion.&lt;/p&gt;
+&lt;p&gt;I am going to &lt;code&gt;label&lt;/code&gt; these (on my legend) as the following vector: &lt;code&gt;c(&#34;&amp;lt;1 million&#34;,&#34;1 million&#34;,&#34;100 million&#34;, &#34;1 billion&#34;)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Lastly, I don’t think the size of the billion circle is big enough, a billion is a lot of people! So I will set the &lt;code&gt;range&lt;/code&gt; of sizes from size &lt;code&gt;1&lt;/code&gt; point to size &lt;code&gt;10&lt;/code&gt; point.&lt;/p&gt;
+&lt;p&gt;To do this, I include all of this inside the &lt;code&gt;scale_size&lt;/code&gt; command (because I am scaling the &lt;code&gt;size&lt;/code&gt; of points):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# let&amp;#39;s save this as p2
+p2&amp;lt;-p+scale_size(breaks = c(100000, 1000000, 100000000, 1000000000), # cut offs
+             labels=c(&amp;quot;&amp;lt;1 million&amp;quot;,&amp;quot;1 million&amp;quot;,&amp;quot;100 million&amp;quot;, &amp;quot;1 billion&amp;quot;), # labels on legend
+             range=c(1,10)) # min &amp;amp; max point size
+
+# let&amp;#39;s see what we did
+p2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/resources/ggplot2_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This is also very hard to see the relationship (because it is nonlinear!). So I will rescale the &lt;code&gt;x_axis&lt;/code&gt; logarithmically with base 10:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p2+scale_x_log10()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/resources/ggplot2_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Doing this already gives me a much clearer view of the relationship! But I don’t like the labels, or the breaks it has chosen, so I can customize them again:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p2+scale_x_log10(
+    breaks = c(10^3, 10^4, 10^5), # 1,000, 10,000, and 100,000
+    labels = scales::dollar)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/resources/ggplot2_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;scales&lt;/code&gt; package has a nice command to format labels, in this case I am calling the &lt;code&gt;scales::dollar&lt;/code&gt; function to print dollar signs in front of my axes numbers. I could have done it manually instead by setting &lt;code&gt;labels = c(&#34;$1,000&#34;, &#34;$10,000&#34;, &#34;$100,000&#34;)&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;subsetting-data&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Subsetting Data&lt;/h2&gt;
+&lt;p&gt;We learn more about this in &lt;a href=&#34;https://metricsf22.classes.ryansafner.com/class/1.4-class&#34;&gt;class 1.4&lt;/a&gt; using &lt;code&gt;tidyverse&lt;/code&gt;, but let’s only look at one year of data (there’s too much going on in this plot, especially with the large points, some points are covering other points). So let’s only look at the year 2007. I can do this in two ways:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Subset the data, save the subsetted data as an object (I’ll call &lt;code&gt;gap2007&lt;/code&gt;), plot with that object as my data:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gap2007 &amp;lt;- gapminder %&amp;gt;%
+  filter(year == 2007)
+
+p2007 &amp;lt;- ggplot(data = gap2007)+
+  aes(x = gdpPercap,
+      y = lifeExp) +
+  geom_point(aes(size = pop,
+                 color = continent))
+
+p2007&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/resources/ggplot2_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Subset data and pipe it directly into &lt;code&gt;ggplot2&lt;/code&gt;’s &lt;code&gt;data&lt;/code&gt; argument:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tidyverse)
+
+p2007 &amp;lt;- gapminder %&amp;gt;%
+  filter(year == 2007) %&amp;gt;%
+  ggplot(data = .)+ # . is placeholder
+  aes(x = gdpPercap,
+      y = lifeExp) +
+  geom_point(aes(size = pop,
+                 color = continent))
+
+p2007&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/resources/ggplot2_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Now let’s clean up the graph with the same things I did before, hide the legends (set the &lt;code&gt;color&lt;/code&gt; and &lt;code&gt;size&lt;/code&gt;, my two &lt;code&gt;aes&lt;/code&gt;thetic mappings, &lt;code&gt;guides&lt;/code&gt; equal to &lt;code&gt;FALSE&lt;/code&gt;), add some labels, and change the theme:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p3&amp;lt;-p2007+scale_size(breaks = c(100000, 1000000, 100000000, 1000000000), 
+             labels=c(&amp;quot;&amp;lt;1 million&amp;quot;,&amp;quot;1 million&amp;quot;,&amp;quot;100 million&amp;quot;, &amp;quot;1 billion&amp;quot;), 
+             range=c(1,10))+
+  scale_x_log10(
+    breaks = c(10^3, 10^4, 10^5),
+    labels = scales::dollar)+
+  labs(x = &amp;quot;GDP per Capita (USD)&amp;quot;,
+       y = &amp;quot;Life Expectancy (years)&amp;quot;)+
+  guides(color = FALSE,
+         size = FALSE)+
+  theme_classic()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: `guides(&amp;lt;scale&amp;gt; = FALSE)` is deprecated. Please use `guides(&amp;lt;scale&amp;gt; =
+## &amp;quot;none&amp;quot;)` instead.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/resources/ggplot2_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ggrepel&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;ggrepel&lt;/h2&gt;
+&lt;p&gt;If I were to try to label some countries, with either &lt;code&gt;geom_text&lt;/code&gt; (just word) or &lt;code&gt;geom_label()&lt;/code&gt; (text in a box), setting the &lt;code&gt;label&lt;/code&gt; &lt;code&gt;aes&lt;/code&gt;thetic to &lt;code&gt;country&lt;/code&gt;, see what would happen:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;p3+geom_label(aes(label = country,
+                  color = continent))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/resources/ggplot2_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The labels, which are plotted right on top of each point, cover the points!&lt;/p&gt;
+&lt;p&gt;Someone figured out a clever way to let us do both, and it is a package called &lt;code&gt;ggrepel&lt;/code&gt;, which allows you to plot labels that are “repelled” away from the point they are labelling in an intelligent way. This is a separate package, which you must first &lt;em&gt;install&lt;/em&gt; and then load with &lt;em&gt;library&lt;/em&gt; to use it!&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# install.packages(&amp;quot;ggrepel&amp;quot;) # do this only once
+library(ggrepel)
+
+p3+geom_text_repel(aes(label = country,
+                        color = continent,
+                       size = pop),
+                    size = 3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: ggrepel: 69 unlabeled data points (too many overlaps). Consider
+## increasing max.overlaps&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/resources/ggplot2_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This is much better, but for this particular chart, since a lot of observations are close together, it would be unwise to label &lt;em&gt;everything&lt;/em&gt;, perhaps only label a subset of important points.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ggflag&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;ggflag&lt;/h2&gt;
+&lt;p&gt;One alternative is instead of points, to use some other marking. Someone created the &lt;code&gt;ggflags&lt;/code&gt; package to let you plot flags of countries. This creates a new type of geom, called &lt;code&gt;geom_flag&lt;/code&gt;, that requires you to map the &lt;code&gt;country&lt;/code&gt; &lt;code&gt;aes&lt;/code&gt;thetic to a variable in your data with the country name (incidentally, in &lt;code&gt;gapminder&lt;/code&gt; that variable is also called &lt;code&gt;country&lt;/code&gt;). Let’s try that out instead (and add my same customizations as above):&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# install.packages(&amp;quot;ggflags&amp;quot;) # do this only once
+library(ggflags)
+pflag&amp;lt;-p3+geom_flag(aes(country = country,
+                        size = pop))
+pflag&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/resources/ggplot2_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plotly&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;plotly&lt;/h2&gt;
+&lt;p&gt;We can also make our plot a bit more interactive (on web only of course!) using the &lt;code&gt;ggplotly&lt;/code&gt; package, which allows &lt;code&gt;ggplot2&lt;/code&gt; to interface with a javascript library called &lt;code&gt;plotly&lt;/code&gt;.&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# install.packages(&amp;quot;plotly&amp;quot;) # do this only once
+library(plotly)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplotly(p3)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;plotly html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;data&#34;:[{&#34;x&#34;:[3.79402544509666,3.68099065562682,3.1587498285201,4.09933015629768,3.08530235219712,2.63353984732021,3.31007599301138,2.848814873635,3.23148583131337,2.99394204506796,2.44334414004637,3.56021253312911,3.18885823537455,3.31858116595608,3.74672610693845,4.08472243900371,2.80710831941093,2.83935583435696,4.12078722664154,2.87665060639063,3.1230701584329,2.9743524119827,2.76285235400399,3.16531831968284,3.19571467604724,2.61753222691212,4.08125724466051,3.01902074595738,2.88044194586588,3.0181100381011,3.25603221652431,4.03969130967891,3.58208328429303,2.91576148434958,3.68224081186337,2.79216530171644,3.30405457229069,3.88480230343241,2.93605531183875,3.20369500466057,3.23362351372365,2.93577962517273,2.96667714274902,3.96706370233863,3.41537321502711,3.65451158423759,3.04433674769752,2.94594592049266,3.85082524675123,3.02382022004224,3.10421784482941,2.67182915731664],&#34;y&#34;:[72.301,42.731,56.728,50.728,52.295,49.58,50.43,44.741,50.651,65.152,46.462,55.322,48.328,54.791,71.338,51.579,58.04,52.947,56.735,59.448,60.022,56.007,46.388,54.11,42.592,45.678,73.952,59.443,48.303,54.467,64.164,72.801,71.164,42.082,52.906,56.867,46.859,76.442,46.242,65.528,63.062,42.568,48.159,49.339,58.556,39.613,52.517,58.42,73.923,51.542,42.384,43.487],&#34;text&#34;:[&#34;gdpPercap:  6223.3675&lt;br /&gt;lifeExp: 72.301&lt;br /&gt;pop:   33333216&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  4797.2313&lt;br /&gt;lifeExp: 42.731&lt;br /&gt;pop:   12420476&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  1441.2849&lt;br /&gt;lifeExp: 56.728&lt;br /&gt;pop:    8078314&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap: 12569.8518&lt;br /&gt;lifeExp: 50.728&lt;br /&gt;pop:    1639131&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  1217.0330&lt;br /&gt;lifeExp: 52.295&lt;br /&gt;pop:   14326203&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   430.0707&lt;br /&gt;lifeExp: 49.580&lt;br /&gt;pop:    8390505&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  2042.0952&lt;br /&gt;lifeExp: 50.430&lt;br /&gt;pop:   17696293&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   706.0165&lt;br /&gt;lifeExp: 44.741&lt;br /&gt;pop:    4369038&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  1704.0637&lt;br /&gt;lifeExp: 50.651&lt;br /&gt;pop:   10238807&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   986.1479&lt;br /&gt;lifeExp: 65.152&lt;br /&gt;pop:     710960&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   277.5519&lt;br /&gt;lifeExp: 46.462&lt;br /&gt;pop:   64606759&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  3632.5578&lt;br /&gt;lifeExp: 55.322&lt;br /&gt;pop:    3800610&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  1544.7501&lt;br /&gt;lifeExp: 48.328&lt;br /&gt;pop:   18013409&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  2082.4816&lt;br /&gt;lifeExp: 54.791&lt;br /&gt;pop:     496374&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  5581.1810&lt;br /&gt;lifeExp: 71.338&lt;br /&gt;pop:   80264543&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap: 12154.0897&lt;br /&gt;lifeExp: 51.579&lt;br /&gt;pop:     551201&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   641.3695&lt;br /&gt;lifeExp: 58.040&lt;br /&gt;pop:    4906585&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   690.8056&lt;br /&gt;lifeExp: 52.947&lt;br /&gt;pop:   76511887&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap: 13206.4845&lt;br /&gt;lifeExp: 56.735&lt;br /&gt;pop:    1454867&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   752.7497&lt;br /&gt;lifeExp: 59.448&lt;br /&gt;pop:    1688359&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  1327.6089&lt;br /&gt;lifeExp: 60.022&lt;br /&gt;pop:   22873338&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   942.6542&lt;br /&gt;lifeExp: 56.007&lt;br /&gt;pop:    9947814&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   579.2317&lt;br /&gt;lifeExp: 46.388&lt;br /&gt;pop:    1472041&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  1463.2493&lt;br /&gt;lifeExp: 54.110&lt;br /&gt;pop:   35610177&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  1569.3314&lt;br /&gt;lifeExp: 42.592&lt;br /&gt;pop:    2012649&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   414.5073&lt;br /&gt;lifeExp: 45.678&lt;br /&gt;pop:    3193942&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap: 12057.4993&lt;br /&gt;lifeExp: 73.952&lt;br /&gt;pop:    6036914&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  1044.7701&lt;br /&gt;lifeExp: 59.443&lt;br /&gt;pop:   19167654&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   759.3499&lt;br /&gt;lifeExp: 48.303&lt;br /&gt;pop:   13327079&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  1042.5816&lt;br /&gt;lifeExp: 54.467&lt;br /&gt;pop:   12031795&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  1803.1515&lt;br /&gt;lifeExp: 64.164&lt;br /&gt;pop:    3270065&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap: 10956.9911&lt;br /&gt;lifeExp: 72.801&lt;br /&gt;pop:    1250882&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  3820.1752&lt;br /&gt;lifeExp: 71.164&lt;br /&gt;pop:   33757175&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   823.6856&lt;br /&gt;lifeExp: 42.082&lt;br /&gt;pop:   19951656&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  4811.0604&lt;br /&gt;lifeExp: 52.906&lt;br /&gt;pop:    2055080&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   619.6769&lt;br /&gt;lifeExp: 56.867&lt;br /&gt;pop:   12894865&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  2013.9773&lt;br /&gt;lifeExp: 46.859&lt;br /&gt;pop:  135031164&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  7670.1226&lt;br /&gt;lifeExp: 76.442&lt;br /&gt;pop:     798094&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   863.0885&lt;br /&gt;lifeExp: 46.242&lt;br /&gt;pop:    8860588&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  1598.4351&lt;br /&gt;lifeExp: 65.528&lt;br /&gt;pop:     199579&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  1712.4721&lt;br /&gt;lifeExp: 63.062&lt;br /&gt;pop:   12267493&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   862.5408&lt;br /&gt;lifeExp: 42.568&lt;br /&gt;pop:    6144562&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   926.1411&lt;br /&gt;lifeExp: 48.159&lt;br /&gt;pop:    9118773&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  9269.6578&lt;br /&gt;lifeExp: 49.339&lt;br /&gt;pop:   43997828&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  2602.3950&lt;br /&gt;lifeExp: 58.556&lt;br /&gt;pop:   42292929&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  4513.4806&lt;br /&gt;lifeExp: 39.613&lt;br /&gt;pop:    1133066&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  1107.4822&lt;br /&gt;lifeExp: 52.517&lt;br /&gt;pop:   38139640&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   882.9699&lt;br /&gt;lifeExp: 58.420&lt;br /&gt;pop:    5701579&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  7092.9230&lt;br /&gt;lifeExp: 73.923&lt;br /&gt;pop:   10276158&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  1056.3801&lt;br /&gt;lifeExp: 51.542&lt;br /&gt;pop:   29170398&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:  1271.2116&lt;br /&gt;lifeExp: 42.384&lt;br /&gt;pop:   11746035&lt;br /&gt;continent: Africa&#34;,&#34;gdpPercap:   469.7093&lt;br /&gt;lifeExp: 43.487&lt;br /&gt;pop:   12311143&lt;br /&gt;continent: Africa&#34;],&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;markers&#34;,&#34;marker&#34;:{&#34;autocolorscale&#34;:false,&#34;color&#34;:&#34;rgba(248,118,109,1)&#34;,&#34;opacity&#34;:1,&#34;size&#34;:[9.17186707134452,7.05439869410931,6.40901390549693,4.9035017839512,7.30049384335335,6.46060386522178,7.69803720253323,5.69238465892928,6.7477253137447,4.44943525570712,11.2976572925347,5.55721786228597,7.7333879014621,4.28988090166577,12.1618416439493,4.33502324865599,5.81195499746525,11.963044159878,4.82910469643636,4.92255836798588,8.24024214783767,6.70439150114293,4.83626010737606,9.35407099736227,5.04091923115731,5.40057191086803,6.04286851580263,7.85947250211585,7.17369831222697,7.00189987699689,5.42104776974703,4.7400480303731,9.20625605614534,7.94293638389671,5.05559394837149,7.11735528623198,14.6572630326479,4.50426415706232,6.53646504420609,3.77952755905512,7.03383648011053,6.06364264377998,6.57725548979649,9.97923288155683,9.85736973717032,4.68462807101931,9.54973844613408,5.97689642333099,6.75324178508698,8.82176229393711,6.96275027917212,7.03971663329602],&#34;symbol&#34;:&#34;circle&#34;,&#34;line&#34;:{&#34;width&#34;:1.88976377952756,&#34;color&#34;:&#34;rgba(248,118,109,1)&#34;}},&#34;hoveron&#34;:&#34;points&#34;,&#34;name&#34;:&#34;Africa&#34;,&#34;legendgroup&#34;:&#34;Africa&#34;,&#34;showlegend&#34;:true,&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;hoverinfo&#34;:&#34;text&#34;,&#34;frame&#34;:null},{&#34;x&#34;:[4.10650977201769,3.58230625931688,3.95740617340857,4.56013669242519,4.11963981438709,3.84550611104731,3.98430499758718,3.95173097080165,3.77998406330737,3.83716291957619,3.75802981175127,3.71483669984604,3.0797733480287,3.55002410662006,3.86456330372846,4.07836889751077,3.43922544380543,3.99163295350919,3.6204315729333,3.86975405900188,4.28620284789525,4.25547776303394,4.632979883279,4.02577526370184,4.05750656798335],&#34;y&#34;:[75.32,65.554,72.39,80.653,78.553,72.889,78.782,78.273,72.235,74.994,71.878,70.259,60.916,70.198,72.567,76.195,72.899,75.537,71.752,71.421,78.746,69.819,78.242,76.384,73.747],&#34;text&#34;:[&#34;gdpPercap: 12779.3796&lt;br /&gt;lifeExp: 75.320&lt;br /&gt;pop:   40301927&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  3822.1371&lt;br /&gt;lifeExp: 65.554&lt;br /&gt;pop:    9119152&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  9065.8008&lt;br /&gt;lifeExp: 72.390&lt;br /&gt;pop:  190010647&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap: 36319.2350&lt;br /&gt;lifeExp: 80.653&lt;br /&gt;pop:   33390141&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap: 13171.6388&lt;br /&gt;lifeExp: 78.553&lt;br /&gt;pop:   16284741&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  7006.5804&lt;br /&gt;lifeExp: 72.889&lt;br /&gt;pop:   44227550&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  9645.0614&lt;br /&gt;lifeExp: 78.782&lt;br /&gt;pop:    4133884&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  8948.1029&lt;br /&gt;lifeExp: 78.273&lt;br /&gt;pop:   11416987&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  6025.3748&lt;br /&gt;lifeExp: 72.235&lt;br /&gt;pop:    9319622&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  6873.2623&lt;br /&gt;lifeExp: 74.994&lt;br /&gt;pop:   13755680&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  5728.3535&lt;br /&gt;lifeExp: 71.878&lt;br /&gt;pop:    6939688&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  5186.0500&lt;br /&gt;lifeExp: 70.259&lt;br /&gt;pop:   12572928&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  1201.6372&lt;br /&gt;lifeExp: 60.916&lt;br /&gt;pop:    8502814&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  3548.3308&lt;br /&gt;lifeExp: 70.198&lt;br /&gt;pop:    7483763&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  7320.8803&lt;br /&gt;lifeExp: 72.567&lt;br /&gt;pop:    2780132&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap: 11977.5750&lt;br /&gt;lifeExp: 76.195&lt;br /&gt;pop:  108700891&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  2749.3210&lt;br /&gt;lifeExp: 72.899&lt;br /&gt;pop:    5675356&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  9809.1856&lt;br /&gt;lifeExp: 75.537&lt;br /&gt;pop:    3242173&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  4172.8385&lt;br /&gt;lifeExp: 71.752&lt;br /&gt;pop:    6667147&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap:  7408.9056&lt;br /&gt;lifeExp: 71.421&lt;br /&gt;pop:   28674757&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap: 19328.7090&lt;br /&gt;lifeExp: 78.746&lt;br /&gt;pop:    3942491&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap: 18008.5092&lt;br /&gt;lifeExp: 69.819&lt;br /&gt;pop:    1056608&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap: 42951.6531&lt;br /&gt;lifeExp: 78.242&lt;br /&gt;pop:  301139947&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap: 10611.4630&lt;br /&gt;lifeExp: 76.384&lt;br /&gt;pop:    3447496&lt;br /&gt;continent: Americas&#34;,&#34;gdpPercap: 11415.8057&lt;br /&gt;lifeExp: 73.747&lt;br /&gt;pop:   26084662&lt;br /&gt;continent: Americas&#34;],&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;markers&#34;,&#34;marker&#34;:{&#34;autocolorscale&#34;:false,&#34;color&#34;:&#34;rgba(163,165,0,1)&#34;,&#34;opacity&#34;:1,&#34;size&#34;:[9.71188859996772,6.5773149305723,16.6858776044272,9.17649721801001,7.53665038513786,9.99547035822454,5.63766008617189,6.91706510514433,6.60858077236626,7.22866159247969,6.21159791037081,7.07476189901512,6.47892193200982,6.30785388802791,5.28439783802595,13.5375130560296,5.97165374565047,5.41357505468652,6.16191930215675,8.77844422821804,5.59190013370175,4.6467698186458,20.0306325948774,5.46781012065641,8.54567479416711],&#34;symbol&#34;:&#34;circle&#34;,&#34;line&#34;:{&#34;width&#34;:1.88976377952756,&#34;color&#34;:&#34;rgba(163,165,0,1)&#34;}},&#34;hoveron&#34;:&#34;points&#34;,&#34;name&#34;:&#34;Americas&#34;,&#34;legendgroup&#34;:&#34;Americas&#34;,&#34;showlegend&#34;:true,&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;hoverinfo&#34;:&#34;text&#34;,&#34;frame&#34;:null},{&#34;x&#34;:[2.98881764549129,4.47415867018597,3.143406361057,3.23395473727517,3.6954041667466,4.59906367268864,3.38955773121288,3.54908318988216,4.06467188236304,3.65041068311967,4.40693643553008,4.50045697098462,3.65508665949928,3.20223362703668,4.3682522837381,4.67492531406996,4.01957563822304,4.09522710701315,3.49076900592376,2.97497199429807,3.03796794384465,4.34862010618943,3.41596567540354,3.50385616482709,4.33555481758265,4.67341887079622,3.59880094359832,3.62164856315343,4.45815837772449,3.87264545733796,3.38767031916547,3.4807755960326,3.35808147396803],&#34;y&#34;:[43.828,75.635,64.062,59.723,72.961,82.208,64.698,70.65,70.964,59.545,80.745,82.603,72.535,67.297,78.623,77.588,71.993,74.241,66.803,62.069,63.785,75.64,65.483,71.688,72.777,79.972,72.396,74.143,78.4,70.616,74.249,73.422,62.698],&#34;text&#34;:[&#34;gdpPercap:   974.5803&lt;br /&gt;lifeExp: 43.828&lt;br /&gt;pop:   31889923&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap: 29796.0483&lt;br /&gt;lifeExp: 75.635&lt;br /&gt;pop:     708573&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  1391.2538&lt;br /&gt;lifeExp: 64.062&lt;br /&gt;pop:  150448339&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  1713.7787&lt;br /&gt;lifeExp: 59.723&lt;br /&gt;pop:   14131858&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  4959.1149&lt;br /&gt;lifeExp: 72.961&lt;br /&gt;pop: 1318683096&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap: 39724.9787&lt;br /&gt;lifeExp: 82.208&lt;br /&gt;pop:    6980412&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  2452.2104&lt;br /&gt;lifeExp: 64.698&lt;br /&gt;pop: 1110396331&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  3540.6516&lt;br /&gt;lifeExp: 70.650&lt;br /&gt;pop:  223547000&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap: 11605.7145&lt;br /&gt;lifeExp: 70.964&lt;br /&gt;pop:   69453570&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  4471.0619&lt;br /&gt;lifeExp: 59.545&lt;br /&gt;pop:   27499638&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap: 25523.2771&lt;br /&gt;lifeExp: 80.745&lt;br /&gt;pop:    6426679&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap: 31656.0681&lt;br /&gt;lifeExp: 82.603&lt;br /&gt;pop:  127467972&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  4519.4612&lt;br /&gt;lifeExp: 72.535&lt;br /&gt;pop:    6053193&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  1593.0655&lt;br /&gt;lifeExp: 67.297&lt;br /&gt;pop:   23301725&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap: 23348.1397&lt;br /&gt;lifeExp: 78.623&lt;br /&gt;pop:   49044790&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap: 47306.9898&lt;br /&gt;lifeExp: 77.588&lt;br /&gt;pop:    2505559&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap: 10461.0587&lt;br /&gt;lifeExp: 71.993&lt;br /&gt;pop:    3921278&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap: 12451.6558&lt;br /&gt;lifeExp: 74.241&lt;br /&gt;pop:   24821286&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  3095.7723&lt;br /&gt;lifeExp: 66.803&lt;br /&gt;pop:    2874127&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:   944.0000&lt;br /&gt;lifeExp: 62.069&lt;br /&gt;pop:   47761980&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  1091.3598&lt;br /&gt;lifeExp: 63.785&lt;br /&gt;pop:   28901790&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap: 22316.1929&lt;br /&gt;lifeExp: 75.640&lt;br /&gt;pop:    3204897&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  2605.9476&lt;br /&gt;lifeExp: 65.483&lt;br /&gt;pop:  169270617&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  3190.4810&lt;br /&gt;lifeExp: 71.688&lt;br /&gt;pop:   91077287&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap: 21654.8319&lt;br /&gt;lifeExp: 72.777&lt;br /&gt;pop:   27601038&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap: 47143.1796&lt;br /&gt;lifeExp: 79.972&lt;br /&gt;pop:    4553009&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  3970.0954&lt;br /&gt;lifeExp: 72.396&lt;br /&gt;pop:   20378239&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  4184.5481&lt;br /&gt;lifeExp: 74.143&lt;br /&gt;pop:   19314747&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap: 28718.2768&lt;br /&gt;lifeExp: 78.400&lt;br /&gt;pop:   23174294&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  7458.3963&lt;br /&gt;lifeExp: 70.616&lt;br /&gt;pop:   65068149&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  2441.5764&lt;br /&gt;lifeExp: 74.249&lt;br /&gt;pop:   85262356&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  3025.3498&lt;br /&gt;lifeExp: 73.422&lt;br /&gt;pop:    4018332&lt;br /&gt;continent: Asia&#34;,&#34;gdpPercap:  2280.7699&lt;br /&gt;lifeExp: 62.698&lt;br /&gt;pop:   22211743&lt;br /&gt;continent: Asia&#34;],&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;markers&#34;,&#34;marker&#34;:{&#34;autocolorscale&#34;:false,&#34;color&#34;:&#34;rgba(0,191,125,1)&#34;,&#34;opacity&#34;:1,&#34;size&#34;:[9.05311498519542,4.44786994524866,15.2623360474798,7.27619037210708,37.7952755905512,6.21893417725337,34.9930405243088,17.7796922474324,11.5754063207234,8.67420938599383,6.1172104237703,14.3477745253016,6.0460222901843,8.28218425481713,10.3266983238546,5.20208706341552,5.58675701419557,8.42790893914936,5.31155968285997,10.2401529293716,8.79833288071788,5.40353453228879,15.9603688022812,12.7099366962826,8.68329106458849,5.73413008778765,7.9876545260984,7.87526146228488,8.26974879812008,11.3245378339389,12.4195018826322,5.61016970980921,8.17468101875895],&#34;symbol&#34;:&#34;circle&#34;,&#34;line&#34;:{&#34;width&#34;:1.88976377952756,&#34;color&#34;:&#34;rgba(0,191,125,1)&#34;}},&#34;hoveron&#34;:&#34;points&#34;,&#34;name&#34;:&#34;Asia&#34;,&#34;legendgroup&#34;:&#34;Asia&#34;,&#34;showlegend&#34;:true,&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;hoverinfo&#34;:&#34;text&#34;,&#34;frame&#34;:null},{&#34;x&#34;:[3.77356920876217,4.55782580062218,4.52753459151331,3.87194045947979,4.02860349094832,4.16492428251317,4.35856884462783,4.54750911081685,4.52123074598147,4.48387269225076,4.50745611553652,4.43993889119905,4.25548825822109,4.55847803563392,4.60933819969144,4.45590597950278,3.96632461957789,4.56582342810493,4.69335042800253,4.18723649435127,4.31195820191596,4.03376444688129,3.990628940935,4.27133768016358,4.41108505321789,4.4597100052953,4.52968372605252,4.57410560181062,3.92728187211911,4.52118074293136],&#34;y&#34;:[76.423,79.829,79.441,74.852,73.005,75.748,76.486,78.332,79.313,80.657,79.406,79.483,73.338,81.757,78.885,80.546,74.543,79.762,80.196,75.563,78.098,72.476,74.002,74.663,77.926,80.941,80.884,81.701,71.777,79.425],&#34;text&#34;:[&#34;gdpPercap:  5937.0295&lt;br /&gt;lifeExp: 76.423&lt;br /&gt;pop:    3600523&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 36126.4927&lt;br /&gt;lifeExp: 79.829&lt;br /&gt;pop:    8199783&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 33692.6051&lt;br /&gt;lifeExp: 79.441&lt;br /&gt;pop:   10392226&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap:  7446.2988&lt;br /&gt;lifeExp: 74.852&lt;br /&gt;pop:    4552198&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 10680.7928&lt;br /&gt;lifeExp: 73.005&lt;br /&gt;pop:    7322858&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 14619.2227&lt;br /&gt;lifeExp: 75.748&lt;br /&gt;pop:    4493312&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 22833.3085&lt;br /&gt;lifeExp: 76.486&lt;br /&gt;pop:   10228744&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 35278.4187&lt;br /&gt;lifeExp: 78.332&lt;br /&gt;pop:    5468120&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 33207.0844&lt;br /&gt;lifeExp: 79.313&lt;br /&gt;pop:    5238460&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 30470.0167&lt;br /&gt;lifeExp: 80.657&lt;br /&gt;pop:   61083916&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 32170.3744&lt;br /&gt;lifeExp: 79.406&lt;br /&gt;pop:   82400996&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 27538.4119&lt;br /&gt;lifeExp: 79.483&lt;br /&gt;pop:   10706290&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 18008.9444&lt;br /&gt;lifeExp: 73.338&lt;br /&gt;pop:    9956108&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 36180.7892&lt;br /&gt;lifeExp: 81.757&lt;br /&gt;pop:     301931&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 40675.9964&lt;br /&gt;lifeExp: 78.885&lt;br /&gt;pop:    4109086&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 28569.7197&lt;br /&gt;lifeExp: 80.546&lt;br /&gt;pop:   58147733&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap:  9253.8961&lt;br /&gt;lifeExp: 74.543&lt;br /&gt;pop:     684736&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 36797.9333&lt;br /&gt;lifeExp: 79.762&lt;br /&gt;pop:   16570613&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 49357.1902&lt;br /&gt;lifeExp: 80.196&lt;br /&gt;pop:    4627926&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 15389.9247&lt;br /&gt;lifeExp: 75.563&lt;br /&gt;pop:   38518241&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 20509.6478&lt;br /&gt;lifeExp: 78.098&lt;br /&gt;pop:   10642836&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 10808.4756&lt;br /&gt;lifeExp: 72.476&lt;br /&gt;pop:   22276056&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap:  9786.5347&lt;br /&gt;lifeExp: 74.002&lt;br /&gt;pop:   10150265&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 18678.3144&lt;br /&gt;lifeExp: 74.663&lt;br /&gt;pop:    5447502&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 25768.2576&lt;br /&gt;lifeExp: 77.926&lt;br /&gt;pop:    2009245&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 28821.0637&lt;br /&gt;lifeExp: 80.941&lt;br /&gt;pop:   40448191&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 33859.7484&lt;br /&gt;lifeExp: 80.884&lt;br /&gt;pop:    9031088&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 37506.4191&lt;br /&gt;lifeExp: 81.701&lt;br /&gt;pop:    7554661&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap:  8458.2764&lt;br /&gt;lifeExp: 71.777&lt;br /&gt;pop:   71158647&lt;br /&gt;continent: Europe&#34;,&#34;gdpPercap: 33203.2613&lt;br /&gt;lifeExp: 79.425&lt;br /&gt;pop:   60776238&lt;br /&gt;continent: Europe&#34;],&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;markers&#34;,&#34;marker&#34;:{&#34;autocolorscale&#34;:false,&#34;color&#34;:&#34;rgba(0,176,246,1)&#34;,&#34;opacity&#34;:1,&#34;size&#34;:[5.50712445033372,6.42920619519428,6.77031924892042,5.73394801796184,6.27977303928336,5.72068245173131,6.74623732768221,5.929772108609,5.88238448143105,11.0891587319513,12.27294218016,6.81604700534319,6.70563550396768,4.07923038647061,5.63179490697003,10.9107252520474,4.43203252970621,7.56988990169337,5.75087646240843,9.57845722742051,6.80686377461846,8.18109700174399,6.73460716335436,5.92556058199178,5.03973455695427,9.72269720797748,6.56346922779363,6.32012837309692,11.6707925032296,11.0706657881971],&#34;symbol&#34;:&#34;circle&#34;,&#34;line&#34;:{&#34;width&#34;:1.88976377952756,&#34;color&#34;:&#34;rgba(0,176,246,1)&#34;}},&#34;hoveron&#34;:&#34;points&#34;,&#34;name&#34;:&#34;Europe&#34;,&#34;legendgroup&#34;:&#34;Europe&#34;,&#34;showlegend&#34;:true,&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;hoverinfo&#34;:&#34;text&#34;,&#34;frame&#34;:null},{&#34;x&#34;:[4.53700472145269,4.40114211228811],&#34;y&#34;:[81.235,80.204],&#34;text&#34;:[&#34;gdpPercap: 34435.3674&lt;br /&gt;lifeExp: 81.235&lt;br /&gt;pop:   20434176&lt;br /&gt;continent: Oceania&#34;,&#34;gdpPercap: 25185.0091&lt;br /&gt;lifeExp: 80.204&lt;br /&gt;pop:    4115771&lt;br /&gt;continent: Oceania&#34;],&#34;type&#34;:&#34;scatter&#34;,&#34;mode&#34;:&#34;markers&#34;,&#34;marker&#34;:{&#34;autocolorscale&#34;:false,&#34;color&#34;:&#34;rgba(231,107,243,1)&#34;,&#34;opacity&#34;:1,&#34;size&#34;:[7.99348313645917,5.63337785828153],&#34;symbol&#34;:&#34;circle&#34;,&#34;line&#34;:{&#34;width&#34;:1.88976377952756,&#34;color&#34;:&#34;rgba(231,107,243,1)&#34;}},&#34;hoveron&#34;:&#34;points&#34;,&#34;name&#34;:&#34;Oceania&#34;,&#34;legendgroup&#34;:&#34;Oceania&#34;,&#34;showlegend&#34;:true,&#34;xaxis&#34;:&#34;x&#34;,&#34;yaxis&#34;:&#34;y&#34;,&#34;hoverinfo&#34;:&#34;text&#34;,&#34;frame&#34;:null}],&#34;layout&#34;:{&#34;margin&#34;:{&#34;t&#34;:26.2283105022831,&#34;r&#34;:7.30593607305936,&#34;b&#34;:40.1826484018265,&#34;l&#34;:37.2602739726027},&#34;plot_bgcolor&#34;:&#34;rgba(255,255,255,1)&#34;,&#34;paper_bgcolor&#34;:&#34;rgba(255,255,255,1)&#34;,&#34;font&#34;:{&#34;color&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:14.6118721461187},&#34;xaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;type&#34;:&#34;linear&#34;,&#34;autorange&#34;:false,&#34;range&#34;:[2.33084382564856,4.80585074240034],&#34;tickmode&#34;:&#34;array&#34;,&#34;ticktext&#34;:[&#34;$1,000&#34;,&#34;$10,000&#34;],&#34;tickvals&#34;:[3,4],&#34;categoryorder&#34;:&#34;array&#34;,&#34;categoryarray&#34;:[&#34;$1,000&#34;,&#34;$10,000&#34;],&#34;nticks&#34;:null,&#34;ticks&#34;:&#34;outside&#34;,&#34;tickcolor&#34;:&#34;rgba(51,51,51,1)&#34;,&#34;ticklen&#34;:3.65296803652968,&#34;tickwidth&#34;:0.66417600664176,&#34;showticklabels&#34;:true,&#34;tickfont&#34;:{&#34;color&#34;:&#34;rgba(77,77,77,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:11.689497716895},&#34;tickangle&#34;:-0,&#34;showline&#34;:true,&#34;linecolor&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;linewidth&#34;:0.66417600664176,&#34;showgrid&#34;:false,&#34;gridcolor&#34;:null,&#34;gridwidth&#34;:0,&#34;zeroline&#34;:false,&#34;anchor&#34;:&#34;y&#34;,&#34;title&#34;:{&#34;text&#34;:&#34;GDP per Capita (USD)&#34;,&#34;font&#34;:{&#34;color&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:14.6118721461187}},&#34;hoverformat&#34;:&#34;.2f&#34;},&#34;yaxis&#34;:{&#34;domain&#34;:[0,1],&#34;automargin&#34;:true,&#34;type&#34;:&#34;linear&#34;,&#34;autorange&#34;:false,&#34;range&#34;:[37.4635,84.7525],&#34;tickmode&#34;:&#34;array&#34;,&#34;ticktext&#34;:[&#34;40&#34;,&#34;50&#34;,&#34;60&#34;,&#34;70&#34;,&#34;80&#34;],&#34;tickvals&#34;:[40,50,60,70,80],&#34;categoryorder&#34;:&#34;array&#34;,&#34;categoryarray&#34;:[&#34;40&#34;,&#34;50&#34;,&#34;60&#34;,&#34;70&#34;,&#34;80&#34;],&#34;nticks&#34;:null,&#34;ticks&#34;:&#34;outside&#34;,&#34;tickcolor&#34;:&#34;rgba(51,51,51,1)&#34;,&#34;ticklen&#34;:3.65296803652968,&#34;tickwidth&#34;:0.66417600664176,&#34;showticklabels&#34;:true,&#34;tickfont&#34;:{&#34;color&#34;:&#34;rgba(77,77,77,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:11.689497716895},&#34;tickangle&#34;:-0,&#34;showline&#34;:true,&#34;linecolor&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;linewidth&#34;:0.66417600664176,&#34;showgrid&#34;:false,&#34;gridcolor&#34;:null,&#34;gridwidth&#34;:0,&#34;zeroline&#34;:false,&#34;anchor&#34;:&#34;x&#34;,&#34;title&#34;:{&#34;text&#34;:&#34;Life Expectancy (years)&#34;,&#34;font&#34;:{&#34;color&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:14.6118721461187}},&#34;hoverformat&#34;:&#34;.2f&#34;},&#34;shapes&#34;:[{&#34;type&#34;:&#34;rect&#34;,&#34;fillcolor&#34;:null,&#34;line&#34;:{&#34;color&#34;:null,&#34;width&#34;:0,&#34;linetype&#34;:[]},&#34;yref&#34;:&#34;paper&#34;,&#34;xref&#34;:&#34;paper&#34;,&#34;x0&#34;:0,&#34;x1&#34;:1,&#34;y0&#34;:0,&#34;y1&#34;:1}],&#34;showlegend&#34;:true,&#34;legend&#34;:{&#34;bgcolor&#34;:&#34;rgba(255,255,255,1)&#34;,&#34;bordercolor&#34;:&#34;transparent&#34;,&#34;borderwidth&#34;:1.88976377952756,&#34;font&#34;:{&#34;color&#34;:&#34;rgba(0,0,0,1)&#34;,&#34;family&#34;:&#34;&#34;,&#34;size&#34;:11.689497716895},&#34;y&#34;:1},&#34;hovermode&#34;:&#34;closest&#34;,&#34;barmode&#34;:&#34;relative&#34;},&#34;config&#34;:{&#34;doubleClick&#34;:&#34;reset&#34;,&#34;showSendToCloud&#34;:false},&#34;source&#34;:&#34;A&#34;,&#34;attrs&#34;:{&#34;63834da0363d&#34;:{&#34;x&#34;:{},&#34;y&#34;:{},&#34;size&#34;:{},&#34;colour&#34;:{},&#34;type&#34;:&#34;scatter&#34;}},&#34;cur_data&#34;:&#34;63834da0363d&#34;,&#34;visdat&#34;:{&#34;63834da0363d&#34;:[&#34;function (y) &#34;,&#34;x&#34;]},&#34;highlight&#34;:{&#34;on&#34;:&#34;plotly_click&#34;,&#34;persistent&#34;:false,&#34;dynamic&#34;:false,&#34;selectize&#34;:false,&#34;opacityDim&#34;:0.2,&#34;selected&#34;:{&#34;opacity&#34;:1},&#34;debounce&#34;:0},&#34;shinyEvents&#34;:[&#34;plotly_hover&#34;,&#34;plotly_click&#34;,&#34;plotly_selected&#34;,&#34;plotly_relayout&#34;,&#34;plotly_brushed&#34;,&#34;plotly_brushing&#34;,&#34;plotly_clickannotation&#34;,&#34;plotly_doubleclick&#34;,&#34;plotly_deselect&#34;,&#34;plotly_afterplot&#34;,&#34;plotly_sunburstclick&#34;],&#34;base_url&#34;:&#34;https://plot.ly&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;/div&gt;
+&lt;div id=&#34;better-barplots&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Better barplots&lt;/h2&gt;
+&lt;p&gt;Another major type of plot that we may use often is a barplot. Suppose we want to show the GDP per Capita of the top 20 countries in 2007. If I were to plot &lt;code&gt;country&lt;/code&gt; on the &lt;code&gt;x&lt;/code&gt; axis and &lt;code&gt;gdpPercap&lt;/code&gt; on the &lt;code&gt;y&lt;/code&gt; axis with &lt;code&gt;geom_col&lt;/code&gt;,&lt;a href=&#34;#fn3&#34; class=&#34;footnote-ref&#34; id=&#34;fnref3&#34;&gt;&lt;sup&gt;3&lt;/sup&gt;&lt;/a&gt; I get the following mess:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot(gap2007)+
+  aes(x = country,
+      y = gdpPercap,
+      fill = continent)+
+  geom_col()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/resources/ggplot2_files/figure-html/unnamed-chunk-14-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;So let’s &lt;code&gt;filter&lt;/code&gt;&lt;a href=&#34;#fn4&#34; class=&#34;footnote-ref&#34; id=&#34;fnref4&#34;&gt;&lt;sup&gt;4&lt;/sup&gt;&lt;/a&gt; arrange our data in &lt;code&gt;desc&lt;/code&gt;ending order by &lt;code&gt;gdpPercap&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;gap2007 %&amp;gt;%
+  arrange(desc(gdpPercap))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## # A tibble: 142 × 6
+##    country          continent  year lifeExp       pop gdpPercap
+##    &amp;lt;fct&amp;gt;            &amp;lt;fct&amp;gt;     &amp;lt;int&amp;gt;   &amp;lt;dbl&amp;gt;     &amp;lt;int&amp;gt;     &amp;lt;dbl&amp;gt;
+##  1 Norway           Europe     2007    80.2   4627926    49357.
+##  2 Kuwait           Asia       2007    77.6   2505559    47307.
+##  3 Singapore        Asia       2007    80.0   4553009    47143.
+##  4 United States    Americas   2007    78.2 301139947    42952.
+##  5 Ireland          Europe     2007    78.9   4109086    40676.
+##  6 Hong Kong, China Asia       2007    82.2   6980412    39725.
+##  7 Switzerland      Europe     2007    81.7   7554661    37506.
+##  8 Netherlands      Europe     2007    79.8  16570613    36798.
+##  9 Canada           Americas   2007    80.7  33390141    36319.
+## 10 Iceland          Europe     2007    81.8    301931    36181.
+## # … with 132 more rows&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We only want the top 20 observations, so lets &lt;code&gt;slice&lt;/code&gt; to extract just rows &lt;code&gt;1:20&lt;/code&gt;. Then we’ll pipe it into our plot:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bar&amp;lt;-gap2007 %&amp;gt;%
+  arrange(desc(gdpPercap)) %&amp;gt;%
+  slice(1:20) %&amp;gt;%
+  ggplot(data = .)+
+  aes(x = country,
+      y = gdpPercap,
+      fill = continent)+
+  geom_col()
+bar&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/resources/ggplot2_files/figure-html/unnamed-chunk-16-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Now that’s closer to what we wanted! But here are a few more tips and tricks to make it better. First, let’s flip the axes to be able to read the countries better, using &lt;code&gt;coord_flip()&lt;/code&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bar+coord_flip()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/resources/ggplot2_files/figure-html/unnamed-chunk-17-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;One other useful thing to know would be how to &lt;em&gt;display&lt;/em&gt; the bars in numerical order (from largest &lt;code&gt;gdpPercap&lt;/code&gt; to smalleset &lt;code&gt;gdpPercap&lt;/code&gt;) so we can get a clear ranking of countries. To do this, we are going to make use of another &lt;code&gt;tidyverse&lt;/code&gt; package called &lt;code&gt;forcats&lt;/code&gt; (dealing with &lt;code&gt;factors&lt;/code&gt;), specifically the function &lt;code&gt;fct_reorder()&lt;/code&gt;, which reorders a &lt;code&gt;factor&lt;/code&gt; variable (our &lt;code&gt;country&lt;/code&gt;) by the values of some other variable (our &lt;code&gt;gdpPercap&lt;/code&gt;). We need to do this to our &lt;code&gt;x&lt;/code&gt; variable &lt;code&gt;aes&lt;/code&gt;thetic:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bar2&amp;lt;-gap2007 %&amp;gt;%
+  arrange(desc(gdpPercap)) %&amp;gt;%
+  slice(1:20) %&amp;gt;%
+  ggplot(data = .)+
+  aes(x = forcats::fct_reorder(country, gdpPercap), #&amp;lt;&amp;lt;
+      y = gdpPercap,
+      fill = continent)+
+  geom_col()+
+  coord_flip()
+bar2&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/resources/ggplot2_files/figure-html/unnamed-chunk-18-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This is already looking good. Here’s another creative way to depict the same thing in a more visually-striking way. Instead of using &lt;code&gt;geom_bar()&lt;/code&gt;, let’s combine &lt;code&gt;geom_flag&lt;/code&gt; (to serve as end points) and &lt;code&gt;geom_segment()&lt;/code&gt;&lt;a href=&#34;#fn5&#34; class=&#34;footnote-ref&#34; id=&#34;fnref5&#34;&gt;&lt;sup&gt;5&lt;/sup&gt;&lt;/a&gt; (line segments) to make the following version:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;bar3&amp;lt;-gap2007 %&amp;gt;%
+  arrange(desc(gdpPercap)) %&amp;gt;%
+  slice(1:20) %&amp;gt;%
+  ggplot(data = .)+
+  aes(x = forcats::fct_reorder(country, gdpPercap), #&amp;lt;&amp;lt;
+      y = gdpPercap,
+      fill = continent)+
+  geom_segment(aes(x = forcats::fct_reorder(country, gdpPercap), #&amp;lt;&amp;lt;
+                   y = 0, #&amp;lt;&amp;lt;
+                   xend = country, #&amp;lt;&amp;lt;
+                   yend = gdpPercap, #&amp;lt;&amp;lt;
+                   color = continent), #&amp;lt;&amp;lt;
+               size = 1)+ #&amp;lt;&amp;lt;
+  geom_flag(aes(country = country))+ #&amp;lt;&amp;lt;
+  coord_flip()
+bar3&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/resources/ggplot2_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;The cut offs for using one size circle vs. the next/previous size circle, depending on population.&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;I am plotting our graph from above, not the flags, since &lt;code&gt;ggflags&lt;/code&gt; has not been configured for &lt;code&gt;plotly&lt;/code&gt; yet.&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn3&#34;&gt;&lt;p&gt;Using &lt;code&gt;geom_col()&lt;/code&gt; allows you to specify an &lt;code&gt;x&lt;/code&gt; and a &lt;code&gt;y&lt;/code&gt; variable. &lt;code&gt;geom_bar()&lt;/code&gt; only plots the &lt;code&gt;counts&lt;/code&gt; of each value on the &lt;code&gt;x&lt;/code&gt; axis. If we had done &lt;code&gt;+aes(x = country)+geom_bar()&lt;/code&gt;, it would plot the number of observations of each &lt;code&gt;country&lt;/code&gt; in the data, not what we want!&lt;a href=&#34;#fnref3&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn4&#34;&gt;&lt;p&gt;You learn about this in &lt;a href=&#34;https://metricsf22.classes.ryansafner.com/class/1.4-class&#34;&gt;class 1.4&lt;/a&gt;&lt;a href=&#34;#fnref4&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn5&#34;&gt;&lt;p&gt;Note because we are defining an &lt;code&gt;x&lt;/code&gt; &lt;code&gt;aes&lt;/code&gt;thetic again for this, we need to make sure &lt;code&gt;x&lt;/code&gt; is also the reordered list of countries, so note I am doing the whole &lt;code&gt;fct_reorder()&lt;/code&gt; again.&lt;a href=&#34;#fnref5&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

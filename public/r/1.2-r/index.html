@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academia 4.3.1">
+  <meta name="generator" content="Hugo 0.79.1" />
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Ryan Safner">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Download PDF Answers  Answer Key (html)  Answer Key (PDF)  Answer Key (R Script)  Getting Set Up Before we begin, start a new file with File \(\rightarrow\) New File \(\rightarrow\) R Script. As you work through this sheet in the console in R, also add (copy/paste) your commands that work into this new file. At the end, save it, and run to execute all of your commands at once.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://metricsf22.classes.ryansafner.com/r/1.2-r/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#314f4f">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin="anonymous">
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:400,400i,700,700i|Fira+Mono:400,700)&display=swap">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academia.min.0c527bc9fd0ba6033034eb84176a3cc2.css">
+
+  
+
+  
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://metricsf22.classes.ryansafner.com/r/1.2-r/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="ECON 480 — Econometrics">
+  <meta property="og:url" content="https://metricsf22.classes.ryansafner.com/r/1.2-r/">
+  <meta property="og:title" content="1.2 — Meet R — Practice | ECON 480 — Econometrics">
+  <meta property="og:description" content="Download PDF Answers  Answer Key (html)  Answer Key (PDF)  Answer Key (R Script)  Getting Set Up Before we begin, start a new file with File \(\rightarrow\) New File \(\rightarrow\) R Script. As you work through this sheet in the console in R, also add (copy/paste) your commands that work into this new file. At the end, save it, and run to execute all of your commands at once."><meta property="og:image" content="https://metricsf22.classes.ryansafner.com/img/icon-192.png">
+  <meta property="twitter:image" content="https://metricsf22.classes.ryansafner.com/img/icon-192.png"><meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2020-06-08T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2020-06-08T00:00:00&#43;00:00">
+  
+
+  
+
+
+  
+
+
+
+
+
+  <title>1.2 — Meet R — Practice | ECON 480 — Econometrics</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">ECON 480 — Econometrics</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"><span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/syllabus/"><span>Syllabus</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/schedule/"><span>Schedule</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/content/"><span>Content</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/assignments/"><span>Assignments</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/resources/"><span>Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+            
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="https://rstudio.cloud/" target="_blank" rel="noopener"><span><i class="fas fa-cloud"></i></span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+            
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="https://hoodcollegeeconomics.slack.com" target="_blank" rel="noopener"><span><i class="fab fa-slack"></i></span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/r/">R Practice</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/r/">Overview</a>
+      </li>
+      
+      <li class="active">
+        <a href="/r/1.2-r/">1.2 — Meet R</a>
+      </li>
+      
+      <li >
+        <a href="/r/1.3-r/">1.3 — Data Visualization with ggplot2</a>
+      </li>
+      
+      <li >
+        <a href="/r/1.4-r/">1.4 — Data Wrangling in the tidyverse</a>
+      </li>
+      
+      <li >
+        <a href="/r/1.5-r/">1.5 — Optimize Your Workflow</a>
+      </li>
+      
+      <li >
+        <a href="/r/2.5-r/">2.5 — OLS: Precision and Diagnostics</a>
+      </li>
+      
+      <li >
+        <a href="/r/2.7-r/">2.7 — Inference for Regression</a>
+      </li>
+      
+      <li >
+        <a href="/r/3.2-r/">3.2 — Causal Inference &amp; DAGs</a>
+      </li>
+      
+      <li >
+        <a href="/r/3.4-r/">3.4 — Multivariate OLS Estimators: Bias, Precision, and Fit</a>
+      </li>
+      
+      <li >
+        <a href="/r/3.7-r/">3.7 — Regression with Interaction Effects</a>
+      </li>
+      
+      <li >
+        <a href="/r/3.9-r/">3.9 — Logarithmic Regression</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article" itemscope itemtype="http://schema.org/Article">
+
+        <div class="docs-article-container">
+          <h1 itemprop="name">1.2 — Meet R — Practice</h1>
+
+          <div class="article-style" itemprop="articleBody">
+            
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<p style="text-align:center">
+<a target="_blank" href="/r/1.2-r-pdf.pdf"><span class="btn btn-primary btn-lg"><i class="fas fa-file-pdf"></i> Download PDF</a></span>
+</p>
+<div id="answers" class="section level2">
+<h2>Answers</h2>
+<p style="text-align:center">
+<a target="_blank" href="/r/1.2-r-answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> Answer Key (html)</a> <a target="_blank" href="/r/1.2-r-answers-pdf.pdf"><span class="btn btn-primary btn-lg"><i class="fas fa-file-pdf"></i> Answer Key (PDF)</a> <a target="_blank" href="/r/1.2-r-answers.R"><span class="btn btn-primary btn-lg"><i class="fas fa-registered"></i> Answer Key (R Script)</a></span>
+</p>
+</div>
+<div id="getting-set-up" class="section level1">
+<h1>Getting Set Up</h1>
+<p>Before we begin, start a new file with <code>File</code> <span class="math inline">\(\rightarrow\)</span> <code>New File</code> <span class="math inline">\(\rightarrow\)</span> <code>R Script</code>. As you work through this sheet in the console in <code>R</code>, also add (copy/paste) your commands that work into this new file. At the end, save it, and run to execute all of your commands at once.</p>
+</div>
+<div id="creating-objects" class="section level1">
+<h1>Creating Objects</h1>
+<div id="question-1" class="section level2">
+<h2>Question 1</h2>
+<p>Work on the following parts:</p>
+<ul>
+<li>a. Create a vector called <code>me</code> with two objects, your first name, and your last name.</li>
+<li><ol start="2" style="list-style-type: lower-alpha">
+<li>Call the vector to inspect it.</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: lower-alpha">
+<li>Confirm it is a character class vector.</li>
+</ol></li>
+</ul>
+</div>
+<div id="question-2" class="section level2">
+<h2>Question 2</h2>
+<p>Use R’s help functions to determine what the <code>paste()</code> function does. Then paste together your first name and last name.</p>
+</div>
+<div id="question-3" class="section level2">
+<h2>Question 3</h2>
+<p>Create a vector called <code>my_vector</code> with all the even integers from 2 to 10.</p>
+</div>
+<div id="question-4" class="section level2">
+<h2>Question 4</h2>
+<p>Find the mean of <code>my_vector</code> with <code>mean()</code>.</p>
+</div>
+<div id="question-5" class="section level2">
+<h2>Question 5</h2>
+<p>Take all the integers from 18 to 763,<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> then get the mean.</p>
+</div>
+</div>
+<div id="playing-with-data" class="section level1">
+<h1>Playing with Data</h1>
+<p>For the following questions, we will use the <code>diamonds</code> dataset, included as part of <code>ggplot2</code>.</p>
+<div id="question-6" class="section level2">
+<h2>Question 6</h2>
+<p>Install <code>ggplot2</code>.</p>
+</div>
+<div id="question-7" class="section level2">
+<h2>Question 7</h2>
+<p>Load <code>ggplot2</code> with the <code>library()</code> command.</p>
+</div>
+<div id="question-8" class="section level2">
+<h2>Question 8</h2>
+<p>Get the <code>str</code>ucture of the diamonds data frame. What are the different variables and what kind of data does each contain?</p>
+</div>
+<div id="question-9" class="section level2">
+<h2>Question 9</h2>
+<p>Get summary statistics separately for <code>carat</code>, <code>depth</code>, <code>table</code>, and <code>price</code>.</p>
+</div>
+<div id="question-10" class="section level2">
+<h2>Question 10</h2>
+<p><code>color</code>, <code>cut</code>, and <code>clarity</code> are categorical variables (factors). Use the <code>table()</code> command to generate frequency tables for each.</p>
+</div>
+<div id="question-11" class="section level2">
+<h2>Question 11</h2>
+<p>Now rerun the <code>summary()</code> command on the entire data frame.</p>
+</div>
+<div id="question-12" class="section level2">
+<h2>Question 12</h2>
+<p>Now look only at (subset) the first 4 diamonds in the dataset.</p>
+</div>
+<div id="question-13" class="section level2">
+<h2>Question 13</h2>
+<p>Now look only at (subset) the third and seventh diamond in the dataset.</p>
+</div>
+<div id="question-14" class="section level2">
+<h2>Question 14</h2>
+<p>Now look only at (subset) the second column of the dataset.</p>
+</div>
+<div id="question-15" class="section level2">
+<h2>Question 15</h2>
+<p>Do this again, but look using the <code>$</code> to pull up the second column by name.</p>
+</div>
+<div id="question-16" class="section level2">
+<h2>Question 16</h2>
+<p>Now look only at diamonds that have a <code>carat</code> greater than or equal to 1.</p>
+</div>
+<div id="question-17" class="section level2">
+<h2>Question 17</h2>
+<p>Now look only at diamonds that have a VVS1 <code>clarity</code>.</p>
+</div>
+<div id="question-18" class="section level2">
+<h2>Question 18</h2>
+<p>Now look only at dimaonds that have a color of E, F, I, and J.</p>
+</div>
+<div id="question-19" class="section level2">
+<h2>Question 19</h2>
+<p>Now look only at diamonds that have a <code>carat</code> greater than or equal to 1 and a VVS1 <code>clarity</code>.</p>
+</div>
+<div id="question-20" class="section level2">
+<h2>Question 20</h2>
+<p>Get the average price of diamonds in question 18.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+</div>
+<div id="question-21" class="section level2">
+<h2>Question 21</h2>
+<p>What is the highest price for a diamond with a 1.0 carat, D color, and VVS1 clarity?</p>
+</div>
+</div>
+<div id="execute-your-r-script" class="section level1">
+<h1>Execute your R Script</h1>
+<p>Save the R Script you created at the beginning and (hopefully) have been pasting all of your valid commands to. This creates a <em>.R</em> file wherever you choose to save it to. Now looking at the file in the upper left pane of <em>R Studio</em> look for the button in the upper right corner that says <strong>Run</strong>. Sit back and watch <code>R</code> redo everything you’ve carefully worked on, all at once.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Hint: use the <code>:</code> operator to create a sequence from a starting number to an ending number<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Hints: use your subset command as an argument to the mean function. You will not need a comma here because you are looking for a single row.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/r/1.3-r/" rel="prev">1.3 — Data Visualization with ggplot2 — Practice</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          Last updated on Jun 8, 2020
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        
+        <p>
+          Content <i class="fab fa-creative-commons"></i> 2021 <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></a> <a href="https://ryansafner.com">Ryan Safner</a> &middot; <a href="Credits">Credits</a> &middot; Powered by <a href="https://bookdown.org/yihui/blogdown/">blogdown</a> and <a href="https://gohugo.io/">Hugo</a>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-inline network-icon text-right">
+          
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academia.min.7276a6a3624de715a5c7f54c7c07696d.js"></script>
+
+    
+
+<script src="/js/math-code.js"></script>
+
+
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+---
+title: "1.3 — Data Visualization with ggplot2 — Class Content"
+draft: false
+linktitle: "1.3 — Data Visualization with ggplot2"
+date: "2020-06-08"
+menu:
+  content:
+    parent: Course content
+    weight: 4
+type: docs
+output:
+  blogdown::html_page:
+    toc: true
+slides: "1.3-slides"
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+<ul>
+<li><a href="#overview"><i class="fas fa-info-circle fa-lg"></i> Overview</a></li>
+<li><a href="#readings"><i class="fas fa-book-reader fa-lg"></i> Readings</a>
+<ul>
+<li><a href="#on-ggplot2">On <code>ggplot2</code></a></li>
+<li><a href="#on-data-visualization">On data visualization</a></li>
+</ul></li>
+<li><a href="#slides"><i class="fas fa-chalkboard-teacher"></i> Slides</a></li>
+<li><a href="#r-practice"><i class="fas fa-registered"></i> R Practice</a></li>
+<li><a href="#assignments"><i class="fas fa-laptop-code"></i> Assignments</a>
+<ul>
+<li><a href="#preliminary-statistics-survey">Preliminary Statistics Survey</a></li>
+</ul></li>
+<li><a href="#additional-useful-information">Additional Useful Information</a>
+<ul>
+<li><a href="#new-packages-mentioned">New Packages Mentioned</a></li>
+<li><a href="#ggplot2-extensions">ggplot2 Extensions</a></li>
+</ul></li>
+</ul>
+</div>
+
+<p>{{% alert note %}}
+<em>Tuesday, August 30, 2021</em>
+{{% /alert %}}</p>
+<div id="overview" class="section level2">
+<h2><i class="fas fa-info-circle fa-lg"></i> Overview</h2>
+<p>Today we start the fun stuff - data visualization. We will cover how to build plots with the package <code>ggplot2</code> (part of the <code>tidyverse</code>): I will lecture for the first half (again, it will be a lot of information that you can refer back to as needed over the semester) and you will practice making plots.</p>
+</div>
+<div id="readings" class="section level2">
+<h2><i class="fas fa-book-reader fa-lg"></i> Readings</h2>
+<ul>
+<li><i class="fas fa-external-link-square-alt"></i> Ch.3 in Wickham &amp; Grolemund, <a href="http://r4ds.had.co.nz/">R for Data Science</a></li>
+</ul>
+<div id="on-ggplot2" class="section level3">
+<h3>On <code>ggplot2</code></h3>
+<ul>
+<li><strong>R Studio’s <a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf">ggplot2 Cheat Sheet</a></strong></li>
+<li><strong><code>ggplot2</code>’s website <a href="https://ggplot2.tidyverse.org/reference/index.html">reference section</a></strong></li>
+<li>Hadley Wickham’s<a href="http://r4ds.had.co.nz/data-visualisation.html">R for Data Science book chapter on ggplot2</a></li>
+<li>STHDA’s <a href="http://www.sthda.com/english/wiki/be-awesome-in-ggplot2-a-practical-guide-to-be-highly-effective-r-software-and-data-visualization">be awesome in ggplot2</a></li>
+<li>r-statistic’s <a href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html">top 50 ggplot2 visualizations</a></li>
+</ul>
+</div>
+<div id="on-data-visualization" class="section level3">
+<h3>On data visualization</h3>
+<ul>
+<li><strong>Kieran Healy’s <a href="http://socviz.co/">Data Visualization: A Practical Guide</a></strong></li>
+<li><strong>Claus Wilke’s <a href="https://serialmentor.com/dataviz">Fundamentals of Data Visualization</a></strong></li>
+<li>PolicyViz <a href="https://policyviz.com/">Better Presentations</a></li>
+<li>Karl Broman’s <a href="https://www.biostat.wisc.edu/~kbroman/presentations/IowaState2013/graphs_combined.pdf">How to Display Data Badly</a></li>
+<li><a href="http://tools.medialab.sciences-po.fr/iwanthue/">I Want Hue</a></li>
+</ul>
+</div>
+</div>
+<div id="slides" class="section level2">
+<h2><i class="fas fa-chalkboard-teacher"></i> Slides</h2>
+<p>Below, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. Note while in going through the slides, you can type <kbd>h</kbd> to see a special list of viewing options, and type <kbd>o</kbd> for an outline view of all the slides.</p>
+<p>The lower button will allow you to download a PDF version of the slides. I suggest printing the slides beforehand and using them to take additional notes in class (<em>not everything</em> is in the slides)!</p>
+<p>{{% slide-links %}}</p>
+</div>
+<div id="r-practice" class="section level2">
+<h2><i class="fas fa-registered"></i> R Practice</h2>
+<p>Answers from last class’ practice problems on base R are posted <a href="/r/1.2-r">on that page</a>. Today you will be working on <a href="/r/1.3-r">R practice problems</a> on data visualization. Answers will be posted later on that page.</p>
+</div>
+<div id="assignments" class="section level2">
+<h2><i class="fas fa-laptop-code"></i> Assignments</h2>
+<div id="preliminary-statistics-survey" class="section level3">
+<h3>Preliminary Statistics Survey</h3>
+<p><a href="/assignment/00-preliminary-survey-answers.html">“Answers”</a> for the statistics survey have been posted, including some summaries of how your classmates feel.</p>
+</div>
+</div>
+<div id="additional-useful-information" class="section level2">
+<h2>Additional Useful Information</h2>
+<div id="new-packages-mentioned" class="section level3">
+<h3>New Packages Mentioned</h3>
+<p>Learn more about each of these in context in the slides, but below are links to each packages’s online help pages, which include descriptions of how each function works, examples, and cheatsheets to help you</p>
+<ul>
+<li><a href="https://ggplot2.tidyverse.org/"><code>ggplot2</code></a> a grammar of graphics for plotting</li>
+</ul>
+<p>You can find a running list of packages we use in this course in the <a href="resources/r-packages/">resources pages</a>.</p>
+</div>
+<div id="ggplot2-extensions" class="section level3">
+<h3>ggplot2 Extensions</h3>
+<p>I have put up an <a href="/resources/ggplot2">additional resources page</a> on packages that extend <code>ggplot2</code> in various ways, as well as some ways to diagnose and improve several data visualization challenges.</p>
+</div>
+</div>

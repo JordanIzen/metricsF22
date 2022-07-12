@@ -1,0 +1,1767 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Overview on ECON 480 — Econometrics</title>
+    <link>https://metricsf22.classes.ryansafner.com/r/</link>
+    <description>Recent content in Overview on ECON 480 — Econometrics</description>
+    <generator>Source Themes academia (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 08 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="https://metricsf22.classes.ryansafner.com/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>1.2 — Meet R — Practice</title>
+      <link>https://metricsf22.classes.ryansafner.com/r/1.2-r/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/r/1.2-r/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/1.2-r-pdf.pdf&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-file-pdf&#34;&gt;&lt;/i&gt; Download PDF&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;div id=&#34;answers&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Answers&lt;/h2&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/1.2-r-answers.html&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-external-link-square-alt&#34;&gt;&lt;/i&gt; Answer Key (html)&lt;/a&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/1.2-r-answers-pdf.pdf&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-file-pdf&#34;&gt;&lt;/i&gt; Answer Key (PDF)&lt;/a&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/1.2-r-answers.R&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-registered&#34;&gt;&lt;/i&gt; Answer Key (R Script)&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;getting-set-up&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Getting Set Up&lt;/h1&gt;
+&lt;p&gt;Before we begin, start a new file with &lt;code&gt;File&lt;/code&gt; &lt;span class=&#34;math inline&#34;&gt;\(\rightarrow\)&lt;/span&gt; &lt;code&gt;New File&lt;/code&gt; &lt;span class=&#34;math inline&#34;&gt;\(\rightarrow\)&lt;/span&gt; &lt;code&gt;R Script&lt;/code&gt;. As you work through this sheet in the console in &lt;code&gt;R&lt;/code&gt;, also add (copy/paste) your commands that work into this new file. At the end, save it, and run to execute all of your commands at once.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;creating-objects&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Creating Objects&lt;/h1&gt;
+&lt;div id=&#34;question-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 1&lt;/h2&gt;
+&lt;p&gt;Work on the following parts:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a. Create a vector called &lt;code&gt;me&lt;/code&gt; with two objects, your first name, and your last name.&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&#34;2&#34; style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;Call the vector to inspect it.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&#34;3&#34; style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;Confirm it is a character class vector.&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 2&lt;/h2&gt;
+&lt;p&gt;Use R’s help functions to determine what the &lt;code&gt;paste()&lt;/code&gt; function does. Then paste together your first name and last name.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 3&lt;/h2&gt;
+&lt;p&gt;Create a vector called &lt;code&gt;my_vector&lt;/code&gt; with all the even integers from 2 to 10.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-4&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 4&lt;/h2&gt;
+&lt;p&gt;Find the mean of &lt;code&gt;my_vector&lt;/code&gt; with &lt;code&gt;mean()&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-5&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 5&lt;/h2&gt;
+&lt;p&gt;Take all the integers from 18 to 763,&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt; then get the mean.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;playing-with-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Playing with Data&lt;/h1&gt;
+&lt;p&gt;For the following questions, we will use the &lt;code&gt;diamonds&lt;/code&gt; dataset, included as part of &lt;code&gt;ggplot2&lt;/code&gt;.&lt;/p&gt;
+&lt;div id=&#34;question-6&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 6&lt;/h2&gt;
+&lt;p&gt;Install &lt;code&gt;ggplot2&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-7&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 7&lt;/h2&gt;
+&lt;p&gt;Load &lt;code&gt;ggplot2&lt;/code&gt; with the &lt;code&gt;library()&lt;/code&gt; command.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-8&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 8&lt;/h2&gt;
+&lt;p&gt;Get the &lt;code&gt;str&lt;/code&gt;ucture of the diamonds data frame. What are the different variables and what kind of data does each contain?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-9&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 9&lt;/h2&gt;
+&lt;p&gt;Get summary statistics separately for &lt;code&gt;carat&lt;/code&gt;, &lt;code&gt;depth&lt;/code&gt;, &lt;code&gt;table&lt;/code&gt;, and &lt;code&gt;price&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-10&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 10&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;color&lt;/code&gt;, &lt;code&gt;cut&lt;/code&gt;, and &lt;code&gt;clarity&lt;/code&gt; are categorical variables (factors). Use the &lt;code&gt;table()&lt;/code&gt; command to generate frequency tables for each.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-11&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 11&lt;/h2&gt;
+&lt;p&gt;Now rerun the &lt;code&gt;summary()&lt;/code&gt; command on the entire data frame.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-12&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 12&lt;/h2&gt;
+&lt;p&gt;Now look only at (subset) the first 4 diamonds in the dataset.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-13&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 13&lt;/h2&gt;
+&lt;p&gt;Now look only at (subset) the third and seventh diamond in the dataset.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-14&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 14&lt;/h2&gt;
+&lt;p&gt;Now look only at (subset) the second column of the dataset.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-15&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 15&lt;/h2&gt;
+&lt;p&gt;Do this again, but look using the &lt;code&gt;$&lt;/code&gt; to pull up the second column by name.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-16&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 16&lt;/h2&gt;
+&lt;p&gt;Now look only at diamonds that have a &lt;code&gt;carat&lt;/code&gt; greater than or equal to 1.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-17&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 17&lt;/h2&gt;
+&lt;p&gt;Now look only at diamonds that have a VVS1 &lt;code&gt;clarity&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-18&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 18&lt;/h2&gt;
+&lt;p&gt;Now look only at dimaonds that have a color of E, F, I, and J.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-19&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 19&lt;/h2&gt;
+&lt;p&gt;Now look only at diamonds that have a &lt;code&gt;carat&lt;/code&gt; greater than or equal to 1 and a VVS1 &lt;code&gt;clarity&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-20&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 20&lt;/h2&gt;
+&lt;p&gt;Get the average price of diamonds in question 18.&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-21&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 21&lt;/h2&gt;
+&lt;p&gt;What is the highest price for a diamond with a 1.0 carat, D color, and VVS1 clarity?&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;execute-your-r-script&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Execute your R Script&lt;/h1&gt;
+&lt;p&gt;Save the R Script you created at the beginning and (hopefully) have been pasting all of your valid commands to. This creates a &lt;em&gt;.R&lt;/em&gt; file wherever you choose to save it to. Now looking at the file in the upper left pane of &lt;em&gt;R Studio&lt;/em&gt; look for the button in the upper right corner that says &lt;strong&gt;Run&lt;/strong&gt;. Sit back and watch &lt;code&gt;R&lt;/code&gt; redo everything you’ve carefully worked on, all at once.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Hint: use the &lt;code&gt;:&lt;/code&gt; operator to create a sequence from a starting number to an ending number&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;Hints: use your subset command as an argument to the mean function. You will not need a comma here because you are looking for a single row.&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>1.3 — Data Visualization with ggplot2 — Practice</title>
+      <link>https://metricsf22.classes.ryansafner.com/r/1.3-r/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/r/1.3-r/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/1.3-r-pdf.pdf&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-file-pdf&#34;&gt;&lt;/i&gt; Download PDF&lt;/a&gt;&lt;/span&gt;&lt;/br&gt;
+&lt;/p&gt;
+&lt;div id=&#34;answers&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Answers&lt;/h2&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/1.3-r-answers.html&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-external-link-square-alt&#34;&gt;&lt;/i&gt; Answer Key (html)&lt;/a&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/1.3-r-answers-pdf.pdf&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-file-pdf&#34;&gt;&lt;/i&gt; Answer Key (PDF)&lt;/a&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/1.3-r-answers.R&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-registered&#34;&gt;&lt;/i&gt; Answer Key (R Script)&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;getting-set-up&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Getting Set Up&lt;/h1&gt;
+&lt;p&gt;Before we begin, start a new file with &lt;code&gt;File&lt;/code&gt; &lt;span class=&#34;math inline&#34;&gt;\(\rightarrow\)&lt;/span&gt; &lt;code&gt;New File&lt;/code&gt; &lt;span class=&#34;math inline&#34;&gt;\(\rightarrow\)&lt;/span&gt; &lt;code&gt;R Script&lt;/code&gt;. As you work through this sheet in the console in &lt;code&gt;R&lt;/code&gt;, also add (copy/paste) your commands that work into this new file. At the end, save it, and run to execute all of your commands at once.&lt;/p&gt;
+&lt;div id=&#34;our-plot-from-class&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;“Our Plot” from Class&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# load ggplot2 package
+library(ggplot2)
+
+# make plot
+ggplot(data = mpg)+ # set data source to mpg (included in ggplot2)
+  aes(x = displ, # x is displacement
+      y = hwy)+ # y is hwy mpg
+  geom_point(aes(color = class))+ # color points by car class
+  geom_smooth()+ # add regression line
+  facet_wrap(~year)+ # separate plots by year
+  labs(x = &amp;quot;Engine Displacement (Liters)&amp;quot;,
+       y = &amp;quot;Highway MPG&amp;quot;,
+       title = &amp;quot;Car Mileage and Displacement&amp;quot;,
+       subtitle = &amp;quot;More Displacement Lowers Highway MPG&amp;quot;,
+       caption = &amp;quot;Source: EPA&amp;quot;,
+       color = &amp;quot;Vehicle Class&amp;quot;)+
+  scale_color_viridis_d()+ # change color scale
+  theme_minimal()+ # change theme
+  theme(text = element_text(family = &amp;quot;Fira Sans&amp;quot;)) # change font&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using method = &amp;#39;loess&amp;#39; and formula &amp;#39;y ~ x&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/r/1.3-r_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/r/plot-from-class.R&#34;&gt;&lt;i class=&#34;fas fa-registered&#34;&gt;&lt;/i&gt; Download R Script&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Download and run in R Studio on your computer (or open the file in our R Studio cloud project and run it there) to see our plot from class.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exploring-the-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Exploring the Data&lt;/h1&gt;
+&lt;div id=&#34;question-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 1&lt;/h2&gt;
+&lt;p&gt;We will look at GDP per Capita and Life Expectancy using some data from the &lt;a href=&#34;http://gapminder.org&#34;&gt;gapminder project&lt;/a&gt;. There is a &lt;a href=&#34;https://github.com/jennybc/gapminder&#34;&gt;handy package&lt;/a&gt; called &lt;code&gt;gapminder&lt;/code&gt; that uses a small snippet of this data for exploratory analysis. Install and load the package &lt;code&gt;gapminder&lt;/code&gt;. Type &lt;code&gt;?gapminder&lt;/code&gt; and hit enter to see a description of the data.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 2&lt;/h2&gt;
+&lt;p&gt;Let’s get a quick look at &lt;code&gt;gapminder&lt;/code&gt; to see what we’re dealing with.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-alpha&#34;&gt;
+&lt;li&gt;Get the &lt;code&gt;str&lt;/code&gt;ucture of the &lt;code&gt;gapminder&lt;/code&gt; data.&lt;/li&gt;
+&lt;li&gt;What variables are there?&lt;/li&gt;
+&lt;li&gt;Look at the &lt;code&gt;head&lt;/code&gt; of the dataset to get an idea of what the data looks like.&lt;/li&gt;
+&lt;li&gt;Get &lt;code&gt;summary&lt;/code&gt; statistics of all variables.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;simple-plots-in-base-r&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Simple Plots in Base R&lt;/h1&gt;
+&lt;div id=&#34;question-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 3&lt;/h2&gt;
+&lt;p&gt;Let’s make sure you can do some basic plots before we get into the &lt;code&gt;gg&lt;/code&gt;. Use base &lt;code&gt;R&lt;/code&gt;’s &lt;code&gt;hist()&lt;/code&gt; function to plot a &lt;em&gt;histogram&lt;/em&gt; of &lt;code&gt;gdpPercap&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-4&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 4&lt;/h2&gt;
+&lt;p&gt;Use base &lt;code&gt;R&lt;/code&gt;’s &lt;code&gt;boxplot()&lt;/code&gt; function to plot a &lt;em&gt;boxplot&lt;/em&gt; of &lt;code&gt;gdpPercap&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-5&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 5&lt;/h2&gt;
+&lt;p&gt;Now make it a &lt;em&gt;boxplot&lt;/em&gt; by &lt;code&gt;continent&lt;/code&gt;. Hint: use formula notation with &lt;code&gt;~&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-6&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 6&lt;/h2&gt;
+&lt;p&gt;Now make a &lt;em&gt;scatterplot&lt;/em&gt; of &lt;code&gt;gdpPercap&lt;/code&gt; on the &lt;span class=&#34;math inline&#34;&gt;\(x\)&lt;/span&gt;-axis and &lt;code&gt;LifeExp&lt;/code&gt; on the &lt;span class=&#34;math inline&#34;&gt;\(y\)&lt;/span&gt;-axis.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;plots-with-ggplot2&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Plots with &lt;code&gt;ggplot2&lt;/code&gt;&lt;/h1&gt;
+&lt;div id=&#34;question-7&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 7&lt;/h2&gt;
+&lt;p&gt;Load the package &lt;code&gt;ggplot2&lt;/code&gt; (you should have installed it previously. If not, install first with &lt;code&gt;install.packages(&#34;ggplot2&#34;)&lt;/code&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-8&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 8&lt;/h2&gt;
+&lt;p&gt;Let’s first make a &lt;code&gt;bar&lt;/code&gt; graph to see how many countries are in each continent. The only &lt;code&gt;aes&lt;/code&gt;thetic you need is to map &lt;code&gt;continent&lt;/code&gt; to &lt;code&gt;x&lt;/code&gt;. Bar graphs are great for representing categories, but not quantitative data.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-9&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 9&lt;/h2&gt;
+&lt;p&gt;For quantitative data, we want a &lt;code&gt;histogram&lt;/code&gt; to visualize the distribution of a variable. Make a &lt;code&gt;histogram&lt;/code&gt; of &lt;code&gt;gdpPercap&lt;/code&gt;. Your only &lt;code&gt;aes&lt;/code&gt;thetic here is to map &lt;code&gt;gdpPercap&lt;/code&gt; to &lt;code&gt;x&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-10&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 10&lt;/h2&gt;
+&lt;p&gt;Now let’s try adding some color, specifically, add an &lt;code&gt;aes&lt;/code&gt;thetic that maps &lt;code&gt;continent&lt;/code&gt; to &lt;code&gt;fill.&lt;/code&gt; (In general, &lt;code&gt;color&lt;/code&gt; refers to the outside borders of a &lt;code&gt;geom&lt;/code&gt; (except points), &lt;code&gt;fill&lt;/code&gt; is the interior of an object.)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-11&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 11&lt;/h2&gt;
+&lt;p&gt;Instead of a &lt;code&gt;histogram&lt;/code&gt;, change the &lt;code&gt;geom&lt;/code&gt; to make it a &lt;code&gt;density&lt;/code&gt; graph. To avoid overplotting, add &lt;code&gt;alpha=0.4&lt;/code&gt; to the &lt;code&gt;geom&lt;/code&gt; argument (alpha changes the &lt;em&gt;transparency&lt;/em&gt; of a &lt;code&gt;fill&lt;/code&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-12&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 12&lt;/h2&gt;
+&lt;p&gt;Redo your plot from 11 for &lt;code&gt;lifeExp&lt;/code&gt; instead of &lt;code&gt;gdpPercap&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-13&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 13&lt;/h2&gt;
+&lt;p&gt;Now let’s try a scatterplot for &lt;code&gt;lifeExp&lt;/code&gt; (as &lt;code&gt;y&lt;/code&gt;) on &lt;code&gt;gdpPercap&lt;/code&gt; (as &lt;code&gt;x&lt;/code&gt;). You’ll need both for &lt;code&gt;aes&lt;/code&gt;thetics. The &lt;code&gt;geom&lt;/code&gt; here is &lt;code&gt;geom_point()&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-14&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 14&lt;/h2&gt;
+&lt;p&gt;Add some color by mapping &lt;code&gt;continent&lt;/code&gt; to &lt;code&gt;color&lt;/code&gt; in your &lt;code&gt;aes&lt;/code&gt;thetics.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-15&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 15&lt;/h2&gt;
+&lt;p&gt;Now let’s try adding a regression line with &lt;code&gt;geom_smooth()&lt;/code&gt;. Add this layer on top of your &lt;code&gt;geom_point()&lt;/code&gt; layer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-16&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 16&lt;/h2&gt;
+&lt;p&gt;Did you notice that you got multiple regression lines (colored by continent)? That’s because we set a &lt;code&gt;global&lt;/code&gt; &lt;code&gt;aes&lt;/code&gt;thetic of mapping &lt;code&gt;continent&lt;/code&gt; to &lt;code&gt;color&lt;/code&gt;. If we want just &lt;em&gt;one&lt;/em&gt; regression line, we need to instead move the &lt;code&gt;color = continent&lt;/code&gt; inside the &lt;code&gt;aes&lt;/code&gt; of &lt;code&gt;geom_point&lt;/code&gt;. This will only map &lt;code&gt;continent&lt;/code&gt; to &lt;code&gt;color&lt;/code&gt; for points, not for anything else.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-17&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 17&lt;/h2&gt;
+&lt;p&gt;Now add an &lt;code&gt;aes&lt;/code&gt;thetic to your &lt;code&gt;point&lt;/code&gt;s to map &lt;code&gt;pop&lt;/code&gt; to &lt;code&gt;size&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-18&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 18&lt;/h2&gt;
+&lt;p&gt;Change the color of the regression line to &lt;code&gt;&#34;black&#34;&lt;/code&gt;. Try first by putting this inside an &lt;code&gt;aes()&lt;/code&gt; in your &lt;code&gt;geom_smooth&lt;/code&gt;, and try a second time by just putting it inside &lt;code&gt;geom_smooth&lt;/code&gt; without an &lt;code&gt;aes()&lt;/code&gt;. What’s the difference, and why?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-19&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 19&lt;/h2&gt;
+&lt;p&gt;Another way to separate out continents is with &lt;code&gt;facet&lt;/code&gt;ing. Add &lt;code&gt;+facet_wrap(~continent)&lt;/code&gt; to create subplots by &lt;code&gt;continent&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-20&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 20&lt;/h2&gt;
+&lt;p&gt;Remove the &lt;code&gt;facet&lt;/code&gt; layer. The &lt;code&gt;scale&lt;/code&gt; is quite annoying for the &lt;code&gt;x&lt;/code&gt;-axis, a lot of points are clustered on the lower level. Let’s try changing the scale by adding a layer: &lt;code&gt;+scale_x_log10()&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-21&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 21&lt;/h2&gt;
+&lt;p&gt;Now let’s fix the labels by adding &lt;code&gt;+labs()&lt;/code&gt;. Inside &lt;code&gt;labs&lt;/code&gt;, make proper axes titles for &lt;code&gt;x&lt;/code&gt;, &lt;code&gt;y&lt;/code&gt;, and a &lt;code&gt;title&lt;/code&gt; to the plot. If you want to change the name of the legends (continent color), add one for &lt;code&gt;color&lt;/code&gt; and &lt;code&gt;size&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-22&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 22&lt;/h2&gt;
+&lt;p&gt;Now let’s try subsetting by looking only at North America. Take the &lt;code&gt;gapminder&lt;/code&gt; dataframe and subset it to only look at &lt;code&gt;continent==&#34;Americas&#34;&lt;/code&gt;). Assign this to a new dataframe object (call it something like &lt;code&gt;america&lt;/code&gt;.) Now, use &lt;em&gt;this&lt;/em&gt; as your &lt;code&gt;data&lt;/code&gt;, and redo the graph from question 17. (You might want to take a look at your new dataframe to make sure it worked first!)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-23&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 23&lt;/h2&gt;
+&lt;p&gt;Try this again for the &lt;em&gt;whole&lt;/em&gt; world, but just for observations in the year 2002.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>1.4 — Data Wrangling in the tidyverse — Practice</title>
+      <link>https://metricsf22.classes.ryansafner.com/r/1.4-r/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/r/1.4-r/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;answers&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Answers&lt;/h2&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/1.4-r-answers.html&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-external-link-square-alt&#34;&gt;&lt;/i&gt; Answers (html)&lt;/a&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/1.4-r-answers.Rmd&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fab fa-markdown&#34;&gt;&lt;/i&gt; Answers (Rmd)&lt;/a&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/1.4-r-answers.R&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-registered&#34;&gt;&lt;/i&gt; Answers (R Script)&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;getting-set-up&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Getting Set Up&lt;/h1&gt;
+&lt;p&gt;Before we begin, start a new file with &lt;code&gt;File&lt;/code&gt; &lt;span class=&#34;math inline&#34;&gt;\(\rightarrow\)&lt;/span&gt; &lt;code&gt;New File&lt;/code&gt; &lt;span class=&#34;math inline&#34;&gt;\(\rightarrow\)&lt;/span&gt; &lt;code&gt;R Script&lt;/code&gt;. As you work through this sheet in the console in &lt;code&gt;R&lt;/code&gt;, also add (copy/paste) your commands that work into this new file. At the end, save it, and run to execute all of your commands at once.&lt;/p&gt;
+&lt;p&gt;First things first, load &lt;code&gt;tidyverse&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;quot;tidyverse&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;warm-up-to-dplyr-with-gapminder&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Warm Up to &lt;code&gt;dplyr&lt;/code&gt; With &lt;code&gt;gapminder&lt;/code&gt;&lt;/h1&gt;
+&lt;div id=&#34;question-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 1&lt;/h2&gt;
+&lt;p&gt;Load &lt;code&gt;gapminder&lt;/code&gt;. First, &lt;code&gt;select()&lt;/code&gt; the variables &lt;code&gt;year&lt;/code&gt;, &lt;code&gt;lifeExp&lt;/code&gt;, &lt;code&gt;country&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 2&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;select()&lt;/code&gt; all variables &lt;em&gt;except&lt;/em&gt; &lt;code&gt;pop&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 3&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;rename()&lt;/code&gt; &lt;code&gt;continent&lt;/code&gt; to &lt;code&gt;cont&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-4&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 4&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;arrange()&lt;/code&gt; by year.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-5&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 5&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;arrange()&lt;/code&gt; by year, but in descending order.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-6&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 6&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;arrange()&lt;/code&gt; by year, then by life expectancy.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-7&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 7&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;filter()&lt;/code&gt; observations with &lt;code&gt;pop&lt;/code&gt; greater than 1 billion.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-8&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 8&lt;/h2&gt;
+&lt;p&gt;Of those, look only at &lt;code&gt;India&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-9&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 9&lt;/h2&gt;
+&lt;p&gt;Try out the pipe (&lt;code&gt;%&amp;gt;%&lt;/code&gt;) if you haven’t already, by chaining commands: &lt;code&gt;select()&lt;/code&gt; your data to look only at &lt;code&gt;year&lt;/code&gt;, &lt;code&gt;gdpPercap&lt;/code&gt;, and &lt;code&gt;country&lt;/code&gt; in the year &lt;code&gt;1997&lt;/code&gt;, for countries that have a &lt;code&gt;gdpPercap&lt;/code&gt; greater than 20,000, and &lt;code&gt;arrange()&lt;/code&gt; them alphabetically.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-10&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 10&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;mutate()&lt;/code&gt; a new variable called &lt;code&gt;GDP&lt;/code&gt; that is equal to &lt;code&gt;gdpPercap * pop&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-11&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 11&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;mutate()&lt;/code&gt; a new population variable that is the &lt;code&gt;pop&lt;/code&gt; in millions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-12&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 12&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;summarize()&lt;/code&gt; to get the average GDP per capita.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-13&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 13&lt;/h2&gt;
+&lt;p&gt;Get the number of observations, average, minimum, maximum, and standard deviation for GDP per capita.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-14&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 14&lt;/h2&gt;
+&lt;p&gt;Get the average GDP per capita over time. Hint, first &lt;code&gt;group_by()&lt;/code&gt; year.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-15&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 15&lt;/h2&gt;
+&lt;p&gt;Get the average GDP per capita by continent.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-16&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 16&lt;/h2&gt;
+&lt;p&gt;Get the average GDP per capita by year and by continent. [Hint: do &lt;code&gt;year&lt;/code&gt; first, if you do &lt;code&gt;continent&lt;/code&gt; first, there are no years to group by!] Then save this as another &lt;code&gt;tibble&lt;/code&gt; called &lt;code&gt;gdp&lt;/code&gt;. Create a &lt;code&gt;ggplot&lt;/code&gt; of a &lt;code&gt;line&lt;/code&gt; graph of average continent GDP over time using the &lt;code&gt;gdp&lt;/code&gt; data.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-17&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 17&lt;/h2&gt;
+&lt;p&gt;Try it again all in one command with the pipe &lt;code&gt;%&amp;gt;%&lt;/code&gt;. Instead of saving the data as &lt;code&gt;gdp&lt;/code&gt;, pipe it right into &lt;code&gt;ggplot&lt;/code&gt;! [Hint: You can use &lt;code&gt;.&lt;/code&gt; as a placeholder.]&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;example-the-economics-of-college-majors&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Example: the Economics of College Majors&lt;/h1&gt;
+&lt;p&gt;Now let’s step it up to work with some data “in the wild” to answer some research questions. This will have you combine your &lt;code&gt;dplyr&lt;/code&gt; skills and add some new things such as importing with &lt;code&gt;readr&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Let’s look at fivethirtyeight’s article &lt;a href=&#34;https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/&#34;&gt;&#34;
+The Economic Guide To Picking A College Major
+&#34;&lt;/a&gt;. fivethirtyeight is great about making the data behind their articles public, we can &lt;a href=&#34;https://data.fivethirtyeight.com/&#34;&gt;download all of their data here&lt;/a&gt;. Search for &lt;code&gt;college majors&lt;/code&gt; and click download (the blue arrow button). [This will download a &lt;code&gt;.zip&lt;/code&gt; file that contains many spreadsheets. Unzip it with a program that unzips files (such as WinZip, 7-zip, the Unarchiver, etc).] We will look at the &lt;code&gt;recent-grads.csv&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;The description in the &lt;code&gt;readme&lt;/code&gt; file for the data is as follows:&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;25%&#34; /&gt;
+&lt;col width=&#34;75%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Variable&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;Rank&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Rank by median earnings&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Major_code&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Major code, FO1DP in ACS PUMS&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;Major&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Major description&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Major_category&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Category of major from Carnevale et al&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;Total&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Total number of people with major&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Sample_size&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Sample size (unweighted) of full-time, year-round ONLY (used for earnings)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;Men&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Male graduates&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Women&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Female graduates&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;ShareWomen&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Women as share of total&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Employed&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Number employed (ESR == 1 or 2)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;Full_time&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Employed 35 hours or more&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Part_time&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Employed less than 35 hours&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;Full_time_year_round&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Employed at least 50 weeks (WKW == 1) and at least 35 hours (WKHP &amp;gt;= 35)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Unemployed&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Number unemployed (ESR == 3)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;Unemployment_rate&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Unemployed / (Unemployed + Employed)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Median&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Median earnings of full-time, year-round workers&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;P25th&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;25th percentile of earnigns&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;P75th&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;75th percentile of earnings&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;College_jobs&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Number with job requiring a college degree&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Non_college_jobs&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Number with job not requiring a college degree&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;Low_wage_jobs&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Number in low-wage service jobs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div id=&#34;question-18&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 18&lt;/h2&gt;
+&lt;p&gt;Import the data with &lt;code&gt;read_csv()&lt;/code&gt; and assign it to an object called &lt;code&gt;majors&lt;/code&gt;. [One way to avoid error messages is to move (on your computer) &lt;code&gt;recent_grads.csv&lt;/code&gt; to the same folder as R’s working directory, which again you can check with &lt;code&gt;getwd()&lt;/code&gt;.] The first argument of this command is the name of the original file, in quotes. [If the file is in a different folder, the argument is the full path in quotes.]&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-19&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 19&lt;/h2&gt;
+&lt;p&gt;Look at the data with &lt;code&gt;glimpse()&lt;/code&gt;. This is a suped-up version of &lt;code&gt;str()&lt;/code&gt; in &lt;code&gt;tidyverse&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-20&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 20&lt;/h2&gt;
+&lt;p&gt;What are all of the &lt;em&gt;unique&lt;/em&gt; values of &lt;code&gt;Major&lt;/code&gt;? How many are there?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-21&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 21&lt;/h2&gt;
+&lt;p&gt;Which major has the &lt;em&gt;lowest&lt;/em&gt; unemployment rate?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-22&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 22&lt;/h2&gt;
+&lt;p&gt;What are the top 3 majors that have the highest percentage of women?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-23&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 23&lt;/h2&gt;
+&lt;p&gt;Make a boxplot of &lt;code&gt;Median&lt;/code&gt; wage by &lt;code&gt;Major_Category&lt;/code&gt;. [You won’t be able to read the labels easily, so add &lt;code&gt;theme(axis.text.x=element_text(angle=45, hjust=1)&lt;/code&gt; to angle &lt;code&gt;x&lt;/code&gt;-axis labels (and move them down by 1)]&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-24&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 24&lt;/h2&gt;
+&lt;p&gt;Which major category is the least popular in this sample? [Hint: use &lt;code&gt;group_by&lt;/code&gt; first.]&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-25&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 25&lt;/h2&gt;
+&lt;p&gt;Is there a systematic difference in median earnings between STEM majors and non-STEM majors? First define:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;stem_categories &amp;lt;- c(&amp;quot;Biology &amp;amp; Life Science&amp;quot;,
+                     &amp;quot;Computers &amp;amp; Mathematics&amp;quot;,
+                     &amp;quot;Engineering&amp;quot;,
+                     &amp;quot;Physical Sciences&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Next, make a variable called &lt;code&gt;stem&lt;/code&gt;, for whether or not a &lt;code&gt;Major_category&lt;/code&gt; is &lt;code&gt;&#34;stem&#34;&lt;/code&gt; or &lt;code&gt;&#34;not_stem&#34;&lt;/code&gt;. Then &lt;code&gt;summarize()&lt;/code&gt; &lt;code&gt;median&lt;/code&gt; for stem and not stem groups.&lt;/p&gt;
+&lt;p&gt;[Hint: try out the &lt;code&gt;ifelse()&lt;/code&gt; function which has three inputs: condition(s) for a variable(s), what to do if &lt;code&gt;TRUE&lt;/code&gt; (the if), and what to if &lt;code&gt;FALSE&lt;/code&gt; (the else), i.e.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;stem = ifelse(my_conditions,
+       yes = do_this_if_TRUE,
+       no = do_this_if_FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You’ll of course need to change the &lt;code&gt;do_this&lt;/code&gt; into something!
+]&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>1.5 — Optimize Your Workflow with Projects, Markdown, and Git — Practice</title>
+      <link>https://metricsf22.classes.ryansafner.com/r/1.5-r/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/r/1.5-r/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;part-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part 1&lt;/h2&gt;
+&lt;p&gt;We are going to &lt;code&gt;clone&lt;/code&gt; my repository on Github into R Studio on your computer. Go to my &lt;a href=&#34;https://github.com/ryansafner/workflow&#34;&gt;workflow repository&lt;/a&gt; on github. Click the green &lt;code&gt;code&lt;/code&gt; button. See there are several options. Feel free to try each of them out:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../images/workflowgitdownload.png&#34; width=400&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;On Your Computer (Download)&lt;/strong&gt;: &lt;code&gt;Download ZIP&lt;/code&gt; will download a zipped file to your computer containing the entire repository. You will need to unzip this (sometimes it’s automatic, as on a Mac), and then it will create a folder on your computer. Open up the &lt;code&gt;workflow.Rproj&lt;/code&gt; file, which will open the project in &lt;code&gt;R Studio&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;On R Studio Cloud&lt;/strong&gt;: Highlight the url code (or click the copy button on the right). On Rstudio Cloud, click on the arrow on the right of the &lt;code&gt;New Project&lt;/code&gt; button and select &lt;code&gt;New Project from GitHub Repository&lt;/code&gt;. Paste the url you copied from Github here. This will open the repository as a new project in your cloud workspace&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;On Your Computer (via Git) ADVANCED&lt;/strong&gt;: If you have &lt;code&gt;git&lt;/code&gt; installed (see &lt;a href=&#34;https://happygitwithr.com&#34;&gt;the ultimate guide&lt;/a&gt; for help doing this), copy the url code on GitHub. Next, go to R Studio on your computer, click &lt;code&gt;File -&amp;gt; New Project -&amp;gt; Version Control -&amp;gt; Git&lt;/code&gt; and type paste the url in the first field. The final field is where on your computer you want to save this folder. It will then open up the project in R Studio.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part 2&lt;/h2&gt;
+&lt;p&gt;Now that you have the &lt;code&gt;workflow&lt;/code&gt; project on your computer (or cloud), let’s explore it. Notice in the file viewer pane in the bottom right, there are several folders and files there. Look at the top of the pane is the file path (this is where you can find this folder on your computer). Mine looks like this, for example:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../../images/workflowfiles.png&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;The nice thing with projects is that any files you open or save are in this folder on your computer!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part 3&lt;/h2&gt;
+&lt;p&gt;Open up &lt;code&gt;Example_paper.Rmd&lt;/code&gt;. This is an example of a file I would use to write a paper. Note the parts of the &lt;code&gt;.Rmd&lt;/code&gt; file:
+- The &lt;code&gt;yaml&lt;/code&gt; at the top
+- The text written in markdown
+- &lt;code&gt;R&lt;/code&gt; chunks scattered throughout&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-4&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part 4&lt;/h2&gt;
+&lt;p&gt;I have this set to &lt;code&gt;knit&lt;/code&gt; to produce a &lt;code&gt;PDF&lt;/code&gt;. For you to do this, you will need to install a distribution of &lt;code&gt;LaTeX&lt;/code&gt;. Unless you intend to use &lt;code&gt;LaTeX&lt;/code&gt; in the future (for math classes, going to graduate school, or you are a masochist…), we can get around this with a lightweight version we can install &lt;em&gt;inside&lt;/em&gt; of &lt;code&gt;R&lt;/code&gt;. Run the following code in the console:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;quot;tinytex&amp;quot;)
+tinytex::install_tinytex()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This will probably take a few minutes to install. Like any package, you only ever have to do this once! Once this is complete, now try to &lt;code&gt;knit&lt;/code&gt; &lt;code&gt;Example_paper.Rmd&lt;/code&gt; to &lt;code&gt;PDF&lt;/code&gt; by clicking the &lt;code&gt;Knit&lt;/code&gt; button at the top. View your &lt;code&gt;PDF&lt;/code&gt; that pops up!&lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-5&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part 5&lt;/h2&gt;
+&lt;p&gt;Now let’s learn more about writing with markdown syntax. Complete this brief &lt;a href=&#34;https://www.markdowntutorial.com/&#34;&gt;tutorial&lt;/a&gt; to practice!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-6&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part 6&lt;/h2&gt;
+&lt;p&gt;Just practice working in the &lt;code&gt;Example_paper.Rmd&lt;/code&gt; file. Create a new &lt;code&gt;R&lt;/code&gt; chunk (anywhere) and write some &lt;code&gt;R&lt;/code&gt; code to open &lt;code&gt;data/clean_data.csv&lt;/code&gt; (which you can find by clicking through the folders too) and save it as an &lt;code&gt;R&lt;/code&gt; object. (You may need to load &lt;code&gt;tidyverse&lt;/code&gt;!) Run &lt;em&gt;only this chunk&lt;/em&gt; by clicking the green play button at the upper right corner of the chunk. Make sure it works. Using projects to organize your files is much simpler than worrying about your working directory!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-7&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part 7&lt;/h2&gt;
+&lt;p&gt;Find my slides on the &lt;a href=&#34;https://github.com/ryansafner/metricsF21&#34;&gt;class github page&lt;/a&gt;. Note there is a lot going on here, because this is a pretty full website. They are in the &lt;code&gt;static/slides&lt;/code&gt; folder. Now if you are ever curious how I did something in my slides, you can see the source &lt;code&gt;.Rmd&lt;/code&gt; files. Note my slides are written in &lt;a href=&#34;http://github.com/yihui/xaringan&#34;&gt;&lt;code&gt;Xaringan&lt;/code&gt;&lt;/a&gt; (a special, &lt;code&gt;html&lt;/code&gt;-based slides package). Note the slides are quite advanced - I use a lot of html and css formatting to make them pretty!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-8&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part 8&lt;/h2&gt;
+&lt;p&gt;Now we are just exposing you to more &lt;code&gt;.Rmd&lt;/code&gt; files. Look at the answer key for &lt;a href=&#34;https://metricsf22.classes.ryansafner.com/r/1.4-r&#34;&gt;1.4 R practice&lt;/a&gt; and download and open the &lt;i class=&#34;fab fa-markdown&#34;&gt;&lt;/i&gt; &lt;code&gt;markdown&lt;/code&gt; file. Take a look through it and see how it works, then when you are ready, click the &lt;code&gt;knit&lt;/code&gt; button. It will make the &lt;code&gt;html&lt;/code&gt; webpage (which you can open in any browser) that is identical to the answer key web page I made!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-9&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Part 9&lt;/h2&gt;
+&lt;p&gt;Look at the &lt;i class=&#34;fab fa-markdown&#34;&gt;&lt;/i&gt; &lt;code&gt;markdown&lt;/code&gt; file in this week’s &lt;a href=&#34;https://metricsf22.classes.ryansafner.com/assignments/01-problem-set&#34;&gt;homework assignment&lt;/a&gt;. If you want, you can complete your homework using that file.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;On R Studio cloud, it may request you to change your popup settings, since it will pop up the PDF in a new window.&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩︎&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2.5 — OLS: Precision and Diagnostics — Practice</title>
+      <link>https://metricsf22.classes.ryansafner.com/r/2.5-r/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/r/2.5-r/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;To minimize confusion, I suggest creating a new &lt;code&gt;R Project&lt;/code&gt; (e.g. &lt;code&gt;regression_practice&lt;/code&gt;) and storing any data in that folder on your computer.&lt;/p&gt;
+&lt;p&gt;I have already made an R project you can download (as a &lt;code&gt;.zip&lt;/code&gt;), unzip, and open the &lt;code&gt;.Rproj&lt;/code&gt; file in R Studio, or there is an R project you can use on the cloud:&lt;/p&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/2.5-r.zip&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-file-archive&#34;&gt;&lt;/i&gt; R Project&lt;/a&gt;&lt;/span&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://rstudio.cloud/spaces/163934/project/2940155&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-cloud&#34;&gt;&lt;/i&gt; R Studio Cloud&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;div id=&#34;answers&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Answers&lt;/h2&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/2.5-r-answers.html&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-external-link-square-alt&#34;&gt;&lt;/i&gt; Answers (html)&lt;/a&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/2.5-r-answers.zip&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-file-archive&#34;&gt;&lt;/i&gt; Answers (R Project)&lt;/a&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/2.5-r-answers.R&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-registered&#34;&gt;&lt;/i&gt; Answers (R Script)&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-cleaning&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Data Cleaning&lt;/h1&gt;
+&lt;p&gt;How did the results of the 2016 election in their district affect how often Members of Congress during the Trump Administration voted with the President?&lt;/p&gt;
+&lt;p&gt;First, as always, load &lt;code&gt;tidyverse&lt;/code&gt;!&lt;/p&gt;
+&lt;div id=&#34;question-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 1&lt;/h2&gt;
+&lt;p&gt;Our &lt;a href=&#34;https://github.com/fivethirtyeight/data/tree/master/congress-trump-score&#34;&gt;data&lt;/a&gt; comes from fivethirtyeight’s &lt;a href=&#34;https://projects.fivethirtyeight.com/congress-trump-score/&#34;&gt;Trump Congress tracker&lt;/a&gt;. Fivethirtyeight has a great &lt;a href=&#34;https://data.fivethirtyeight.com/&#34;&gt;public archive&lt;/a&gt; of all of the data they use for their articles. I have saved a copy to this website so you can download it below. Download and import (&lt;code&gt;read_csv()&lt;/code&gt;) the data into an object.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://metricsf22.classes.ryansafner.com/data/congress-trump-score.csv&#34;&gt;&lt;i class=&#34;fas fa-table&#34;&gt;&lt;/i&gt; &lt;code&gt;congress-trump-score.csv&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The variables that we care about are&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;43%&#34; /&gt;
+&lt;col width=&#34;56%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Variable&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;congress&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Congressional session&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;chamber&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Chamber of Congress&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;last_name&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Member of Congress&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;party&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Political Party&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;state&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;U.S. State&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;district&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Congressional district&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;agree_pct&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Proportion of votes that agree with President Trump (0-1)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;net_trump_vote&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;District’s margin of victory in 2016 election (positive is Trump win, negative is Clinton win)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 2&lt;/h2&gt;
+&lt;p&gt;Look at the data with &lt;code&gt;glimpse()&lt;/code&gt;. How many variables are there? How many observations?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 3&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;agree_pct&lt;/code&gt; is oddly named, given that its values range from 0 to 1. Make a new variable (you can overwrite &lt;code&gt;agree_pct&lt;/code&gt;) that is a true percentage, from 0 to 100, and use this going forward (it will make interpretation of our results easier).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-4&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 4&lt;/h2&gt;
+&lt;p&gt;Make a scatterplot of &lt;code&gt;agree_pct&lt;/code&gt; on &lt;code&gt;net_trump_vote&lt;/code&gt;. Add a regression line by adding an additional layer of &lt;code&gt;geom_smooth(method = &#34;lm&#34;)&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-5&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 5&lt;/h2&gt;
+&lt;p&gt;Find the correlation between &lt;code&gt;agree_pct&lt;/code&gt; and &lt;code&gt;net_trump_vote&lt;/code&gt;. Hint: if using &lt;code&gt;tidyverse&lt;/code&gt;, like calculating any statistic, we want the &lt;code&gt;summarize()&lt;/code&gt; the data.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;regression&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Regression&lt;/h1&gt;
+&lt;div id=&#34;question-6&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 6&lt;/h2&gt;
+&lt;p&gt;We want to predict the following model:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\widehat{\text{agree_pct}}= \hat{\beta_0}+\hat{\beta_1} \,\text{net_trump_vote}\]&lt;/span&gt;
+Run a regression and save it as an object. Then get a &lt;code&gt;summary()&lt;/code&gt; of the object.&lt;/p&gt;
+&lt;div id=&#34;part-a&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;What is &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_0}\)&lt;/span&gt; for this model? What does it mean in the context of our question?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;What is &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_1}\)&lt;/span&gt; for this model? What does it mean in the context of our question?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;What is &lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt; for this model? What does it mean in the context of our question?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;What is the &lt;span class=&#34;math inline&#34;&gt;\(SER\)&lt;/span&gt; for this model? What does it mean in the context of our question?&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-7&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 7&lt;/h2&gt;
+&lt;p&gt;We can look at regression outputs in a tidier way, with the &lt;code&gt;broom&lt;/code&gt; package.&lt;/p&gt;
+&lt;div id=&#34;part-a-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Install (if you have not yet done so) and load the &lt;code&gt;broom&lt;/code&gt; package.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Run the function &lt;code&gt;tidy()&lt;/code&gt; on your regression object (saved in question 6). Save this result as an object and then look at it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;Run the &lt;code&gt;glance()&lt;/code&gt; function on your original regression object. What does it show you? Find &lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt; and the SER and confirm they are the same from the Base R &lt;code&gt;lm&lt;/code&gt; output.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;Now run the &lt;code&gt;augment()&lt;/code&gt; function on your original regression object, and save this as an object. Look at it. What does it show you?&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-8&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 8&lt;/h2&gt;
+&lt;p&gt;Let’s use our &lt;code&gt;broom&lt;/code&gt; results to calculate the goodness of fit statistics you found in question 6 to confirm.&lt;/p&gt;
+&lt;p&gt;Calculate &lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt; as &lt;span class=&#34;math inline&#34;&gt;\(\frac{ESS}{TSS}\)&lt;/span&gt; by taking the variance of &lt;span class=&#34;math inline&#34;&gt;\(\widehat{\text{agree_pct}_i}\)&lt;/span&gt; (&lt;code&gt;.fitted&lt;/code&gt; in the &lt;code&gt;augment&lt;/code&gt;ed object you made in Question 6D) over the variance of &lt;span class=&#34;math inline&#34;&gt;\(\text{agree_pct}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Alternately, you can calculate &lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt; as &lt;span class=&#34;math inline&#34;&gt;\(1-\frac{SSE}{TSS}\)&lt;/span&gt; by taking 1 minus sum of squared &lt;span class=&#34;math inline&#34;&gt;\(\hat{u_i}\)&lt;/span&gt; (&lt;code&gt;.resid&lt;/code&gt; in that same &lt;code&gt;augment&lt;/code&gt;ed object) over the variance of &lt;span class=&#34;math inline&#34;&gt;\(\text{agree_pct}\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Optional&lt;/strong&gt;: If you really want to be fancy, make your own function to calculate the sum of squares of &lt;span class=&#34;math inline&#34;&gt;\(\hat{Y}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y_i\)&lt;/span&gt; (instead of variance), as I did, with:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;sum_sq = function(x){sum((x - mean(x))^2)}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and then running this function on &lt;code&gt;agree_pct&lt;/code&gt; and &lt;code&gt;.fitted&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-9&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 9&lt;/h2&gt;
+&lt;p&gt;Now let’s try presenting your results in a regression table. Install and load the &lt;code&gt;huxtable&lt;/code&gt; package, and run the &lt;code&gt;huxreg()&lt;/code&gt; command. Your main input is your regression object you saved in Question 6. Feel free to customize the output of this table (see the slides).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;regression-diagnostics&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Regression Diagnostics&lt;/h1&gt;
+&lt;div id=&#34;question-10&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 10&lt;/h2&gt;
+&lt;p&gt;Now let’s start looking at the residuals of the regression.&lt;/p&gt;
+&lt;div id=&#34;part-a-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Take the &lt;code&gt;augment&lt;/code&gt;ed regression object from Question 7D and use it as the source of your data to create a histogram with &lt;code&gt;ggplot()&lt;/code&gt;, setting &lt;code&gt;aes(x = .resid)&lt;/code&gt;. Does it look roughly normal?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Take the &lt;code&gt;augment&lt;/code&gt;ed regression object and make a residual plot, which is a scatterplot where &lt;code&gt;x&lt;/code&gt; is the normal &lt;code&gt;x&lt;/code&gt; variable, and &lt;code&gt;y&lt;/code&gt; is the &lt;code&gt;.resid&lt;/code&gt;. Feel free to add a horizontal line at 0 with &lt;code&gt;geom_hline(yintercept = 0)&lt;/code&gt; as an additional layer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-11&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 11&lt;/h2&gt;
+&lt;p&gt;Now let’s check for heteroskedasticity.&lt;/p&gt;
+&lt;div id=&#34;part-a-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Looking at the scatterplot and residual plots in Questions 3 and 7B, do you think the errors are heteroskedastic or homoskedastic?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Install and load the &lt;code&gt;lmtest&lt;/code&gt; package and run &lt;code&gt;bptest()&lt;/code&gt; on your saved &lt;code&gt;lm&lt;/code&gt; object from Question 6. According to the test, is the data heteroskedastic or homoskedastic?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;Now let’s make some heteroskedasticity-robust standard errors. Install and load the &lt;code&gt;estimatr&lt;/code&gt; package and use the &lt;code&gt;lm_robust()&lt;/code&gt; command (instead of the &lt;code&gt;lm()&lt;/code&gt; command) to run a new regression (and save it). Make sure you add &lt;code&gt;se_type = &#34;stata&#34;&lt;/code&gt; inside the command to calculate robust SEs (in the same way that the Stata software does…long story). Look at it. What changes?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;Now let’s see this in a nice regression table. Use &lt;code&gt;huxreg()&lt;/code&gt; again, but add both your original regression and your regression saved in part C. Notice any changes?&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-12&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 12&lt;/h2&gt;
+&lt;p&gt;Now let’s check for outliers.&lt;/p&gt;
+&lt;div id=&#34;part-a-4&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Just looking at the scatterplot in Question 3, do you see any outliers?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-4&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Install and load the &lt;code&gt;car&lt;/code&gt; package. Run the &lt;code&gt;outlierTest&lt;/code&gt; command on your regression object. Does it detect any outliers?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;Look in your original data to match this outlier with an observation. Hint: use the &lt;code&gt;slice()&lt;/code&gt; command, as the outlier test gave you an observation (row) number!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-13&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 13&lt;/h2&gt;
+&lt;p&gt;(&lt;strong&gt;Optional&lt;/strong&gt;: Flexing your tidyverse skills)&lt;/p&gt;
+&lt;p&gt;This data is still a bit messy. Let’s check your &lt;code&gt;tidyverse&lt;/code&gt; skills again! For example, we’d probably like to plot our scatterplots with colors for Republican and Democratic party. Or plot by the House and the Senate.&lt;/p&gt;
+&lt;div id=&#34;part-a-5&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;First, the variable &lt;code&gt;congress&lt;/code&gt; (session of Congress) seems a bit off. Get a &lt;code&gt;count()&lt;/code&gt; of &lt;code&gt;congress&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-5&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Let’s get rid of the &lt;code&gt;0&lt;/code&gt; values for &lt;code&gt;congress&lt;/code&gt; (someone made a mistake coding this, probably).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c-4&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;The variable &lt;code&gt;party&lt;/code&gt; is also quite a mess. &lt;code&gt;count()&lt;/code&gt; by &lt;code&gt;party&lt;/code&gt; to see. Then let’s &lt;code&gt;mutate&lt;/code&gt; a variable to make a better measure of political party - just &lt;code&gt;&#34;Republican&#34;&lt;/code&gt;, &lt;code&gt;&#34;Democrat&#34;&lt;/code&gt;, and &lt;code&gt;&#34;Independent&#34;&lt;/code&gt;. Try doing this with the &lt;code&gt;case_when()&lt;/code&gt; command (as your &lt;code&gt;mutate&lt;/code&gt; formula).&lt;/p&gt;
+&lt;p&gt;The syntax for &lt;code&gt;case_when()&lt;/code&gt; is to have a series of &lt;code&gt;condition ~ &#34;Outcome&#34;&lt;/code&gt;, separated by commas. For example, one condition is to assign both &lt;code&gt;&#34;Democrat&#34;&lt;/code&gt; and &lt;code&gt;&#34;D&#34;&lt;/code&gt; to &lt;code&gt;&#34;Democrat&#34;&lt;/code&gt;, as in &lt;code&gt;party %in% c(&#34;Democrat&#34;, &#34;D&#34;) ~ &#34;Democrat&#34;&lt;/code&gt;. You could also do this with a few &lt;code&gt;ifelse()&lt;/code&gt; commands, but that’s a bit more awkward.] When you’re done &lt;code&gt;count()&lt;/code&gt; by your new party variable to make sure it worked.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;Now plot a scatterplot (same as Question 4) and set &lt;code&gt;color&lt;/code&gt; to your party variable. Notice &lt;code&gt;R&lt;/code&gt; uses its own default colors, which don’t match to the actual colors these political parties use! Make a vector where you define the party colors as follows:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;party_colors &amp;lt;- c(&amp;quot;Democrat&amp;quot; = &amp;quot;blue&amp;quot;,
+                  &amp;quot;Republican&amp;quot; = &amp;quot;red&amp;quot;,
+                  &amp;quot;Independent&amp;quot; = &amp;quot;gray&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then, run your plot again, adding the following layer to customize the colors &lt;code&gt;scale_colour_manual(&#34;Parties&#34;, values = party_colors)&lt;/code&gt;. &lt;code&gt;&#34;Parties&#34;&lt;/code&gt; is the title that will show up on the legend, feel free to edit it, or remove the legend with another layer &lt;code&gt;+guides(color = F)&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-e&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part E&lt;/h3&gt;
+&lt;p&gt;Now facet your scatterplot by &lt;code&gt;chamber&lt;/code&gt; by adding a layer: &lt;code&gt;facet_wrap(~chamber)&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2.7 — Inference for Regression - R Practice</title>
+      <link>https://metricsf22.classes.ryansafner.com/r/2.7-r/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/r/2.7-r/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;set-up&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Set Up&lt;/h1&gt;
+&lt;p&gt;To minimize confusion, I suggest creating a new &lt;code&gt;R Project&lt;/code&gt; (e.g. &lt;code&gt;infer_practice&lt;/code&gt;) and storing any data in that folder on your computer.&lt;/p&gt;
+&lt;p&gt;I have already made an R project you can download (as a &lt;code&gt;.zip&lt;/code&gt;), unzip, and open the &lt;code&gt;.Rproj&lt;/code&gt; file in R Studio, or there is an R project you can use on the cloud:&lt;/p&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/2.7-r.zip&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-file-archive&#34;&gt;&lt;/i&gt; R Project&lt;/a&gt;&lt;/span&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://rstudio.cloud/spaces/163934/project/2990242&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-cloud&#34;&gt;&lt;/i&gt; R Studio Cloud&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;div id=&#34;answers&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Answers&lt;/h2&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/2.7-r-answers.html&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-external-link-square-alt&#34;&gt;&lt;/i&gt; Answers (html)&lt;/a&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/2.7-r-answers.zip&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-file-archive&#34;&gt;&lt;/i&gt; Answers (R Project)&lt;/a&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/2.7-r-answers.R&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-registered&#34;&gt;&lt;/i&gt; Answers (R Script)&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 1&lt;/h2&gt;
+&lt;p&gt;Let’s use the &lt;code&gt;diamonds&lt;/code&gt; data built into &lt;code&gt;ggplot&lt;/code&gt;. Simply load &lt;code&gt;tidyverse&lt;/code&gt; and then to be explicit, save this as a tibble (feel free to rename it) with &lt;code&gt;diamonds &amp;lt;- diamonds&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Let’s answer the following questions:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What is the effect of carat size on a diamond’s price?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div id=&#34;part-a&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Just to see what we’re looking at, make a scatterplot using &lt;code&gt;ggplot()&lt;/code&gt;, with &lt;code&gt;x&lt;/code&gt; as &lt;code&gt;carat&lt;/code&gt; and &lt;code&gt;y&lt;/code&gt; as &lt;code&gt;price&lt;/code&gt;, and add a regression line.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 2&lt;/h2&gt;
+&lt;p&gt;Suppose we want to estimate the following relationship:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\widehat{\text{price}}_i = \beta_0 + \beta_1 \text{carat}_i + u_i\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Run a regression of &lt;code&gt;price&lt;/code&gt; on &lt;code&gt;carat&lt;/code&gt; using &lt;code&gt;lm()&lt;/code&gt; and get a &lt;code&gt;summary()&lt;/code&gt; of it. Be sure to save your regression model as an object, we’ll need it later.&lt;/p&gt;
+&lt;div id=&#34;part-a-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Write out the estimated regression equation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Make a regression table of the output (using the &lt;code&gt;huxtable&lt;/code&gt; package).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;What is &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_1}\)&lt;/span&gt; for this model? Interpret it in the context of our question.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;Use the &lt;code&gt;broom&lt;/code&gt; package’s &lt;code&gt;tidy()&lt;/code&gt; command on your regression object, and calculate confidence intervals for your estimates by setting &lt;code&gt;conf.int = T&lt;/code&gt; inside &lt;code&gt;tidy()&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;What is the 95% confidence interval for &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_1}\)&lt;/span&gt;, and what does it mean?&lt;/p&gt;
+&lt;p&gt;Save these endpoints as an object (either by taking your &lt;code&gt;tidy()&lt;/code&gt;-ed regression and &lt;code&gt;filter()&lt;/code&gt;-ing the &lt;code&gt;term == &#34;carat&#34;&lt;/code&gt; and then &lt;code&gt;select()&lt;/code&gt;-ing the columns with the confidence interval and then saving this; or simply assigning the two values as a vector, &lt;code&gt;c( , )&lt;/code&gt;, to an object).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-e&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part E&lt;/h3&gt;
+&lt;p&gt;Save your estimated &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_1}\)&lt;/span&gt; as an object, we’ll need it later with &lt;code&gt;infer&lt;/code&gt; (either by taking your &lt;code&gt;tidy()&lt;/code&gt;-ed regression and &lt;code&gt;filter()&lt;/code&gt;-ing the &lt;code&gt;term == carat&lt;/code&gt; and then &lt;code&gt;select()&lt;/code&gt;-ing the column with the &lt;code&gt;estimate&lt;/code&gt; and then saving this; or simply assigning the values to an object).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 3&lt;/h2&gt;
+&lt;p&gt;Now let’s use &lt;code&gt;infer&lt;/code&gt;. Install it if you don’t have it, then load it.&lt;/p&gt;
+&lt;div id=&#34;part-a-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Let’s generate a confidence interval for &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_1}\)&lt;/span&gt; by simulating the sampling distribution of &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_1}\)&lt;/span&gt;. Run the following code, which will &lt;code&gt;specify()&lt;/code&gt; the model relationship and &lt;code&gt;generate()&lt;/code&gt; 1,000 repetitions using the &lt;code&gt;bootstrap&lt;/code&gt; method of resampling data points randomly from our sample, with replacement.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# save our simulations as an object (I called it &amp;quot;boot&amp;quot;)
+boot &amp;lt;- diamonds %&amp;gt;% # or whatever you named your dataframe!
+  specify(carat ~ price) %&amp;gt;% # our regression model
+  generate(reps = 1000, # run 1000 simulations
+           type = &amp;quot;bootstrap&amp;quot;) %&amp;gt;% # using bootstrap method
+  calculate(stat = &amp;quot;slope&amp;quot;) # estimate slope in each simulation
+
+# look at it
+boot&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note this will take a few minutes, its doing a lot of calculations! What does it show you when you look at it?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Continue by piping your object from Part A into &lt;code&gt;get_confidence_interval()&lt;/code&gt;. Set &lt;code&gt;level = 0.95, type = &#34;se&#34;&lt;/code&gt; and &lt;code&gt;point_estimate&lt;/code&gt; equal to our estimated &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_1}\)&lt;/span&gt; (saved) from Question 2 Part E.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;boot %&amp;gt;%
+  get_confidence_interval(level = 0.95,
+                          type = &amp;quot;se&amp;quot;, 
+                          point_estimate = beta_1_hat) # or whatever you saved it as&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;Now instead of &lt;code&gt;get_confidence_interval()&lt;/code&gt;, pipe your object from Part A into &lt;code&gt;visualize()&lt;/code&gt; to see the sampling distribution of &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_1}\)&lt;/span&gt; we simulated. You can add &lt;code&gt;+ shade_ci(endpoints = ...)&lt;/code&gt; setting the argument equal to whatever you called your object containing the confidence interval from Question 2 Part D (I have it named here as &lt;code&gt;CI_endpoints&lt;/code&gt;).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;boot %&amp;gt;%
+  visualize()+
+  shade_ci(endpoints = CI_endpoints) # or whatever you saved it as&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Compare your &lt;em&gt;simulated&lt;/em&gt; confidence interval with the &lt;em&gt;theoretically-constructed&lt;/em&gt; confidence interval from the output of &lt;code&gt;summary&lt;/code&gt;, and/or of &lt;code&gt;tidy()&lt;/code&gt; from Question 2.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-4&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 4&lt;/h2&gt;
+&lt;p&gt;Now let’s test the following hypothesis:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\begin{align*}
+H_0: \beta_1 &amp;amp;= 0\\
+H_1: \beta_1 &amp;amp;\neq 0\\
+\end{align*}\]&lt;/span&gt;&lt;/p&gt;
+&lt;div id=&#34;part-a-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;What does the output of &lt;code&gt;summary&lt;/code&gt;, and/or of &lt;code&gt;tidy()&lt;/code&gt; from Question 2 tell you?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Let’s now do run this hypothesis test with &lt;code&gt;infer&lt;/code&gt;, which will simulate the sampling distribution under the null hypothesis that &lt;span class=&#34;math inline&#34;&gt;\(\beta_1 = 0\)&lt;/span&gt;. Run the following code, which will &lt;code&gt;specify()&lt;/code&gt; the model relationship and &lt;code&gt;hypothesize()&lt;/code&gt; the null hypothesis that there is no relationship between &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(Y\)&lt;/span&gt; (i.e. &lt;span class=&#34;math inline&#34;&gt;\(\beta_1=0)\)&lt;/span&gt;, and &lt;code&gt;generate()&lt;/code&gt; 1,000 repetitions using the &lt;code&gt;permute&lt;/code&gt; method, which will center the distribution at 0, and then &lt;code&gt;calculate(stat = &#34;slope&#34;)&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# save our simulations as an object (I called it &amp;quot;test_sims&amp;quot;)
+test_sims &amp;lt;- diamonds %&amp;gt;% # or whatever you named your dataframe!
+  specify(carat ~ price) %&amp;gt;% # our regression model
+  hypothesize(null = &amp;quot;independence&amp;quot;) %&amp;gt;% # H_0 is that slope is 0
+  generate(reps = 1000, # run 1000 simulations
+           type = &amp;quot;permute&amp;quot;) %&amp;gt;% # using permute method, centering distr at 0
+  calculate(stat = &amp;quot;slope&amp;quot;) # estimate slope in each simulation
+
+# look at it
+test_sims&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note this may also take a few minutes. What does it show you?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;Pipe your object from the previous part into the following code, which will &lt;code&gt;get_p_value()&lt;/code&gt;. Inside this function, we are setting &lt;code&gt;obs_stat&lt;/code&gt; equal to our &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_1}\)&lt;/span&gt; we found (from Question 2 part E), and set &lt;code&gt;direction = &#34;both&#34;&lt;/code&gt; to run a &lt;em&gt;two&lt;/em&gt;-sided test, since our alternative hypothesis is two-sided, &lt;span class=&#34;math inline&#34;&gt;\(H_1: \beta_1 \neq 0\)&lt;/span&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test_sims %&amp;gt;%
+  get_p_value(obs_stat = beta_1_hat,
+              direction = &amp;quot;both&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note the warning message that comes up!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;Instead of &lt;code&gt;get_p_value()&lt;/code&gt;, pipe your object from Part B into the following code, which will &lt;code&gt;visualize()&lt;/code&gt; the null distribution, and (in the second command), place our finding on it and &lt;code&gt;shade_p_value()&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test_sims %&amp;gt;%
+  visualize()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;test_sims %&amp;gt;%
+  visualize()+
+  shade_p_value(obs_stat = beta_1_hat, # or whatever you saved it as
+                direction = &amp;quot;both&amp;quot;) # for two-sided test&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-e-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part E&lt;/h3&gt;
+&lt;p&gt;Compare your &lt;em&gt;simulated&lt;/em&gt; p-value with the &lt;em&gt;theoretically-constructed&lt;/em&gt; p-value from the output of &lt;code&gt;summary&lt;/code&gt;, and/or of &lt;code&gt;tidy()&lt;/code&gt; from Question 2.&lt;/p&gt;
+&lt;p&gt;Both &lt;code&gt;summary&lt;/code&gt; and &lt;code&gt;tidy()&lt;/code&gt; also report the &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;-statistic (&lt;code&gt;t value&lt;/code&gt; or &lt;code&gt;statistic&lt;/code&gt;) on this test for &lt;code&gt;carat&lt;/code&gt; (by default, that &lt;span class=&#34;math inline&#34;&gt;\(H_0: \beta_1=0)\)&lt;/span&gt;. What is the estimated test statistic for this model, and what does this number mean? Try to calculate it yourself with the formula:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[t = \frac{\text{estimate} - \text{null hypothesis value}}{\text{standard error of estimate}}\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;The p-value is the probability of a &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; statistic at least as large as ours if the null hypothesis were true. &lt;code&gt;R&lt;/code&gt; constructs a &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;-distribution with &lt;code&gt;n-k-1&lt;/code&gt; degrees of freedom (&lt;code&gt;n&lt;/code&gt; is number of observations, &lt;code&gt;k&lt;/code&gt; is number of &lt;span class=&#34;math inline&#34;&gt;\(X\)&lt;/span&gt;-variables) and calculates the probability in the tails of the distribution beyond this &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt; value. You can calculate it yourself (for a two-sided test) with:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;2 * pt(your_t, # put your t-statistic here
+       df = your_df, # put the df number here
+       lower.tail = F) # we&amp;#39;ll use the right tail&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3.2 — Causal Inference &amp; DAGs — R Practice</title>
+      <link>https://metricsf22.classes.ryansafner.com/r/3.2-r/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/r/3.2-r/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;answers&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Answers&lt;/h2&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/3.2-r-answers.html&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-external-link-square-alt&#34;&gt;&lt;/i&gt; Answers (html)&lt;/a&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/3.2-r-answers.Rmd&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fab fa-markdown&#34;&gt;&lt;/i&gt; Answers (Rmd)&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&gt;For each of the following examples:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: lower-roman&#34;&gt;
+&lt;li&gt;Write out &lt;em&gt;all&lt;/em&gt; of the causal pathways from &lt;code&gt;X&lt;/code&gt; (treatment of interest) to &lt;code&gt;Y&lt;/code&gt; (outcome of interest).&lt;/li&gt;
+&lt;li&gt;Identify which variable(s) need to be controlled to estimate the causal effect of &lt;code&gt;X&lt;/code&gt; on &lt;code&gt;Y&lt;/code&gt;. You can use &lt;a href=&#34;http://dagitty.net&#34;&gt;&lt;code&gt;dagitty.net&lt;/code&gt;&lt;/a&gt; to help you, but you should start trying to recognize these on your own!&lt;/li&gt;
+&lt;li&gt;Draw the DAGs in &lt;code&gt;r&lt;/code&gt; using &lt;code&gt;ggdag&lt;/code&gt;. After setting up the dag with &lt;code&gt;dagify()&lt;/code&gt; (and specifying &lt;code&gt;exposure&lt;/code&gt; and &lt;code&gt;outcome&lt;/code&gt; inside &lt;code&gt;dagify&lt;/code&gt;), pipe that into &lt;code&gt;ggdag()&lt;/code&gt;. Try again piping it instead into &lt;code&gt;ggdag_status()&lt;/code&gt; (to highlight what is X and what is Y). Try again piping it instead into &lt;code&gt;ggdag_adjustment_set()&lt;/code&gt; to show what needs to be controlled.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Don’t forget to install &lt;code&gt;ggdag&lt;/code&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 1&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/r/3.2-r_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 2&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/r/3.2-r_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 3&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/r/3.2-r_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-4&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 4&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/r/3.2-r_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-5&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 5&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://metricsf22.classes.ryansafner.com/r/3.2-r_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3.4 — Multivariate OLS Estimators: Bias, Precision, and Fit — R Practice</title>
+      <link>https://metricsf22.classes.ryansafner.com/r/3.4-r/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/r/3.4-r/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;set-up&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Set Up&lt;/h2&gt;
+&lt;p&gt;To minimize confusion, I suggest creating a new &lt;code&gt;R Project&lt;/code&gt; (e.g. &lt;code&gt;multivariate_practice&lt;/code&gt;) and storing any data in that folder on your computer.&lt;/p&gt;
+&lt;p&gt;I have already made an R project you can download (as a &lt;code&gt;.zip&lt;/code&gt;), unzip, and open the &lt;code&gt;.Rproj&lt;/code&gt; file in R Studio, or there is an R project you can use on the cloud:&lt;/p&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/3.4-r.zip&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-file-archive&#34;&gt;&lt;/i&gt; R Project&lt;/a&gt;&lt;/span&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://rstudio.cloud/spaces/163934/project/3127599&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-cloud&#34;&gt;&lt;/i&gt; R Studio Cloud&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;answers&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Answers&lt;/h2&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/3.4-r-answers.html&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-external-link-square-alt&#34;&gt;&lt;/i&gt; Answers (html)&lt;/a&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/3.4-r-answers.zip&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-file-archive&#34;&gt;&lt;/i&gt; Answers (R Project)&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 1&lt;/h2&gt;
+&lt;p&gt;Download and read in (&lt;code&gt;read_csv&lt;/code&gt;) the data below.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://metricsf21.classes.ryansafner.com/data/speeding_tickets.csv&#34;&gt;&lt;i class=&#34;fas fa-table&#34;&gt;&lt;/i&gt; &lt;code&gt;speeding_tickets.csv&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This data comes from a paper by Makowsky and Strattman (2009) that we will examine later. Even though state law sets a formula for tickets based on how fast a person was driving, police officers in practice often deviate from that formula. This dataset includes information on all traffic stops. An amount for the fine is given only for observations in which the police officer decided to assess a fine. There are a number of variables in this dataset, but the one’s we’ll look at are:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Variable&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;Amount&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Amount of fine (in dollars) assessed for speeding&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Age&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Age of speeding driver (in years)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;MPHover&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Miles per hour over the speed limit&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;We want to explore who gets fines, and how much. We’ll come back to the other variables (which are categorical) in this dataset in later lessons.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 2&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;How does the age of a driver affect the amount of the fine&lt;/em&gt;? Make a scatterplot of the &lt;code&gt;Amount&lt;/code&gt; of the fine (&lt;code&gt;y&lt;/code&gt;) and the driver’s &lt;code&gt;Age&lt;/code&gt; (&lt;code&gt;x&lt;/code&gt;) along with a regression line.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 3&lt;/h2&gt;
+&lt;p&gt;Next, we’ll want to find the correlation between &lt;code&gt;Amount&lt;/code&gt; and &lt;code&gt;Age&lt;/code&gt;. Do this first.&lt;/p&gt;
+&lt;p&gt;Then notice that it won’t work. This is because there are a lot of &lt;code&gt;NA&lt;/code&gt;s (missing data) for &lt;code&gt;Amount&lt;/code&gt; (if tried to get the &lt;code&gt;mean()&lt;/code&gt; of &lt;code&gt;Amount&lt;/code&gt;, it would do the same thing.&lt;/p&gt;
+&lt;p&gt;You can verify the &lt;code&gt;NA&lt;/code&gt;s with:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data %&amp;gt;% # use your named dataframe!
+  select(Amount) %&amp;gt;%
+  summary()
+
+# OR
+# data %&amp;gt;% count(Amount) # but this has a lot of rows!&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In order to run a correlation, we need to drop or ignore all of the &lt;code&gt;NA&lt;/code&gt;s. You could &lt;code&gt;filter()&lt;/code&gt; the data:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# this would OVERWRITE data
+data &amp;lt;- data %&amp;gt;%
+  filter(!is.na(Amount)) # remove all NAs&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or, if you don’t want to change your data, the &lt;code&gt;cor()&lt;/code&gt; command allows you to set &lt;code&gt;use = &#34;pairwise.complete.obs&#34;&lt;/code&gt; as an argument.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-4&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 4&lt;/h2&gt;
+&lt;p&gt;We want to estimate the following model:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\widehat{\text{Amount}_i}= \hat{\beta_0}+\hat{\beta_1}\text{Age}_i\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Run a regression, and save it as an object. Then get a &lt;code&gt;summary()&lt;/code&gt; of it.&lt;/p&gt;
+&lt;div id=&#34;part-a&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Write out the estimated regression equation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;What is &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_0}\)&lt;/span&gt; for this model? What does it mean in the context of our question?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;What is &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_1}\)&lt;/span&gt; for this model? What does it mean in the context of our question?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;What is the marginal effect of &lt;code&gt;Age&lt;/code&gt; on &lt;code&gt;Amount&lt;/code&gt;?&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-5&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 5&lt;/h2&gt;
+&lt;p&gt;Redo question 4 with the &lt;code&gt;broom&lt;/code&gt; package. Try out &lt;code&gt;tidy()&lt;/code&gt; and &lt;code&gt;glance()&lt;/code&gt;. This is just to keep you versatile!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-6&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 6&lt;/h2&gt;
+&lt;p&gt;How big would the difference in expected fine be for two drivers, one 18 years old and one 40 years old?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-7&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 7&lt;/h2&gt;
+&lt;p&gt;Now run the regression again, controlling for speed (&lt;code&gt;MPHover&lt;/code&gt;).&lt;/p&gt;
+&lt;div id=&#34;part-a-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Write the new regression equation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;What is the marginal effect of &lt;code&gt;Age&lt;/code&gt; on &lt;code&gt;Amount&lt;/code&gt;? What happened to it, compared to Question 4D?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;What is the marginal effect of &lt;code&gt;MPHover&lt;/code&gt; on &lt;code&gt;Amount&lt;/code&gt;?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;What is &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_0}\)&lt;/span&gt; for our model, and what does it mean in the context of our question?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-e&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part E&lt;/h3&gt;
+&lt;p&gt;What is the adjusted &lt;span class=&#34;math inline&#34;&gt;\(\bar{R}^2\)&lt;/span&gt;? What does it mean?&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-8&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 8&lt;/h2&gt;
+&lt;p&gt;Now suppose both the 18 year old and the 40 year old each went 10 MPH over the speed limit. How big would the difference in expected fine be for the two drivers?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-9&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 9&lt;/h2&gt;
+&lt;p&gt;What is the difference in expected fine between two 18 year-olds, one who went 10 MPH over, and one who went 30 MPH over?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-10&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 10&lt;/h2&gt;
+&lt;p&gt;Use the &lt;code&gt;huxtable&lt;/code&gt; package’s &lt;code&gt;huxreg()&lt;/code&gt; command to make a regression table of your two regressions: the one from question 4, and the one from question 7.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-11&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 11&lt;/h2&gt;
+&lt;p&gt;Are our two independent variables multicollinear? Do younger people tend to drive faster?&lt;/p&gt;
+&lt;div id=&#34;part-a-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Get the correlation between &lt;code&gt;Age&lt;/code&gt; and &lt;code&gt;MPHover&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Make a scatterplot of &lt;code&gt;MPHover&lt;/code&gt; (&lt;code&gt;y&lt;/code&gt;) on &lt;code&gt;Age&lt;/code&gt; (&lt;code&gt;x&lt;/code&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;Run an auxiliary regression of &lt;code&gt;MPHover&lt;/code&gt; on &lt;code&gt;Age&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;Interpret the coefficient on &lt;code&gt;Age&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-e-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part E&lt;/h3&gt;
+&lt;p&gt;Look at your regression table in question 10. What happened to the standard error on &lt;code&gt;Age&lt;/code&gt;? Why (consider the formula for variance of &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_1})\)&lt;/span&gt;?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-f&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part F&lt;/h3&gt;
+&lt;p&gt;Calculate the Variance Inflation Factor (VIF) using the &lt;code&gt;car&lt;/code&gt; package’s &lt;code&gt;vif()&lt;/code&gt; command. Run it on your regression object saved from Question 7.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-g&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part G&lt;/h3&gt;
+&lt;p&gt;Calculate the VIF manually, using what you learned in this question.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-12&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 12&lt;/h2&gt;
+&lt;p&gt;Let’s now think about the omitted variable bias. Suppose the “true” model is the one we ran from Question 7.&lt;/p&gt;
+&lt;div id=&#34;part-a-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Do you suppose that &lt;code&gt;MPHover&lt;/code&gt; fits the two criteria for omitted variable bias?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Look at the regression we ran in Question 4. Consider this the “omitted” regression, where we left out &lt;code&gt;MPHover&lt;/code&gt;. Does our estimate of the marginal effect of &lt;code&gt;Age&lt;/code&gt; on &lt;code&gt;Amount&lt;/code&gt; overstate or understate the &lt;em&gt;true&lt;/em&gt; marginal effect?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;Use the “true” model (Question 7), the “omitted” regression (Question 4), and our “auxiliary” regression (Question 11) to identify each of the following parameters that describe our biased estimate of the marginal effect of &lt;code&gt;Age&lt;/code&gt; on &lt;code&gt;Amount&lt;/code&gt;:
+&lt;span class=&#34;math display&#34;&gt;\[\alpha_1=\beta_1+\beta_2\delta_1\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;See the notation I used in &lt;a href=&#34;https://metricsF21.classes.ryansafner.com/slides/3.4-slides.html#40&#34;&gt;class&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;From your answer in part C, how large is the omitted variable bias from leaving out &lt;code&gt;MPHover&lt;/code&gt;?&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-13&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 13&lt;/h2&gt;
+&lt;p&gt;Make a coefficient plot of your coefficients from the regression in Question 7. The package &lt;code&gt;modelsummary&lt;/code&gt; (which you will need to install and load) has a great command &lt;code&gt;modelplot()&lt;/code&gt; to do this on your regression object.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3.7 — Regression with Interaction Effects — R Practice</title>
+      <link>https://metricsf22.classes.ryansafner.com/r/3.7-r/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/r/3.7-r/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;set-up&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Set Up&lt;/h2&gt;
+&lt;p&gt;To minimize confusion, I suggest creating a new &lt;code&gt;R Project&lt;/code&gt; (e.g. &lt;code&gt;interaction_practice&lt;/code&gt;) and storing any data in that folder on your computer.&lt;/p&gt;
+&lt;p&gt;I have already made an R project you can download (as a &lt;code&gt;.zip&lt;/code&gt;), unzip, and open the &lt;code&gt;.Rproj&lt;/code&gt; file in R Studio, or there is an R project you can use on the cloud:&lt;/p&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/3.7-r.zip&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-file-archive&#34;&gt;&lt;/i&gt; R Project&lt;/a&gt;&lt;/span&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://rstudio.cloud/spaces/163934/project/3191318&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-cloud&#34;&gt;&lt;/i&gt; R Studio Cloud&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;answers&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Answers&lt;/h2&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/3.7-r-answers.html&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-external-link-square-alt&#34;&gt;&lt;/i&gt; Answers (html)&lt;/a&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/3.7-r-answers.zip&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-file-archive&#34;&gt;&lt;/i&gt; Answers (R Project)&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 1&lt;/h2&gt;
+&lt;p&gt;We are returning to the speeding tickets data that we began to explore in &lt;a href=&#34;http://metricsf21.classes.ryansafner.com/r/3.4-r-practice&#34;&gt;R Practice 3.4 on Multivariate Regression&lt;/a&gt;. Download and read in (&lt;code&gt;read_csv&lt;/code&gt;) the data below.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://metricsf21.classes.ryansafner.com/data/speeding_tickets.csv&#34;&gt;&lt;i class=&#34;fas fa-table&#34;&gt;&lt;/i&gt; &lt;code&gt;speeding_tickets.csv&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This data again comes from a paper by Makowsky and Strattman (2009). Even though state law sets a formula for tickets based on how fast a person was driving, police officers in practice often deviate from that formula. This dataset includes information on all traffic stops. An amount for the fine is given only for observations in which the police officer decided to assess a fine. There are a number of variables in this dataset, but the one’s we’ll look at are:&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;43%&#34; /&gt;
+&lt;col width=&#34;56%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Variable&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;Amount&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Amount of fine (in dollars) assessed for speeding&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Age&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Age of speeding driver (in years)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;MPHover&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Miles per hour over the speed limit&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Black&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Dummy &lt;span class=&#34;math inline&#34;&gt;\(=1\)&lt;/span&gt; if driver was black, &lt;span class=&#34;math inline&#34;&gt;\(=0\)&lt;/span&gt; if not&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;Hispanic&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Dummy &lt;span class=&#34;math inline&#34;&gt;\(=1\)&lt;/span&gt; if driver was Hispanic, &lt;span class=&#34;math inline&#34;&gt;\(=0\)&lt;/span&gt; if not&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Female&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Dummy &lt;span class=&#34;math inline&#34;&gt;\(=1\)&lt;/span&gt; if driver was female, &lt;span class=&#34;math inline&#34;&gt;\(=0\)&lt;/span&gt; if not&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;OutTown&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Dummy &lt;span class=&#34;math inline&#34;&gt;\(=1\)&lt;/span&gt; if driver was not from local town, &lt;span class=&#34;math inline&#34;&gt;\(=0\)&lt;/span&gt; if not&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;OutState&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Dummy &lt;span class=&#34;math inline&#34;&gt;\(=1\)&lt;/span&gt; if driver was not from local state, &lt;span class=&#34;math inline&#34;&gt;\(=0\)&lt;/span&gt; if not&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;StatePol&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Dummy &lt;span class=&#34;math inline&#34;&gt;\(=1\)&lt;/span&gt; if driver was stopped by State Police, &lt;span class=&#34;math inline&#34;&gt;\(=0\)&lt;/span&gt; if stopped by other (local)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We again want to explore who gets fines, and how much.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 2&lt;/h2&gt;
+&lt;p&gt;We will have to do a little more cleaning to get some of the data into a more usable form.&lt;/p&gt;
+&lt;div id=&#34;part-a&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Inspect the data with &lt;code&gt;str()&lt;/code&gt; or &lt;code&gt;head()&lt;/code&gt; or &lt;code&gt;glimpse()&lt;/code&gt; to see what it looks like.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;What &lt;code&gt;class&lt;/code&gt; of variable are &lt;code&gt;Black&lt;/code&gt;, &lt;code&gt;Hispanic&lt;/code&gt;, &lt;code&gt;Female&lt;/code&gt;, &lt;code&gt;OutTown&lt;/code&gt;, and &lt;code&gt;OutState&lt;/code&gt;?&lt;/p&gt;
+&lt;p&gt;Hint: use the &lt;code&gt;class(df$variable)&lt;/code&gt; command to ask what class something is, where &lt;code&gt;df&lt;/code&gt; is your dataframe, and &lt;code&gt;variable&lt;/code&gt; is the name of a variable. Alternatively, it should also show the class automatically from the commands from Part A.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;Notice that when importing the data from the &lt;code&gt;.csv&lt;/code&gt; file, &lt;code&gt;R&lt;/code&gt; interpreted these variables as &lt;code&gt;numeric&lt;/code&gt; (&lt;code&gt;num&lt;/code&gt;) or &lt;code&gt;double&lt;/code&gt; (&lt;code&gt;dbl&lt;/code&gt;), but we want them to be &lt;code&gt;factor&lt;/code&gt; (&lt;code&gt;fct&lt;/code&gt;) variables, to ensure &lt;code&gt;R&lt;/code&gt; recognizes that there are two groups (categories), 0 and 1. Convert each of these variables into factors by reassigning it according to the format:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- df %&amp;gt;% # where df is your data
+  mutate(my_var = as.factor(my_var) # where my_var is the variable
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You could do this for each variable, or all at once, using &lt;code&gt;mutate_at()&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- df %&amp;gt;%
+  mutate_at(c(&amp;quot;Black&amp;quot;, &amp;quot;Hispanic&amp;quot;, &amp;quot;Female&amp;quot;, &amp;quot;OutTown&amp;quot;, &amp;quot;OutState&amp;quot;), factor)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Recall the &lt;a href=&#34;https://metricsf21.classes.ryansafner.com/content/1.4-content&#34;&gt;class on Data Wrangling&lt;/a&gt; for all the mutate possibilities!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;Confirm they are each now factors by checking their class or looking at the data again.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-e&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part E&lt;/h3&gt;
+&lt;p&gt;Get a &lt;code&gt;summary()&lt;/code&gt; of &lt;code&gt;Amount&lt;/code&gt; using:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df %&amp;gt;% # or whatever your dataframe is called
+  select(Amount) %&amp;gt;%
+  summary()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that there are a lot of &lt;code&gt;NA&lt;/code&gt;’s (these are people that were stopped but did not receive a fine)! Let’s &lt;code&gt;filter()&lt;/code&gt; to use only those observations for which &lt;code&gt;Amount&lt;/code&gt; is a positive number, and save this in your dataframe (assign and overwrite it, or make a new dataframe).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- df %&amp;gt;% # overwrite or make a new dataframe
+  filter(Amount &amp;gt; 0) 
+
+# verify it worked
+df %&amp;gt;% 
+  select(Amount) %&amp;gt;%
+  summar()&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 3&lt;/h2&gt;
+&lt;p&gt;Create a scatterplot between &lt;code&gt;Amount&lt;/code&gt; (as &lt;code&gt;y&lt;/code&gt;) and Female (as &lt;code&gt;x&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Hint: Use &lt;code&gt;geom_jitter()&lt;/code&gt; instead of &lt;code&gt;geom_point()&lt;/code&gt; to plot the points, and play around with &lt;code&gt;width&lt;/code&gt; settings inside &lt;code&gt;geom_jitter()&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-4&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 4&lt;/h2&gt;
+&lt;p&gt;Now let’s start looking at the distribution conditionally to find the different group means.&lt;/p&gt;
+&lt;div id=&#34;part-a-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Find the mean and standard deviation of &lt;code&gt;Amount&lt;/code&gt; for &lt;em&gt;male&lt;/em&gt; drivers and again for &lt;em&gt;female&lt;/em&gt; drivers.&lt;/p&gt;
+&lt;p&gt;Hint: properly &lt;code&gt;filter()&lt;/code&gt; the data and then use the &lt;code&gt;summarize()&lt;/code&gt; command.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;What is the difference between the average Amount for Males and Females?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;We did not go over how to do this in class, but you can run a &lt;strong&gt;t-test for the difference in group means&lt;/strong&gt; to see if the difference is statistically significant. The syntax is similar for a regression:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;t.test(Amount ~ Female,
+       data = df)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Is there a statistically significant difference between &lt;code&gt;Amount&lt;/code&gt; for male and female drivers? Hint: this is like any hypothesis test. Here &lt;span class=&#34;math inline&#34;&gt;\(H_0: \text{difference}=0\)&lt;/span&gt;. A &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;-value needs to be large enough to be greater than a critical value of &lt;span class=&#34;math inline&#34;&gt;\(t\)&lt;/span&gt;. Check the &lt;span class=&#34;math inline&#34;&gt;\(p\)&lt;/span&gt;-value and see if it is less than our standard of &lt;span class=&#34;math inline&#34;&gt;\(\alpha=0.05.\)&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-5&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 5&lt;/h2&gt;
+&lt;p&gt;Now run the following regression to ensure we get the same result as the t-test.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\text{Amount}_i=\hat{\beta_0}+\hat{\beta_1}Female_i\]&lt;/span&gt;&lt;/p&gt;
+&lt;div id=&#34;part-a-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Write out the estimated regression equation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Use the regression coefficients to find&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;ol style=&#34;list-style-type: lower-roman&#34;&gt;
+&lt;li&gt;the average &lt;code&gt;Amount&lt;/code&gt; for men&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&#34;2&#34; style=&#34;list-style-type: lower-roman&#34;&gt;
+&lt;li&gt;the average &lt;code&gt;Amount&lt;/code&gt; for women&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&#34;3&#34; style=&#34;list-style-type: lower-roman&#34;&gt;
+&lt;li&gt;the difference in average &lt;code&gt;Amount&lt;/code&gt; between men and women&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-6&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 6&lt;/h2&gt;
+&lt;p&gt;Let’s recode the sex variable to &lt;code&gt;Male&lt;/code&gt; instead of &lt;code&gt;Female.&lt;/code&gt;&lt;/p&gt;
+&lt;div id=&#34;part-a-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Make a new variable called &lt;code&gt;Male&lt;/code&gt; and save it in your dataframe using the &lt;code&gt;ifelse()&lt;/code&gt; command:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df &amp;lt;- df %&amp;gt;% # overwrite or save as another dataframe
+  mutate(Male = ifelse(Female == 0, # test observation to see if Female is 0
+                       yes = 1, # if yes (a Male), code Male as 1
+                       no  = 0), # if no (a Female), code Male as 0
+         )
+
+# Verify it worked
+df %&amp;gt;%
+  select(Female, Male)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Run the same regression as in question 5, but use &lt;code&gt;Male&lt;/code&gt; instead of &lt;code&gt;Female&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;Write out the estimated regression equation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;Use the regression coefficients to find&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;ol style=&#34;list-style-type: lower-roman&#34;&gt;
+&lt;li&gt;the average &lt;code&gt;Amount&lt;/code&gt; for men&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&#34;2&#34; style=&#34;list-style-type: lower-roman&#34;&gt;
+&lt;li&gt;the average &lt;code&gt;Amount&lt;/code&gt; for women&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&#34;3&#34; style=&#34;list-style-type: lower-roman&#34;&gt;
+&lt;li&gt;the difference in average &lt;code&gt;Amount&lt;/code&gt; between men and women&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-7&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 7&lt;/h2&gt;
+&lt;p&gt;Run a regression of &lt;code&gt;Amount&lt;/code&gt; on &lt;code&gt;Male&lt;/code&gt; and &lt;code&gt;Female&lt;/code&gt;. What happens, and why?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-8&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 8&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;Age&lt;/code&gt; probably has a lot to do with differences in fines, perhaps also age affects fines differences between males and females.&lt;/p&gt;
+&lt;div id=&#34;part-a-4&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Run a regression of &lt;code&gt;Amount&lt;/code&gt; on &lt;code&gt;Age&lt;/code&gt; and &lt;code&gt;Female.&lt;/code&gt; How does the coefficient on &lt;code&gt;Female&lt;/code&gt; change?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-4&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Now let’s see if the difference in fine between men and women are different depending on the driver’s age. Run the regression again, but add an &lt;strong&gt;interaction term&lt;/strong&gt; between &lt;code&gt;Female&lt;/code&gt; and &lt;code&gt;Age&lt;/code&gt;, using &lt;code&gt;Female*Age&lt;/code&gt; or &lt;code&gt;Female:Age&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;Write out your estimated regression equation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;Interpret the interaction effect. Is it statistically significant?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-e-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part E&lt;/h3&gt;
+&lt;p&gt;Plugging in 0 or 1 as necessary, rewrite (on your paper) this regression as &lt;em&gt;two separate&lt;/em&gt; equations, one for Males and one for Females.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-f&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part F&lt;/h3&gt;
+&lt;p&gt;Let’s try to visualize this. Make a scatterplot of &lt;code&gt;Age&lt;/code&gt; (X) and &lt;code&gt;Amount&lt;/code&gt; (Y) and include a regression line.&lt;/p&gt;
+&lt;p&gt;Try adding &lt;code&gt;color = Female&lt;/code&gt; inside your original &lt;code&gt;aes()&lt;/code&gt; layer. This will produce two lines and color the points by &lt;code&gt;Female&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;If it isn’t a &lt;code&gt;factor&lt;/code&gt; variable already, we can ensure that it is with &lt;code&gt;as.factor(Female)&lt;/code&gt;. We shouldn’t need to in &lt;em&gt;this&lt;/em&gt; case because we already reset &lt;code&gt;Female&lt;/code&gt; as a faction in question 1.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-g&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part G&lt;/h3&gt;
+&lt;p&gt;Add a final facet layer to the plot make two different sub-plots by Sex with &lt;code&gt;facet_wrap( ~ Female)&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-9&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 9&lt;/h2&gt;
+&lt;p&gt;Now let’s look at the possible interaction between Sex (&lt;code&gt;Male&lt;/code&gt; or &lt;code&gt;Female&lt;/code&gt;) and whether a driver is from In-State or Out-of-State (&lt;code&gt;OutState&lt;/code&gt;).&lt;/p&gt;
+&lt;div id=&#34;part-a-5&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Use &lt;code&gt;R&lt;/code&gt; to examine the data and find the mean for (i) Males In-State, (ii) Males Out-of-State, (iii) Females In-State, and (iv) Females Out-of-State. Hint: do what you did in Question 4A.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-5&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Now run a regression of the following model:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\text{Amount}_i=\hat{\beta_0}+\hat{\beta_1}Female_i+\hat{\beta_2}OutState_i+\hat{\beta_3}Female_i*OutState_i\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c-4&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;Write out the estimated regression equation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d-3&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;What does each coefficient mean?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-e-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part E&lt;/h3&gt;
+&lt;p&gt;Using the regression equation, what are the means for&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;ol style=&#34;list-style-type: lower-roman&#34;&gt;
+&lt;li&gt;Males In-State&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&#34;2&#34; style=&#34;list-style-type: lower-roman&#34;&gt;
+&lt;li&gt;Males Out-of-State&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&#34;3&#34; style=&#34;list-style-type: lower-roman&#34;&gt;
+&lt;li&gt;Females In-State&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&#34;4&#34; style=&#34;list-style-type: lower-roman&#34;&gt;
+&lt;li&gt;Females Out-of-State?&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Compare to your answers in part A.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-10&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 10&lt;/h2&gt;
+&lt;p&gt;Collect your regressions from questions 5, 6b, 8a, 8b, and 9b and output them in a regression table with &lt;code&gt;huxtable()&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>3.9 — Logarithmic Regression — R Practice</title>
+      <link>https://metricsf22.classes.ryansafner.com/r/3.9-r/</link>
+      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://metricsf22.classes.ryansafner.com/r/3.9-r/</guid>
+      <description>
+&lt;script src=&#34;https://metricsf22.classes.ryansafner.com/rmarkdown-libs/header-attrs/header-attrs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;set-up&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Set Up&lt;/h2&gt;
+&lt;p&gt;To minimize confusion, I suggest creating a new &lt;code&gt;R Project&lt;/code&gt; (e.g. &lt;code&gt;nonlinear_practice&lt;/code&gt;) and storing any data in that folder on your computer.&lt;/p&gt;
+&lt;p&gt;I have already made an R project you can download (as a &lt;code&gt;.zip&lt;/code&gt;), unzip, and open the &lt;code&gt;.Rproj&lt;/code&gt; file in R Studio, or there is an R project you can use on the cloud:&lt;/p&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/3.9-r.zip&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-file-archive&#34;&gt;&lt;/i&gt; R Project&lt;/a&gt;&lt;/span&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://rstudio.cloud/spaces/163934/project/3237168&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-cloud&#34;&gt;&lt;/i&gt; R Studio Cloud&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;answers&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Answers&lt;/h2&gt;
+&lt;p style=&#34;text-align:center&#34;&gt;
+&lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/3.9-r-answers.html&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-external-link-square-alt&#34;&gt;&lt;/i&gt; Answers (html)&lt;/a&gt; &lt;a target=&#34;_blank&#34; href=&#34;https://metricsf22.classes.ryansafner.com/r/3.9-r-answers.zip&#34;&gt;&lt;span class=&#34;btn btn-primary btn-lg&#34;&gt;&lt;i class=&#34;fas fa-file-archive&#34;&gt;&lt;/i&gt; Answers (R Project)&lt;/a&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 1&lt;/h2&gt;
+&lt;p&gt;We are returning to the speeding tickets data that we began to explore in &lt;a href=&#34;http://metricsf21.classes.ryansafner.com/r/3.4-r&#34;&gt;R Practice 3.4 on Multivariate Regression&lt;/a&gt; and &lt;a href=&#34;https://metricsf21.classes.ryansafner.com/r/3.7-r&#34;&gt;R Practice 3.7 on Interaction Effects&lt;/a&gt;. Download and read in (&lt;code&gt;read_csv&lt;/code&gt;) the data below.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://metricsf21.classes.ryansafner.com/data/speeding_tickets.csv&#34;&gt;&lt;i class=&#34;fas fa-table&#34;&gt;&lt;/i&gt; &lt;code&gt;speeding_tickets.csv&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This data again comes from a paper by Makowsky and Strattman (2009). Even though state law sets a formula for tickets based on how fast a person was driving, police officers in practice often deviate from that formula. This dataset includes information on all traffic stops. An amount for the fine is given only for observations in which the police officer decided to assess a fine. There are a number of variables in this dataset, but the one’s we’ll look at are:&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col width=&#34;43%&#34; /&gt;
+&lt;col width=&#34;56%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Variable&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;Amount&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Amount of fine (in dollars) assessed for speeding&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Age&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Age of speeding driver (in years)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;MPHover&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Miles per hour over the speed limit&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Black&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Dummy &lt;span class=&#34;math inline&#34;&gt;\(=1\)&lt;/span&gt; if driver was black, &lt;span class=&#34;math inline&#34;&gt;\(=0\)&lt;/span&gt; if not&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;Hispanic&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Dummy &lt;span class=&#34;math inline&#34;&gt;\(=1\)&lt;/span&gt; if driver was Hispanic, &lt;span class=&#34;math inline&#34;&gt;\(=0\)&lt;/span&gt; if not&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;Female&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Dummy &lt;span class=&#34;math inline&#34;&gt;\(=1\)&lt;/span&gt; if driver was female, &lt;span class=&#34;math inline&#34;&gt;\(=0\)&lt;/span&gt; if not&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;OutTown&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Dummy &lt;span class=&#34;math inline&#34;&gt;\(=1\)&lt;/span&gt; if driver was not from local town, &lt;span class=&#34;math inline&#34;&gt;\(=0\)&lt;/span&gt; if not&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;OutState&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Dummy &lt;span class=&#34;math inline&#34;&gt;\(=1\)&lt;/span&gt; if driver was not from local state, &lt;span class=&#34;math inline&#34;&gt;\(=0\)&lt;/span&gt; if not&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;StatePol&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Dummy &lt;span class=&#34;math inline&#34;&gt;\(=1\)&lt;/span&gt; if driver was stopped by State Police, &lt;span class=&#34;math inline&#34;&gt;\(=0\)&lt;/span&gt; if stopped by other (local)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We again want to explore who gets fines, and how much.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-2&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 2&lt;/h2&gt;
+&lt;p&gt;Run a regression of &lt;code&gt;Amount&lt;/code&gt; on &lt;code&gt;Age&lt;/code&gt;. Write out the estimated regression equation, and interpret the coefficient on Age.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-3&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 3&lt;/h2&gt;
+&lt;p&gt;Is the effect of &lt;code&gt;Age&lt;/code&gt; on &lt;code&gt;Amount&lt;/code&gt; nonlinear? Let’s run a quadratic regression.&lt;/p&gt;
+&lt;div id=&#34;part-a&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Create a new variable for &lt;span class=&#34;math inline&#34;&gt;\(Age^2\)&lt;/span&gt;. Then run a quadratic regression:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\widehat{\text{Amount}_i}=\beta_0+\beta_1 \text{Age}_i+\beta_2 \text{Age}_i^2\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Try running the same regression using the alternate notation: &lt;code&gt;lm(Y ~ X + I(X^2))&lt;/code&gt;, replacing &lt;code&gt;X&lt;/code&gt; and &lt;code&gt;Y&lt;/code&gt; with our variables. This method allows you to run a quadratric regression without having to create a new variable first. Do you get the same results?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;Write out the estimated regression equation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;Is this model an improvement from the linear model? Compared &lt;span class=&#34;math inline&#34;&gt;\(\bar{R}^2\)&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-e&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part E&lt;/h3&gt;
+&lt;p&gt;Is the coefficient on the quadratic term statistically significantly different from zero? i.e. could we reject &lt;span class=&#34;math inline&#34;&gt;\(H_0: \beta_2\)&lt;/span&gt;?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-f&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part F&lt;/h3&gt;
+&lt;p&gt;Write an equation for the marginal effect of &lt;code&gt;Age&lt;/code&gt; on &lt;code&gt;Amount&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-g&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part G&lt;/h3&gt;
+&lt;p&gt;Predict the marginal effect on &lt;code&gt;Amount&lt;/code&gt; of being one year older when you are 18. How about when you are 40?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-h&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part H&lt;/h3&gt;
+&lt;p&gt;Our quadratic function is a &lt;span class=&#34;math inline&#34;&gt;\(U\)&lt;/span&gt;-shape. According to the model, at what age is the amount of the fine minimized?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-i&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part I&lt;/h3&gt;
+&lt;p&gt;Create a scatterplot between &lt;code&gt;Amount&lt;/code&gt; (&lt;code&gt;y&lt;/code&gt;) and &lt;code&gt;Age&lt;/code&gt; (&lt;code&gt;x&lt;/code&gt;). Add a layer with a linear regression (as usual, &lt;code&gt;geom_smooth(method = &#34;lm&#34;)&lt;/code&gt;), and an additional layer of with the predicted quadratic regression curve. This additional layer is similar but we need to specify the formula of the curve to be quadratic:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;geom_smooth(method = &amp;quot;lm&amp;quot;, formula = &amp;quot;y ~ x + I(x^2)&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-j&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part J&lt;/h3&gt;
+&lt;p&gt;It’s quite hard to see the quadratic curve with all those data points. Redo another plot and this time, only keep the quadratic &lt;code&gt;stat_smooth()&lt;/code&gt; layer and leave out the &lt;code&gt;geom_point()&lt;/code&gt; layer. This will only plot the regression curve.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-4&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 4&lt;/h2&gt;
+&lt;p&gt;Should we use a higher-order polynomial equation? Run a cubic regression, and determine whether it is necessary:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[\widehat{\text{Amount}_i}=\beta_0+\beta_1 \text{Age}_i+\beta_2 \text{Age}_i^2+\beta_3 \text{Age}_i^3\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-5&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 5&lt;/h2&gt;
+&lt;p&gt;Run an &lt;span class=&#34;math inline&#34;&gt;\(F\)&lt;/span&gt;-test to check if a nonlinear model is appropriate. Use the &lt;code&gt;car&lt;/code&gt; package (which you will need to load, and install if you do not have it).&lt;/p&gt;
+&lt;p&gt;Your null hypothesis is &lt;span class=&#34;math inline&#34;&gt;\(H_0: \beta_2=\beta_3=0\)&lt;/span&gt; from the regression in question 4. The command is&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(car)
+linearHypothesis(reg_name, # name of your saved regression object
+                 c(&amp;quot;var1&amp;quot;, &amp;quot;var2&amp;quot;)) # name of the variables you are testing&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-6&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 6&lt;/h2&gt;
+&lt;p&gt;Now let’s take a look at speed (&lt;code&gt;MPHover&lt;/code&gt; the speed limit).&lt;/p&gt;
+&lt;div id=&#34;part-a-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Creating new variables as necessary, run a &lt;strong&gt;linear-log&lt;/strong&gt; model of &lt;code&gt;Amount&lt;/code&gt; on &lt;code&gt;MPHover&lt;/code&gt;. Write down the estimated regression equation, and interpret the coefficient on &lt;code&gt;MPHover&lt;/code&gt; &lt;span class=&#34;math inline&#34;&gt;\((\hat{\beta_1})\)&lt;/span&gt;. Make a scatterplot with the regression line. Hint: The simple &lt;code&gt;geom_smooth(method = &#34;lm&#34;)&lt;/code&gt; layer is sufficient, so long as you use the right variables on the plot!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Creating new variables as necessary, run a &lt;strong&gt;log-linear&lt;/strong&gt; model of &lt;code&gt;Amount&lt;/code&gt; on &lt;code&gt;MPHover&lt;/code&gt;. Write down the estimated regression equation, and interpret the coefficient on &lt;code&gt;MPHover&lt;/code&gt; &lt;span class=&#34;math inline&#34;&gt;\((\hat{\beta_1})\)&lt;/span&gt;. Make a scatterplot with the regression line. Hint: The simple &lt;code&gt;geom_smooth(method = &#34;lm&#34;)&lt;/code&gt; is sufficient, so long as you use the right variables on the plot!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-c-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part C&lt;/h3&gt;
+&lt;p&gt;Creating new variables as necessary, run a &lt;strong&gt;log-log&lt;/strong&gt; model of &lt;code&gt;Amount&lt;/code&gt; on &lt;code&gt;MPHover&lt;/code&gt;. Write down the estimated regression equation, and interpret the coefficient on &lt;code&gt;MPHover&lt;/code&gt; &lt;span class=&#34;math inline&#34;&gt;\((\hat{\beta_1})\)&lt;/span&gt;. Make a scatterplot with the regression line. Hint: The simple &lt;code&gt;geom_smooth(method = &#34;lm&#34;)&lt;/code&gt; is sufficient, so long as you use the right variables on the plot!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-d-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part D&lt;/h3&gt;
+&lt;p&gt;Which of the three log models has the best fit? Hint: Check &lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-7&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 7&lt;/h2&gt;
+&lt;p&gt;Return to the quadratic model from Question 3. Run a quadratic regression of &lt;code&gt;Amount&lt;/code&gt; on &lt;code&gt;Age&lt;/code&gt;, &lt;code&gt;Age&lt;/code&gt;&lt;span class=&#34;math inline&#34;&gt;\(^2\)&lt;/span&gt;, &lt;code&gt;MPHover&lt;/code&gt;, and all of the race dummy variables. Test the null hypothesis: &lt;em&gt;“the race of the driver has no effect on Amount”&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-8&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 8&lt;/h2&gt;
+&lt;p&gt;Now let’s try standardizing variables. Let’s try running a regression of &lt;code&gt;Amount&lt;/code&gt; on &lt;code&gt;Age&lt;/code&gt; and &lt;code&gt;MPHover&lt;/code&gt;, but standardizing each variable.&lt;/p&gt;
+&lt;div id=&#34;part-a-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part A&lt;/h3&gt;
+&lt;p&gt;Create new standardized variables for &lt;code&gt;Amount&lt;/code&gt;, &lt;code&gt;Age&lt;/code&gt;, and &lt;code&gt;MPHover&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;data &amp;lt;- data %&amp;gt;% # or whatever your dataframe is called
+  mutate(Amount_Z = scale(Amount),
+         Age_Z = scale(Age),
+         MPHover_Z = scale(MPHover))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;part-b-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Part B&lt;/h3&gt;
+&lt;p&gt;Run a regression of standardized &lt;code&gt;Amount_Z&lt;/code&gt; on standardized &lt;code&gt;Age_Z&lt;/code&gt; and &lt;code&gt;MPHover_Z&lt;/code&gt;. Interpret &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_1}\)&lt;/span&gt; and &lt;span class=&#34;math inline&#34;&gt;\(\hat{\beta_2}\)&lt;/span&gt;. Which variable has a bigger effect on &lt;code&gt;Amount&lt;/code&gt;?&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;question-9&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Question 9&lt;/h2&gt;
+&lt;p&gt;Make a regression output table with &lt;code&gt;huxtable&lt;/code&gt; of your regressions in Questions 2, 3, 4, 6a, 6b, 6c, 7 and 8.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

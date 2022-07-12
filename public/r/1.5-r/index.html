@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academia 4.3.1">
+  <meta name="generator" content="Hugo 0.79.1" />
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Ryan Safner">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Part 1 We are going to clone my repository on Github into R Studio on your computer. Go to my workflow repository on github. Click the green code button. See there are several options. Feel free to try each of them out:
+ On Your Computer (Download): Download ZIP will download a zipped file to your computer containing the entire repository. You will need to unzip this (sometimes it’s automatic, as on a Mac), and then it will create a folder on your computer.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://metricsf22.classes.ryansafner.com/r/1.5-r/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#314f4f">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin="anonymous">
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:400,400i,700,700i|Fira+Mono:400,700)&display=swap">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academia.min.0c527bc9fd0ba6033034eb84176a3cc2.css">
+
+  
+
+  
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://metricsf22.classes.ryansafner.com/r/1.5-r/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="ECON 480 — Econometrics">
+  <meta property="og:url" content="https://metricsf22.classes.ryansafner.com/r/1.5-r/">
+  <meta property="og:title" content="1.5 — Optimize Your Workflow with Projects, Markdown, and Git — Practice | ECON 480 — Econometrics">
+  <meta property="og:description" content="Part 1 We are going to clone my repository on Github into R Studio on your computer. Go to my workflow repository on github. Click the green code button. See there are several options. Feel free to try each of them out:
+ On Your Computer (Download): Download ZIP will download a zipped file to your computer containing the entire repository. You will need to unzip this (sometimes it’s automatic, as on a Mac), and then it will create a folder on your computer."><meta property="og:image" content="https://metricsf22.classes.ryansafner.com/img/icon-192.png">
+  <meta property="twitter:image" content="https://metricsf22.classes.ryansafner.com/img/icon-192.png"><meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2020-06-08T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2020-06-08T00:00:00&#43;00:00">
+  
+
+  
+
+
+  
+
+
+
+
+
+  <title>1.5 — Optimize Your Workflow with Projects, Markdown, and Git — Practice | ECON 480 — Econometrics</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">ECON 480 — Econometrics</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"><span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+      
+      
+      <ul class="navbar-nav ml-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/syllabus/"><span>Syllabus</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/schedule/"><span>Schedule</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/content/"><span>Content</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/assignments/"><span>Assignments</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/resources/"><span>Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+            
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="https://rstudio.cloud/" target="_blank" rel="noopener"><span><i class="fas fa-cloud"></i></span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+            
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="https://hoodcollegeeconomics.slack.com" target="_blank" rel="noopener"><span><i class="fab fa-slack"></i></span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  
+
+<div class="container-fluid docs">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-2 docs-sidebar">
+      
+
+
+
+
+
+<form class="docs-search d-flex align-items-center">
+  <button class="btn docs-toggle d-md-none p-0 mr-3" type="button" data-toggle="collapse" data-target="#docs-nav" aria-controls="docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  
+  
+  <div class="docs-toc-item">
+    <a class="docs-toc-link" href="/r/">R Practice</a>
+    <ul class="nav docs-sidenav">
+      
+      <li >
+        <a href="/r/">Overview</a>
+      </li>
+      
+      <li >
+        <a href="/r/1.2-r/">1.2 — Meet R</a>
+      </li>
+      
+      <li >
+        <a href="/r/1.3-r/">1.3 — Data Visualization with ggplot2</a>
+      </li>
+      
+      <li >
+        <a href="/r/1.4-r/">1.4 — Data Wrangling in the tidyverse</a>
+      </li>
+      
+      <li class="active">
+        <a href="/r/1.5-r/">1.5 — Optimize Your Workflow</a>
+      </li>
+      
+      <li >
+        <a href="/r/2.5-r/">2.5 — OLS: Precision and Diagnostics</a>
+      </li>
+      
+      <li >
+        <a href="/r/2.7-r/">2.7 — Inference for Regression</a>
+      </li>
+      
+      <li >
+        <a href="/r/3.2-r/">3.2 — Causal Inference &amp; DAGs</a>
+      </li>
+      
+      <li >
+        <a href="/r/3.4-r/">3.4 — Multivariate OLS Estimators: Bias, Precision, and Fit</a>
+      </li>
+      
+      <li >
+        <a href="/r/3.7-r/">3.7 — Regression with Interaction Effects</a>
+      </li>
+      
+      <li >
+        <a href="/r/3.9-r/">3.9 — Logarithmic Regression</a>
+      </li>
+      
+    </ul>
+    
+
+  </div>
+  
+  
+</nav>
+
+    </div>
+
+    
+
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 docs-content" role="main">
+
+      <article class="article" itemscope itemtype="http://schema.org/Article">
+
+        <div class="docs-article-container">
+          <h1 itemprop="name">1.5 — Optimize Your Workflow with Projects, Markdown, and Git — Practice</h1>
+
+          <div class="article-style" itemprop="articleBody">
+            
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="part-1" class="section level2">
+<h2>Part 1</h2>
+<p>We are going to <code>clone</code> my repository on Github into R Studio on your computer. Go to my <a href="https://github.com/ryansafner/workflow">workflow repository</a> on github. Click the green <code>code</code> button. See there are several options. Feel free to try each of them out:</p>
+<p><img src="../../images/workflowgitdownload.png" width=400"></p>
+<ul>
+<li><strong>On Your Computer (Download)</strong>: <code>Download ZIP</code> will download a zipped file to your computer containing the entire repository. You will need to unzip this (sometimes it’s automatic, as on a Mac), and then it will create a folder on your computer. Open up the <code>workflow.Rproj</code> file, which will open the project in <code>R Studio</code>.</li>
+<li><strong>On R Studio Cloud</strong>: Highlight the url code (or click the copy button on the right). On Rstudio Cloud, click on the arrow on the right of the <code>New Project</code> button and select <code>New Project from GitHub Repository</code>. Paste the url you copied from Github here. This will open the repository as a new project in your cloud workspace</li>
+<li><strong>On Your Computer (via Git) ADVANCED</strong>: If you have <code>git</code> installed (see <a href="https://happygitwithr.com">the ultimate guide</a> for help doing this), copy the url code on GitHub. Next, go to R Studio on your computer, click <code>File -&gt; New Project -&gt; Version Control -&gt; Git</code> and type paste the url in the first field. The final field is where on your computer you want to save this folder. It will then open up the project in R Studio.</li>
+</ul>
+</div>
+<div id="part-2" class="section level2">
+<h2>Part 2</h2>
+<p>Now that you have the <code>workflow</code> project on your computer (or cloud), let’s explore it. Notice in the file viewer pane in the bottom right, there are several folders and files there. Look at the top of the pane is the file path (this is where you can find this folder on your computer). Mine looks like this, for example:</p>
+<p><img src="../../images/workflowfiles.png" /></p>
+<p>The nice thing with projects is that any files you open or save are in this folder on your computer!</p>
+</div>
+<div id="part-3" class="section level2">
+<h2>Part 3</h2>
+<p>Open up <code>Example_paper.Rmd</code>. This is an example of a file I would use to write a paper. Note the parts of the <code>.Rmd</code> file:
+- The <code>yaml</code> at the top
+- The text written in markdown
+- <code>R</code> chunks scattered throughout</p>
+</div>
+<div id="part-4" class="section level2">
+<h2>Part 4</h2>
+<p>I have this set to <code>knit</code> to produce a <code>PDF</code>. For you to do this, you will need to install a distribution of <code>LaTeX</code>. Unless you intend to use <code>LaTeX</code> in the future (for math classes, going to graduate school, or you are a masochist…), we can get around this with a lightweight version we can install <em>inside</em> of <code>R</code>. Run the following code in the console:</p>
+<pre class="r"><code>install.packages(&quot;tinytex&quot;)
+tinytex::install_tinytex()</code></pre>
+<p>This will probably take a few minutes to install. Like any package, you only ever have to do this once! Once this is complete, now try to <code>knit</code> <code>Example_paper.Rmd</code> to <code>PDF</code> by clicking the <code>Knit</code> button at the top. View your <code>PDF</code> that pops up!<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+</div>
+<div id="part-5" class="section level2">
+<h2>Part 5</h2>
+<p>Now let’s learn more about writing with markdown syntax. Complete this brief <a href="https://www.markdowntutorial.com/">tutorial</a> to practice!</p>
+</div>
+<div id="part-6" class="section level2">
+<h2>Part 6</h2>
+<p>Just practice working in the <code>Example_paper.Rmd</code> file. Create a new <code>R</code> chunk (anywhere) and write some <code>R</code> code to open <code>data/clean_data.csv</code> (which you can find by clicking through the folders too) and save it as an <code>R</code> object. (You may need to load <code>tidyverse</code>!) Run <em>only this chunk</em> by clicking the green play button at the upper right corner of the chunk. Make sure it works. Using projects to organize your files is much simpler than worrying about your working directory!</p>
+</div>
+<div id="part-7" class="section level2">
+<h2>Part 7</h2>
+<p>Find my slides on the <a href="https://github.com/ryansafner/metricsF21">class github page</a>. Note there is a lot going on here, because this is a pretty full website. They are in the <code>static/slides</code> folder. Now if you are ever curious how I did something in my slides, you can see the source <code>.Rmd</code> files. Note my slides are written in <a href="http://github.com/yihui/xaringan"><code>Xaringan</code></a> (a special, <code>html</code>-based slides package). Note the slides are quite advanced - I use a lot of html and css formatting to make them pretty!</p>
+</div>
+<div id="part-8" class="section level2">
+<h2>Part 8</h2>
+<p>Now we are just exposing you to more <code>.Rmd</code> files. Look at the answer key for <a href="/r/1.4-r">1.4 R practice</a> and download and open the <i class="fab fa-markdown"></i> <code>markdown</code> file. Take a look through it and see how it works, then when you are ready, click the <code>knit</code> button. It will make the <code>html</code> webpage (which you can open in any browser) that is identical to the answer key web page I made!</p>
+</div>
+<div id="part-9" class="section level2">
+<h2>Part 9</h2>
+<p>Look at the <i class="fab fa-markdown"></i> <code>markdown</code> file in this week’s <a href="/assignments/01-problem-set">homework assignment</a>. If you want, you can complete your homework using that file.</p>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>On R Studio cloud, it may request you to change your popup settings, since it will pop up the PDF in a new window.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+
+          </div>
+
+          
+
+
+
+          
+          <div class="article-widget">
+            
+<div class="post-nav">
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="/r/1.4-r/" rel="next">1.4 — Data Wrangling in the tidyverse — Practice</a>
+  </div>
+  
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="/r/2.5-r/" rel="prev">2.5 — OLS: Precision and Diagnostics — Practice</a>
+  </div>
+  
+</div>
+
+          </div>
+          
+        </div>
+
+        <div class="body-footer">
+          Last updated on Jun 8, 2020
+        </div>
+
+      </article>
+
+      <footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        
+        <p>
+          Content <i class="fab fa-creative-commons"></i> 2021 <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></a> <a href="https://ryansafner.com">Ryan Safner</a> &middot; <a href="Credits">Credits</a> &middot; Powered by <a href="https://bookdown.org/yihui/blogdown/">blogdown</a> and <a href="https://gohugo.io/">Hugo</a>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-inline network-icon text-right">
+          
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </main>
+  </div>
+</div>
+
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin="anonymous"></script>
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js" integrity="sha256-pB/deHc9CGfFpJRjC43imB29Rse8tak+5eXqntO94ck=" crossorigin="anonymous"></script>
+    <script>
+      anchors.add();
+    </script>
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academia.min.7276a6a3624de715a5c7f54c7c07696d.js"></script>
+
+    
+
+<script src="/js/math-code.js"></script>
+
+
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
