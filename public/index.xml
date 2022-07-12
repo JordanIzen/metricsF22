@@ -14,7 +14,7 @@
     <item>
       <title>Assignment Details</title>
       <link>https://metricsf22.classes.ryansafner.com/assignments/</link>
-      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://metricsf22.classes.ryansafner.com/assignments/</guid>
       <description>
@@ -49,7 +49,7 @@
     <item>
       <title>Overview</title>
       <link>https://metricsf22.classes.ryansafner.com/content/</link>
-      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://metricsf22.classes.ryansafner.com/content/</guid>
       <description>
@@ -64,7 +64,7 @@
     <item>
       <title>Overview</title>
       <link>https://metricsf22.classes.ryansafner.com/r/</link>
-      <pubDate>Mon, 08 Jun 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://metricsf22.classes.ryansafner.com/r/</guid>
       <description>
@@ -78,7 +78,7 @@
     <item>
       <title>Resources</title>
       <link>https://metricsf22.classes.ryansafner.com/resources/</link>
-      <pubDate>Sun, 05 May 2019 00:00:00 +0100</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://metricsf22.classes.ryansafner.com/resources/</guid>
       <description>&lt;p&gt;Look here over the course of the semester for resources, links, and tips on how to succeed in the course, how to write well, and other things of interest related to econometrics, data analysis, managing your workflow, and using R.&lt;/p&gt;
@@ -622,8 +622,8 @@
         &lt;h3&gt;Instructor&lt;/h3&gt;
         &lt;ul class=&#34;icon-list&#34;&gt;
             &lt;li&gt;&lt;i class=&#34;fas fa-user&#34;&gt;&lt;/i&gt; &lt;a href=&#34;https://www.ryansafner.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt; Dr. Ryan Safner&lt;/a&gt;&lt;/li&gt;
-            &lt;li&gt;&lt;i class=&#34;fas fa-university&#34;&gt;&lt;/i&gt; Office: Rosenstock 218-B&lt;/li&gt;
-            &lt;li&gt;&lt;i class=&#34;fas fa-users&#34;&gt;&lt;/i&gt; Office Hours: MW 1:30 PM—2:30 PM &amp;amp; by appt&lt;/li&gt;
+            &lt;li&gt;&lt;i class=&#34;fas fa-university&#34;&gt;&lt;/i&gt; Office: TBD&lt;/li&gt;
+            &lt;li&gt;&lt;i class=&#34;fas fa-users&#34;&gt;&lt;/i&gt; Office Hours: TBD&lt;/li&gt;
             &lt;li&gt;&lt;i class=&#34;fas fa-envelope&#34;&gt;&lt;/i&gt; &lt;a href=&#34;mailto:safner@hood.edu&#34;&gt; safner@hood.edu&lt;/a&gt;&lt;/li&gt;
             &lt;li&gt;&lt;i class=&#34;fab fa-twitter&#34;&gt;&lt;/i&gt; &lt;a href=&#34;https://twitter.com/ryansafner&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt; @ryansafner&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
@@ -632,10 +632,10 @@
         &lt;h3&gt;Course details&lt;/h3&gt;
         &lt;ul class=&#34;icon-list&#34;&gt;
             
-            &lt;li&gt;&lt;i class=&#34;far fa-clock&#34;&gt;&lt;/i&gt; TuTh 11:25 AM—12:50 PM&lt;/li&gt;
+            &lt;li&gt;&lt;i class=&#34;far fa-clock&#34;&gt;&lt;/i&gt; TuTh 11:30 AM—12:55 PM&lt;/li&gt;
             
             &lt;li&gt;&lt;i class=&#34;fas fa-university&#34;&gt;&lt;/i&gt; Rosenstock Trading Room&lt;/li&gt;
-            &lt;li&gt;&lt;i class=&#34;far fa-calendar-alt&#34;&gt;&lt;/i&gt; Aug 23—Dec 14, 2021&lt;/li&gt;
+            &lt;li&gt;&lt;i class=&#34;far fa-calendar-alt&#34;&gt;&lt;/i&gt; Aug 22—Dec 13, 2023&lt;/li&gt;
             &lt;li&gt;&lt;i class=&#34;fab fa-slack&#34;&gt;&lt;/i&gt; &lt;a href=&#34;https://hoodcollegeeconomics.slack.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Slack&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
     &lt;/div&gt;

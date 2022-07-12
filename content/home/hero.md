@@ -45,7 +45,7 @@ hero_media = "metrics_hex.png"
 
 # Econometrics
 
-## ECON 480 • Fall 2021 • Hood College
+## ECON 480 • Fall 2022 • Hood College
 
 ### Learn how to analyze data using the canonical models of econometics with R.
 
