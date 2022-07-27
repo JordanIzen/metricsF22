@@ -20,9 +20,15 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # 1.4 — Data Wrangling in the tidyverse
+]
+.subtitle[
 ## ECON 480 • Econometrics • Fall 2021
+]
+.author[
 ### Ryan Safner<br> Assistant Professor of Economics <br> <a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF21"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF21</a><br> <a href="https://metricsF21.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF21.classes.ryansafner.com</a><br>
+]
 
 ---
 
@@ -56,7 +62,7 @@ class: inverse, middle, center
 
 ### [dplyr::summarize(): create statistics](#98)
 
-### [tidyr: reshaping data](#133)
+### [tidyr: reshaping/pivoting data](#133)
 
 ### [dplyr: combining datasets](#143)
 
@@ -206,7 +212,7 @@ tidyverse_packages()
 2. `magrittr` for "pipeable" code
 3. `readr` for importing data
 4. `dplyr` for data wrangling
-5. `tidyr` for tidying data
+5. `tidyr` for pivoting/reshaping data
 6. `ggplot2` for plotting data (we've already covered)
 
 - We will (or might) later look at:
@@ -1747,18 +1753,18 @@ gapminder %&gt;%
 
 ```
 ## # A tibble: 1,704 × 8
-##    country     continent  year lifeExp      pop gdpPercap          GDP pop_millions
-##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
-##  1 Afghanistan Asia       1952    28.8  8425333      779.  6567086330.         8.43
-##  2 Afghanistan Asia       1957    30.3  9240934      821.  7585448670.         9.24
-##  3 Afghanistan Asia       1962    32.0 10267083      853.  8758855797.        10.3 
-##  4 Afghanistan Asia       1967    34.0 11537966      836.  9648014150.        11.5 
-##  5 Afghanistan Asia       1972    36.1 13079460      740.  9678553274.        13.1 
-##  6 Afghanistan Asia       1977    38.4 14880372      786. 11697659231.        14.9 
-##  7 Afghanistan Asia       1982    39.9 12881816      978. 12598563401.        12.9 
-##  8 Afghanistan Asia       1987    40.8 13867957      852. 11820990309.        13.9 
-##  9 Afghanistan Asia       1992    41.7 16317921      649. 10595901589.        16.3 
-## 10 Afghanistan Asia       1997    41.8 22227415      635. 14121995875.        22.2 
+##    country     continent  year lifeExp      pop gdpPercap       GDP pop_millions
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333      779.   6.57e 9         8.43
+##  2 Afghanistan Asia       1957    30.3  9240934      821.   7.59e 9         9.24
+##  3 Afghanistan Asia       1962    32.0 10267083      853.   8.76e 9        10.3 
+##  4 Afghanistan Asia       1967    34.0 11537966      836.   9.65e 9        11.5 
+##  5 Afghanistan Asia       1972    36.1 13079460      740.   9.68e 9        13.1 
+##  6 Afghanistan Asia       1977    38.4 14880372      786.   1.17e10        14.9 
+##  7 Afghanistan Asia       1982    39.9 12881816      978.   1.26e10        12.9 
+##  8 Afghanistan Asia       1987    40.8 13867957      852.   1.18e10        13.9 
+##  9 Afghanistan Asia       1992    41.7 16317921      649.   1.06e10        16.3 
+## 10 Afghanistan Asia       1997    41.8 22227415      635.   1.41e10        22.2 
 ## # … with 1,694 more rows
 ```
 
@@ -2555,7 +2561,7 @@ gapminder %&gt;%
 ---
 
 class: inverse, center, middle
-# tidyr: reshaping data
+# tidyr: pivoting/reshaping data
 
 .center[
 ![](../images/tidyr2.png)
@@ -2603,7 +2609,7 @@ class: inverse, center, middle
 
 ---
 
-# tidyr::gather() wide to long I
+# tidyr::pivot_longer() wide to long I
 
 .pull-left[
 
@@ -2639,7 +2645,7 @@ ex_wide
 
 ---
 
-# tidyr::gather() wide to long II
+# tidyr::pivot_longer() wide to long II
 
 .pull-left[
 
@@ -2668,17 +2674,17 @@ ex_wide
 
 .pull-right[
 
-- We need to `gather()` these columns into a new pair of variables
-    - set of columns that represent values, not variables (`2000` and `2010`)
-    - `key`: name of variable whose values form the column names (we'll call it the `year`)
-    - `value`: name of the variable whose values are spread over the cells (we'll call it number of `cases`)
+- We need to `pivot_longer()` these columns into a new pair of variables to make a longer dataframe
+    - set of columns represent *values* of one variable (`year`), not variables themselves! (`2000` and `2010`)
+    - `names_to`: name of variable to create whose values form the column names (the "names" `2000` and `2010` are values of `year`)
+    - `values_to`: name of the variable to create whose values are spread over the cells (we'll call it number of `cases` for each country in each year)
 ]
 
 
 ---
-# tidyr::gather() wide to long III
+# tidyr::pivot_longer() wide to long III
 
-- `gather()` a wide data frame into a long data frame 
+- `pivot_longer()` a wide data frame into a long data frame 
 
 .pull-left[
 
@@ -2701,9 +2707,9 @@ ex_wide
 
 
 ```r
-ex_wide %&gt;% gather("2000","2010",
-              key = "year",
-              value = "cases")
+ex_wide %&gt;% pivot_longer(c("2000","2010"),
+              names_to = "year",
+              values_to = "cases")
 ```
 
 ```
@@ -2711,10 +2717,10 @@ ex_wide %&gt;% gather("2000","2010",
 ##   Country       year  cases
 ##   &lt;chr&gt;         &lt;chr&gt; &lt;dbl&gt;
 ## 1 United States 2000    140
-## 2 Canada        2000    102
-## 3 China         2000    111
-## 4 United States 2010    180
-## 5 Canada        2010     98
+## 2 United States 2010    180
+## 3 Canada        2000    102
+## 4 Canada        2010     98
+## 5 China         2000    111
 ## 6 China         2010    123
 ```
 
@@ -2722,7 +2728,7 @@ ex_wide %&gt;% gather("2000","2010",
 
 ---
 
-# tidyr::spread() long to wide I
+# tidyr::pivot_wider() long to wide I
 
 .pull-left[
 
@@ -2735,20 +2741,20 @@ ex_long # example I made (code hidden)
 
 ```
 ## # A tibble: 12 × 4
-##    Country        Year Type       Count
+##    country        year type       count
 ##    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;
-##  1 United States  2000 Cases        140
-##  2 United States  2000 Population   300
-##  3 United States  2010 Cases        180
-##  4 United States  2010 Population   310
-##  5 Canada         2000 Cases        102
-##  6 Canada         2000 Population   110
-##  7 Canada         2010 Cases         98
-##  8 Canada         2010 Population   121
-##  9 China          2000 Cases        111
-## 10 China          2000 Population  1201
-## 11 China          2010 Cases        123
-## 12 China          2010 Population  1241
+##  1 United States  2000 cases        140
+##  2 United States  2000 population   300
+##  3 United States  2010 cases        180
+##  4 United States  2010 population   310
+##  5 Canada         2000 cases        102
+##  6 Canada         2000 population   110
+##  7 Canada         2010 cases         98
+##  8 Canada         2010 population   121
+##  9 China          2000 cases        111
+## 10 China          2000 population  1201
+## 11 China          2010 cases        123
+## 12 China          2010 population  1241
 ```
 
 ]
@@ -2761,11 +2767,9 @@ ex_long # example I made (code hidden)
 
 ---
 
-# tidyr::spread() long to wide II
+# tidyr::pivot_wider() long to wide II
 
 .pull-left[
-
-
 
 
 ```r
@@ -2774,36 +2778,36 @@ ex_long # example I made (code hidden)
 
 ```
 ## # A tibble: 12 × 4
-##    Country        Year Type       Count
+##    country        year type       count
 ##    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;
-##  1 United States  2000 Cases        140
-##  2 United States  2000 Population   300
-##  3 United States  2010 Cases        180
-##  4 United States  2010 Population   310
-##  5 Canada         2000 Cases        102
-##  6 Canada         2000 Population   110
-##  7 Canada         2010 Cases         98
-##  8 Canada         2010 Population   121
-##  9 China          2000 Cases        111
-## 10 China          2000 Population  1201
-## 11 China          2010 Cases        123
-## 12 China          2010 Population  1241
+##  1 United States  2000 cases        140
+##  2 United States  2000 population   300
+##  3 United States  2010 cases        180
+##  4 United States  2010 population   310
+##  5 Canada         2000 cases        102
+##  6 Canada         2000 population   110
+##  7 Canada         2010 cases         98
+##  8 Canada         2010 population   121
+##  9 China          2000 cases        111
+## 10 China          2000 population  1201
+## 11 China          2010 cases        123
+## 12 China          2010 population  1241
 ```
 
 ]
 
 .pull-right[
 
-- We need to `spread()` these columns into a new pair of variables
-    - `key`: column that contains variable names (here, the `type`)
-    - `value`: column that contains values from multiple variables (here, the `count`)
+- We need to `pivot_wider()` these columns into a new pair of variables
+    - `names_from`: column that contains variable names (here, the `type`)
+    - `values_from`: column that contains values from multiple variables (here, the `count`)
 ]
 
 ---
 
-# tidyr::spread() long to wide III
+# tidyr::pivot_wider() long to wide III
 
-- `spread()` a long data frame into a wide data frame 
+- `pivot_wider()` a long data frame into a wide data frame 
 
 .pull-left[
 
@@ -2814,20 +2818,20 @@ ex_long
 
 ```
 ## # A tibble: 12 × 4
-##    Country        Year Type       Count
+##    country        year type       count
 ##    &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;
-##  1 United States  2000 Cases        140
-##  2 United States  2000 Population   300
-##  3 United States  2010 Cases        180
-##  4 United States  2010 Population   310
-##  5 Canada         2000 Cases        102
-##  6 Canada         2000 Population   110
-##  7 Canada         2010 Cases         98
-##  8 Canada         2010 Population   121
-##  9 China          2000 Cases        111
-## 10 China          2000 Population  1201
-## 11 China          2010 Cases        123
-## 12 China          2010 Population  1241
+##  1 United States  2000 cases        140
+##  2 United States  2000 population   300
+##  3 United States  2010 cases        180
+##  4 United States  2010 population   310
+##  5 Canada         2000 cases        102
+##  6 Canada         2000 population   110
+##  7 Canada         2010 cases         98
+##  8 Canada         2010 population   121
+##  9 China          2000 cases        111
+## 10 China          2000 population  1201
+## 11 China          2010 cases        123
+## 12 China          2010 population  1241
 ```
 ]
 
@@ -2835,20 +2839,20 @@ ex_long
 
 
 ```r
-ex_long %&gt;% spread(key = "Type",
-                   value = "Count")
+ex_long %&gt;% pivot_wider(names_from = "type",
+                   values_from = "count")
 ```
 
 ```
 ## # A tibble: 6 × 4
-##   Country        Year Cases Population
+##   country        year cases population
 ##   &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
-## 1 Canada         2000   102        110
-## 2 Canada         2010    98        121
-## 3 China          2000   111       1201
-## 4 China          2010   123       1241
-## 5 United States  2000   140        300
-## 6 United States  2010   180        310
+## 1 United States  2000   140        300
+## 2 United States  2010   180        310
+## 3 Canada         2000   102        110
+## 4 Canada         2010    98        121
+## 5 China          2000   111       1201
+## 6 China          2010   123       1241
 ```
 
 ]
@@ -2859,7 +2863,13 @@ ex_long %&gt;% spread(key = "Type",
 
 .pull-left[
 .center[
-![](../images/tidyr-spread-gather.gif)
+![](../images/original-dfs-tidy.png)
+]
+]
+
+.pull-right[
+.center[
+![](../images/tidyr-pivoting.gif)
 ]
 ]
 
@@ -3100,6 +3110,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

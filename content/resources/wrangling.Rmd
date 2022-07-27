@@ -1,21 +1,32 @@
 ---
 date: "2019-05-05T00:00:00+01:00"
 draft: false
-linktitle: Data Wrangling
+linktitle: Advanced Data Wrangling
 menu:
   resources:
     parent: R Resources
-title: "Data Wrangling Tips & Tricks"
+title: "Advanced Data Wrangling Tips & Tricks"
 toc: true
 type: docs
 weight: 3
 ---
+
+The majority of data wrangling tasks are described in [class 1.4](/content/1.4-content). However, depending on the project, there are particular issues that tend to crop up (often depending on the data type and the state of the spreadsheet) that are worth giving you some help with:
+
 
 ```{r}
 library(tidyverse)
 ```
 
 ## Importing Data
+
+### From Google Sheets
+
+### Scraping Data from the Web
+
+This is a more advanced technique, but in many use cases (and jobs), an essential tool for acquiring relevant data. There are a number of packages out there, but the one that uses tidyverse principles is [`rvest`](https://rvest.tidyverse.org). 
+
+### Cleaning 
 
 The `janitor` package 
 
@@ -54,3 +65,5 @@ One way to combat this is to *ignore* all observations that contain `NA` values.
 data_missing %>%
   summarize(mean_x = mean(x, na.rm = TRUE))
 ```
+
+## Working with Dates & Time

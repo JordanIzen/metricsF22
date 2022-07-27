@@ -14,6 +14,11 @@ output:
     toc: true
 ---
 
+## Factor Reordering
+
+## Fixing Your Scales
+
+
 ## Extensions to ggplot2
 
 `ggplot2`, being one of the most popular packages, has a lot of user-made extensions that allow you to do lots of neat things with your plots, from plotting networks, Parliaments, dendrograms, and other types of graphs, to formatting and visual tools that help improve your figures.

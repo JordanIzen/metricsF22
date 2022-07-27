@@ -15,6 +15,31 @@ weight: 3
 library(tidyverse)
 ```
 
+### File Systems
+
+Back in my day, search was not very good, and so we had to know where all files were located on our computer. We had folders inside of folders, creating a file hierarchy. Today, search is so good that many in gen Z don't know where files are stored on their computer, or even "[what a file is](https://cseducators.stackexchange.com/questions/5551/what-is-a-file?rq=1)!" Simply type the name of the document you are looking for into search (whether on Google, Siri, Cortana, Finder, etc) and it magically appears from the depths of...somewhere...on your computer or even in the cloud.
+
+Unfortunately, when computing and coding, computers need precise instructions about what files to work with, meaning you explicitly need to tell them **where on your computer** you wish to save a file to, or open an existing file. This means you need to specify the `path` through the hierarchy of folders on your computer.
+
+#### Mac
+
+```{r, eval = F}
+| Macintosh HD
+  |- Users
+    |- ryansafner
+      |- Applications
+      |- Desktop
+      |- Documents
+      |- Downloads
+      |- Dropbox
+      |- Movies
+      |- Music
+      |- Pictures
+```
+
+#### Windows
+
+
 ### Downloading, Saving, and Opening Files
 
 ### Command Line

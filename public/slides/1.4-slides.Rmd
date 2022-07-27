@@ -77,7 +77,7 @@ class: inverse, middle, center
 
 ### [dplyr::summarize(): create statistics](#98)
 
-### [tidyr: reshaping data](#133)
+### [tidyr: reshaping/pivoting data](#133)
 
 ### [dplyr: combining datasets](#143)
 
@@ -216,7 +216,7 @@ tidyverse_packages()
 2. `magrittr` for "pipeable" code
 3. `readr` for importing data
 4. `dplyr` for data wrangling
-5. `tidyr` for tidying data
+5. `tidyr` for pivoting/reshaping data
 6. `ggplot2` for plotting data (we've already covered)
 
 - We will (or might) later look at:
@@ -1931,7 +1931,7 @@ gapminder %>%
 ---
 
 class: inverse, center, middle
-# tidyr: reshaping data
+# tidyr: pivoting/reshaping data
 
 .center[
 ![](../images/tidyr2.png)
@@ -1979,7 +1979,7 @@ class: inverse, center, middle
 
 ---
 
-# tidyr::gather() wide to long I
+# tidyr::pivot_longer() wide to long I
 
 .pull-left[
 
@@ -2005,7 +2005,7 @@ ex_wide
 
 ---
 
-# tidyr::gather() wide to long II
+# tidyr::pivot_longer() wide to long II
 
 .pull-left[
 
@@ -2024,17 +2024,17 @@ ex_wide
 
 .pull-right[
 
-- We need to `gather()` these columns into a new pair of variables
-    - set of columns that represent values, not variables (`2000` and `2010`)
-    - `key`: name of variable whose values form the column names (we'll call it the `year`)
-    - `value`: name of the variable whose values are spread over the cells (we'll call it number of `cases`)
+- We need to `pivot_longer()` these columns into a new pair of variables to make a longer dataframe
+    - set of columns represent *values* of one variable (`year`), not variables themselves! (`2000` and `2010`)
+    - `names_to`: name of variable to create whose values form the column names (the "names" `2000` and `2010` are values of `year`)
+    - `values_to`: name of the variable to create whose values are spread over the cells (we'll call it number of `cases` for each country in each year)
 ]
 
 
 ---
-# tidyr::gather() wide to long III
+# tidyr::pivot_longer() wide to long III
 
-- `gather()` a wide data frame into a long data frame 
+- `pivot_longer()` a wide data frame into a long data frame 
 
 .pull-left[
 
@@ -2046,34 +2046,34 @@ ex_wide
 .pull-right[
 
 ```{r}
-ex_wide %>% gather("2000","2010",
-              key = "year",
-              value = "cases")
+ex_wide %>% pivot_longer(c("2000","2010"),
+              names_to = "year",
+              values_to = "cases")
 ```
 
 ]
 
 ---
 
-# tidyr::spread() long to wide I
+# tidyr::pivot_wider() long to wide I
 
 .pull-left[
 
 ```{r, echo=F}
 ex_long<-tribble(
-  ~"Country", ~"Year", ~"Type", ~"Count",
-  "United States", 2000, "Cases", 140,
-  "United States", 2000, "Population", 300,
-  "United States", 2010, "Cases", 180,
-  "United States", 2010, "Population", 310,
-  "Canada", 2000, "Cases", 102,
-  "Canada", 2000, "Population", 110,
-  "Canada", 2010, "Cases", 98,
-  "Canada", 2010, "Population", 121,
-  "China", 2000, "Cases", 111,
-  "China", 2000, "Population", 1201,
-  "China", 2010, "Cases", 123,
-  "China", 2010, "Population", 1241
+  ~"country", ~"year", ~"type", ~"count",
+  "United States", 2000, "cases", 140,
+  "United States", 2000, "population", 300,
+  "United States", 2010, "cases", 180,
+  "United States", 2010, "population", 310,
+  "Canada", 2000, "cases", 102,
+  "Canada", 2000, "population", 110,
+  "Canada", 2010, "cases", 98,
+  "Canada", 2010, "population", 121,
+  "China", 2000, "cases", 111,
+  "China", 2000, "population", 1201,
+  "China", 2010, "cases", 123,
+  "China", 2010, "population", 1241
 )
 
 ```
@@ -2092,28 +2092,9 @@ ex_long # example I made (code hidden)
 
 ---
 
-# tidyr::spread() long to wide II
+# tidyr::pivot_wider() long to wide II
 
 .pull-left[
-
-```{r, echo=F}
-ex_long<-tribble(
-  ~"Country", ~"Year", ~"Type", ~"Count",
-  "United States", 2000, "Cases", 140,
-  "United States", 2000, "Population", 300,
-  "United States", 2010, "Cases", 180,
-  "United States", 2010, "Population", 310,
-  "Canada", 2000, "Cases", 102,
-  "Canada", 2000, "Population", 110,
-  "Canada", 2010, "Cases", 98,
-  "Canada", 2010, "Population", 121,
-  "China", 2000, "Cases", 111,
-  "China", 2000, "Population", 1201,
-  "China", 2010, "Cases", 123,
-  "China", 2010, "Population", 1241
-)
-
-```
 
 ```{r}
 ex_long # example I made (code hidden)
@@ -2123,16 +2104,16 @@ ex_long # example I made (code hidden)
 
 .pull-right[
 
-- We need to `spread()` these columns into a new pair of variables
-    - `key`: column that contains variable names (here, the `type`)
-    - `value`: column that contains values from multiple variables (here, the `count`)
+- We need to `pivot_wider()` these columns into a new pair of variables
+    - `names_from`: column that contains variable names (here, the `type`)
+    - `values_from`: column that contains values from multiple variables (here, the `count`)
 ]
 
 ---
 
-# tidyr::spread() long to wide III
+# tidyr::pivot_wider() long to wide III
 
-- `spread()` a long data frame into a wide data frame 
+- `pivot_wider()` a long data frame into a wide data frame 
 
 .pull-left[
 
@@ -2144,8 +2125,8 @@ ex_long
 .pull-right[
 
 ```{r}
-ex_long %>% spread(key = "Type",
-                   value = "Count")
+ex_long %>% pivot_wider(names_from = "type",
+                   values_from = "count")
 ```
 
 ]
@@ -2156,7 +2137,13 @@ ex_long %>% spread(key = "Type",
 
 .pull-left[
 .center[
-![](../images/tidyr-spread-gather.gif)
+![](../images/original-dfs-tidy.png)
+]
+]
+
+.pull-right[
+.center[
+![](../images/tidyr-pivoting.gif)
 ]
 ]
 
