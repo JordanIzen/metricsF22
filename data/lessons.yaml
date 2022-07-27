@@ -6,11 +6,13 @@ lessons:
     assignment: "00-preliminary-survey"
     
   - title: "1.1 — Introduction to Econometrics"
+    date: "Mon Aug 22"
     content: "1.1-content"
     #slides: "1.1-slides"
     
   - title: "1.2 — Meet R"
-    content: "1.2-content"
+    date: "Wed Aug 24"
+    #content: "1.2-content"
     #slides: "1.2-slides"
     #r: "1.2-r"
 
