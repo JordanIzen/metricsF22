@@ -1,0 +1,118 @@
+project:
+  type: website
+  render:
+    - "*.qmd"
+    - "!slides/" # don't knit slides when website is updated
+  resources:
+    - "files/"
+
+website:
+  title: "ECON 480 — Econometrics"
+  favicon: "files/images/metrics_hex.png"
+  open-graph: true
+  twitter-card: true
+  image: "files/images/metrics_hex.png"
+  navbar:
+    pinned: true
+    search: true
+    logo: "files/images/metrics_hex.png"
+    right:
+      - syllabus.qmd
+      - schedule.qmd
+      - text: Content
+        href: content/index.qmd
+      - text: Assignments
+        href: assignments/index.qmd
+      - text: Resources
+        href: resources/index.qmd
+      - text: News
+        href: news/index.qmd
+      - icon: slack
+        href: "https://hoodcollegeeconomics.slack.com"
+      - icon: cloud-fill
+        href: "rstudio.cloud"
+      - about.qmd
+  sidebar:
+    - title: "Content"
+      style: "docked"
+      search: false
+      contents:
+        - section: "Overview"
+          contents: 
+            - content/index.qmd
+        - section: "I. Data Analysis in R"
+          contents: 
+            - text: "1.1 — Introduction to Econometrics"
+              href: content/1.1-content.qmd
+              
+    - title: "Assignments"
+      style: "docked"
+      search: false
+      contents:
+        - section: "Assignments"
+          contents:
+            - assignments/index.qmd
+        - section: "Problem Sets"
+        - section: "Exams"
+        - section: "Research Paper"
+          contents:
+            - assignments/paper.qmd
+
+    - title: "Resources"
+      style: "docked"
+      search: true
+      contents:
+        - section: "Overview"
+          contents:
+          - resources/index.qmd
+        - section: "Computing Guides"
+          contents:
+          - href: resources/pdfs.qmd
+            text: "How to Make a PDF"
+          - href: resources/zipping.qmd
+            text: "Zipping and Unzipping Files"
+        - section: "R Resources"
+          contents:
+          - href: resources/installing.qmd
+            text: "Installing R and R Studio"
+          - href: resources/data-wrangling.qmd
+            text: "Data Wrangling"
+          - href: resources/packages.qmd
+            text: "R Packages Used"
+          - href: resources/data-visualization.qmd
+            text: "Data Visualization"
+          - href: resources/reporting-regressions.qmd
+            text: "Reporting Regressions"
+          - href: resources/markdown.qmd
+            text: "R Markdown"
+        - section: "Advice"
+          contents:
+          - href: resources/tips.qmd
+            text: "Tips for Success"
+          - href: resources/data.qmd
+            text: "Data Sources & Suggestions"
+          - href: resources/appendices.qmd
+            text: "Math & R Appendices"
+          - href: resources/statistics.qmd
+            text: "Statistics Guide"
+          
+  page-footer:
+    left: |
+      Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) <br>
+      All content licensed under a {{< fa brands creative-commons >}}
+      {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}}
+      [Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)
+    right: |
+      Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)<br>
+      [View the source at {{< fa brands github >}} GitHub]({{< var course.github >}})
+
+format:
+  html:
+    theme:
+      - cosmo
+      - html/custom.scss
+    css: styles.css
+    toc: true
+
+editor: visual
+

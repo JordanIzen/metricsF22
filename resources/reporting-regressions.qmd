@@ -1,0 +1,37 @@
+---
+title: "Reporting Regressions"
+editor: visual
+---
+
+Running a regression (or multiple regressions) produces a lot of information --- estimated OLS coefficients, hypothesis tests, goodness of fit measures, F-tests, the distribution of residuals, etc. The standard Base R output of the `lm()` object using `summary()` looks like this:
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)  # for mpg dataset
+lm(hwy ~ displ, data = mpg) %>%
+  summary()
+```
+
+This contains:
+
+1.  The model in formula notation (`call)`
+2.  A five-number summary of the distribution of residuals
+3.  A table of
+    -   `Estimate` and `Std. Error` for each OLS Coefficient (here, for `(Intercept)`, $(\hat{\beta_0})$ and `displ` $(\hat{\beta_1})$
+
+    -   Report of test statistic (`t value`) and *p*-value (`Pr(>|t|)` for two sided t-test of $H_0: \beta_j = 0$ for each $\beta_j$
+
+    -   Indicators of statistical significance at $\alpha$ levels of 0.10 (`*`), 0.05 `(**)`, and 0.01 `(***)`
+4.  Goodness of fit measures
+    -   Standard error of the regression `Residual standard error`
+
+    -   R-squared and Adjusted R-squared
+
+    -   All-F test
+
+## Broom
+
+## Huxtable
+
+## Modelsummary
