@@ -1,17 +1,6 @@
 ---
-date: "2019-05-05T00:00:00+01:00"
-draft: false
-linktitle: Data Sources and Suggestions
-menu:
-  resources:
-    parent: Resources
-title: Data Resources
-toc: true
-type: docs
-output:
-  blogdown::html_page:
-    toc: true
-weight: 2
+title: Data Sources and Suggestions
+
 ---
 
 ##  List of Public Datasets, Data Sources, and R APIs

@@ -1,0 +1,14 @@
+{
+  "hash": "b6db9f4dae562025da6ef95d6bbbe3ac",
+  "result": {
+    "markdown": "---\ntitle: \"Reporting Regressions\"\nexecute:\n  freeze: auto\n---\n\n\nRunning a regression (or multiple regressions) produces a lot of information --- estimated OLS coefficients, hypothesis tests, goodness of fit measures, F-tests, the distribution of residuals, etc. The standard Base R output of the `lm()` object using `summary()` looks like this:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)  # for mpg dataset\nlm(hwy ~ displ, data = mpg) %>%\n  summary()\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n\nCall:\nlm(formula = hwy ~ displ, data = mpg)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-7.1039 -2.1646 -0.2242  2.0589 15.0105 \n\nCoefficients:\n            Estimate Std. Error t value Pr(>|t|)    \n(Intercept)  35.6977     0.7204   49.55   <2e-16 ***\ndispl        -3.5306     0.1945  -18.15   <2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.836 on 232 degrees of freedom\nMultiple R-squared:  0.5868,\tAdjusted R-squared:  0.585 \nF-statistic: 329.5 on 1 and 232 DF,  p-value: < 2.2e-16\n```\n:::\n:::\n\n\nThis contains:\n\n1.  The model in formula notation (`call)`\n2.  A five-number summary of the distribution of residuals\n3.  A table of\n    -   `Estimate` and `Std. Error` for each OLS Coefficient (here, for `(Intercept)`, $(\\hat{\\beta_0})$ and `displ` $(\\hat{\\beta_1})$\n\n    -   Report of test statistic (`t value`) and *p*-value (`Pr(>|t|)` for two sided t-test of $H_0: \\beta_j = 0$ for each $\\beta_j$\n\n    -   Indicators of statistical significance at $\\alpha$ levels of 0.10 (`*`), 0.05 `(**)`, and 0.01 `(***)`\n4.  Goodness of fit measures\n    -   Standard error of the regression `Residual standard error`\n\n    -   R-squared and Adjusted R-squared\n\n    -   All-F test\n\n## Broom\n\n## Huxtable\n\n## Modelsummary\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

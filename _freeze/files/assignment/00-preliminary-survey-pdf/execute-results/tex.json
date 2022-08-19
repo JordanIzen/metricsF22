@@ -1,0 +1,18 @@
+{
+  "hash": "21e52ec336322dd16377188710160288",
+  "result": {
+    "markdown": "---\ntitle: \"Preliminary Survey on Math Background\"\nauthor: \"ECON 306\"\nexecute: \n  freeze: true\nformat:\n  pdf:\n    documentclass: article\n---\n\n\n\n\n::: {.callout-warning appearance=simple}\n# Assignment Due \nPlease complete this by next class.\n:::\n\nThis is an *ungraded* and *anonymous* survey for me to evaluate the distribution of your math and statistics backgrounds. Please complete all problems to the best of your ability. Your responses will help me craft the course to see which material we need to focus on at greater length, especially review material.\n\n# Question 1\n\nUsing the following sample data:\n\n\n$$8, 12, 9, 10, 11, 5, 15$$\n\n\na.  Find the median.\nb.  Calculate the sample mean, $\\bar{x}$\nc.  Calculate the sample standard deviation, $s$\n\n\\clearpage\n\n# Question 2\n\nFor a fair, six-sided die:\n\na.  What is the probability of rolling a 5?\nb.  What is the probability of rolling an even number?\nc.  What is the probability of rolling an even number or a 3?\nd.  If you have two fair dice, what is the probability of rolling a 6 on both dice?\n\n\\clearpage\n\n# Question 3\n\nHedge fund A earns an average rate of return of 2.5% per year with a standard deviation of 0.5%, while hedge fund B earns an average rate of return of 3.0% per year with a standard deviation of 2.0%. Which is more unusual, Hedge fund A earning a 4.0% return or hedge fund B earning a return -1.0% return? Why?[^1]\n\n[^1]: Hint: Standardize the two hedge funds.\n\n\\clearpage\n\n# Question 4\n\nA discrete random variable $X$ has the following pdf:\n\n\n::: {.cell-output-display}\n\\begin{table}\n\\centering\n\\begin{tabular}[t]{l|l}\n\\hline\nx & p(x)\\\\\n\\hline\n10 & 0.1\\\\\n\\hline\n20 & 0.2\\\\\n\\hline\n30 & 0.3\\\\\n\\hline\n40 & 0.4\\\\\n\\hline\n\\end{tabular}\n\\end{table}\n:::\n\n\nCalculate the sample standard deviation, $s$ of $X$.\n\n\\clearpage\n\n# Question 5\n\nThe random variable $Y$ is normally distributed with a mean of 50 and standard deviation of 12\n\n\n$$Y \\sim N (50,12)$$\n\n\na.  What is the $Z$-score for $Y=74$?\nb.  In your own words, what does this $Z$-score mean?\nc.  What is the probability that $Y$ takes on a value *greater* than 74?\n\n\\clearpage\n\n# Question 6\n\nOn a scale of 1 (least) to 10 (most), how anxious are you about this class? Feel free to share any specific anxieties (they have a better chance to be specifically addressed if you do!).\n\n\\vspace{3in}\n\n# Question 7\n\nOn a scale of 1 (least) to 10 (most), how familiar would you say you are with computer programming and/or statistical software?\n\n\\clearpage\n\n# Question 8\n\nList any statistical software packages (e.g. R, Microsoft Excel, Stata, SAS, SPSS, Minitab, etc.) and any programming languages (e.g. html, php, C/++, Python, LaTeX, etc.) you have had any experience with, and rate your proficiency between 1 (least) and 5 (most), if applicable.\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "\\usepackage{booktabs}\n\\usepackage{longtable}\n\\usepackage{array}\n\\usepackage{multirow}\n\\usepackage{wrapfig}\n\\usepackage{float}\n\\usepackage{colortbl}\n\\usepackage{pdflscape}\n\\usepackage{tabu}\n\\usepackage{threeparttable}\n\\usepackage{threeparttablex}\n\\usepackage[normalem]{ulem}\n\\usepackage{makecell}\n\\usepackage{xcolor}\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

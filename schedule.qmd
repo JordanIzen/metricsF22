@@ -1,18 +1,24 @@
 ---
 title: "Schedule"
-editor: visual
 sidebar: false
 toc: false
 page-layout: full
+execute:
+  freeze: auto
 ---
 
-This page contains all of the following resources for each class meeting: 
+This page contains all of the following resources for each class meeting:
 
 <ul class="icon-list">
-  <li> {{< fas fa-info-circle >}} **Content** materials contains suggested readings, more details about assignments, math appendices, and other helpful resources. I suggest you view these **before** each class.</li>
-  <li> <i class="fas fa-chalkboard-teacher"></i> **Slides** are "[Xaringan](https://github.com/yihui/xaringan)" presentations in html that can be opened in any browser (You can find a downloadable PDF in each respective **content** page)</li>
-  <li><i class="fas fa-registered"></i> **R** materials contain extra tutorials, videos, practice exercises for using `R`</li>
-  <li><i class="fas fa-laptop-code"></i> **Assignments** are listed with due dates</li>
+
+{{< fas fa-info-circle >}} Content materials contains suggested readings, more details about assignments, math appendices, and other helpful resources. I suggest you view these before each class.
+
+<li><i class="fas fa-chalkboard-teacher"></i> **Slides** are "[Quarto](https://quarto.org)" html presentations that can be opened in any browser (You can find a downloadable PDF on **content** pages)</li>
+
+<li><i class="fas fa-registered"></i> **R** materials contain extra tutorials, videos, practice exercises for using `R`</li>
+
+<li><i class="fas fa-laptop-code"></i> **Assignments** are listed with due dates</li>
+
 </ul>
 
 Please note that the lesson numbers, topics, and titles (e.g. 1.1) are *my* design, and do not match up with the textbook!
@@ -28,9 +34,9 @@ library(glue)
 
 ```{r, eval = T, echo = F}
 sched <- read_csv('data/schedule.csv', show_col_types = FALSE) %>%
-    mutate(group = fct_inorder(group)) %>%
+    mutate(unit = fct_inorder(unit)) %>%
     mutate(date = as.Date(date, format = "%a %b %d")) %>%
-    mutate(var_title = ifelse(!is.na(content),
+    mutate(var_title = ifelse(!is.na(assignment),
                               glue('<span class="content-title">{title}</span>'),
                               glue('{title}'))) %>%
     mutate(var_content = ifelse(!is.na(content),
@@ -56,7 +62,7 @@ sched <- read_csv('data/schedule.csv', show_col_types = FALSE) %>%
 
 ```{r, eval = F, echo = F}
 sched %>%
-    select(group, ` ` = col_date, Title = col_title, Content = col_content,
+    select(unit, ` ` = col_date, Title = col_title, Content = col_content,
            R = col_r, Assignment = col_assignment) %>%
   kbl(escape = FALSE, align = "lllccc", table.attr = 'class="schedule-table"') %>% 
   kable_styling()
@@ -64,19 +70,19 @@ sched %>%
 
 ```{r, echo = F}
 nested_sched <- sched %>%
-    select(group, ` ` = col_date, Title = col_title, Content = col_content,
+    select(unit, ` ` = col_date, Title = col_title, Content = col_content,
            Slides = var_slides, R = col_r, Assignment = col_assignment) %>%
-  group_by(group) %>%
+  group_by(unit) %>%
   nest()
 ```
 
 ```{r, echo = F}
-show_table <- function(group_id) {
+show_table <- function(unit_id) {
   # Add heading
-  cat(as.character(paste("\n\n###", nested_sched$group[[group_id]], "\n\n")))
+  cat(as.character(paste("\n\n###", nested_sched$unit[[unit_id]], "\n\n")))
   
   # Make table
-  tbl <- nested_sched$data[[group_id]] %>% 
+  tbl <- nested_sched$data[[unit_id]] %>% 
     #select(-subgroup) %>% 
     kbl(escape = FALSE, align = "rlcccc", table.attr = 'class="schedule-table"') %>%
     kable_styling() #%>% 
@@ -93,4 +99,5 @@ purrr::walk(seq(1, nrow(nested_sched)), ~show_table(.x))
 ```
 
 <!-- Page apparently loads fa icons if I include one.. -->
+
 {{< fa battery-half size=2xl >}}

@@ -1,0 +1,180 @@
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    logo: "images/metrics_hex.png"
+    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
+    height: 900
+    width: 1600
+overview: true
+execute:
+  echo: false
+  warning: false
+  freeze: auto
+---
+
+## {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
+[1.2 — Meet R]{.custom-title}
+
+[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+
+[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
+
+[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(kableExtra)
+library(patchwork)
+library(fontawesome)
+library(gapminder)
+library(scales)
+```
+
+## Data Science
+
+- .hi[You go into data analysis with the tools you know, not the tools you need]
+
+- The next 2-3 weeks are all about giving you the tools you need 
+    - Admittedly, a bit before you know what you need them *for*
+
+- We will extend them as we learn specific models
+
+## Why Not Excel?
+
+![](images/excelsucks.jpg)
+
+## Why Not Excel?
+
+![](images/excelsucks.jpg)
+
+## R
+
+::: columns
+
+::: {.column width="50%"}
+
+- **Free** and **open source**
+
+- A very large community
+    - Written by statisticians for statistics
+    - Most packages are written for `R` first
+    
+- Can handle virtually any data format
+
+- Makes replication easy
+
+- Can integrate into documents (with `R markdown`)
+
+- R is a *language* so it can do *everything*
+    - A good stepping stone to learning other languages like *Python*
+
+:::
+
+::: {.column width="50%"}
+![](images/r.png)
+:::
+:::
+
+## Excel (or Stata) Can't Do This
+
+::: {.panel-tabset}
+
+## Code
+
+```{r}
+#| echo: true
+#| eval: false
+ggplot(data = gapminder, 
+       aes(x = gdpPercap,
+           y = lifeExp,
+           color = continent))+
+  geom_point(alpha=0.3)+
+  geom_smooth(method = "lm")+
+	scale_x_log10(breaks=c(1000,10000, 100000),
+	              label=scales::dollar)+
+	labs(x = "GDP/Capita",
+	     y = "Life Expectancy (Years)")+
+  facet_wrap(~continent)+
+  guides(color = F)+
+  theme_light()
+```
+
+## Output
+
+```{r}
+#| echo: false
+#| eval: true
+ggplot(data = gapminder, 
+       aes(x = gdpPercap,
+           y = lifeExp,
+           color = continent))+
+  geom_point(alpha=0.3)+
+  geom_smooth(method = "lm")+
+	scale_x_log10(breaks=c(1000,10000, 100000),
+	              label=scales::dollar)+
+	labs(x = "GDP/Capita",
+	     y = "Life Expectancy (Years)")+
+  facet_wrap(~continent)+
+  guides(color = F)+
+  theme_light()
+```
+
+:::
+
+## Or This
+
+::: {.panel-tabset}
+
+### Input
+
+The average GDP per capita is `` ` r dollar(mean(gapminder$gdpPercap)) `  `` with a standard deviation of `` ` r dollar(sd(gapminder$gdpPercap)) ` ``.  
+
+### Output
+
+The average GDP per capita is `r dollar(mean(gapminder$gdpPercap))` with a standard deviation of `r dollar(sd(gapminder$gdpPercap))`.  
+
+:::
+
+## Or This
+
+```{r}
+#| echo: true
+#| fig-width: 18
+#| fig-align: center
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%
+  addMarkers(lng = -77.420, lat = 39.421,
+             popup = "Rosenstock Hall, Hood College")
+```
+
+# Meet R and R Studio
+
+## R and R Studio
+
+::: columns
+
+::: {.column width="50%"}
+- .hi[R] is the programming language that executes commands
+
+- [R Studio]{.hi-purple} is an integrated development environment (IDE) that makes your coding life a lot easier
+  - Write code in scripts
+  - Execute individual commands or entire scripts
+  - Auto-complete, highlight syntax
+  - View data, objects, and plots
+  - Get help and documentation on commands and functions
+  - Integrate code into documents with `R Markdown`
+
+:::
+
+::: {.column width="50%"}
+![](images/r4screens1.png)
+:::
+:::
+
+## R and R Studio
+

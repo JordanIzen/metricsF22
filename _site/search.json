@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "assignments/00-preliminary-survey.html",
+    "href": "assignments/00-preliminary-survey.html",
+    "title": "Preliminary Survey on Statistics and Software",
     "section": "",
-    "text": "1 + 1\n\n[1] 2"
+    "text": "This is an ungraded and anonymous survey for me to evaluate the distribution of your math and statistics backgrounds. Please complete all problems to the best of your ability. Your responses will help me craft the course to see which material we need to focus on at greater length, especially review material.\n\n\n Download PDF\n\n\nQuestion 1\nUsing the following sample data:\n\\[8, 12, 9, 10, 11, 5, 15\\]\n\nFind the median.\nCalculate the sample mean, \\(\\bar{x}\\)\nCalculate the sample standard deviation, \\(s\\)\n\n\n\nQuestion 2\nFor a fair, six-sided die:\n\nWhat is the probability of rolling a 5?\nWhat is the probability of rolling an even number?\nWhat is the probability of rolling an even number or a 3?\nIf you have two fair dice, what is the probability of rolling a 6 on both dice?\n\n\n\nQuestion 3\nHedge fund A earns an average rate of return of 2.5% per year with a standard deviation of 0.5%, while hedge fund B earns an average rate of return of 3.0% per year with a standard deviation of 2.0%. Which is more unusual, Hedge fund A earning a 4.0% return or hedge fund B earning a return -1.0% return? Why?1\n\n\nQuestion 4\nA discrete random variable \\(X\\) has the following pdf:\n\n\n\n \n  \n    x \n    p(x) \n  \n \n\n  \n    10 \n    0.1 \n  \n  \n    20 \n    0.2 \n  \n  \n    30 \n    0.3 \n  \n  \n    40 \n    0.4 \n  \n\n\n\n\nCalculate the sample standard deviation, \\(s\\) of \\(X\\).\n\n\nQuestion 5\nThe random variable \\(Y\\) is normally distributed with a mean of 50 and standard deviation of 12\n\\[Y \\sim N (50,12)\\]\n\nWhat is the \\(Z\\)-score for \\(Y=74\\)?\nIn your own words, what does this \\(Z\\)-score mean?\nWhat is the probability that \\(Y\\) takes on a value greater than 74?\n\n\n\nQuestion 6\nOn a scale of 1 (least) to 10 (most), how anxious are you about this class? Feel free to share any specific anxieties (they have a better chance to be specifically addressed if you do!).\n\n\nQuestion 7\nOn a scale of 1 (least) to 10 (most), how familiar would you say you are with computer programming and/or statistical software?\n\n\nQuestion 8\nList any statistical software packages (e.g. R, Microsoft Excel, Stata, SAS, SPSS, Minitab, etc.) and any programming languages (e.g. html, php, C/++, Python, LaTeX, etc.) you have had any experience with, and rate your proficiency between 1 (least) and 5 (most), if applicable.\n\n\n\n\n\nFootnotes\n\n\nHint: Standardize the two hedge funds.↩︎"
   },
   {
     "objectID": "assignments/index.html",
@@ -67,7 +67,7 @@
     "href": "content/1.1-content.html#assignments",
     "title": "1.1 — Introduction to Econometrics — Class Content",
     "section": " Assignments",
-    "text": "Assignments\n\nPreliminary Statistics Survey Due Sunday August 29\nPlease take the preliminary survey on your statistics and software background by 11:59 PM Sunday. This will help us all have a productive semester together."
+    "text": "Assignments\n\nPreliminary Statistics Survey Due By Next Class\nPlease take the preliminary survey on your statistics and software background by nexrt class. This will help us all have a productive semester together."
   },
   {
     "objectID": "content/index.html",
@@ -84,11 +84,417 @@
     "text": "This website is written in R Markdown, built with Hugo, pushed to Github, and hosted by Netlify.\nThe theme is based on Academia-hugo, which I modified.\nThe inspiration for making individual course websites, along with the basic structure, comes from the incomparable Andrew Heiss. See his website for examples, as well as a number of helpful tutorials. Sadly, I had to figure out how these websites work on my own, and attempted to document my process in the README of this repository for those interested. One day I may make a guide.\nThe course hex sticker I made via hexSticker, and keep all of my course hex stickers in this repository."
   },
   {
+    "objectID": "files/1.1-slides.html#section",
+    "href": "files/1.1-slides.html#section",
+    "title": "ECON 480 — Econometrics",
+    "section": "",
+    "text": "1.1 — Introduction to Econometrics\nECON 480 • Econometrics • Fall 2022\nDr. Ryan Safner  Associate Professor of Economics\nsafner@hood.edu  ryansafner/metricsF22  metricsF22.classes.ryansafner.com"
+  },
+  {
+    "objectID": "files/1.1-slides.html#about-me",
+    "href": "files/1.1-slides.html#about-me",
+    "title": "ECON 480 — Econometrics",
+    "section": "About Me",
+    "text": "About Me\n\n\n\n\n\nPh.D (Economics) — George Mason University, 2015\nB.A. (Economics) — University of Connecticut, 2011\nSpecializations:\n\nLaw and Economics\nAustrian Economics\n\nResearch interests\n\nmodeling innovation & economic growth\npolitical economy & economic history of intellectual property"
+  },
+  {
+    "objectID": "files/1.1-slides.html#the-reason-im-busy-behind-the-scenes",
+    "href": "files/1.1-slides.html#the-reason-im-busy-behind-the-scenes",
+    "title": "ECON 480 — Econometrics",
+    "section": "The Reason I’m Busy Behind the Scenes",
+    "text": "The Reason I’m Busy Behind the Scenes"
+  },
+  {
+    "objectID": "files/1.1-slides.html#why-everyone-yes-everyone-should-learn-statistics",
+    "href": "files/1.1-slides.html#why-everyone-yes-everyone-should-learn-statistics",
+    "title": "ECON 480 — Econometrics",
+    "section": "Why Everyone, Yes Everyone, Should Learn Statistics",
+    "text": "Why Everyone, Yes Everyone, Should Learn Statistics\n\n\n SMBC\n\n\n\n\nSMBC"
+  },
+  {
+    "objectID": "files/1.1-slides.html#were-not-so-good-at-statistics-votes-i",
+    "href": "files/1.1-slides.html#were-not-so-good-at-statistics-votes-i",
+    "title": "ECON 480 — Econometrics",
+    "section": "We’re Not So Good at Statistics: Votes I",
+    "text": "We’re Not So Good at Statistics: Votes I\n\nVotes in the U.S. House of Representatives in favor of passing the Civil Rights Act of 1964:\n\n\n\n\n\n\nDemocrat\nRepublican\n\n\n\n\n61%\n80%\n\n\n\n\n\nSimple enough: “on average, Republicans tended to vote for passage more than Democrats”"
+  },
+  {
+    "objectID": "files/1.1-slides.html#were-not-so-good-at-statistics-votes",
+    "href": "files/1.1-slides.html#were-not-so-good-at-statistics-votes",
+    "title": "ECON 480 — Econometrics",
+    "section": "We’re Not So Good at Statistics: Votes",
+    "text": "We’re Not So Good at Statistics: Votes\n\nVotes in the U.S. House of Representatives in favor of passing the Civil Rights Act of 1964:\n\n\n\n\n\n\n\nDemocrat\nRepublican\n\n\n\n\nNorth\n94%\n85%\n\n\n\n(145/154)\n(138/162)\n\n\nSouth\n7%\n0%\n\n\n\n(7/94)\n(0/10)\n\n\nOverall\n61%\n80%\n\n\n\n(152/248)\n(138/172)\n\n\n\n\n\nLarger proportion of Democrats \\((\\frac{94}{248}\\), 38%) than Republicans \\((\\frac{10}{172}\\), 6%) were from South\nThe 7% of southern Democrats voting for the Act dragged down the Democrats’ overall percentage more than the 0% of southern Republicans"
+  },
+  {
+    "objectID": "files/1.1-slides.html#were-not-so-good-at-statistics-kidney-stones",
+    "href": "files/1.1-slides.html#were-not-so-good-at-statistics-kidney-stones",
+    "title": "ECON 480 — Econometrics",
+    "section": "We’re Not So Good at Statistics: Kidney Stones",
+    "text": "We’re Not So Good at Statistics: Kidney Stones\n\n\n\nSuppose you suffer from kidney stones, your doctor offers you treatment A or treatment B\nIn clinical trials, Treatment A was effective for a higher percentage of patients with large stones and a higher percentage of patients with small stones\nTreatment B was effective for a larger percentage of patients overall than treatment A\nWait, what?"
+  },
+  {
+    "objectID": "files/1.1-slides.html#were-not-so-good-at-statistics-kidney-stones-1",
+    "href": "files/1.1-slides.html#were-not-so-good-at-statistics-kidney-stones-1",
+    "title": "ECON 480 — Econometrics",
+    "section": "We’re Not So Good at Statistics: Kidney Stones",
+    "text": "We’re Not So Good at Statistics: Kidney Stones\n\n\nFrom a real medical study:\n\n\n\n\nTreatment A\nTreatment B\n\n\n\n\nSmall Stones\n93%\n87%\n\n\n\n(81/87)\n(234/270)\n\n\nLarge Stones\n73%\n69%\n\n\n\n(192/263)\n(55/80)\n\n\nOverall\n78%\n83%\n\n\n\n(273/350)\n(289/350)\n\n\n\nC R Charig, D R Webb, S R Payne, and J E Wickham, 1986, “Comparison of treatment of renal calculi by open surgery, percutaneous nephrolithotomy, and extracorporeal shockwave lithotripsy,” Br Med J (Clin Res Ed) 292(6524): 879–882.\n\n\nThe sizes of the two groups (i.e. who gets A vs B) are very different"
+  },
+  {
+    "objectID": "files/1.1-slides.html#were-not-so-good-at-statistics-kidney-stones-2",
+    "href": "files/1.1-slides.html#were-not-so-good-at-statistics-kidney-stones-2",
+    "title": "ECON 480 — Econometrics",
+    "section": "We’re Not So Good at Statistics: Kidney Stones",
+    "text": "We’re Not So Good at Statistics: Kidney Stones\n\n\n\n\n\n\n\n\n\nThe sizes of the two groups (i.e. who gets A vs B) are very different\nA lurking variable in the study is the severity of the case: doctors tended to give treatment B for less severe cases"
+  },
+  {
+    "objectID": "files/1.1-slides.html#simpsons-paradox",
+    "href": "files/1.1-slides.html#simpsons-paradox",
+    "title": "ECON 480 — Econometrics",
+    "section": "Simpson’s Paradox",
+    "text": "Simpson’s Paradox\n\n\n\n\n\n\n\n\n\n\n\nSimpson’s Paradox: The correlation between two variables can change (even reverse!) when additional variables are considered]"
+  },
+  {
+    "objectID": "files/1.1-slides.html#were-not-so-good-at-statistics-smoking",
+    "href": "files/1.1-slides.html#were-not-so-good-at-statistics-smoking",
+    "title": "ECON 480 — Econometrics",
+    "section": "We’re Not so Good at Statistics: Smoking",
+    "text": "We’re Not so Good at Statistics: Smoking\n\n\n\n1964: U.S. Surgeon General issued a report claiming that cigarette smoking causes lung cancer\nEvidence based primarily on correlations between cigarette smoking and lung cancer"
+  },
+  {
+    "objectID": "files/1.1-slides.html#were-not-so-good-at-statistics-smoking-1",
+    "href": "files/1.1-slides.html#were-not-so-good-at-statistics-smoking-1",
+    "title": "ECON 480 — Econometrics",
+    "section": "We’re Not so Good at Statistics: Smoking",
+    "text": "We’re Not so Good at Statistics: Smoking\n\n\n\nTobacco companies attacked the report, naturally"
+  },
+  {
+    "objectID": "files/1.1-slides.html#were-not-so-good-at-statistics-smoking-2",
+    "href": "files/1.1-slides.html#were-not-so-good-at-statistics-smoking-2",
+    "title": "ECON 480 — Econometrics",
+    "section": "We’re Not so Good at Statistics: Smoking",
+    "text": "We’re Not so Good at Statistics: Smoking\n\n\n\nRonald A. Fisher\n1890—1924\n\n\nBut so did R. A. Fisher, the “father of modern statistics”"
+  },
+  {
+    "objectID": "files/1.1-slides.html#were-not-so-good-at-statistics-smoking-3",
+    "href": "files/1.1-slides.html#were-not-so-good-at-statistics-smoking-3",
+    "title": "ECON 480 — Econometrics",
+    "section": "We’re Not so Good at Statistics: Smoking",
+    "text": "We’re Not so Good at Statistics: Smoking\n\n\n\nThere could be a confounding variable (“smoking gene”) that causes both lung cancer and the urge to smoke\nWould imply: decision to smoke or not would have no impact on lung cancer!\nCorrelation between smoking and cancer is spurious!"
+  },
+  {
+    "objectID": "files/1.1-slides.html#correlation-does-not-imply-causation",
+    "href": "files/1.1-slides.html#correlation-does-not-imply-causation",
+    "title": "ECON 480 — Econometrics",
+    "section": "Correlation Does Not Imply Causation",
+    "text": "Correlation Does Not Imply Causation\n\nThe goal of every intro statistics class ever\n\n\nXKCD: Correlation"
+  },
+  {
+    "objectID": "files/1.1-slides.html#correlation-does-not-imply-causation-1",
+    "href": "files/1.1-slides.html#correlation-does-not-imply-causation-1",
+    "title": "ECON 480 — Econometrics",
+    "section": "Correlation Does Not Imply Causation",
+    "text": "Correlation Does Not Imply Causation\n\nSpurious Correlations"
+  },
+  {
+    "objectID": "files/1.1-slides.html#correlation-does-not-imply-causation-2",
+    "href": "files/1.1-slides.html#correlation-does-not-imply-causation-2",
+    "title": "ECON 480 — Econometrics",
+    "section": "Correlation Does Not Imply Causation…",
+    "text": "Correlation Does Not Imply Causation…\n\n\n\nIt’s always good to be skeptical of causal claims\nBut this is actually where econometrics shines"
+  },
+  {
+    "objectID": "files/1.1-slides.html#econometrics",
+    "href": "files/1.1-slides.html#econometrics",
+    "title": "ECON 480 — Econometrics",
+    "section": "Econometrics",
+    "text": "Econometrics\n\n\n\nEconometrics is the application of statistical tools to quantify economic relationships in the real world\nUses real data to\n\ntest economic hypotheses\nquantitatively estimate the magnitude of relationships between economic variables\nforecast future events"
+  },
+  {
+    "objectID": "files/1.1-slides.html#econometrics-and-causal-inference",
+    "href": "files/1.1-slides.html#econometrics-and-causal-inference",
+    "title": "ECON 480 — Econometrics",
+    "section": "Econometrics and Causal Inference",
+    "text": "Econometrics and Causal Inference\n\n\n\nWhat sets econometrics apart from mere statistics (or uses of statistics in other disciplines) is its role in causal inference\nWe can, with proper tools and interprations, make quantitative causal claims\n\nabout the effects of individual choices\nabout the effects of policy interventions\nabout the impact of political institutions\nabout economic history and economic development\netc…"
+  },
+  {
+    "objectID": "files/1.1-slides.html#causal-inference-examples",
+    "href": "files/1.1-slides.html#causal-inference-examples",
+    "title": "ECON 480 — Econometrics",
+    "section": "Causal Inference: Examples",
+    "text": "Causal Inference: Examples\n\n\n\nA 50% increase in police presence in a metropolitan area lowers crime rates by 15%, on average1\n\n\nBeing an incumbent in office raises the probability of re-election by 40-45 percentage points2\n\n\nEuropean cities with at least one printing press in 1500 were at least 29% more likely to become Protestant by 16003\n\n\n\n\n\nKlick, Jonathan and Alexander Tabarrok, 2005, “Using Terror Alert Levels to Estimate the Effect of Police on Crime,” Journal of Law and Economics 48(1): 267-279Lee, David S, 2001, “The Electoral Advantage to Incumbency and Voters’ Valuation of Politicians’ Experience: A Regression Discontinuity Analysis of Elections to the U.S,” NBER Working Paper 8441Rubin, Jared, 2014, “Printing and Protestants: An Empirical Test of the Role of Printing in the Reformation,” Review of Economics and Statistics 96(2): 270-286"
+  },
+  {
+    "objectID": "files/1.1-slides.html#example-1-education",
+    "href": "files/1.1-slides.html#example-1-education",
+    "title": "ECON 480 — Econometrics",
+    "section": "Example 1: Education",
+    "text": "Example 1: Education\n\n\n\n\n\nExample\n\n\n\nDoes reducing class sizes improve student performance?\n\n\n\n\n. . .\n\nA policy-relevant tradeoff with a budget constraint\nWhat is the precise effect of class size on performance?\nIs it worth hiring new teachers and building more schools over?"
+  },
+  {
+    "objectID": "files/1.1-slides.html#example-2-discrimination-in-lending",
+    "href": "files/1.1-slides.html#example-2-discrimination-in-lending",
+    "title": "ECON 480 — Econometrics",
+    "section": "Example 2: Discrimination in Lending",
+    "text": "Example 2: Discrimination in Lending\n\n\n\n\n\nExample\n\n\n\nIs there racial discrimination in home mortgage lending?\n\n\n\n\n. . .\n\nBoston Fed: 28% of African-Americans are denied mortgages compared to only 9% of White Americans\nIs this due to factors such as credit history, income, or discrimination purely because of race?"
+  },
+  {
+    "objectID": "files/1.1-slides.html#example-3-public-health-and-public-finance",
+    "href": "files/1.1-slides.html#example-3-public-health-and-public-finance",
+    "title": "ECON 480 — Econometrics",
+    "section": "Example 3: Public Health and Public Finance",
+    "text": "Example 3: Public Health and Public Finance\n\n\n\n\n\nExample\n\n\n\nHow much do state cigarette taxes reduce smoking rates?\n\n\n\n\n. . .\n\nEcon 101: raise price \\(\\implies\\) lower quantity consumed\nWhat is the price elasticity of demand for smoking?\nHow much tax revenue will this generate?\nProbably: \\(Taxes \\rightarrow Smokers\\)\nMaybe?: \\(Taxes \\leftarrow Smokers\\)"
+  },
+  {
+    "objectID": "files/1.1-slides.html#real-talk-the-math",
+    "href": "files/1.1-slides.html#real-talk-the-math",
+    "title": "ECON 480 — Econometrics",
+    "section": "Real Talk: The Math",
+    "text": "Real Talk: The Math"
+  },
+  {
+    "objectID": "files/1.1-slides.html#real-talk-the-math-1",
+    "href": "files/1.1-slides.html#real-talk-the-math-1",
+    "title": "ECON 480 — Econometrics",
+    "section": "Real Talk: The Math",
+    "text": "Real Talk: The Math"
+  },
+  {
+    "objectID": "files/1.1-slides.html#real-talk-the-math-2",
+    "href": "files/1.1-slides.html#real-talk-the-math-2",
+    "title": "ECON 480 — Econometrics",
+    "section": "Real Talk: The Math",
+    "text": "Real Talk: The Math"
+  },
+  {
+    "objectID": "files/1.1-slides.html#real-talk-difficulty",
+    "href": "files/1.1-slides.html#real-talk-difficulty",
+    "title": "ECON 480 — Econometrics",
+    "section": "Real Talk: Difficulty",
+    "text": "Real Talk: Difficulty\n\n\n\nThis will be one of the hardest courses you take at Hood\nThere will be moments where you have no idea WTF is going on (this is normal)\nYes, you can still get an A"
+  },
+  {
+    "objectID": "files/1.1-slides.html#this-class-is",
+    "href": "files/1.1-slides.html#this-class-is",
+    "title": "ECON 480 — Econometrics",
+    "section": "This Class Is",
+    "text": "This Class Is\n\n\n\nEconomics: take your preexisting intuition and models for causal inference\nStatistics: add regression and statistical inference\nComputer Programming: using R and R Studio for analyzing and presenting data ]"
+  },
+  {
+    "objectID": "files/1.1-slides.html#this-class-is-1",
+    "href": "files/1.1-slides.html#this-class-is-1",
+    "title": "ECON 480 — Econometrics",
+    "section": "This Class Is",
+    "text": "This Class Is\n\n\nOld School Statistics Courses\n\n\\(\\bar{x} = \\frac{1}{n} \\displaystyle\\sum^n_{i=1} x_i\\)\n\\(\\sigma_x = \\displaystyle \\sqrt{\\frac{1}{n} \\sum^n_{i=1} (x_i-\\bar{x})^2}\\)\n\\(r_{xy}= \\displaystyle \\frac{\\displaystyle\\sum^n_{i=1}(x_i-\\bar{x})(y_i-\\bar{y})}{\\sqrt{\\displaystyle\\sum^n_{i=1}(x_i-\\bar{x})^2\\sum^n_{i=1}(y_i-\\bar{y})^2}}\\)\nUse pre-cleaned “toy” data, if at all\n\n\nHip New “Data Science” Courses\n\nmean(x)\nsd(x)\ncor(x, y)\n\n\nImport, tidy, and manipulate raw data from scratch (like real life!)"
+  },
+  {
+    "objectID": "files/1.1-slides.html#prerequisites",
+    "href": "files/1.1-slides.html#prerequisites",
+    "title": "ECON 480 — Econometrics",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nOfficially (Courses):\n\nECON 205\nECON 206\nECON 305 or ECON 306\nMATH 112 or ECMG 212\n\n\n\n\nMath Skills:\n\nBasic algebra\nProbability-ish\nStatistics-ish\n\n\n\n\n\nComputer Science Skills:\n\nNone"
+  },
+  {
+    "objectID": "files/1.1-slides.html#what-youll-get-out-of-this-class",
+    "href": "files/1.1-slides.html#what-youll-get-out-of-this-class",
+    "title": "ECON 480 — Econometrics",
+    "section": "What You’ll Get Out of This Class",
+    "text": "What You’ll Get Out of This Class\n\n\nBy the end of this semester, you will:\n\nunderstand how to evaluate statistical and empirical claims;\nuse the fundamental models of causal inference and research design;\ngather, analyze, and communicate with real data in R."
+  },
+  {
+    "objectID": "files/1.1-slides.html#this-class-opens-doors",
+    "href": "files/1.1-slides.html#this-class-opens-doors",
+    "title": "ECON 480 — Econometrics",
+    "section": "This Class Opens Doors",
+    "text": "This Class Opens Doors"
+  },
+  {
+    "objectID": "files/1.1-slides.html#building-industry-demanded-data-science-skills",
+    "href": "files/1.1-slides.html#building-industry-demanded-data-science-skills",
+    "title": "ECON 480 — Econometrics",
+    "section": "Building Industry-Demanded Data Science Skills",
+    "text": "Building Industry-Demanded Data Science Skills\n\n\n\n\nData Scientist (n.): Person who is better at statistics than any software engineer and better at software engineering than any statistician.\n\n— Josh Wills (@josh_wills) May 3, 2012"
+  },
+  {
+    "objectID": "files/1.1-slides.html#building-industry-demanded-data-science-skills-1",
+    "href": "files/1.1-slides.html#building-industry-demanded-data-science-skills-1",
+    "title": "ECON 480 — Econometrics",
+    "section": "Building Industry-Demanded Data Science Skills",
+    "text": "Building Industry-Demanded Data Science Skills\n\n\n\nHarvard Business Review\n\n LinkedIn 2018 Emerging Jobs Report"
+  },
+  {
+    "objectID": "files/1.1-slides.html#r-can-be-used-for-data-science",
+    "href": "files/1.1-slides.html#r-can-be-used-for-data-science",
+    "title": "ECON 480 — Econometrics",
+    "section": "R Can Be Used for Data Science",
+    "text": "R Can Be Used for Data Science"
+  },
+  {
+    "objectID": "files/1.1-slides.html#but-remember",
+    "href": "files/1.1-slides.html#but-remember",
+    "title": "ECON 480 — Econometrics",
+    "section": "But Remember",
+    "text": "But Remember\n\nThis is an economics course, not a data science course\nOther software economists use (STATA, SASS, SPSS, Excel) is not on here!"
+  },
+  {
+    "objectID": "files/1.1-slides.html#two-uses-for-econometrics",
+    "href": "files/1.1-slides.html#two-uses-for-econometrics",
+    "title": "ECON 480 — Econometrics",
+    "section": "Two Uses For Econometrics",
+    "text": "Two Uses For Econometrics\n\n\n\\[\\color{orange}{Y}=\\color{teal}{f}(\\color{purple}{X})\\]\n\nCausal inference: how changes in \\(\\color{purple}{X}\\) cause changes in \\(\\color{orange}{Y}\\)\n\n\nCare more about accurately estimating \\(\\color{teal}{f}\\) than getting an accurate \\(\\color{orange}{\\hat{Y}}\\)\nMeasure the causal effect of \\(X \\mapsto Y\\) (e.g., \\(\\hat{\\beta_1})\\)\n\n\nPrediction: predict \\(\\color{orange}{\\hat{Y}}\\) using an estimated \\(\\color{teal}{f}\\)\n\n\nCare more about getting \\(\\color{orange}{\\hat{Y}}\\) as accurate as possible, \\(\\color{teal}{f}\\) is an unknown “black-box”\nForecasting: predict future values of \\(Y\\) (inflation, sales, GDP)\nClassification: predict the category of an outcome (success or failure, cat picture or not cat picture)\nWe care (in this class at least) only about the first"
+  },
+  {
+    "objectID": "files/1.1-slides.html#causal-inference-economists-comparative-advantage",
+    "href": "files/1.1-slides.html#causal-inference-economists-comparative-advantage",
+    "title": "ECON 480 — Econometrics",
+    "section": "Causal Inference — Economists’ Comparative Advantage",
+    "text": "Causal Inference — Economists’ Comparative Advantage\n\n\n\nMachine learning and artificial intelligence are “dumb”1\nWith the right models and research designs, we can say “X causes Y” and quantify it!\nEconomists are in a unique position to make causal claims that mere statistics cannot\n\n\n\n\n\nFor more, see my blog post, and Pearl & MacKenzie (2018), The Book of Why"
+  },
+  {
+    "objectID": "files/1.1-slides.html#causal-inference-economists-comparative-advantage-1",
+    "href": "files/1.1-slides.html#causal-inference-economists-comparative-advantage-1",
+    "title": "ECON 480 — Econometrics",
+    "section": "Causal Inference — Economists’ Comparative Advantage",
+    "text": "Causal Inference — Economists’ Comparative Advantage\n\n\n Harvard Business Review\n\n“[T]he field of economics has spent decades developing a toolkit aimed at investigating empirical relationships, focusing on techniques to help understand which correlations speak to a causal relationship and which do not. This comes up all the time — does Uber Express Pool grow the full Uber user base, or simply draw in users from other Uber products? Should eBay advertise on Google, or does this simply syphon off people who would have come through organic search anyway? Are African-American Airbnb users rejected on the basis of their race? These are just a few of the countless questions that tech companies are grappling with, investing heavily in understanding the extent of a causal relationship.”"
+  },
+  {
+    "objectID": "files/1.1-slides.html#building-good-workflow-habits",
+    "href": "files/1.1-slides.html#building-good-workflow-habits",
+    "title": "ECON 480 — Econometrics",
+    "section": "Building Good Workflow Habits",
+    "text": "Building Good Workflow Habits\n\n\n\nI will show you the tools to make your workflow:\n\nReproducible\nComputer- and Human-Readable (!)\nAutomated\nAll in one program"
+  },
+  {
+    "objectID": "files/1.1-slides.html#for-example",
+    "href": "files/1.1-slides.html#for-example",
+    "title": "ECON 480 — Econometrics",
+    "section": "For Example",
+    "text": "For Example\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\nlibrary(gapminder)\n\nggplot(data = gapminder, \n       aes(x = gdpPercap,\n           y = lifeExp,\n           color = continent))+\n  geom_point(alpha=0.3)+\n  geom_smooth(method = \"lm\")+\n    scale_x_log10(breaks=c(1000,10000, 100000),\n                  label=scales::dollar)+\n    labs(x = \"GDP/Capita\",\n         y = \"Life Expectancy (Years)\")+\n  facet_wrap(~continent)+\n  guides(color = F)+\n  theme_light()"
+  },
+  {
+    "objectID": "files/1.1-slides.html#assignments",
+    "href": "files/1.1-slides.html#assignments",
+    "title": "ECON 480 — Econometrics",
+    "section": "Assignments",
+    "text": "Assignments\n\n\n\nResearch project:\n\nCome up with a testable research question\nFind data\nAnalyze data\nPresent your results (in writing and verbally)\n\nHWs\nMidterm, Final exam\n\n\n\n\n\n\n \n  \n     \n    Assignment \n    Percent \n  \n \n\n  \n    1 \n    Research Project \n    30% \n  \n  \n    n \n    Homeworks (Average) \n    25% \n  \n  \n    1 \n    Midterm \n    20% \n  \n  \n    1 \n    Final \n    25%"
+  },
+  {
+    "objectID": "files/1.1-slides.html#logistics",
+    "href": "files/1.1-slides.html#logistics",
+    "title": "ECON 480 — Econometrics",
+    "section": "Logistics",
+    "text": "Logistics\n\n\n\nOffice hours: M/W 10:00-11:00 AM & by appt\n\nOffice: 110 Rosenstock\n\n Slack channel #c-306-metrics\nRecorded videos in Blackboard Panopto\nAttendance — Kahoot!s\nTeaching Assistant(s): TBD\n\ngrade HWs & hold office hours\n\nSee the resources page for tips for success and more helpful resources"
+  },
+  {
+    "objectID": "files/1.1-slides.html#your-textbooks",
+    "href": "files/1.1-slides.html#your-textbooks",
+    "title": "ECON 480 — Econometrics",
+    "section": "Your Textbooks",
+    "text": "Your Textbooks"
+  },
+  {
+    "objectID": "files/1.1-slides.html#and-i-am-here-to-help",
+    "href": "files/1.1-slides.html#and-i-am-here-to-help",
+    "title": "ECON 480 — Econometrics",
+    "section": "And I am Here To Help",
+    "text": "And I am Here To Help\n\nDon’t forget to prioritize your mental health\nCome talk to me! It’s not scary!"
+  },
+  {
+    "objectID": "files/1.1-slides.html#tips-for-success-in-this-course",
+    "href": "files/1.1-slides.html#tips-for-success-in-this-course",
+    "title": "ECON 480 — Econometrics",
+    "section": "Tips for Success in This Course",
+    "text": "Tips for Success in This Course\n\n\n\nTake notes. On paper. Really.\nWork together on assignments and study together.\nAsk questions, come to office hours. Don’t struggle in silence, you are not alone!\nThe biggest skill you are developing is learning how to learn1\nSee the reference page for more\n\n\n\n\n\nA properly worded Google search will become your secret weapon. Believe me. It’s still mine"
+  },
+  {
+    "objectID": "files/1.1-slides.html#course-website",
+    "href": "files/1.1-slides.html#course-website",
+    "title": "ECON 480 — Econometrics",
+    "section": "Course Website",
+    "text": "Course Website\n metricsF21.classes.ryansafner.com"
+  },
+  {
+    "objectID": "files/1.1-slides.html#roadmap-for-the-semester",
+    "href": "files/1.1-slides.html#roadmap-for-the-semester",
+    "title": "ECON 480 — Econometrics",
+    "section": "Roadmap for the Semester",
+    "text": "Roadmap for the Semester\n\n\n\n\nECON 480 — Econometrics"
+  },
+  {
+    "objectID": "files/1.2-slides.html#section",
+    "href": "files/1.2-slides.html#section",
+    "title": "ECON 480 — Econometrics",
+    "section": "",
+    "text": "1.2 — Meet R\nECON 480 • Econometrics • Fall 2022\nDr. Ryan Safner  Associate Professor of Economics\nsafner@hood.edu  ryansafner/metricsF22  metricsF22.classes.ryansafner.com"
+  },
+  {
+    "objectID": "files/1.2-slides.html#data-science",
+    "href": "files/1.2-slides.html#data-science",
+    "title": "ECON 480 — Econometrics",
+    "section": "Data Science",
+    "text": "Data Science\n\n.hi[You go into data analysis with the tools you know, not the tools you need]\nThe next 2-3 weeks are all about giving you the tools you need\n\nAdmittedly, a bit before you know what you need them for\n\nWe will extend them as we learn specific models"
+  },
+  {
+    "objectID": "files/1.2-slides.html#why-not-excel",
+    "href": "files/1.2-slides.html#why-not-excel",
+    "title": "ECON 480 — Econometrics",
+    "section": "Why Not Excel?",
+    "text": "Why Not Excel?"
+  },
+  {
+    "objectID": "files/1.2-slides.html#why-not-excel-1",
+    "href": "files/1.2-slides.html#why-not-excel-1",
+    "title": "ECON 480 — Econometrics",
+    "section": "Why Not Excel?",
+    "text": "Why Not Excel?"
+  },
+  {
+    "objectID": "files/1.2-slides.html#r",
+    "href": "files/1.2-slides.html#r",
+    "title": "ECON 480 — Econometrics",
+    "section": "R",
+    "text": "R\n\n\n\nFree and open source\nA very large community\n\nWritten by statisticians for statistics\nMost packages are written for R first\n\nCan handle virtually any data format\nMakes replication easy\nCan integrate into documents (with R markdown)\nR is a language so it can do everything\n\nA good stepping stone to learning other languages like Python"
+  },
+  {
+    "objectID": "files/1.2-slides.html#excel-or-stata-cant-do-this",
+    "href": "files/1.2-slides.html#excel-or-stata-cant-do-this",
+    "title": "ECON 480 — Econometrics",
+    "section": "Excel (or Stata) Can’t Do This",
+    "text": "Excel (or Stata) Can’t Do This\n\nCodeOutput\n\n\n\nggplot(data = gapminder, \n       aes(x = gdpPercap,\n           y = lifeExp,\n           color = continent))+\n  geom_point(alpha=0.3)+\n  geom_smooth(method = \"lm\")+\n    scale_x_log10(breaks=c(1000,10000, 100000),\n                  label=scales::dollar)+\n    labs(x = \"GDP/Capita\",\n         y = \"Life Expectancy (Years)\")+\n  facet_wrap(~continent)+\n  guides(color = F)+\n  theme_light()"
+  },
+  {
+    "objectID": "files/1.2-slides.html#or-this",
+    "href": "files/1.2-slides.html#or-this",
+    "title": "ECON 480 — Econometrics",
+    "section": "Or This",
+    "text": "Or This\n\nInputOutput\n\n\nThe average GDP per capita is ` r dollar(mean(gapminder$gdpPercap)) ` with a standard deviation of ` r dollar(sd(gapminder$gdpPercap)) `.\n\n\nThe average GDP per capita is $7,215.33 with a standard deviation of $9,857.45."
+  },
+  {
+    "objectID": "files/1.2-slides.html#or-this-1",
+    "href": "files/1.2-slides.html#or-this-1",
+    "title": "ECON 480 — Econometrics",
+    "section": "Or This",
+    "text": "Or This\n\nlibrary(leaflet)\nleaflet() %>%\n  addTiles() %>%\n  addMarkers(lng = -77.420, lat = 39.421,\n             popup = \"Rosenstock Hall, Hood College\")"
+  },
+  {
+    "objectID": "files/1.2-slides.html#r-and-r-studio",
+    "href": "files/1.2-slides.html#r-and-r-studio",
+    "title": "ECON 480 — Econometrics",
+    "section": "R and R Studio",
+    "text": "R and R Studio\n\n\n\n.hiR is the programming language that executes commands\nR Studio is an integrated development environment (IDE) that makes your coding life a lot easier\n\nWrite code in scripts\nExecute individual commands or entire scripts\nAuto-complete, highlight syntax\nView data, objects, and plots\nGet help and documentation on commands and functions\nIntegrate code into documents with R Markdown"
+  },
+  {
+    "objectID": "files/1.2-slides.html#r-and-r-studio-1",
+    "href": "files/1.2-slides.html#r-and-r-studio-1",
+    "title": "ECON 480 — Econometrics",
+    "section": "R and R Studio",
+    "text": "R and R Studio\n\n\n\nECON 480 — Econometrics"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "ECON 480 — Econometrics",
     "section": "",
-    "text": "Instructor\n\n   Dr. Ryan Safner\n   114 Rosenstock\n   safner@hood.edu\n   ryansafner\n\n\n\nCourse details\n\n   TuTh\n   Aug 22—Dec 13, 2022\n   11:30 AM—12:55 PM\n   Rosenstock Trading Room\n   Slack\n\n\n\nContacting me\nEmail."
+    "text": "Instructor\n\n   Dr. Ryan Safner\n   114 Rosenstock\n   safner@hood.edu\n   ryansafner\n\n\n\nCourse details\n\n   MW\n   Aug 22—Dec 13, 2022\n   11:30 AM—12:55 PM\n   Rosenstock Trading Room\n   Slack\n\n\n\nContacting me\nEmail."
   },
   {
     "objectID": "news.html",
@@ -100,7 +506,7 @@
   {
     "objectID": "resources/R-packages.html",
     "href": "resources/R-packages.html",
-    "title": "R Packages We Use",
+    "title": "R Packages Used in this Course",
     "section": "",
     "text": "You can install all of these packages at once with the following command:\n\ninstall.packages(c(\"tidyverse\", \"ggrepel\", \"broom\", \"car\", \"estimatr\", \"lmtest\",\n                   \"huxtable\", \"infer\", \"dagitty\", \"ggdag\", \"modelsummary\", \"fixest\"))\n\n† Indicates package is part of the tidyverse\n\n\n\nName\nType\nDescription/Reason(s) for Use\nClasses Used\n\n\n\n\nggplot2†\nPlotting\nFor nice plots\n[1.3]\n\n\ngganimate\nPlotting\nFor animating plots\n[1.3]\n\n\nhaven†\nData Wrangling\nFor importing nonstandard data files\n[1.4]\n\n\ndplyr†\nData Wrangling\nFor manipulating data (part of tidyverse)\n[1.4]\n\n\nreadr†\nData Wrangling\nFor importing most data files\n[1.4]\n\n\ntidyr†\nData Wrangling\nFor reshaping data (wide and long)\n[1.4]\n\n\nmagrittr†\nData Wrangling\nFor the pipe\n[1.4]\n\n\ntibble†\nData Wrangling\nFor a friendlier data.frame\n[1.4]\n\n\nggrepel\nPlotting\nFor annotating text that doesn’t cover observations\n[1.4]\n\n\nbroom\nModels\nFor tidying regression output\n[2.3]\n\n\ncar\nModels\nFor testing for outliers\n[2.5]\n\n\nestimatr\nModels\nFor calculating heteroskedasticity-robust standard errors\n[2.5]\n\n\nlmtest\nModels\nFor testing for heteroskedasticity\n[2.5]\n\n\nhuxtable\nOutput\nFor making nice regression tables\n[2.5]\n\n\ninfer\nModels\nFor simulation and statistical inference\n[2.6]\n\n\ndagitty\nModels\nFor working with DAGs in R\n[3.2]\n\n\nggdag\nPlotting\nFor plotting DAGs in ggplot\n[3.2]\n\n\nmodelsummary\nOutput\nFor making nice regression tables\n[3.5]\n\n\nfixest\nModels\nFor working with panel data\n[4.1]\n\n\n\n\n\n\n\nFootnotes\n\n\nNote, many of these packages have multiple uses beyond our purposes!↩︎"
   },
@@ -121,14 +527,14 @@
   {
     "objectID": "resources/data.html",
     "href": "resources/data.html",
-    "title": "Data Resources",
+    "title": "Data Sources and Suggestions",
     "section": "",
     "text": "A near-comprehensive list of all existing data sets built-in to R or R packages1\n\n\n\n\n\nGoogle Database Search\nKaggle\nHarvard Law School: Find a Database\n\n\n\n\nBelow are packages written by and for R users that link up with the API of key data sets for easy use in R. Each link goes to the documentation and description of each package.\nDon’t forget to install3 first and then load it with library().\n\nowidR for importing data from Our World in Data\nwbstats provides access to all the data available on the World Bank API, which is basically everything on their website. The World Bank keeps track of many country-level indicators over time.\ntidycensus gives you access to data from the US Census and the American Community Survey. These are the largest high-quality data sets you’ll find of cross-sectional data on individual people in the US. You’ll need to get a (free) API key from the website (or ask me for mine).\nfredr gets data from the Federal Reserve’s Economic Database (FRED). You’ll need to get a (free) API key from the website (or ask me for mine).\ntidyquant gets data from a number of financial sources (including fredr).\nicpsrdata downloads data from the Inter-university Consortium for Political and Social Research (you’ll need an account and a keycode). ICPSR is a database of datasets from published social science papers for the purposes of reproducibility.\nNHANES uses data from the US National Health and Nutrition Examination Survey.\nipumsr has census data from all around the world, in addition to the US census, American Community Survey, and Current Population Survey. If you’re doing international micro work, look at IPUMS. It’s also the easiest way to get the Current Population Survey (CPS), which is very popular for labor economics. Unfortunately ipumsr won’t get the data from within R; you’ll have to make your own data extract on the IPUMS website and download it. But ipumsr will read that file into R and preserve things like names and labels.\neducation-data-package-r4 is the Urban Institute’s data data on educational institutions in the US, including colleges (in IPEDS) and K-12 schools (in CCD). This package also has data on county-level poverty rates from SAIPE.\npsidR is the Panel Study of Income Dynamics. This study doesn’t just follow people over their lifetimes, it follows their children too, generationally! A great source for studying how things follow families through generations.\natus is th e American Time Use Survey, which is a large cross-sectional data set with information on how people spend their time.\nRilostat uses data from the International Labor Organization. This contains lots of different statistics on labor, like employment, wage gaps, etc., generally aggregated to the national level and changing over time.\ndemocracyData5 is a great “package for accessing and manipulating existing measures of democracy.”\npoliticaldata provides useful functions for obtaining commonly-used data in political analysis and political science, including from sources such as the Comparative Agendas Project (which provides data on politics and policy from 20+ countries), the MIT Election and Data Science Lab, and FiveThirtyEight.\n\nBelow is a list of good data sources depending on the types of topics you might be interested in writing on:6"
   },
   {
     "objectID": "resources/data.html#key-data-sources",
     "href": "resources/data.html#key-data-sources",
-    "title": "Data Resources",
+    "title": "Data Sources and Suggestions",
     "section": "Key Data Sources",
     "text": "Key Data Sources\n\nCoronavirus Data: John Hopkins CSSE Covid-19 data (definitive), Our World in Data, New York Times Covid data, covdata r package, Tidy Covid data\nOur World in Data\nAmerican Economic Association Data\nIPUMS (Integrated Public Use Microdata Series)\nEconData from UMD\nICPSR (Inter-university Consortium for Political and Social Research)\nNBER’s Public Use Data Archive\nHistorical Macroeconomic Statistics\nUMD’s Interindustry Forecasting\nDB-nomics\nInternet UPC Database\nInternational Trade Data\nOurWorldinData.org (download datasets)\nSciencesPo International Trade Gravity Dataset\nCenter for International Data\nAtlas of Economic Complexity\nU.N. World Development Reports\nObservatory of Economic Complexity\nReddit /r/datasets\nGoogle Cloud Public Datasets\n\nBy Topic\n\nQuality of Government Data has an extremely wide range of data sources pertaining to measures of institutions. The data itself can be found here.\nNational and State Accounts Data: Bureau of Economic Analysis\nLabor Market and Price Data: Bureau of Labor Statistics\nMacroeconomic Data: Federal Reserve Economic Data (FRED), World Development Indicators (World Bank), Penn World Table\nInternational Data: NationMaster.com, Doing Business, CIESIN\nCensus Data: U.S. Census Bureau\nSports Data: Spotrac, Rodney Fort’s Sports Data\nData Clearing House: Stat USA, Fedstats, Statistical Abstract of the United States, Resources for Economists\nPolitical and Social Data: ICPSR, Federal Election Commission, Poole and Rosenthal Roll Call Data (Voting ideology), Archigos Data on Political Leaders, Library of Congress: Thomas (Legislation), Iowa Electronic Markets (Prediction Markets)\nWar and Violence Data: Correlates of War\nState Level Data: Correlates of State Policy\nHealth Data: Centers for Disease Control, CDC Wonder System\nCrime Data: Bureau of Justice Statistics\nEducation Data: National Center for Education Statistics\nEnvironmental Data: EPA\nReligion Data: American Religion Data Archiva (ARDA)\nFinancial Data: Financial Data Finder{Financial Data Finder}\nPhilanthropy Data: The Urban Institute"
   },
@@ -340,14 +746,14 @@
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
-    "text": "Content materials contains suggested readings, more details about assignments, math appendices, and other helpful resources. I suggest you view these before each class.\n\n\n Slides are “Xaringan” presentations in html that can be opened in any browser (You can find a downloadable PDF in each respective content page)\n\n\n R materials contain extra tutorials, videos, practice exercises for using R\n\n\n Assignments are listed with due dates\n\n\nPlease note that the lesson numbers, topics, and titles (e.g. 1.1) are my design, and do not match up with the textbook!\nRelevant materials, if applicable will be posted before class meets and become colored links.\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Analysis in R\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\n\n\nPreliminary Survey\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Aug 22\n\n\n1.1 — Introduction to Econometrics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Aug 24\n\n\n1.2 — Meet R\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Aug 29\n\n\n1.3 — Data Visualization\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Aug 31\n\n\n1.4 — Data Wrangling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 07\n\n\n1.5 — Optimize Workflow\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 14\n\n\nProblem Set 1 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLinear Regression\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nMon Sep 19\n\n\n2.1 — Data and Descriptive Statistics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 21\n\n\n2.2 — Random Variables and Distributions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 26\n\n\nProblem Set 2 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 26\n\n\n2.3 — OLS Linear Regression"
+    "text": "Content materials contains suggested readings, more details about assignments, math appendices, and other helpful resources. I suggest you view these before each class.\n\n Slides are “Quarto” html presentations that can be opened in any browser (You can find a downloadable PDF on content pages)\n\n\n R materials contain extra tutorials, videos, practice exercises for using R\n\n\n Assignments are listed with due dates\n\n\nPlease note that the lesson numbers, topics, and titles (e.g. 1.1) are my design, and do not match up with the textbook!\nRelevant materials, if applicable will be posted before class meets and become colored links.\n\n\n\n\n\n\n\n\n\n\n\n\n\nI. Data Analysis in R\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\n\n\nPreliminary Survey\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Aug 22\n\n\n1.1 — Introduction to Econometrics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Aug 24\n\n\n1.2 — Meet R\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Aug 29\n\n\n1.3 — Data Visualization\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Aug 31\n\n\n1.4 — Data Wrangling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 07\n\n\n1.5 — Optimize Workflow\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 1 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nII. Linear Regression\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nMon Sep 12\n\n\n2.1 — Data and Descriptive Statistics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 14\n\n\n2.2 — Random Variables and Distributions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 2 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 19\n\n\n2.3 — OLS Linear Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 21\n\n\n2.4 — OLS: Goodness of Fit and Bias\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 26\n\n\n2.5 — OLS: Precision and Diagnostics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 28\n\n\n2.6 — Statistical Inference\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 03\n\n\n2.7 — Inference for Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 3 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIII. Causal Inference\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nWed Oct 05\n\n\n3.1 — The Fundamental Problem of Causal Inference & Potential Outcomes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 10\n\n\n3.2 — Causal Inference & DAGs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Oct 12\n\n\n3.3 — Omitted Variable Bias\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 17\n\n\n3.4 — Multivariate OLS Estimators: Bias, Precision, and Fit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 4 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Oct 19\n\n\n3.5 — Writing an Empirical Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 24\n\n\n3.6 — Regression with Categorical Data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Oct 26\n\n\n3.7 — Regression with Interaction Effects\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 31\n\n\n3.8 — Polynomial Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 02\n\n\n3.9 — Logarithmic Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 5 Due\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIV. Panel Data and Advanced Models\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nMon Nov 07\n\n\n4.1 — Panel Data and Fixed Effects Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 09\n\n\n4.2 — Difference-in-Difference Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Nov 14\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 16\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Nov 21\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 23\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Nov 28\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 30\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Dec 05\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Dec 07\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Dec 12\n\n\nNA"
   },
   {
     "objectID": "syllabus.html",
     "href": "syllabus.html",
     "title": "Syllabus",
     "section": "",
-    "text": "Dr. Ryan Safner\n   114 Rosenstock\n   safner@hood.edu\n   ryansafner\n   Schedule an appointment\n\n\n\n\n\n   TuTh\n   Aug 22—Dec 13, 2022\n   11:30 AM—12:55 PM\n   Rosenstock Trading Room\n   Slack\n\n\n\n\nEmail.\nEconometrics is the application of statistical tools to quantify and measure economic relationships in the real world. It uses real data to test economic hypotheses, quantitatively estimate causal relationships between economic variables, and to make forecasts of future events. The primary tool that economists use for empirical analysis is ordinary least squares (OLS) linear regression, so the majority of this course will focus on understanding, applying, and extending OLS regressions.\nI assume you have some working knowledge of economics at the intermediate level and some basic statistical tools.The formal prerequisites for this course are ECON 205 and ECON 206; ECMG 212 or MATH 112; and ECON 305 or ECON 306. We will do some basic review of some necessary statistics and probability at the beginning until everyone is comfortable, before jumping right into regressions."
+    "text": "Dr. Ryan Safner\n   114 Rosenstock\n   safner@hood.edu\n   ryansafner\n   Schedule an appointment\n\n\n\n\n\n   MW\n   Aug 22—Dec 13, 2022\n   11:30 AM—12:55 PM\n   Rosenstock Trading Room\n   Slack\n\n\n\n\nEmail.\nEconometrics is the application of statistical tools to quantify and measure economic relationships in the real world. It uses real data to test economic hypotheses, quantitatively estimate causal relationships between economic variables, and to make forecasts of future events. The primary tool that economists use for empirical analysis is ordinary least squares (OLS) linear regression, so the majority of this course will focus on understanding, applying, and extending OLS regressions.\nI assume you have some working knowledge of economics at the intermediate level and some basic statistical tools.The formal prerequisites for this course are ECON 205 and ECON 206; ECMG 212 or MATH 112; and ECON 305 or ECON 306. We will do some basic review of some necessary statistics and probability at the beginning until everyone is comfortable, before jumping right into regressions."
   },
   {
     "objectID": "syllabus.html#books",

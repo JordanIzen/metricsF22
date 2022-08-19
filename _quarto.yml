@@ -3,6 +3,7 @@ project:
   render:
     - "*.qmd"
     - "!slides/" # don't knit slides when website is updated
+    - "!files/"
   resources:
     - "files/"
 
@@ -31,7 +32,6 @@ website:
         href: "https://hoodcollegeeconomics.slack.com"
       - icon: cloud-fill
         href: "rstudio.cloud"
-      - about.qmd
   sidebar:
     - title: "Content"
       style: "docked"
@@ -53,10 +53,12 @@ website:
           contents:
             - assignments/index.qmd
         - section: "Problem Sets"
-        - section: "Exams"
-        - section: "Research Paper"
           contents:
-            - assignments/paper.qmd
+            - text: "Preliminary Survey"
+              href: "assignments/00-preliminary-survey.qmd"
+        - section: "Exams"
+        - text: "Research Paper"
+          href: assignments/paper.qmd
 
     - title: "Resources"
       style: "docked"

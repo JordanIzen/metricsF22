@@ -7,14 +7,15 @@ editor: visual
 source(here::here("files", "slides", "slide-links.R"))
 ```
 
-:::{.callout-note}
-#
+::: {.callout-note appearance=minimal}
+# Meeting Dates
 *Tuesday, August 24, 2021*
 :::
 
-:::{.callout-warning}
+::: .{callout-warning}
+# Upcoming Assignment
 
-Please complete the [preliminary survey](/assignment/00-preliminary-survey) by Sunday August 29.
+Please complete the [preliminary survey](/assignment/00-preliminary-survey) by next class.
 :::
 
 :::{.callout-tip}
@@ -53,6 +54,6 @@ slide_links("1.1-slides")
 ```
 ## <i class="fas fa-laptop-code"></i> Assignments
 
-### Preliminary Statistics Survey Due Sunday August 29
+### Preliminary Statistics Survey Due By Next Class
 
-Please take the [preliminary survey](/assignment/00-preliminary-survey) on your statistics and software background by 11:59 PM Sunday. This will help us all have a productive semester together.
+Please take the [preliminary survey](/assignment/00-preliminary-survey) on your statistics and software background by nexrt class. This will help us all have a productive semester together.

@@ -1,8 +1,9 @@
 ---
 title: "Syllabus"
-editor: visual
 sidebar: false
 page-layout: full
+execute:
+  freeze: auto
 ---
 
 ```{r load-libraries, message=FALSE, warning=FALSE, include=FALSE}

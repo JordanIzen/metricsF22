@@ -1,6 +1,7 @@
 ---
 title: "Reporting Regressions"
-editor: visual
+execute:
+  freeze: auto
 ---
 
 Running a regression (or multiple regressions) produces a lot of information --- estimated OLS coefficients, hypothesis tests, goodness of fit measures, F-tests, the distribution of residuals, etc. The standard Base R output of the `lm()` object using `summary()` looks like this:

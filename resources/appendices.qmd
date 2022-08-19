@@ -1,14 +1,5 @@
 ---
-date: "2019-05-05T00:00:00+01:00"
-draft: false
-linktitle: Math & R Appendices
-menu:
-  resources:
-    parent: Resources
-title: List of Math & R Appendices
-toc: true
-type: docs
-weight: 2
+title: "List of Math & R Appendices"
 ---
 
 # List of Math and R Appendices
