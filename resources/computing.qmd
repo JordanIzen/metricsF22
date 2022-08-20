@@ -1,14 +1,7 @@
 ---
-date: "2019-05-05T00:00:00+01:00"
-draft: false
-linktitle: Computing
-menu:
-  resources:
-    parent: R Resources
 title: "A Quick Guide to Using Your Computer"
-toc: true
-type: docs
-weight: 3
+execute:
+  freeze: auto
 ---
 
 ```{r}
@@ -38,7 +31,6 @@ Unfortunately, when computing and coding, computers need precise instructions ab
 ```
 
 #### Windows
-
 
 ### Downloading, Saving, and Opening Files
 

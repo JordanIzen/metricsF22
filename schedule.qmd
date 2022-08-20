@@ -11,14 +11,10 @@ This page contains all of the following resources for each class meeting:
 
 <ul class="icon-list">
 
-{{< fas fa-info-circle >}} Content materials contains suggested readings, more details about assignments, math appendices, and other helpful resources. I suggest you view these before each class.
-
+<li><i class="fas fa-chalkboard-teacher"></i> Content materials contains suggested readings, more details about assignments, math appendices, and other helpful resources. I suggest you view these before each class.
 <li><i class="fas fa-chalkboard-teacher"></i> **Slides** are "[Quarto](https://quarto.org)" html presentations that can be opened in any browser (You can find a downloadable PDF on **content** pages)</li>
-
 <li><i class="fas fa-registered"></i> **R** materials contain extra tutorials, videos, practice exercises for using `R`</li>
-
 <li><i class="fas fa-laptop-code"></i> **Assignments** are listed with due dates</li>
-
 </ul>
 
 Please note that the lesson numbers, topics, and titles (e.g. 1.1) are *my* design, and do not match up with the textbook!
@@ -98,6 +94,7 @@ show_table <- function(unit_id) {
 purrr::walk(seq(1, nrow(nested_sched)), ~show_table(.x))
 ```
 
-<!-- Page apparently loads fa icons if I include one.. -->
+<!-- Page apparently loads fa icons if I include one.. 
 
 {{< fa battery-half size=2xl >}}
+-->

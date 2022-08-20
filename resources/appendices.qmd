@@ -1,5 +1,7 @@
 ---
 title: "List of Math & R Appendices"
+execute:
+  freeze: auto
 ---
 
 # List of Math and R Appendices

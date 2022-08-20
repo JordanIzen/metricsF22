@@ -14,33 +14,27 @@ library(kableExtra)
 
 ::: {.grid .course-details}
 
-::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
+::: {.g-col-6}
 ### Instructor
 
 -   {{< fa user >}}   [{{< var instructor.name >}}](%7B%7B%3C%20var%20instructor.url%20%3E%7D%7D)
 -   {{< fa university >}}   {{< var instructor.office >}}
+-   {{< fa clock >}}   {{< var instructor.officehours >}}
 -   {{< fa envelope >}}   <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
--   {{< fa brands twitter >}}   [{{< var instructor.twitter >}}](https://www.twitter.com/%7B%7B%3C%20var%20instructor.twitter%20%3E%7D%7D)
--   {{< fa calendar-check >}}   [Schedule an appointment](%7B%7B%3C%20var%20instructor.appointment_url%20%3E%7D%7D)
 :::
 
-::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
+::: {.g-col-6}
 ### Course details
 
--   {{< fa calendar >}}   {{< var course.days >}}
--   {{< fa calendar-alt >}}   {{< var course.dates >}}
 -   {{< fa clock >}}   {{< var course.time >}}
 -   {{< fa location-dot >}}   {{< var course.location >}}
+-   {{< fa calendar-alt >}}   {{< var course.dates >}}
 -   {{< fa brands slack >}}   [Slack](%7B%7B%3C%20var%20course.slack%20%3E%7D%7D)
 :::
 
-::: {.g-col-12 .g-col-md-4 .contact-policy}
-### Contacting me
-
-Email.
 :::
 
-:::
+<p style="text-align:center"><a target="_blank" href="/files/syllabus/syllabus-pdf.pdf"><span class="btn btn-primary btn-lg"><i class="fas fa-file-pdf"></i> Download PDF</a></span></p>
 
 > "There are three kinds of lies: lies, damned lies, and statistics." <br> [--- Benjamin Disraeli]{style="float:right"}
 

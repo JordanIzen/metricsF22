@@ -26,8 +26,6 @@ website:
         href: assignments/index.qmd
       - text: Resources
         href: resources/index.qmd
-      - text: News
-        href: news/index.qmd
       - icon: slack
         href: "https://hoodcollegeeconomics.slack.com"
       - icon: cloud-fill

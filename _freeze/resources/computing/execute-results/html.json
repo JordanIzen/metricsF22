@@ -1,0 +1,14 @@
+{
+  "hash": "839e79c696d25c8e99b1ffa0a105708e",
+  "result": {
+    "markdown": "---\ntitle: \"A Quick Guide to Using Your Computer\"\nexecute:\n  freeze: auto\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\n```\n\n::: {.cell-output .cell-output-stderr}\n```\n── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\n✔ ggplot2 3.3.6     ✔ purrr   0.3.4\n✔ tibble  3.1.8     ✔ dplyr   1.0.9\n✔ tidyr   1.2.0     ✔ stringr 1.4.0\n✔ readr   2.1.2     ✔ forcats 0.5.1\n```\n:::\n\n::: {.cell-output .cell-output-stderr}\n```\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\n```\n:::\n:::\n\n\n### File Systems\n\nBack in my day, search was not very good, and so we had to know where all files were located on our computer. We had folders inside of folders, creating a file hierarchy. Today, search is so good that many in gen Z don't know where files are stored on their computer, or even \"[what a file is](https://cseducators.stackexchange.com/questions/5551/what-is-a-file?rq=1)!\" Simply type the name of the document you are looking for into search (whether on Google, Siri, Cortana, Finder, etc) and it magically appears from the depths of...somewhere...on your computer or even in the cloud.\n\nUnfortunately, when computing and coding, computers need precise instructions about what files to work with, meaning you explicitly need to tell them **where on your computer** you wish to save a file to, or open an existing file. This means you need to specify the `path` through the hierarchy of folders on your computer.\n\n#### Mac\n\n\n::: {.cell}\n\n```{.r .cell-code}\n| Macintosh HD\n  |- Users\n    |- ryansafner\n      |- Applications\n      |- Desktop\n      |- Documents\n      |- Downloads\n      |- Dropbox\n      |- Movies\n      |- Music\n      |- Pictures\n```\n:::\n\n\n#### Windows\n\n### Downloading, Saving, and Opening Files\n\n### Command Line\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

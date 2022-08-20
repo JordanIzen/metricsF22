@@ -1,11 +1,11 @@
 ---
 title: "Econometrics"
-subtitle: "ECON 480 • Fall 2022 • Hood College"
-details:  "Learn how to analyze data using the canonical models of econometics with R."
+subtitle: "<strong>ECON 480 • Fall 2022 • Hood College</strong>"
+details:  "<strong>Learn how to analyze data using the canonical models of econometics with R.</strong> <br> <br> By the end of this course, you will: <ol> <li>understand how to evaluate statistical and empirical claims;</li> <li> use the fundamental models of causal inference and research design;</li> <li>gather, analyze, and communicate with real data in R.</li> </ol>"
 toc: false
 sidebar: false
 page-layout: full
-course-logo: /files/images/metrics_hex.png
+course-logo: /images/metrics_hex.png
 format:
   html:
     template-partials:
@@ -17,35 +17,29 @@ format:
 
 ::: {.grid .course-details}
 
-::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
+::: {.g-col-6}
 ### Instructor
 
 - {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
-- {{< fa university >}} &nbsp; {{< var instructor.office >}}
+-   {{< fa university >}} &nbsp; {{< var instructor.office >}}
+-   {{< fa clock >}} &nbsp; {{< var instructor.officehours >}}
 - {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
-- {{< fa brands twitter >}} &nbsp; [{{< var instructor.twitter >}}](https://www.twitter.com/{{< var instructor.twitter >}})
 :::
 
-::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
+::: {.g-col-6}
 ### Course details
 
-- {{< fa calendar >}} &nbsp; {{< var course.days >}}
-- {{< fa calendar-alt >}} &nbsp; {{< var course.dates >}}
 - {{< fa clock >}} &nbsp; {{< var course.time >}}
 - {{< fa location-dot >}} &nbsp; {{< var course.location >}}
-- {{< fa brands slack >}} &nbsp; [Slack]({{< var course.slack >}})
-:::
+- {{< fa calendar-alt >}} &nbsp; {{< var course.dates >}}
+-   {{< fa brands slack >}} &nbsp; [Slack](%7B%7B%3C%20var%20course.slack%20%3E%7D%7D)
 
-::: {.g-col-12 .g-col-md-4 .contact-policy}
-### Contacting me
-
-Email.
 :::
 
 :::
 
 ```{r echo=FALSE}
-knitr::include_graphics(here::here("files", "images", "metrics_flowchart_blankbg.png"), error = FALSE)
+knitr::include_graphics(here::here("images", "metrics_flowchart_blankbg.png"), error = FALSE)
 ```
 
 :::

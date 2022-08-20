@@ -4,7 +4,7 @@ editor: visual
 ---
 
 ```{r, echo = F}
-source(here::here("files", "slides", "slide-links.R"))
+source(here::here("slides", "slide-links.R"))
 ```
 
 ::: {.callout-note appearance=minimal}
@@ -16,10 +16,6 @@ source(here::here("files", "slides", "slide-links.R"))
 # Upcoming Assignment
 
 Please complete the [preliminary survey](/assignment/00-preliminary-survey) by next class.
-:::
-
-:::{.callout-tip}
-A tip
 :::
 
 ## <i class="fas fa-info-circle fa-lg"></i> Overview
