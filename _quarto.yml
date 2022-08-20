@@ -6,6 +6,7 @@ project:
     - "!files/"
   resources:
     - "files/"
+    - "slides/"
 
 website:
   title: "ECON 480 — Econometrics"
