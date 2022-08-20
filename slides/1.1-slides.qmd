@@ -31,7 +31,7 @@ library(patchwork)
 library(fontawesome)
 ```
 
-## About Me {.smaller}
+## About Me. {.smaller}
 
 :::: {.columns}
 

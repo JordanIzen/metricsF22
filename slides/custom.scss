@@ -14,11 +14,11 @@ $code-block-font-size: 0.9em;
 
 /*-- scss:rules --*/
 
-/* Set background for all headers 1 # slides 
+/* Set background for all headers 1 # slides */
 .slide-background:first-child {
   background-color: #314f4f;
-  /*background-image: url(image.jpg);
-} */
+  /*background-image: url(image.jpg); */
+}
 
 
 .reveal .centered {
@@ -53,9 +53,7 @@ $code-block-font-size: 0.9em;
   font-weight: bold;
   position: absolute; 
   left: 20px; 
-  top: 300px;
-  color: #ffffff;
-  
+  top: 300px
 }
 
 .reveal .custom-subtitle {
