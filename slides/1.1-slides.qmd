@@ -29,17 +29,20 @@ library(tidyverse)
 library(kableExtra)
 library(patchwork)
 library(fontawesome)
+
+update_geom_defaults("label", list(family = "Fira Sans Condensed"))
+update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 ```
 
-## About Me. {.smaller}
+## About Me {.smaller}
 
 :::: {.columns}
 
-::: {.column width="50%"}
-![](images/meinfrontofsmith.jpg){width="400"}
+::: {.column width="30%"}
+![](images/meinfrontofsmith.jpg){width="600"}
 :::
 
-::: {.column width="50%"}
+::: {.column width="70%"}
 - Ph.D (Economics) — George Mason University, 2015
 - B.A. (Economics) — University of Connecticut, 2011
 - Specializations:
@@ -52,7 +55,9 @@ library(fontawesome)
 
 ::::
 
-## The Reason I'm Busy Behind the Scenes
+## What's Keeping Me Busy
+
+![]()
 
 # What is Econometrics? {background-color="#314f4f" .centered}
 
@@ -61,14 +66,14 @@ library(fontawesome)
 ::: columns
 ::: {.column width="50%"}
 
-![](images/smbcmathteacher.png){width="300"}
-[SMBC](https://www.smbc-comics.com/comic/why-i-couldn39t-be-a-math-teacher)
+![[SMBC](https://www.smbc-comics.com/comic/why-i-couldn39t-be-a-math-teacher)](images/smbcmathteacher.png){.r-stretch}
+
 
 :::
 
 ::: {.column width="50%"}
 
-![[SMBC](https://www.smbc-comics.com/comic/2010-12-01)](images/smbc2080stats.png){width="300"}
+![[SMBC](https://www.smbc-comics.com/comic/2010-12-01)](images/smbc2080stats.png){.r-stretch}
 :::
 
 :::
@@ -88,7 +93,7 @@ library(fontawesome)
 
 ::: {.column width="50%"}
 
-- Simple enough: "on average, Republicans tended to vote for passage more than Democrats"
+- On average, Republicans tended to vote for passage more than Democrats
 :::
 
 :::
@@ -123,7 +128,7 @@ library(fontawesome)
 ## We're Not So Good at Statistics: Kidney Stones
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="70%"}
 
 - Suppose you suffer from kidney stones, your doctor offers you [treatment A]{.hi} or [treatment B]{.hi-purple}
 
@@ -135,7 +140,7 @@ library(fontawesome)
 
 :::
 
-::: {.column width="50%"}
+::: {.column width="30%"}
 
 ![](images/pills2.jpg)
 
@@ -180,21 +185,42 @@ From a real [medical study](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1339981
 
 ```{r}
 #| echo: false
-
+#| fig-width: 8
+#| out-width: "100%"
 library("ggdag")
-dagify(Out~Treat+Size,
-       Treat~Size
+dagify(Y~X+Z,
+       X~Z,
+       exposure = "X",
+       outcome = "Y",
+       labels = c("X" = "Treatment", "Y" = "Outcome", "Z" = "Stone Size"),
+       coords = list(x = c(X = 1, Y = 0, Z = -1),
+                  y = c(X = 1, Y = 0, Z = 1))
       ) %>% 
-  #tidy_dagitty() %>%
-  ggdag_parents("Out", stylized = FALSE, seed = 3)+theme_dag_blank()+theme(legend.position = "none")
-
+  tidy_dagitty() %>%
+  node_status() %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_edges()+
+  geom_dag_point(aes(color = status), size = 15)+
+  #geom_dag_text(size = 5)+
+  geom_dag_text_repel(aes(label = label),
+                      size = 5,
+                      seed = 2,
+                      #direction = "y",
+                      #nudge_y = -1.25,
+                      box.padding = 1.5,
+                      segment.alpha = 0)+
+  #scale_color_manual(values = c("#FF4136", "#0074D9"),
+  #                   na.value = "#7FDBFF") +
+  guides(color = F)+
+  theme_dag(base_family = "Fira Sans Condensed")
 ```
+
 :::
 
 ::: {.column width="50%"}
 
 - The *sizes* of the two groups (i.e. who gets A vs B) are *very* different
-- A [lurking variable]{.hi-purple} in the study is the severity of the case: doctors tended to give treatment B for less severe cases
+- A **lurking variable** in the study is the severity of the case: doctors tended to give treatment B for less severe cases
 
 :::
 
@@ -205,7 +231,7 @@ dagify(Out~Treat+Size,
 ::: columns
 ::: {.column width="50%"}
 
-:::{.callout-important}
+:::{.callout-important appearance=minimal}
 #
 
 **Simpson's Paradox**: The correlation between two variables can change (even reverse!) when additional variables are considered]
@@ -281,14 +307,31 @@ Ronald A. Fisher
 ::: {.column width="50%"}
 
 ```{r}
-dagify(Canc~Gene+Smok,
-       Smok~Gene,
-       coords=list(
-         x=c(Smok=1,Canc=2, Gene=1.5),
-         y=c(Smok=1,Canc=1, Gene=2)
-         )) %>% 
-  #tidy_dagitty() %>%
-  ggdag_parents("Canc", stylized = FALSE)+theme_dag_blank()+theme(legend.position = "none")
+dagify(Y~X+Z,
+       X~Z,
+       exposure = "X",
+       outcome = "Y",
+       labels = c("X" = "Smoking", "Y" = "Cancer", "Z" = "Gene"),
+       coords = list(x = c(X = 1, Y = 0, Z = -1),
+                  y = c(X = 1, Y = 0, Z = 1))
+      ) %>% 
+  tidy_dagitty() %>%
+  node_status() %>%
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_edges()+
+  geom_dag_point(aes(color = status), size = 15)+
+  #geom_dag_text(size = 5)+
+  geom_dag_text_repel(aes(label = label),
+                      size = 5,
+                      seed = 2,
+                      #direction = "y",
+                      #nudge_y = -1.25,
+                      box.padding = 1.5,
+                      segment.alpha = 0)+
+  #scale_color_manual(values = c("#FF4136", "#0074D9"),
+  #                   na.value = "#7FDBFF") +
+  guides(color = F)+
+  theme_dag(base_family = "Fira Sans Condensed")
 ```
 :::
 :::
@@ -397,8 +440,6 @@ dagify(Canc~Gene+Smok,
 
 :::
 
-. . .
-
 - A policy-relevant tradeoff with a budget constraint
 - What is the *precise* effect of class size on performance?
 - Is it worth hiring new teachers and building more schools over?
@@ -422,8 +463,6 @@ dagify(Canc~Gene+Smok,
 - Is there racial discrimination in home mortgage lending?
 
 :::
-
-. . .
 
 - Boston Fed: 28% of African-Americans are denied mortgages compared to only 9% of White Americans
 - Is this due to factors such as credit history, income, or discrimination *purely* because of race? 
@@ -449,10 +488,8 @@ dagify(Canc~Gene+Smok,
 
 :::
 
-. . .
-
-- Econ 101: raise price $\implies$ lower quantity consumed
-- What is the *price elasticity of demand* for smoking?
+- Econ 101: raise price $\rightarrow$ lower quantity consumed
+- What is the [price elasticity of demand]{.hi-turquoise} for smoking?
 - How much tax revenue will this generate?
 - Probably: $Taxes \rightarrow Smokers$
 - Maybe?: $Taxes \leftarrow Smokers$
@@ -465,7 +502,7 @@ dagify(Canc~Gene+Smok,
 :::
 :::
 
-# About This Course
+# About This Course {background-color="#314f4f" .centered}
 
 ## Real Talk: The Math
 
@@ -502,7 +539,7 @@ dagify(Canc~Gene+Smok,
 - **Economics**: take your *preexisting* intuition and models for causal inference
 - **Statistics**: add regression and statistical inference
 - **Computer Programming**: using `R` and `R Studio` for analyzing and presenting data
-]
+
 :::
 
 ::: {.column width="50%"}
@@ -582,7 +619,7 @@ cor(x, y)
 . . .
 
 - **Computer Science Skills**:
-  - None
+  - None 🤖
 
 ## What You'll Get Out of This Class
 
@@ -717,36 +754,36 @@ library(patchwork)
 p1 | p2
 ```
 
-## But Remember
+## Two Types of Uses For Econometrics
 
-- This is an economics course, not a data science course
-
-- Other software economists use (STATA, SASS, SPSS, Excel) is not on here!
-
-## Two Uses For Econometrics
+$$\color{orange}{Y}=\color{teal}{f}(\color{purple}{X})$$
 
 ::: columns
 ::: {.column width="50%"}
-$$\color{orange}{Y}=\color{teal}{f}(\color{purple}{X})$$
 
-1. [Causal inference]{.hi}: how changes in $\color{purple}{X}$ *cause* changes in $\color{orange}{Y}$
+1. [Causal inference]{.hi}: estimate $\color{teal}{\hat{f}}$ to determine how changes in $\color{purple}{X}$ **cause** changes in $\color{orange}{Y}$
   - Care more about accurately estimating $\color{teal}{f}$ than getting an accurate $\color{orange}{\hat{Y}}$
-  - Measure the **causal effect** of $X \mapsto Y$ (e.g., $\hat{\beta_1})$
+  - Measure the **causal effect** of $X \mapsto Y$
+  - primarily regression-based
 
+:::
+
+::: {.column width="50"}
 2. [Prediction]{.hi}: predict $\color{orange}{\hat{Y}}$ using an estimated $\color{teal}{f}$
   - Care more about getting $\color{orange}{\hat{Y}}$  as accurate as possible, $\color{teal}{f}$ is an unknown “black-box”
-  - [Forecasting]{.hi-purple}: predict future *values* of $Y$ (inflation, sales, GDP)
-  - [Classification]{.hi-purple}: predict the *category* of an outcome (success or failure, cat picture or not cat picture)
-
-- We care (in this class at least) only about the first
+  - Use for **forecasting**, **classification**, etc.
+  - less regression, more machine-learning methods
 
 :::
-
-::: {.column width="50%"}
-![](images/coding.jpeg)
 :::
 
-:::
+. . .
+
+- More and more “data science” focuses on the second...but
+
+. . .
+
+- We care (in this class at least) only about the first...because
 
 ## Causal Inference — Economists' Comparative Advantage
 
@@ -801,21 +838,29 @@ $$\color{orange}{Y}=\color{teal}{f}(\color{purple}{X})$$
 ```{r}
 #| eval: true
 #| echo: false
+#| cache: true
 library(gapminder)
-
-ggplot(data = gapminder, 
-       aes(x = gdpPercap,
+library(gganimate)
+gapminder %>%
+  filter(continent != "Oceania") %>%
+ggplot(aes(x = gdpPercap,
            y = lifeExp,
-           color = continent))+
+           color = country,
+           size = pop))+
   geom_point(alpha=0.3)+
-  geom_smooth(method = "lm")+
 	scale_x_log10(breaks=c(1000,10000, 100000),
 	              label=scales::dollar)+
-	labs(x = "GDP/Capita",
-	     y = "Life Expectancy (Years)")+
+  scale_size(range = c(0.5, 12)) +
+  scale_color_manual(values = gapminder::country_colors) +
+ 	labs(x = "GDP/Capita",
+	     y = "Life Expectancy (Years)",
+	     caption = "Source: Hans Rosling's gapminder.org",
+	     title = "Income & Life Expectancy - {frame_time}")+
   facet_wrap(~continent)+
-  guides(color = F)+
-  theme_light()
+  guides(color = F, size = F)+
+  theme_bw(base_family = "Fira Sans Condensed")+
+  transition_time(year)+
+  ease_aes("linear")
 ```
 
 ## Code
@@ -823,22 +868,32 @@ ggplot(data = gapminder,
 #| echo: true
 #| eval: false
 library(gapminder)
-
-ggplot(data = gapminder, 
-       aes(x = gdpPercap,
+library(gganimate)
+gapminder %>%
+  filter(continent != "Oceania") %>%
+ggplot(aes(x = gdpPercap,
            y = lifeExp,
-           color = continent))+
+           color = country,
+           size = pop))+
   geom_point(alpha=0.3)+
-  geom_smooth(method = "lm")+
 	scale_x_log10(breaks=c(1000,10000, 100000),
 	              label=scales::dollar)+
-	labs(x = "GDP/Capita",
-	     y = "Life Expectancy (Years)")+
+  scale_size(range = c(0.5, 12)) +
+  scale_color_manual(values = gapminder::country_colors) +
+ 	labs(x = "GDP/Capita",
+	     y = "Life Expectancy (Years)",
+	     caption = "Source: Hans Rosling's gapminder.org",
+	     title = "Income & Life Expectancy - {frame_time}")+
   facet_wrap(~continent)+
-  guides(color = F)+
-  theme_light()
+  guides(color = F, size = F)+
+  theme_minimal(base_family = "Fira Sans Condensed")+
+  transition_time(year)+
+  ease_aes("linear")
 ```
 
+:::
+
+::: footer
 :::
 
 ## Assignments
@@ -877,7 +932,7 @@ kbl(., "html")
 - Office hours: M/W 10:00-11:00 AM & by appt
   - Office: 110 Rosenstock
 
-- `r fa("slack", fill ="#5E81AC")` Slack channel `#c-306-metrics`
+- `r fa("slack", fill ="#5E81AC")` Slack channel
 
 - Recorded videos in Blackboard Panopto
 
@@ -907,13 +962,7 @@ kbl(., "html")
 :::
 :::
 
-# You Can Do This.
-
-## And I am Here To Help
-
-- Don't forget to prioritize your mental health
-
-- Come talk to me! It's not scary!
+# You Can Do This. {background-color="#314f4f" .centered}
 
 ## Tips for Success in This Course
 
@@ -938,8 +987,9 @@ kbl(., "html")
 
 ## Course Website
 
-![](images/metrics_website_f21.png)
-[metricsF21.classes.ryansafner.com](http://metricsF21.classes.ryansafner.com)
+![](images/metrics_website_F22.png){width="750" fig-align="center"}
+
+[metricsF22.classes.ryansafner.com](http://metricsF22.classes.ryansafner.com)
 
 ## Roadmap for the Semester
 

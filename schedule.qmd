@@ -3,8 +3,6 @@ title: "Schedule"
 sidebar: false
 toc: false
 page-layout: full
-execute:
-  freeze: auto
 ---
 
 This page contains all of the following resources for each class meeting:

@@ -14,11 +14,11 @@ $code-block-font-size: 0.9em;
 
 /*-- scss:rules --*/
 
-/* Set background for all headers 1 # slides */
+/* Set background for all headers 1 # slides <- got rid of to make pdfs white background
 .slide-background:first-child {
   background-color: #314f4f;
-  /*background-image: url(image.jpg); */
-}
+  /*background-image: url(image.jpg); 
+}*/ 
 
 
 .reveal .centered {
@@ -53,7 +53,8 @@ $code-block-font-size: 0.9em;
   font-weight: bold;
   position: absolute; 
   left: 20px; 
-  top: 300px
+  top: 300px;
+  color: #FFFFFF;
 }
 
 .reveal .custom-subtitle {
@@ -61,19 +62,24 @@ $code-block-font-size: 0.9em;
   font-weight: bold;
   position: absolute; 
   left: 20px; 
-  top: 400px
+  top: 400px;
+  color: #FFFFFF;
+
 }
 
 .reveal .custom-author {
   font-size: 1em;
   position: absolute; 
   left: 20px; 
-  top: 475px
+  top: 475px;
+  color: #FFFFFF;
 }
 
 .reveal .custom-institution {
   font-size: 0.75em;
   position: absolute; 
   left: 20px; 
-  top: 590px
+  top: 590px;
+  color: #FFFFFF;
+
 }
