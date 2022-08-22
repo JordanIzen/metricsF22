@@ -1,9 +1,10 @@
 ---
 title: "Installing R and R Studio"
-
+execute: 
+  freeze: auto
 ---
 
-We will do all of our work in this course with the free & open source programming language `R`. While you can run everything you need directly in the command line using `R`, it is a lot more convenient to use an integrated development environment (IDE) like `R Studio`. Think of `R` as the engine of a car, and `R Studio` as the dashboard. 
+We will do all of our work in this course with the free & open source programming language `R`. While you can run everything you need directly in the command line using `R`, it is a lot more convenient to use an integrated development environment (IDE) like `R Studio`. Think of `R` as the engine of a car, and `R Studio` as the dashboard.
 
 You will need to install *both*, but we will ever only open `R Studio.`
 
@@ -11,19 +12,23 @@ You will need to install *both*, but we will ever only open `R Studio.`
 
 First you will need to download and install `R` on your computer.
 
-1. Go to the **Comprehensive R Archive Network (CRAN)** that maintains `R` and its official packages at: https://cran.r-project.org
-2. Click on "Download R for ..." your operating system (Mac or Windows)
-  - If you use a Mac, scroll to the first `.pkg` file listed on the left and download.
-  - If you use Windows, click on `base` ("This what you want to **install R for the first time**")
-3. Install the downloaded package like you would any software application on your computer.
-  - Typically, open the file from your `Downloads` folder (or whever you save downloaded files) and follow the prompts to install on your computer.
-4. If you use a Mac, also download and install `XQuartz` (https://www.xquartz.org/). You do not need to do this on Windows.
+1.  Go to the **Comprehensive R Archive Network (CRAN)** that maintains `R` and its official packages at: https://cran.r-project.org
+2.  Click on "Download R for ..." your operating system (Mac or Windows)
+
+-   If you use a Mac, scroll to the first `.pkg` file listed on the left and download.
+-   If you use Windows, click on `base` ("This what you want to **install R for the first time**")
+
+3.  Install the downloaded package like you would any software application on your computer.
+
+-   Typically, open the file from your `Downloads` folder (or whever you save downloaded files) and follow the prompts to install on your computer.
+
+4.  If you use a Mac, also download and install `XQuartz` (https://www.xquartz.org/). You do not need to do this on Windows.
 
 ## Install R Studio
 
-1. Go to RStudio.com and download the [free desktop version](https://www.rstudio.com/products/rstudio/download/#download).
-2. The website should automatically detect your operating system and give you a large button to click to download the application.
-3. Install the downloaded package like you would any software application on your computer.
+1.  Go to RStudio.com and download the [free desktop version](https://www.rstudio.com/products/rstudio/download/#download).
+2.  The website should automatically detect your operating system and give you a large button to click to download the application.
+3.  Install the downloaded package like you would any software application on your computer.
 
 ## R Studio Cloud
 

@@ -34,7 +34,7 @@ update_geom_defaults("label", list(family = "Fira Sans Condensed"))
 update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 ```
 
-## About Me {.smaller}
+## About Me
 
 :::: {.columns}
 
@@ -44,20 +44,26 @@ update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 
 ::: {.column width="70%"}
 - Ph.D (Economics) — George Mason University, 2015
+
 - B.A. (Economics) — University of Connecticut, 2011
+
+- 7th year teaching at Hood
+
 - Specializations:
   - Law and Economics
   - Austrian Economics
+  
 - Research interests
   - modeling innovation & economic growth
   - political economy & economic history of intellectual property
+
 :::
 
 ::::
 
 ## What's Keeping Me Busy
 
-![]()
+![](images/miles2022.png)
 
 # What is Econometrics? {background-color="#314f4f" .centered}
 
@@ -162,6 +168,32 @@ From a real [medical study](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1339981
 |                  | (81/87)| (234/270) |
 | **Large Stones** | [73%]{.hi}       | 69%        |
 |                  | (192/263)   | (55/80)    |
+| **Overall**      | 78%    | [83%]{.hi-purple}       |
+|                  | (273/350) | (289/350) |
+
+
+[C R Charig, D R Webb, S R Payne, and J E Wickham, 1986, "Comparison of treatment of renal calculi by open surgery, percutaneous nephrolithotomy, and extracorporeal shockwave lithotripsy," *Br Med J* (Clin Res Ed) 292(6524): 879–882. ]{.source}
+
+:::
+
+::: {.column width="50%"}
+
+:::
+
+## We're Not So Good at Statistics: Kidney Stones
+
+
+::: columns
+::: {.column width="50%"}
+
+From a real [medical study](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1339981/): 
+
+|       | [Treatment A]{.hi}  | [Treatment B]{.hi-purple} |
+|-------|----------|------------|
+| **Small Stones** | [93%]{.hi}      | 87%       | 
+|                  | (81/**87**)| (234/**270**) |
+| **Large Stones** | [73%]{.hi}       | 69%        |
+|                  | (192/**263**)   | (55/**80**)    |
 | **Overall**      | 78%    | [83%]{.hi-purple}       |
 |                  | (273/350) | (289/350) |
 
@@ -296,7 +328,7 @@ Ronald A. Fisher
 ::: columns
 ::: {.column width="50%"}
 
-- There could be a confounding variable ("smoking gene") that causes *both* lung cancer *and* the urge to smoke
+- There could be a **confounding variable** ("smoking gene") that causes *both* lung cancer *and* the urge to smoke
 
 - Would imply: decision to smoke or not would have *no impact* on lung cancer! 
 
@@ -521,7 +553,8 @@ dagify(Y~X+Z,
 ::: {.column width="50%"}
 
 - This will be one of the hardest courses you take at Hood 
-- There will be moments where you have no idea WTF is going on (*this is normal*)
+- There will be moments where you have no idea WTF is going on 🤯 (*this is normal*)
+- But this is one of the best courses you can take at Hood
 - Yes, you can still get an **A**
 :::
 
@@ -566,7 +599,7 @@ ggplot(class, aes(area=Percentage, fill=Subject))+
 :::
 :::
 
-## This Class Is
+##
 
 ::: columns
 ::: {.column width="50%"}
@@ -668,6 +701,10 @@ By the end of this semester, you will:
 [LinkedIn 2018 Emerging Jobs Report](https://economicgraph.linkedin.com/research/linkedin-2018-emerging-jobs-report)
 :::
 :::
+
+## Building Industry-Demanded Data Science Skills
+
+![[LinkedIn 2020 Emerging Jobs Report](https://business.linkedin.com/content/dam/me/business/en-us/talent-solutions/emerging-jobs-report/Emerging_Jobs_Report_U.S._FINAL.pdf)](images/linkedindatascientist2020.png)
 
 ## R Can Be Used for Data Science
 
@@ -929,19 +966,12 @@ kbl(., "html")
 
 ::: columns
 ::: {.column width="50%"}
-- Office hours: M/W 10:00-11:00 AM & by appt
-  - Office: 110 Rosenstock
+- Office hours: MW 1:30-2:30 PM & by appt
+  - Office: 114 Rosenstock
 
 - `r fa("slack", fill ="#5E81AC")` Slack channel
 
-- Recorded videos in Blackboard Panopto
-
-- Attendance — **Kahoot!s**
-
-- Teaching Assistant(s): TBD
-  - grade HWs & hold office hours
-
-- See the [resources page](http://metricsF21.classes.ryansafner.com/resources) for tips for success and more helpful resources
+- See the [resources page](http://metricsF22.classes.ryansafner.com/resources) for tips for success and more helpful resources
 :::
 ::: {.column width="50%"}
 ![](images/learning.png)
@@ -995,3 +1025,17 @@ kbl(., "html")
 
 ![](images/metrics_flowchart_blankbg.png)
 
+## For Next Class
+
+![](images/rstudiocloud.png)
+
+::: footer
+:::
+
+## For Next Class
+
+- Take the [preliminary survey on statistics and software](https://metricsF22.classes.ryansafner.com/assignments/00-preliminary-survey)
+
+- Register for [R Studio Cloud](https://rstudio.cloud)
+
+- (Optional but highly recommended) [Install R and R Studio on your computer](https://metricsF22.classes.ryansafner.com/resources/installing-R)

@@ -1,6 +1,6 @@
 ---
-title: "Preliminary Survey on Math Background"
-author: "ECON 306"
+title: "Preliminary Survey on Statistics and Software"
+author: "Econometrics"
 execute: 
   freeze: true
 format:
@@ -17,8 +17,9 @@ library(tidyverse)
 library(kableExtra)
 ```
 
-::: {.callout-warning appearance=simple}
-# Assignment Due 
+::: {.callout-warning appearance="simple"}
+# Assignment Due
+
 Please complete this by next class.
 :::
 
@@ -102,4 +103,3 @@ On a scale of 1 (least) to 10 (most), how familiar would you say you are with co
 # Question 8
 
 List any statistical software packages (e.g. R, Microsoft Excel, Stata, SAS, SPSS, Minitab, etc.) and any programming languages (e.g. html, php, C/++, Python, LaTeX, etc.) you have had any experience with, and rate your proficiency between 1 (least) and 5 (most), if applicable.
-

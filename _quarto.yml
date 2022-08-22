@@ -77,16 +77,6 @@ website:
           contents:
           - href: resources/installing.qmd
             text: "Installing R and R Studio"
-          - href: resources/data-wrangling.qmd
-            text: "Data Wrangling"
-          - href: resources/packages.qmd
-            text: "R Packages Used"
-          - href: resources/data-visualization.qmd
-            text: "Data Visualization"
-          - href: resources/reporting-regressions.qmd
-            text: "Reporting Regressions"
-          - href: resources/markdown.qmd
-            text: "R Markdown"
         - section: "Advice"
           contents:
           - href: resources/tips.qmd

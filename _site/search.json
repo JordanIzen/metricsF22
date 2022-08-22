@@ -60,7 +60,7 @@
     "href": "content/1.1-content.html#slides",
     "title": "1.1 — Introduction to Econometrics — Class Content",
     "section": " Slides",
-    "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\n\n\n\n\n\n\nTip\n\n\n\nYou can type h to see a special list of viewing options, and type o for an outline view of all the slides.\n\n\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
+    "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\n\n\n\n\n\n\nTip\n\n\n\nYou can type h to see a special list of viewing options, and type o for an outline view of all the slides. Learn more here.\n\n\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
   },
   {
     "objectID": "content/1.1-content.html#assignments",
@@ -96,13 +96,6 @@
     "title": "R Packages Used in this Course",
     "section": "",
     "text": "You can install all of these packages at once with the following command:\n\ninstall.packages(c(\"tidyverse\", \"ggrepel\", \"broom\", \"car\", \"estimatr\", \"lmtest\",\n                   \"huxtable\", \"infer\", \"dagitty\", \"ggdag\", \"modelsummary\", \"fixest\"))\n\n† Indicates package is part of the tidyverse\n\n\n\nName\nType\nDescription/Reason(s) for Use\nClasses Used\n\n\n\n\nggplot2†\nPlotting\nFor nice plots\n[1.3]\n\n\ngganimate\nPlotting\nFor animating plots\n[1.3]\n\n\nhaven†\nData Wrangling\nFor importing nonstandard data files\n[1.4]\n\n\ndplyr†\nData Wrangling\nFor manipulating data (part of tidyverse)\n[1.4]\n\n\nreadr†\nData Wrangling\nFor importing most data files\n[1.4]\n\n\ntidyr†\nData Wrangling\nFor reshaping data (wide and long)\n[1.4]\n\n\nmagrittr†\nData Wrangling\nFor the pipe\n[1.4]\n\n\ntibble†\nData Wrangling\nFor a friendlier data.frame\n[1.4]\n\n\nggrepel\nPlotting\nFor annotating text that doesn’t cover observations\n[1.4]\n\n\nbroom\nModels\nFor tidying regression output\n[2.3]\n\n\ncar\nModels\nFor testing for outliers\n[2.5]\n\n\nestimatr\nModels\nFor calculating heteroskedasticity-robust standard errors\n[2.5]\n\n\nlmtest\nModels\nFor testing for heteroskedasticity\n[2.5]\n\n\nhuxtable\nOutput\nFor making nice regression tables\n[2.5]\n\n\ninfer\nModels\nFor simulation and statistical inference\n[2.6]\n\n\ndagitty\nModels\nFor working with DAGs in R\n[3.2]\n\n\nggdag\nPlotting\nFor plotting DAGs in ggplot\n[3.2]\n\n\nmodelsummary\nOutput\nFor making nice regression tables\n[3.5]\n\n\nfixest\nModels\nFor working with panel data\n[4.1]\n\n\n\n\n\n\n\nFootnotes\n\n\nNote, many of these packages have multiple uses beyond our purposes!↩︎"
-  },
-  {
-    "objectID": "resources/appendices.html",
-    "href": "resources/appendices.html",
-    "title": "List of Math & R Appendices",
-    "section": "",
-    "text": "The following list contains links to all appendices spread across the Class Content pages:\n\n\n\nAppendix\nType\nClass\n\n\n\n\nInstalling R and R Studio\nR\n1.2 class\n\n\nR Packages\nR\n1.2 class\n\n\nGetting Help for R\nR\n1.2 class\n\n\nOther Useful Commands to Know\nR\n1.2 class\n\n\nSuggested Style Guide for Coding\nR\n1.2 class\n\n\nThe Summation Operator\nMath/Stats\n2.1 class\n\n\nUseful Properties of Summation Operators\nMath/Stats\n2.1 class\n\n\nUseful Properties for Regression\nMath/Stats\n2.1 class\n\n\nProperties of Expected Value and Variance\nMath/Stats\n2.2 class\n\n\nGraphing Mathematical Functions\nR\n2.2 class\n\n\nBult-in Statistical Functions\nR\n2.2 class\n\n\nGraphing Statistical Functions\nR\n2.2 class\n\n\nVariance, Covariance, and Correlation\nMath/Stats\n2.3 class\n\n\nDeriving the OLS Estimators\nMath/Stats\n2.4 class\n\n\nAlgebraic Properties of OLS Estimators\nMath/Stats\n2.4 class\n\n\nBias in \\(\\hat{\\beta_1}\\)\nMath/Stats\n2.4 class\n\n\nProof of the Unbiasedness of \\(\\hat{\\beta_1}\\)\nMath/Stats\n2.4 class\n\n\nRobust Standard Errors in R\nR\n2.5 class\n\n\nDifferences Between What We Learned in Class and Classical Statistics\nR\n2.6 class\n\n\nT-Test for Difference in Group Means\nMath/Stats\n3.6 class\n\n\nMarginal Effects for Two-Continuous Variable Interactions\nMath/Stats\n3.7 class"
   },
   {
     "objectID": "resources/computing.html",
@@ -273,27 +266,6 @@
     "text": "Footnotes\n\n\nYes, that means I am doing a ton of learning every time I teach!↩︎\nYes, Google is your best friend. But you do not yet know how to ask the right questions, or understand what constitutes good answers.↩︎"
   },
   {
-    "objectID": "resources/unzipping_files.html",
-    "href": "resources/unzipping_files.html",
-    "title": "Unzipping Files",
-    "section": "",
-    "text": "Since R projects typically consist of multiple files (R scripts, datasets, images, etc.) the easiest way to distribute and send them is to combine all the different files in to a single compressed .zip file. When you unzip a .zip file, your computer extracts all the files contained inside to a new folder on your computer.\nUnzipping files on macOS is simple, but unzipping files on Windows can cause problems if you don’t pay careful attention."
-  },
-  {
-    "objectID": "resources/unzipping_files.html#unzipping-files-on-macos",
-    "href": "resources/unzipping_files.html#unzipping-files-on-macos",
-    "title": "Unzipping Files",
-    "section": "Unzipping files on macOS",
-    "text": "Unzipping files on macOS\nDouble click on the downloaded .zip file. macOS will automatically create a new folder with the same name as the .zip file, and all the file’s contents will be inside. Double click on the RStudio Project file (.Rproj) to get started."
-  },
-  {
-    "objectID": "resources/unzipping_files.html#unzipping-files-on-windows",
-    "href": "resources/unzipping_files.html#unzipping-files-on-windows",
-    "title": "Unzipping Files",
-    "section": "Unzipping files on Windows",
-    "text": "Unzipping files on Windows\nA long story short: right click on the .zip file, select “Extract All…”, and work with the resulting unzipped folder.\nUnlike macOS, Windows does not automatically unzip things for you. If you double click on the .zip file, Windows will show you what’s inside, but it will do so without actually extracting anything. This is quite annoying. Here’s what it looks like—the only clues that this folder is really a .zip file are that there’s a “Compressed Folder Tools” tab at the top with “Extract” in red.\n\nIt is tempting to just open files from this view, but this causes problems. If you open the R Project file, for instance, RStudio will point to a bizarre working directory buried deep in some temporary folder:\n\nInstead, you need to right click on the .zip file and select “Extract All…”:\n\nThen choose where you want to unzip all the files and click on “Extract”\n\nYou should then finally have a real folder with all the contents of the zipped file. Open the R Project file and RStudio will point to the correct working directory and everything will work."
-  },
-  {
     "objectID": "resources/wrangling.html",
     "href": "resources/wrangling.html",
     "title": "Advanced Data Wrangling Tips & Tricks",
@@ -327,6 +299,27 @@
     "title": "Advanced Data Wrangling Tips & Tricks",
     "section": "Working with Dates & Time",
     "text": "Working with Dates & Time"
+  },
+  {
+    "objectID": "resources/zipping.html",
+    "href": "resources/zipping.html",
+    "title": "Zipping & Unzipping Files",
+    "section": "",
+    "text": "Since R projects typically consist of multiple files (R scripts, datasets, images, etc.) the easiest way to distribute and send them is to combine all the different files in to a single compressed .zip file. When you unzip a .zip file, your computer extracts all the files contained inside to a new folder on your computer.\nUnzipping files on macOS is simple, but unzipping files on Windows can cause problems if you don’t pay careful attention."
+  },
+  {
+    "objectID": "resources/zipping.html#unzipping-files-on-macos",
+    "href": "resources/zipping.html#unzipping-files-on-macos",
+    "title": "Zipping & Unzipping Files",
+    "section": "Unzipping files on macOS",
+    "text": "Unzipping files on macOS\nDouble click on the downloaded .zip file. macOS will automatically create a new folder with the same name as the .zip file, and all the file’s contents will be inside. Double click on the RStudio Project file (.Rproj) to get started."
+  },
+  {
+    "objectID": "resources/zipping.html#unzipping-files-on-windows",
+    "href": "resources/zipping.html#unzipping-files-on-windows",
+    "title": "Zipping & Unzipping Files",
+    "section": "Unzipping files on Windows",
+    "text": "Unzipping files on Windows\nA long story short: right click on the .zip file, select “Extract All…”, and work with the resulting unzipped folder.\nUnlike macOS, Windows does not automatically unzip things for you. If you double click on the .zip file, Windows will show you what’s inside, but it will do so without actually extracting anything. This is quite annoying. Here’s what it looks like—the only clues that this folder is really a .zip file are that there’s a “Compressed Folder Tools” tab at the top with “Extract” in red.\n\nIt is tempting to just open files from this view, but this causes problems. If you open the R Project file, for instance, RStudio will point to a bizarre working directory buried deep in some temporary folder:\n\nInstead, you need to right click on the .zip file and select “Extract All…”:\n\nThen choose where you want to unzip all the files and click on “Extract”\n\nYou should then finally have a real folder with all the contents of the zipped file. Open the R Project file and RStudio will point to the correct working directory and everything will work."
   },
   {
     "objectID": "schedule.html",
