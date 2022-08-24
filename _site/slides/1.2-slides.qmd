@@ -37,20 +37,12 @@ library(scales)
 
 ## Data Science
 
-- .hi[You go into data analysis with the tools you know, not the tools you need]
+- [You go into data analysis with the tools you know, not the tools you need]{.hi}
 
 - The next 2-3 weeks are all about giving you the tools you need 
     - Admittedly, a bit before you know what you need them *for*
 
 - We will extend them as we learn specific models
-
-## Why Not Excel?
-
-![](../images/excelsucks.jpg)
-
-## Why Not Excel?
-
-![](../images/excelsucks.jpg)
 
 ## R
 
@@ -153,22 +145,37 @@ leaflet() %>%
              popup = "Rosenstock Hall, Hood College")
 ```
 
-# Meet R and R Studio
+# Meet R and R Studio {background-color="#314f4f" .centered}
 
 ## R and R Studio
 
 ::: columns
 
 ::: {.column width="50%"}
-- .hi[R] is the programming language that executes commands
+- [R]{.hi} is the programming language that executes commands
 
-- [R Studio]{.hi-purple} is an integrated development environment (IDE) that makes your coding life a lot easier
+- Could run this from your computer’s shell
+  - On Windows: **Command prompt**
+  - On Mac/Linux: **Terminal**
+:::
+
+::: {.column width="50%"}
+![](images/r_terminal.png)
+:::
+:::
+
+## R and R Studio
+
+::: columns
+
+::: {.column width="50%"}
+- [R Studio]{.hi-purple}^[The company R Studio recently [announced](https://www.rstudio.com/blog/rstudio-is-becoming-posit/) they will be rebranding later this fall as **Posit**.] is an **integrated development environment** (IDE) that makes your coding life a lot easier
   - Write code in scripts
-  - Execute individual commands or entire scripts
+  - Execute individual commands & scripts
   - Auto-complete, highlight syntax
   - View data, objects, and plots
   - Get help and documentation on commands and functions
-  - Integrate code into documents with `R Markdown`
+  - Integrate code into documents with `Quarto`
 
 :::
 
@@ -177,41 +184,132 @@ leaflet() %>%
 :::
 :::
 
-## R and R Studio
+## R Studio — Four Panes
 
-## Learning 
+![](images/r4screens1.png){fig-align="center"}
 
-::: {columns}
-::: {.column width="50%"}
-- [You don't “*learn R*”, you learn *how to do things in R*]{.hi}
+## Ways to Use R Studio: Using the Console
 
-- In order to do learn this, you need to learn *how to search for what you want to do*
-
-:::
+::: columns
 
 ::: {.column width="50%"}
+- Type individual commands into the console pane (bottom left)
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">My <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> learning path:<br><br>1. Install R<br>2. Install RStudio<br>3. Google &quot;How do I [THING I WANT TO DO] in R?&quot;<br><br>Repeat step 3 ad infinitum.</p>&mdash; Jesse Mostipak (@kierisi) <a href="https://twitter.com/kierisi/status/898534740051062785?ref_src=twsrc%5Etfw">August 18, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+- Great for testing individual commands to see what happens
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">A surprisingly large part of having expertise in a topic is not so much knowing everything about it but learning the language and sources well enough to be extremely efficient in google searches.</p>&mdash; Katie Mack (@AstroKatie) <a href="https://twitter.com/AstroKatie/status/1071442842873159681?ref_src=twsrc%5Etfw">December 8, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+- Not saved! Not reproducible! Not recommended!
 
+:::
+
+::: {.column width="50%"}
+![](images/rconsole1.png)
 :::
 :::
 
-## ...and Sucking
+## Ways to Use R Studio: Writing a `.R` Script
 
-![](images/suckingatsomething.gif)
+::: columns
 
-# Coding Basics
+::: {.column width="50%"}
+- Source pane is a text-editor
+
+- Make `.R` files: all input commands in a single script
+
+- Comment with `#`
+
+- Can run any or all of script at once
+
+- Can save, reproduce, and send to others!
+
+:::
+
+::: {.column width="50%"}
+![](images/rscriptbetter.png)
+:::
+:::
+
+## Ways to Use R Studio: Quarto Documents
+
+![](images/quarto_new.png)
 
 ## Getting to Know Your Computer
 
-- R assumes a default (often inconvenient) ["working directory"].hi on your computer
+- R assumes a default (often inconvenient) ["working directory"]{.hi} on your computer
     - The first place it looks to `open` or `save` files 
 
 - Find out where R this is with `getwd()`
 
 - Change it with `setwd(path/to/folder)`^[Note the path is OS-specific. For Windows it might be `C:/Documents/`. For Mac it is often your username folder.]
+
+## Avoid this Hassle with R Projects
+
+::: columns
+::: {.column width="50%"}
+- A `R Project` is a way of systematically organizing your `R` history, working directory, and related files in a single, self-contained directory
+- Can easily be sent to others who can reproduce your work easily 
+- Connects well with version control software like GitHub
+- Can open multiple projects in multiple windows
+:::
+::: {.column width="50%"}
+![](images/project1.png)
+:::
+:::
+
+## Avoid this Hassle with R Projects
+
+::: columns
+::: {.column width="50%"}
+- In almost all cases, you simply want a `New Project`
+
+- For more advanced uses, your project can be an `R Package` or a `Shiny Web Application`
+
+- If you have other packages that create templates installed (as I do, in the previous image), they will also show up as options
+
+:::
+::: {.column width="50%"}
+![](images/project2.png)
+:::
+:::
+
+## Avoid this Hassle with R Projects
+
+::: columns
+::: {.column width="50%"}
+- Enter a name for the project in the top field 
+    - Also creates a folder on your computer with the name you enter into the field
+    
+- Choose the location of the folder on your computer
+
+- Depending on if you have other packages or utilities installed (such as `git`, see below!), there may be additional options, do not check them unless you know what you are doing
+
+- Bottom left checkbox allows you to open a new instance (window) of `R` just for this project (and keep existing windows open)
+
+:::
+::: {.column width="50%"}
+![](images/project3.png)
+:::
+:::
+
+# An Intro to Coding {background-color="#314f4f" .centered}
+
+## Learning...
+
+- [You don't “*learn R*”, you learn *how to do things in R*]{.hi}
+
+- In order to do learn this, you need to learn *how to search for what you want to do*
+
+## Learning...
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">My <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> learning path:<br><br>1. Install R<br>2. Install RStudio<br>3. Google &quot;How do I [THING I WANT TO DO] in R?&quot;<br><br>Repeat step 3 ad infinitum.</p>&mdash; Jesse Mostipak (@kierisi) <a href="https://twitter.com/kierisi/status/898534740051062785?ref_src=twsrc%5Etfw">August 18, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+. . .
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">A surprisingly large part of having expertise in a topic is not so much knowing everything about it but learning the language and sources well enough to be extremely efficient in google searches.</p>&mdash; Katie Mack (@AstroKatie) <a href="https://twitter.com/AstroKatie/status/1071442842873159681?ref_src=twsrc%5Etfw">December 8, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+## ...and Sucking
+
+![](images/suckingatsomething.gif)
+
 
 ## Say Hello To My Little Friend
 
@@ -245,9 +343,9 @@ help(mean)
 :::
 :::
 
-## 
+## I've Failed More Times Than You
 
-![](images/experience_problems.PNG)
+![](images/experience_problems.PNG){fig-align="center"}
 
 ## Tips for Writing Code
 
@@ -497,6 +595,8 @@ z <= 1 | z==10 # test is z >= 1 OR equal to 10?
 
 - Look like `character` strings, behave more like `logical`s, but with *more than two options*
 
+. . .
+
 ```{r, echo=F}
 class = sample(c("freshman", "sophomore", "junior", "senior"),10, replace=T)
 ```
@@ -506,6 +606,8 @@ class = as.factor(class)
 levels(class) = c('freshman','sophomore','junior', 'senior')
 class
 ```
+
+. . .
 
 - We'll make much more extensive use of them later
 

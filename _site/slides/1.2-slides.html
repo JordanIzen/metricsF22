@@ -401,7 +401,7 @@
 <section id="data-science" class="slide level2">
 <h2>Data Science</h2>
 <ul>
-<li><p>.hi[You go into data analysis with the tools you know, not the tools you need]</p></li>
+<li><p><span class="hi">You go into data analysis with the tools you know, not the tools you need</span></p></li>
 <li><p>The next 2-3 weeks are all about giving you the tools you need</p>
 <ul>
 <li>Admittedly, a bit before you know what you need them <em>for</em></li>
@@ -409,14 +409,6 @@
 <li><p>We will extend them as we learn specific models</p></li>
 </ul>
 </section>
-<section id="why-not-excel" class="slide level2">
-<h2>Why Not Excel?</h2>
-
-<img data-src="../images/excelsucks.jpg" class="r-stretch"></section>
-<section id="why-not-excel-1" class="slide level2">
-<h2>Why Not Excel?</h2>
-
-<img data-src="../images/excelsucks.jpg" class="r-stretch"></section>
 <section id="r" class="slide level2">
 <h2>R</h2>
 <div class="columns">
@@ -496,13 +488,13 @@
 <span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">addMarkers</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">77.420</span>, <span class="at">lat =</span> <span class="fl">39.421</span>,</span>
 <span id="cb2-5"><a href="#cb2-5"></a>             <span class="at">popup =</span> <span class="st">"Rosenstock Hall, Hood College"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-3432ff999d17bde7d416" style="width:1728px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3432ff999d17bde7d416">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[39.421,-77.42,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Rosenstock Hall, Hood College",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[39.421,39.421],"lng":[-77.42,-77.42]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-36df0f4b12820dbeb088" style="width:1728px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-36df0f4b12820dbeb088">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[39.421,-77.42,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Rosenstock Hall, Hood College",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[39.421,39.421],"lng":[-77.42,-77.42]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
 <section>
-<section id="meet-r-and-r-studio" class="title-slide slide level1 center">
+<section id="meet-r-and-r-studio" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>Meet R and R Studio</h1>
 
 </section>
@@ -511,35 +503,148 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li><p>.hi<a href="#/r">R</a> is the programming language that executes commands</p></li>
-<li><p><span class="hi-purple">R Studio</span> is an integrated development environment (IDE) that makes your coding life a lot easier</p>
+<li><p><span class="hi">R</span> is the programming language that executes commands</p></li>
+<li><p>Could run this from your computer’s shell</p>
+<ul>
+<li>On Windows: <strong>Command prompt</strong></li>
+<li>On Mac/Linux: <strong>Terminal</strong></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/r_terminal.png"></p>
+</div>
+</div>
+</section>
+<section id="r-and-r-studio-1" class="slide level2">
+<h2>R and R Studio</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="hi-purple">R Studio</span><sup>1</sup> is an <strong>integrated development environment</strong> (IDE) that makes your coding life a lot easier
 <ul>
 <li>Write code in scripts</li>
-<li>Execute individual commands or entire scripts</li>
+<li>Execute individual commands &amp; scripts</li>
 <li>Auto-complete, highlight syntax</li>
 <li>View data, objects, and plots</li>
 <li>Get help and documentation on commands and functions</li>
-<li>Integrate code into documents with <code>R Markdown</code></li>
+<li>Integrate code into documents with <code>Quarto</code></li>
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p><img data-src="images/r4screens1.png"></p>
 </div>
 </div>
+<aside><ol class="aside-footnotes"><li id="fn1" role="doc-endnote"><p>The company R Studio recently <a href="https://www.rstudio.com/blog/rstudio-is-becoming-posit/">announced</a> they will be rebranding later this fall as <strong>Posit</strong>.</p></li></ol></aside></section>
+<section id="r-studio-four-panes" class="slide level2">
+<h2>R Studio — Four Panes</h2>
+
+<img data-src="images/r4screens1.png" class="r-stretch quarto-figure-center"></section>
+<section id="ways-to-use-r-studio-using-the-console" class="slide level2">
+<h2>Ways to Use R Studio: Using the Console</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Type individual commands into the console pane (bottom left)</p></li>
+<li><p>Great for testing individual commands to see what happens</p></li>
+<li><p>Not saved! Not reproducible! Not recommended!</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/rconsole1.png"></p>
+</div>
+</div>
 </section>
-<section id="r-and-r-studio-1" class="slide level2">
-<h2>R and R Studio</h2>
+<section id="ways-to-use-r-studio-writing-a-.r-script" class="slide level2">
+<h2>Ways to Use R Studio: Writing a <code>.R</code> Script</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Source pane is a text-editor</p></li>
+<li><p>Make <code>.R</code> files: all input commands in a single script</p></li>
+<li><p>Comment with <code>#</code></p></li>
+<li><p>Can run any or all of script at once</p></li>
+<li><p>Can save, reproduce, and send to others!</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/rscriptbetter.png"></p>
+</div>
+</div>
+</section>
+<section id="ways-to-use-r-studio-quarto-documents" class="slide level2">
+<h2>Ways to Use R Studio: Quarto Documents</h2>
+
+<img data-src="images/quarto_new.png" class="r-stretch"></section>
+<section id="getting-to-know-your-computer" class="slide level2">
+<h2>Getting to Know Your Computer</h2>
+<ul>
+<li><p>R assumes a default (often inconvenient) <span class="hi">“working directory”</span> on your computer</p>
+<ul>
+<li>The first place it looks to <code>open</code> or <code>save</code> files</li>
+</ul></li>
+<li><p>Find out where R this is with <code>getwd()</code></p></li>
+<li><p>Change it with <code>setwd(path/to/folder)</code><sup>1</sup></p></li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn2" role="doc-endnote"><p>Note the path is OS-specific. For Windows it might be <code>C:/Documents/</code>. For Mac it is often your username folder.</p></li></ol></aside></section>
+<section id="avoid-this-hassle-with-r-projects" class="slide level2">
+<h2>Avoid this Hassle with R Projects</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>A <code>R Project</code> is a way of systematically organizing your <code>R</code> history, working directory, and related files in a single, self-contained directory</li>
+<li>Can easily be sent to others who can reproduce your work easily</li>
+<li>Connects well with version control software like GitHub</li>
+<li>Can open multiple projects in multiple windows</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/project1.png"></p>
+</div>
+</div>
+</section>
+<section id="avoid-this-hassle-with-r-projects-1" class="slide level2">
+<h2>Avoid this Hassle with R Projects</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>In almost all cases, you simply want a <code>New Project</code></p></li>
+<li><p>For more advanced uses, your project can be an <code>R Package</code> or a <code>Shiny Web Application</code></p></li>
+<li><p>If you have other packages that create templates installed (as I do, in the previous image), they will also show up as options</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/project2.png"></p>
+</div>
+</div>
+</section>
+<section id="avoid-this-hassle-with-r-projects-2" class="slide level2">
+<h2>Avoid this Hassle with R Projects</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Enter a name for the project in the top field</p>
+<ul>
+<li>Also creates a folder on your computer with the name you enter into the field</li>
+</ul></li>
+<li><p>Choose the location of the folder on your computer</p></li>
+<li><p>Depending on if you have other packages or utilities installed (such as <code>git</code>, see below!), there may be additional options, do not check them unless you know what you are doing</p></li>
+<li><p>Bottom left checkbox allows you to open a new instance (window) of <code>R</code> just for this project (and keep existing windows open)</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/project3.png"></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="an-intro-to-coding" class="title-slide slide level1 centered center" data-background-color="#314f4f">
+<h1>An Intro to Coding</h1>
+
 </section>
 <section id="learning" class="slide level2">
-<h2>Learning</h2>
-<div class="{columns}">
-<div class="column" style="width:50%;">
+<h2>Learning…</h2>
 <ul>
 <li><p><span class="hi">You don’t “<em>learn R</em>”, you learn <em>how to do things in R</em></span></p></li>
 <li><p>In order to do learn this, you need to learn <em>how to search for what you want to do</em></p></li>
 </ul>
-</div>
-<div class="column" style="width:50%;">
+</section>
+<section id="learning-1" class="slide level2">
+<h2>Learning…</h2>
 <blockquote class="twitter-tweet">
 <p lang="en" dir="ltr">
 My <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> learning path:<br><br>1. Install R<br>2. Install RStudio<br>3. Google "How do I [THING I WANT TO DO] in R?"<br><br>Repeat step 3 ad infinitum.
@@ -547,6 +652,7 @@ My <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw"
 — Jesse Mostipak (<span class="citation" data-cites="kierisi">@kierisi</span>) <a href="https://twitter.com/kierisi/status/898534740051062785?ref_src=twsrc%5Etfw">August 18, 2017</a>
 </blockquote>
 <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div class="fragment">
 <blockquote class="twitter-tweet">
 <p lang="en" dir="ltr">
 A surprisingly large part of having expertise in a topic is not so much knowing everything about it but learning the language and sources well enough to be extremely efficient in google searches.
@@ -555,28 +661,11 @@ A surprisingly large part of having expertise in a topic is not so much knowing 
 </blockquote>
 <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
-</div>
 </section>
 <section id="and-sucking" class="slide level2">
 <h2>…and Sucking</h2>
 
-<img data-src="images/suckingatsomething.gif" class="r-stretch"></section></section>
-<section>
-<section id="coding-basics" class="title-slide slide level1 center">
-<h1>Coding Basics</h1>
-
-</section>
-<section id="getting-to-know-your-computer" class="slide level2">
-<h2>Getting to Know Your Computer</h2>
-<ul>
-<li><p>R assumes a default (often inconvenient) [“working directory”].hi on your computer</p>
-<ul>
-<li>The first place it looks to <code>open</code> or <code>save</code> files</li>
-</ul></li>
-<li><p>Find out where R this is with <code>getwd()</code></p></li>
-<li><p>Change it with <code>setwd(path/to/folder)</code><sup>1</sup></p></li>
-</ul>
-<aside><ol class="aside-footnotes"><li id="fn1" role="doc-endnote"><p>Note the path is OS-specific. For Windows it might be <code>C:/Documents/</code>. For Mac it is often your username folder.</p></li></ol></aside></section>
+<img data-src="images/suckingatsomething.gif" class="r-stretch"></section>
 <section id="say-hello-to-my-little-friend" class="slide level2">
 <h2>Say Hello To My Little Friend</h2>
 
@@ -607,10 +696,10 @@ A surprisingly large part of having expertise in a topic is not so much knowing 
 </div>
 </div>
 </section>
-<section id="section-1" class="slide level2">
-<h2></h2>
+<section id="ive-failed-more-times-than-you" class="slide level2">
+<h2>I’ve Failed More Times Than You</h2>
 
-<img data-src="images/experience_problems.PNG" class="r-stretch"></section>
+<img data-src="images/experience_problems.PNG" class="r-stretch quarto-figure-center"></section>
 <section id="tips-for-writing-code" class="slide level2">
 <h2>Tips for Writing Code</h2>
 <ul>
@@ -641,7 +730,7 @@ A surprisingly large part of having expertise in a topic is not so much knowing 
 <div class="cell">
 
 </div>
-<aside><ol class="aside-footnotes"><li id="fn2" role="doc-endnote"><p>Consider your folders on your computer as well…</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn3" role="doc-endnote"><p>Consider your folders on your computer as well…</p></li></ol></aside></section>
 <section id="simple-commands" class="slide level2">
 <h2>Simple Commands</h2>
 <ul>
@@ -720,7 +809,7 @@ A surprisingly large part of having expertise in a topic is not so much knowing 
 <p><img data-src="images/rpackages.png"></p>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn3" role="doc-endnote"><p>Yes, note the plural, even if it’s just for one package</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn4" role="doc-endnote"><p>Yes, note the plural, even if it’s just for one package</p></li></ol></aside></section>
 <section id="objects-functions" class="slide level2">
 <h2>Objects &amp; Functions</h2>
 <div class="columns">
@@ -761,7 +850,7 @@ A surprisingly large part of having expertise in a topic is not so much knowing 
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn4" role="doc-endnote"><p>You can read this as “gets”.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn5" role="doc-endnote"><p>You can read this as “gets”.</p></li></ol></aside></section>
 <section id="more-about-functions" class="slide level2">
 <h2>More About Functions</h2>
 <div class="columns">
@@ -820,7 +909,7 @@ A surprisingly large part of having expertise in a topic is not so much knowing 
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn5" role="doc-endnote"><p>If you want to get technical, R calls these <code>integer</code> (for whole numbers) or <code>double</code> if there are decimal values.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn6" role="doc-endnote"><p>If you want to get technical, R calls these <code>integer</code> (for whole numbers) or <code>double</code> if there are decimal values.</p></li></ol></aside></section>
 <section id="character" class="slide level2">
 <h2>Character</h2>
 <div class="columns">
@@ -885,31 +974,35 @@ A surprisingly large part of having expertise in a topic is not so much knowing 
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn6" role="doc-endnote"><p>Technically, under the hood, <code>R</code> is actually storing them as <code>numeric</code>: <code>1 = TRUE</code>, <code>0 = FALSE</code>!</p></li><li id="fn7" role="doc-endnote"><p>One <code>=</code> <em>assigns</em> a value (like <code>&lt;-</code>), Two <code>==</code> <em>evaluates</em> a conditional statement!</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn7" role="doc-endnote"><p>Technically, under the hood, <code>R</code> is actually storing them as <code>numeric</code>: <code>1 = TRUE</code>, <code>0 = FALSE</code>!</p></li><li id="fn8" role="doc-endnote"><p>One <code>=</code> <em>assigns</em> a value (like <code>&lt;-</code>), Two <code>==</code> <em>evaluates</em> a conditional statement!</p></li></ol></aside></section>
 <section id="factor" class="slide level2">
 <h2>Factor</h2>
 <ul>
 <li><p><code>factor</code> objects contain <span class="hi-purple">categorical</span> data - membership in mutually exclusive groups</p></li>
 <li><p>Look like <code>character</code> strings, behave more like <code>logical</code>s, but with <em>more than two options</em></p></li>
 </ul>
+<div class="fragment">
 <div class="cell">
 
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] freshman  freshman  freshman  freshman  sophomore junior    freshman 
- [8] freshman  junior    junior   
+<pre><code> [1] senior    senior    senior    freshman  freshman  junior    freshman 
+ [8] senior    freshman  sophomore
 Levels: freshman sophomore junior senior</code></pre>
 </div>
 </div>
+</div>
+<div class="fragment">
 <ul>
 <li>We’ll make much more extensive use of them later</li>
 </ul>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] freshman  freshman  freshman  freshman  sophomore junior    freshman 
- [8] freshman  junior    junior   
+<pre><code> [1] senior    senior    senior    freshman  freshman  junior    freshman 
+ [8] senior    freshman  sophomore
 Levels: freshman &lt; sophomore &lt; junior &lt; senior</code></pre>
+</div>
 </div>
 </div>
 </section></section>
@@ -1152,7 +1245,7 @@ Levels: freshman &lt; sophomore &lt; junior &lt; senior</code></pre>
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn8" role="doc-endnote"><p>Remember each column in a data frame is a vector!</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn9" role="doc-endnote"><p>Remember each column in a data frame is a vector!</p></li></ol></aside></section>
 <section id="more-on-dataframes-i" class="slide level2">
 <h2>More on Dataframes I</h2>
 <ul>
@@ -1209,7 +1302,7 @@ Levels: freshman &lt; sophomore &lt; junior &lt; senior</code></pre>
                     Max.   :7.50  </code></pre>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn9" role="doc-endnote"><p>For <code>numeric</code> data only; a frequency table is displayed for <code>character</code> or <code>factor</code> data</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn10" role="doc-endnote"><p>For <code>numeric</code> data only; a frequency table is displayed for <code>character</code> or <code>factor</code> data</p></li></ol></aside></section>
 <section id="more-on-dataframes-iv" class="slide level2">
 <h2>More on Dataframes IV</h2>
 <ul>
