@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>ECON 480 — Econometrics - Overview</title>
+<title>ECON 480 — Econometrics - 1.2 — Meet R — Practice</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,15 +58,15 @@ ul.task-list{list-style: none;}
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="ECON 480 — Econometrics - Overview">
-<meta property="og:description" content="These content pages provide the readings, lecture slide (in html and printable PDF), appendices, and other useful materials for each class. Each lesson covers approximately one class meeting.">
+<meta property="og:title" content="ECON 480 — Econometrics - 1.2 — Meet R — Practice">
+<meta property="og:description" content="Quarto file  R Studio Cloud">
 <meta property="og:site-name" content="ECON 480 — Econometrics">
-<meta name="twitter:title" content="ECON 480 — Econometrics - Overview">
-<meta name="twitter:description" content="These content pages provide the readings, lecture slide (in html and printable PDF), appendices, and other useful materials for each class. Each lesson covers approximately one class meeting.">
+<meta name="twitter:title" content="ECON 480 — Econometrics - 1.2 — Meet R — Practice">
+<meta name="twitter:description" content="Quarto file  R Studio Cloud">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -88,7 +88,7 @@ ul.task-list{list-style: none;}
     <a class="nav-link" href="../schedule.html">Schedule</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../content/index.html" aria-current="page">Content</a>
+    <a class="nav-link" href="../content/index.html">Content</a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../assignments/index.html">Assignments</a>
@@ -111,69 +111,26 @@ ul.task-list{list-style: none;}
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Overview</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
-      </button>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Overview</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../content/index.html" class="sidebar-item-text sidebar-link active">Overview</a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">I. Data Analysis in R</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../content/1.1-content.html" class="sidebar-item-text sidebar-link">1.1 — Introduction to Econometrics</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../content/1.2-content.html" class="sidebar-item-text sidebar-link">1.2 — Meet R</a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#getting-set-up" id="toc-getting-set-up" class="nav-link active" data-scroll-target="#getting-set-up">Getting Set Up</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Overview</h1>
+<h1 class="title">1.2 — Meet R — Practice</h1>
 </div>
 
 
@@ -187,11 +144,17 @@ ul.task-list{list-style: none;}
 
 </header>
 
-<p>These content pages provide the readings, lecture slide (in html and printable PDF), appendices, and other useful materials for each class. Each lesson covers approximately one class meeting.</p>
-<p>Please note that the lesson numbers, topics, and titles (e.g.&nbsp;1.1) are <em>my</em> design, and do not match up with the textbook!</p>
-<hr>
+<p style="text-align:center">
+<a target="_blank" href="../r/1.2.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Quarto file</span></a> <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4361230"><span class="btn btn-primary btn-lg"><i class="fas fa-cloud"></i> R Studio Cloud</span></a>
+</p>
+<section id="getting-set-up" class="level2">
+<h2 class="anchored" data-anchor-id="getting-set-up">Getting Set Up</h2>
+<p>First, create a new R project on your computer by choosing <code>File -&gt; New Project...</code>, create a new directory (a folder somewhere on your computer), and then choose <code>New Project</code> and then give it a name like <code>1.2-R-Practice</code> [This is a good time to practice not using spaces in file and folder names!].</p>
+<p>Then, download and open the Quarto file above and move it to the file folder on your computer that you just created for the R Project, and open it in R Studio. If there are any packages that you are missing (such as <code>knitr</code> or <code>rmarkdown</code>), a yellow banner on top may inform you <code>Package X is required but is not installed</code>, click <code>Install</code> to install them, or equivalently use the console to <code>install.packages()</code>.</p>
+<p><strong>Alternatively</strong>, you can do everything on RStudio.Cloud, which has its own R Project that includes the Quarto file.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

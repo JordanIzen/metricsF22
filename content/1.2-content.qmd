@@ -1,0 +1,51 @@
+---
+title: "1.2 — Meet R — Class Content"
+---
+
+```{r, echo = F}
+source(here::here("slides", "slide-links.R"))
+```
+
+::: {.callout-note appearance=minimal}
+# Meeting Dates
+*Thursday, August 26, 2021*
+:::
+
+::: .{callout-warning}
+# Upcoming Assignment
+
+Please complete the [preliminary survey](/assignment/00-preliminary-survey).
+:::
+
+## <i class="fas fa-info-circle fa-lg"></i> Overview
+
+Today we begin the long slog to your mastery of `R`. We begin with the basics - how R works, how to use it, the different data types, and how to create and manipulate objects.
+
+## <i class="fas fa-book-reader fa-lg"></i> Readings
+
+- <i class="fas fa-external-link-square-alt"></i>Ch.1 in Wickham & Grolemund, [http://r4ds.had.co.nz/introduction.html](R for Data Science)
+
+Now that we start working with R, you should consider this book to be your *primary* reference for R-related questions. We will broadly cover the first few chapters in order over the next 2-3 class periods.
+
+## <i class="fas fa-registered"></i> R Practice
+
+Today we will be working on [practice problems](/r/1.2-r). Answers will be posted later on that page.
+
+## <i class="fas fa-chalkboard-teacher"></i> Slides
+
+Below, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides. 
+
+I suggest printing the slides beforehand and using them to take additional notes in class (*not everything* is in the slides)!
+
+```{r}
+#| echo: false
+#| output: asis
+
+slide_links("1.2-slides")
+```
+
+## <i class="fas fa-laptop-code"></i> Assignments
+
+### Preliminary Statistics Survey
+
+Please take the [preliminary survey](/assignment/00-preliminary-survey) on your statistics and software background. This will help us all have a productive semester together.

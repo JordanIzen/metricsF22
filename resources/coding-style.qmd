@@ -1,0 +1,29 @@
+---
+title: "Suggested Code Style Guide"
+---
+
+We want to maximize *human*-readability of code, not just machine-readability. I try to follow [Hadley Wickham's style guide](http://adv-r.had.co.nz/Style.html) for all of my code, including that in this class.
+
+*You will not be graded on the style of your code.* But now's the best time to learn best practices (while you don't know any alternatives!) to save yourself and your potential colleagues (including your future self) from unnecessary frustration.
+
+- comment above for overall idea 
+- comment on side for individual elements of long commands
+- name with `_`
+- use `%>%` wherever possible
+- spaces between all operators: `<-`, `=`, `+`, etc.
+    - Exception: `:` and `::`
+- line breaks between multiple arguments to a function
+
+```{r, eval = F}
+p<-ggplot(data=data, aes(x=x,y=y,fill=fill))+geom_point()
+```
+
+becomes
+
+```{r, eval = F}
+p <- ggplot(data = data,
+       aes(x = x,
+           y = y,
+           fill = fill))+
+  geom_point()
+```

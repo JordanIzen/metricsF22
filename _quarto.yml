@@ -44,6 +44,8 @@ website:
           contents: 
             - text: "1.1 — Introduction to Econometrics"
               href: content/1.1-content.qmd
+            - text: "1.2 — Meet R"
+              href: content/1.2-content.qmd
               
     - title: "Assignments"
       style: "docked"
@@ -75,8 +77,10 @@ website:
             text: "Zipping and Unzipping Files"
         - section: "R Resources"
           contents:
-          - href: resources/installing.qmd
+          - href: resources/installing-r.qmd
             text: "Installing R and R Studio"
+          - href: resources/coding-style.qmd
+            text: "Suggested Code Style Guide"
         - section: "Advice"
           contents:
           - href: resources/tips.qmd

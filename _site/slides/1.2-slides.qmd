@@ -14,6 +14,7 @@ execute:
 ---
 
 ## {data-menu-title="Title Slide" background-image="../images/metrics_title_slide.png"}
+
 [1.2 — Meet R]{.custom-title}
 
 [ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
@@ -172,9 +173,607 @@ leaflet() %>%
 :::
 
 ::: {.column width="50%"}
-![](../images/r4screens1.png)
+![](images/r4screens1.png)
 :::
 :::
 
 ## R and R Studio
 
+## Learning 
+
+::: {columns}
+::: {.column width="50%"}
+- [You don't “*learn R*”, you learn *how to do things in R*]{.hi}
+
+- In order to do learn this, you need to learn *how to search for what you want to do*
+
+:::
+
+::: {.column width="50%"}
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">My <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> learning path:<br><br>1. Install R<br>2. Install RStudio<br>3. Google &quot;How do I [THING I WANT TO DO] in R?&quot;<br><br>Repeat step 3 ad infinitum.</p>&mdash; Jesse Mostipak (@kierisi) <a href="https://twitter.com/kierisi/status/898534740051062785?ref_src=twsrc%5Etfw">August 18, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">A surprisingly large part of having expertise in a topic is not so much knowing everything about it but learning the language and sources well enough to be extremely efficient in google searches.</p>&mdash; Katie Mack (@AstroKatie) <a href="https://twitter.com/AstroKatie/status/1071442842873159681?ref_src=twsrc%5Etfw">December 8, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+:::
+:::
+
+## ...and Sucking
+
+![](images/suckingatsomething.gif)
+
+# Coding Basics
+
+## Getting to Know Your Computer
+
+- R assumes a default (often inconvenient) ["working directory"].hi on your computer
+    - The first place it looks to `open` or `save` files 
+
+- Find out where R this is with `getwd()`
+
+- Change it with `setwd(path/to/folder)`^[Note the path is OS-specific. For Windows it might be `C:/Documents/`. For Mac it is often your username folder.]
+
+## Say Hello To My Little Friend
+
+![](images/googlehelp.png)
+
+## Say Hello to My Better Friend
+
+![](images/stackoverflow.png)
+
+## R Is Helpful Too!
+
+::: {.columns}
+::: {.column width="50%"}
+
+- Type `help(function_name)` or `?(function_name)` to get documentation on a function
+
+```{r}
+#| echo: true
+#| eval: false
+help(mean)
+
+?mean() # does the same thing
+```
+
+:::
+
+::: {.column width="50%"}
+
+![From Kieran Healy, [Data Visualization](http://socviz.co/).](http://socviz.co/assets/ch-09-read-a-help-page.png)
+
+:::
+:::
+
+## 
+
+![](images/experience_problems.PNG)
+
+## Tips for Writing Code
+
+- Comment, comment, comment!
+- The hashtag `#` starts a comment, R will ignore everything on the rest of that line
+
+```{r}
+#| eval: false
+
+# Run regression of y on x, save as reg1 
+reg1 <- lm(y ~ x, data=data) #runs regression 
+summary(reg1) #prints summary
+```
+
+- Save often!
+  - Write scripts that save the commands that did what you wanted (and comment them!)
+  - Better yet, use a version control system like Git (I may cover this later)
+
+## Style and Naming
+
+- Once we start writing longer blocks of code, it helps to have a consistent (and human-readable!) style
+- I follow [this style guide](https://adv-r.had.co.nz/Style.html) (you are not required to)^[Consider your folders on your computer as well...]
+
+- Naming objects and files will become important<sup>.magenta[‡]</sup>
+    - DO NOT USE SPACES! You've seen seen webpages intended to be called `my webpage in html` turned into `http://my%20webpage%20in%20html.html`
+
+```{r,eval=F}
+i_use_underscores
+some.people.use.snake.case
+othersUseCamelCase
+```
+
+## Simple Commands
+
+- You'll have to get used to the fact that you are coding in commands to execute
+
+- Start with the easiest: simple math operators and calculations:
+
+. . .
+
+```{r}
+#| eval: false
+#| echo: true
+> 2+2
+```
+
+```{r}
+#| echo: false
+2+2
+```
+
+- Note that R will ask for **input** with `>` and give you **output** starting with `[1]`
+
+## Simple Commands
+
+- We can start using more fancy commands
+
+```{r}
+#| echo: true
+2^3
+```
+
+. . .
+
+```{r}
+#| echo: true
+sqrt(25)
+```
+
+. . .
+
+```{r}
+#| echo: true
+log(6)
+```
+
+. . .
+
+```{r}
+#| echo: true
+pi/2
+```
+
+## Packages and Libraries
+
+::: columns
+::: {.column width="50%"}
+
+- Since R is open source, users contribute **packages**
+    - Really it's just users writing custom functions and saving them for others to use
+- Load packages with `library()`
+    - e.g. `library("package_name")`
+- If you don't have a package, you must first `install.packages()`^[Yes, note the plural, even if it's just for one package]
+    - e.g. `install.packages("package_name")`
+
+:::
+
+::: {.column width="50%"}
+![](images/rpackages.png)
+:::
+:::
+
+## Objects & Functions
+
+::: columns
+::: {.column width="50%"}
+- R is an [**object-oriented**]{.hi} programming language, meaning you will always be:
+
+1. creating `objects`
+    - assign values to an object with `=` (or `<-`)^[You can read this as “gets”.]
+
+2. running `functions` on `objects`
+    - syntax: `my_function(my_object)`
+
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+
+# make an object
+my_object = c(1,2,3,4,5)
+
+# look at it 
+my_object
+
+# find the sum
+sum(my_object)
+
+# find the mean 
+mean(my_object)
+```
+
+:::
+:::
+
+## More About Functions
+
+::: columns
+::: {.column width="50%"}
+- Functions have [arguments]{.hi}, the input(s)
+
+- Some functions may have multiple arguments
+
+- The argument of a function can be *another* function!
+
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: true
+
+# find the sd
+sd(my_object)
+
+# round everything in my object to two decimals
+round(my_object,2)
+
+# round the sd to two decimals
+round(sd(my_object),2)
+
+```
+:::
+:::
+
+# Types of R Objects {background-color="#314f4f" .centered}
+
+## Numeric
+
+::: columns
+::: {.column width="50%"}
+- `numeric` objects are just numbers^[If you want to get technical, R calls these `integer` (for whole numbers) or `double` if there are decimal values.]
+
+- Can be mathematically manipulated
+
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: true
+x <- 2 
+y <- 3
+x+y
+x*y
+```
+:::
+:::
+
+## Character
+
+::: columns
+::: {.column width="50%"}
+- `character` objects are [“strings”]{.hi-turqoise} of text **contained inside quote marks**
+
+- Can contain spaces, so long as contained within quote marks
+
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: true
+
+name <- "Ryan Safner"
+address <- "Hood College"
+
+name
+address
+
+```
+:::
+:::
+
+## Logical
+
+::: columns
+::: {.column width="50%"}
+- `logical` objects are [boolean/binary]{.hi-turquoise} `TRUE` or `FALSE` indicators^[Technically, under the hood, `R` is actually storing them as `numeric`: `1 = TRUE`, `0 = FALSE`!]
+
+- Used a lot to evaluate [conditionals]{.hi-turquoise}:
+  - `>`, `<`: greater than, less than
+  - `>=`, `<=`: greater than or equal to, less than or equal to
+  - `==`, `!=`: is equal to, is not equal to^[One `=` *assigns* a value (like `<-`), Two `==` *evaluates* a conditional statement!]
+  - `&in&` : is a member of the set of $(\in)$
+  - `&`: "AND"
+  - `|`: "OR" 
+
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: true
+
+
+z = 10 # set z equal to 10
+
+z==10 # test is z equal to 10?
+
+"red"=="blue" # test is red equal to blue?
+
+z > 1 & z < 12 # test is z > 1 AND < 12?
+
+z <= 1 | z==10 # test is z >= 1 OR equal to 10?
+
+```
+:::
+:::
+
+## Factor
+
+- `factor` objects contain [categorical]{.hi-purple} data - membership in mutually exclusive groups
+
+- Look like `character` strings, behave more like `logical`s, but with *more than two options*
+
+```{r, echo=F}
+class = sample(c("freshman", "sophomore", "junior", "senior"),10, replace=T)
+```
+
+```{r, echo=F}
+class = as.factor(class)
+levels(class) = c('freshman','sophomore','junior', 'senior')
+class
+```
+
+- We'll make much more extensive use of them later
+
+```{r, echo=F}
+class = ordered(class, levels=c('freshman','sophomore','junior', 'senior'))
+class
+```
+
+# Data Structures {background-color="#314f4f" .centered}
+
+## Vectors
+
+::: columns
+::: {.column width="50%"}
+- `vector` the simplest type of object, just a collection of elements
+    - All elements must be the same data type!
+
+- Make a vector using the **combine/concatenate** `c()` function
+
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: true
+
+# create a vector named vec
+vec <- c(1,"orange", 83.5, pi)
+
+# look at vec
+vec
+```
+:::
+:::
+
+## Dataframes I
+
+- `data.frame` or `tibble`: what we'll always be using; think like a [“spreadsheet”]{.hi}:
+  - Each [column]{.hi} is a vector (variable) of data all the same type
+  - Each [row]{.hi} is an observation (pair of values for all variables)
+
+```{r}
+#| echo: true
+library(ggplot2)
+diamonds
+```
+
+## Dataframes II
+
+::: columns
+::: {.column width="50%"}
+- Dataframes are really just combinations of (column) vectors
+
+- You can make data frames by combinining named vectors with `data.frame()` or creating each column/vector in each argument 
+
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: true
+
+# make two vectors
+fruits = c("apple","orange","pear","kiwi","pineapple")
+numbers = c(3.3,2.0,6.1,7.5,4.2)
+
+# combine into dataframe
+df = data.frame(fruits,numbers)
+
+# do it all in one step (note the = instead of <-)
+df = data.frame(fruits=c("apple","orange","pear","kiwi","pineapple"),
+               numbers=c(3.3,2.0,6.1,7.5,4.2))
+
+# look at it
+df
+```
+:::
+:::
+
+# Working with Objects {background-color="#314f4f" .centered}
+
+## Objects: Storing, Viewing, and Overwriting
+
+- We want to store things in objects to run functions on them later
+- Recall, any object is created with the assignment operator `=` or `<-` 
+
+```{r}
+#| echo: true
+my_vector = c(1,2,3,4,5)
+```
+
+- R will not give any output after an assignment
+
+## Objects: Storing, Viewing, and Overwriting
+
+- *View* an object (and list its contents) by typing its name
+
+```{r}
+#| echo: true
+my_vector
+```
+
+. . .
+
+- objects maintain their values until they are assigned different values that will *overwrite* the object
+
+```{r}
+#| echo: true
+my_vector = c(2,7,9,1,5)
+my_vector
+```
+
+
+## Objects: Checking and Changing Classes
+
+- Check what type of object something is with `class()`
+
+```{r}
+#| echo: true
+class("six")
+class(6)
+```
+
+. . .
+
+- Can also use logical tests of `is.()` 
+
+```{r}
+#| echo: true
+is.numeric("six")
+is.character("six")
+```
+
+## Objects: Checking and Changing Classes
+
+- Convert objects from one class to another with `as.object_class()`
+    - Pay attention: you can't convert non-numbers to `numeric`, etc! 
+
+```{r}
+#| echo: true
+as.character(6)
+as.numeric("six")
+```
+
+## Objects: Different Classes and Coercion I
+
+- Different types of objects have different rules about mixing classes
+- Vectors can *not* contain different types of data
+    - Different types of data will be "**coerced**" into the lowest-common denominator type of object
+
+```{r}
+#| echo: true
+mixed_vector = c(pi, 12, "apple", 6.32)
+class(mixed_vector)
+mixed_vector
+```
+
+## Objects: Different Classes and Coercion II
+
+- Data frames can have columns with different types of data, so long as all the elements in each column are the same class^[Remember each column in a data frame is a vector!]
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: true
+df
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: true
+
+class(df$fruits)
+class(df$numbers)
+```
+:::
+:::
+
+## More on Dataframes I
+
+- Learn more about a data frame with the `str()` command to view its structure
+
+```{r}
+#| echo: true
+class(df) 
+str(df)
+```
+
+## More on Dataframes II
+
+- Take a look at the first 5 (or `n`) rows with `head()`
+
+```{r}
+#| echo: true
+head(df)
+head(df, n=2)
+```
+
+
+## More on Dataframes III
+
+Get summary statistics^[For `numeric` data only; a frequency table is displayed for `character` or `factor` data]  by column (variable) with `summary()`
+
+```{r}
+#| echo: true
+summary(df)
+```
+
+## More on Dataframes IV
+
+- Note, once you save an object, it shows up in the **Environment Pane** in the upper right window 
+- Click the blue arrow button in front of the object for some more information
+
+![](images/renvironmentdf2.png)
+
+## More on Dataframes V
+
+- `data.frame` objects can be viewed in their own panel by clicking on the name of the object in the environment pane
+- Note you cannot edit anything in this pane, it is for viewing only 
+
+![](../images/rdfview.png)
+
+## Functions Again I
+
+- Functions in R are **vectorized**, meaning running a function on a vector applies it to *each* element
+
+```{r}
+#| echo: true
+my_vector = c(2,4,5,10) # create object called my_vector
+my_vector # look at it
+my_vector+4 # add 4 to all elements of my_vector
+my_vector^2 # square all elements of my_vector
+```
+
+## Functions Again II
+
+- But often we want to run functions on vectors that *aggregate* to a result (e.g. a statistic):
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: true
+length(my_vector) # how many elements?
+sum(my_vector) # add all elements together
+max(my_vector) # find largest element
+min(my_vector) # find smallest element
+```
+
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| code-overflow: wrap
+
+mean(my_vector) # mean of all elements
+median(my_vector) # median of all elements
+var(my_vector) # variance of object
+sd(my_vector) # standard deviation of object
+
+```
+:::
+:::
+
+## Some Common Errors
+
+- If you make a coding error (e.g. forget to close a parenthesis), R might show a `+` sign waiting for you to finish the command
+
+```{r}
+#| echo: true
+#| eval: false
+> 2+(2*3
++
+```
+
+- Either finish the command-- e.g. add `)`--or hit `Esc` to cancel
