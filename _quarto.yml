@@ -61,6 +61,12 @@ website:
         - section: "Exams"
         - text: "Research Paper"
           href: assignments/paper.qmd
+    
+    - title: "R Practice"
+      style: "docked"
+      contents:
+        - text: "1.2 — Meet R"
+          href: r/1.2-r.qmd
 
     - title: "Resources"
       style: "docked"
