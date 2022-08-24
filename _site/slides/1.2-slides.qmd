@@ -13,7 +13,7 @@ execute:
   freeze: auto
 ---
 
-## {data-menu-title="Title Slide" background-image="../images/metrics_title_slide.png"}
+## {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
 
 [1.2 — Meet R]{.custom-title}
 
@@ -68,7 +68,7 @@ library(scales)
 :::
 
 ::: {.column width="50%"}
-![](../images/r.png)
+![](images/r.png)
 :::
 :::
 
@@ -369,10 +369,10 @@ summary(reg1) #prints summary
 - Once we start writing longer blocks of code, it helps to have a consistent (and human-readable!) style
 - I follow [this style guide](https://adv-r.had.co.nz/Style.html) (you are not required to)^[Consider your folders on your computer as well...]
 
-- Naming objects and files will become important<sup>.magenta[‡]</sup>
+- Naming objects and files will become important
     - DO NOT USE SPACES! You've seen seen webpages intended to be called `my webpage in html` turned into `http://my%20webpage%20in%20html.html`
 
-```{r,eval=F}
+```{r,eval=F, echo = T}
 i_use_underscores
 some.people.use.snake.case
 othersUseCamelCase
@@ -824,7 +824,7 @@ summary(df)
 - `data.frame` objects can be viewed in their own panel by clicking on the name of the object in the environment pane
 - Note you cannot edit anything in this pane, it is for viewing only 
 
-![](../images/rdfview.png)
+![](images/rdfview.png)
 
 ## Functions Again I
 
