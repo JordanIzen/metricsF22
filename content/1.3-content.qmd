@@ -1,0 +1,56 @@
+---
+title: "1.3 — Data Visualization — Class Content"
+---
+
+```{r, echo = F}
+source(here::here("slides", "slide-links.R"))
+```
+
+::: {.callout-note appearance="minimal"}
+# Meeting Dates
+
+*Wednesday, August 31, 2021*
+:::
+
+## <i class="fas fa-info-circle fa-lg"></i> Overview
+
+Today we start the fun stuff - data visualization. We will cover how to build plots with the package `ggplot2` (part of the `tidyverse`): I will lecture for the first half (again, it will be a lot of information that you can refer back to as needed over the semester) and you will practice making plots.
+
+## <i class="fas fa-book-reader fa-lg"></i> Readings
+
+- <i class="fas fa-external-link-square-alt"></i> Ch.3 in Wickham & Grolemund, [http://r4ds.had.co.nz/introduction.html](R for Data Science)
+
+### Recommended/Resources on `ggplot2`
+
+- **R Studio's [ggplot2 Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)**
+- **`ggplot2`'s website [reference section](https://ggplot2.tidyverse.org/reference/index.html)**
+- Hadley Wickham's[ R for Data Science book chapter on ggplot2](http://r4ds.had.co.nz/data-visualisation.html)
+- STHDA's [be awesome in ggplot2](http://www.sthda.com/english/wiki/be-awesome-in-ggplot2-a-practical-guide-to-be-highly-effective-r-software-and-data-visualization)
+- r-statistic's [top 50 ggplot2 visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+
+### Recommended/Resources on Data Visualization
+
+- **Kieran Healy's [Data Visualization: A Practical Guide](http://socviz.co/)**
+- **Claus Wilke's [Fundamentals of Data Visualization](https://serialmentor.com/dataviz)**
+- PolicyViz [Better Presentations](https://policyviz.com/) 
+- Karl Broman's [How to Display Data Badly](https://www.biostat.wisc.edu/~kbroman/presentations/IowaState2013/graphs_combined.pdf)
+- [I Want Hue](http://tools.medialab.sciences-po.fr/iwanthue/) 
+
+## <i class="fas fa-registered"></i> R Practice
+
+Answers from last class’ practice problems on base R are posted [on that page](/r/1.2-r).
+
+Today you will be working on [R practice problems](/r/1.3-r) on data visualization. Answers will be posted later on that page.
+
+## <i class="fas fa-chalkboard-teacher"></i> Slides
+
+Below, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.
+
+I suggest printing the slides beforehand and using them to take additional notes in class (*not everything* is in the slides)!
+
+```{r}
+#| echo: false
+#| output: asis
+
+slide_links("1.2-slides")
+```

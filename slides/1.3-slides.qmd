@@ -1,0 +1,1574 @@
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    logo: "../images/metrics_hex.png"
+    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
+    height: 900
+    width: 1600
+overview: true
+execute:
+  echo: false
+  warning: false
+  freeze: auto
+---
+
+##  {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
+
+[1.3 --- Data Visualization]{.custom-title}
+
+[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+
+[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
+
+[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(kableExtra)
+library(patchwork)
+library(fontawesome)
+library(gapminder)
+library(scales)
+knitr::opts_chunk$set(echo=F,
+                      message=F,
+                      warning=F)
+```
+
+## Graphics and Statistics
+
+::: columns
+::: {.column width="50%"}
+- Admittedly, we still need to cover basic descriptive statistics and data fundamentals
+    - continuous, discrete, cross-sectional, time series, panel data
+    - mean, median, variance, standard deviation
+    - random variables, distributions, PDFs, Z-scores
+    - bargraphs, boxplots, histograms, scatterplots
+
+- All of this is coming in 2 weeks as we return to statistics and econometric theory
+
+- But let's start with the fun stuff right away, even if you don't fully know the *reasons*: [data visualization]{.hi}
+
+:::
+
+::: {.column width="50%"}
+![](images/statsgraphs.jpg)
+:::
+:::
+
+## Our Data Source
+
+- For our examples, we'll use a dataset `mpg` from the `ggplot2` library
+
+```{r}
+#| echo: true
+library(ggplot2)
+
+head(mpg)
+```
+
+## `ggplot2` and the tidyverse {background-image="images/tidyversewide.png" background-size="cover" background-color="black"}
+
+## ggplot2
+
+::: columns
+::: {.column width="50%"}
+- `ggplot2` is perhaps the most popular package in `R` and a core element of the `tidyverse`
+
+- `gg` stands for a [grammar of graphics]{.hi-purple}
+
+- Very powerful and beautiful graphics, very customizable and reproducible, but requires a bit of a learning curve
+
+- All those "cool graphics" you've seen in the New York Times, fivethirtyeight, the Economist, Vox, etc use the grammar of graphics
+
+:::
+::: {.column width="50%"}
+![](images/hadleyplot.jpg)
+:::
+:::
+
+## ggplot: All Your Figure are Belong to Us
+
+::: columns
+::: {.column width="50%"}
+![](images/538gg1.png){image-width="500"}
+
+[Source: [fivethirtyeight](https://fivethirtyeight.com/features/fastest-airlines-fastest-airports/)]{.source}
+:::
+::: {.column width="50%"}
+![](images/538gg.png)
+
+[Source: [fivethirtyeight](https://fivethirtyeight.com/features/how-to-tell-someones-age-when-all-you-know-is-her-name/)]{.source}
+
+:::
+:::
+
+## ggplot: All Your Figure are Belong to Us
+
+![](images/bbplot.png)
+
+Source: [BBC's bbplot](https://github.com/bbc/bbplot)
+
+## Why Go `gg`?
+
+::: columns
+::: {.column width="30%"}
+![](images/hadley.jpg)
+
+Hadley Wickham
+
+Chief Scientist, R Studio
+
+:::
+::: {.column width="70%"}
+
+> “The transferrable skills from ggplot2 are not the idiosyncracies of plotting syntax, but a powerful way of thinking about visualisation, as a way of **mapping between variables and the visual properties of geometric objects** that you can perceive.”
+
+[[Source](http://disq.us/p/sv640d)]{.source}
+
+:::
+:::
+
+## The Grammar of Graphics (gg)
+
+::: columns
+::: {.column width="50%"}
+- This is a true *grammar*
+
+- We *don’t* talk about specific chart [types]{.hi-purple}
+  - That you have to hunt through in Excel and reshape your data to fit it
+
+- Instead we talk about specific chart [components]{.hi}
+
+:::
+::: {.column width="50%"}
+![](images/excel-chart-types.png){width="600" fig-align="center"}
+:::
+:::
+
+## The Grammar of Graphics (gg) I
+
+::: columns
+::: {.column width="50%"}
+- Any graphic can be built from the same components:
+  1. **[Data]{.hi-purple} to be drawn from**
+  2. **[Aesthetic mappings]{.hi-purple} from data to some visual marking**
+  3. **[Geometric objects]{.hi-purple} on the plot**
+  4. [Scales]{.hi-purple} define the range of values
+  5. [Coordinates]{.hi-purple} to organize location
+  6. [Labels]{.hi-purple} describe the scale and markings
+  7. [Facets]{.hi-purple} group into subplots
+  8. [Themes]{.hi-purple} style the plot elements
+    
+:::
+::: {.column width="50%"}
+![](images/gglayers.png)
+:::
+:::
+
+## The Grammar of Graphics (gg) I
+
+::: columns
+::: {.column width="50%"}
+- Any graphic can be built from the same components:
+  1. `data` **to be drawn from**
+  2. `aes`[thetic mappings]{.hi-purple} **from data to some visual marking**
+  3. `geom`[etric objects]{.hi-purple} **on the plot**
+  4. `scale` define the range of values
+  5. `coord`[inates]{.hi-purple} to organize location
+  6. `labels` describe the scale and markings
+  7. `facet` group into subplots
+  8. `theme` style the plot elements
+    
+:::
+::: {.column width="50%"}
+![](images/gglayers.png)
+:::
+:::
+
+## The Grammar of Graphics (gg): All at Once
+
+::: columns
+::: {.column width="50%"}
+
+#### All in One Command
+
+Produces plot output in viewer
+
+- Does not save plot (if done in console)
+    - Save with `Export` menu in viewer
+
+- Adding layers requires whole code for new plot
+
+- Perfectly fine if it’s a code chunk in a Quarto document!
+:::
+::: {.column width="50%"}
+```{r}
+#| eval: false
+#| echo: true
+ggplot(data = mpg)+
+  aes(x = displ,
+        y = hwy)+
+  geom_point()+
+  geom_smooth()
+
+```
+:::
+:::
+
+## The Grammar of Graphics (gg): As R Objects
+
+::: columns
+::: {.column width="50%"}
+
+#### Saving as an object
+
+- Saves your plot as an `R` object
+
+- Does *not* show in viewer
+  - Execute the name of your object to see it
+
+- Can add layers by calling the original plot name
+
+:::
+::: {.column width="50%"}
+```{r}
+#| eval: false
+#| echo: true
+#| code-overflow: wrap 
+
+# make and save plot as p
+p <- ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point()
+
+p # view plot
+
+# to add a layer...
+p + geom_smooth() # shows the new plot
+
+p <- p + geom_smooth() # overwrites p
+p2 <- p + geom_smooth() # saves new object
+```
+:::
+:::
+
+# Plot Layers {.centered background-color="#314f4f"}
+
+## The Grammar of Graphics (gg): Tidy Data
+
+::: columns
+::: {.column width="30%"}
+### Data
+
+`ggplot(data = mpg)`
+
+:::
+::: {.column width="70%"}
+
+**Data** is the source of our data. As part of the `tidyverse`, `ggplot2` requires data to be [“tidy”]{.hi-purple}^[Data “tidyness” is the core element of all `tidyverse` packages. Much more on all of this next class]:
+
+1. Each variable forms a [column]{.hi}
+
+2. Each observation forms a [row]{.hi}
+
+3. Each observational unit forms a table
+
+:::
+:::
+
+## gg: Data Layer
+
+::: columns
+::: {.column width="30%"}
+### Data
+
+`ggplot(data = mpg)`
+
+:::
+::: {.column width="70%"}
+
+- Add a layer with `+` at the end of a line (never at the beginning!)
+
+- Style recommendation: start a new line after each `+` to improve legibility!
+
+- We will build a plot layer-by-layer
+
+:::
+:::
+
+## gg: Mapping Aesthetics I
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+
+`+aes(...)`
+
+:::
+::: {.column width="70%"}
+
+**Aesthetics** map data to visual elements or parameters
+
+![](images/ggplotaes.png){width="750" fig-align="center"}
+:::
+:::
+
+## gg: Mapping Aesthetics II
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+
+`+aes(...)`
+
+:::
+::: {.column width="70%"}
+
+**Aesthetics** map data to visual elements or parameters
+
+- `displ`
+
+- `hwy`
+
+- `class`
+:::
+:::
+
+## gg: Mapping Aesthetics III
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+
+`+aes(...)`
+
+:::
+::: {.column width="70%"}
+
+**Aesthetics** map data to visual elements or parameters
+
+- `displ` → **x**
+
+- `hwy` → **y**
+
+- `class` → **color**, (or **shape**, **size**, etc.)
+:::
+:::
+
+## gg: Mapping Aesthetics IV
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+
+`+aes(...)`
+
+:::
+::: {.column width="70%"}
+
+**Aesthetics** map data to visual elements or parameters
+
+![](images/aes.png)
+:::
+:::
+
+## gg: Mapping Aesthetics V
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+
+`+aes(...)`
+
+:::
+::: {.column width="70%"}
+
+**Aesthetics** map data to visual elements or parameters
+
+```{r}
+#| eval: false
+#| echo: true
+aes(x = displ,
+    y = hwy,
+    color = class)
+```
+:::
+:::
+
+## gg: Geoms I
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+### Geoms
+
+`+geom_*(...)`
+
+:::
+::: {.column width="70%"}
+
+**Geometric objects** displayed on the plot
+
+```{r geom_demo, echo=FALSE, fig.retina=3, fig.height=6}
+minimal_theme <- theme_bw() +
+  theme(
+    axis.text = element_blank(),
+    axis.ticks = element_blank(),
+    panel.grid = element_blank(),
+    panel.border = element_blank(),
+    axis.title = element_blank(),
+    plot.title = element_text(hjust = 0.5),
+    text = element_text(family = "Fira Mono"),
+    plot.background = element_rect(fill = "#FAFAFA", color = NA),
+    panel.background = element_rect(fill = "#FAFAFA", color = NA)
+  )
+
+set.seed(20)
+df_geom <- data_frame(y = rnorm(10), x = 1:10)
+
+g_geom <- list()
+g_geom$point <- ggplot(df_geom, aes(x, y)) + geom_point() + ggtitle("geom_point()")
+g_geom$line <- ggplot(df_geom, aes(x, y)) + geom_line() + ggtitle("geom_line()")
+g_geom$bar <- ggplot(df_geom, aes(x, y)) + geom_col() + ggtitle("geom_col()")
+g_geom$boxplot <- ggplot(df_geom, aes(y = y)) + geom_boxplot() + ggtitle("geom_boxplot()")
+g_geom$histogram <- ggplot(df_geom, aes(y)) + geom_histogram(binwidth = 1) + ggtitle("geom_histogram()")
+g_geom$density <- ggplot(df_geom, aes(y)) + geom_density(fill = "grey40", alpha = 0.25) + ggtitle("geom_density()") + xlim(-4, 4)
+
+g_geom <- map(g_geom, ~ . + minimal_theme)
+
+cowplot::plot_grid(plotlist = g_geom)
+```
+:::
+:::
+
+## gg: Geoms II
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+### Geoms
+
+`+geom_*(...)`
+
+:::
+::: {.column width="70%"}
+
+**Geometric objects** displayed on the plot
+
+
+- What `geom`s you should use depends on what you want to show:
+
+| Type | `geom` |
+|------|--------|
+| Point | `geom_point()` |
+| Line  | `geom_line()`, `geom_path()`  |
+| Bar   | `geom_bar()`, `geom_col()` |
+| Histogram | `geom_histogram()` |
+| Regression | `geom_smooth()` |
+| Boxplot | `geom_boxplot()` |
+| Text | `geom_text()` |
+| Density | `geom_density()` |
+:::
+:::
+
+## gg: Geoms III
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+### Geoms
+
+`+geom_*(...)`
+
+:::
+::: {.column width="70%"}
+
+**Geometric objects** displayed on the plot
+
+
+```{r}
+#| eval: false
+#| echo: true
+
+##  [1] "geom_abline"     "geom_area"       "geom_bar"        "geom_bin2d"     
+##  [5] "geom_blank"      "geom_boxplot"    "geom_col"        "geom_contour"   
+##  [9] "geom_count"      "geom_crossbar"   "geom_curve"      "geom_density"   
+## [13] "geom_density_2d" "geom_density2d"  "geom_dotplot"    "geom_errorbar"  
+## [17] "geom_errorbarh"  "geom_freqpoly"   "geom_hex"        "geom_histogram" 
+## [21] "geom_hline"      "geom_jitter"     "geom_label"      "geom_line"      
+## [25] "geom_linerange"  "geom_map"        "geom_path"       "geom_point"     
+## [29] "geom_pointrange" "geom_polygon"    "geom_qq"         "geom_qq_line"   
+## [33] "geom_quantile"   "geom_raster"     "geom_rect"       "geom_ribbon"    
+## [37] "geom_rug"        "geom_segment"    "geom_sf"         "geom_sf_label"  
+## [41] "geom_sf_text"    "geom_smooth"     "geom_spoke"      "geom_step"      
+## [45] "geom_text"       "geom_tile"       "geom_violin"     "geom_vline"
+```
+
+See [http://ggplot2.tidyverse.org/reference](http://ggplot2.tidyverse.org/reference) for many more options
+:::
+:::
+
+## gg: Geoms IV
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+### Geoms
+
+`+geom_*(...)`
+
+:::
+::: {.column width="70%"}
+
+**Geometric objects** displayed on the plot
+
+Or just start typing `geom_` in R Studio!
+
+![](images/geoms.gif)
+:::
+:::
+
+## Let’s Make a Plot! {auto-animate="true"}
+
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+#| echo: true
+ggplot(data = mpg)
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+
+ggplot(data = mpg)
+```
+:::
+:::
+
+
+## Let’s Make a Plot! {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{.r code-line-numbers="2-3"}
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)
+```
+:::
+:::
+
+## Let’s Make a Plot! {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{.r code-line-numbers="4"}
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+      geom_point()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point()
+```
+:::
+:::
+
+## Let’s Make a Plot! {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{.r code-line-numbers="4"}
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+      geom_point(aes(color = class))
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point(aes(color = class))
+```
+:::
+:::
+
+## Let’s Make a Plot! {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{.r code-line-numbers="5"}
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+      geom_point(aes(color = class))+
+      geom_smooth()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point(aes(color = class))+
+  geom_smooth()
+```
+:::
+:::
+
+## More Geoms
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+### Geoms
+
+`+geom_*(...)`
+
+:::
+::: {.column width="70%"}
+
+`geom_*(aes, data, stat, position)`
+
+- `data`: geoms can have their own data
+    - has to map onto global coordinates
+
+- `aes`: geoms can have their own aesthetics
+    - inherits global aesthetics by default
+    - different geoms have different available aesthetics
+:::
+:::
+
+## More Geoms II
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+### Geoms
+
+`+geom_*(...)`
+
+:::
+::: {.column width="70%"}
+
+`geom_*(aes, data, stat, position)`
+
+- `stat`: some geoms statistically transform data
+    - `geom_histogram()` uses `stat_bin()` to group observations into bins
+
+- `position`: some adjust location of objects
+    - `dodge`, `stack`, `jitter`
+:::
+:::
+
+
+## Our Plot
+
+::: columns
+::: {.column width="50%"}
+```{.r code-line-numbers="5"}
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+      geom_point(aes(color = class))+
+      geom_smooth()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point(aes(color = class))+
+  geom_smooth()
+```
+:::
+:::
+
+## Change Our Plot
+
+::: columns
+::: {.column width="50%"}
+```{.r code-line-numbers="2,4"}
+ggplot(data = mpg)+
+  aes(x = class,
+      y = hwy)+
+      geom_boxplot()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+ggplot(data = mpg)+
+  aes(x = class,
+      y = hwy)+
+  geom_boxplot()
+```
+:::
+:::
+
+## Change Our Plot
+
+::: columns
+::: {.column width="50%"}
+```{.r code-line-numbers="2-3"}
+ggplot(data = mpg)+
+  aes(x = class)+
+      geom_bar()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+ggplot(data = mpg)+
+  aes(x = class)+
+      geom_bar()
+```
+:::
+:::
+
+## Change Our Plot
+
+::: columns
+::: {.column width="50%"}
+```{.r code-line-numbers="2-4"}
+ggplot(data = mpg)+
+  aes(x = class,
+      fill = drv)+
+      geom_bar()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+ggplot(data = mpg)+
+  aes(x = class,
+      fill = drv)+
+      geom_bar()
+```
+:::
+:::
+
+## Change Our Plot
+
+::: columns
+::: {.column width="50%"}
+```{.r code-line-numbers="4"}
+ggplot(data = mpg)+
+  aes(x = class,
+      fill = drv)+
+      geom_bar(position = "dodge")
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+ggplot(data = mpg)+
+  aes(x = class,
+      fill = drv)+
+      geom_bar(position = "dodge")
+```
+:::
+:::
+
+## Back to the Original (and Saving It)
+
+::: columns
+::: {.column width="50%"}
+```{.r code-line-numbers="|2"}
+# save plot as p
+p <- ggplot(data = mpg)+
+  aes(x = displ,
+        y = hwy)+
+  geom_point(aes(color = class))+
+  geom_smooth()
+
+p # show plot
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+# save plot as p
+p <- ggplot(data = mpg)+
+  aes(x = displ,
+        y = hwy)+
+  geom_point(aes(color = class))+
+  geom_smooth()
+
+p # show plot
+```
+:::
+:::
+
+## gg: Facets I
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+### Geoms
+### Facets
+`+ facet_wrap()`
+
+`+ facet_grid()`
+
+:::
+::: {.column width="70%"}
+```{r}
+#| echo: true
+#| out-width: "100%"
+#| fig-align: "center"
+
+p + facet_wrap(~year)
+```
+:::
+:::
+
+## gg: Facets II
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+### Geoms
+### Facets
+`+ facet_wrap()`
+
+`+ facet_grid()`
+
+:::
+::: {.column width="70%"}
+```{r}
+#| out-width: "100%"
+#| fig-align: "center"
+#| echo: true
+p + facet_grid(cyl ~ year)
+```
+:::
+:::
+
+## gg: Labels
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+### Geoms
+### Facets
+`+ labs()`
+
+:::
+::: {.column width="70%"}
+```{r}
+#| echo: true
+#| out-width: "100%"
+#| fig-align: "center"
+
+(p <- p + facet_wrap(~year)+
+  labs(x = "Engine Displacement (Liters)",
+       y = "Highway MPG",
+       title = "Car Mileage and Displacement",
+       subtitle = "More Displacement Lowers Highway MPG",
+       caption = "Source: EPA",
+       color = "Vehicle Class"))
+```
+:::
+:::
+
+## gg: Scales I
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+### Geoms
+### Facets
+### Scales
+`+ scale_*_*()`
+
+:::
+::: {.column width="70%"}
+
+`scale`+`_`+`<aes>`+`_`+`<type>`+`()`
+
+- `<aes>`: parameter to adjust
+- `<type`: type of parameter
+
+- Discrete x-axis: `scale_x_discrete()`
+- Continuous y-axis: `scale_y_continuous()`
+- Rescale x-axis to log: `scale_x_log10()`
+- Use different color palette: `scale_fill_discrete()`, `scale_color_manual()`
+
+:::
+:::
+
+## gg: Scales II
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+### Geoms
+### Facets
+### Scales
+`+ scale_*_*()`
+
+:::
+::: {.column width="70%"}
+```{r}
+#| echo: true
+#| out-width: "100%"
+#| fig-align: "center"
+
+p + scale_x_continuous(breaks = seq(0, 10, 2),
+                       limits = c(0,7.5),
+                       expand = c(0,0)
+)
+```
+:::
+:::
+
+## gg: Scales II
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+### Geoms
+### Facets
+### Scales
+`+ scale_*_*()`
+
+:::
+::: {.column width="70%"}
+```{r}
+#| echo: true
+#| out-width: "100%"
+#| fig-align: "center"
+p + scale_x_continuous(breaks = seq(0, 10, 2),
+                       limits = c(0,7.5),
+                       expand = c(0,0)
+                       ) + 
+  scale_color_viridis_d()
+```
+:::
+:::
+
+## gg: Themes I
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+### Geoms
+### Facets
+### Scales
+### Themes
+`+ theme_*()`
+
+:::
+::: {.column width="70%"}
+**Theme** changes appearance of plot decorations (things not mapped to data)
+
+- Some themes that come with `ggplot2`:
+  - `+ theme_bw()`
+  - `+ theme_dark()`
+  - `+ theme_gray()`
+  - `+ theme_minimal()`
+  - `+ theme_light()`
+  - `+ theme_classic()`
+:::
+:::
+
+## gg: Themes II
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+### Geoms
+### Facets
+### Scales
+### Themes
+`+ theme_*()`
+
+:::
+::: {.column width="70%"}
+**Theme** changes appearance of plot decorations (things not mapped to data)
+
+- Many parameters we could customize
+
+- Global options: `line`, `rect`, `text`, `title`
+- `axis`: x-, y-, or other axis title, ticks, lines
+- `legend`: plot legends for fill or color
+- `panel`: actual plot area
+- `plot`: whole image
+- `strip`: facet labels
+:::
+:::
+
+## gg: Themes III {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{.r code-line-numbers="14"}
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point(aes(color = class))+
+  geom_smooth()+
+  facet_wrap(~year)+
+  labs(x = "Engine Displacement (Liters)",
+       y = "Highway MPG",
+       title = "Car Mileage and Displacement",
+       subtitle = "More Displacement Lowers Highway MPG",
+       caption = "Source: EPA",
+       color = "Vehicle Class")+
+  scale_color_viridis_d()+
+  theme_minimal()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point(aes(color = class))+
+  geom_smooth()+
+  facet_wrap(~year)+
+  labs(x = "Engine Displacement (Liters)",
+       y = "Highway MPG",
+       title = "Car Mileage and Displacement",
+       subtitle = "More Displacement Lowers Highway MPG",
+       caption = "Source: EPA",
+       color = "Vehicle Class")+
+  scale_color_viridis_d()+
+  theme_minimal()
+```
+:::
+:::
+
+## gg: Themes IV {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{.r code-line-numbers="15"}
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point(aes(color = class))+
+  geom_smooth()+
+  facet_wrap(~year)+
+  labs(x = "Engine Displacement (Liters)",
+       y = "Highway MPG",
+       title = "Car Mileage and Displacement",
+       subtitle = "More Displacement Lowers Highway MPG",
+       caption = "Source: EPA",
+       color = "Vehicle Class")+
+  scale_color_viridis_d()+
+  theme_minimal()+
+  theme(text = element_text(family = "Fira Sans"))
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point(aes(color = class))+
+  geom_smooth()+
+  facet_wrap(~year)+
+  labs(x = "Engine Displacement (Liters)",
+       y = "Highway MPG",
+       title = "Car Mileage and Displacement",
+       subtitle = "More Displacement Lowers Highway MPG",
+       caption = "Source: EPA",
+       color = "Vehicle Class")+
+  scale_color_viridis_d()+
+  theme_minimal()+
+  theme(text = element_text(family = "Fira Sans"))
+```
+:::
+:::
+
+## gg: Themes V {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{.r code-line-numbers="15-16"}
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point(aes(color = class))+
+  geom_smooth()+
+  facet_wrap(~year)+
+  labs(x = "Engine Displacement (Liters)",
+       y = "Highway MPG",
+       title = "Car Mileage and Displacement",
+       subtitle = "More Displacement Lowers Highway MPG",
+       caption = "Source: EPA",
+       color = "Vehicle Class")+
+  scale_color_viridis_d()+
+  theme_minimal()+
+  theme(text = element_text(family = "Fira Sans"),
+        legend.position = "bottom")
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point(aes(color = class))+
+  geom_smooth()+
+  facet_wrap(~year)+
+  labs(x = "Engine Displacement (Liters)",
+       y = "Highway MPG",
+       title = "Car Mileage and Displacement",
+       subtitle = "More Displacement Lowers Highway MPG",
+       caption = "Source: EPA",
+       color = "Vehicle Class")+
+  scale_color_viridis_d()+
+  theme_minimal()+
+  theme(text = element_text(family = "Fira Sans"),
+        legend.position = "bottom")
+```
+:::
+:::
+
+## gg: Themes VI
+
+::: columns
+::: {.column width="30%"}
+### Data
+### Aesthetics
+### Geoms
+### Facets
+### Scales
+### Themes
+`+ theme_*()`
+
+:::
+::: {.column width="70%"}
+- `ggthemes` package adds some other nice themes
+
+```{r}
+#| echo: true
+
+# install if you don't have it
+# install.packages("ggthemes")
+library("ggthemes") # load package
+```
+:::
+:::
+
+## gg: Themes VII {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{.r code-line-numbers="1,15"}
+library(ggthemes)
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point(aes(color = class))+
+  geom_smooth()+
+  facet_wrap(~year)+
+  labs(x = "Engine Displacement (Liters)",
+       y = "Highway MPG",
+       title = "Car Mileage and Displacement",
+       subtitle = "More Displacement Lowers Highway MPG",
+       caption = "Source: EPA",
+       color = "Vehicle Class")+
+  scale_color_viridis_d()+
+  theme_economist()+
+  theme(text = element_text(family = "Fira Sans"))
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+
+library(ggthemes)
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point(aes(color = class))+
+  geom_smooth()+
+  facet_wrap(~year)+
+  labs(x = "Engine Displacement (Liters)",
+       y = "Highway MPG",
+       title = "Car Mileage and Displacement",
+       subtitle = "More Displacement Lowers Highway MPG",
+       caption = "Source: EPA",
+       color = "Vehicle Class")+
+  scale_color_viridis_d()+
+  theme_economist()+
+  theme(text = element_text(family = "Fira Sans"))
+```
+:::
+:::
+
+## gg: Themes VIII {auto-animate="true"}
+
+::: columns
+::: {.column width="50%"}
+```{.r code-line-numbers="1,15"}
+library(ggthemes)
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point(aes(color = class))+
+  geom_smooth()+
+  facet_wrap(~year)+
+  labs(x = "Engine Displacement (Liters)",
+       y = "Highway MPG",
+       title = "Car Mileage and Displacement",
+       subtitle = "More Displacement Lowers Highway MPG",
+       caption = "Source: EPA",
+       color = "Vehicle Class")+
+  scale_color_viridis_d()+
+  theme_fivethirtyeight()+
+  theme(text = element_text(family = "Fira Sans"))
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+
+library(ggthemes)
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point(aes(color = class))+
+  geom_smooth()+
+  facet_wrap(~year)+
+  labs(x = "Engine Displacement (Liters)",
+       y = "Highway MPG",
+       title = "Car Mileage and Displacement",
+       subtitle = "More Displacement Lowers Highway MPG",
+       caption = "Source: EPA",
+       color = "Vehicle Class")+
+  scale_color_viridis_d()+
+  theme_fivethirtyeight()+
+  theme(text = element_text(family = "Fira Sans"))
+```
+:::
+:::
+
+# Some Troubleshooting {.centered background-color="#314f4f"}
+
+## Global vs. Local Aesthetic Mappings
+
+- `aes()` can go in base (`data`) layer and/or in individual `geom()` layers
+- All `geoms` will inherit global `aes` from `data` layer unless overridden
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| out-width: "100%"
+#| fig-align: "center"
+# ALL GEOMS will map data to colors
+ggplot(data = mpg, aes(x = displ,
+                       y = hwy,
+                       color = class))+
+  geom_point()+
+  geom_smooth()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| out-width: "100%"
+#| fig-align: "center"
+
+# ONLY points will map data to colors
+ggplot(data = mpg, aes(x = displ,
+                       y = hwy))+
+  geom_point(aes(color = class))+
+  geom_smooth()
+```
+:::
+:::
+
+## Mapped vs. Set Aesthetics
+
+- `aes`thetics such as `size` and `color` can be mapped from data or set to a single value
+- Map *inside* of `aes()`, set *outside* of `aes()` 
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| out-width: "100%"
+#| fig-align: "center"
+# Point colors are mapped from class data
+ggplot(data = mpg, aes(x = displ,
+                       y = hwy))+
+  geom_point(aes(color = class))+
+  geom_smooth()
+```
+:::
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| out-width: "100%"
+#| fig-align: "center"
+
+# Point colors are all set to blue
+ggplot(data = mpg, aes(x = displ,
+                       y = hwy))+
+  geom_point(aes(), color = "red")+
+  geom_smooth(aes(), color = "blue")
+```
+:::
+:::
+
+## Go Crazy I
+
+```{r gap-map, echo=F}
+library("socviz")
+library(mapproj)
+
+us_states <- map_data("state")
+
+election$region <- tolower(election$state)
+us_states_elec <- left_join(us_states, election)
+
+theme_map <- function(base_size=9, base_family="") {
+    require(grid)
+    theme_bw(base_size=base_size, base_family=base_family) %+replace%
+        theme(axis.line=element_blank(),
+              axis.text=element_blank(),
+              axis.ticks=element_blank(),
+              axis.title=element_blank(),
+              panel.background=element_blank(),
+              panel.border=element_blank(),
+              panel.grid=element_blank(),
+              panel.spacing=unit(0, "lines"),
+              plot.background=element_blank(),
+              legend.justification = c(0,0),
+              legend.position = c(0,0)
+              )
+}
+
+county_full <- left_join(county_map, county_data, by = "id")
+```
+
+
+::: {.panel-tabset}
+
+## Output
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| fig-align: "center"
+
+ggplot(data = county_full,
+       mapping = aes(x = long, y = lat,
+                     fill = pop_dens,
+                     group = group))+ 
+  geom_polygon(color = "gray90", size = 0.05)+
+  coord_equal()+
+  scale_fill_brewer(palette="Blues",
+                    labels = c("0-10", "10-50", "50-100", "100-500",
+                               "500-1,000", "1,000-5,000", ">5,000"))+
+  labs(fill = "Population per\nsquare mile") +
+  theme_map() +
+  guides(fill = guide_legend(nrow = 1)) + 
+  theme(legend.position = "bottom")
+```
+
+## Code
+
+
+
+```{r gap-map2, eval=F}
+#| echo: true
+
+# I did some (hidden) data work before this! 
+ggplot(data = county_full,
+            mapping = aes(x = long, y = lat,
+                          fill = pop_dens, 
+                          group = group))+ 
+  geom_polygon(color = "gray90", size = 0.05)+
+  coord_equal()+
+  scale_fill_brewer(palette="Blues",
+                             labels = c("0-10", "10-50", "50-100", "100-500",
+                                        "500-1,000", "1,000-5,000", ">5,000"))+
+  labs(fill = "Population per\nsquare mile") +
+    theme_map() +
+    guides(fill = guide_legend(nrow = 1)) + 
+    theme(legend.position = "bottom")
+```
+
+:::
+
+::: footer
+:::
+
+## Go Crazy II
+
+::: {.panel-tabset}
+
+## Output
+
+```{r}
+#| eval: true
+#| echo: false
+#| cache: true
+library(gapminder)
+library(gganimate)
+gapminder %>%
+  filter(continent != "Oceania") %>%
+ggplot(aes(x = gdpPercap,
+           y = lifeExp,
+           color = country,
+           size = pop))+
+  geom_point(alpha=0.3)+
+	scale_x_log10(breaks=c(1000,10000, 100000),
+	              label=scales::dollar)+
+  scale_size(range = c(0.5, 12)) +
+  scale_color_manual(values = gapminder::country_colors) +
+ 	labs(x = "GDP/Capita",
+	     y = "Life Expectancy (Years)",
+	     caption = "Source: Hans Rosling's gapminder.org",
+	     title = "Income & Life Expectancy - {frame_time}")+
+  facet_wrap(~continent)+
+  guides(color = F, size = F)+
+  theme_bw(base_family = "Fira Sans Condensed")+
+  transition_time(year)+
+  ease_aes("linear")
+```
+
+## Code
+```{r}
+#| echo: true
+#| eval: false
+library(gapminder)
+library(gganimate)
+gapminder %>%
+  filter(continent != "Oceania") %>%
+ggplot(aes(x = gdpPercap,
+           y = lifeExp,
+           color = country,
+           size = pop))+
+  geom_point(alpha=0.3)+
+	scale_x_log10(breaks=c(1000,10000, 100000),
+	              label=scales::dollar)+
+  scale_size(range = c(0.5, 12)) +
+  scale_color_manual(values = gapminder::country_colors) +
+ 	labs(x = "GDP/Capita",
+	     y = "Life Expectancy (Years)",
+	     caption = "Source: Hans Rosling's gapminder.org",
+	     title = "Income & Life Expectancy - {frame_time}")+
+  facet_wrap(~continent)+
+  guides(color = F, size = F)+
+  theme_minimal(base_family = "Fira Sans Condensed")+
+  transition_time(year)+
+  ease_aes("linear")
+```
+
+:::
+
+::: footer
+:::
+
+## Reference: R Studio Makes Great "Cheat Sheet"s! 
+
+![[RStudio: ggplot2 Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)](images/ggplot2cheat.png)
+
+## Reference
+
+On `ggplot2`
+
+- **R Studio's [ggplot2 Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)**
+- **`ggplot2`'s website [reference section](https://ggplot2.tidyverse.org/reference/index.html)**
+- Hadley Wickham's [R for Data Science book chapter on ggplot2](http://r4ds.had.co.nz/data-visualisation.html)
+- STHDA's [be awesome in ggplot2](http://www.sthda.com/english/wiki/be-awesome-in-ggplot2-a-practical-guide-to-be-highly-effective-r-software-and-data-visualization)
+- r-statistic's [top 50 ggplot2 visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
+
+On data visualization
+
+- **Kieran Healy's [Data Visualization: A Practical Guide](http://socviz.co/)**
+- **Claus Wilke's [Fundamentals of Data Visualization](https://serialmentor.com/dataviz)**
+- PolicyViz [Better Presentations](https://policyviz.com/) 
+- Karl Broman's [How to Display Data Badly](https://www.biostat.wisc.edu/~kbroman/presentations/IowaState2013/graphs_combined.pdf)
+- [I Want Hue](http://tools.medialab.sciences-po.fr/iwanthue/) 

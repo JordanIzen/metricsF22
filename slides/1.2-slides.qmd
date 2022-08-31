@@ -436,10 +436,10 @@ pi/2
 
 - Since R is open source, users contribute **packages**
     - Really it's just users writing custom functions and saving them for others to use
-- Load packages with `library()`
-    - e.g. `library("package_name")`
+- Load packages with `library()`^[You can run a function from a previously-installed package without loading it with the syntax `package_name::function_name()`. ]
+    - e.g. `library("ggplot2")`
 - If you don't have a package, you must first `install.packages()`^[Yes, note the plural, even if it's just for one package]
-    - e.g. `install.packages("package_name")`
+    - e.g. `install.packages("ggplot2")`
 
 :::
 

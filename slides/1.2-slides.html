@@ -488,8 +488,8 @@
 <span id="cb2-4"><a href="#cb2-4"></a>  <span class="fu">addMarkers</span>(<span class="at">lng =</span> <span class="sc">-</span><span class="fl">77.420</span>, <span class="at">lat =</span> <span class="fl">39.421</span>,</span>
 <span id="cb2-5"><a href="#cb2-5"></a>             <span class="at">popup =</span> <span class="st">"Rosenstock Hall, Hood College"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-3b0db8691cb600be9a08" style="width:1728px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3b0db8691cb600be9a08">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[39.421,-77.42,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Rosenstock Hall, Hood College",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[39.421,39.421],"lng":[-77.42,-77.42]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-bc8d015de58ce058aa03" style="width:1728px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bc8d015de58ce058aa03">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[39.421,-77.42,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"Rosenstock Hall, Hood College",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[39.421,39.421],"lng":[-77.42,-77.42]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -798,20 +798,20 @@ A surprisingly large part of having expertise in a topic is not so much knowing 
 <ul>
 <li>Really it’s just users writing custom functions and saving them for others to use</li>
 </ul></li>
-<li>Load packages with <code>library()</code>
+<li>Load packages with <code>library()</code><sup>1</sup>
 <ul>
-<li>e.g.&nbsp;<code>library("package_name")</code></li>
+<li>e.g.&nbsp;<code>library("ggplot2")</code></li>
 </ul></li>
-<li>If you don’t have a package, you must first <code>install.packages()</code><sup>1</sup>
+<li>If you don’t have a package, you must first <code>install.packages()</code><sup>2</sup>
 <ul>
-<li>e.g.&nbsp;<code>install.packages("package_name")</code></li>
+<li>e.g.&nbsp;<code>install.packages("ggplot2")</code></li>
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p><img data-src="images/rpackages.png"></p>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn4" role="doc-endnote"><p>Yes, note the plural, even if it’s just for one package</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn4" role="doc-endnote"><p>You can run a function from a previously-installed package without loading it with the syntax <code>package_name::function_name()</code>. </p></li><li id="fn5" role="doc-endnote"><p>Yes, note the plural, even if it’s just for one package</p></li></ol></aside></section>
 <section id="objects-functions" class="slide level2">
 <h2>Objects &amp; Functions</h2>
 <div class="columns">
@@ -852,7 +852,7 @@ A surprisingly large part of having expertise in a topic is not so much knowing 
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn5" role="doc-endnote"><p>You can read this as “gets”.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn6" role="doc-endnote"><p>You can read this as “gets”.</p></li></ol></aside></section>
 <section id="more-about-functions" class="slide level2">
 <h2>More About Functions</h2>
 <div class="columns">
@@ -911,7 +911,7 @@ A surprisingly large part of having expertise in a topic is not so much knowing 
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn6" role="doc-endnote"><p>If you want to get technical, R calls these <code>integer</code> (for whole numbers) or <code>double</code> if there are decimal values.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn7" role="doc-endnote"><p>If you want to get technical, R calls these <code>integer</code> (for whole numbers) or <code>double</code> if there are decimal values.</p></li></ol></aside></section>
 <section id="character" class="slide level2">
 <h2>Character</h2>
 <div class="columns">
@@ -976,7 +976,7 @@ A surprisingly large part of having expertise in a topic is not so much knowing 
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn7" role="doc-endnote"><p>Technically, under the hood, <code>R</code> is actually storing them as <code>numeric</code>: <code>1 = TRUE</code>, <code>0 = FALSE</code>!</p></li><li id="fn8" role="doc-endnote"><p>One <code>=</code> <em>assigns</em> a value (like <code>&lt;-</code>), Two <code>==</code> <em>evaluates</em> a conditional statement!</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn8" role="doc-endnote"><p>Technically, under the hood, <code>R</code> is actually storing them as <code>numeric</code>: <code>1 = TRUE</code>, <code>0 = FALSE</code>!</p></li><li id="fn9" role="doc-endnote"><p>One <code>=</code> <em>assigns</em> a value (like <code>&lt;-</code>), Two <code>==</code> <em>evaluates</em> a conditional statement!</p></li></ol></aside></section>
 <section id="factor" class="slide level2">
 <h2>Factor</h2>
 <ul>
@@ -989,8 +989,8 @@ A surprisingly large part of having expertise in a topic is not so much knowing 
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] sophomore freshman  junior    senior    freshman  junior    sophomore
- [8] sophomore junior    senior   
+<pre><code> [1] senior    senior    junior    senior    senior    freshman  sophomore
+ [8] junior    junior    freshman 
 Levels: freshman sophomore junior senior</code></pre>
 </div>
 </div>
@@ -1001,8 +1001,8 @@ Levels: freshman sophomore junior senior</code></pre>
 </ul>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] sophomore freshman  junior    senior    freshman  junior    sophomore
- [8] sophomore junior    senior   
+<pre><code> [1] senior    senior    junior    senior    senior    freshman  sophomore
+ [8] junior    junior    freshman 
 Levels: freshman &lt; sophomore &lt; junior &lt; senior</code></pre>
 </div>
 </div>
@@ -1247,7 +1247,7 @@ Levels: freshman &lt; sophomore &lt; junior &lt; senior</code></pre>
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn9" role="doc-endnote"><p>Remember each column in a data frame is a vector!</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn10" role="doc-endnote"><p>Remember each column in a data frame is a vector!</p></li></ol></aside></section>
 <section id="more-on-dataframes-i" class="slide level2">
 <h2>More on Dataframes I</h2>
 <ul>
@@ -1304,7 +1304,7 @@ Levels: freshman &lt; sophomore &lt; junior &lt; senior</code></pre>
                     Max.   :7.50  </code></pre>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn10" role="doc-endnote"><p>For <code>numeric</code> data only; a frequency table is displayed for <code>character</code> or <code>factor</code> data</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn11" role="doc-endnote"><p>For <code>numeric</code> data only; a frequency table is displayed for <code>character</code> or <code>factor</code> data</p></li></ol></aside></section>
 <section id="more-on-dataframes-iv" class="slide level2">
 <h2>More on Dataframes IV</h2>
 <ul>

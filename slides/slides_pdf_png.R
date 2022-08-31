@@ -1,4 +1,4 @@
-renderthis::to_png(from = "slides/1.2-slides.html",
+renderthis::to_png(from = "slides/1.3-slides.html",
                    slides = 1)
 
-renderthis::to_pdf(from = "slides/1.2-slides.html")
+renderthis::to_pdf(from = "slides/1.3-slides.html")
