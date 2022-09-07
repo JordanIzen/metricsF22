@@ -39,7 +39,7 @@ knitr::opts_chunk$set(echo=T,
                       warning=F)
 ```
 
-## Contents
+## Contents {background-color="#314f4f"}
 
 [Tibbles & Piping](#tibbles-piping)
 
@@ -1376,20 +1376,15 @@ gapminder %>%
 
 ![[R Studio: Data Wrangling Cheat Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf)](images/data-wrangling-cheatsheet.png)
 
-## Resources
+## Resources {.smaller}
 
-- `tibble`
-  - [*R For Data Science*, Chapter 10: Tibbles](https://r4ds.had.co.nz/tibbles.html)
-- `readr` and importing data
-  - [*R For Data Science*, Chapter 11: Data Import](https://r4ds.had.co.nz/data-import.html)
-  - [R Studio Cheatsheet: Data Import](https://www.rstudio.com/resources/cheatsheets/#import)
-- `dplyr` and data wrangling
-  - [*R For Data Science*, Chapter 5: Data Transformation](https://r4ds.had.co.nz/tibbles.html)
-  - [R Studio Cheatsheet: Data Wrangling](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) ([New version](https://www.rstudio.com/resources/cheatsheets/#dplyr))
-- `tidyr` and tidying or reshaping data
-  - [*R For Data Science*, Chapter 12: Tidy Data](https://r4ds.had.co.nz/tidy-data.html)
-  - [R Studio Cheatsheet: Data Wrangling](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
-  - [R Studio Cheatsheet: Data Import](https://www.rstudio.com/resources/cheatsheets/#import)
-- joining data
-  - [*R For Data Science*, Chapter 13: Relational Data](https://r4ds.had.co.nz/relational-data.html)
-  - [R Studio Cheatsheet: Data Transformation](https://www.rstudio.com/resources/cheatsheets/#dplyr)
+- [*R For Data Science*, Chapter 10: Tibbles](https://r4ds.had.co.nz/tibbles.html)
+- [*R For Data Science*, Chapter 11: Data Import](https://r4ds.had.co.nz/data-import.html)
+- [R Studio Cheatsheet: Data Import](https://www.rstudio.com/resources/cheatsheets/#import)
+- [*R For Data Science*, Chapter 5: Data Transformation](https://r4ds.had.co.nz/tibbles.html)
+- [R Studio Cheatsheet: Data Wrangling](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) ([New version](https://www.rstudio.com/resources/cheatsheets/#dplyr))
+- [*R For Data Science*, Chapter 12: Tidy Data](https://r4ds.had.co.nz/tidy-data.html)
+- [R Studio Cheatsheet: Data Wrangling](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+- [R Studio Cheatsheet: Data Import](https://www.rstudio.com/resources/cheatsheets/#import)
+- [*R For Data Science*, Chapter 13: Relational Data](https://r4ds.had.co.nz/relational-data.html)
+- [R Studio Cheatsheet: Data Transformation](https://www.rstudio.com/resources/cheatsheets/#dplyr)
