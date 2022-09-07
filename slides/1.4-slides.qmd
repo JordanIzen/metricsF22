@@ -7,6 +7,7 @@ format:
     height: 900
     width: 1600
     #df-print: paged
+    slide-number: c
 overview: true
 execute:
   echo: false
@@ -38,6 +39,30 @@ knitr::opts_chunk$set(echo=T,
                       warning=F)
 ```
 
+## Contents
+
+[Tibbles & Piping](#/tibbles-piping)
+
+[Importing Data](#/importing-data)
+
+[Tidying (Pivoting/Reshaping) Data](#/tidying-pivotingreshaping-data)
+
+[Joining Datasets](#/joining-datasets)
+
+[Wrangling Data](#/wrangling-data)
+
+[`select()` Variables](#/select-variables)
+
+[`filter()` Select Rows by Condition](#/filter-select-rows-by-condition)
+
+[`mutate()` Create New Variables](#/mutate-create-new-variables)
+
+[`summarize()` Create Statistics](#/summarize-create-statistics)
+
+[`group_by()` Grouped Summariess](#group-by-grouped-summaries)
+
+[`dplyr` Other Useful Commands](#dplyr-other-useful-commands)
+
 ## Data Wrangling
 
 ::: columns
@@ -55,7 +80,7 @@ knitr::opts_chunk$set(echo=T,
 :::
 
 ##
-![](images/messyexcel.png)
+![](images/workflow.png)
 
 ## Workflow of a Data Scientist I
 
@@ -69,7 +94,7 @@ knitr::opts_chunk$set(echo=T,
     - **Model**
 4. [Communicate]{.hi-purple} results to target audience
 
-Ideally, you'd want to be able to do all of this in one program
+Ideally, you'd want to be able to do all of this in **one program**
 
 :::
 ::: {.column width="50%"}
@@ -175,8 +200,6 @@ diamonds
 # another useful command
 glimpse(diamonds)
 ```
-:::
-:::
 
 ## Tibbles: Making a Tibble
 
@@ -254,7 +277,7 @@ example_2 # look at it
 :::
 ::: {.column width="70%"}
 
-- The `magrittr` package allows use of the **"pipe" operator** (`%>%`)^[Keyboard shortcuts in R Studio: `CTRL+Shift+M` (Windows) or `Cmd+Shift+M` (Mac). There is also a *new* pipe built natively into `R` in `|>`.]
+- The `magrittr` package allows use of the **"pipe" operator** (`%>%`)^[Keyboard shortcuts in R Studio: `CTRL+Shift+M` (Windows) or `Cmd+Shift+M` (Mac). There is also a *new* pipe built into Base `R`: `|>`.]
 
 - `%>%` "pipes" the *output* of the *left* of the pipe *into* the *(1<sup>st</sup>) argument* of the *right* 
 
@@ -285,8 +308,7 @@ x %>% f %>% g
 ``` 
 
 - Can read `%>%` mentally as “and then”
-:::
-:::
+
 
 ## Why Piping is Useful
 
@@ -419,17 +441,16 @@ df <- read_csv("../Downloads/my_data.csv")
 
 ## Tidy Data
 
-- ["tidy" data]{.hi}^[This is the namesake of the `tidyverse`: all associated packages and functions use or require this data format] are (an opinionated view of) data where
+- ["tidy" data]{.hi} are (an opinionated view of) data where
   1. Each [variable]{.hi-purple} is in a [column]{.hi-purple}
   2. Each [observation]{.hi-purple} is a [row]{.hi-purple}
-  3. Each [observational unit]{.hi-purple} forms a [table]{.hi-purple}^[Alternatively, sometimes rule 3 is "every value is its own cell.]
+  3. Each [observational unit]{.hi-purple} forms a [table]{.hi-purple} (or "every value is its own cell.”)
 
-- Spend less time fighting your tools and more time on analysis!
+- This is the namesake of the `tidyverse`: all associated packages and functions require tidy data
+  - Spend less time fighting your tools and more time on analysis!
 
-![](images/tidydata1.png)
+![](images/tidydata1.png){fig-align="center"}
 
-:::
-:::
 
 ## Tidy vs. Untidy Data
 
@@ -439,10 +460,19 @@ df <- read_csv("../Downloads/my_data.csv")
 
 > “Tidy datasets are all alike, but every messy dataset is messy in its own way.” - Hadley Wickham
 
-![](images/tidydata1.png)
+![](images/tidydata1.png){fig-align="center"}
+
 ## Examples of Untidy Data
 
-![](images/untidy.png)
+![](images/untidy-gapminder-hiv.png)
+
+## Examples of Untidy Data
+
+![](images/untidy-census.png)
+
+## Examples of Untidy Data
+
+![](images/messyexcel.png)
 
 ## Reshaping/Pivoting Data
 
@@ -454,9 +484,18 @@ df <- read_csv("../Downloads/my_data.csv")
 
 - `tidyr` package helps reshape data into more usable format
 
-- Most common use: reshaping data between “long” and “wide” 
+- Most common use: reshaping data between “long” and “wide”
+
+![](images/original-dfs-tidy.png){fig-align="center" width="600"}
+
 :::
 :::
+
+## Reshaping 
+
+![](images/tidyr-pivoting.gif){fig-align="center" width="1400"}
+
+[Source: Garrick Aden-Buie's [tidyexplain](https://github.com/gadenbuie/tidyexplain)]{.source}
 
 ## Reshaping from Wide to Long: `pivot_longer()` I
 
@@ -675,9 +714,9 @@ ex_long %>%
 :::
 :::
 
-# `arrange()`: Reorder observations {.centered background-color="#314f4f"}
+## `arrange()`: Reorder observations {.centered background-color="#314f4f"}
 
-# `arrange()`
+## `arrange()`
 
 - `arrange` reorders **observations** (rows) in a logical order
     - e.g. alphabetical, numeric, small to large
@@ -688,7 +727,7 @@ gapminder %>%
   arrange(pop)
 ```
 
-# `arrange()`: Ties
+## `arrange()`: Ties
 
 - Break ties in the value of one variable with the values of additional variables
 
@@ -698,7 +737,7 @@ gapminder %>%
   arrange(year, pop)
 ```
 
-# `arrange()`: Descending Order
+## `arrange()`: Descending Order
 
 - Wrap `desc()` around a variable re-order in the opposite direction
 
@@ -940,7 +979,7 @@ gapminder %>%
          comment = paste("Life expectancy in", country, "is", dog_years, "in dog years.", sep = " "))
 ```
 
-# `mutate()`: Scoped-functions I
+## `mutate()`: Scoped-functions I
 
 - "Scoped" variants of `mutate` that work on a subset of variables:
     - `mutate_all()` affects every variable
@@ -953,7 +992,7 @@ gapminder %>%
   mutate_if(is.numeric, round, digits = 2)
 ```
 
-# `mutate()`: Scoped-functions I
+## `mutate()`: Scoped-functions II
 
 - "Scoped" variants of `mutate` that work on a subset of variables:
     - `mutate_all()` affects every variable
@@ -1158,7 +1197,7 @@ gapminder %>%
 :::
 :::
 
-# `group_by()`: Grouped summaries
+# `group_by()`: Grouped summaries {.centered background-color="#314f4f"}
 
 ## `group_by() + summarize()`  I
 
@@ -1247,7 +1286,7 @@ gapminder %>%
 ```
 :::
 
-# `dplyr`: Other Useful Commands
+# `dplyr`: Other Useful Commands {.centered background-color="#314f4f"}
 
 ## `tally()`: counts for categories
 
@@ -1317,6 +1356,12 @@ gapminder %>%
 - `distinct()` shows the distinct values of a specified variable (recall `n_distinct()` inside `summarize()` just gives you the *number* of values)
 
 ```{r}
+#| output-location: fragment
+
 gapminder %>%
   distinct(country)
 ```
+
+::: aside
+This is a test of the aside.
+:::

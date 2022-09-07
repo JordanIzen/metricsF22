@@ -389,6 +389,20 @@
 <p><span class="custom-author">Dr.&nbsp;Ryan Safner <br> Associate Professor of Economics</span></p>
 <p><span class="custom-institution"><a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br></span></p>
 </section>
+<section id="contents" class="slide level2">
+<h2>Contents</h2>
+<p><a href="#//tibbles-piping">Tibbles &amp; Piping</a></p>
+<p><a href="#//importing-data">Importing Data</a></p>
+<p><a href="#//tidying-pivotingreshaping-data">Tidying (Pivoting/Reshaping) Data</a></p>
+<p><a href="#//joining-datasets">Joining Datasets</a></p>
+<p><a href="#//wrangling-data">Wrangling Data</a></p>
+<p><a href="#//select-variables"><code>select()</code> Variables</a></p>
+<p><a href="#//filter-select-rows-by-condition"><code>filter()</code> Select Rows by Condition</a></p>
+<p><a href="#//mutate-create-new-variables"><code>mutate()</code> Create New Variables</a></p>
+<p><a href="#//summarize-create-statistics"><code>summarize()</code> Create Statistics</a></p>
+<p><a href="#//group-by-grouped-summaries"><code>group_by()</code> Grouped Summaries</a></p>
+<p><a href="#/dplyr-other-useful-commands"><code>dplyr</code> Other Useful Commands</a></p>
+</section>
 <section id="data-wrangling" class="slide level2">
 <h2>Data Wrangling</h2>
 <div class="columns">
@@ -409,7 +423,7 @@
 <section id="section-1" class="slide level2">
 <h2></h2>
 
-<img data-src="images/messyexcel.png" class="r-stretch"></section>
+<img data-src="images/workflow.png" class="r-stretch"></section>
 <section id="workflow-of-a-data-scientist-i" class="slide level2">
 <h2>Workflow of a Data Scientist I</h2>
 <div class="columns">
@@ -425,7 +439,7 @@
 </ul></li>
 <li><span class="hi-purple">Communicate</span> results to target audience</li>
 </ol>
-<p>Ideally, you’d want to be able to do all of this in one program</p>
+<p>Ideally, you’d want to be able to do all of this in <strong>one program</strong></p>
 </div><div class="column" style="width:50%;">
 <p><img data-src="images/workflow.png"></p>
 <p><a href="http://r4ds.had.co.nz">R for Data Science</a></p>
@@ -566,7 +580,6 @@ $ y       &lt;dbl&gt; 3.98, 3.84, 4.07, 4.23, 4.35, 3.96, 3.98, 4.11, 3.78, 4.05
 $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39, 2.…</code></pre>
 </div>
 </div>
-<p>::: :::</p>
 </section>
 <section id="tibbles-making-a-tibble" class="slide level2">
 <h2>Tibbles: Making a Tibble</h2>
@@ -618,9 +631,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <pre><code># A tibble: 3 × 3
       x      y colors
   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; 
-1     2 -0.590 orange
-2     4  0.511 green 
-3     6 -0.153 blue  </code></pre>
+1     2 -0.220 orange
+2     4  1.58  green 
+3     6  0.636 blue  </code></pre>
 </div>
 </div>
 </div>
@@ -675,7 +688,7 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </ul>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn1" role="doc-endnote"><p>Keyboard shortcuts in R Studio: <code>CTRL+Shift+M</code> (Windows) or <code>Cmd+Shift+M</code> (Mac). There is also a <em>new</em> pipe built natively into <code>R</code> in <code>|&gt;</code>.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn1" role="doc-endnote"><p>Keyboard shortcuts in R Studio: <code>CTRL+Shift+M</code> (Windows) or <code>Cmd+Shift+M</code> (Mac). There is also a <em>new</em> pipe built into Base <code>R</code>: <code>|&gt;</code>.</p></li></ol></aside></section>
 <section id="piping-code-1" class="slide level2">
 <h2>Piping Code</h2>
 <ul>
@@ -703,7 +716,7 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="sc">%&gt;%</span> f <span class="sc">%&gt;%</span> g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Can read <code>%&gt;%</code> mentally as “and then” ::: :::</li>
+<li>Can read <code>%&gt;%</code> mentally as “and then”</li>
 </ul>
 </div>
 </section>
@@ -871,17 +884,19 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <section id="tidy-data" class="slide level2">
 <h2>Tidy Data</h2>
 <ul>
-<li><span class="hi">“tidy” data</span><sup>1</sup> are (an opinionated view of) data where
+<li><span class="hi">“tidy” data</span> are (an opinionated view of) data where
 <ol type="1">
 <li>Each <span class="hi-purple">variable</span> is in a <span class="hi-purple">column</span></li>
 <li>Each <span class="hi-purple">observation</span> is a <span class="hi-purple">row</span></li>
-<li>Each <span class="hi-purple">observational unit</span> forms a <span class="hi-purple">table</span><sup>2</sup></li>
+<li>Each <span class="hi-purple">observational unit</span> forms a <span class="hi-purple">table</span> (or “every value is its own cell.”)</li>
 </ol></li>
+<li>This is the namesake of the <code>tidyverse</code>: all associated packages and functions require tidy data
+<ul>
 <li>Spend less time fighting your tools and more time on analysis!</li>
+</ul></li>
 </ul>
-<p><img data-src="images/tidydata1.png"></p>
-<p>::: :::</p>
-<aside><ol class="aside-footnotes"><li id="fn3" role="doc-endnote"><p>This is the namesake of the <code>tidyverse</code>: all associated packages and functions use or require this data format</p></li><li id="fn4" role="doc-endnote"><p>Alternatively, sometimes rule 3 is “every value is its own cell.</p></li></ol></aside></section>
+
+<img data-src="images/tidydata1.png" class="r-stretch quarto-figure-center"></section>
 <section id="tidy-vs.-untidy-data" class="slide level2">
 <h2>Tidy vs.&nbsp;Untidy Data</h2>
 <ul>
@@ -893,9 +908,20 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <blockquote>
 <p>“Tidy datasets are all alike, but every messy dataset is messy in its own way.” - Hadley Wickham</p>
 </blockquote>
-<p><img data-src="images/tidydata1.png"> ## Examples of Untidy Data</p>
-<p><img data-src="images/untidy.png"></p>
-</section>
+
+<img data-src="images/tidydata1.png" class="r-stretch quarto-figure-center"></section>
+<section id="examples-of-untidy-data" class="slide level2">
+<h2>Examples of Untidy Data</h2>
+
+<img data-src="images/untidy-gapminder-hiv.png" class="r-stretch"></section>
+<section id="examples-of-untidy-data-1" class="slide level2">
+<h2>Examples of Untidy Data</h2>
+
+<img data-src="images/untidy-census.png" class="r-stretch"></section>
+<section id="examples-of-untidy-data-2" class="slide level2">
+<h2>Examples of Untidy Data</h2>
+
+<img data-src="images/messyexcel.png" class="r-stretch"></section>
 <section id="reshapingpivoting-data" class="slide level2">
 <h2>Reshaping/Pivoting Data</h2>
 <div class="columns">
@@ -906,8 +932,18 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li><p><code>tidyr</code> package helps reshape data into more usable format</p></li>
 <li><p>Most common use: reshaping data between “long” and “wide”</p></li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/original-dfs-tidy.png" width="600"></p>
+</figure>
 </div>
 </div>
+</div>
+</section>
+<section id="reshaping" class="slide level2">
+<h2>Reshaping</h2>
+
+<img data-src="images/tidyr-pivoting.gif" width="1400" class="r-stretch quarto-figure-center"><p><span class="source">Source: Garrick Aden-Buie’s <a href="https://github.com/gadenbuie/tidyexplain">tidyexplain</a></span></p>
 </section>
 <section id="reshaping-from-wide-to-long-pivot_longer-i" class="slide level2">
 <h2>Reshaping from Wide to Long: <code>pivot_longer()</code> I</h2>
@@ -1146,7 +1182,7 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </ul>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn5" role="doc-endnote"><p>With the pipe, even simpler: <code>df %&gt;% verb(conditions)</code>.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn3" role="doc-endnote"><p>With the pipe, even simpler: <code>df %&gt;% verb(conditions)</code>.</p></li></ol></aside></section>
 <section id="dplyr-ii" class="slide level2">
 <h2><code>dplyr</code> II</h2>
 <div class="columns">
@@ -1214,14 +1250,12 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </table>
 </div>
 </div>
-</section></section>
-<section id="arrange-reorder-observations" class="title-slide slide level1 centered center" data-background-color="#314f4f">
-<h1><code>arrange()</code>: Reorder observations</h1>
-
 </section>
-
-<section id="arrange" class="title-slide slide level1 center">
-<h1><code>arrange()</code></h1>
+<section id="arrange-reorder-observations" class="slide level2 centered" data-background-color="#314f4f">
+<h2><code>arrange()</code>: Reorder observations</h2>
+</section>
+<section id="arrange" class="slide level2">
+<h2><code>arrange()</code></h2>
 <ul>
 <li><code>arrange</code> reorders <strong>observations</strong> (rows) in a logical order
 <ul>
@@ -1250,9 +1284,8 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </div>
 </div>
 </section>
-
-<section id="arrange-ties" class="title-slide slide level1 center">
-<h1><code>arrange()</code>: Ties</h1>
+<section id="arrange-ties" class="slide level2">
+<h2><code>arrange()</code>: Ties</h2>
 <ul>
 <li>Break ties in the value of one variable with the values of additional variables</li>
 </ul>
@@ -1278,9 +1311,8 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </div>
 </div>
 </section>
-
-<section id="arrange-descending-order" class="title-slide slide level1 center">
-<h1><code>arrange()</code>: Descending Order</h1>
+<section id="arrange-descending-order" class="slide level2">
+<h2><code>arrange()</code>: Descending Order</h2>
 <ul>
 <li>Wrap <code>desc()</code> around a variable re-order in the opposite direction</li>
 </ul>
@@ -1289,8 +1321,7 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <span id="cb41-2"><a href="#cb41-2"></a>gapminder <span class="sc">%&gt;%</span></span>
 <span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(pop))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-
+</section></section>
 <section>
 <section id="select-variables" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1><code>select()</code> Variables</h1>
@@ -1554,7 +1585,7 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </tr>
 </tbody>
 </table>
-<aside><ol class="aside-footnotes"><li id="fn6" role="doc-endnote"><p>See <code>?Comparison</code> and <code>?Base::Logic</code>.</p></li><li id="fn7" role="doc-endnote"><p>Recall one <code>=</code> <em>assigns</em> values to an object, two <code>==</code> <em>tests</em> an object for a condition!</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn4" role="doc-endnote"><p>See <code>?Comparison</code> and <code>?Base::Logic</code>.</p></li><li id="fn5" role="doc-endnote"><p>Recall one <code>=</code> <em>assigns</em> values to an object, two <code>==</code> <em>tests</em> an object for a condition!</p></li></ol></aside></section>
 <section id="filter-with-conditionals-i" class="slide level2">
 <h2><code>filter()</code> with Conditionals I</h2>
 <ul>
@@ -1857,9 +1888,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 # … with 1,694 more rows</code></pre>
 </div>
 </div>
-</section></section>
-<section id="mutate-scoped-functions-i" class="title-slide slide level1 center">
-<h1><code>mutate()</code>: Scoped-functions I</h1>
+</section>
+<section id="mutate-scoped-functions-i" class="slide level2">
+<h2><code>mutate()</code>: Scoped-functions I</h2>
 <ul>
 <li>“Scoped” variants of <code>mutate</code> that work on a subset of variables:
 <ul>
@@ -1890,10 +1921,8 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </div>
 </div>
 </section>
-
-<section>
-<section id="mutate-scoped-functions-i-1" class="title-slide slide level1 center">
-<h1><code>mutate()</code>: Scoped-functions I</h1>
+<section id="mutate-scoped-functions-ii" class="slide level2">
+<h2><code>mutate()</code>: Scoped-functions II</h2>
 <ul>
 <li>“Scoped” variants of <code>mutate</code> that work on a subset of variables:
 <ul>
@@ -2029,7 +2058,7 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 1   59.5</code></pre>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn8" role="doc-endnote"><p>Also the more civilised non-U.S. English spelling <code>summarise</code> also works. <code>dplyr</code> was written by a Kiwi after all!</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn6" role="doc-endnote"><p>Also the more civilised non-U.S. English spelling <code>summarise</code> also works. <code>dplyr</code> was written by a Kiwi after all!</p></li></ol></aside></section>
 <section id="summarize-useful-commands" class="slide level2">
 <h2><code>summarize()</code>: Useful commands</h2>
 <ul>
@@ -2292,7 +2321,7 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </div>
 </section></section>
 <section>
-<section id="group_by-grouped-summaries" class="title-slide slide level1 center">
+<section id="group_by-grouped-summaries" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1><code>group_by()</code>: Grouped summaries</h1>
 
 </section>
@@ -2419,7 +2448,7 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </div>
 </section></section>
 <section>
-<section id="dplyr-other-useful-commands" class="title-slide slide level1 center">
+<section id="dplyr-other-useful-commands" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1><code>dplyr</code>: Other Useful Commands</h1>
 
 </section>
@@ -2527,6 +2556,8 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <div class="cell">
 <div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a>gapminder <span class="sc">%&gt;%</span></span>
 <span id="cb127-2"><a href="#cb127-2"></a>  <span class="fu">distinct</span>(country)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 142 × 1
    country    
@@ -2545,10 +2576,13 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </div>
 </div>
 
-<img src="../images/metrics_hex.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<p><img src="../images/metrics_hex.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://metricsF22.classes.ryansafner.com">ECON 480 — Econometrics</a></p>
 </div>
-</section></section>
+<aside><div>
+<p>This is a test of the aside.</p>
+</div></aside></section></section>
 
     </div>
   </div>
@@ -2602,7 +2636,7 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
