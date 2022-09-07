@@ -1,0 +1,303 @@
+---
+title: "1.3 — Data Visualization"
+subtitle: "(Answer Key)"
+author: "Ryan Safner"
+date: "September 1, 2022"
+format: html
+editor: visual
+---
+
+# Required Packages
+
+First, install the following two packages with the command `install.packages("ggplot2")` and `install.packages("gapminder")` in the console below.[^1] Alternatively, you will probably already get a yellow banner at the top of this file indicating you need to install the packages, and can install them by clicking `Install`. Don't install any package in an R chunk in this document, since it needs to be installed into R Studio.
+
+[^1]: Note that you can install multiple packages at the same time by combining the package names into a vector, like so: `install.packages(c("ggplot2", "gapminder")).`
+
+Then, load the package by running (clicking the green play button) the chunk below:
+
+```{r, load-packages}
+library("ggplot2") # for data visualization
+library("gapminder") # for dataset
+```
+
+# Our Plot from Class
+
+Next, run the code from the slides where I made our first plot.
+
+```{r}
+ggplot(data = mpg)+ # set data source to mpg (included in ggplot2)
+  aes(x = displ, # x is displacement
+      y = hwy)+ # y is hwy mpg
+  geom_point(aes(color = class))+ # color points by car class
+  geom_smooth()+ # add regression line
+  facet_wrap(~year)+ # separate plots by year
+  labs(x = "Engine Displacement (Liters)",
+       y = "Highway MPG",
+       title = "Car Mileage and Displacement",
+       subtitle = "More Displacement Lowers Highway MPG",
+       caption = "Source: EPA",
+       color = "Vehicle Class")+
+  scale_color_viridis_d()+ # change color scale
+  theme_minimal()+ # change theme
+  theme(legend.position = "bottom", # move legend
+        text = element_text(family = "Fira Sans")) # change font
+```
+
+# Exploring the Gapminder Dataset
+
+## Question 1
+
+We will look at GDP per Capita and Life Expectancy using some data from the [gapminder project](http://gapminder.org). There is a [handy package](https://github.com/jennybc/gapminder) called `gapminder` that uses a small snippet of this data for exploratory analysis. Install and load the package `gapminder`. Type `?gapminder` and hit enter to see a description of the data.
+
+```{r q1}
+# type your code below in this chunk
+?gapminder
+```
+
+## Question 2
+
+Let's get a quick look at `gapminder` to see what we're dealing with.
+
+#### Part A
+
+Get the `str`ucture of the `gapminder` data.
+
+```{r q2-a}
+# type your code below in this chunk
+str(gapminder)
+```
+
+#### Part B
+
+What variables are there?
+
+<!-- Type your answers below here -->
+
+- `country`: a factor
+- `continent`: a factor
+- `year`: an integer
+- `lifeExp`: a number
+- `gdpPercap`: a number
+
+#### Part C
+
+Look at the `head()` of the dataset to get a sense of what the data looks like.
+
+```{r q2-c}
+# type your code below in this chunk
+head(gapminder)
+```
+
+#### Part D
+
+Get a `summary()` of all the variables.
+
+```{r q2-d}
+summary(gapminder)
+```
+
+# Plotting with ggplot
+
+### Question 3
+
+Let's first make a `bar` graph to see how many countries are in each continent. The only `aes`thetic you need is to map `continent` to `x`. Bar graphs are great for representing categories, but not quantitative data.
+
+```{r q3}
+# type your code below in this chunk
+ggplot(data = gapminder) +
+  aes(x = continent) +
+  geom_bar()
+```
+
+### Question 4
+
+For quantitative data, we want a `histogram` to visualize the distribution of a variable. Make a `histogram` of `gdpPercap`. Your only `aes`thetic here is to map `gdpPercap` to `x`.
+
+```{r q4}
+# type your code below in this chunk
+ggplot(data = gapminder) +
+  aes(x = gdpPercap) +
+  geom_histogram()
+```
+
+### Question 5
+
+Now let's try adding some color, specifically, add an `aes`thetic that maps `continent` to `fill.` (In general, `color` refers to the borders of a `geom` (except points), `fill` is the interior of an object.)
+
+```{r q5}
+# type your code below in this chunk
+ggplot(data = gapminder) +
+  aes(x = gdpPercap,
+      fill = continent) +
+  geom_histogram()
+
+```
+
+### Question 6
+
+Instead of a `histogram`, change the `geom` to make it a `density` graph. To avoid overplotting, add `alpha=0.4` to the `geom` argument (alpha changes the *transparency* of a `fill`).
+
+```{r q6}
+# type your code below in this chunk
+ggplot(data = gapminder) +
+  aes(x = gdpPercap,
+      fill = continent) +
+  geom_density(alpha = 0.4)
+
+```
+
+### Question 7
+
+Redo your plot from Question 5 for `lifeExp` instead of `gdpPercap`.
+
+```{r q7}
+# type your code below in this chunk
+ggplot(data = gapminder) +
+  aes(x = lifeExp,
+      fill = continent) +
+  geom_histogram()
+```
+
+### Question 8
+
+Now let's try a scatterplot for `lifeExp` (as `y`) on `gdpPercap` (as `x`). You'll need both for `aes`thetics. The `geom` here is `geom_point()`.
+
+```{r q8}
+# type your code below in this chunk
+ggplot(data = gapminder) +
+  aes(x = gdpPercap,
+      y = lifeExp) +
+  geom_point()
+```
+
+### Question 9
+
+Add some color by mapping `continent` to `color` in your `aes`thetics.
+
+```{r q9}
+# type your code below in this chunk
+ggplot(data = gapminder) +
+  aes(x = gdpPercap,
+      y = lifeExp,
+      color = continent) +
+  geom_point()
+
+```
+
+### Question 10
+
+Now let's try adding a regression line with `geom_smooth()`. Add this layer on top of your `geom_point()` layer.
+
+```{r q10}
+# type your code below in this chunk
+ggplot(data = gapminder) +
+  aes(x = gdpPercap,
+      y = lifeExp,
+      color = continent) +
+  geom_point() +
+  geom_smooth()
+
+```
+
+### Question 11
+
+Did you notice that you got multiple regression lines (colored by continent) in the last question? That's because we set a `global` `aes`thetic of mapping `continent` to `color`. If we want just *one* regression line, we need to instead move the `color = continent` inside the `aes` of `geom_point`. Try this instead. This will only map `continent` to `color` for points, not for anything else.
+
+```{r q11}
+# type your code below in this chunk
+ggplot(data = gapminder) +
+  aes(x = gdpPercap,
+      y = lifeExp) +
+  geom_point(aes(color = continent)) +
+  geom_smooth()
+```
+
+### Question 12
+
+Now add an `aes`thetic to your `point`s to map `pop` to `size`.
+
+```{r q12}
+# type your code below in this chunk
+ggplot(data = gapminder) +
+  aes(x = gdpPercap,
+      y = lifeExp) +
+  geom_point(aes(color = continent,
+                 size = pop)) +
+  geom_smooth()
+```
+
+### Question 13
+
+Change the color of the regression line to `"black"`. Try first by putting this inside an `aes()` in your `geom_smooth`, and try a second time by just putting it inside `geom_smooth` without an `aes()`. What's the difference, and why?
+
+```{r q13}
+# type your code below in this chunk
+ggplot(data = gapminder) +
+  aes(x = gdpPercap,
+      y = lifeExp) +
+  geom_point(aes(color = continent,
+                 size = pop)) +
+  geom_smooth(aes(color = "black"))
+
+# putting it inside aesthetics tries to map color to something
+# in the data called "black", since R can't find "black", 
+# it will produce some random color
+
+# putting it *outside* aesthetics (correctly) sets color to black
+ggplot(data = gapminder) +
+  aes(x = gdpPercap,
+      y = lifeExp) +
+  geom_point(aes(color = continent,
+                 size = pop)) +
+  geom_smooth(color = "black")
+```
+
+### Question 14
+
+Another way to separate out continents is with `facet`ing. Add `+facet_wrap(~continent)` to create subplots by `continent`.
+
+```{r q14}
+# type your code below in this chunk
+ggplot(data = gapminder) +
+  aes(x = gdpPercap,
+      y = lifeExp) +
+  geom_point(aes(color = continent,
+                 size = pop)) +
+  geom_smooth(color = "black") +
+  facet_wrap(~continent)
+```
+
+### Question 15
+
+Remove the `facet` layer. The `scale` is quite annoying for the `x`-axis, a lot of points are clustered on the lower level. Let's try changing the scale by adding a layer: `+scale_x_log10()`.
+
+```{r q15}
+# type your code below in this chunk
+ggplot(data = gapminder) +
+  aes(x = gdpPercap,
+      y = lifeExp) +
+  geom_point(aes(color = continent,
+                 size = pop)) +
+  geom_smooth(color = "black") +
+  scale_x_log10()
+
+```
+
+### Question 16
+
+Now let's fix the labels by adding `+labs()`. Inside `labs`, make proper axes titles for `x`, `y`, and a `title` to the plot. If you want to change the name of the legends (continent color), add one for `color` and `size`.
+
+```{r q16}
+# type your code below in this chunk
+ggplot(data = gapminder) +
+  aes(x = gdpPercap,
+      y = lifeExp) +
+  geom_point(aes(color = continent,
+                 size = pop)) +
+  geom_smooth(color = "black") +
+  scale_x_log10()+
+  labs(x = "GDP per Capita",
+       y = "Life Expectancy",
+       color = "Continent",
+       size = "Population")
+```

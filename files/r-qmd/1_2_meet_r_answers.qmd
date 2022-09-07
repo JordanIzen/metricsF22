@@ -1,0 +1,152 @@
+---
+title: "1.2 — Meet R — Practice"
+subtitle: "(Answer Key)"
+author: "Ryan Safner"
+date: "August 24, 2022"
+format: html
+editor: visual
+---
+
+# Quarto Documents
+
+This is a **Quarto document**, which we will learn more about soon. It reproducibly integrates text, code, images, and lots of other inputs into a single document that can be rendered into outputs like webpages, PDF files, presentations, and lots of other outputs.
+
+Take a look below, and see that there are questions for you to work on to practice your R skills, and in each of them is a **code chunk** with grey background that starts with `{r}` . This is where you can write code in this document to answer the questions. Note some of them I have done for you already, or you may need to change some parts of the code.
+
+When you want to run a code chunk, click the **green play button** at the top right of the chunk. (The button to the left of it runs every chunk *above* the current one - which might be useful later, but not now.)
+
+If you want to add your own code chunk, click the *Insert* dropdown menu and select "Code Chunk" and select R. (Notice you can run other languages in Quarto!). You can also type three backticks \`\`\` and then the language in braces {r} and hit enter.
+
+# Creating Objects
+
+## Question 1
+
+#### Part A
+
+Create a vector called `me` with two elements: your first name, and your last name. See my example below and change the code to your own name.
+
+```{r}
+me <- c("Ryan", "Safner")
+```
+
+Notice nothing appears to happen, but now there is a new object called `me`. in the environment pane (top right) in R Studio.
+
+#### Part B
+
+Call the object by typing its name to inspect it.
+
+```{r}
+me
+```
+
+#### Part C
+
+Confirm that it is a `character` type of data.
+
+```{r}
+class(me)
+```
+
+## Question 2
+
+Use R's help functions to determine what the `paste()` function does. Then use it to paste together your first name and last name.
+
+```{r}
+?paste() # or help(paste)
+```
+
+**`paste()` is a function that combines (concatenates) multiple string objects into a single string object.**
+
+```{r}
+paste("Ryan", "Safner")
+
+# note you can choose how to separate string objects with the "sep" argument
+# for example
+paste("Ryan", "Safner", sep="") # no separation
+paste("Ryan", "Safner", sep=" ") # separate with a space " " (the default)
+paste("Ryan", "Safner", sep="_") # separate with underscore
+```
+
+## Question 3
+
+#### Part A
+
+Change the code below to create a vector called `my_vector` with all the even integers from 2 to 10.
+
+```{r}
+my_vector <- c(2,4,6,8,10)
+
+# verify it worked
+my_vector
+```
+
+#### Part B
+
+Find the mean and standard deviation of `my_vector`.
+
+```{r}
+mean(my_vector)
+sd(my_vector)
+```
+
+## Question 4
+
+Change the code below to use the `seq()` function to create a sequence of all of the integers from **1** to **100** by **2**, and then find the mean.
+
+```{r}
+# save the sequence as a vector called my_seq
+my_seq <- seq(from = 1, # starting number
+           to = 100, # ending number
+           by = 2) # move from number to number by increments of 2
+
+# get the mean
+mean(my_seq)
+```
+
+# Working With Data
+
+## Question 5
+
+### Part A
+
+Install the `ggplot2` package with `install.packages()`. We *don't* want to install packages into a code chunk (like where you've been writing your code so far), type the command into the console below. We want to install the package for R, not put it into this document.
+
+### Part B
+
+Load the package:
+
+```{r}
+library(ggplot2)
+```
+
+### Part C
+
+A dataset called `diamonds` is part of this package, let's save it as a dataframe called `diamonds`.
+
+```{r}
+diamonds <- diamonds
+```
+
+Notice how it loads in your environment pane to the upper right. You can click on the blue arrow to expand it and get a summary of the variables. You can also click on the name (`diamonds`) and it will open a data viewer panel in this window to actually view the data.
+
+We can get a glimpse of the data here or in the console by simply calling the name:
+
+```{r}
+diamonds # look at data
+```
+
+We can also view the structure with
+
+```{r}
+str(diamonds)
+```
+
+We can also look at the top few rows of the data with
+
+```{r}
+head(diamonds)
+```
+
+## Rendering Your Document
+
+When you are finished (or at any point really, you can re-render as often as you want), click the **Render** button at the top of this pane to turn what you are editing here into an html webpage. Later, we will also talk about how to render to PDF and other output types.
