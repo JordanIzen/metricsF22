@@ -391,16 +391,16 @@
 </section>
 <section id="contents" class="slide level2">
 <h2>Contents</h2>
-<p><a href="#//tibbles-piping">Tibbles &amp; Piping</a></p>
-<p><a href="#//importing-data">Importing Data</a></p>
-<p><a href="#//tidying-pivotingreshaping-data">Tidying (Pivoting/Reshaping) Data</a></p>
-<p><a href="#//joining-datasets">Joining Datasets</a></p>
-<p><a href="#//wrangling-data">Wrangling Data</a></p>
-<p><a href="#//select-variables"><code>select()</code> Variables</a></p>
-<p><a href="#//filter-select-rows-by-condition"><code>filter()</code> Select Rows by Condition</a></p>
-<p><a href="#//mutate-create-new-variables"><code>mutate()</code> Create New Variables</a></p>
-<p><a href="#//summarize-create-statistics"><code>summarize()</code> Create Statistics</a></p>
-<p><a href="#//group-by-grouped-summaries"><code>group_by()</code> Grouped Summaries</a></p>
+<p><a href="#/tibbles-piping">Tibbles &amp; Piping</a></p>
+<p><a href="#/importing-data">Importing Data</a></p>
+<p><a href="#/tidying-pivotingreshaping-data">Tidying (Pivoting/Reshaping) Data</a></p>
+<p><a href="#/joining-datasets">Joining Datasets</a></p>
+<p><a href="#/wrangling-data">Wrangling Data</a></p>
+<p><a href="#/select-variables"><code>select()</code> Variables</a></p>
+<p><a href="#/filter-select-rows-by-condition"><code>filter()</code> Select Rows by Condition</a></p>
+<p><a href="#/mutate-create-new-variables"><code>mutate()</code> Create New Variables</a></p>
+<p><a href="#/summarize-create-statistics"><code>summarize()</code> Create Statistics</a></p>
+<p><a href="#/group-by-grouped-summaries"><code>group_by()</code> Grouped Summaries</a></p>
 <p><a href="#/dplyr-other-useful-commands"><code>dplyr</code> Other Useful Commands</a></p>
 </section>
 <section id="data-wrangling" class="slide level2">
@@ -631,9 +631,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <pre><code># A tibble: 3 × 3
       x      y colors
   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; 
-1     2 -0.220 orange
-2     4  1.58  green 
-3     6  0.636 blue  </code></pre>
+1     2 -0.902 orange
+2     4  0.157 green 
+3     6 -0.396 blue  </code></pre>
 </div>
 </div>
 </div>
@@ -875,7 +875,11 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li>Same for everyone on any computer!</li>
 </ul></li>
 </ul>
-</section></section>
+</section>
+<section id="data-import-cheat-sheet" class="slide level2">
+<h2>Data Import Cheat Sheet</h2>
+
+<img data-src="images/data-import-cheatsheet.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-import.pdf">R Studio: Data Import Cheat Sheet</a></p></section></section>
 <section>
 <section id="tidying-pivotingreshaping-data" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>Tidying (Pivoting/Reshaping) Data</h1>
@@ -1158,7 +1162,11 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </div>
 </div>
 </div>
-</section></section>
+</section>
+<section id="data-tidying-cheat-sheet" class="slide level2">
+<h2>Data Tidying Cheat Sheet</h2>
+
+<img data-src="images/data-tidying-cheatsheet.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf">R Studio: Data Tidying Cheat Sheet</a></p></section></section>
 <section id="joining-datasets" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>Joining Datasets</h1>
 
@@ -2575,14 +2583,45 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 # … with 132 more rows</code></pre>
 </div>
 </div>
+</section>
+<section id="data-wrangling-cheat-sheet" class="slide level2">
+<h2>Data Wrangling Cheat Sheet</h2>
 
-<p><img src="../images/metrics_hex.png" class="slide-logo"></p>
-<div class="footer footer-default">
+<img data-src="images/data-wrangling-cheatsheet.png" class="r-stretch quarto-figure-center"><p class="caption"><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf">R Studio: Data Wrangling Cheat Sheet</a></p></section>
+<section id="resources" class="slide level2">
+<h2>Resources</h2>
+<ul>
+<li><code>tibble</code>
+<ul>
+<li><a href="https://r4ds.had.co.nz/tibbles.html"><em>R For Data Science</em>, Chapter 10: Tibbles</a></li>
+</ul></li>
+<li><code>readr</code> and importing data
+<ul>
+<li><a href="https://r4ds.had.co.nz/data-import.html"><em>R For Data Science</em>, Chapter 11: Data Import</a></li>
+<li><a href="https://www.rstudio.com/resources/cheatsheets/#import">R Studio Cheatsheet: Data Import</a></li>
+</ul></li>
+<li><code>dplyr</code> and data wrangling
+<ul>
+<li><a href="https://r4ds.had.co.nz/tibbles.html"><em>R For Data Science</em>, Chapter 5: Data Transformation</a></li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">R Studio Cheatsheet: Data Wrangling</a> (<a href="https://www.rstudio.com/resources/cheatsheets/#dplyr">New version</a>)</li>
+</ul></li>
+<li><code>tidyr</code> and tidying or reshaping data
+<ul>
+<li><a href="https://r4ds.had.co.nz/tidy-data.html"><em>R For Data Science</em>, Chapter 12: Tidy Data</a></li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">R Studio Cheatsheet: Data Wrangling</a></li>
+<li><a href="https://www.rstudio.com/resources/cheatsheets/#import">R Studio Cheatsheet: Data Import</a></li>
+</ul></li>
+<li>joining data
+<ul>
+<li><a href="https://r4ds.had.co.nz/relational-data.html"><em>R For Data Science</em>, Chapter 13: Relational Data</a></li>
+<li><a href="https://www.rstudio.com/resources/cheatsheets/#dplyr">R Studio Cheatsheet: Data Transformation</a></li>
+</ul></li>
+</ul>
+
+<img src="../images/metrics_hex.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://metricsF22.classes.ryansafner.com">ECON 480 — Econometrics</a></p>
 </div>
-<aside><div>
-<p>This is a test of the aside.</p>
-</div></aside></section></section>
+</section></section>
 
     </div>
   </div>

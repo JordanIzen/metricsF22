@@ -41,25 +41,25 @@ knitr::opts_chunk$set(echo=T,
 
 ## Contents
 
-[Tibbles & Piping](#/tibbles-piping)
+[Tibbles & Piping](#tibbles-piping)
 
-[Importing Data](#/importing-data)
+[Importing Data](#importing-data)
 
-[Tidying (Pivoting/Reshaping) Data](#/tidying-pivotingreshaping-data)
+[Tidying (Pivoting/Reshaping) Data](#tidying-pivotingreshaping-data)
 
-[Joining Datasets](#/joining-datasets)
+[Joining Datasets](#joining-datasets)
 
-[Wrangling Data](#/wrangling-data)
+[Wrangling Data](#wrangling-data)
 
-[`select()` Variables](#/select-variables)
+[`select()` Variables](#select-variables)
 
-[`filter()` Select Rows by Condition](#/filter-select-rows-by-condition)
+[`filter()` Select Rows by Condition](#filter-select-rows-by-condition)
 
-[`mutate()` Create New Variables](#/mutate-create-new-variables)
+[`mutate()` Create New Variables](#mutate-create-new-variables)
 
-[`summarize()` Create Statistics](#/summarize-create-statistics)
+[`summarize()` Create Statistics](#summarize-create-statistics)
 
-[`group_by()` Grouped Summariess](#group-by-grouped-summaries)
+[`group_by()` Grouped Summaries](#group-by-grouped-summaries)
 
 [`dplyr` Other Useful Commands](#dplyr-other-useful-commands)
 
@@ -434,7 +434,12 @@ df <- read_csv("../Downloads/my_data.csv")
 - We'll finally fix this next class with `R Projects`
     - The working directory is set to the Project Folder by default
     - Same for everyone on any computer!
- 
+
+## Data Import Cheat Sheet
+
+![[R Studio: Data Import Cheat Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-import.pdf)](images/data-import-cheatsheet.png)
+
+
 # Tidying (Pivoting/Reshaping) Data {.centered background-color="#314f4f"}
 
 ![](images/tidyr2.png)
@@ -654,6 +659,11 @@ ex_long %>%
 
 :::
 :::
+
+## Data Tidying Cheat Sheet
+
+![[R Studio: Data Tidying Cheat Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf)](images/data-tidying-cheatsheet.png)
+
 
 # Joining Datasets {.centered background-color="#314f4f"}
 
@@ -1362,6 +1372,24 @@ gapminder %>%
   distinct(country)
 ```
 
-::: aside
-This is a test of the aside.
-:::
+## Data Wrangling Cheat Sheet
+
+![[R Studio: Data Wrangling Cheat Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf)](images/data-wrangling-cheatsheet.png)
+
+## Resources
+
+- `tibble`
+  - [*R For Data Science*, Chapter 10: Tibbles](https://r4ds.had.co.nz/tibbles.html)
+- `readr` and importing data
+  - [*R For Data Science*, Chapter 11: Data Import](https://r4ds.had.co.nz/data-import.html)
+  - [R Studio Cheatsheet: Data Import](https://www.rstudio.com/resources/cheatsheets/#import)
+- `dplyr` and data wrangling
+  - [*R For Data Science*, Chapter 5: Data Transformation](https://r4ds.had.co.nz/tibbles.html)
+  - [R Studio Cheatsheet: Data Wrangling](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) ([New version](https://www.rstudio.com/resources/cheatsheets/#dplyr))
+- `tidyr` and tidying or reshaping data
+  - [*R For Data Science*, Chapter 12: Tidy Data](https://r4ds.had.co.nz/tidy-data.html)
+  - [R Studio Cheatsheet: Data Wrangling](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+  - [R Studio Cheatsheet: Data Import](https://www.rstudio.com/resources/cheatsheets/#import)
+- joining data
+  - [*R For Data Science*, Chapter 13: Relational Data](https://r4ds.had.co.nz/relational-data.html)
+  - [R Studio Cheatsheet: Data Transformation](https://www.rstudio.com/resources/cheatsheets/#dplyr)
