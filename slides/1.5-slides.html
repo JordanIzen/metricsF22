@@ -396,7 +396,7 @@
 </section>
 <section id="your-workflow-has-a-lot-of-moving-parts" class="slide level2">
 <h2>Your Workflow Has a Lot of Moving Parts</h2>
-<div class="column">
+<div class="columns">
 <div class="column" style="width:60%;">
 <ol type="1">
 <li><p>Writing text/documents</p></li>
@@ -408,14 +408,17 @@
 <li><p>Collaborating and sharing with others</p></li>
 <li><p>Combining into a deliverable (report, paper, presentation, etc.)</p></li>
 </ol>
-</div>
-<div class="column" style="width:40%;">
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="images/workflow.jpg"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section>
-<section id="the-office-model" class="title-slide slide level1 center">
+<section id="the-office-model" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>The Office Model</h1>
 
 </section>
@@ -434,7 +437,11 @@
 <li><p>Combining into a deliverable (report, paper, presentation, etc.)</p></li>
 </ol>
 </div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="images/msofficemodel.png"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -448,7 +455,11 @@
 </ul>
 <p><img data-src="images/wysiwygproblem.jpg"></p>
 </div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="images/msofficemodel.png"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -482,11 +493,11 @@
 <section id="drawing-the-rest-of-the-owl" class="slide level2">
 <h2>Drawing the Rest of the Owl</h2>
 
-<img data-src="images/drawanowl.jpg" class="r-stretch"></section>
+<img data-src="images/drawanowl.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="what-ill-show-you" class="slide level2">
 <h2>What I’ll Show You</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:60%;">
 <ul>
 <li><p>This is how I make my…</p>
 <ul>
@@ -499,16 +510,20 @@
 <li><p><span class="hi-purple">This stuff is <em>optional</em></span></p>
 <ul>
 <li>If you like your office model, you can keep it</li>
-<li>But this is what most people who take this course continue to use (R is only really if you have data work) ]</li>
+<li>But this is what most people who take this course continue to use (R is only really if you have data work)</li>
 </ul></li>
 </ul>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="images/rmdout.png"></p>
+</figure>
+</div>
 </div>
 </div>
 </section></section>
 <section>
-<section id="the-plain-text-model" class="title-slide slide level1 center">
+<section id="the-plain-text-model" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>The Plain Text Model</h1>
 
 </section>
@@ -528,7 +543,8 @@
 <li><p>Combining into a deliverable (report, paper, presentation, etc.)</p></li>
 </ol>
 </div><div class="column" style="width:40%;">
-<p><img data-src="images/rmdout.png"></p>
+<p><img data-src="images/quartoweb.png"></p>
+<p><a href="https://quarto.org">Quarto.org</a></p>
 </div>
 </div>
 </section>
@@ -597,7 +613,7 @@
 </div>
 </section></section>
 <section>
-<section id="quarto" class="title-slide slide level1 center">
+<section id="quarto" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>Quarto</h1>
 
 </section>
@@ -649,17 +665,33 @@
 <h2>Structure of a Quarto Document</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p>Entire document is written in a single file<sup>1</sup> with three types of content:</p>
+<p>Entire document is written in a single file with three types of content:</p>
 <ol type="1">
-<li><p><code>YAML</code> header for metadata</p></li>
-<li><p>Text of the document written with <code>markdown</code></p></li>
-<li><p><code>R</code> chunks for data analysis, plots, figures, tables, statistics, as necessary</p></li>
+<li><code>YAML</code> header for metadata</li>
 </ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Title"</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Text of the document written with <code>markdown</code></li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu"># Header 1</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>**Bold** and *italic* text. </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li><code>R</code> chunks for data analysis, plots, figures, tables, statistics, as necessary</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
 </div><div class="column" style="width:50%;">
 <p><img data-src="images/quarto_input.png"></p>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn1" role="doc-endnote"><p>The one exception is for managing bibliographies, this requires one additional <code>.bib</code> file!</p></li></ol></aside></section>
+</section>
 <section id="yaml-header-i" class="slide level2">
 <h2>YAML Header I</h2>
 <ul>
@@ -667,40 +699,40 @@
 <li><p>Contains the <strong>metadata</strong> of the document, such as:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1"></a><span class="pp">---</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Ryan Safner"</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r Sys.Date()`"</span><span class="co"> # here I'm using R code to generate today's date!</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1"></a><span class="pp">---</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Ryan Safner"</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"`r Sys.Date()`"</span><span class="co"> # here I'm using R code to generate today's date!</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p><code>format</code> <em>must</em> be specified, everything else can be left blank, and other options can be added as necessary</p></li>
 <li><p>In most cases, you can safely ignore other things in the <code>yaml</code> until you are ready</p></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn2" role="doc-endnote"><p>YAML stands for “YAML Ain’t Markup Language.” Nerds love recursive acronyms.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn1" role="doc-endnote"><p>YAML stands for “YAML Ain’t Markup Language.” Nerds love recursive acronyms.</p></li></ol></aside></section>
 <section id="yaml-header-example-i" class="slide level2">
 <h2>YAML Header Example I</h2>
 <ul>
 <li>Example from these slides</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="pp">---</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">default</span><span class="kw">,</span><span class="at"> custom.scss</span><span class="kw">]</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="at">    </span><span class="fu">logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"../images/metrics_hex.png"</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="at">    </span><span class="fu">footer</span><span class="kw">:</span><span class="at"> </span><span class="st">"[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="at">    </span><span class="fu">height</span><span class="kw">:</span><span class="at"> </span><span class="dv">900</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="at">    </span><span class="fu">width</span><span class="kw">:</span><span class="at"> </span><span class="dv">1600</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="co">    #df-print: paged</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="at">    </span><span class="fu">slide-number</span><span class="kw">:</span><span class="at"> c</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="fu">overview</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="fu">execute</span><span class="kw">:</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="at">  </span><span class="fu">freeze</span><span class="kw">:</span><span class="at"> auto</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1"></a><span class="pp">---</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="at">  </span><span class="fu">revealjs</span><span class="kw">:</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">default</span><span class="kw">,</span><span class="at"> custom.scss</span><span class="kw">]</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="at">    </span><span class="fu">logo</span><span class="kw">:</span><span class="at"> </span><span class="st">"../images/metrics_hex.png"</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="at">    </span><span class="fu">footer</span><span class="kw">:</span><span class="at"> </span><span class="st">"[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="at">    </span><span class="fu">height</span><span class="kw">:</span><span class="at"> </span><span class="dv">900</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="at">    </span><span class="fu">width</span><span class="kw">:</span><span class="at"> </span><span class="dv">1600</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">    #df-print: paged</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="at">    </span><span class="fu">slide-number</span><span class="kw">:</span><span class="at"> c</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="fu">overview</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="at">  </span><span class="fu">freeze</span><span class="kw">:</span><span class="at"> auto</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="yaml-header-example-ii" class="slide level2">
@@ -709,31 +741,31 @@
 <li>Example from one of my papers:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1"></a><span class="pp">---</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Distributing Patronage^[I would like to thank the Board of Associates of Hood College...]</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> Intellectual Property in the Transition from Natural State to Open Access Order</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> \today</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="kw">-</span><span class="at"> Ryan Safner^[Hood College, Department of Economics and Business Administration; safner@hood.edu]</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="fu">abstract</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a>  | "This paper explores the emergence of the modern forms of copyright and patent in ...</span>
-<span id="cb3-10"><a href="#cb3-10"></a>  | *JEL Classification:* O30, O43, N43</span>
-<span id="cb3-11"><a href="#cb3-11"></a>  | *Keywords:* Copyright, intellectual property, economic history, freedom of the press, economic development</span>
-<span id="cb3-12"><a href="#cb3-12"></a></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> patronage.bib</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="fu">geometry</span><span class="kw">:</span><span class="at"> margin = 1in</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> 12pt</span></span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> Fira Sans Condensed</span></span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb3-18"><a href="#cb3-18"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
-<span id="cb3-19"><a href="#cb3-19"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> xelatex</span></span>
-<span id="cb3-20"><a href="#cb3-20"></a><span class="at">    </span><span class="fu">number_sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb3-21"><a href="#cb3-21"></a><span class="at">    </span><span class="fu">fig_caption</span><span class="kw">:</span><span class="at"> </span><span class="ch">yes</span></span>
-<span id="cb3-22"><a href="#cb3-22"></a></span>
-<span id="cb3-23"><a href="#cb3-23"></a><span class="fu">header-includes</span><span class="kw">:</span></span>
-<span id="cb3-24"><a href="#cb3-24"></a><span class="at">    </span><span class="kw">-</span><span class="at"> \usepackage{booktabs}</span></span>
-<span id="cb3-25"><a href="#cb3-25"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1"></a><span class="pp">---</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Distributing Patronage^[I would like to thank the Board of Associates of Hood College...]</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> Intellectual Property in the Transition from Natural State to Open Access Order</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> \today</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="kw">-</span><span class="at"> Ryan Safner^[Hood College, Department of Economics and Business Administration; safner@hood.edu]</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="fu">abstract</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>  | "This paper explores the emergence of the modern forms of copyright and patent in ...</span>
+<span id="cb7-10"><a href="#cb7-10"></a>  | *JEL Classification:* O30, O43, N43</span>
+<span id="cb7-11"><a href="#cb7-11"></a>  | *Keywords:* Copyright, intellectual property, economic history, freedom of the press, economic development</span>
+<span id="cb7-12"><a href="#cb7-12"></a></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> patronage.bib</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="fu">geometry</span><span class="kw">:</span><span class="at"> margin = 1in</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> 12pt</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> Fira Sans Condensed</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb7-18"><a href="#cb7-18"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> xelatex</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="at">    </span><span class="fu">number_sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a><span class="at">    </span><span class="fu">fig_caption</span><span class="kw">:</span><span class="at"> </span><span class="ch">yes</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a></span>
+<span id="cb7-23"><a href="#cb7-23"></a><span class="fu">header-includes</span><span class="kw">:</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a><span class="at">    </span><span class="kw">-</span><span class="at"> \usepackage{booktabs}</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="r-chunks" class="slide level2">
@@ -745,52 +777,41 @@
 <div class="columns">
 <div class="column" style="width:40%;">
 <h3 id="input">Input</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="co"># code goes here!</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="co"># code goes here!</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:60%;">
 <h3 id="output">Output</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span> <span class="co"># code goes here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4</code></pre>
 </div>
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn3" role="doc-endnote"><p>The key to the left of the #1 key on your keyboard.</p></li><li id="fn4" role="doc-endnote"><p>Yes that does mean you can use other coding languages!</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn2" role="doc-endnote"><p>The key to the left of the #1 key on your keyboard.</p></li><li id="fn3" role="doc-endnote"><p>Yes that does mean you can use other coding languages!</p></li></ol></aside></section>
 <section id="r-chunks-1" class="slide level2">
 <h2>R Chunks</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
 <h3 id="input-1">Input</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">head</span>(mpg, <span class="at">n =</span> <span class="dv">2</span>)</span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 11
-  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
-  &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
-1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…
-2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">head</span>()</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:60%;">
 <h3 id="output-1">Output</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">head</span>(mpg, <span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 11
-  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
-  &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; 
-1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…
-2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…</code></pre>
+<pre><code># A tibble: 6 × 6
+  country     continent  year lifeExp      pop gdpPercap
+  &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+1 Afghanistan Asia       1952    28.8  8425333      779.
+2 Afghanistan Asia       1957    30.3  9240934      821.
+3 Afghanistan Asia       1962    32.0 10267083      853.
+4 Afghanistan Asia       1967    34.0 11537966      836.
+5 Afghanistan Asia       1972    36.1 13079460      740.
+6 Afghanistan Asia       1977    38.4 14880372      786.</code></pre>
 </div>
 </div>
 </div>
@@ -799,28 +820,20 @@
 <section id="r-chunks-2" class="slide level2">
 <h2>R Chunks</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:40%;">
 <h3 id="input-2">Input</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1"></a><span class="in">```{r}</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="co">#| eval: false</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">library</span>(<span class="st">"ggplot2"</span>) <span class="co"># load ggplot2</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg)<span class="sc">+</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
-<span id="cb12-6"><a href="#cb12-6"></a>      <span class="at">y =</span> hwy)<span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> class))</span>
-<span id="cb12-8"><a href="#cb12-8"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div><div class="column" style="width:50%;">
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1"></a><span class="in">```{r}</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">library</span>(<span class="st">"ggplot2"</span>) <span class="co"># load ggplot2</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg)<span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
+<span id="cb12-5"><a href="#cb12-5"></a>      <span class="at">y =</span> hwy)<span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> class))</span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:60%;">
 <h3 id="output-2">Output</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">library</span>(<span class="st">"ggplot2"</span>) <span class="co"># load ggplot2</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg)<span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ,</span>
-<span id="cb13-4"><a href="#cb13-4"></a>      <span class="at">y =</span> hwy)<span class="sc">+</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> class))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img data-src="1.5-slides_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+<p><img data-src="1.5-slides_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -828,52 +841,21 @@
 </section>
 <section id="r-chunk-options" class="slide level2">
 <h2>R Chunk Options</h2>
-</section>
-<section id="r-chunk-options-1" class="slide level2">
-<h2>R Chunk Options</h2>
 <ul>
 <li>Chunks can have options with the “hash pipe” <code>#|</code> at the top of the chunk</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">#| label: my_chunk_title # give chunk a name</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="co">#| eval: true # run the code?</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="co">#| echo: true # display code?</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="co">#| warning: true # display warnings?</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="co">#| message: false # display messages?</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="co">#| fig.width: 6 # width for figures</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#| label: my_chunk_title # give chunk a name</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="co">#| eval: true # run the code?</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co">#| echo: true # display code?</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="co">#| warning: true # display warnings?</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="co">#| message: false # display messages?</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="co">#| fig.width: 6 # width for figures</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <ul>
 <li>In <code>R Markdown</code> (the predecessor to Quarto…that I know better), you put options inside the braces at the top of a chunk. This is still valid in <code>Quarto</code>:</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r my_chunk_title, eval = T, echo = F, warning = F, message = F, fig.width = 6}</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="r-chunk-options-2" class="slide level2">
-<h2>R Chunk Options</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<h3 id="input-3">Input</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1"></a><span class="in">```{r}</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="co">#| eval: false</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="fu">library</span>(<span class="st">"ggplot2"</span>) <span class="co"># load ggplot2</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg)<span class="sc">+</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ)<span class="sc">+</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">geom_histogram</span>()</span>
-<span id="cb16-7"><a href="#cb16-7"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div><div class="column" style="width:50%;">
-<h3 id="output-3">Output</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">library</span>(<span class="st">"ggplot2"</span>) <span class="co"># load ggplot2</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mpg)<span class="sc">+</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">aes</span>(<span class="at">x =</span> displ)<span class="sc">+</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img data-src="1.5-slides_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
-</div>
-</div>
-</div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r my_chunk_title, eval = T, echo = F, warning = F, message = F, fig.width = 6}</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="global-chunk-options" class="slide level2">
@@ -882,10 +864,10 @@
 <li>You can set default options for all chunks in the <code>YAML</code> header:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co"> # hide all input code</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co"> # hide all output warnings</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co"> # hide all output messages</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co"> # hide all input code</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co"> # hide all output warnings</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co"> # hide all output messages</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Learn more <a href="https://quarto.org/docs/computations/r.html#chunk-options">here</a> and <a href="https://quarto.org/docs/computations/r.html#knitr-options">here</a></li>
@@ -896,16 +878,16 @@
 <ul>
 <li>If you just want to display some code (or at least format it like code) in the middle of a sentence, <span class="hi-purple">place between a single backtick on either side.</span>
 <ul>
-<li>e.g.&nbsp;if I mention <code>tidyverse</code> or <code>gapminder</code>, it formats the text as <code>in-line code</code>.</li>
+<li>e.g.&nbsp;if I mention <code>`tidyverse`</code> or <code>`gapminder`</code>, it formats the text as <code>in-line code</code>.</li>
 </ul></li>
-<li>To actually <em>execute</em> <code>R</code> code to output something in the middle of a sentence, put <code>r</code> as the first character inside the backticks, and then run the actual code such as pi is equal to 3.1415927.</li>
+<li>To actually <strong>execute</strong> <code>R</code> code to output something in the middle of a sentence, put <code>r</code> as the first character inside the backticks, and then run the actual code such as pi is equal to 3.1415927.</li>
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
-<h3 id="input-4">Input</h3>
+<h3 id="input-3">Input</h3>
 <p>pi is equal to <code>`r pi`</code>.</p>
 </div><div class="column" style="width:50%;">
-<h3 id="output-4">Output</h3>
+<h3 id="output-3">Output</h3>
 <p>pi is equal to 3.1415927.</p>
 </div>
 </div>
@@ -914,10 +896,10 @@
 <h2>Or Like This</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<h3 id="input-5">Input</h3>
+<h3 id="input-4">Input</h3>
 <p>The average GDP per capita is <code>` r dollar(mean(gapminder$gdpPercap)) `</code> with a standard deviation of <code>` r dollar(sd(gapminder$gdpPercap)) `</code>.</p>
 </div><div class="column" style="width:50%;">
-<h3 id="output-5">Output</h3>
+<h3 id="output-4">Output</h3>
 <p>The average GDP per capita is $7,215.33 with a standard deviation of $9,857.45.</p>
 </div>
 </div>
@@ -1019,30 +1001,6 @@
 </ol></li>
 </ol></td>
 </tr>
-<tr class="even">
-<td><pre><code>(@)  A list whose numbering
-
-continues after
-
-(@)  an interruption</code></pre></td>
-<td><ol type="1">
-<li>A list whose numbering</li>
-</ol>
-<p>continues after</p>
-<ol start="2" type="1">
-<li>an interruption</li>
-</ol></td>
-</tr>
-<tr class="odd">
-<td><pre><code>term
-: definition</code></pre></td>
-<td><dl>
-<dt><strong>term</strong></dt>
-<dd>
-<p>definition</p>
-</dd>
-</dl></td>
-</tr>
 </tbody>
 </table>
 </section>
@@ -1092,23 +1050,51 @@ continues after
 <div class="columns">
 <div class="column" style="width:50%;">
 <h4 id="markdown">Markdown</h4>
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb34-1"><a href="#cb34-1"></a>You can embed</span>
-<span id="cb34-2"><a href="#cb34-2"></a><span class="co">[</span><span class="ot">named hyperlinks</span><span class="co">](https://metricsF22.classes.ryansafner.com/)</span>,</span>
-<span id="cb34-3"><a href="#cb34-3"></a>direct urls like <span class="ot">&lt;https://metricsF22.classes.ryansafner.com/&gt;</span>,</span>
-<span id="cb34-4"><a href="#cb34-4"></a>and links to </span>
-<span id="cb34-5"><a href="#cb34-5"></a><span class="co">[</span><span class="ot">other places — like the previous slide</span><span class="co">](#writing-text-with-markdown-headings)</span></span>
-<span id="cb34-6"><a href="#cb34-6"></a>in the document.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1"></a>You can embed</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="co">[</span><span class="ot">named hyperlinks</span><span class="co">](https://metricsF22.classes.ryansafner.com/)</span>,</span>
+<span id="cb29-3"><a href="#cb29-3"></a>direct urls like <span class="ot">&lt;https://metricsF22.classes.ryansafner.com/&gt;</span>,</span>
+<span id="cb29-4"><a href="#cb29-4"></a>and links to </span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="co">[</span><span class="ot">other places — like the previous slide</span><span class="co">](#writing-text-with-markdown-headings)</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a>in the document.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
-<h4 id="output-6">Output</h4>
+<h4 id="output-5">Output</h4>
 <p>You can embed <a href="https://metricsF22.classes.ryansafner.com/">named hyperlinks</a>, direct urls like <a href="https://metricsF22.classes.ryansafner.com/" class="uri">https://metricsF22.classes.ryansafner.com/</a>, and links to <a href="#/writing-text-with-markdown-headings">other places — like the previous slide</a> in the document.</p>
 </div>
 </div>
+</section>
+<section id="writing-text-with-markdown-images" class="slide level2">
+<h2>Writing Text with Markdown: Images</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 id="markdown-1">Markdown</h4>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1"></a><span class="al">![Caption: tidyverse](images/tidyverse1.png)</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="al">![](https://dplyr.tidyverse.org/logo.png)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<h4 id="output-6">Output</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/tidyverse1.png"></p>
+<p></p><figcaption>The tidyverse</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://dplyr.tidyverse.org/logo.png"></p>
+<p></p><figcaption>dplyr logo</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Read the <a href="https://quarto.org/docs/authoring/figures.html">Quarto Documentation on figures</a> for more.</li>
+</ul>
 </section>
 <section id="writing-text-with-markdown-making-tables" class="slide level2">
 <h2>Writing Text with Markdown: Making Tables</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<h4 id="markdown-1">Markdown</h4>
+<h4 id="markdown-2">Markdown</h4>
 <pre><code>| Right | Left | Default | Center |
 |------:|:-----|---------|:------:|
 |   12  |  12  |    12   |    12  |
@@ -1116,8 +1102,7 @@ continues after
 |    1  |    1 |     1   |     1  |
 
 : Table Example {tbl-colwidths="[25,25,25,25]"}</code></pre>
-</div><div class="column fragment" style="width:50%;">
-<!-- -->
+</div><div class="column" style="width:50%;">
 <h4 id="output-7">Output</h4>
 <table>
 <caption>Table Example</caption>
@@ -1169,10 +1154,10 @@ continues after
 <li>The <code>kableExtra</code> package is great for this <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">see Documentation</a></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb36-2"><a href="#cb36-2"></a>mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb36-3"><a href="#cb36-3"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb36-4"><a href="#cb36-4"></a>  <span class="fu">kbl</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb32-2"><a href="#cb32-2"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb32-4"><a href="#cb32-4"></a>  <span class="fu">kbl</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <table>
@@ -1290,10 +1275,10 @@ continues after
 <li>The <code>kableExtra</code> package is great for this <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">see Documentation</a></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb37-2"><a href="#cb37-2"></a>mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb37-3"><a href="#cb37-3"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb37-4"><a href="#cb37-4"></a>  <span class="fu">kbl</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb33-2"><a href="#cb33-2"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a>  <span class="fu">kbl</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <table>
@@ -1407,9 +1392,9 @@ continues after
 <section id="writing-text-with-markdown-printing-tables-2" class="slide level2">
 <h2>Writing Text with Markdown: Printing Tables</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>mtcars <span class="sc">%&gt;%</span></span>
-<span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb38-3"><a href="#cb38-3"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a>  rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1436,7 +1421,7 @@ continues after
 </ul>
 <div class="columns">
 <div class="column" style="width:50%;">
-<h4 id="input-6">Input</h4>
+<h4 id="input-5">Input</h4>
 <p><code>$$</code> <code>\hat{\beta_1}=\frac{\displaystyle \sum_{i=1}^n (X_i-\bar{X})(Y_i-\bar{Y})}{\displaystyle \sum_{i=1}^n (X_i-\bar{X})^2}</code> <code>$$</code></p>
 </div><div class="column" style="width:50%;">
 <h4 id="output-8">Output</h4>
@@ -1451,10 +1436,11 @@ continues after
 <li>Math uses a (much older) language called <a href="http://en.wikipedia.org/wiki/LaTeX"><span class="math inline">\(\LaTeX\)</span></a>, used by mathematicians, economists, and others to write papers and slides with perfect math and formatting
 <ul>
 <li>I used to use for everything before I found <code>R</code> and <code>markdown</code></li>
-<li>Producing <code>pdf</code> or <code>html</code> output actually converts <code>markdown</code> files into <span class="math inline">\(\TeX{}\)</span> first! (See <a href="#/process">the process described below</a>)</li>
+<li>Producing <code>pdf</code> output actually converts <code>markdown</code> files into <span class="math inline">\(\TeX{}\)</span> first!</li>
 <li>Much steeper learning curve, <a href="https://wch.github.io/latexsheet/latexsheet.pdf">a good cheatsheet</a></li>
 <li>An extensive library of mathematical symbols, notation, formats, and ligatures, e.g.</li>
 </ul></li>
+<li>A great resource: <a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics">Wikibooks LaTeX Mathematics chapter</a></li>
 </ul>
 </section>
 <section id="writing-math-2" class="slide level2">
@@ -1509,9 +1495,6 @@ continues after
 </tr>
 </tbody>
 </table>
-<ul>
-<li>A great resource: <a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics">Wikibooks LaTeX Mathematics chapter</a></li>
-</ul>
 </section>
 <section id="citations-references-bibliography" class="slide level2">
 <h2>Citations, References, &amp; Bibliography</h2>
@@ -1531,16 +1514,16 @@ continues after
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource latex number-lines code-with-copy"><code class="sourceCode latex"><span id="cb39-1"><a href="#cb39-1"></a>@article{safner2016,</span>
-<span id="cb39-2"><a href="#cb39-2"></a>  author = {Ryan Safner},</span>
-<span id="cb39-3"><a href="#cb39-3"></a>  year = {2016},</span>
-<span id="cb39-4"><a href="#cb39-4"></a>  journal = {Journal of Institutional Economics},</span>
-<span id="cb39-5"><a href="#cb39-5"></a>  title = {Institutional Entrepreneurship, Wikipedia, </span>
-<span id="cb39-6"><a href="#cb39-6"></a>           and the Opportunity of the Commons},</span>
-<span id="cb39-7"><a href="#cb39-7"></a>  volume = {12},</span>
-<span id="cb39-8"><a href="#cb39-8"></a>  number = {4},</span>
-<span id="cb39-9"><a href="#cb39-9"></a>  pages = {743-771}</span>
-<span id="cb39-10"><a href="#cb39-10"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource latex number-lines code-with-copy"><code class="sourceCode latex"><span id="cb35-1"><a href="#cb35-1"></a>@article{safner2016,</span>
+<span id="cb35-2"><a href="#cb35-2"></a>  author = {Ryan Safner},</span>
+<span id="cb35-3"><a href="#cb35-3"></a>  year = {2016},</span>
+<span id="cb35-4"><a href="#cb35-4"></a>  journal = {Journal of Institutional Economics},</span>
+<span id="cb35-5"><a href="#cb35-5"></a>  title = {Institutional Entrepreneurship, Wikipedia, </span>
+<span id="cb35-6"><a href="#cb35-6"></a>           and the Opportunity of the Commons},</span>
+<span id="cb35-7"><a href="#cb35-7"></a>  volume = {12},</span>
+<span id="cb35-8"><a href="#cb35-8"></a>  number = {4},</span>
+<span id="cb35-9"><a href="#cb35-9"></a>  pages = {743-771}</span>
+<span id="cb35-10"><a href="#cb35-10"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <ul>
@@ -1626,6 +1609,8 @@ continues after
 </section>
 <section id="rstudio-is-my-text-editor-of-choice" class="slide level2">
 <h2>RStudio is My Text Editor of Choice</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li>Honestly, I write <strong>everything</strong> in R Studio’s text editor
 <ul>
@@ -1635,6 +1620,10 @@ continues after
 </ul></li>
 <li>You can <em>write</em> R code in other text editors, but you can’t <em>execute</em> them outside of <em>R Studio</em> (or the command line, but that’s too advanced.) Same with actually rendering your markdown to an output (pdf, html, etc)</li>
 </ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/r4screens1.png"></p>
+</div>
+</div>
 </section>
 <section id="tips-with-markdown" class="slide level2">
 <h2>Tips with Markdown</h2>
@@ -1647,7 +1636,7 @@ continues after
 </ul>
 </section></section>
 <section>
-<section id="rendering-your-documents" class="title-slide slide level1 center">
+<section id="rendering-your-documents" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>Rendering Your Documents</h1>
 
 </section>
@@ -1665,7 +1654,7 @@ continues after
 <p><img data-src="images/quarto_render.png"></p>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn5" role="doc-endnote"><p><code>knitr</code> also relies on the <code>rmarkdown</code> package, which will probably be installed when you first <code>knit.</code></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn4" role="doc-endnote"><p><code>knitr</code> also relies on the <code>rmarkdown</code> package, which will probably be installed when you first <code>knit.</code></p></li></ol></aside></section>
 <section id="pdf-output" class="slide level2">
 <h2>PDF Output</h2>
 <ul>
@@ -1677,9 +1666,9 @@ continues after
 <li>Better to use the package <code>tinytex</code> to install a mini-distro of <span class="math inline">\(\LaTeX{}\)</span> inside of <code>R</code>:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># install.packages("tinytex") # first install package</span></span>
-<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">library</span>(tinytex) <span class="co"># load package</span></span>
-<span id="cb40-3"><a href="#cb40-3"></a><span class="fu">install_tinytex</span>() <span class="co"># run this command to install LaTeX in R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># install.packages("tinytex") # first install package</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a><span class="fu">library</span>(tinytex) <span class="co"># load package</span></span>
+<span id="cb36-3"><a href="#cb36-3"></a><span class="fu">install_tinytex</span>() <span class="co"># run this command to install LaTeX in R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -1687,11 +1676,16 @@ continues after
 <li>Once you’ve done this (just one time), you can Render to a PDF, make sure your <code>YAML</code> header is set to <code>pdf</code> <code>format</code>:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb41-1"><a href="#cb41-1"></a><span class="pp">---</span></span>
-<span id="cb41-2"><a href="#cb41-2"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> pdf</span></span>
-<span id="cb41-3"><a href="#cb41-3"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb37-1"><a href="#cb37-1"></a><span class="pp">---</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> pdf</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+</section></section>
+<section>
+<section id="project-oriented-workflow" class="title-slide slide level1 centered center" data-background-color="#314f4f">
+<h1>Project-Oriented Workflow</h1>
+
 </section>
 <section id="r-projects-i" class="slide level2">
 <h2>R Projects I</h2>
@@ -1784,7 +1778,7 @@ continues after
 </div>
 </section></section>
 <section>
-<section id="version-control" class="title-slide slide level1 center">
+<section id="version-control" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>Version Control</h1>
 
 </section>
@@ -1814,7 +1808,11 @@ continues after
 <li><p>Edit files on one computer and then open and continue working on another?</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="images/versioncontrol.png"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1822,7 +1820,11 @@ continues after
 <h2>The Training-Wheels Version</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="images/dropbox.png"></p>
+</figure>
+</div>
 <p><a href="http://dropbox.com">Dropbox.com</a></p>
 </div><div class="column" style="width:50%;">
 <ul>
@@ -1841,18 +1843,26 @@ continues after
 <section id="my-life-goes-in-here" class="slide level2">
 <h2>My Life Goes In Here</h2>
 
-<img data-src="images/mydropbox2.png" class="r-stretch"></section>
+<img data-src="images/mydropbox2.png" class="r-stretch quarto-figure-center"></section>
 <section id="smart-sync" class="slide level2">
 <h2>Smart Sync</h2>
 
-<img data-src="images/dropboxsmartsync.png" class="r-stretch"><p>Smart Sync - keep some files online only for space</p>
+<img data-src="images/dropboxsmartsync.png" class="r-stretch quarto-figure-center"><p>Smart Sync - keep some files online only for space</p>
 </section>
 <section id="the-expert-version" class="slide level2">
 <h2>The Expert Version</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="images/git.png"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="images/github.png"></p>
+</figure>
+</div>
 </div><div class="column" style="width:50%;">
 <ul>
 <li><p><code>Git</code> is an “open source distributed version control system” <em>widely</em> used in the software development industry</p></li>
@@ -1872,7 +1882,11 @@ continues after
 <h2>The Expert Version</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="images/gitbranches.png"></p>
+</figure>
+</div>
 </div><div class="column" style="width:50%;">
 <ul>
 <li>Shows history (<code>versions</code>) of files with comments
@@ -1888,7 +1902,7 @@ continues after
 <section id="the-expert-version-2" class="slide level2">
 <h2>The Expert Version</h2>
 
-<img data-src="images/basic-remote-workflow.png" class="r-stretch"></section>
+<img data-src="images/basic-remote-workflow.png" class="r-stretch quarto-figure-center"></section>
 <section id="the-expert-version-3" class="slide level2">
 <h2>The Expert Version</h2>
 <ul>
@@ -1909,10 +1923,15 @@ continues after
 </section>
 <section id="most-packages-start-on-github" class="slide level2">
 <h2>Most Packages Start on Github</h2>
-<p>::: columns ::: {.column width=“50%”} <img data-src="images/githubtidyverse.png"></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/githubtidyverse.png"></p>
 <p><a href="https://github.com/tidyverse/tidyverse">github.com/tidyverse/tidyverse</a></p>
-<p>::: ::: {.column width=“50%”} <img data-src="images/githubgapminder.png"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/githubgapminder.png"></p>
 <p><a href="https://github.com/jennybc/gapminder">github.com/jennybc/gapminder</a></p>
+</div>
+</div>
 </section>
 <section id="my-workflow-that-i-suggest-to-you" class="slide level2">
 <h2>My Workflow (That I Suggest to You)</h2>
@@ -1936,7 +1955,7 @@ continues after
 <li>Render document to <code>pdf</code> or <code>html</code>.</li>
 <li>Occasionally, <code>stage</code> and <code>commit</code> changes with a description, <code>push</code> to GitHub.</li>
 </ol>
-<aside><ol class="aside-footnotes"><li id="fn6" role="doc-endnote"><p>Optional and a bit advanced, remember this is <em>my</em> workflow.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn5" role="doc-endnote"><p>Optional and a bit advanced, remember this is <em>my</em> workflow.</p></li></ol></aside></section>
 <section id="resources" class="slide level2">
 <h2>Resources</h2>
 <ul>

@@ -41,7 +41,7 @@ knitr::opts_chunk$set(echo=T,
 
 ## Your Workflow Has a Lot of Moving Parts
 
-::: column
+::: columns
 ::: {.column width="60%"}
 1. Writing text/documents
 
@@ -61,11 +61,11 @@ knitr::opts_chunk$set(echo=T,
 :::
 ::: {.column width="40%"}
 
-![](images/workflow.jpg)
+![](images/workflow.jpg){fig-align="center"}
 :::
 :::
 
-# The Office Model
+# The Office Model {background-color="#314f4f" .centered}
 
 ## The Office Model I
 
@@ -89,7 +89,7 @@ knitr::opts_chunk$set(echo=T,
 
 :::
 ::: {.column width="40%"}
-![](images/msofficemodel.png)
+![](images/msofficemodel.png){fig-align="center"}
 :::
 :::
 
@@ -106,7 +106,7 @@ knitr::opts_chunk$set(echo=T,
 
 :::
 ::: {.column width="40%"}
-![](images/msofficemodel.png)
+![](images/msofficemodel.png){fig-align="center"}
 :::
 :::
 
@@ -137,12 +137,12 @@ knitr::opts_chunk$set(echo=T,
 
 ## Drawing the Rest of the Owl
 
-![](images/drawanowl.jpg)
+![](images/drawanowl.jpg){fig-align="center"}
 
 ## What I'll Show You
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="60%"}
 - This is how I make my...
     - Research papers
     - Course documents
@@ -154,16 +154,16 @@ knitr::opts_chunk$set(echo=T,
 - [This stuff is *optional*]{.hi-purple}
     - If you like your office model, you can keep it
     - But this is what most people who take this course continue to use (R is only really if you have data work)
-]
-
-:::
-::: {.column width="50%"}
-![](images/rmdout.png)
-:::
-:::
 
 
-# The Plain Text Model
+:::
+::: {.column width="40%"}
+![](images/rmdout.png){fig-align="center"}
+:::
+:::
+
+
+# The Plain Text Model {background-color="#314f4f" .centered}
 
 ## The Plain Text Model II
 
@@ -190,7 +190,9 @@ Meet `Quarto`, which can do *all of this* in one pipeline
 
 :::
 ::: {.column width="40%"}
-![](images/rmdout.png)
+![](images/quartoweb.png)
+
+[Quarto.org](https://quarto.org)
 :::
 :::
 
@@ -262,7 +264,7 @@ Meet `Quarto`, which can do *all of this* in one pipeline
 :::
 :::
 
-# Quarto
+# Quarto {background-color="#314f4f" .centered}
 
 ## Creating a Quarto Document I
 
@@ -305,13 +307,29 @@ Meet `Quarto`, which can do *all of this* in one pipeline
 
 ::: columns
 ::: {.column width="50%"}
-Entire document is written in a single file^[The one exception is for managing bibliographies, this requires one additional `.bib` file!] with three types of content:
+Entire document is written in a single file with three types of content:
 
 1. `YAML` header for metadata
 
+```yaml
+---
+title: "Title"
+format: html
+---
+```
+
 2. Text of the document written with `markdown`
 
+```markdown
+# Header 1
+**Bold** and *italic* text. 
+```
+
 3. `R` chunks for data analysis, plots, figures, tables, statistics, as necessary
+
+```{r}
+2+2
+```
 
 :::
 ::: {.column width="50%"}
@@ -405,14 +423,16 @@ header-includes:
 ::: columns
 ::: {.column width="40%"}
 ### Input
-```{r}
-#| echo: fenced
+````markdown
+`r ''````{r}
 2+2 # code goes here!
 ```
+````
 :::
 ::: {.column width="60%"}
 ### Output
 ```{r}
+#| echo: false
 2+2 # code goes here
 ```
 :::
@@ -423,15 +443,19 @@ header-includes:
 ::: columns
 ::: {.column width="40%"}
 ### Input
-```{r}
-#| echo: fenced
-head(mpg, n = 2)
+````markdown
+`r ''````{r}
+gapminder %>%
+  head()
 ```
+````
 :::
 ::: {.column width="60%"}
 ### Output
 ```{r}
-head(mpg, n = 2)
+#| echo: false
+gapminder %>%
+  head()
 ```
 :::
 :::
@@ -439,21 +463,21 @@ head(mpg, n = 2)
 ## R Chunks 
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="40%"}
 ### Input
-```{r}
-#| echo: fenced
-#| eval: false
+````markdown
+`r ''````{r}
 library("ggplot2") # load ggplot2
 ggplot(data = mpg)+
   aes(x = displ,
       y = hwy)+
   geom_point(aes(color = class))
 ```
+````
 :::
-::: {.column width="50%"}
+::: {.column width="60%"}
 ### Output
-```{r}
+```{r, echo = F}
 library("ggplot2") # load ggplot2
 ggplot(data = mpg)+
   aes(x = displ,
@@ -464,9 +488,6 @@ ggplot(data = mpg)+
 :::
 
 ## R Chunk Options
-
-
-## R Chunk Options 
 
 - Chunks can have options with the “hash pipe” `#|` at the top of the chunk
 
@@ -488,32 +509,6 @@ ggplot(data = mpg)+
 ```
 ````
 
-
-## R Chunk Options
-
-::: columns
-::: {.column width="50%"}
-### Input
-```{r}
-#| echo: fenced
-#| eval: false
-library("ggplot2") # load ggplot2
-ggplot(data = mpg)+
-  aes(x = displ)+
-  geom_histogram()
-```
-:::
-::: {.column width="50%"}
-### Output
-```{r}
-library("ggplot2") # load ggplot2
-ggplot(data = mpg)+
-  aes(x = displ)+
-  geom_histogram()
-```
-:::
-:::
-
 ## Global Chunk Options
 
 - You can set default options for all chunks in the `YAML` header:
@@ -530,9 +525,9 @@ execute:
 ## R Inline Code 
 
 - If you just want to display some code (or at least format it like code) in the middle of a sentence, [place between a single backtick on either side.]{.hi-purple}
-  - e.g. if I mention `tidyverse` or `gapminder`, it formats the text as `in-line code`.
+  - e.g. if I mention `` `tidyverse` `` or `` `gapminder` ``, it formats the text as `in-line code`.
 
-- To actually *execute* `R` code to output something in the middle of a sentence, put `r` as the first character inside the backticks, and then run the actual code such as pi is equal to `r pi`.
+- To actually **execute** `R` code to output something in the middle of a sentence, put `r` as the first character inside the backticks, and then run the actual code such as pi is equal to `r pi`.
 
 ::: columns
 ::: {.column width="50%"}
@@ -607,16 +602,6 @@ The average GDP per capita is `r dollar(mean(gapminder$gdpPercap))` with a stand
 |                                     |                                 |
 |                                     |         A.  sub-sub-item 1      |
 +-------------------------------------+---------------------------------+
-|     (@)  A list whose numbering     | 1.  A list whose numbering      |
-|                                     |                                 |
-|     continues after                 | continues after                 |
-|                                     |                                 |
-|     (@)  an interruption            | 2.  an interruption             |
-+-------------------------------------+---------------------------------+
-|     term                            | **term**                        |
-|     : definition                    |                                 |
-|                                     | :   definition                  |
-+-------------------------------------+---------------------------------+
 
 ## Writing Text with Markdown: Headings
 
@@ -659,6 +644,27 @@ the document.
 :::
 :::
 
+## Writing Text with Markdown: Images
+
+::: columns
+::: {.column width="50%"}
+#### Markdown
+```markdown
+![Caption: tidyverse](images/tidyverse1.png)
+
+![](https://dplyr.tidyverse.org/logo.png)
+```
+:::
+::: {.column width="50%"}
+#### Output
+![The tidyverse](images/tidyverse1.png)
+
+![dplyr logo](https://dplyr.tidyverse.org/logo.png)
+:::
+:::
+
+- Read the [Quarto Documentation on figures](https://quarto.org/docs/authoring/figures.html) for more.
+
 ## Writing Text with Markdown: Making Tables
 
 ::: columns
@@ -673,7 +679,7 @@ the document.
     : Table Example {tbl-colwidths="[25,25,25,25]"}
 :::
 
-::: {.column width="50%" .fragment}
+::: {.column width="50%"}
 #### Output
 
 | Right | Left | Default | Center |
@@ -753,9 +759,11 @@ $$\hat{\beta_1}=\frac{\displaystyle \sum_{i=1}^n (X_i-\bar{X})(Y_i-\bar{Y})}{\di
 
 - Math uses a (much older) language called [$\LaTeX$](http://en.wikipedia.org/wiki/LaTeX), used by mathematicians, economists, and others to write papers and slides with perfect math and formatting
     - I used to use for everything before I found `R` and `markdown` 
-    - Producing `pdf` or `html` output actually converts `markdown` files into $\TeX{}$ first! (See [the process described below](#process))
+    - Producing `pdf` output actually converts `markdown` files into $\TeX{}$ first! 
     - Much steeper learning curve, [a good cheatsheet](https://wch.github.io/latexsheet/latexsheet.pdf)
     - An extensive library of mathematical symbols, notation, formats, and ligatures, e.g.
+
+- A great resource: [Wikibooks LaTeX Mathematics chapter](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
 
 ## Writing Math
 
@@ -771,7 +779,6 @@ $$\hat{\beta_1}=\frac{\displaystyle \sum_{i=1}^n (X_i-\bar{X})(Y_i-\bar{Y})}{\di
 | `$\lim_{x \to \infty}$` | $\lim_{x \to \infty}$ | 
 | `$A=\begin{bmatrix} a_{1,1} & a_{1,2} \\ a_{2,1} & a_{2,2} \\ \end{bmatrix}$` | $A=\begin{bmatrix} a_{1,1} & a_{1,2} \\ a_{2,1} & a_{2,2} \\ \end{bmatrix}$ | 
 
-- A great resource: [Wikibooks LaTeX Mathematics chapter](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
 
 
 ## Citations, References, & Bibliography
@@ -859,12 +866,19 @@ VS Code
 
 ## RStudio is My Text Editor of Choice
 
+::: columns
+::: {.column width="50%"}
 - Honestly, I write **everything** in R Studio's text editor
     - Syntax highlighting
     - Actually can *run* R code, autocomplete, etc
     - Can render the markdown to an output format: html, pdf, etc.
 
 - You can *write* R code in other text editors, but you can't *execute* them outside of *R Studio* (or the command line, but that's too advanced.) Same with actually rendering your markdown to an output (pdf, html, etc)
+:::
+::: {.column width="50%"}
+![](images/r4screens1.png)
+:::
+:::
 
 ## Tips with Markdown
 
@@ -878,7 +892,7 @@ VS Code
 
 - Here is a [great general tutorial on markdown syntax](https://www.markdowntutorial.com/)
 
-# Rendering Your Documents
+# Rendering Your Documents {background-color="#314f4f" .centered}
 
 ## knitr
 
@@ -927,7 +941,9 @@ format: pdf
 ---
 ```
 
-## R Projects I
+# Project-Oriented Workflow {background-color="#314f4f" .centered}
+
+## R Projects I 
 
 ::: columns
 ::: {.column width="50%"}
@@ -1007,7 +1023,7 @@ format: pdf
 :::
 :::
 
-# Version Control
+# Version Control {background-color="#314f4f" .centered}
 
 ## Have You Done This?
 
@@ -1041,7 +1057,7 @@ format: pdf
 
 :::
 ::: {.column width="50%"}
-![](images/versioncontrol.png)
+![](images/versioncontrol.png){fig-align="center"}
 :::
 :::
 
@@ -1049,7 +1065,7 @@ format: pdf
 
 ::: columns
 ::: {.column width="50%"}
-![](images/dropbox.png)
+![](images/dropbox.png){fig-align="center"}
 
 [Dropbox.com](http://dropbox.com)
 
@@ -1069,11 +1085,11 @@ format: pdf
 
 ## My Life Goes In Here
 
-![](images/mydropbox2.png)
+![](images/mydropbox2.png){fig-align="center"}
 
 ## Smart Sync
 
-![](images/dropboxsmartsync.png)
+![](images/dropboxsmartsync.png){fig-align="center"}
 
 Smart Sync - keep some files online only for space
 
@@ -1081,9 +1097,9 @@ Smart Sync - keep some files online only for space
 
 ::: columns
 ::: {.column width="50%"}
-![](images/git.png)
+![](images/git.png){fig-align="center"}
 
-![](images/github.png)
+![](images/github.png){fig-align="center"}
 :::
 ::: {.column width="50%"}
 - `Git` is an "open source distributed version control system" *widely* used in the software development industry
@@ -1103,7 +1119,7 @@ Smart Sync - keep some files online only for space
 
 ::: columns
 ::: {.column width="50%"}
-![](images/gitbranches.png)
+![](images/gitbranches.png){fig-align="center"}
 :::
 ::: {.column width="50%"}
 - Shows history (`versions`) of files with comments
@@ -1116,7 +1132,7 @@ Smart Sync - keep some files online only for space
 
 ## The Expert Version
 
-![](images/basic-remote-workflow.png)
+![](images/basic-remote-workflow.png){fig-align="center"}
 
 ## The Expert Version
 
@@ -1150,6 +1166,8 @@ Smart Sync - keep some files online only for space
 ![](images/githubgapminder.png)
 
 [github.com/jennybc/gapminder](https://github.com/jennybc/gapminder)
+:::
+:::
 
 ## My Workflow (That I Suggest to You)
 
