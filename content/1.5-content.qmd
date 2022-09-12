@@ -1,0 +1,66 @@
+---
+title: "1.5 — Optimize Workflow — Class Content"
+---
+
+```{r, echo = F}
+source(here::here("slides", "slide-links.R"))
+```
+
+::: {.callout-note appearance="minimal"}
+# Meeting Dates
+
+*Monday, September 12, 2022*
+:::
+
+## <i class="fas fa-info-circle fa-lg"></i> Overview
+
+Today I will give you about half the class period to finish your [1.4 practice problems](/r/1.5-r) and I can answer questions. Then I will briefly show you how you the magic of how you can improve your workflow, efficiency, automation, reproducibility, and safe file backups with R Markdown, R Projects, git and github. All of these tools are slightly advanced, and *optional* for you to use, but the learning curve pays off very high returns for the rest of your life! A good handful of people every semester tell me that they keep using these tools years in the future.
+
+## <i class="fas fa-book-reader fa-lg"></i> Readings
+
+- <i class="fas fa-external-link-square-alt"></i> Chs. 8, 27, 28, 29, 30 (but especially 27) in Wickham & Grolemund, [R for Data Science](http://r4ds.had.co.nz/)
+
+### On Plain-Text Workflow
+
+- Healey, Kieran, [*The Plain Person’s Guide to Plain Text Social Science*](http://plain-text.co/)
+
+### On Markdown Syntax
+
+- [Markdown tutorial](https://www.markdowntutorial.com/)
+- Quarto Documentation: [Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html)
+
+### On Quarto
+- Quarto Documentation: [Tutorial: Hello, Quarto](https://quarto.org/docs/get-started/hello/rstudio.html)
+- Quarto Documentation: [Tutorial: Computation](https://quarto.org/docs/get-started/computations/rstudio.html)
+- Quarto Documentation: [Tutorial: Authoring](https://quarto.org/docs/get-started/authoring/rstudio.html)
+- Quarto Documentation: [Guide](https://quarto.org/docs/guide/)
+
+### On LaTeX
+
+- [Wikibooks LaTeX](https://en.wikibooks.org/wiki/LaTeX/) (see esp. [Mathematics](https://en.wikibooks.org/wiki/LaTeX/) chapter)
+
+### On Git and Github
+
+- Bryan, Jenny and Jim Hester, [*Happy Git and GitHub for the useR*](https://happygitwithr.com/)
+
+## <i class="fas fa-registered"></i> R Practice
+
+Answers from last class' practice problems on base R are posted [on that page](/r/1.3-r).
+
+Today you will be working on [R practice problems](/r/1.4-r) on data wrangling Answers will be posted later on that page. 
+
+Today’s "[practice problems](/r/1.5-r)" get you to practice the tools we are working with today. They are again not required, but will help you if you are interested.
+
+
+## <i class="fas fa-chalkboard-teacher"></i> Slides
+
+Below, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.
+
+I suggest printing the slides beforehand and using them to take additional notes in class (*not everything* is in the slides)!
+
+```{r}
+#| echo: false
+#| output: asis
+
+slide_links("1.5-slides")
+```

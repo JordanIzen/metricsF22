@@ -50,6 +50,10 @@ website:
               href: content/1.3-content.qmd
             - text: "1.4 — Data Wrangling"
               href: content/1.4-content.qmd
+            - text: "1.5 — Optimize Workflow"
+              href: content/1.5-content.qmd
+            - text: "2.1 — Data 101 & Descriptive Statistics"
+              href: content/2.1-content.qmd
             
     - title: "Assignments"
       style: "docked"

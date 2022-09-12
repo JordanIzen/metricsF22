@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ECON 480 — Econometrics - 1.5 — Optimize Workflow — Practice</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../files/images/metrics_hex.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="ECON 480 — Econometrics - 1.5 — Optimize Workflow — Practice">
+<meta property="og:description" content="We are going to clone my repository on Github into R Studio on your computer. Go to my workflow repository on github. Click the green code button. See there are several options.">
+<meta property="og:site-name" content="ECON 480 — Econometrics">
+<meta name="twitter:title" content="ECON 480 — Econometrics - 1.5 — Optimize Workflow — Practice">
+<meta name="twitter:description" content="We are going to clone my repository on Github into R Studio on your computer. Go to my workflow repository on github. Click the green code button. See there are several options.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <img src="../files/images/metrics_hex.png" alt="">
+    <span class="navbar-title">ECON 480 — Econometrics</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html">Syllabus</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html">Schedule</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../content/index.html">Content</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../assignments/index.html">Assignments</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resources/index.html">Resources</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://hoodcollegeeconomics.slack.com"><i class="bi bi-slack" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../rstudio.cloud"><i class="bi bi-cloud-fill" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#part-1" id="toc-part-1" class="nav-link active" data-scroll-target="#part-1">Part 1</a></li>
+  <li><a href="#part-2" id="toc-part-2" class="nav-link" data-scroll-target="#part-2">Part 2</a></li>
+  <li><a href="#part-3" id="toc-part-3" class="nav-link" data-scroll-target="#part-3">Part 3</a></li>
+  <li><a href="#part-4" id="toc-part-4" class="nav-link" data-scroll-target="#part-4">Part 4</a></li>
+  <li><a href="#part-5" id="toc-part-5" class="nav-link" data-scroll-target="#part-5">Part 5</a></li>
+  <li><a href="#part-6" id="toc-part-6" class="nav-link" data-scroll-target="#part-6">Part 6</a></li>
+  <li><a href="#part-7" id="toc-part-7" class="nav-link" data-scroll-target="#part-7">Part 7</a></li>
+  <li><a href="#part-8" id="toc-part-8" class="nav-link" data-scroll-target="#part-8">Part 8</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">1.5 — Optimize Workflow — Practice</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="part-1" class="level2">
+<h2 class="anchored" data-anchor-id="part-1">Part 1</h2>
+<p>We are going to <code>clone</code> my repository on Github into R Studio on your computer. Go to my <a href="https://github.com/ryansafner/workflow">workflow repository</a> on github. Click the green <code>code</code> button. See there are several options. Feel free to try each of them out:</p>
+<p><img src="../slides/images/workflowgitdownload.png" width="400&quot;"></p>
+<ul>
+<li><strong>On Your Computer (Download)</strong>: <code>Download ZIP</code> will download a zipped file to your computer containing the entire repository. You will need to unzip this (sometimes it’s automatic, as on a Mac), and then it will create a folder on your computer. Open up the <code>workflow.Rproj</code> file, which will open the project in <code>R Studio</code>.</li>
+<li><strong>On R Studio Cloud</strong>: Highlight the url code (or click the copy button on the right). On Rstudio Cloud, click on the arrow on the right of the <code>New Project</code> button and select <code>New Project from GitHub Repository</code>. Paste the url you copied from Github here. This will open the repository as a new project in your cloud workspace</li>
+<li><strong>On Your Computer (via Git) ADVANCED</strong>: If you have <code>git</code> installed (see <a href="https://happygitwithr.com">the ultimate guide</a> for help doing this), copy the url code on GitHub. Next, go to R Studio on your computer, click <code>File -&gt; New Project -&gt; Version Control -&gt; Git</code> and type paste the url in the first field. The final field is where on your computer you want to save this folder. It will then open up the project in R Studio.</li>
+</ul>
+</section>
+<section id="part-2" class="level2">
+<h2 class="anchored" data-anchor-id="part-2">Part 2</h2>
+<p>Now that you have the <code>workflow</code> project on your computer (or cloud), let’s explore it. Notice in the file viewer pane in the bottom right, there are several folders and files there. Look at the top of the pane is the file path (this is where you can find this folder on your computer). Mine looks like this, for example:</p>
+<p><img src="../slides/images/workflowfiles.png" class="img-fluid"></p>
+<p>The nice thing with projects is that any files you open or save are in this folder on your computer!</p>
+</section>
+<section id="part-3" class="level2">
+<h2 class="anchored" data-anchor-id="part-3">Part 3</h2>
+<p>Open up <code>Example_paper.qmd</code>. This is an example of a file I would use to write a paper. Note the parts of the <code>.Rmd</code> file: - The <code>yaml</code> at the top - The text written in markdown - <code>R</code> chunks scattered throughout</p>
+</section>
+<section id="part-4" class="level2">
+<h2 class="anchored" data-anchor-id="part-4">Part 4</h2>
+<p>I have this set to <code>Render</code> to produce a <code>PDF</code>. For you to do this, you will need to install a distribution of <code>LaTeX</code>. Unless you intend to use <code>LaTeX</code> in the future (for math classes, going to graduate school, or you are a masochist…), we can get around this with a lightweight version we can install <em>inside</em> of <code>R</code>. Run the following code in the console:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tinytex"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will probably take a few minutes to install. Like any package, you only ever have to do this once! Once this is complete, now try to <code>Render</code> <code>Example_paper.qmd</code> to <code>PDF</code> by clicking the <code>Render</code> button at the top. View your <code>PDF</code> that pops up!<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</section>
+<section id="part-5" class="level2">
+<h2 class="anchored" data-anchor-id="part-5">Part 5</h2>
+<p>Now let’s learn more about writing with markdown syntax. Complete this brief <a href="https://www.markdowntutorial.com/">tutorial</a> to practice!</p>
+</section>
+<section id="part-6" class="level2">
+<h2 class="anchored" data-anchor-id="part-6">Part 6</h2>
+<p>Just practice working in the <code>Example_paper.qmd</code> file. Create a new <code>R</code> chunk (anywhere) and write some <code>R</code> code to open <code>data/clean_data.csv</code> (which you can find by clicking through the folders too) and save it as an <code>R</code> object. (You may need to load <code>tidyverse</code>!) Run <em>only this chunk</em> by clicking the green play button at the upper right corner of the chunk. Make sure it works. Using projects to organize your files is much simpler than worrying about your working directory!</p>
+</section>
+<section id="part-7" class="level2">
+<h2 class="anchored" data-anchor-id="part-7">Part 7</h2>
+<p>Find my slides on the <a href="https://github.com/ryansafner/metricsF22">class github page</a>. Note there is a lot going on here, because this is a pretty full website. They are in the <code>slides</code> folder. Now if you are ever curious how I did something in my slides, you can see the source <code>.qmd</code> files. Note the slides are quite advanced - I use a fair bit of html and css formatting to make them pretty!</p>
+</section>
+<section id="part-8" class="level2">
+<h2 class="anchored" data-anchor-id="part-8">Part 8</h2>
+<p>Now we are just exposing you to more <code>.qmd</code> files. Look at the answer key for <a href="../r/1.4-r">1.4 R practice</a> and download and open the <i class="fab fa-markdown"></i> <code>markdown</code> file. Take a look through it and see how it works, then when you are ready, click the <code>Render</code> button. It will make the <code>html</code> webpage (which you can open in any browser) that is identical to the answer key web page I made!</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1" role="doc-endnote"><p>On R Studio cloud, it may request you to change your popup settings, since it will pop up the PDF in a new window.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2022 by <a href="https://www.ryansafner.com">Ryan Safner</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/ryansafner/metricsf22">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

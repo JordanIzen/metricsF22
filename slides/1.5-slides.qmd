@@ -1,0 +1,1184 @@
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    logo: "../images/metrics_hex.png"
+    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
+    height: 900
+    width: 1600
+    #df-print: paged
+    slide-number: c
+overview: true
+execute:
+  echo: false
+  warning: false
+  freeze: auto
+---
+
+##  {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
+
+[1.5 --- Optimize Workflow]{.custom-title}
+
+[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+
+[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
+
+[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(kableExtra)
+library(patchwork)
+library(fontawesome)
+library(gapminder)
+library(scales)
+knitr::opts_chunk$set(echo=T,
+                      message=F,
+                      warning=F)
+```
+
+## Your Workflow Has a Lot of Moving Parts
+
+::: column
+::: {.column width="60%"}
+1. Writing text/documents
+
+2. Managing citations and bibliographies
+
+3. Performing data analysis
+
+4. Making figures and tables
+
+5. Saving files for future use
+
+6. Monitoring changes in documents
+
+7. Collaborating and sharing with others
+
+8. Combining into a deliverable (report, paper, presentation, etc.)
+:::
+::: {.column width="40%"}
+
+![](images/workflow.jpg)
+:::
+:::
+
+# The Office Model
+
+## The Office Model I
+
+::: columns
+::: {.column width="60%"}
+1. Writing text/documents
+
+2. Managing citations and bibliographies
+
+3. Performing data analysis
+
+4. Making figures and tables
+
+5. Saving files for future use
+
+6. Monitoring changes in documents
+
+7. Collaborating and sharing with others
+
+8. Combining into a deliverable (report, paper, presentation, etc.)
+
+:::
+::: {.column width="40%"}
+![](images/msofficemodel.png)
+:::
+:::
+
+## The Office Model II
+
+::: columns
+::: {.column width="60%"}
+
+- A lot of **copy/paste**
+
+- A lot of:
+
+![](images/wysiwygproblem.jpg)
+
+:::
+::: {.column width="40%"}
+![](images/msofficemodel.png)
+:::
+:::
+
+## The Office Model: A Short Horror Film
+
+<iframe width="980" height="550" src="https://www.youtube.com/embed/s3JldKoA0zw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## The Office Model: Mistakes
+
+::: columns
+::: {.column width="50%"}
+![](images/excelfail1.png)
+
+[Source: [Science Magazine](https://www.sciencemag.org/news/2016/08/one-five-genetics-papers-contains-errors-thanks-microsoft-excel)]{.source}
+
+:::
+::: {.column width="50%"}
+![](images/excelfail2.png)
+
+[Source: [Bloomberg](https://www.bloomberg.com/news/articles/2013-04-18/faq-reinhart-rogoff-and-the-excel-error-that-changed-history)]{.source}
+:::
+:::
+
+## The Office Model: Not Reproducible
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">&quot;&#39;Reproducible research&#39; is a redundant term. &#39;Irreproducible research&#39; just used to be known as &#39;bullshit&#39;.&quot; - <a href="https://twitter.com/fperez_org?ref_src=twsrc%5Etfw">@fperez_org</a> ::slow clap::</p>&mdash; Kaitlin Thaney 💁🏻 (@kaythaney) <a href="https://twitter.com/kaythaney/status/464543147083968513?ref_src=twsrc%5Etfw">May 8, 2014</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+
+## Drawing the Rest of the Owl
+
+![](images/drawanowl.jpg)
+
+## What I'll Show You
+
+::: columns
+::: {.column width="50%"}
+- This is how I make my...
+    - Research papers
+    - Course documents
+    - Websites
+    - Slides and presentations
+
+- I have not used any MS Office products since 2011 (good riddance!)
+
+- [This stuff is *optional*]{.hi-purple}
+    - If you like your office model, you can keep it
+    - But this is what most people who take this course continue to use (R is only really if you have data work)
+]
+
+:::
+::: {.column width="50%"}
+![](images/rmdout.png)
+:::
+:::
+
+
+# The Plain Text Model
+
+## The Plain Text Model II
+
+::: columns
+::: {.column width="60%"}
+
+Meet `Quarto`, which can do *all of this* in one pipeline
+
+1. Writing text/documents
+
+2. Managing citations and bibliographies
+
+3. Performing data analysis
+
+4. Making figures and tables
+
+5. Saving files for future use
+
+6. Monitoring changes in documents
+
+7. Collaborating and sharing with others
+
+8. Combining into a deliverable (report, paper, presentation, etc.)
+
+:::
+::: {.column width="40%"}
+![](images/rmdout.png)
+:::
+:::
+
+## The Plain Text Model II
+
+::: columns
+::: {.column width="50%"}
+- [Plain text]{.hi} files: readable by *both* machines and humans
+    - Understand how a document is structured and formatted via code and markup to text
+
+- Focus entirely on the *actual writing of the content* instead of the formatting and aesthetics
+    - You can still customize, but with precise commands instead of point, click, drag, guess, pray
+
+:::
+::: {.column width="50%"}
+![](images/readable.png)
+:::
+:::
+
+## The Plain Text Model III
+
+::: columns
+::: {.column width="50%"}
+- **Open Source**: free, useable forever, often very small file size
+  - Proprietary software is a gamble - can you still open a `.doc` file from Microsoft Word 1997?
+
+- **Automate and Minimize Errors**, especially in repetitive processes
+
+- Can be used with **version control** (see below)
+
+:::
+::: {.column width="50%"}
+![](images/open-source.png)
+:::
+:::
+
+## Making Your Work Reproducible
+
+::: columns
+::: {.column width="50%"}
+- `Quarto` file (`.qmd`) is the "real" part of your analysis, *everything* can live in this plain-text file!
+
+- Document text in `markdown`
+
+- `R code` executed in "chunks"
+
+- Plots and tables generated from `R code`
+
+- Citations and bibliography automated with `.bib` file
+
+:::
+::: {.column width="50%"}
+![](images/reproducible.jpg)
+:::
+:::
+
+## The Future of Science is Open Source Plain Text
+
+::: columns
+::: {.column width="50%"}
+![](images/notebooks1.png)
+
+[Source: [The Atlantic](https://www.theatlantic.com/science/archive/2018/04/the-scientific-paper-is-obsolete/556676/)]{.source}
+:::
+::: {.column width="50%"}
+![](images/notebooks2.png)
+
+[Source: [Paul Romer (2018 Economics Nobel)](https://paulromer.net/jupyter-mathematica-and-the-future-of-the-research-paper/)]{.source}
+:::
+:::
+
+# Quarto
+
+## Creating a Quarto Document I
+
+::: columns
+::: {.column width="50%"}
+`File -> New File -> Quarto Document...`
+
+- Outputs:
+  - Document (what you'll use for most things)
+  - Presentation (for making slides in various formats)
+  - Interactive (an html and R based web app, advanced)
+
+:::
+::: {.column width="50%"}
+![](images/newquartodoc.png)
+:::
+:::
+
+## Creating a Quarto Document I
+
+::: columns
+::: {.column width="50%"}
+- `html`: renders a webpage, viewable in any browser
+  - default, easiest to produce and share
+  - can have interactive elements (gifs, animations, web apps)
+  - requires internet connection to host and share (*you* can view offline)
+- `pdf`: renders a PDF document
+  - most common document format around
+  - requires `LaTeX` distribution to render (more on that soon)
+- `word`: create a Micosoft Word document
+  - ...if you must
+
+:::
+::: {.column width="50%"}
+![](images/newquartodoc.png)
+:::
+:::
+
+## Structure of a Quarto Document
+
+::: columns
+::: {.column width="50%"}
+Entire document is written in a single file^[The one exception is for managing bibliographies, this requires one additional `.bib` file!] with three types of content:
+
+1. `YAML` header for metadata
+
+2. Text of the document written with `markdown`
+
+3. `R` chunks for data analysis, plots, figures, tables, statistics, as necessary
+
+:::
+::: {.column width="50%"}
+![](images/quarto_input.png)
+:::
+:::
+
+## YAML Header I
+
+- Top of a document contains the `YAML`^[YAML stands for "YAML Ain't Markup Language." Nerds love recursive acronyms.] separated by three dashes `---` above and below
+
+- Contains the **metadata** of the document, such as:
+
+```{yaml, eval = F}
+---
+title: "My Document"
+author: "Ryan Safner"
+date: "`r Sys.Date()`" # here I'm using R code to generate today's date!
+format: html
+---
+```
+
+- `format` *must* be specified, everything else can be left blank, and other options can be added as necessary
+
+- In most cases, you can safely ignore other things in the `yaml` until you are ready
+
+---
+
+## YAML Header Example I
+
+- Example from these slides
+
+```{yaml, eval = F}
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    logo: "../images/metrics_hex.png"
+    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
+    height: 900
+    width: 1600
+    #df-print: paged
+    slide-number: c
+overview: true
+execute:
+  echo: false
+  warning: false
+  freeze: auto
+---
+```
+
+## YAML Header Example II
+
+- Example from one of my papers:
+
+```{yaml, eval = F}
+---
+title: Distributing Patronage^[I would like to thank the Board of Associates of Hood College...]
+subtitle: Intellectual Property in the Transition from Natural State to Open Access Order
+date: \today
+author: 
+- Ryan Safner^[Hood College, Department of Economics and Business Administration; safner@hood.edu]
+
+abstract: |
+  | "This paper explores the emergence of the modern forms of copyright and patent in ...
+  | *JEL Classification:* O30, O43, N43
+  | *Keywords:* Copyright, intellectual property, economic history, freedom of the press, economic development
+
+bibliography: patronage.bib
+geometry: margin = 1in
+fontsize: 12pt
+mainfont: Fira Sans Condensed
+output: 
+  pdf_document:
+    latex_engine: xelatex
+    number_sections: true
+    fig_caption: yes
+
+header-includes:
+    - \usepackage{booktabs}
+---
+```
+
+---
+
+## R Chunks 
+
+- You can create a ["chunk"]{.hi} of `R` code with [three backticks]{.hi-purple}^[The key to the left of the #1 key on your keyboard.] above and below your code
+- After the first pair of backticks, signify the [language]{.hi-purple} of the code^[Yes that does mean you can use other coding languages!] inside braces, e.g:
+
+::: columns
+::: {.column width="40%"}
+### Input
+```{r}
+#| echo: fenced
+2+2 # code goes here!
+```
+:::
+::: {.column width="60%"}
+### Output
+```{r}
+2+2 # code goes here
+```
+:::
+:::
+
+## R Chunks 
+
+::: columns
+::: {.column width="40%"}
+### Input
+```{r}
+#| echo: fenced
+head(mpg, n = 2)
+```
+:::
+::: {.column width="60%"}
+### Output
+```{r}
+head(mpg, n = 2)
+```
+:::
+:::
+
+## R Chunks 
+
+::: columns
+::: {.column width="50%"}
+### Input
+```{r}
+#| echo: fenced
+#| eval: false
+library("ggplot2") # load ggplot2
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point(aes(color = class))
+```
+:::
+::: {.column width="50%"}
+### Output
+```{r}
+library("ggplot2") # load ggplot2
+ggplot(data = mpg)+
+  aes(x = displ,
+      y = hwy)+
+  geom_point(aes(color = class))
+```
+:::
+:::
+
+## R Chunk Options
+
+
+## R Chunk Options 
+
+- Chunks can have options with the “hash pipe” `#|` at the top of the chunk
+
+```r
+#| label: my_chunk_title # give chunk a name
+#| eval: true # run the code?
+#| echo: true # display code?
+#| warning: true # display warnings?
+#| message: false # display messages?
+#| fig.width: 6 # width for figures
+```
+
+. . . 
+
+- In `R Markdown` (the predecessor to Quarto...that I know better), you put options inside the braces at the top of a chunk. This is still valid in `Quarto`:
+
+````
+```{{r my_chunk_title, eval = T, echo = F, warning = F, message = F, fig.width = 6}}
+```
+````
+
+
+## R Chunk Options
+
+::: columns
+::: {.column width="50%"}
+### Input
+```{r}
+#| echo: fenced
+#| eval: false
+library("ggplot2") # load ggplot2
+ggplot(data = mpg)+
+  aes(x = displ)+
+  geom_histogram()
+```
+:::
+::: {.column width="50%"}
+### Output
+```{r}
+library("ggplot2") # load ggplot2
+ggplot(data = mpg)+
+  aes(x = displ)+
+  geom_histogram()
+```
+:::
+:::
+
+## Global Chunk Options
+
+- You can set default options for all chunks in the `YAML` header:
+
+```{yaml}
+execute:
+  echo: false # hide all input code
+  warning: false # hide all output warnings
+  message: false # hide all output messages
+```
+
+- Learn more [here](https://quarto.org/docs/computations/r.html#chunk-options) and [here](https://quarto.org/docs/computations/r.html#knitr-options)
+
+## R Inline Code 
+
+- If you just want to display some code (or at least format it like code) in the middle of a sentence, [place between a single backtick on either side.]{.hi-purple}
+  - e.g. if I mention `tidyverse` or `gapminder`, it formats the text as `in-line code`.
+
+- To actually *execute* `R` code to output something in the middle of a sentence, put `r` as the first character inside the backticks, and then run the actual code such as pi is equal to `r pi`.
+
+::: columns
+::: {.column width="50%"}
+### Input
+
+pi is equal to `` `r "\u0060r pi\u0060"` ``.
+:::
+::: {.column width="50%"}
+### Output
+
+pi is equal to `r pi`.
+:::
+:::
+
+## Or Like This
+
+::: columns
+::: {.column width="50%"}
+### Input
+
+The average GDP per capita is `` ` r dollar(mean(gapminder$gdpPercap)) `  `` with a standard deviation of `` ` r dollar(sd(gapminder$gdpPercap)) ` ``.  
+:::
+::: {.column width="50%"}
+### Output
+
+The average GDP per capita is `r dollar(mean(gapminder$gdpPercap))` with a standard deviation of `r dollar(sd(gapminder$gdpPercap))`.  
+:::
+:::
+
+
+## Writing Text with Markdown: Formatting
+
+- [Markdown](https://en.wikipedia.org/wiki/Markdown) is a lightweight markup language geared towards HTML (i.e. the internet)
+    - [Markup languages](https://en.wikipedia.org/wiki/Markup_language) used to add commands about how to display plain text
+
++-----------------------------------+-------------------------------+
+| Markdown Syntax                   | Output                        |
++===================================+===============================+
+|     *italics* and **bold**        | *italics* and **bold**        |
++-----------------------------------+-------------------------------+
+|     superscript^2^ / subscript~2~ | superscript^2^ / subscript~2~ |
++-----------------------------------+-------------------------------+
+|     ~~strikethrough~~             | ~~strikethrough~~             |
++-----------------------------------+-------------------------------+
+|     `verbatim code`               | `verbatim code`               |
++-----------------------------------+-------------------------------+
+
+- Comment your document with `<!-- Unprinted comments here -->` (will not print in output; this comes from `html`)
+
+## Writing Text with Markdown: Lists {.smaller}
+
++-------------------------------------+---------------------------------+
+| Markdown Syntax                     | Output                          |
++=====================================+=================================+
+|     * unordered list                | -   unordered list              |
+|         + sub-item 1                |                                 |
+|         + sub-item 2                |     -   sub-item 1              |
+|             - sub-sub-item 1        |                                 |
+|                                     |     -   sub-item 2              |
+|                                     |                                 |
+|                                     |         -   sub-sub-item 1      |
++-------------------------------------+---------------------------------+
+|     *   item 2                      | -   item 2                      |
+|                                     |                                 |
+|         Continued (indent 4 spaces) |     Continued (indent 4 spaces) |
++-------------------------------------+---------------------------------+
+|     1. ordered list                 | 1.  ordered list                |
+|     2. item 2                       |                                 |
+|         i) sub-item 1               | 2.  item 2                      |
+|              A.  sub-sub-item 1     |                                 |
+|                                     |     i.  sub-item 1              |
+|                                     |                                 |
+|                                     |         A.  sub-sub-item 1      |
++-------------------------------------+---------------------------------+
+|     (@)  A list whose numbering     | 1.  A list whose numbering      |
+|                                     |                                 |
+|     continues after                 | continues after                 |
+|                                     |                                 |
+|     (@)  an interruption            | 2.  an interruption             |
++-------------------------------------+---------------------------------+
+|     term                            | **term**                        |
+|     : definition                    |                                 |
+|                                     | :   definition                  |
++-------------------------------------+---------------------------------+
+
+## Writing Text with Markdown: Headings
+
++---------------------+-----------------+
+| Markdown Syntax     | Output          |
++=====================+=================+
+|     # Header 1      | # Header 1      |
++---------------------+-----------------+
+|     ## Header 2     | ## Header 2     |
++---------------------+-----------------+
+|     ### Header 3    | ### Header 3    |
++---------------------+-----------------+
+|     #### Header 4   | #### Header 4   |
++---------------------+-----------------+
+|     ##### Header 5  | ##### Header 5  |
++---------------------+-----------------+
+|     ###### Header 6 | ###### Header 6 |
++---------------------+-----------------+
+
+## Writing Text with Markdown: Links
+
+::: columns
+::: {.column width="50%"}
+#### Markdown
+```markdown
+You can embed
+[named hyperlinks](https://metricsF22.classes.ryansafner.com/),
+direct urls like <https://metricsF22.classes.ryansafner.com/>,
+and links to 
+[other places — like the previous slide](#writing-text-with-markdown-headings)
+in the document.
+```
+:::
+::: {.column width="50%"}
+#### Output
+You can embed [named hyperlinks](https://metricsF22.classes.ryansafner.com/),
+direct urls like <https://metricsF22.classes.ryansafner.com/>, and links to 
+[other places — like the previous slide](#writing-text-with-markdown-headings) in 
+the document.
+:::
+:::
+
+## Writing Text with Markdown: Making Tables
+
+::: columns
+::: {.column width="50%"}
+#### Markdown
+    | Right | Left | Default | Center |
+    |------:|:-----|---------|:------:|
+    |   12  |  12  |    12   |    12  |
+    |  123  |  123 |   123   |   123  |
+    |    1  |    1 |     1   |     1  |
+    
+    : Table Example {tbl-colwidths="[25,25,25,25]"}
+:::
+
+::: {.column width="50%" .fragment}
+#### Output
+
+| Right | Left | Default | Center |
+|------:|:-----|---------|:------:|
+|    12 | 12   | 12      |   12   |
+|   123 | 123  | 123     |  123   |
+|     1 | 1    | 1       |   1    |
+
+: Table Example {tbl-colwidths="[25,25,25,25]"}
+
+:::
+:::
+
+- See the Quarto Documentation for more help on [tables](https://quarto.org/docs/authoring/tables.html)
+
+## Writing Text with Markdown: Printing Tables
+
+- Sometimes we want to print tables from our data
+- The `kableExtra` package is great for this [see Documentation](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
+
+```{r}
+library(kableExtra)
+mtcars %>%
+  head() %>%
+  kbl()
+```
+
+## Writing Text with Markdown: Printing Tables
+
+- Sometimes we want to print tables from our data
+- The `kableExtra` package is great for this [see Documentation](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)
+
+```{r}
+library(kableExtra)
+mtcars %>%
+  head() %>%
+  kbl()
+```
+
+## Writing Text with Markdown: Printing Tables
+
+```{r}
+mtcars %>%
+  head() %>%
+  rmarkdown::paged_table()
+```
+
+## Writing Math
+
+- Add beautifully-formatted math with the `$` tag before and after the math, two `$$` before/after for a centered equation
+
+. . . 
+
+- In-line math example: `$1^2=\frac{\sqrt{16}}{4}$` produces $1^2=\frac{\sqrt{16}}{4}$ in my text
+
+. . . 
+
+- Centered-equation example: 
+
+::: columns
+::: {.column width="50%"}
+#### Input 
+
+`$$` `\hat{\beta_1}=\frac{\displaystyle \sum_{i=1}^n (X_i-\bar{X})(Y_i-\bar{Y})}{\displaystyle \sum_{i=1}^n (X_i-\bar{X})^2}` `$$`
+
+:::
+::: {.column width="50%"}
+
+#### Output 
+
+$$\hat{\beta_1}=\frac{\displaystyle \sum_{i=1}^n (X_i-\bar{X})(Y_i-\bar{Y})}{\displaystyle \sum_{i=1}^n (X_i-\bar{X})^2}$$
+
+:::
+:::
+
+## Writing Math
+
+- Math uses a (much older) language called [$\LaTeX$](http://en.wikipedia.org/wiki/LaTeX), used by mathematicians, economists, and others to write papers and slides with perfect math and formatting
+    - I used to use for everything before I found `R` and `markdown` 
+    - Producing `pdf` or `html` output actually converts `markdown` files into $\TeX{}$ first! (See [the process described below](#process))
+    - Much steeper learning curve, [a good cheatsheet](https://wch.github.io/latexsheet/latexsheet.pdf)
+    - An extensive library of mathematical symbols, notation, formats, and ligatures, e.g.
+
+## Writing Math
+
+| Input | Output |
+|----|----|
+| `$\alpha$` | $\alpha$ |
+| `$\pi$` | $\pi$ | 
+| `$\frac{1}{2}$` | $\frac{1}{2}$ | 
+| `$\hat{x}$` | $\hat{x}$ | 
+| `$\bar{y}$` | $\bar{y}$ | 
+| `$x_{1,2}$` | $x_{1,2}$ | 
+| `x^{a-1}$` | $x^{a-1}$ |
+| `$\lim_{x \to \infty}$` | $\lim_{x \to \infty}$ | 
+| `$A=\begin{bmatrix} a_{1,1} & a_{1,2} \\ a_{2,1} & a_{2,2} \\ \end{bmatrix}$` | $A=\begin{bmatrix} a_{1,1} & a_{1,2} \\ a_{2,1} & a_{2,2} \\ \end{bmatrix}$ | 
+
+- A great resource: [Wikibooks LaTeX Mathematics chapter](https://en.wikibooks.org/wiki/LaTeX/Mathematics)
+
+
+## Citations, References, & Bibliography
+
+- Manage your citations and bibliography automatically with `.bib` files 
+- First create a `.bib` file to list all of your references in
+    - You can do this in `R` via: `File -> New File -> Text File` (and save with `.bib` at the end)
+    - See `examplebib.bib` in this repository used in this document 
+    - At the top of your `YAML` header in the main document, add `bibliography: examplebib.bib` so `R` knows to pull references from this file 
+    - For each reference, add information to a `.bib` file, like so: 
+
+
+## An Example `.bib` File
+
+::: columns
+::: {.column width="50%"}
+```{latex}
+@article{safner2016,
+  author = {Ryan Safner},
+  year = {2016},
+  journal = {Journal of Institutional Economics},
+  title = {Institutional Entrepreneurship, Wikipedia, 
+           and the Opportunity of the Commons},
+  volume = {12},
+  number = {4},
+  pages = {743-771}
+}
+```
+
+:::
+::: {.column width="50%"}
+- A `.bib` file is a plain text file with entries like this
+
+- Classes for `@article`, `@book`, `@collectedwork`, `@unpublished`, etc. 
+    - Each will have different keys needed (e.g. `editor`, `publisher`, `address`)
+
+- First input after the `@article` is your **citation key** (e.g. `safner2016`)
+    - Whenever you want to cite this article, you'll invoke this key
+
+:::
+:::
+
+## Citations
+
+- Whenever you want to cite a work in your text, call up the **citation key** with `@`, like so: `@safner2016[]`, which produces (Safner, 2016)
+
+- You can customize citations, e.g.:
+
+| Write | Produces |
+|-------|----------|
+| `[@Safner2016]` | (Safner, 2016) |
+| `@Safner2016` | Safner 2016 |
+| `-@Safner2016` | (2016) |
+| `@Safner2016[p. 743-744]` | (Safner, 2016, p.743-744) |
+
+- BibTeX will automatically collect all works cited at the end and produce a **bibliography** according to a style you can choose
+
+## Reference Management Software
+
+- For more information and examples, see [Quarto’s Documentation on Citations](https://quarto.org/docs/authoring/footnotes-and-citations.html)
+
+- Lot of programs can help you manage references and export complete `.bib` files to use with `R Markdown`
+    - [Mendeley](https://www.mendeley.com) and [Zotero](https://www.zotero.org/) are free and cross-platform
+    - I use [Papers](https://www.readcube.com/papers/) (Paid and Mac only)
+    - Simplest program (what I use) that makes `.bib` files is [Bibdesk](https://bibdesk.sourceforge.io/)
+
+## Plain-Text Editors
+
+::: columns
+::: {.column width="50%"}
+- Markdown files are [**plain text**](https://en.wikipedia.org/wiki/Plain_text) files and can be edited in *any* text editor
+    - something as basic (and boring!) as "**Notepad**," for example
+    - many good [text editors](https://en.wikipedia.org/wiki/Text_editor) out there: [Typora](https://www.typora.io/); [Ulysses](https://ulysses.app/)
+
+- Any good editor will have **syntax highlighting** and **coloring** when you use tags (like **bold**, *italic*, `code`, and `code #comments`).
+
+- [VS Code](https://code.visualstudio.com/); [Notepad++](https://notepad-plus-plus.org); [Sublime](https://sublimetext.com)
+:::
+::: {.column width="50%"}
+![](images/python-vscode.png)
+
+VS Code
+:::
+:::
+
+## RStudio is My Text Editor of Choice
+
+- Honestly, I write **everything** in R Studio's text editor
+    - Syntax highlighting
+    - Actually can *run* R code, autocomplete, etc
+    - Can render the markdown to an output format: html, pdf, etc.
+
+- You can *write* R code in other text editors, but you can't *execute* them outside of *R Studio* (or the command line, but that's too advanced.) Same with actually rendering your markdown to an output (pdf, html, etc)
+
+## Tips with Markdown
+
+- Empty space is **very important** in markdown 
+
+- Lines that begin with a space may not render properly
+
+- Math that contains spaces *between* the dollar-signs may not render properly
+
+- Moving from one type of content to another (e.g. a heading to a list to text to an equation to text) requires *blank lines between them* to work
+
+- Here is a [great general tutorial on markdown syntax](https://www.markdowntutorial.com/)
+
+# Rendering Your Documents
+
+## knitr
+
+::: columns
+::: {.column width="50%"}
+- When you are ready, you "redner" your markdown and code into an output format using: 
+
+- [`knitr`](https://yihui.name/knitr/)^[`knitr` also relies on the `rmarkdown` package, which will probably be installed when you first `knit.`], an R package that "`knit`s" your R code and markdown `.qmd` into a `.md` file for:  
+
+- [pandoc](http://pandoc.org) is a "swiss-army knife" utility that can convert between *dozens* of document types
+
+- All you need to do is click the `Render` button at the top of the text editor!
+
+:::
+::: {.column width="50%"}
+![](images/quarto_render.png)
+:::
+:::
+
+## PDF Output
+
+- Producing a PDF uses $\LaTeX{}$
+
+- You will need a full distribution of $\LaTeX{}$ on your computer, OR
+
+. . .
+
+- Better to use the package `tinytex` to install a mini-distro of $\LaTeX{}$ inside of `R`:
+
+```{r}
+#| echo: true
+#| eval: false
+
+# install.packages("tinytex") # first install package
+library(tinytex) # load package
+install_tinytex() # run this command to install LaTeX in R
+```
+
+. . .
+
+- Once you've done this (just one time), you can Render to a PDF, make sure your `YAML` header is set to `pdf` `format`:
+
+```{yaml}
+---
+format: pdf
+---
+```
+
+## R Projects I
+
+::: columns
+::: {.column width="50%"}
+- A `R Project` is a way of systematically organizing your `R` history, working directory, and related files in a single, self-contained directory
+- Can easily be sent to others who can reproduce your work easily 
+- Connects well with version control software like GitHub
+- Can open multiple projects in multiple windows
+:::
+::: {.column width="50%"}
+![](images/project1.png)
+:::
+:::
+
+
+## R Projects I
+
+::: columns
+::: {.column width="50%"}
+- Projects solve all of the following problems:
+    1. Organizing your files (data, plots, text, citations, etc)
+    2. Having an accessible working directory (for loading and saving data, plots, etc)
+    3. Saving and reloading your commands history and preferences
+    4. Sending files to collaborators, so they have the same working directory as you
+:::
+::: {.column width="50%"}
+![](images/project1.png)
+:::
+:::
+
+## Creating an R Project I
+
+![](images/project1.png)
+
+## Creating an R Project II
+
+![](images/project2.png)
+
+## Creating an R Project III
+
+![](images/project3.png)
+
+## Projects
+
+- Switch between each project (Window) on your computer (this is on a Mac)
+
+![](images/projectswitcher3.png)
+
+## Projects 
+
+- At top right corner of RStudio
+    - Click the button to the right of the name to open in a new window!
+
+![](images/projectlist3.png)
+
+## Loading Others’ Projects
+
+![](images/gitworkflow.png)
+
+- This project is on [GitHub](http://github.com/ryansafner/workflow), click the green button, download to your computer, open `.Rproj` file in R Studio
+
+- See my [guide](https://metricsf22.classes.ryansafner.com/resources/zipping.html) about unzipping files (especially for Windows)!
+
+## A Good File Structure
+
+::: columns
+::: {.column width="50%"}
+![](images/projectfiles.png)
+:::
+::: {.column width="50%"}
+- Look through this on your own
+- Read the `README` of this repository on GitHub for instructions (automatically shows on the main page)
+- Look at the `example_paper.qmd`
+    - Uses data from **data** folder
+    - Uses `.R` scripts from **scripts** folder
+    - Uses figures from **figures** folder 
+    - Uses `bibexample.bib` from **bibliography** folder
+:::
+:::
+
+# Version Control
+
+## Have You Done This?
+
+![](images/phdfinal1.png)
+
+[Source: [PhD Comics](http://phdcomics.com/comics/archive_print.php?comicid=1531)]{.source}
+
+## Have You Done This?
+
+![](images/phdfinal2.png)
+
+[Source: [PhD Comics](http://phdcomics.com/comics/archive_print.php?comicid=1531)]{.source}
+
+## Have You Done This?
+
+![](images/phdfinal3.png)
+
+[Source: [PhD Comics](http://phdcomics.com/comics/archive_print.php?comicid=1531)]{.source}
+
+## Do You Want to Be Able to
+
+::: columns
+::: {.column width="50%"}
+- Keep your files backed up
+
+- Track changes
+
+- Collaborate on the same files with others
+
+- Edit files on one computer and then open and continue working on another?
+
+:::
+::: {.column width="50%"}
+![](images/versioncontrol.png)
+:::
+:::
+
+## The Training-Wheels Version
+
+::: columns
+::: {.column width="50%"}
+![](images/dropbox.png)
+
+[Dropbox.com](http://dropbox.com)
+
+:::
+::: {.column width="50%"}
+- Register an account for free 
+
+- Set up a location on your computer for the `Dropbox/` folder
+
+- Anything you put in this folder will sync to the cloud 
+    - As soon as you change files, they *automatically* update and sync!
+    - Can download any of these flies from the *website* on any device
+    - Set this up on multiple computers so when you change a file on one, it updates on all the others! 
+
+:::
+:::
+
+## My Life Goes In Here
+
+![](images/mydropbox2.png)
+
+## Smart Sync
+
+![](images/dropboxsmartsync.png)
+
+Smart Sync - keep some files online only for space
+
+## The Expert Version
+
+::: columns
+::: {.column width="50%"}
+![](images/git.png)
+
+![](images/github.png)
+:::
+::: {.column width="50%"}
+- `Git` is an "open source distributed version control system" *widely* used in the software development industry
+
+- [Track changes on steroids]{.hi} (if MS Word’s Track Changes and Dropbox had a baby)
+    - Organize folders/files to track (a `"repository"`)
+    - Take a snapshot of all of your files (a "`commit`") with "`comment`s"
+    - `push` these to the cloud
+    - `pull` changes to (other) computers as needed
+
+- [`GitHub`](http://github.com) is a popular (not the only!) cloud destination for these repositories
+
+:::
+:::
+
+## The Expert Version
+
+::: columns
+::: {.column width="50%"}
+![](images/gitbranches.png)
+:::
+::: {.column width="50%"}
+- Shows history (`versions`) of files with comments
+    - Can `fork` or `branch` repository into multiple versions at once
+    - Good for "testing" things out without destroying old versions!
+    - `revert` back to original versions as needed
+
+:::
+:::
+
+## The Expert Version
+
+![](images/basic-remote-workflow.png)
+
+## The Expert Version
+
+- Requires *some* advanced set up, see [this excellent guide](http://happygitwithr.com/)
+
+- R Studio integrates git and github commands nicely
+
+## This Class on Github
+
+::: columns
+::: {.column width="50%"}
+![](images/gitmetrics3.png)
+:::
+::: {.column width="50%"}
+![](images/gitmetrics3.png)
+
+:::
+:::
+[github.com/ryansafner/metricsF22](https://github.com/ryansafner/metricsF22)
+
+## Most Packages Start on Github
+
+::: columns
+::: {.column width="50%"}
+![](images/githubtidyverse.png)
+
+[github.com/tidyverse/tidyverse](https://github.com/tidyverse/tidyverse)
+
+:::
+::: {.column width="50%"}
+![](images/githubgapminder.png)
+
+[github.com/jennybc/gapminder](https://github.com/jennybc/gapminder)
+
+## My Workflow (That I Suggest to You)
+
+1. Create a new repository on Github.^[Optional and a bit advanced, remember this is _my_ workflow.]
+2. Start a New R Project in R Studio (link it to the github repository - [see guide](http://happygitwithr.com))
+3. Create a logical file system ([see example](https://github.com/ryansafner/workflow)), such as:
+```
+project # folder on my computer (the new working directory)
+|
+|- data/ # folder for data files 
+|- scripts/ # folder .R code
+|- bibliography/ # folder for .bib files
+|- figures/ # folder to plots and figures to
+|- paper.qmd # write document here
+```
+4. Write document in `paper.qmd`, loading/saving files from/to various folders in project
+    - e.g. load data like `df <- read_csv("data/my_data")`; save plots like `ggsave("figures/p.png")`
+5. Render document to `pdf` or `html`.
+6. Occasionally, `stage` and `commit` changes with a description, `push` to GitHub.
+
+
+---
+
+## Resources
+
+- Quarto Documentation: [Tutorial: Hello, Quarto](https://quarto.org/docs/get-started/hello/rstudio.html)
+- Quarto Documentation: [Tutorial: Computation](https://quarto.org/docs/get-started/computations/rstudio.html)
+- Quarto Documentation: [Tutorial: Authoring](https://quarto.org/docs/get-started/authoring/rstudio.html)
+- Quarto Documentation: [Guide](https://quarto.org/docs/guide/)
+- Kieran Healey's [The Plain Person's Guide to Plain Text Social Science](http://plain-text.co) on managing workflow with plain text files, R, and Git
+- Hadley Wickham's (and Garrett Grolemund) [R for Data Science](http://r4ds.had.co.nz/) on how to use R and R Markdown for data science work
+- Jenny Bryan's [Happy Git with R](http://happygitwithr.com/) on how to use git and GitHub with R as a version control system
