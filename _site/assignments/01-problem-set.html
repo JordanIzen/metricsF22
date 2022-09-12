@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ECON 480 — Econometrics - Problem Set 1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../files/images/metrics_hex.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="ECON 480 — Econometrics - Problem Set 1">
+<meta property="og:description" content="">
+<meta property="og:site-name" content="ECON 480 — Econometrics">
+<meta name="twitter:title" content="ECON 480 — Econometrics - Problem Set 1">
+<meta name="twitter:description" content="">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <img src="../files/images/metrics_hex.png" alt="">
+    <span class="navbar-title">ECON 480 — Econometrics</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html">Syllabus</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html">Schedule</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../content/index.html">Content</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../assignments/index.html" aria-current="page">Assignments</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resources/index.html">Resources</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://hoodcollegeeconomics.slack.com"><i class="bi bi-slack" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../rstudio.cloud"><i class="bi bi-cloud-fill" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Problem Set 1</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Assignments</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignments/index.html" class="sidebar-item-text sidebar-link">Assignment Details</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Problem Sets</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignments/00-preliminary-survey.html" class="sidebar-item-text sidebar-link">Preliminary Survey</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignments/01-problem-set.html" class="sidebar-item-text sidebar-link active">Problem Set 1</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Exams</span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assignments/paper.qmd" class="sidebar-item-text sidebar-link">Research Paper</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-popularity-of-baby-names" id="toc-the-popularity-of-baby-names" class="nav-link active" data-scroll-target="#the-popularity-of-baby-names">The Popularity of Baby Names</a>
+  <ul class="collapse">
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a>
+  <ul class="collapse">
+  <li><a href="#part-a" id="toc-part-a" class="nav-link" data-scroll-target="#part-a">Part A</a></li>
+  <li><a href="#part-b" id="toc-part-b" class="nav-link" data-scroll-target="#part-b">Part B</a></li>
+  </ul></li>
+  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
+  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
+  <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a></li>
+  <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a>
+  <ul class="collapse">
+  <li><a href="#part-a-1" id="toc-part-a-1" class="nav-link" data-scroll-target="#part-a-1">Part A</a></li>
+  <li><a href="#part-b-1" id="toc-part-b-1" class="nav-link" data-scroll-target="#part-b-1">Part B</a></li>
+  </ul></li>
+  <li><a href="#question-6" id="toc-question-6" class="nav-link" data-scroll-target="#question-6">Question 6</a>
+  <ul class="collapse">
+  <li><a href="#part-a-2" id="toc-part-a-2" class="nav-link" data-scroll-target="#part-a-2">Part A</a></li>
+  <li><a href="#part-b-2" id="toc-part-b-2" class="nav-link" data-scroll-target="#part-b-2">Part B</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#political-and-economic-freedom-around-the-world" id="toc-political-and-economic-freedom-around-the-world" class="nav-link" data-scroll-target="#political-and-economic-freedom-around-the-world">Political and Economic Freedom Around the World</a>
+  <ul class="collapse">
+  <li><a href="#question-7" id="toc-question-7" class="nav-link" data-scroll-target="#question-7">Question 7</a>
+  <ul class="collapse">
+  <li><a href="#econ-freedom" id="toc-econ-freedom" class="nav-link" data-scroll-target="#econ-freedom">Econ Freedom</a></li>
+  <li><a href="#pol-freedom" id="toc-pol-freedom" class="nav-link" data-scroll-target="#pol-freedom">Pol Freedom</a></li>
+  </ul></li>
+  <li><a href="#question-8" id="toc-question-8" class="nav-link" data-scroll-target="#question-8">Question 8</a></li>
+  <li><a href="#question-9" id="toc-question-9" class="nav-link" data-scroll-target="#question-9">Question 9</a>
+  <ul class="collapse">
+  <li><a href="#part-a-3" id="toc-part-a-3" class="nav-link" data-scroll-target="#part-a-3">Part A</a></li>
+  <li><a href="#part-b-3" id="toc-part-b-3" class="nav-link" data-scroll-target="#part-b-3">Part B</a></li>
+  </ul></li>
+  <li><a href="#question-10" id="toc-question-10" class="nav-link" data-scroll-target="#question-10">Question 10</a></li>
+  <li><a href="#question-11" id="toc-question-11" class="nav-link" data-scroll-target="#question-11">Question 11</a></li>
+  <li><a href="#question-12" id="toc-question-12" class="nav-link" data-scroll-target="#question-12">Question 12</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Problem Set 1</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This assignment is due by class on Wednesday September 21.</p>
+</div>
+</div>
+<p style="text-align:center">
+</p><p style="text-align:center">
+<a target="_blank" href="../files/assignment/01-problem-set-pdf.pdf"><span class="btn btn-primary btn-lg"><i class="fas fa-file-pdf"></i> PDF</span></a> <a target="_blank" href="../files/assignment/01-problem-set.zip"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> R Project</span></a> <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4492764"><span class="btn btn-primary btn-lg"><i class="fas fa-cloud"></i> R Studio Cloud</span></a>
+</p>
+<p></p>
+<section id="the-popularity-of-baby-names" class="level1">
+<h1>The Popularity of Baby Names</h1>
+<p>Install and load the package <code>babynames</code>. Get help for <code>?babynames</code> to see what the data includes.</p>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<section id="part-a" class="level3">
+<h3 class="anchored" data-anchor-id="part-a">Part A</h3>
+<p>What are the top 5 boys names for 2017, and what <em>percent</em> (note <em>not</em> the proportion!) of overall names is each?</p>
+</section>
+<section id="part-b" class="level3">
+<h3 class="anchored" data-anchor-id="part-b">Part B</h3>
+<p>What are the top 5 <em>girls</em> names for 2017, and what <em>percent</em> of overall names is each?</p>
+</section>
+</section>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
+<p>Make two barplots of these top 5 names, one for each sex. Map <code>aes</code>thetics <code>x</code> to <code>name</code> and <code>y</code> to <code>prop</code> [or <code>percent</code>, if you made that variable, as I did.] and use <code>geom_col</code> (since you are declaring a specific <code>y</code>, otherwise you could just use <code>geom_bar()</code> and just an <code>x</code>.)</p>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
+<p>Find your name. [If your name isn’t in there 😟, pick a random name.] <code>count</code> by <code>sex</code> how many babies since 1880 were named your name. [Hint: if you do only this, you’ll get the number of <em>rows</em> (years) there are in the data. You want to add the number of babies in each row (<code>n</code>), so inside <code>count</code>, add <code>, wt = n</code> to weight the count by <code>n</code>.] Also create a variable for the percent of each sex.</p>
+</section>
+<section id="question-4" class="level2">
+<h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
+<p>Make a line graph of the number of babies with your name over time, <code>color</code>ed by <code>sex</code>.</p>
+</section>
+<section id="question-5" class="level2">
+<h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
+<section id="part-a-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-a-1">Part A</h3>
+<p>Find the most common name for boys by year between 1980-2017. [Hint: you’ll want to first <code>group_by(year)</code>. Once you’ve got all the right conditions, you’ll get a table with a lot of data. You only want to <code>slice(1)</code> to keep just the 1st row of each grouped-year’s data.]</p>
+</section>
+<section id="part-b-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-b-1">Part B</h3>
+<p>Now do the same for girls.</p>
+</section>
+</section>
+<section id="question-6" class="level2">
+<h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
+<p>Now let’s graph the evolution of the most common names since 1880.</p>
+<section id="part-a-2" class="level3">
+<h3 class="anchored" data-anchor-id="part-a-2">Part A</h3>
+<p>First, find out what are the top 10 <em>overall</em> most popular names for boys and for girls in the data. [Hint: first <code>group_by(name)</code>.] You may want to create two objects, each with these top 5 names as character elements.</p>
+</section>
+<section id="part-b-2" class="level3">
+<h3 class="anchored" data-anchor-id="part-b-2">Part B</h3>
+<p>Now make two <code>line</code>graphs of these 5 names over time, one for boys, and one for girls. [Hint: you’ll first want to subset the data to use for your <code>data</code> layer in the plot. First <code>group_by(year)</code> and also make sure you only use the names you found in Part A. Try using the <code>%in%</code> command to do this.]</p>
+</section>
+</section>
+</section>
+<section id="political-and-economic-freedom-around-the-world" class="level1">
+<h1>Political and Economic Freedom Around the World</h1>
+<p>For the remaining questions, we’ll look at the relationship between Economic Freedom and Political Freedom in countries around the world today. Our data for economic freedom comes from the <a href="https://www.fraserinstitute.org/economic-freedom/dataset?geozone=world&amp;year=2016&amp;page=dataset">Fraser Institute</a>, and our data for political freedom comes from <a href="https://freedomhouse.org/content/freedom-world-data-and-resources">Freedom House</a>.</p>
+<section id="question-7" class="level2">
+<h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
+<p>Download these two datasets that I’ve cleaned up a bit: [If you want a challenge, try downloading them from the websites and cleaning them up yourself!]</p>
+<ul>
+<li><a href="http://metricsf22.classes.ryansafner.com/files/data/econ_freedom.csv"><i class="fas fa-table"></i> <code>econ_freedom.csv</code></a></li>
+<li><a href="http://metricsf22.classes.ryansafner.com/files/data/pol_freedom.csv"><i class="fas fa-table"></i> <code>pol_freedom.csv</code></a></li>
+</ul>
+<p>Below is a brief description of the variables I’ve put in each dataset:</p>
+<section id="econ-freedom" class="level3">
+<h3 class="anchored" data-anchor-id="econ-freedom">Econ Freedom</h3>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>year</code></td>
+<td>Year</td>
+</tr>
+<tr class="even">
+<td><code>ISO</code></td>
+<td>Three-letter country code</td>
+</tr>
+<tr class="odd">
+<td><code>country</code></td>
+<td>Name of the country</td>
+</tr>
+<tr class="even">
+<td><code>ef_index</code></td>
+<td>Total economic freedom index (0 - least to 100 - most)</td>
+</tr>
+<tr class="odd">
+<td><code>rank</code></td>
+<td>Rank of the country in terms of economic freedom</td>
+</tr>
+<tr class="even">
+<td><code>continent</code></td>
+<td>Continent the country is in</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pol-freedom" class="level3">
+<h3 class="anchored" data-anchor-id="pol-freedom">Pol Freedom</h3>
+<table class="table">
+<colgroup>
+<col style="width: 43%">
+<col style="width: 56%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>country</code></td>
+<td>Name of the country</td>
+</tr>
+<tr class="even">
+<td><code>C/T</code></td>
+<td>Whether the location is a country (C) or territory (T)</td>
+</tr>
+<tr class="odd">
+<td><code>year</code></td>
+<td>Year</td>
+</tr>
+<tr class="even">
+<td><code>status</code></td>
+<td>Whether the location is Free (F), Partly Free (F) or Not Free (NF)</td>
+</tr>
+<tr class="odd">
+<td><code>fh_score</code></td>
+<td>Total political freedom index (0 - least to 100 - most)</td>
+</tr>
+</tbody>
+</table>
+<p>Import and save them each as an object using <code>my_df_name &lt;- read_csv("name_of_the_file.csv")</code>. I suggest one as <code>econ</code> and the other as <code>pol</code>, but it’s up to you. Look at each object you’ve created.</p>
+</section>
+</section>
+<section id="question-8" class="level2">
+<h2 class="anchored" data-anchor-id="question-8">Question 8</h2>
+<p>Now let’s join them together so that we can have a single dataset to work with. You can learn more about this <a href="https://metricsf21.classes.ryansafner.com/slides/1.4-slides#143">in the 1.4 slides</a>. Since both datasets have both <code>country</code> and <code>year</code> variables (spelled exactly the same in both!), we can use these two variables as a <code>key</code> to combine observations. Run the following code (substituting whatever you are naming your objects):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>freedom <span class="ot">&lt;-</span> <span class="fu">left_join</span>(econ, pol, <span class="co"># join pol tibble to econ tibble</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"country"</span>, <span class="st">"year"</span>)) <span class="co"># keys to match variables between two tibbles!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Take a look at <code>freedom</code> to make sure it appears to have worked.</p>
+</section>
+<section id="question-9" class="level2">
+<h2 class="anchored" data-anchor-id="question-9">Question 9</h2>
+<section id="part-a-3" class="level3">
+<h3 class="anchored" data-anchor-id="part-a-3">Part A</h3>
+<p>Make a barplot of the 10 countries with the highest Economic Freedom index score in 2018. You may want to find this first and save it as an object to use for your plot’s <code>data</code> layer. Use <code>geom_col()</code> since we will map <code>ef_index</code> to <code>y</code>. If you want to order the bars, set <code>x = fct_reorder(ISO, desc(ef_index))</code> to reorder <code>ISO</code> (or <code>country</code>, if you prefer) by EF score in descending order.</p>
+</section>
+<section id="part-b-3" class="level3">
+<h3 class="anchored" data-anchor-id="part-b-3">Part B</h3>
+<p>Make a barplot of the 10 countries with the highest Freedom House index score in 2018, similar to what you did for Part A.</p>
+</section>
+</section>
+<section id="question-10" class="level2">
+<h2 class="anchored" data-anchor-id="question-10">Question 10</h2>
+<p>Now make a scatterplot of Political freedom (<code>fh_score</code> as <code>y</code>) on Economic Freedom (<code>ef_index</code> as <code>x</code>) in the year 2018, and <code>color</code> by <code>continent</code>.</p>
+</section>
+<section id="question-11" class="level2">
+<h2 class="anchored" data-anchor-id="question-11">Question 11</h2>
+<p>Save your plot from Question 10 as an object, and add a new layer where we will highlight a few countries. Pick a few countries (I suggest using the <code>ISO</code> code) and create a new object <code>filtering</code> the data to only include these countries (again the <code>%in%</code> command will be most helpful here).</p>
+<blockquote class="blockquote">
+<p>Additionally, <strong>install</strong> and <strong>load</strong> a package called <code>"ggrepel"</code>, which will adjust labels so they do not overlap on a plot.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Then, add the following layer to your plot:</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_label_repel</span>(<span class="at">data =</span> countries, <span class="co"># or whatever object name you created</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">aes</span>(<span class="at">x =</span> ef_index,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">y =</span> fh_score,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">label =</span> ISO, <span class="co"># show ISO as label (you could do country instead)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">color =</span> continent),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="co"># make it a bit transparent</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">box.padding =</span> <span class="fl">0.75</span>, <span class="co"># control how far labels are from points</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">show.legend =</span> F) <span class="co"># don't want this to add to the legend</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This should highlight these countries on your plot.</p>
+</section>
+<section id="question-12" class="level2">
+<h2 class="anchored" data-anchor-id="question-12">Question 12</h2>
+<p>Let’s just look only at the United States and see how it has fared in both measures of freedom over time. <code>filter()</code> the data to look only at the United States (its <code>ISO</code> is <code>"USA"</code>). Use both a <code>geom_point()</code> layer and a <code>geom_path()</code> layer, which will connect the dots over time. Let’s also see this by labeling the years with an additional layer <code>geom_text_repel(aes(label = year))</code>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2022 by <a href="https://www.ryansafner.com">Ryan Safner</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/ryansafner/metricsf22">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

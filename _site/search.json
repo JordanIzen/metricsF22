@@ -7,6 +7,97 @@
     "text": "This is an ungraded and anonymous survey for me to evaluate the distribution of your math and statistics backgrounds. Please complete all problems to the best of your ability. Your responses will help me craft the course to see which material we need to focus on at greater length, especially review material.\n\n\n Download PDF  Answer Key\n\n\nQuestion 1\nUsing the following sample data:\n\\[8, 12, 9, 10, 11, 5, 15\\]\n\nFind the median.\nCalculate the sample mean, \\(\\bar{x}\\)\nCalculate the sample standard deviation, \\(s\\)\n\n\n\nQuestion 2\nFor a fair, six-sided die:\n\nWhat is the probability of rolling a 5?\nWhat is the probability of rolling an even number?\nWhat is the probability of rolling an even number or a 3?\nIf you have two fair dice, what is the probability of rolling a 6 on both dice?\n\n\n\nQuestion 3\nHedge fund A earns an average rate of return of 2.5% per year with a standard deviation of 0.5%, while hedge fund B earns an average rate of return of 3.0% per year with a standard deviation of 2.0%. Which is more unusual, Hedge fund A earning a 4.0% return or hedge fund B earning a return -1.0% return? Why?1\n\n\nQuestion 4\nA discrete random variable \\(X\\) has the following pdf:\n\n\n\n \n  \n    x \n    p(x) \n  \n \n\n  \n    10 \n    0.1 \n  \n  \n    20 \n    0.2 \n  \n  \n    30 \n    0.3 \n  \n  \n    40 \n    0.4 \n  \n\n\n\n\nCalculate the sample standard deviation, \\(s\\) of \\(X\\).\n\n\nQuestion 5\nThe random variable \\(Y\\) is normally distributed with a mean of 50 and standard deviation of 12\n\\[Y \\sim N (50,12)\\]\n\nWhat is the \\(Z\\)-score for \\(Y=74\\)?\nIn your own words, what does this \\(Z\\)-score mean?\nWhat is the probability that \\(Y\\) takes on a value greater than 74?\n\n\n\nQuestion 6\nOn a scale of 1 (least) to 10 (most), how anxious are you about this class? Feel free to share any specific anxieties (they have a better chance to be specifically addressed if you do!).\n\n\nQuestion 7\nOn a scale of 1 (least) to 10 (most), how familiar would you say you are with computer programming and/or statistical software?\n\n\nQuestion 8\nList any statistical software packages (e.g. R, Microsoft Excel, Stata, SAS, SPSS, Minitab, etc.) and any programming languages (e.g. html, php, C/++, Python, LaTeX, etc.) you have had any experience with, and rate your proficiency between 1 (least) and 5 (most), if applicable.\n\n\n\n\n\nFootnotes\n\n\nHint: Standardize the two hedge funds.↩︎"
   },
   {
+    "objectID": "assignments/01-problem-set.html",
+    "href": "assignments/01-problem-set.html",
+    "title": "Problem Set 1",
+    "section": "",
+    "text": "Warning\n\n\n\nThis assignment is due by class on Wednesday September 21.\nPDF  R Project  R Studio Cloud"
+  },
+  {
+    "objectID": "assignments/01-problem-set.html#question-1",
+    "href": "assignments/01-problem-set.html#question-1",
+    "title": "Problem Set 1",
+    "section": "Question 1",
+    "text": "Question 1\n\nPart A\nWhat are the top 5 boys names for 2017, and what percent (note not the proportion!) of overall names is each?\n\n\nPart B\nWhat are the top 5 girls names for 2017, and what percent of overall names is each?"
+  },
+  {
+    "objectID": "assignments/01-problem-set.html#question-2",
+    "href": "assignments/01-problem-set.html#question-2",
+    "title": "Problem Set 1",
+    "section": "Question 2",
+    "text": "Question 2\nMake two barplots of these top 5 names, one for each sex. Map aesthetics x to name and y to prop [or percent, if you made that variable, as I did.] and use geom_col (since you are declaring a specific y, otherwise you could just use geom_bar() and just an x.)"
+  },
+  {
+    "objectID": "assignments/01-problem-set.html#question-3",
+    "href": "assignments/01-problem-set.html#question-3",
+    "title": "Problem Set 1",
+    "section": "Question 3",
+    "text": "Question 3\nFind your name. [If your name isn’t in there 😟, pick a random name.] count by sex how many babies since 1880 were named your name. [Hint: if you do only this, you’ll get the number of rows (years) there are in the data. You want to add the number of babies in each row (n), so inside count, add , wt = n to weight the count by n.] Also create a variable for the percent of each sex."
+  },
+  {
+    "objectID": "assignments/01-problem-set.html#question-4",
+    "href": "assignments/01-problem-set.html#question-4",
+    "title": "Problem Set 1",
+    "section": "Question 4",
+    "text": "Question 4\nMake a line graph of the number of babies with your name over time, colored by sex."
+  },
+  {
+    "objectID": "assignments/01-problem-set.html#question-5",
+    "href": "assignments/01-problem-set.html#question-5",
+    "title": "Problem Set 1",
+    "section": "Question 5",
+    "text": "Question 5\n\nPart A\nFind the most common name for boys by year between 1980-2017. [Hint: you’ll want to first group_by(year). Once you’ve got all the right conditions, you’ll get a table with a lot of data. You only want to slice(1) to keep just the 1st row of each grouped-year’s data.]\n\n\nPart B\nNow do the same for girls."
+  },
+  {
+    "objectID": "assignments/01-problem-set.html#question-6",
+    "href": "assignments/01-problem-set.html#question-6",
+    "title": "Problem Set 1",
+    "section": "Question 6",
+    "text": "Question 6\nNow let’s graph the evolution of the most common names since 1880.\n\nPart A\nFirst, find out what are the top 10 overall most popular names for boys and for girls in the data. [Hint: first group_by(name).] You may want to create two objects, each with these top 5 names as character elements.\n\n\nPart B\nNow make two linegraphs of these 5 names over time, one for boys, and one for girls. [Hint: you’ll first want to subset the data to use for your data layer in the plot. First group_by(year) and also make sure you only use the names you found in Part A. Try using the %in% command to do this.]"
+  },
+  {
+    "objectID": "assignments/01-problem-set.html#question-7",
+    "href": "assignments/01-problem-set.html#question-7",
+    "title": "Problem Set 1",
+    "section": "Question 7",
+    "text": "Question 7\nDownload these two datasets that I’ve cleaned up a bit: [If you want a challenge, try downloading them from the websites and cleaning them up yourself!]\n\n econ_freedom.csv\n pol_freedom.csv\n\nBelow is a brief description of the variables I’ve put in each dataset:\n\nEcon Freedom\n\n\n\nVariable\nDescription\n\n\n\n\nyear\nYear\n\n\nISO\nThree-letter country code\n\n\ncountry\nName of the country\n\n\nef_index\nTotal economic freedom index (0 - least to 100 - most)\n\n\nrank\nRank of the country in terms of economic freedom\n\n\ncontinent\nContinent the country is in\n\n\n\n\n\nPol Freedom\n\n\n\n\n\n\n\nVariable\nDescription\n\n\n\n\ncountry\nName of the country\n\n\nC/T\nWhether the location is a country (C) or territory (T)\n\n\nyear\nYear\n\n\nstatus\nWhether the location is Free (F), Partly Free (F) or Not Free (NF)\n\n\nfh_score\nTotal political freedom index (0 - least to 100 - most)\n\n\n\nImport and save them each as an object using my_df_name <- read_csv(\"name_of_the_file.csv\"). I suggest one as econ and the other as pol, but it’s up to you. Look at each object you’ve created."
+  },
+  {
+    "objectID": "assignments/01-problem-set.html#question-8",
+    "href": "assignments/01-problem-set.html#question-8",
+    "title": "Problem Set 1",
+    "section": "Question 8",
+    "text": "Question 8\nNow let’s join them together so that we can have a single dataset to work with. You can learn more about this in the 1.4 slides. Since both datasets have both country and year variables (spelled exactly the same in both!), we can use these two variables as a key to combine observations. Run the following code (substituting whatever you are naming your objects):\n\nfreedom <- left_join(econ, pol, # join pol tibble to econ tibble\n                     by = c(\"country\", \"year\")) # keys to match variables between two tibbles!\n\nTake a look at freedom to make sure it appears to have worked."
+  },
+  {
+    "objectID": "assignments/01-problem-set.html#question-9",
+    "href": "assignments/01-problem-set.html#question-9",
+    "title": "Problem Set 1",
+    "section": "Question 9",
+    "text": "Question 9\n\nPart A\nMake a barplot of the 10 countries with the highest Economic Freedom index score in 2018. You may want to find this first and save it as an object to use for your plot’s data layer. Use geom_col() since we will map ef_index to y. If you want to order the bars, set x = fct_reorder(ISO, desc(ef_index)) to reorder ISO (or country, if you prefer) by EF score in descending order.\n\n\nPart B\nMake a barplot of the 10 countries with the highest Freedom House index score in 2018, similar to what you did for Part A."
+  },
+  {
+    "objectID": "assignments/01-problem-set.html#question-10",
+    "href": "assignments/01-problem-set.html#question-10",
+    "title": "Problem Set 1",
+    "section": "Question 10",
+    "text": "Question 10\nNow make a scatterplot of Political freedom (fh_score as y) on Economic Freedom (ef_index as x) in the year 2018, and color by continent."
+  },
+  {
+    "objectID": "assignments/01-problem-set.html#question-11",
+    "href": "assignments/01-problem-set.html#question-11",
+    "title": "Problem Set 1",
+    "section": "Question 11",
+    "text": "Question 11\nSave your plot from Question 10 as an object, and add a new layer where we will highlight a few countries. Pick a few countries (I suggest using the ISO code) and create a new object filtering the data to only include these countries (again the %in% command will be most helpful here).\n\nAdditionally, install and load a package called \"ggrepel\", which will adjust labels so they do not overlap on a plot.\n\n\nThen, add the following layer to your plot:\n\n\ngeom_label_repel(data = countries, # or whatever object name you created\n                     aes(x = ef_index,\n                         y = fh_score,\n                         label = ISO, # show ISO as label (you could do country instead)\n                         color = continent),\n                     alpha = 0.5, # make it a bit transparent\n                     box.padding = 0.75, # control how far labels are from points\n                     show.legend = F) # don't want this to add to the legend\n\nThis should highlight these countries on your plot."
+  },
+  {
+    "objectID": "assignments/01-problem-set.html#question-12",
+    "href": "assignments/01-problem-set.html#question-12",
+    "title": "Problem Set 1",
+    "section": "Question 12",
+    "text": "Question 12\nLet’s just look only at the United States and see how it has fared in both measures of freedom over time. filter() the data to look only at the United States (its ISO is \"USA\"). Use both a geom_point() layer and a geom_path() layer, which will connect the dots over time. Let’s also see this by labeling the years with an additional layer geom_text_repel(aes(label = year))."
+  },
+  {
     "objectID": "assignments/index.html",
     "href": "assignments/index.html",
     "title": "Assignment Details",
@@ -592,7 +683,7 @@
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
-    "text": "Content materials contains suggested readings, more details about assignments, math appendices, and other helpful resources. I suggest you view these before each class.\n\n Slides are “Quarto” html presentations that can be opened in any browser (You can find a downloadable PDF on content pages)\n\n\n R materials contain extra tutorials, videos, practice exercises for using R\n\n\n Assignments are listed with due dates\n\n\nPlease note that the lesson numbers, topics, and titles (e.g. 1.1) are my design, and do not match up with the textbook!\nRelevant materials, if applicable will be posted before class meets and become colored links.\n\n\n\n\n\n\n\n\n\n\n\n\n\nI. Data Analysis in R\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\n\n\nPreliminary Survey\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Aug 22\n\n\n1.1 — Introduction to Econometrics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Aug 24\n\n\n1.2 — Meet R\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Aug 31\n\n\n1.3 — Data Visualization\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 07\n\n\n1.4 — Data Wrangling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 12\n\n\n1.5 — Optimize Workflow\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nII. Linear Regression\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nWed Sep 14\n\n\n2.1 — Data and Descriptive Statistics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 19\n\n\n2.2 — Random Variables and Distributions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 21\n\n\n2.3 — OLS Linear Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 26\n\n\n2.4 — OLS: Goodness of Fit and Bias\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 28\n\n\n2.5 — OLS: Precision and Diagnostics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 03\n\n\n2.6 — Statistical Inference\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Oct 05\n\n\n2.7 — Inference for Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIII. Causal Inference\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nWed Oct 05\n\n\n3.1 — The Fundamental Problem of Causal Inference & Potential Outcomes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 10\n\n\n3.2 — Causal Inference & DAGs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Oct 12\n\n\n3.3 — Omitted Variable Bias\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 17\n\n\n3.4 — Multivariate OLS Estimators: Bias, Precision, and Fit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Oct 19\n\n\n3.5 — Writing an Empirical Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 24\n\n\n3.6 — Regression with Categorical Data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Oct 26\n\n\n3.7 — Regression with Interaction Effects\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 31\n\n\n3.8 — Polynomial Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 02\n\n\n3.9 — Logarithmic Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIV. Panel Data and Advanced Models\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nMon Nov 07\n\n\n4.1 — Panel Data and Fixed Effects Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 09\n\n\n4.2 — Difference-in-Difference Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Nov 14\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 16\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Nov 21\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 23\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Nov 28\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 30\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Dec 05\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Dec 07\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Dec 12\n\n\nNA"
+    "text": "Content materials contains suggested readings, more details about assignments, math appendices, and other helpful resources. I suggest you view these before each class.\n\n Slides are “Quarto” html presentations that can be opened in any browser (You can find a downloadable PDF on content pages)\n\n\n R materials contain extra tutorials, videos, practice exercises for using R\n\n\n Assignments are listed with due dates\n\n\nPlease note that the lesson numbers, topics, and titles (e.g. 1.1) are my design, and do not match up with the textbook!\nRelevant materials, if applicable will be posted before class meets and become colored links.\n\n\n\n\n\n\n\n\n\n\n\n\n\nI. Data Analysis in R\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\n\n\nPreliminary Survey\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Aug 22\n\n\n1.1 — Introduction to Econometrics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Aug 24\n\n\n1.2 — Meet R\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Aug 31\n\n\n1.3 — Data Visualization\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 07\n\n\n1.4 — Data Wrangling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 12\n\n\n1.5 — Optimize Workflow\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 1 due Wed Sep 21\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nII. Linear Regression\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nWed Sep 14\n\n\n2.1 — Data and Descriptive Statistics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 19\n\n\n2.2 — Random Variables and Distributions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 21\n\n\n2.3 — OLS Linear Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 26\n\n\n2.4 — OLS: Goodness of Fit and Bias\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 28\n\n\n2.5 — OLS: Precision and Diagnostics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 03\n\n\n2.6 — Statistical Inference\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Oct 05\n\n\n2.7 — Inference for Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIII. Causal Inference\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nWed Oct 05\n\n\n3.1 — The Fundamental Problem of Causal Inference & Potential Outcomes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 10\n\n\n3.2 — Causal Inference & DAGs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Oct 12\n\n\n3.3 — Omitted Variable Bias\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 17\n\n\n3.4 — Multivariate OLS Estimators: Bias, Precision, and Fit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Oct 19\n\n\n3.5 — Writing an Empirical Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 24\n\n\n3.6 — Regression with Categorical Data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Oct 26\n\n\n3.7 — Regression with Interaction Effects\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 31\n\n\n3.8 — Polynomial Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 02\n\n\n3.9 — Logarithmic Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIV. Panel Data and Advanced Models\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nMon Nov 07\n\n\n4.1 — Panel Data and Fixed Effects Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 09\n\n\n4.2 — Difference-in-Difference Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Nov 14\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 16\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Nov 21\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 23\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Nov 28\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 30\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Dec 05\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Dec 07\n\n\nNA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Dec 12\n\n\nNA"
   },
   {
     "objectID": "syllabus.html",

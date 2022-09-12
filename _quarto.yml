@@ -66,6 +66,8 @@ website:
           contents:
             - text: "Preliminary Survey"
               href: "assignments/00-preliminary-survey.qmd"
+            - text: "Problem Set 1"
+              href: "assignments/01-problem-set.qmd"
         - section: "Exams"
         - text: "Research Paper"
           href: assignments/paper.qmd
