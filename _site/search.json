@@ -294,6 +294,13 @@
     "text": "Readings\n\n Math and Probability Background Appendix A in Bailey\n\nNow that we return to the statistics, we will do a minimal overview of basic statistics and distributions. Review Bailey’s appendices. Today, only A is really useful, the rest will come next class.\nChapter 2 is optional, but will give you a good overview of using data."
   },
   {
+    "objectID": "content/2.1-content.html#appendix",
+    "href": "content/2.1-content.html#appendix",
+    "title": "2.1 — Data 101 & Descriptive Statistics — Class Content",
+    "section": " Appendix",
+    "text": "Appendix\nSee the online appendix for today’s content:\n\nThe Summation Operator"
+  },
+  {
     "objectID": "content/2.1-content.html#slides",
     "href": "content/2.1-content.html#slides",
     "title": "2.1 — Data 101 & Descriptive Statistics — Class Content",
@@ -446,6 +453,13 @@
     "title": "R Packages Used in this Course",
     "section": "",
     "text": "You can install all of these packages at once with the following command:\n\ninstall.packages(c(\"tidyverse\", \"ggrepel\", \"broom\", \"car\", \"estimatr\", \"lmtest\",\n                   \"huxtable\", \"infer\", \"dagitty\", \"ggdag\", \"modelsummary\", \"fixest\"))\n\n† Indicates package is part of the tidyverse\n\n\n\nName\nType\nDescription/Reason(s) for Use\nClasses Used\n\n\n\n\nggplot2†\nPlotting\nFor nice plots\n[1.3]\n\n\ngganimate\nPlotting\nFor animating plots\n[1.3]\n\n\nhaven†\nData Wrangling\nFor importing nonstandard data files\n[1.4]\n\n\ndplyr†\nData Wrangling\nFor manipulating data (part of tidyverse)\n[1.4]\n\n\nreadr†\nData Wrangling\nFor importing most data files\n[1.4]\n\n\ntidyr†\nData Wrangling\nFor reshaping data (wide and long)\n[1.4]\n\n\nmagrittr†\nData Wrangling\nFor the pipe\n[1.4]\n\n\ntibble†\nData Wrangling\nFor a friendlier data.frame\n[1.4]\n\n\nggrepel\nPlotting\nFor annotating text that doesn’t cover observations\n[1.4]\n\n\nbroom\nModels\nFor tidying regression output\n[2.3]\n\n\ncar\nModels\nFor testing for outliers\n[2.5]\n\n\nestimatr\nModels\nFor calculating heteroskedasticity-robust standard errors\n[2.5]\n\n\nlmtest\nModels\nFor testing for heteroskedasticity\n[2.5]\n\n\nhuxtable\nOutput\nFor making nice regression tables\n[2.5]\n\n\ninfer\nModels\nFor simulation and statistical inference\n[2.6]\n\n\ndagitty\nModels\nFor working with DAGs in R\n[3.2]\n\n\nggdag\nPlotting\nFor plotting DAGs in ggplot\n[3.2]\n\n\nmodelsummary\nOutput\nFor making nice regression tables\n[3.5]\n\n\nfixest\nModels\nFor working with panel data\n[4.1]\n\n\n\n\n\n\n\nFootnotes\n\n\nNote, many of these packages have multiple uses beyond our purposes!↩︎"
+  },
+  {
+    "objectID": "resources/appendices/2.1-appendix.html",
+    "href": "resources/appendices/2.1-appendix.html",
+    "title": "2.1 — Data 101 & Descriptive Statistics — Appendix",
+    "section": "",
+    "text": "Footnotes\n\n\nFor more beyond the mere definition, see the appendix on Covariance and Correlation↩︎"
   },
   {
     "objectID": "resources/coding-style.html",

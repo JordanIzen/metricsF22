@@ -26,6 +26,12 @@ Now that we return to the statistics, we will do a minimal overview of basic sta
 
 Chapter 2 is optional, but will give you a good overview of using data.
 
+## <i class="fas fa-sigma"></i> Appendix
+
+See the online appendix for today's content:
+
+- [The Summation Operator](/resources/appendices/2.1-appendix.html)
+
 ## <i class="fas fa-chalkboard-teacher"></i> Slides
 
 Below, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.

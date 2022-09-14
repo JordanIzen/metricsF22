@@ -111,6 +111,10 @@ website:
             text: "Math & R Appendices"
           - href: resources/statistics.qmd
             text: "Statistics Guide"
+        - section: "Math & Stats Appendices"
+          contents:
+          - href: resources/appendices/2.1-appendix.qmd
+            text: "Appendix 2.1"
           
   page-footer:
     left: |
