@@ -38,7 +38,7 @@ Below, you can find the slides in two formats. Clicking the image will bring you
 
 I suggest printing the slides beforehand and using them to take additional notes in class (*not everything* is in the slides)!
 
-```{r, eval = F}
+```{r, eval = T}
 #| echo: false
 #| output: asis
 

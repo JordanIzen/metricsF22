@@ -11,7 +11,7 @@
     "href": "assignments/01-problem-set.html",
     "title": "Problem Set 1",
     "section": "",
-    "text": "Warning\n\n\n\nThis assignment is due by class on Wednesday September 21.\nPDF  R Project  R Studio Cloud"
+    "text": "Warning\n\n\n\nThis assignment is due by class on Wednesday September 21.\nPlease read the instructions for completing and submitting homeworks.\nPDF  R Project  R Studio Cloud\nThe  PDF is useful if you want to print out the problem set and write on it. The  R Project is a zipped .zip file which contains a  .qmd file to write answers in, and the data, all in a logical working directory. (See this resource for help unzipping files). You can also just write an .R file in the project if you don’t want to use markdown. If you use the  cloud project, I have already installed tidyverse and tinytex (to produce pdfs)."
   },
   {
     "objectID": "assignments/01-problem-set.html#question-1",
@@ -131,6 +131,27 @@
     "title": "Assignment Details",
     "section": "Final Exam",
     "text": "Final Exam\nOn the college-determined date, we will have a comprehensive, closed-book, in-class final exam."
+  },
+  {
+    "objectID": "assignments/problem-sets.html",
+    "href": "assignments/problem-sets.html",
+    "title": "Problem Sets",
+    "section": "",
+    "text": "There will be several problem sets (typically 5-6) spaced throughout the semester. Typically, after we cover a major concept or set of tools, I will assign a problem set to practice this material.\nProblem sets will be a combination of math/statistical theory & application problems, as well as problems that require the use of R with real data.\nProblem sets are typically due one week from the class period it is assigned (although the due date announced on the problem set is the final authority on this), and must handed in or emailed to me by the start of class (so please type or, if you must, hand write and scan them)."
+  },
+  {
+    "objectID": "assignments/problem-sets.html#instructions",
+    "href": "assignments/problem-sets.html#instructions",
+    "title": "Problem Sets",
+    "section": "Instructions",
+    "text": "Instructions\nDue to the combination of traditional and R problems, there are several ways you can complete and turn each assignment:\n\nType up any applicable answers (saving any plots as images and including them) in a (e.g. Word) document and save it as a PDF and turn in a (commented!) .R file of commands for each relevant question.\nIf you wish to write out answers by hand, you may either print the  pdf above or write your answers (all I need is your work and answers) on your own paper and then please scan/photograph & convert them to a single PDF, if they are easily readable, but this is not preferred. See my guide to making a PDF\nYou can do your homework in Quarto, rendering it to a single html or pdf file, which you will turn in (make sure it shows all code input and outputs). You do not need to turn in the .qmd file. I often provide an R Project for you to download and unzip (as well as one in Rstudio Cloud), which contains a .qmd file for you to work in (and sometimes data files).\n\nTo minimize confusion, I suggest creating a new R Project (e.g. hw1) and storing any data and plots in that folder on your computer. See my example workflow.\nYou may work together (and I highly encourage that) but you must turn in your own answers."
+  },
+  {
+    "objectID": "assignments/problem-sets.html#grading",
+    "href": "assignments/problem-sets.html#grading",
+    "title": "Problem Sets",
+    "section": "Grading",
+    "text": "Grading\nI grade homeworks 70% for completion, and for the remaining 30%, pick one question to grade for accuracy — so it is best that you try every problem, even if you are unsure how to complete it accurately."
   },
   {
     "objectID": "content/1.1-content.html#overview",
@@ -305,7 +326,7 @@
     "href": "content/2.1-content.html#slides",
     "title": "2.1 — Data 101 & Descriptive Statistics — Class Content",
     "section": " Slides",
-    "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!"
+    "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
   },
   {
     "objectID": "content/index.html",

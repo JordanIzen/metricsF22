@@ -64,6 +64,8 @@ website:
             - assignments/index.qmd
         - section: "Problem Sets"
           contents:
+            - text: "Instructions"
+              href: assignments/problem-sets.qmd
             - text: "Preliminary Survey"
               href: "assignments/00-preliminary-survey.qmd"
             - text: "Problem Set 1"

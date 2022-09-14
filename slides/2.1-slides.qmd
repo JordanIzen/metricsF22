@@ -8,6 +8,7 @@ format:
     width: 1600
     #df-print: paged
     slide-number: c
+    chalkboard: true
 overview: true
 execute:
   echo: false
@@ -43,13 +44,26 @@ update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 
 ```
 
-# The Two Big Problems with Data
+## Contents {background-color="#314f4f"}
+
+[The Two Big Problems with Data](#the-two-big-problems-with-data)
+
+[Data 101](#data-101)
+
+[Descriptive Statistics](#descriptive-statistics)
+
+[Measures of Center](#measures-of-center)
+
+[Measures of Dispersion](#measures-of-dispersion)
+
+
+# The Two Big Problems with Data {background-color="#314f4f" .centered}
 
 ## Two Big Problems with Data
 
 ::: columns
 ::: {.column width="50%"}
-- We want to use econometrics to [identify]{.hi} causal relationships and make .hi[inferences] about them
+- We want to use econometrics to [identify]{.hi} causal relationships and make [inferences]{.hi} about them
 
 1. Problem for [identification]{.hi}: [endogeneity]{.hi-purple}
 
@@ -59,7 +73,7 @@ update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 
 ::: {.column width="50%"}
 
-![](images/randomimage.jpg)
+![](images/randomimage.jpg){width="750" fig-align="center"}
 :::
 :::
 
@@ -77,7 +91,7 @@ update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 
 ::: {.column width="50%"}
 
-![](images/causality.jpg)
+![](images/causality.jpg){width="750" fig-align="center"}
 :::
 :::
 
@@ -93,6 +107,7 @@ update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 ::: {.column width="50%"}
 
 ```{r}
+#| fig-height: 10
 library(ggdag)
 library(patchwork)
 
@@ -148,6 +163,8 @@ h1  / h2
 ::: {.column width="50%"}
 
 ```{r}
+#| fig-height: 10
+
 h3 <- dagify(Y ~ X + Z,
              X ~ Z,
              exposure = "X",
@@ -225,7 +242,7 @@ h3  / h4 / h5
 :::
 
 ::: {.column width="50%"}
-![](images/sampling.jpg)
+![](images/sampling.jpg){width="750" fig-align="center"}
 :::
 
 :::
@@ -236,16 +253,20 @@ h3  / h4 / h5
 
 <br>
 
+. . .
+
 - We want to [identify]{.hi} causal relationships between **population** variables
   - Logically first thing to consider
   - [Endogeneity problem]{.hi-purple}
+
+. . .
 
 - We'll use **sample** *statistics* to [infer]{.hi-purple} something about population *parameters*
   - In practice, we'll only ever have a finite *sample distribution* of data
   - We *don't* know the *population distribution* of data
   - [Randomness problem]{.hi-purple}
 
-# Data 101
+# Data 101 {background-color="#314f4f" .centered}
 
 ## Data 101
 
@@ -385,7 +406,24 @@ ggplot(diamonds, aes(x=cut, fill=cut))+
 :::
 
 ::: {.column width="50%"}
-![](images/piechart.jpg)
+![](images/badpiechart.png){width="750" fig-align="center"}
+:::
+:::
+
+## Categorical Data: Pie Charts
+
+::: columns
+::: {.column width="50%"}
+- Avoid pie charts!
+
+- People are *not* good at judging 2-d differences (angles, area)
+
+- People *are* good at judging 1-d differences (length)
+
+:::
+
+::: {.column width="50%"}
+![](images/piechart.jpg){width="750" fig-align="center"}
 :::
 :::
 
@@ -572,7 +610,7 @@ ggplot(., aes(area = n, fill = cut)) +
 :::
 
 ::: {.column width="50%"}
-![](images/continuous.png)
+![](images/continuous.png){width="750" fig-align="center"}
 :::
 :::
 
@@ -740,7 +778,7 @@ $$x_{it}$$
 :::
 :::
 
-# Descriptive Statistics
+# Descriptive Statistics {background-color="#314f4f" .centered}
 
 ## Variables and Distributions
 
@@ -911,7 +949,7 @@ ggplot(quizzes,aes(x=scores))+
 :::
 :::
 
-# Measures of Center
+# Measures of Center {background-color="#314f4f" .centered}
 
 ## Mode
 
@@ -1104,11 +1142,15 @@ $$\bar{x}=\frac{x_1+x_2+...+x_n}{n} = \frac{1}{n} \sum^n_{i=1} x_i$$
 $$\{0, 62, 66, 71, 71, 74, 76, 79, 83, 86, 88, 93, 95\}$$
 :::
 
+. . .
+
 \begin{align*}
 \bar{x}&=\frac{1}{13}(0+62+66+71+71+74+76+79+83+86+88+93+95)\\
 \bar{x}&=\frac{944}{13}\\
 \bar{x}&=72.62\\
 \end{align*}
+
+. . .
 
 ```{r}
 #| echo: true
@@ -1118,19 +1160,21 @@ quizzes %>%
 
 ## Arithmetic Mean: Affected by Outliers
 
-- If we drop the outlier (0)
-
 ::: {.callout-tip}
-## Example
+## Example: If we drop the outlier (0)
 
 $$\{62, 66, 71, 71, 74, 76, 79, 83, 86, 88, 93, 95\}$$
+:::
+
+. . .
 
 \begin{align*}
 \bar{x}&=\frac{1}{12}(62+66+71+71+74+76+79+83+86+88+93+95)\\
 &=\frac{944}{12}\\
 &=78.67\\
 \end{align*}
-:::
+
+. . .
 
 ```{r}
 #| echo: true
@@ -1273,7 +1317,7 @@ ggplot(rightskew,aes(x=x))+
 :::
 :::
 
-# Measures of Dispersion
+# Measures of Dispersion {background-color="#314f4f" .centered}
 
 ## Range
 
@@ -1288,7 +1332,7 @@ ggplot(rightskew,aes(x=x))+
 - Common set of summary statistics of a distribution: ["five number summary"]{.hi}:
 
 ::: columns
-::: {.column width="60%"}
+::: {.column width="55%"}
 1. Minimum value
 2. 25<sup>th</sup> percentile $(Q_1$, median of first 50% of data)
 3. 50<sup>th</sup> percentile (median, $Q_2)$
@@ -1296,11 +1340,11 @@ ggplot(rightskew,aes(x=x))+
 5. Maximum value
 
 :::
-::: {.column width="40%"}
+::: {.column width="45%"}
 
 ```{r}
 #| echo: true
-# Base R summary command (includes Mean)
+# Base R summary command
 summary(quizzes$scores)
 ```
 
@@ -1468,7 +1512,7 @@ $$deviation_i = x_i-\mu	$$
 
 ## Variance (Population)
 
-- The [population variance $\sigma^2)$]{.hi} of a *population* distribution measures the average of the *squared* deviations from the *population* mean $(\mu)$
+- The [population variance $\sigma^2$]{.hi} of a *population* distribution measures the average of the *squared* deviations from the *population* mean $(\mu)$
 
 $$\sigma^2 = \frac{1}{N}\displaystyle\sum^N_{i=1} (x_i-\mu)^2$$
 

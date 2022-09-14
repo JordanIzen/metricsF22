@@ -91,6 +91,8 @@
   <link href="2.1-slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="2.1-slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="2.1-slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="2.1-slides_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="2.1-slides_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="2.1-slides_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -394,8 +396,16 @@
 <p><span class="custom-author">Dr.&nbsp;Ryan Safner <br> Associate Professor of Economics</span></p>
 <p><span class="custom-institution"><a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br></span></p>
 </section>
+<section id="contents" class="slide level2" data-background-color="#314f4f">
+<h2>Contents</h2>
+<p><a href="#/the-two-big-problems-with-data">The Two Big Problems with Data</a></p>
+<p><a href="#/data-101">Data 101</a></p>
+<p><a href="#/descriptive-statistics">Descriptive Statistics</a></p>
+<p><a href="#/measures-of-center">Measures of Center</a></p>
+<p><a href="#/measures-of-dispersion">Measures of Dispersion</a></p>
+</section>
 <section>
-<section id="the-two-big-problems-with-data" class="title-slide slide level1 center">
+<section id="the-two-big-problems-with-data" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>The Two Big Problems with Data</h1>
 
 </section>
@@ -404,14 +414,18 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>We want to use econometrics to <span class="hi">identify</span> causal relationships and make .hi[inferences] about them</li>
+<li>We want to use econometrics to <span class="hi">identify</span> causal relationships and make <span class="hi">inferences</span> about them</li>
 </ul>
 <ol type="1">
 <li><p>Problem for <span class="hi">identification</span>: <span class="hi-purple">endogeneity</span></p></li>
 <li><p>Problem for <span class="hi">inference</span>: <span class="hi-purple">randomness</span></p></li>
 </ol>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/randomimage.jpg"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/randomimage.jpg" width="750"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -425,7 +439,11 @@
 <li><p>Note: unfortunately this is different from how economists talk about “endogenous” vs.&nbsp;“exogenous” variables in theoretical models…</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/causality.jpg"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/causality.jpg" width="750"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -477,7 +495,11 @@
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/sampling.jpg"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/sampling.jpg" width="750"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -485,12 +507,17 @@
 <h2>The Two Problems: Where We’re Heading…Ultimately</h2>
 <p><span class="center"><span class="b">Sample</span> <span class="math inline">\(\color{#6A5ACD}{\xrightarrow{\text{statistical inference}}}\)</span> <span class="b">Population</span> <span class="math inline">\(\color{#e64173}{\xrightarrow{\text{causal indentification}}}\)</span> <span class="b">Unobserved Parameters</span></span></p>
 <p><br></p>
+<div class="fragment">
 <ul>
 <li>We want to <span class="hi">identify</span> causal relationships between <strong>population</strong> variables
 <ul>
 <li>Logically first thing to consider</li>
 <li><span class="hi-purple">Endogeneity problem</span></li>
 </ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
 <li>We’ll use <strong>sample</strong> <em>statistics</em> to <span class="hi-purple">infer</span> something about population <em>parameters</em>
 <ul>
 <li>In practice, we’ll only ever have a finite <em>sample distribution</em> of data</li>
@@ -498,9 +525,10 @@
 <li><span class="hi-purple">Randomness problem</span></li>
 </ul></li>
 </ul>
+</div>
 </section></section>
 <section>
-<section id="data-101" class="title-slide slide level1 center">
+<section id="data-101" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>Data 101</h1>
 
 </section>
@@ -672,7 +700,29 @@
 <li><p>People <em>are</em> good at judging 1-d differences (length)</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/piechart.jpg"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/badpiechart.png" width="750"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="categorical-data-pie-charts-1" class="slide level2">
+<h2>Categorical Data: Pie Charts</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Avoid pie charts!</p></li>
+<li><p>People are <em>not</em> good at judging 2-d differences (angles, area)</p></li>
+<li><p>People <em>are</em> good at judging 1-d differences (length)</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/piechart.jpg" width="750"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -830,7 +880,11 @@
 </ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/continuous.png"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/continuous.png" width="750"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1224,7 +1278,7 @@
 </div>
 </section></section>
 <section>
-<section id="descriptive-statistics" class="title-slide slide level1 center">
+<section id="descriptive-statistics" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>Descriptive Statistics</h1>
 
 </section>
@@ -1388,7 +1442,7 @@
 </div>
 </section></section>
 <section>
-<section id="measures-of-center" class="title-slide slide level1 center">
+<section id="measures-of-center" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>Measures of Center</h1>
 
 </section>
@@ -1570,11 +1624,14 @@
 </div>
 </div>
 </div>
+<div class="fragment">
 <p><span class="math display">\[\begin{align*}
 \bar{x}&amp;=\frac{1}{13}(0+62+66+71+71+74+76+79+83+86+88+93+95)\\
 \bar{x}&amp;=\frac{944}{13}\\
 \bar{x}&amp;=72.62\\
 \end{align*}\]</span></p>
+</div>
+<div class="fragment">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>quizzes <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(scores))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1585,30 +1642,31 @@
 1  72.6</code></pre>
 </div>
 </div>
+</div>
 </section>
 <section id="arithmetic-mean-affected-by-outliers" class="slide level2">
 <h2>Arithmetic Mean: Affected by Outliers</h2>
-<ul>
-<li>If we drop the outlier (0)</li>
-</ul>
 <div class="callout callout-tip callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Example</strong></p>
+<p><strong>Example: If we drop the outlier (0)</strong></p>
 </div>
 <div class="callout-content">
 <p><span class="math display">\[\{62, 66, 71, 71, 74, 76, 79, 83, 86, 88, 93, 95\}\]</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
 <p><span class="math display">\[\begin{align*}
 \bar{x}&amp;=\frac{1}{12}(62+66+71+71+74+76+79+83+86+88+93+95)\\
 &amp;=\frac{944}{12}\\
 &amp;=78.67\\
 \end{align*}\]</span></p>
 </div>
-</div>
-</div>
+<div class="fragment">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>quizzes <span class="sc">%&gt;%</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">filter</span>(scores <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
@@ -1618,6 +1676,7 @@
    mean
   &lt;dbl&gt;
 1  78.7</code></pre>
+</div>
 </div>
 </div>
 </section>
@@ -1743,7 +1802,7 @@
 </div>
 </section></section>
 <section>
-<section id="measures-of-dispersion" class="title-slide slide level1 center">
+<section id="measures-of-dispersion" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>Measures of Dispersion</h1>
 
 </section>
@@ -1761,7 +1820,7 @@
 <li>Common set of summary statistics of a distribution: <span class="hi">“five number summary”</span>:</li>
 </ul>
 <div class="columns">
-<div class="column" style="width:60%;">
+<div class="column" style="width:55%;">
 <ol type="1">
 <li>Minimum value</li>
 <li>25<sup>th</sup> percentile <span class="math inline">\((Q_1\)</span>, median of first 50% of data)</li>
@@ -1769,9 +1828,9 @@
 <li>25<sup>th</sup> percentile <span class="math inline">\((Q_3\)</span>, median of last 50% of data)</li>
 <li>Maximum value</li>
 </ol>
-</div><div class="column" style="width:40%;">
+</div><div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Base R summary command (includes Mean)</span></span>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Base R summary command</span></span>
 <span id="cb20-2"><a href="#cb20-2"></a><span class="fu">summary</span>(quizzes<span class="sc">$</span>scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
@@ -2000,7 +2059,7 @@
 <section id="variance-population" class="slide level2">
 <h2>Variance (Population)</h2>
 <ul>
-<li>The <span class="hi">population variance <span class="math inline">\(\sigma^2)\)</span></span> of a <em>population</em> distribution measures the average of the <em>squared</em> deviations from the <em>population</em> mean <span class="math inline">\((\mu)\)</span></li>
+<li>The <span class="hi">population variance <span class="math inline">\(\sigma^2\)</span></span> of a <em>population</em> distribution measures the average of the <em>squared</em> deviations from the <em>population</em> mean <span class="math inline">\((\mu)\)</span></li>
 </ul>
 <p><span class="math display">\[\sigma^2 = \frac{1}{N}\displaystyle\sum^N_{i=1} (x_i-\mu)^2\]</span></p>
 <div class="fragment">
@@ -2188,6 +2247,7 @@
   <script src="2.1-slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="2.1-slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="2.1-slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="2.1-slides_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="2.1-slides_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -2209,7 +2269,8 @@
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -2380,7 +2441,7 @@
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,
