@@ -1017,8 +1017,9 @@
 </div>
 </div><div class="column" style="width:50%;">
 <ul>
-<li>Each .hi-purple[cell] can be referenced by its row and column (in that order!), <code>df[row,column]</code></li>
+<li>Each <span class="hi-purple">cell</span> can be referenced by its row and column (in that order!), <code>df[row,column]</code></li>
 </ul>
+<p><br></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>example[<span class="dv">3</span>,<span class="dv">2</span>] <span class="co"># value in row 3, column 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1028,6 +1029,7 @@
 1 Natalya</code></pre>
 </div>
 </div>
+<p><br></p>
 <ul>
 <li>Recall with <code>tidyverse</code> you can do this with <code>select()</code> and <code>filter()</code> or <code>slice()</code></li>
 </ul>
@@ -1127,9 +1129,9 @@
 </div><div class="column" style="width:50%;">
 <ul>
 <li><p><span class="hi">Cross-sectional data</span>: observations of individuals at a given point in time</p></li>
-<li><p>Each observation is a unique individual</p></li>
+<li><p>Each observation is a unique <span class="red">individual</span></p></li>
 </ul>
-<p><span class="math display">\[x_i\]</span></p>
+<p><span class="math display">\[x_{\color{#D7250E}{i}}\]</span></p>
 <ul>
 <li><p>Simplest and most common data</p></li>
 <li><p>A <span class="hi-purple">“snapshot”</span> to compare differences across individuals</p></li>
@@ -1192,9 +1194,9 @@
 </div><div class="column" style="width:50%;">
 <ul>
 <li><p><span class="hi">Time-series data</span>: observations of the <em>same</em> individual(s) over time</p></li>
-<li><p>Each observation is a time period</p></li>
+<li><p>Each observation is a <span class="blue">time period</span></p></li>
 </ul>
-<p><span class="math display">\[x_{t}\]</span></p>
+<p><span class="math display">\[x_{\color{#0047AB}{t}}\]</span></p>
 <ul>
 <li><p>Often used for macroeconomics, finance, and forecasting</p></li>
 <li><p>Unique challenges for time series</p></li>
@@ -1267,9 +1269,9 @@
 <ul>
 <li>Must be <em>same</em> individuals over time</li>
 </ul></li>
-<li>Each obs. is an individual in a time period</li>
+<li>Each obs. is an <span class="red">individual</span> in a <span class="blue">time period</span></li>
 </ul>
-<p><span class="math display">\[x_{it}\]</span></p>
+<p><span class="math display">\[x_{\color{#D7250E}{i}\color{#0047AB}{t}}\]</span></p>
 <ul>
 <li><p>More common today for serious researchers; unique challenges and benefits</p></li>
 <li><p>A <span class="hi-purple">combination</span> of “snapshot” comparisons over time</p></li>
@@ -1284,10 +1286,16 @@
 </section>
 <section id="variables-and-distributions" class="slide level2">
 <h2>Variables and Distributions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
-<li><p>Variables take on different values, we can describe a variable’s .hi[distribution] (of these values)</p></li>
+<li><p>Variables take on different values, we can describe a variable’s <span class="hi">distribution</span> (of these values)</p></li>
 <li><p>We want to <em>visualize</em> and <em>analyze</em> distributions to search for meaningful patterns using <strong>statistics</strong></p></li>
 </ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/statsgraphs.jpg"></p>
+</div>
+</div>
 </section>
 <section id="two-branches-of-statistics" class="slide level2">
 <h2>Two Branches of Statistics</h2>

@@ -664,11 +664,15 @@ example %>%
 :::
 
 ::: {.column width="50%"}
-- Each .hi-purple[cell] can be referenced by its row and column (in that order!), `df[row,column]`
+- Each [cell]{.hi-purple} can be referenced by its row and column (in that order!), `df[row,column]`
+
+<br>
 
 ```{r, echo=T}
 example[3,2] # value in row 3, column 2
 ```
+
+<br>
 
 - Recall with `tidyverse` you can do this with `select()` and `filter()` or `slice()`
 :::
@@ -709,8 +713,8 @@ knitr::kable(example, format="html")
 ::: {.column width="50%"}
 - [Cross-sectional data]{.hi}: observations of individuals at a given point in time
 
-- Each observation is a unique individual
-$$x_i$$
+- Each observation is a unique [individual]{.red}
+$$x_{\color{#D7250E}{i}}$$
 
 - Simplest and most common data 
 
@@ -735,10 +739,10 @@ knitr::kable(example.timeseries, format="html")
 :::
 
 ::: {.column width="50%"}
-- [Time-series data]{.hi}: observations of the *same* individual(s) over time 
+- [Time-series data]{.hi}: observations of the *same* individual(s) over time
 
-- Each observation is a time period
-$$x_{t}$$
+- Each observation is a [time period]{.blue}
+$$x_{\color{#0047AB}{t}}$$
 
 - Often used for macroeconomics, finance, and forecasting
 
@@ -768,8 +772,8 @@ knitr::kable(example.panel, format="html")
 - [Panel]{.hi}, or [longitudinal]{.hi} dataset: a time-series for *each* cross-sectional entity
   - Must be *same* individuals over time
 
-- Each obs. is an individual in a time period
-$$x_{it}$$
+- Each obs. is an [individual]{.red} in a [time period]{.blue}
+$$x_{\color{#D7250E}{i}\color{#0047AB}{t}}$$
 
 - More common today for serious researchers; unique challenges and benefits
 
@@ -782,9 +786,18 @@ $$x_{it}$$
 
 ## Variables and Distributions
 
-- Variables take on different values, we can describe a variable's .hi[distribution] (of these values)
+::: columns
+::: {.column width="50%"}
+- Variables take on different values, we can describe a variable's [distribution]{.hi} (of these values)
 
 - We want to *visualize* and *analyze* distributions to search for meaningful patterns using **statistics** 
+
+:::
+::: {.column width="50%"}
+![](images/statsgraphs.jpg)
+:::
+:::
+
 
 ## Two Branches of Statistics
 
