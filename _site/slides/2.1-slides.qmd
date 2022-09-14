@@ -1137,7 +1137,7 @@ $$\mu=\frac{x_1+x_2+...+x_N}{N} = \frac{1}{N} \sum^N_{i=1} x_i$$
 
 - For $N$ values of variable $x$, "mu" is the sum of all individual $x$ values $(x_i)$ from 1 to $N$, divided by the $N$ number of values^[Note the mean need not be an actual value of the data!]
 
-- See [today's appendix](/resources/appendix/2.1-appendix) for more about the [summation operator, $\displaystyle\sum$]{.hi-purple}, it'll come up again!
+- See [today's appendix](/resources/appendices/2.1-appendix) for more about the [summation operator, $\displaystyle\sum$]{.hi-purple}, it'll come up again!
 
 ## Arithmetic Mean (Sample)
 
