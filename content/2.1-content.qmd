@@ -12,6 +12,13 @@ source(here::here("slides", "slide-links.R"))
 *Wednesday, September 14, 2022*
 :::
 
+::: .{callout-warning}
+# Upcoming Assignment
+
+[Problem Set 1](/assignment/01-problem-set) is due on Wednesday September 21.
+:::
+
+
 ## <i class="fas fa-info-circle fa-lg"></i> Overview
 
 Today we begin with a review and overview of using data and descriptive statistics. We want to quantify characteristics about samples as *statistics*, which we will later use to *infer* things about populations (between which we will later *identify* causal relationships).
@@ -44,3 +51,9 @@ I suggest printing the slides beforehand and using them to take additional notes
 
 slide_links("2.1-slides")
 ```
+
+## <i class="fas fa-laptop-code"></i> Assignments
+
+### Problem Set 1 Due Wed Sep 21
+
+[Problem Set 1](/assignment/01-problem-set) is due by the end of the day Wednesday September 21 on Blackboard assignments.

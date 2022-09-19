@@ -52,8 +52,12 @@ website:
               href: content/1.4-content.qmd
             - text: "1.5 — Optimize Workflow"
               href: content/1.5-content.qmd
+        - section: "II. Linear Regression"
+          contents: 
             - text: "2.1 — Data 101 & Descriptive Statistics"
               href: content/2.1-content.qmd
+            - text: "2.2 — Random Variables & Distributions"
+              href: content/2.2-content.qmd
             
     - title: "Assignments"
       style: "docked"
@@ -117,7 +121,9 @@ website:
           contents:
           - href: resources/appendices/2.1-appendix.qmd
             text: "Appendix 2.1"
-          
+          - href: resources/appendices/2.2-appendix.qmd
+            text: "Appendix 2.2"
+            
   page-footer:
     left: |
       Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) <br>

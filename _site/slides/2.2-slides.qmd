@@ -1,0 +1,1251 @@
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    logo: "../images/metrics_hex.png"
+    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
+    height: 900
+    width: 1600
+    #df-print: paged
+    slide-number: c
+    chalkboard: true
+overview: true
+execute:
+  echo: false
+  warning: false
+  freeze: auto
+---
+
+##  {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
+
+[2.2 --- Random Variables & Distributions]{.custom-title}
+
+[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+
+[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
+
+[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(kableExtra)
+library(patchwork)
+library(fontawesome)
+library(gapminder)
+library(ggthemes)
+library(scales)
+knitr::opts_chunk$set(echo=F,
+                      message=F,
+                      warning=F)
+update_geom_defaults("label", list(family = "Fira Sans Condensed"))
+update_geom_defaults("text", list(family = "Fira Sans Condensed"))
+
+```
+
+## Contents {background-color="#314f4f"}
+
+[The Two Big Problems with Data](#the-two-big-problems-with-data)
+
+[Data 101](#data-101)
+
+[Descriptive Statistics](#descriptive-statistics)
+
+[Measures of Center](#measures-of-center)
+
+[Measures of Dispersion](#measures-of-dispersion)
+
+
+# Random Variables {background-color="#314f4f" .centered}
+
+## Experiments
+
+- An [experiment]{.hi-purple} is any procedure that can (in principle) be repeated infinitely and has a well-defined set of outcomes
+
+::: {.callout-tip}
+## Example
+Flip a coin 10 times.
+:::
+
+![](images/headsandtails.jpg){width="750" fig-align="center"}
+
+## Random Variables
+
+- A [random variable (RV)]{.hi-purple} takes on values that are unknown in advance, but determined by an experiment
+
+- A numerical summary of a random outcome
+
+::: {.callout-tip}
+## Example
+The number of heads from 10 coin flips
+:::
+
+![](images/headsandtails.jpg){width="750" fig-align="center"}
+
+## Random Variables: Notation
+
+- Random variable $X$ takes on individual values $(x_i)$ from a set of possible values
+
+- Often capital letters to denote RV's
+    - lowercase letters for individual values
+
+::: {.callout-tip}
+## Example
+Let $X$ be the number of Heads from 10 coin flips. $\quad x_i \in \{0, 1, 2,...,10\}$
+:::
+
+# Discrete Random Variables {background-color="#314f4f" .centered}
+
+## Discrete Random Variables
+
+::: columns
+::: {.column width="50%"}
+- A [discrete random variable]{.hi}: takes on a finite/countable set of possible values
+
+::: {.callout-tip}
+## Example
+Let $X$ be the number of times your computer crashes this semester^[Please, back up your files!], $x_i \in \{0, 1, 2, 3, 4\}$
+:::
+
+:::
+::: {.column width="50%"}
+![](images/bluescreen.jpg)
+:::
+:::
+
+## Discrete Random Variables: Probability Distribution
+
+::: columns
+::: {.column width="70%"}
+- [Probability distribution]{.hi} of a R.V. fully lists all the possible values of $X$ and their associated probabilities
+:::
+::: {.column width="30%"}
+
+| $x_i$  | $P(X=x_i)$ |
+|--------|------------|
+| 0      | 0.80       |
+| 1      | 0.10       |
+| 2      | 0.06       |
+| 3      | 0.03       |
+| 4      | 0.01       |
+
+:::
+:::
+
+## Discrete Random Variables: pdf
+
+::: columns
+::: {.column width="70%"}
+- [Probability distribution function (pdf)]{.hi} summarizes the possible outcomes of $X$ and their probabilities
+
+- Notation: $f_X$ is the pdf of $X$: 
+
+$$f_X=p_i, \quad i=1,2,...,k$$
+
+- For any real number $x_i$, $f(x_i)$ is the probablity that $X=x_i$
+
+:::
+::: {.column width="30%"}
+
+| $x_i$  | $P(X=x_i)$ |
+|--------|------------|
+| 0      | 0.80       |
+| 1      | 0.10       |
+| 2      | 0.06       |
+| 3      | 0.03       |
+| 4      | 0.01       |
+
+:::
+:::
+
+. . .
+
+- What is $f(0)$?
+
+. . .
+
+- What is $f(3)$?
+
+## Discrete Random Variables: pdf Graph
+
+::: {.panel-tabset}
+
+## Plot
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 10
+
+crashes <- tibble(number = c(0,1,2,3,4),
+                prob = c(0.80, 0.10, 0.06, 0.03, 0.01))
+
+ggplot(data = crashes)+
+  aes(x = number,
+      y = prob)+
+  geom_col(fill="#e64173")+
+  labs(x = "Number of Crashes",
+       y = "Probability")+
+  scale_y_continuous(breaks = seq(0,1,0.2),
+                     limits = c(0,1),
+                     expand = c(0,0))+
+    theme_classic(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+
+## Code
+
+```{r}
+#| echo: true
+#| eval: false
+
+crashes<-tibble(number = c(0,1,2,3,4),
+                prob = c(0.80, 0.10, 0.06, 0.03, 0.01))
+
+ggplot(data = crashes) +
+  aes(x = number,
+      y = prob)+
+  geom_col(fill = "#e64173") +
+  labs(x = "Number of Crashes",
+       y = "Probability") +
+  scale_y_continuous(breaks = seq(0,1,0.2),
+                     limits = c(0,1),
+                     expand = c(0,0))+
+  theme_classic(base_family = "Fira Sans Condensed",
+                base_size = 20)
+```
+:::
+
+## Discrete Random Variables: cdf
+
+::: columns
+::: {.column width="70%"}
+- [Cumulative distribution function (cdf)]{.hi} lists probability $X$ will be *at most* (less than or equal to) a given value $x_i$
+
+- Notation: $F_X=P(X \leq x_i)$
+
+:::
+::: {.column width="30%"}
+| $x_i$  | $f(x)$ | $F(x)$ |
+|--------|--------|--------|
+| 0      | 0.80   | 0.80   |
+| 1      | 0.10   | 0.90   |
+| 2      | 0.06   | 0.96   |
+| 3      | 0.03   | 0.99   |
+| 4      | 0.01   | 1.00   |
+
+:::
+:::
+
+. . . 
+
+- What is the probability your computer will crash *at most* once, $F(1)$?
+
+. . . 
+
+- What about three times, $F(3)$?
+
+## Discrete Random Variables: cdf Graph
+
+```{r}
+#| echo: true
+#| output-location: fragment
+crashes <- crashes %>%
+  mutate(cum_prob = cumsum(prob))
+
+crashes
+
+```
+
+## Discrete Random Variables: cdf Graph
+
+::: {.panel-tabset}
+
+## Plot
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| fig-width: 10
+
+ggplot(data = crashes) +
+  aes(x = number,
+      y = cum_prob) +
+  geom_col(fill="#e64173") +
+  labs(x = "Number of Crashes",
+       y = "Probability") +
+  scale_y_continuous(breaks = seq(0,1,0.2),
+                     limits = c(0,1),
+                     expand = c(0,0)) +
+  theme_classic(base_family = "Fira Sans Condensed",
+                base_size = 20)
+```
+
+## Code
+
+```{r}
+#| echo: true
+#| eval: false
+
+ggplot(data = crashes) +
+  aes(x = number,
+      y = cum_prob) +
+  geom_col(fill="#e64173") +
+  labs(x = "Number of Crashes",
+       y = "Probability") +
+  scale_y_continuous(breaks = seq(0,1,0.2),
+                     limits = c(0,1),
+                     expand = c(0,0)) +
+  theme_classic(base_family = "Fira Sans Condensed",
+                base_size = 20)
+```
+:::
+
+# Expected Value and Variance {background-color="#314f4f" .centered}
+
+## Expected Value of a Random Variable
+
+- [Expected value]{.hi} of a random variable $X$, written $\mathbb{E}(X)$ (and sometimes $\mu)$, is the long-run average value of $X$ "expected" after many repetitions
+
+$$\mathbb{E}(X)=\sum^k_{i=1} p_i x_i$$
+
+. . .
+
+- $\mathbb{E}(X)=p_1x_1+p_2x_2+ \cdots +p_kx_k$
+
+- A **probability-weighted average** of $X$, with each $x_i$ weighted by its associated probability $p_i$
+
+- Also called the ["mean"]{.hi} or ["expectation"]{.hi} of $X$, always denoted either $\mathbb{E}(X)$ or $\mu_X$
+
+## Expected Value: Example I
+
+::: {.callout-tip}
+## Example
+
+Suppose you lend your friend $100 at 10% interest. If the loan is repaid, you receive $110. You estimate that your friend is 99% likely to repay, but there is a default risk of 1% where you get nothing. What is the expected value of repayment?
+:::
+
+## Expected Value: Example II
+
+::: {.callout-tip}
+## Example
+
+Let $X$ be a random variable that is described by the following pdf:
+
+| $x_i$  | $P(X=x_i)$ |
+|--------|------------|
+| 1      | 0.50       |
+| 2      | 0.25       |
+| 3      | 0.15       |
+| 4      | 0.10       |
+
+Calculate $\mathbb{E}(X)$. 
+:::
+
+## The Steps to Calculate E(X), Coded
+
+```{r}
+#| echo: true
+# Make a Random Variable called X
+X <- tibble(x_i = c(1,2,3,4), # values of X
+            p_i = c(0.50,0.25,0.15,0.10)) # probabilities
+```
+
+. . .
+
+<br>
+```{r}
+#| echo: true
+#| output-location: fragment
+# Look at tibble
+X
+```
+
+. . .
+
+<br>
+
+```{r}
+#| echo: true
+#| output-location: fragment
+# Get expected value
+X %>%
+  summarize(expected_value = sum(x_i * p_i))
+```
+
+## Variance of a Random Variable
+
+- The [variance]{.hi} of a random variable $X$, denoted [$var(X)$]{.hi} or [$\sigma^2_X$]{.hi} is:
+
+$$\begin{align*}\sigma^2_X &= \mathbb{E}[(x_i-\mu_X)^2]\\
+&=\sum_{i=1}^n(x_i-\mu_X)^2p_i\\ \end{align*}$$
+
+- This is the [expected value of the squared deviations from the mean]{.hi-purple}
+    - i.e. the probability-weighted average of the squared deviations 
+
+## Standard Deviation of a Random Variable
+
+- The [standard deviation]{.hi} of a random variable $X$, denoted [$sd(X)$]{.hi} or [$\sigma_X$]{.hi} is:
+
+$$\sigma_X=\sqrt{\sigma_X^2}$$
+
+- This is the average or expected deviation from the mean
+
+## Standard Deviation: Example I
+
+::: {.callout-tip}
+## Example
+
+What is the standard deviation of computer crashes?
+
+
+| $x_i$  | $P(X=x_i)$ |
+|--------|------------|
+| 0      | 0.80       |
+| 1      | 0.10       |
+| 2      | 0.06       |
+| 3      | 0.03       |
+| 4      | 0.01       |
+
+:::
+
+## The Steps to Calculate sd(X), Coded I
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# get the expected value 
+crashes %>%
+  summarize(expected_value = sum(number*prob))
+
+```
+
+. . .
+
+<br>
+
+```{r}
+#| echo: true
+
+# save this for quick use
+exp_value <- 0.35
+```
+
+. . .
+
+<br>
+
+```{r}
+#| echo: true
+crashes_2 <- crashes %>%
+  select(-cum_prob) %>% # we don't need the cdf
+  # create new columns
+  mutate(deviations = number - exp_value, # deviations from exp_value
+         deviations_sq = deviations^2, # square deviations
+         weighted_devs_sq = prob * deviations_sq) # weight squared deviations by probability
+
+```
+
+## The Steps to Calculate sd(X), Coded II
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# look at what we made
+crashes_2
+```
+
+## The Steps to Calculate sd(X), Coded III
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+# now we want to take the expected value of the squared deviations to get variance
+crashes_2 %>%
+  summarize(variance = sum(weighted_devs_sq), # variance
+            sd = sqrt(variance)) # sd is square root of variance
+```
+
+## Standard Deviation: Example II
+
+::: {.callout-tip}
+## Example
+
+What is the standard deviation of the random variable we saw before?
+
+| $x_i$  | $P(X=x_i)$ |
+|--------|------------|
+| 1      | 0.50       |
+| 2      | 0.25       |
+| 3      | 0.15       |
+| 4      | 0.10       |
+
+Hint: you already found it's expected value.
+
+:::
+
+# Continuous Random Variables {background-color="#314f4f" .centered}
+
+## Continuous Random Variables
+
+
+::: columns
+::: {.column width="50%"}
+- [Continuous random variables]{.hi} can take on an uncountable (infinite) number of values
+
+- So many values that the probability of any specific value is infinitely small:
+$$P(X=x_i)\rightarrow 0$$
+
+- Instead, we focus on a *range* of values it might take on
+
+:::
+::: {.column width="50%"}
+![](images/continuous.png){width="750" fig-align="center"}
+:::
+:::
+
+## Continuous Random Variables: pdf I
+
+::: columns
+::: {.column width="50%"}
+- [Probability *density* function (pdf)]{.hi} of a continuous variable represents the probability between two values as the area under a curve
+
+- The total area under the curve is 1
+
+- Since $P(a)=0$ and $P(b)=0$, $P(a<X<b)=P(a \leq X \leq b)$
+
+- See [today's appendix](/resources/appendices/2.2-appendix) for how to graph math/stats functions in `ggplot`!
+
+:::
+::: {.column width="50%"}
+```{r}
+ggplot(data = tibble(x = -4:4)) +
+  aes(x = x) +
+  stat_function(fun = dnorm,
+                geom = "area",
+                size = 2,
+                fill = "gray",
+                alpha = 0.5) +
+  stat_function(fun = dnorm,
+                geom = "area",
+                xlim = c(0,2),
+                size = 2,
+                fill = "#e64173",
+                alpha = 1) +
+  labs(x = "X",
+       y = "Probability") +
+  scale_y_continuous(limits = c(0,0.4),
+                     expand = c(0,0)) +
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size = 20)
+```
+
+::: {.callout-tip}
+## Example
+$P(0 \leq X \leq 2)$
+:::
+
+:::
+:::
+
+## Continuous Random Variables: pdf II
+
+::: columns
+::: {.column width="50%"}
+
+- FYI using calculus:
+
+$$P(a \leq X \leq b) = \int_a^b f(x) dx $$
+
+- Complicated: software or (old fashioned!) probability tables to calculate
+
+:::
+::: {.column width="50%"}
+```{r}
+ggplot(data = tibble(x = -4:4)) +
+  aes(x = x) +
+  stat_function(fun = dnorm,
+                geom = "area",
+                size = 2,
+                fill = "gray",
+                alpha = 0.5) +
+  stat_function(fun = dnorm,
+                geom = "area",
+                xlim = c(0,2),
+                size = 2,
+                fill = "#e64173",
+                alpha = 1) +
+  labs(x = "X",
+       y = "Probability") +
+  scale_y_continuous(limits = c(0,0.4),
+                     expand = c(0,0)) +
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size = 20)
+```
+
+::: {.callout-tip}
+## Example
+$P(0 \leq X \leq 2)$
+:::
+
+:::
+:::
+
+## Continuous Random Variables: cdf I
+
+::: columns
+::: {.column width="50%"}
+
+- The [cumulative density function (cdf)]{.hi} describes the area under the pdf for all values less than or equal to (i.e. to the left of) a given value, $k$
+
+$$P(X \leq k)$$ 
+
+::: {.callout-tip}
+## Example
+$P(X \leq 2)$
+:::
+
+:::
+::: {.column width="50%"}
+
+```{r}
+ggplot(data = tibble(x=-4:4))+
+  aes(x = x)+
+  stat_function(fun = pnorm, size=2, color="blue")+
+  geom_segment(x = 2, xend = 2, y = 0, yend = pnorm(2), size = 1, linetype = "dashed")+
+  labs(x = "X",
+       y = "Probability")+
+  scale_y_continuous(limits = c(0,1.05),
+                     expand = c(0,0)) +
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size = 20)
+```
+
+```{r}
+ggplot(data = tibble(x = -4:4)) +
+  aes(x = x) +
+  stat_function(fun = dnorm,
+                geom = "area",
+                size = 2,
+                fill = "gray",
+                alpha = 0.5) +
+  stat_function(fun = dnorm,
+                geom = "area",
+                xlim = c(-4,2),
+                size = 2,
+                fill = "#e64173",
+                alpha = 1) +
+  labs(x = "X",
+       y = "Probability") +
+  scale_y_continuous(limits = c(0,0.4),
+                     expand = c(0,0)) +
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size = 20)
+```
+
+
+:::
+:::
+
+## Continuous Random Variables: cdf II
+
+::: columns
+::: {.column width="50%"}
+
+- Note: to find probability of values *greater* than or equal to (to the right of) a given value $k$:
+
+$$P(X \geq k)=1-P(X \leq k)$$
+
+::: {.callout-tip}
+## Example
+$P(X \geq 2) = 1 - P(X \leq 2)$
+:::
+
+$P(X \geq 2)=$ area under the pdf curve to the right of 2
+:::
+::: {.column width="50%"}
+
+```{r}
+ggplot(data = tibble(x=-4:4))+
+  aes(x = x)+
+  stat_function(fun = pnorm, size=2, color="blue")+
+  geom_segment(x = 2, xend = 2, y = 1, yend = pnorm(2), size = 1, color = "red")+
+  labs(x = "X",
+       y = "Probability")+
+  scale_y_continuous(limits = c(0,1.05),
+                     expand = c(0,0)) +
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size = 20)
+```
+
+```{r}
+ggplot(data = tibble(x = -4:4)) +
+  aes(x = x) +
+  stat_function(fun = dnorm,
+                geom = "area",
+                size = 2,
+                fill = "gray",
+                alpha = 0.5) +
+  stat_function(fun = dnorm,
+                geom = "area",
+                xlim = c(2,4),
+                size = 2,
+                fill = "#e64173",
+                alpha = 1) +
+  labs(x = "X",
+       y = "Probability") +
+  scale_y_continuous(limits = c(0,0.4),
+                     expand = c(0,0)) +
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size = 20)
+```
+
+
+:::
+:::
+
+# The Normal Distribution {background-color="#314f4f" .centered}
+
+## The Normal Distribution
+
+::: columns
+::: {.column width="50%"}
+- The [Gaussian]{.hi} or [normal distribution]{.hi} is the most useful type of probability distribution
+
+$$ X \sim N(\mu,\sigma)$$
+
+- “$X$ is distributed **N**ormally with mean $\mu$ and standard deviation $\sigma$”
+
+- Continuous, symmetric, unimodal
+
+:::
+::: {.column width="50%"}
+```{r}
+normal_pdf <- ggplot(data = tibble(x=-4:4))+
+  aes(x = x)+
+  stat_function(fun = dnorm, size=2, geom="area", fill="gray", alpha=0.5)+
+  scale_x_continuous(breaks=seq(-4,4,1))+
+  labs(x = "X",
+       y = "Probability")+
+  scale_y_continuous(limits = c(0,0.4),
+                     expand = c(0,0)) +
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size=20)
+normal_pdf
+```
+:::
+:::
+
+## The Normal Distribution: pdf
+
+::: columns
+::: {.column width="50%"}
+
+- FYI: The pdf of $X \sim N(\mu, \sigma)$ is 
+$$P(X=k)=	\frac{1}{\sqrt{2\pi \sigma^2}}e^{-\frac{1}{2}\big(\frac{(k-\mu)}{\sigma}\big)^2}$$
+
+- **Do not try and learn this**, we have software and (previously tables) to calculate pdfs and cdfs
+
+:::
+::: {.column width="50%"}
+```{r}
+normal_pdf
+```
+:::
+:::
+
+## The Standard Normal Distribution
+
+::: columns
+::: {.column width="50%"}
+
+- The [standard]{.hi-purple} normal distribution (often referred to as $Z$) has mean 0 and standard deviation 1
+
+$$Z \sim N(0,1)$$
+
+:::
+::: {.column width="50%"}
+```{r}
+normal_pdf
+```
+:::
+:::
+
+## The Standard Normal cdf
+
+::: columns
+::: {.column width="50%"}
+
+- The [standard]{.hi-purple} normal cdf, often referred to as $\Phi$:
+
+$$\Phi(k)=P(Z \leq k)$$
+(again, the area under the pdf curve to the left of some value $k$)
+
+:::
+::: {.column width="50%"}
+```{r}
+ggplot(data = tibble(x=-4:4))+
+  aes(x = x)+
+  stat_function(fun = pnorm, size=2, color="blue")+
+  labs(x = "X",
+       y = "Probability")+
+  scale_y_continuous(limits = c(0,1.05),
+                     expand = c(0,0)) +
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+:::
+:::
+
+## The 68-95-99.7 Empirical Rule
+
+::: columns
+::: {.column width="50%"}
+
+- [68-95-99.7% empirical rule]{.hi}: for a normal distribution:
+
+:::
+::: {.column width="50%"}
+```{r}
+normal_pdf
+```
+:::
+:::
+
+## The 68-95-99.7 Empirical Rule
+
+::: columns
+::: {.column width="50%"}
+
+- [68-95-99.7% empirical rule]{.hi}: for a normal distribution:
+
+- $P(\mu-1\sigma \leq X \leq \mu+1\sigma) \approx$ 68%
+
+:::
+::: {.column width="50%"}
+```{r}
+normal_pdf_68 <- normal_pdf +
+  stat_function(fun = dnorm, xlim = c(-1,1), size = 2, geom = "area", fill="#e64173", alpha = 0.75)+
+  annotate("segment", x = -1, xend = 1, y = 0.15, yend = 0.15, colour = "#000000", size=0.5, linetype = 2, alpha=1, arrow=arrow(length=unit(0.25,"cm"), ends="both", type="closed"))+
+  annotate("text", x = 0, y = 0.16, label = "68%", color="black")
+normal_pdf_68
+```
+:::
+:::
+
+## The 68-95-99.7 Empirical Rule
+
+::: columns
+::: {.column width="50%"}
+
+- [68-95-99.7% empirical rule]{.hi}: for a normal distribution:
+
+- $P(\mu-1\sigma \leq X \leq \mu+1\sigma) \approx$ 68%
+
+- $P(\mu-2\sigma \leq X \leq \mu+2\sigma) \approx$ 95%
+
+:::
+::: {.column width="50%"}
+```{r}
+normal_pdf_95 <- normal_pdf_68 +
+  stat_function(fun = dnorm, xlim = c(-2,2), size = 2, geom = "area", fill="#e64173", alpha = 0.5)+
+  annotate("text", x = 0, y = 0.11, label = "95%", color="black")+
+  annotate("segment", x = -2, xend = 2, y = 0.10, yend = 0.10, colour = "#000000", size=0.5, linetype = 2, alpha=1, arrow=arrow(length=unit(0.25,"cm"), ends="both", type="closed"))
+normal_pdf_95
+```
+:::
+:::
+
+
+## The 68-95-99.7 Empirical Rule
+
+::: columns
+::: {.column width="50%"}
+
+- [68-95-99.7% empirical rule]{.hi}: for a normal distribution:
+
+- $P(\mu-1\sigma \leq X \leq \mu+1\sigma) \approx$ 68%
+
+- $P(\mu-2\sigma \leq X \leq \mu+2\sigma) \approx$ 95%
+
+- $P(\mu-3\sigma \leq X \leq \mu+3\sigma) \approx$ 99.7%
+
+- **68/95/99.7%** of observations fall within **1/2/3 standard deviations** of the mean
+
+
+:::
+::: {.column width="50%"}
+```{r}
+normal_pdf_95 +
+  stat_function(fun = dnorm, xlim = c(-3,3), size = 2, geom = "area", fill="#e64173", alpha = 0.25)+
+  annotate("text", x = 0, y = 0.06, label = "99.7%", color="black")+
+    annotate("segment", x = -3, xend = 3, y = 0.05, yend = 0.05, colour = "#000000", size=0.5, linetype = 2, alpha=1, arrow=arrow(length=unit(0.25,"cm"), ends="both", type="closed"))
+```
+:::
+:::
+
+## Standardizing Normal Distributions
+
+::: columns
+::: {.column width="50%"}
+- We can take any normal distribution (for any $\mu, \sigma)$ and **standardize** it to the standard normal distribution by taking the [Z-score]{.hi} of any value, $x_i$:
+
+$$Z=\frac{x_i-\mu}{\sigma}$$
+
+- Subtract any value by the distribution's mean and divide by standard deviation
+
+- $Z$: number of standard deviations $x_i$ value is away from the mean
+
+:::
+::: {.column width="50%"}
+```{r}
+normal_pdf
+```
+:::
+:::
+
+## Standardizing Normal Distributions: Example I
+
+::: {.callout-tip}
+## Example
+On August 8, 2011, the Dow dropped 634.8 points, sending shock waves through the financial community. Assume that during mid-2011 to mid-2012 the daily change for the Dow is normally distributed, with the mean daily change of 1.87 points and a standard deviation of 155.28 points. What is the $Z$-score?
+:::
+
+. . .
+
+$$Z = \frac{X - \mu}{\sigma}$$
+
+. . .
+
+$$Z = \frac{634.8-1.87}{155.28}$$
+
+. . .
+
+$$Z = -4.1$$
+
+This is 4.1 standard deviations $(\sigma)$ beneath the mean, an *extremely* low probability event.  
+
+## Standardizing Normal Distributions: Example II
+
+::: {.callout-tip}
+## Example
+In the last quarter of 2021, a group of 64 mutual funds had a mean return of 2.4% with a standard deviation of 5.6%. These returns can be approximated by a normal distribution.
+
+What percent of the funds would you expect to be earning between -3.2% and 8.0% returns?
+
+:::
+
+. . .
+
+Convert to standard normal to find $Z$-scores for $8$ and $-3.2.$
+
+$$P(-3.2 < X < 8)$$
+
+. . .
+
+$$P(\frac{-3.2-2.4}{5.6} < \frac{X-2.4}{5.6} < \frac{8-2.4}{5.6})$$
+
+. . .
+
+$$P(-1 < Z < 1)$$
+
+. . . 
+
+$$P(X \pm 1\sigma)=0.68$$
+
+## Standardizing Normal Distributions: Example II
+
+```{r}
+#| fig-align: center
+#| fig-height: 3
+ggplot(data = tibble(x=seq(-20,24.8,5.6)))+
+  aes(x = x)+
+  stat_function(fun = dnorm, args=list(mean = 2.4, sd = 5.6), geom="area", size=2, fill="gray", alpha=0.5)+
+  stat_function(fun = dnorm, args=list(mean = 2.4, sd = 5.6), xlim=c(-3.2,8), geom="area", size=2, fill="#e64173")+
+  scale_x_continuous(breaks=seq(-20,24.8,5.6),
+                     labels=function(x){paste0(x,"%")})+
+  labs(x = "Mutual Funds Return (X)",
+       y = "Probability")+
+  scale_y_continuous(limits = c(0,0.075),
+                     expand = c(0,0)) +
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+
+. . . 
+
+```{r}
+#| fig-align: center
+#| fig-height: 3
+
+ggplot(data = tibble(x=seq(-4,4,1)))+
+  aes(x = x)+
+  stat_function(fun = dnorm, args=list(mean = 0, sd = 1), geom="area", size=2, fill="gray", alpha=0.5)+
+  stat_function(fun = dnorm, args=list(mean = 0, sd = 1), xlim=c(-1,1), geom="area", size=2, fill="#e64173")+
+  scale_x_continuous(breaks=seq(-4,4,1))+
+  labs(x = "Standard Deviations (Z)",
+       y = "Probability")+
+  scale_y_continuous(limits = c(0,0.4),
+                     expand = c(0,0)) +
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+
+## Standardizing Normal Distributions: Example III
+
+::: {.callout-tip}
+## Example
+
+In the last quarter of 2015, a group of 64 mutual funds had a mean return of 2.4% with a standard deviation of 5.6%. These returns can be approximated by a normal distribution.
+
+1. What percent of the funds would you expect to be earning between -3.2% and 8.0% returns?
+
+2. What percent of the funds would you expect to be earning 2.4% or less?
+
+3. What percent of the funds would you expect to be earning between -8.8% and 13.6%?
+
+4. What percent of the funds would you expect to be earning returns greater than 13.6%?
+:::
+
+## How do we *actually* find the probabilities for Z−scores?
+
+![](images/ztable.jpg){width="1600" fig-align="center"}
+
+## Finding Z-score Probabilities I
+
+::: columns
+::: {.column width="50%"}
+Probability to the **left** of $z_i$
+
+$$P(Z \leq z_i)= \underbrace{\Phi(z_i)}_{\text{cdf of }z_i}$$
+
+```{r}
+ggplot(data = tibble(x = -4:4)) +
+  aes(x = x) +
+  stat_function(fun = dnorm,
+                geom = "area",
+                size = 2,
+                fill = "gray",
+                alpha = 0.5) +
+  stat_function(fun = dnorm,
+                geom = "area",
+                xlim = c(-4,1),
+                size = 2,
+                fill = "#e64173",
+                alpha = 1) +
+  labs(x = "Z",
+       y = "Probability") +
+  scale_y_continuous(limits = c(0,0.4),
+                     expand = c(0,0)) +
+  scale_x_continuous(breaks=c(1),
+                      label=c(expression(z[i])))+
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size = 20)
+
+```
+:::
+::: {.column width="50%"}
+Probability to the **right** of $z_i$
+
+$$P(Z \geq z_i)= 1-\underbrace{\Phi(z_i)}_{\text{cdf of }z_i}$$
+
+```{r}
+ggplot(data = tibble(x = -4:4)) +
+  aes(x = x) +
+  stat_function(fun = dnorm,
+                geom = "area",
+                size = 2,
+                fill = "gray",
+                alpha = 0.5) +
+  stat_function(fun = dnorm,
+                geom = "area",
+                xlim = c(1,4),
+                size = 2,
+                fill = "#e64173",
+                alpha = 1) +
+  labs(x = "Z",
+       y = "Probability") +
+  scale_y_continuous(limits = c(0,0.4),
+                     expand = c(0,0)) +
+  scale_x_continuous(breaks=c(1),
+                      label=c(expression(z[i])))+
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size = 20)
+
+```
+
+:::
+:::
+
+
+## Finding Z-score Probabilities II
+
+Probability **between** $z_1$ and $z_2$
+
+$$P(z_1 \geq Z \geq z_2)= \underbrace{\Phi(z_2)}_{\text{cdf of }z_2} - \underbrace{\Phi(z_1)}_{\text{cdf of }z_1}$$
+
+```{r}
+#| fig-align: center
+ggplot(data = tibble(x = -4:4)) +
+  aes(x = x) +
+  stat_function(fun = dnorm,
+                geom = "area",
+                size = 2,
+                fill = "gray",
+                alpha = 0.5) +
+  stat_function(fun = dnorm,
+                geom = "area",
+                xlim = c(-1,1),
+                size = 2,
+                fill = "#e64173",
+                alpha = 1) +
+  labs(x = "Z",
+       y = "Probability") +
+  scale_y_continuous(limits = c(0,0.4),
+                     expand = c(0,0)) +
+  scale_x_continuous(breaks=c(-1,1),
+                      label=c(expression(z[1]), expression(z[2])))+
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size = 20)
+```
+
+## Finding Z-score Probabilities III
+
+::: columns
+::: {.column width="50%"}
+
+- `pnorm()` calculates `p`robabilities with a `norm`al distribution with arguments:
+  - `x = ` the value
+  - `mean = ` the mean
+  - `sd = ` the standard deviation
+  - `lower.tail = ` 
+      - `TRUE` if looking at area to *LEFT* of value
+      - `FALSE` if looking at area to *RIGHT* of value
+
+:::
+::: {.column width="50%"}
+```{r}
+normal_pdf
+```
+:::
+:::
+
+## Finding Z-score Probabilities IV
+
+::: columns
+::: {.column width="50%"}
+::: {.callout-tip}
+## Example
+Let the distribution of grades be normal, with mean 75 and standard deviation 10.
+:::
+
+- Probability a student gets **at least an 80**
+
+```{r}
+#| echo: true
+pnorm(80, 
+      mean = 75,
+      sd = 10,
+      lower.tail = FALSE) # looking to right
+```
+
+:::
+::: {.column width="50%"}
+```{r}
+ggplot(data = tibble(x=35:115))+
+  aes(x = x)+
+  stat_function(fun = dnorm, args=list(mean = 75, sd = 10), geom="area", size=2, fill="gray", alpha=0.5)+
+  stat_function(fun = dnorm, args=list(mean = 75, sd = 10), xlim=c(35, 80), geom="area", size=2, fill="#e64173")+
+  scale_x_continuous(breaks=seq(35,115,10))+
+  labs(x = "Grades (X)",
+       y = "Probability")+
+  scale_y_continuous(limits = c(0,0.045),
+                     expand = c(0,0)) +
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+:::
+:::
+
+## Finding Z-score Probabilities V
+
+::: columns
+::: {.column width="50%"}
+::: {.callout-tip}
+## Example
+Let the distribution of grades be normal, with mean 75 and standard deviation 10.
+:::
+
+- Probability a student gets **at most an 80**
+
+```{r}
+#| echo: true
+pnorm(80, 
+      mean = 75,
+      sd = 10,
+      lower.tail = TRUE) # looking to left
+```
+
+:::
+::: {.column width="50%"}
+```{r}
+ggplot(data = tibble(x=35:115))+
+  aes(x = x)+
+  stat_function(fun = dnorm, args=list(mean = 75, sd = 10), geom="area", size=2, fill="gray", alpha=0.5)+
+  stat_function(fun = dnorm, args=list(mean = 75, sd = 10), xlim=c(80, 115), geom="area", size=2, fill="#e64173")+
+  scale_x_continuous(breaks=seq(35,115,10))+
+  labs(x = "Grades (X)",
+       y = "Probability")+
+  scale_y_continuous(limits = c(0,0.045),
+                     expand = c(0,0)) +
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+:::
+:::
+
+## Finding Z-score Probabilities VI
+
+::: columns
+::: {.column width="50%"}
+::: {.callout-tip}
+## Example
+Let the distribution of grades be normal, with mean 75 and standard deviation 10.
+:::
+
+- Probability a student gets **between 65 and 85**
+
+```{r}
+#| echo: true
+# subtract two left tails!
+pnorm(85, # larger number first!
+      mean = 75,
+      sd = 10,
+      lower.tail = TRUE) - # looking to left, & SUBTRACT
+  pnorm(65, # smaller number second!
+        mean = 75,
+        sd = 10,
+        lower.tail = TRUE) #looking to left
+```
+
+:::
+::: {.column width="50%"}
+```{r}
+ggplot(data = tibble(x=35:115))+
+  aes(x = x)+
+  stat_function(fun = dnorm, args=list(mean = 75, sd = 10), geom="area", size=2, fill="gray", alpha=0.5)+
+  stat_function(fun = dnorm, args=list(mean = 75, sd = 10), xlim=c(65, 85), geom="area", size=2, fill="#e64173")+
+  scale_x_continuous(breaks=seq(35,115,10))+
+  labs(x = "Grades (X)",
+       y = "Probability")+
+  scale_y_continuous(limits = c(0,0.045),
+                     expand = c(0,0)) +
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+:::
+:::
