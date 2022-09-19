@@ -46,15 +46,15 @@ update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 
 ## Contents {background-color="#314f4f"}
 
-[The Two Big Problems with Data](#the-two-big-problems-with-data)
+[Random Variables](#random-variables)
 
-[Data 101](#data-101)
+[Discrete Random Variables](#discrete-random-variables)
 
-[Descriptive Statistics](#descriptive-statistics)
+[Expected Value and Variance](#expected-value-and-variance)
 
-[Measures of Center](#measures-of-center)
+[Continuous Random Variables](#continuous-random-variables)
 
-[Measures of Dispersion](#measures-of-dispersion)
+[The Normal Distribution](#the-normal-distribution)
 
 
 # Random Variables {background-color="#314f4f" .centered}
