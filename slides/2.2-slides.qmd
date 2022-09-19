@@ -1000,15 +1000,13 @@ ggplot(data = tibble(x=seq(-4,4,1)))+
 ::: {.callout-tip}
 ## Example
 
-In the last quarter of 2015, a group of 64 mutual funds had a mean return of 2.4% with a standard deviation of 5.6%. These returns can be approximated by a normal distribution.
+In the last quarter of 2021, a group of 64 mutual funds had a mean return of 2.4% with a standard deviation of 5.6%. These returns can be approximated by a normal distribution.
 
-1. What percent of the funds would you expect to be earning between -3.2% and 8.0% returns?
+1. What percent of the funds would you expect to be earning 2.4% or less?
 
-2. What percent of the funds would you expect to be earning 2.4% or less?
+2. What percent of the funds would you expect to be earning between -8.8% and 13.6%?
 
-3. What percent of the funds would you expect to be earning between -8.8% and 13.6%?
-
-4. What percent of the funds would you expect to be earning returns greater than 13.6%?
+3. What percent of the funds would you expect to be earning returns greater than 13.6%?
 :::
 
 ## How do we *actually* find the probabilities for Z−scores?
