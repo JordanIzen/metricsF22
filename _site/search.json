@@ -98,6 +98,55 @@
     "text": "Question 12\nLet’s just look only at the United States and see how it has fared in both measures of freedom over time. filter() the data to look only at the United States (its ISO is \"USA\"). Use both a geom_point() layer and a geom_path() layer, which will connect the dots over time. Let’s also see this by labeling the years with an additional layer geom_text_repel(aes(label = year))."
   },
   {
+    "objectID": "assignments/02-problem-set.html",
+    "href": "assignments/02-problem-set.html",
+    "title": "Problem Set 2",
+    "section": "",
+    "text": "Warning\n\n\n\nThis assignment is due by class on Wednesday September 28.\nPlease read the instructions for completing and submitting homeworks.\nPDF  R Project  R Studio Cloud\nThe  PDF is useful if you want to print out the problem set and write on it. The  R Project is a zipped .zip file which contains a  .qmd file to write answers in, and the data, all in a logical working directory. (See this resource for help unzipping files). You can also just write an .R file in the project if you don’t want to use markdown. If you use the  cloud project, I have already installed tidyverse and tinytex (to produce pdfs)."
+  },
+  {
+    "objectID": "assignments/02-problem-set.html#question-1",
+    "href": "assignments/02-problem-set.html#question-1",
+    "title": "Problem Set 2",
+    "section": "Question 1",
+    "text": "Question 1\nIn your own words, explain the difference between endogeneity and exogeneity."
+  },
+  {
+    "objectID": "assignments/02-problem-set.html#question-2",
+    "href": "assignments/02-problem-set.html#question-2",
+    "title": "Problem Set 2",
+    "section": "Question 2",
+    "text": "Question 2\n\nPart A\nIn your own words, explain what (sample) standard deviation means.\n\n\nPart B\nIn your own words, explain how (sample) standard deviation is calculated. You may also write the formula, but it is not necessary."
+  },
+  {
+    "objectID": "assignments/02-problem-set.html#question-3",
+    "href": "assignments/02-problem-set.html#question-3",
+    "title": "Problem Set 2",
+    "section": "Question 3",
+    "text": "Question 3\nSuppose you have a very small class of four students that all take a quiz. Their scores are reported as follows:\n\\[\\{83, 92, 72, 81\\}\\]\n\nPart A\nCalculate the median.\n\n\nPart B\nCalculate the sample mean, \\(\\bar{x}\\).\n\n\nPart C\nCalculate the sample standard deviation, \\(s\\).\n\n\nPart D\nMake or sketch a rough histogram of this data, with the size of each bin being 10 (i.e. 70’s, 80’s, 90’s, 100’s). You can draw this by hand or use R.\nIf you are using ggplot, you want to use + geom_histogram(breaks = seq(start,end,by)) and add another layer + scale_x_continuous(breaks=seq(start,end,by)) . The first layer creates bins in the histogram, and the second layer creates ticks on the x axis; both by creating a sequence starting at some starting value, some ending value, by a certain interval (e.g. by 2, or by 10).\n\nIs this distribution roughly symmetric or skewed? What would we expect about the mean and the median?\n\n\nPart E\nSuppose instead the person who got the 72 did not show up that day to class, and got a 0 instead. Recalculate the mean and median. What happened and why?"
+  },
+  {
+    "objectID": "assignments/02-problem-set.html#question-4",
+    "href": "assignments/02-problem-set.html#question-4",
+    "title": "Problem Set 2",
+    "section": "Question 4",
+    "text": "Question 4\nSuppose the probabilities of a visitor to Amazon’s website buying 0, 1, or 2 books are 0.2, 0.4, and 0.4 respectively.\n\nPart A\nCalculate the expected number of books a visitor will purchase.\n\n\nPart B\nCalculate the standard deviation of book purchases.\n\n\nPart C\nBonus: try doing this in R by making an initial dataframe of the data, and then making new columns to the “table” like we did in class."
+  },
+  {
+    "objectID": "assignments/02-problem-set.html#question-5",
+    "href": "assignments/02-problem-set.html#question-5",
+    "title": "Problem Set 2",
+    "section": "Question 5",
+    "text": "Question 5\nScores on the SAT (out of 1600) are approximately normally distributed with a mean of 500 and standard deviation of 100.\n\nPart A\nWhat is the probability of getting a score between a 400 and a 600?\n\n\nPart B\nWhat is the probability of getting a score between a 300 and a 700?\n\n\nPart C\nWhat is the probability of getting at least a 700?\n\n\nPart D\nWhat is the probability of getting at most a 700?\n\n\nPart E\nWhat is the probability of getting exactly a 500?"
+  },
+  {
+    "objectID": "assignments/02-problem-set.html#question-6",
+    "href": "assignments/02-problem-set.html#question-6",
+    "title": "Problem Set 2",
+    "section": "Question 6",
+    "text": "Question 6\nRedo problem 5 by using the pnorm() command in R.\nHint: This function has four arguments:\n\nthe value of the random variable\nthe mean of the distribution\nthe sd of the distribution\nlower.tail TRUE or FALSE."
+  },
+  {
     "objectID": "assignments/index.html",
     "href": "assignments/index.html",
     "title": "Assignment Details",

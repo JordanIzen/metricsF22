@@ -71,9 +71,11 @@ website:
             - text: "Instructions"
               href: assignments/problem-sets.qmd
             - text: "Preliminary Survey"
-              href: "assignments/00-preliminary-survey.qmd"
+              href: assignments/00-preliminary-survey.qmd
             - text: "Problem Set 1"
-              href: "assignments/01-problem-set.qmd"
+              href: assignments/01-problem-set.qmd
+            - text: "Problem Set 2"
+              href: assignments/02-problem-set.qmd
         - section: "Exams"
         - text: "Research Paper"
           href: assignments/paper.qmd

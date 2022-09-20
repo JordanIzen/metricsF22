@@ -1157,7 +1157,7 @@ pnorm(80,
 ggplot(data = tibble(x=35:115))+
   aes(x = x)+
   stat_function(fun = dnorm, args=list(mean = 75, sd = 10), geom="area", size=2, fill="gray", alpha=0.5)+
-  stat_function(fun = dnorm, args=list(mean = 75, sd = 10), xlim=c(35, 80), geom="area", size=2, fill="#e64173")+
+  stat_function(fun = dnorm, args=list(mean = 75, sd = 10), xlim=c(80, 115), geom="area", size=2, fill="#e64173")+
   scale_x_continuous(breaks=seq(35,115,10))+
   labs(x = "Grades (X)",
        y = "Probability")+
@@ -1194,7 +1194,7 @@ pnorm(80,
 ggplot(data = tibble(x=35:115))+
   aes(x = x)+
   stat_function(fun = dnorm, args=list(mean = 75, sd = 10), geom="area", size=2, fill="gray", alpha=0.5)+
-  stat_function(fun = dnorm, args=list(mean = 75, sd = 10), xlim=c(80, 115), geom="area", size=2, fill="#e64173")+
+  stat_function(fun = dnorm, args=list(mean = 75, sd = 10), xlim=c(35, 80), geom="area", size=2, fill="#e64173")+
   scale_x_continuous(breaks=seq(35,115,10))+
   labs(x = "Grades (X)",
        y = "Probability")+
@@ -1202,6 +1202,7 @@ ggplot(data = tibble(x=35:115))+
                      expand = c(0,0)) +
   theme_classic(base_family = "Fira Sans Condensed",
            base_size=20)
+
 ```
 :::
 :::
