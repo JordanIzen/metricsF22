@@ -937,6 +937,7 @@ scatter
 ## Class Size Scatterplot with Regression Line
 
 ```{r}
+#| echo: true
 #| code-fold: true
 #| fig-width: 14
 #| fig-align: center
