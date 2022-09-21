@@ -5,7 +5,8 @@ execute:
 page-layout: full
 ---
 
-```{r setup}
+```{r setup, echo = F, include = F}
+
 knitr::opts_chunk$set(echo = TRUE,
                       message = FALSE,
                       warning = FALSE)
@@ -18,11 +19,11 @@ There are several useful mathematical properties of expected value and variance.
 
 **Property 1**: the expected value of a constant is itself, and the variance of a constant is 0.
 
-$$\begin{align*}
+\begin{align*}
 E(c)&=c\\
 var(c)&=0\\
 sd(c)&=0\\
-\end{align*}$$
+\end{align*}
 
 For any constant, $c$
 
@@ -30,11 +31,11 @@ For any constant, $c$
 
 **Property 2**: adding or subtracting a constant to a random variable and then taking the mean or variance:
 
-$$\begin{align*}
+\begin{align*}
 E(X \pm c)&=E(X) \pm c\\
 var(X \pm c)&=X\\
 sd(X \pm c)&=X\\
-\end{align*}$$
+\end{align*}
 
 For any constant, $c$
 
@@ -42,11 +43,11 @@ For any constant, $c$
 
 **Property 3**: multiplying a constant to a random variable and then taking the mean or variance:
 
-$$\begin{align*}
+\begin{align*}
 E(aX)&=E(X) aE(X)\\
 var(aX)&=a^2var(X)\\
 sd(aX)&=|a|sd(X)\\
-\end{align*}$$
+\end{align*}
 
 For any constant, $a$
 
@@ -62,7 +63,7 @@ You can create custom mathematical functions using mosaic by defining an R `func
 
 ```{r}
 # store as a named function, I'll call it "my_function"
-my_function<-function(x){10*x-x^2}
+my_function <- function(x){10*x - x^2}
 
 # look at it
 my_function
@@ -86,7 +87,7 @@ my_function(2:7)
 # ALTERNATIVELY
 # define x first as a vector and then run function on it
 
-x<-c(2,4)
+x <- c(2,4)
 my_function(x)
 ```
 
@@ -97,14 +98,14 @@ In `ggplot` there is a dedicated `stat_function()` (equivalent to a `geom_` laye
 ```{r, fig.retina=3}
 library(tidyverse)
 # x values are integers 1 through 10
-ggplot(data = data.frame(x = 1:10))+
+ggplot(data = tibble(x = 1:10))+
   aes(x = x)
 ```
 
 Then we add the `stat_function`, where `fun =` is the most important argument where you define the to function to graph as your function created above, for example, our `my_function`. 
 
 ```{r, fig.retina=3}
-ggplot(data = data.frame(x = 1:10))+
+ggplot(data = tibble(x = 1:10))+
   aes(x = x)+
   stat_function(fun = my_function) 
 ```
@@ -112,9 +113,12 @@ ggplot(data = data.frame(x = 1:10))+
 You can also adjust things like size, color, and line type.
 
 ```{r, fig.retina=3}
-ggplot(data = data.frame(x = 1:10))+
+ggplot(data = tibble(x = 1:10))+
   aes(x = x)+
-  stat_function(fun = my_function, color = "blue", size = 2, linetype = "dashed") 
+  stat_function(fun = my_function,
+                color = "blue",
+                size = 2,
+                linetype = "dashed") 
 ```
 
 ### Bult-in Statistical Functions
@@ -180,27 +184,43 @@ qnorm(p = 0.38, # 38th percentile from a distribution where:
 You can also graph these commonly used statistical functions by setting `fun = ` the named functions in your `stat_function()` layer. If you want to specify the mean and standard deviation, use `args = list()` to include the required arguments from the named function above (e.g. `dnorm` needs `mean` and `sd`). 
 
 ```{r, fig.retina=3}
-ggplot(data = data.frame(x = -400:600))+
+ggplot(data = tibble(x = -400:600))+
   aes(x = x)+
-  stat_function(fun = dnorm, args = list(mean = 200, sd = 200), color = "blue", size = 2, linetype = "dashed") 
+  stat_function(fun = dnorm,
+                args = list(mean = 200, sd = 200),
+                color = "blue",
+                size = 2,
+                linetype = "dashed") 
 ```
 
 If you don't include this, it will graph the standard distribution:
 
 ```{r, fig.retina=3}
-ggplot(data = data.frame(x = -4:4))+
+ggplot(data = tibble(x = -4:4))+
   aes(x = x)+
-  stat_function(fun = dnorm, color = "blue", size = 2, linetype = "dashed") 
+  stat_function(fun = dnorm,
+                color = "blue",
+                size = 2,
+                linetype = "dashed") 
 ```
 
 To add shading under a distribution, simply add a duplicate of the `stat_function()` layer, but add `geom="area"` to indicate the area beneath the function should be filled, and you can limit the domain of the `fill` with `xlim=c(start,end)`, where `start` and `end` are the x-values for the endpoints of the `fill.`
 
 ```{r, fig.retina=3}
 # graph normal distribution and shade area between -2 and 2
-ggplot(data = data.frame(x = -4:4))+
+ggplot(data = tibble(x = -4:4))+
   aes(x = x)+
-  stat_function(fun = dnorm, color = "blue", size = 2, linetype = "dashed")+
-  stat_function(fun = dnorm, xlim = c(-2,2), geom = "area", fill = "green", alpha=0.5)
+  # graph the curve
+  stat_function(fun = dnorm,
+                color = "blue",
+                size = 2,
+                linetype = "dashed")+
+  # shade area under curve (between -2 and 2)
+  stat_function(fun = dnorm,
+                xlim = c(-2,2),
+                geom = "area",
+                fill = "green",
+                alpha = 0.5)
 ```
 
 Hence, here is one graph from my slides:
@@ -209,11 +229,22 @@ Hence, here is one graph from my slides:
 
 ggplot(data = tibble(x=35:115))+
   aes(x = x)+
-  stat_function(fun = dnorm, args = list(mean = 75, sd = 10), size = 2, color="blue")+
-  stat_function(fun = dnorm, args = list(mean = 75, sd = 10), geom = "area", xlim = c(65,85), fill="blue", alpha=0.5)+
+  stat_function(fun = dnorm,
+                args = list(mean = 75, sd = 10),
+                geom = "area",
+                size = 2,
+                fill = "gray",
+                alpha = 0.5)+
+  stat_function(fun = dnorm,
+                args = list(mean = 75, sd = 10),
+                geom = "area",
+                xlim = c(65,85),
+                fill = "#e64173")+
   labs(x = "X",
        y = "Probability")+
   scale_x_continuous(breaks = seq(35,115,5))+
+    scale_y_continuous(limits = c(0,0.045),
+                     expand = c(0,0))+
   theme_classic(base_family = "Fira Sans Condensed",
-           base_size=20)
+           base_size = 20)
 ```

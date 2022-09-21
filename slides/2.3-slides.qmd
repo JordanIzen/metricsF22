@@ -46,15 +46,15 @@ update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 
 ## Contents {background-color="#314f4f"}
 
-[The Two Big Problems with Data](#the-two-big-problems-with-data)
+[Exploring Relationships](#exploring-relationships)
 
-[Data 101](#data-101)
+[Quantifying Relationships](#quantifying-relationships)
 
-[Descriptive Statistics](#descriptive-statistics)
+[Linear Regression](#linear-regression)
 
-[Measures of Center](#measures-of-center)
+[Deriving OLS Estimators](#deriving-ols-estimators)
 
-[Measures of Dispersion](#measures-of-dispersion)
+[Our Class Size Example in R](#our-class-size-example-in-r)
 
 # Exploring Relationships {.centered background-color="#314f4f"}
 
@@ -256,10 +256,10 @@ $$r_{X,Y}=\frac{s_{X,Y}}{s_X s_Y}=\frac{cov(X,Y)}{sd(X)sd(Y)}$$
 
 . . .
 
-$$\begin{align*}
+\begin{align*}
 r&=\frac{1}{n-1}\sum^n_{i=1}\bigg(\frac{x_i-\bar{X}}{s_X}\bigg)\bigg(\frac{y_i-\bar{Y}}{s_Y}\bigg)\\
 r&=\frac{1}{n-1}\sum^n_{i=1}Z_XZ_Y\\
-\end{align*}$$
+\end{align*}
 
 ## Correlation: Interpretation
 
@@ -647,11 +647,11 @@ $$\Delta \text{test score} = \beta \times \Delta \text{class size}$$
 
 - Suppose $\beta=-0.6$. If we shrank class size by 2 students, our model predicts:
 
-$$\begin{align*}
+\begin{align*}
 	\Delta \text{test score} &= -2 \times \beta\\
 	\Delta \text{test score} &= -2 \times -0.6\\
 	\Delta \text{test score}&= 1.2	\\
-\end{align*}$$
+\end{align*}
 
 Test scores would improve by 1.2 points, *on average*.
 :::
@@ -698,9 +698,9 @@ $$\text{test score} = \beta_0 + \beta_1 \text{class size}+\text{other factors}$$
 :::
 :::
 
-## Econometric Models: Overview
+## Econometric Models: Overview I
 
-$$Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + u$$
+$$Y = \beta_0 + \beta_1 X + u$$
 
 . . .
 
@@ -709,16 +709,18 @@ $$Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + u$$
 
 . . .
 
-- $X_1$ and $X_2$ are [independent variables]{.hi}
-    - AKA “explanatory variables”, “regressors,” “Right-hand side (RHS) variables”, “covariates”
+- $X_1$ is an [independent variable]{.hi}
+    - AKA “explanatory variable”, “regressor,” “Right-hand side (RHS) variable”, “covariate”
 
 . . . 
 
 - Our data consists of a spreadsheet of observed values of $(X_{1i}, X_{2i}, Y_i)$
 
-. . .
+## Econometric Models: Overview II
 
-- To model, we [“regress Y on $X_1$ and $X_2$”]{.hi-turquoise}
+$$Y = \beta_0 + \beta_1 X + u$$
+
+- To model, we [“regress Y on $X_1$”]{.hi-turquoise}
 
 . . .
 
@@ -748,166 +750,114 @@ scatter
 :::
 :::
 
-# Deriving OLS Estimators
+# Deriving OLS Estimators {.centered background-color="#314f4f"}
 
-## Deriving OLS Estimators
-
-
-::: columns
-::: {.column width="50%"}
-- Suppose we have some data points
-
-:::
-::: {.column width="50%"}
-```{r,echo =F}
-
-x <- runif(25,0,10)
-e <- rnorm(25,0,1)
-y <- 2+0.5*x+e
-
-df <- tibble(x,y)
-p <- ggplot(df,
-       aes(x = x,
-           y = y))+
-  geom_point()+
-  scale_x_continuous(limits = c(0,10))+
-  scale_y_continuous(limits = c(0,10))+
-  #geom_smooth(method="lm")+
-  theme_void()
-
-p
-```
-
-:::
-:::
-
-## Deriving OLS Estimators
-
+## Actual, Predicted, and Residual Values
 
 ::: columns
 ::: {.column width="50%"}
-- Suppose we have some data points
-- We add a line
+
+- With a simple linear regression model, for each associated $X$ value, we have
+
+1. The [**observed**]{.blue} (or [**actual**]{.blue}) [**values**]{.blue} of $\color{#0047AB}{Y_i}$
 
 :::
 ::: {.column width="50%"}
-```{r,echo =F}
-p+geom_smooth(method="lm", se=F)
-```
-
-:::
-:::
-
-## Deriving OLS Estimators
-
-
-::: columns
-::: {.column width="50%"}
-- Suppose we have some data points
-- We add a line
-- The [residual]{.hi}, $\hat{u_i}$ of each data point is the difference between the [actual]{.hi-purple} and the [predicted]{.hi-purple} value of $Y$ given $X$: 
-
-$$\hat{u_i} = Y_i - \hat{Y_i}$$
-
-:::
-::: {.column width="50%"}
-```{r,echo =F}
+```{r}
 library(broom)
-reg <- lm(y ~ x, data = df)
+school_reg <- lm(testscr ~ str, data = ca_school)
+aug_reg <- school_reg %>% augment()
 
-reg_tidy <- tidy(reg)
-reg_aug <- augment(reg)
-
-p2 <- ggplot(reg_aug,
-       aes(x = x,
-           y = y))+
-  geom_point()+
-  geom_segment(aes(x=x, xend=x, y=y, yend=.fitted), color="red", linetype="dashed")+
-  geom_smooth(method="lm", se=F)+
-  scale_x_continuous(limits = c(0,10))+
-  scale_y_continuous(limits = c(0,10))+
-  theme_void()
-
-p2
+scatter
 ```
+:::
+:::
 
+## Actual, Predicted, and Residual Values
+
+::: columns
+::: {.column width="50%"}
+
+- With a simple linear regression model, for each associated $X$ value, we have
+
+1. The [**observed**]{.blue} (or [**actual**]{.blue}) [**values**]{.blue} of $\color{#0047AB}{Y_i}$
+2. [**Predicted**]{.green} (or [**fitted**]{.green}) [**values**]{.green}, $\color{#047806}{\hat{Y}_i}$
+
+:::
+::: {.column width="50%"}
+```{r}
+scatter +
+  geom_point(data = aug_reg, aes(x = str, y = .fitted), color = "#047806")
+```
+:::
+:::
+
+## Actual, Predicted, and Residual Values
+
+::: columns
+::: {.column width="50%"}
+
+- With a simple linear regression model, for each associated $X$ value, we have
+
+1. The [**observed**]{.blue} (or [**actual**]{.blue}) [**values**]{.blue} of $\color{#0047AB}{Y_i}$
+2. [**Predicted**]{.green} (or [**fitted**]{.green}) [**values**]{.green}, $\color{#047806}{\hat{Y}_i}$
+3. The [**residual**]{.red} (or [**error**]{.red}), $\color{#D7250E}{\hat{u}_i}=\color{#0047AB}{Y_i}-\color{#047806}{\hat{Y}_i}$ ... the difference between predicted and observed values
+
+\begin{align*}
+\color{#0047AB}{Y_i} &= \color{#047806}{\hat{Y}_i} + \color{#D7250E}{\hat{u}_i} \\
+\color{#0047AB}{\text{Observed}_i} &= \color{#047806}{\text{Model}_i} + \color{#D7250E}{\text{Error}_i} \\
+\end{align*}
+
+:::
+::: {.column width="50%"}
+```{r}
+scatter +
+  geom_point(data = aug_reg, aes(x = str, y = .fitted), color = "#047806")+
+  geom_segment(data = aug_reg, aes(x = str, xend = str, y = testscr, yend = .fitted), linetype = "dashed", color = "#D7250E")
+```
 :::
 :::
 
 ## Deriving OLS Estimators
 
-
 ::: columns
 ::: {.column width="50%"}
-- Suppose we have some data points
-- We add a line
-- The [residual]{.hi}, $\hat{u_i}$ of each data point is the difference between the [actual]{.hi-purple} and the [predicted]{.hi-purple} value of $Y$ given $X$: 
 
-$$\hat{u_i} = Y_i - \hat{Y_i}$$
-
-- We square each residual
-
+- Take the residuals $\color{#D7250E}{\hat{u}_i}$ and square them (why)?
 :::
 ::: {.column width="50%"}
-```{r,echo =F}
-p2+geom_rect(aes(xmin=x, xmax=x+.resid, ymin=y, ymax=y-.resid),alpha=0.25,color="red", fill="red", linetype="dashed")
+```{r}
+scatter +
+  geom_point(data = aug_reg, aes(x = str, y = .fitted), color = "#047806")+
+  geom_segment(data = aug_reg, aes(x = str, xend = str, y = testscr, yend = .fitted), linetype = "dashed", color = "#D7250E", alpha=0.05)+
+  geom_rect(data = aug_reg, aes(xmin = str, xmax = str + .resid, ymin = testscr, ymax = .fitted),alpha=0.01,color="red", fill="red", linetype="dashed")
 ```
-
 :::
 :::
 
 ## Deriving OLS Estimators
 
-
 ::: columns
 ::: {.column width="50%"}
-- Suppose we have some data points
-- We add a line
-- The [residual]{.hi}, $\hat{u_i}$ of each data point is the difference between the [actual]{.hi-purple} and the [predicted]{.hi-purple} value of $Y$ given $X$: 
 
-$$\hat{u_i} = Y_i - \hat{Y_i}$$
+- Take the residuals $\color{#D7250E}{\hat{u}_i}$ and square them (why)?
 
-- We square each residual, $\hat{u}_i^2$
-- Add them: [Sum of Squared Residuals (SSR)]{.hi}
+- [The regression line *minimizes* the sum of the squared residuals (SSR)]{.hi-purple}
 
-$$SSE = \sum^n_{i=1} \hat{u}_i^2$$
+$$SSR = \sum^n_{i=1} \color{#D7250E}{\hat{u}_i}^2$$
 
 :::
 ::: {.column width="50%"}
-```{r,echo =F}
-p2+geom_rect(aes(xmin=x, xmax=x+.resid, ymin=y, ymax=y-.resid),alpha=0.25,color="red", fill="red", linetype="dashed")
+```{r}
+scatter +
+  geom_point(data = aug_reg, aes(x = str, y = .fitted), color = "#047806")+
+  geom_segment(data = aug_reg, aes(x = str, xend = str, y = testscr, yend = .fitted), linetype = "dashed", color = "#D7250E", alpha=0.05)+
+  geom_rect(data = aug_reg, aes(xmin = str, xmax = str + .resid, ymin = testscr, ymax = .fitted),alpha=0.01,color="red", fill="red", linetype="dashed")
 ```
-
 :::
 :::
 
-## Deriving OLS Estimators
-
-
-::: columns
-::: {.column width="50%"}
-- Suppose we have some data points
-- We add a line
-- The [residual]{.hi}, $\hat{u_i}$ of each data point is the difference between the [actual]{.hi-purple} and the [predicted]{.hi-purple} value of $Y$ given $X$: 
-
-$$\hat{u_i} = Y_i - \hat{Y_i}$$
-
-- We square each residual, $\hat{u}_i^2$
-- Add them: [Sum of Squared Residuals (SSR)]{.hi}
-
-$$SSE = \sum^n_{i=1} \hat{u}_i^2$$
-- [The line of best fit *minimizes* SSE]{.hi-purple}
-
-:::
-::: {.column width="50%"}
-```{r,echo =F}
-p2+geom_rect(aes(xmin=x, xmax=x+.resid, ymin=y, ymax=y-.resid),alpha=0.25,color="red", fill="red", linetype="dashed")
-```
-
-:::
-:::
-
-## *O* rdinary *L* east *S* quares Estimators
+## *O*-rdinary *L*-east *S*-quares Estimators
 
 - The [Ordinary Least Squares (OLS) estimators]{.hi} of the unknown population parameters $\beta_0$ and $\beta_1$, solve the calculus problem:
 
@@ -915,7 +865,7 @@ $$\min_{\beta_0, \beta_1} \sum^n_{i=1}[\underbrace{Y_i-(\underbrace{\beta_0+\bet
 
 . . .
 
-- Intuitively, OLS estimators [minimize the average squared distance between the actual values $Y_i$ and the predicted values $\hat{Y_i}$ along the estimated regression line]{.hi-purple}
+- Intuitively, OLS estimators [minimize the sum of the squared residuals (distance between the actual values $Y_i$ and the predicted values $\hat{Y_i}$) along the estimated regression line]{.hi-purple}
 
 ## The OLS Regression Line
 
@@ -941,7 +891,7 @@ $$\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1}X_i$$
 
 . . .
 
-$$\hat{\beta}_0=\bar{Y}-\hat{\beta_1}\bar{X}$$
+$$\hat{\beta}_0=\bar{Y}-\hat{\beta}_1\bar{X}$$
 
 . . .
 
@@ -949,7 +899,23 @@ $$\hat{\beta}_1=\frac{\displaystyle\sum^n_{i=1}(X_i-\bar{X})(Y_i-\bar{Y})}{\disp
 
 . . .
 
-# Our Class Size Example in R
+## (Some) Properties of OLS
+
+1. The regression line goes through the “center of mass” point $(\bar{X},\bar{Y})$
+  - Again, $\hat{\beta}_0= \bar{Y}-\hat{\beta}_1 \bar{X}$
+
+2. The slope, $\hat{\beta}_1$ has the same sign as the correlation coefficient $r_{X,Y}$, and is related
+  $$\hat{\beta}_1=r\frac{s_Y}{s_X}$$
+
+3. The residuals sum and average to zero
+$$\begin{align*}
+\sum^n_{i=1} \hat{u}_i &= 0\\
+\mathbb{E}[\hat{u}] &= 0 \\
+\end{align*}$$
+
+4. The residuals and $X$ are uncorrelated
+
+# Our Class Size Example in R {.centered background-color="#314f4f"}
 
 ## Class Size Scatterplot (Again)
 
@@ -972,7 +938,8 @@ scatter
 
 ```{r}
 #| code-fold: true
-#| fig-width: 12
+#| fig-width: 14
+#| fig-align: center
 scatter+
   geom_smooth(method = "lm", color = "red")
 ```
@@ -1000,7 +967,7 @@ Format for regression is `lm(y ~ x, data = df)`
 
 - `df` is name of dataframe where data is stored
 
-This is `base R` (there's no good `tidyverse` way to do this yet...ish)
+This is `base R` (there's no good `tidyverse` way to do this yet...ish^[[`tidymodels`](https://www.tidymodels.org/) appears to be the new contender. It is used primarily for machine learning, but standardizes modeling, including OLS, in a tidy way. I think it's a bit unnecessary for us to use, for now.])
 
 :::
 :::
@@ -1133,10 +1100,10 @@ school_reg %>%
 ## Class Size Regression Result
 
 - Using OLS, we find:
-$$\widehat{\text{test score}_i}=689.9-2.28 \, str_i$$ 
+$$\widehat{\text{test score}_i}=689.93-2.28 \, str_i$$ 
 . . .
 
-- $\hat{\beta_0} = 689.9$: test score for $str=0$
+- $\hat{\beta_0} = 689.93$: test score for $str=0$
 
 . . .
 
@@ -1144,7 +1111,7 @@ $$\widehat{\text{test score}_i}=689.9-2.28 \, str_i$$
 
 . . .
 
-$$\text{test score}_i = 689.9 - 2.28 \, str_i + \hat{u}_i$$
+$$\text{test score}_i = 689.93 - 2.28 \, str_i + \hat{u}_i$$
 
 ## Class Size Regression Residuals
 
@@ -1155,7 +1122,7 @@ $$\text{test score}_i = 689.9 - 2.28 \, str_i + \hat{u}_i$$
 $$\hat{u}_i = \text{test score}_i - \widehat{\text{test score}}_i$$
 . . .
 
-$$\hat{u}_i = \text{test score}_i - (689.9-2.28 \, str_i)$$
+$$\hat{u}_i = \text{test score}_i - (689.93-2.28 \, str_i)$$
 
 ## Class Size Regression: Fitted and Residual Values
 
@@ -1275,11 +1242,120 @@ ggplot(data = ca_school,
 ```
 :::
 
-::: columns
-::: {.column width="50%"}
+## Making Predictions
 
-:::
-::: {.column width="50%"}
+- We can use the regression model to make a prediction for a particular $x_i$
 
+::: callout-tip
+## Example
+
+Suppose we have a school district with a student/teacher ratio of 18. What is the predicted average district test score?
 :::
-:::
+
+. . .
+
+\begin{align*}
+\widehat{\text{test score}_i} &= \hat{\beta_0}+\hat{\beta_1} \, \text{str}_i \\
+&= 698.93 - 2.28 (18)\\
+&= 657.89\\
+\end{align*}
+
+## Making Predictions In `R`
+
+- We can do this in `R` with the `predict()`^[See more options [here](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/predict.lm.html)] function, which requires (at least) two inputs:
+  1. An `lm` object (saved regression)
+  2. `newdata` with $X$ value(s) to predict $\hat{Y}$ for, as a `data.frame` (or `tibble`)
+
+. . .
+
+```{r}
+#| echo: true
+#| output-location: fragment
+some_district <- tibble(str = 18) # make a dataframe of "new data"'
+
+some_district # look at it just to see
+```
+
+<br>
+
+. . . 
+
+```{r}
+#| echo: true
+#| output-location: fragment
+predict(school_reg, # regression lm object
+        newdata = some_district) # a dataframe of new data)
+```
+
+## Making Predictions In `R`, Manually I
+
+- Of course we could do it ourselves...
+
+```{r}
+#| echo: true
+# save tidied regression
+
+tidy_reg <- tidy(school_reg)
+
+```
+
+. . .
+
+<br>
+
+```{r}
+#| echo: true
+#| output-location: fragment
+# look at it, again
+tidy_reg
+
+```
+
+## Making Predictions In `R`, Manually II
+
+- Of course we could do it ourselves...
+
+```{r}
+#| echo: true
+# extract and save beta_0
+beta_0 <- tidy_reg %>%
+  filter(term == "(Intercept)") %>%
+  pull(estimate)
+```
+
+<br>
+
+. . .
+
+```{r}
+#| echo: true
+#| output-location: fragment
+# check it 
+beta_0
+```
+
+## Making Predictions In `R`, Manually II
+
+- Of course we could do it ourselves...
+
+```{r}
+#| echo: true
+#| output-location: fragment
+# extract and save beta_1
+beta_1 <- tidy_reg %>%
+  filter(term == "str") %>%
+  pull(estimate)
+# check it
+beta_1
+```
+
+. . .
+
+<br>
+
+```{r}
+#| echo: true
+#| output-location: fragment
+# predict for str = 18
+beta_0 + beta_1 * 18
+```

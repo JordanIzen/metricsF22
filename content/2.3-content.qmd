@@ -1,0 +1,62 @@
+---
+title: "2.3 — Simple Linear Regression — Class Content"
+---
+
+```{r, echo = F}
+source(here::here("slides", "slide-links.R"))
+```
+
+::: {.callout-note appearance="minimal"}
+## Meeting Dates
+
+*Wednesday, September 21, 2022*
+:::
+
+::: {.callout-warning}
+## Upcoming Assignment
+
+[Problem Set 1](/assignment/01-problem-set) is due on Wednesday September 21.
+
+[Problem Set 2](/assignment/02-problem-set) is due on Wednesday September 28.
+:::
+
+## <i class="fas fa-info-circle fa-lg"></i> Overview
+
+Today we start looking at *associations* between variables, which we will first attempt to quantify with measures like *covariance* and *correlation*. Then we turn to fitting a line to data via *linear regression*. We overview the basic regression model, the parameters and how they are derived, and see how to work with regressions in `R` with `lm` and the tidyverse package [`broom`](https://broom.tidyverse.org/).
+
+We consider an extended example about class sizes and test scores, which comes from a (Stata) dataset from an old textbook that I used to use, [Stock and Watson, 2007](https://www.pearson.com/us/higher-education/product/Stock-Introduction-to-Econometrics-Update-3rd-Edition/9780133486872.html?tab=resources). Download and follow along with the data from today's example:^[Note this is a `.dta` Stata file. You will need to (install and) load the package `haven` to `read_dta()` Stata files into a dataframe.]
+
+- [<i class="fas fa-table"></i> `caschool.dta`](http://metricsf22.classes.ryansafner.com/files/data/caschool.dta)
+
+I have also made a RStudio Cloud project documenting all of the things we have been doing with this data that may help you when you start working with regressions (next class):
+
+- [<i class="fas fa-cloud"></i> Class Size Regression Analysis](https://rstudio.cloud/spaces/270168/content/4559643)
+
+## <i class="fas fa-book-reader fa-lg"></i> Readings
+
+- <i class="fas fa-book"></i> Ch. 3.1, Math and Probability Background Appendix A in Bailey
+
+Now that we return to the statistics, we will do a minimal overview of basic statistics and distributions. Review all of Bailey's appendices.
+
+Chapter 2 is optional, but will give you a good overview of using data.
+
+## <i class="fas fa-sigma"></i> Appendix
+
+See the online appendix for today's content:
+
+- [Variance](/resources/appendices/2.3-appendix.html#variance)
+- [Covariance](/resources/appendices/2.3-appendix.html#covariance)
+- [Correlation](/resources/appendices/2.3-appendix.html#correlation)
+
+## <i class="fas fa-chalkboard-teacher"></i> Slides
+
+Below, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.
+
+I suggest printing the slides beforehand and using them to take additional notes in class (*not everything* is in the slides)!
+
+```{r, eval = T}
+#| echo: false
+#| output: asis
+
+slide_links("2.3-slides")
+```

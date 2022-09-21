@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ECON 480 — Econometrics - 2.3 — Simple Linear Regression — Appendix</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../files/images/metrics_hex.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="ECON 480 — Econometrics - 2.3 — Simple Linear Regression — Appendix">
+<meta property="og:description" content="Recall the variance of a discrete random variable \(X\), denoted \(var(X)\) or \(\sigma^2\), is the expected value (probability-weighted average) of the squared deviations of \(X_i\) from it’s mean…">
+<meta property="og:site-name" content="ECON 480 — Econometrics">
+<meta name="twitter:title" content="ECON 480 — Econometrics - 2.3 — Simple Linear Regression — Appendix">
+<meta name="twitter:description" content="Recall the variance of a discrete random variable \(X\), denoted \(var(X)\) or \(\sigma^2\), is the expected value (probability-weighted average) of the squared deviations of \(X_i\) from it’s mean…">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <img src="../../files/images/metrics_hex.png" alt="">
+    <span class="navbar-title">ECON 480 — Econometrics</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus.html">Syllabus</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../schedule.html">Schedule</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/index.html">Content</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../assignments/index.html">Assignments</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../resources/index.html" aria-current="page">Resources</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://hoodcollegeeconomics.slack.com"><i class="bi bi-slack" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../rstudio.cloud"><i class="bi bi-cloud-fill" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">2.3 — Simple Linear Regression — Appendix</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Overview</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/index.html" class="sidebar-item-text sidebar-link">Resources</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Computing Guides</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/pdfs.html" class="sidebar-item-text sidebar-link">How to Make a PDF</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/zipping.html" class="sidebar-item-text sidebar-link">Zipping and Unzipping Files</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">R Resources</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/installing-r.html" class="sidebar-item-text sidebar-link">Installing R and R Studio</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/coding-style.html" class="sidebar-item-text sidebar-link">Suggested Code Style Guide</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Advice</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/tips.html" class="sidebar-item-text sidebar-link">Tips for Success</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/data.html" class="sidebar-item-text sidebar-link">Data Sources &amp; Suggestions</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/appendices.qmd" class="sidebar-item-text sidebar-link">Math &amp; R Appendices</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/statistics.html" class="sidebar-item-text sidebar-link">Statistics Guide</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Math &amp; Stats Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/appendices/2.1-appendix.html" class="sidebar-item-text sidebar-link">Appendix 2.1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/appendices/2.2-appendix.html" class="sidebar-item-text sidebar-link">Appendix 2.2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/appendices/2.3-appendix.html" class="sidebar-item-text sidebar-link active">Appendix 2.3</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#variance" id="toc-variance" class="nav-link active" data-scroll-target="#variance">Variance</a></li>
+  <li><a href="#covariance" id="toc-covariance" class="nav-link" data-scroll-target="#covariance">Covariance</a></li>
+  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation">Correlation</a>
+  <ul class="collapse">
+  <li><a href="#calculating-correlation-example" id="toc-calculating-correlation-example" class="nav-link" data-scroll-target="#calculating-correlation-example">Calculating Correlation Example</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">2.3 — Simple Linear Regression — Appendix</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="variance" class="level2">
+<h2 class="anchored" data-anchor-id="variance">Variance</h2>
+<p>Recall the variance of a <em>discrete</em> random variable <span class="math inline">\(X\)</span>, denoted <span class="math inline">\(var(X)\)</span> or <span class="math inline">\(\sigma^2\)</span>, is the expected value (probability-weighted average) of the squared deviations of <span class="math inline">\(X_i\)</span> from it’s mean (or expected value) <span class="math inline">\(\bar{X}\)</span> or <span class="math inline">\(E(X)\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><span class="math display">\[\begin{align*}
+\sigma_X^2&amp;=E(X-E(X))\\
+&amp;=\sum^n_{i=1} (X_i-\bar{X})^2 p_i
+\end{align*}\]</span></p>
+<p>Fpr <em>continuous</em> data (if all possible values of <span class="math inline">\(X_i\)</span> are equally likely or we don’t know the probabilities), we can write variance as a simple average of squared deviations from the mean:</p>
+<p><span class="math display">\[\begin{align*}
+\sigma_X^2&amp;=\frac{1}{n}\sum^n_{i=1}(X_i-\bar{X})^2  
+\end{align*}\]</span></p>
+<p>Variance has some useful properties:</p>
+<p><strong>Property 1</strong>: The variance of a constant is 0</p>
+<p><span class="math display">\[var(c)=0 \text{ iff } P(X=c)=1\]</span></p>
+<p>If a random variable takes the same value (e.g.&nbsp;2) with probability 1.00, <span class="math inline">\(E(2)=2\)</span>, so the average squared deviation from the mean is 0, because there are never any values other than 2.</p>
+<p><strong>Property 2</strong>: The variance is unchanged for a random variable plus/minus a constant</p>
+<p><span class="math display">\[var(X\pm c)\]</span></p>
+<p>Since the variance of a constant is 0.</p>
+<p><strong>Property 3</strong>: The variance of a scaled random variable is scaled by the square of the coefficient</p>
+<p><span class="math display">\[var(aX)=a^2var(X)\]</span></p>
+<p><strong>Property 4</strong>: The variance of a linear transformation of a random variable is scaled by the square of the coefficient</p>
+<p><span class="math display">\[var(aX+b)=a^2var(X)\]</span></p>
+</section>
+<section id="covariance" class="level2">
+<h2 class="anchored" data-anchor-id="covariance">Covariance</h2>
+<p>For two random variables, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, we can measure their <strong>covariance</strong> (denoted <span class="math inline">\(cov(X,Y)\)</span> or <span class="math inline">\(\sigma_{X,Y}\)</span>)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> to quantify how they vary <em>together</em>. A good way to think about this is: when <span class="math inline">\(X\)</span> is above its mean, would we expect <span class="math inline">\(Y\)</span> to also be above its mean (and covary positively), or below its mean (and covary negatively). Remember, this is describing the <em>joint</em> probability distribution for two random variables.</p>
+<p><span class="math display">\[\begin{align*}
+\sigma_{X,Y}&amp;=E\big[(X-\bar{X})(Y-\bar{Y})\big]
+\end{align*}\]</span></p>
+<p>Again, in the case of equally probable values for both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, covariance is sometimes written:</p>
+<p><span class="math display">\[\begin{align*}
+\sigma_{X,Y}&amp;=\frac{1}{N}\sum_{i=1}^n(X-\bar{X})(Y-\bar{Y})
+\end{align*}\]</span></p>
+<p>Covariance also has a number of useful properties:</p>
+<p><strong>Property 1</strong>: The covariance of a random variable <span class="math inline">\(X\)</span> and a constant <span class="math inline">\(c\)</span> is 0</p>
+<p><span class="math display">\[cov(X,c)=0\]</span></p>
+<p><strong>Property 2</strong>: The covariance of a random variable and itself is the variable’s variance</p>
+<p><span class="math display">\[\begin{align*}
+    cov(X,X)&amp;=var(X)\\
+    \sigma_{X,X}&amp;=\sigma^2_X\\
+    \end{align*}\]</span></p>
+<p><strong>Property 3</strong>: The covariance of a two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> each scaled by a constant <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> is the product of the covariance and the constants</p>
+<p><span class="math display">\[cov(aX,bY)=a\times b \times cov(X,Y)\]</span></p>
+<p><strong>Property 4</strong>: If two random variables are independent, their covariance is 0</p>
+<p><span class="math display">\[cov(X,Y)=0 \text{ iff } X \text{ and } Y \text{ are independent:}  E(XY)=E(X)\times E(Y)\]</span></p>
+</section>
+<section id="correlation" class="level2">
+<h2 class="anchored" data-anchor-id="correlation">Correlation</h2>
+<p>Covariance, like variance, is often cumbersome, and the numerical value of the covariance of two random variables does not really mean much. It is often convenient to normalize the covariance to a decimal between <span class="math inline">\(-1\)</span> and 1. We do this by dividing by the product of the standard deviations of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. This is known as the <strong>correlation coefficient</strong> between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, denoted <span class="math inline">\(corr(X,Y)\)</span> or <span class="math inline">\(\rho_{X,Y}\)</span> (for populations) or <span class="math inline">\(r_{X,Y}\)</span> (for samples):</p>
+<p><span class="math display">\[\begin{align*}  
+r_{X,Y}&amp;=\frac{cov(X,Y)}{sd(X)sd(Y)}\\
+&amp;=\frac{E\big[(X-\bar{X})(Y-\bar{Y})\big]}{\sqrt{E\big[X-\bar{X}\big]}\sqrt{E\big[Y-\bar{Y}\big]}}\\
+&amp;=\frac{\sigma_{X,Y}}{\sigma_X \sigma_Y}\\
+\end{align*}\]</span></p>
+<p>Note this also means that covariance is the product of the standard deviation of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and their correlation coefficient:</p>
+<p><span class="math display">\[\begin{align*}
+\sigma_{X,Y}&amp;=r_{X,Y}\sigma_X \sigma_Y  \\
+cov(X,Y)&amp;=corr(X,Y)\times sd(X) \times sd(Y)    \\
+\end{align*}\]</span></p>
+<p>Another way to reach the (sample) correlation coefficient is by finding the average joint <span class="math inline">\(Z\)</span>-score of each pair of <span class="math inline">\((X_i,Y_i)\)</span>:</p>
+<p><span class="math display">\[\begin{align*}
+r_{X,Y}&amp;=\frac{1}{n}\frac{\displaystyle\sum^n_{i=1}(X_i-\bar{X})(Y_i-\bar{Y}))}{s_X s_Y} &amp;&amp; \text{Definition of sample correlation}\\
+&amp;=\frac{1}{n}\displaystyle\sum^n_{i=1}\bigg(\frac{X_i-\bar{X}}{s_X}\bigg)\bigg(\frac{Y_i-\bar{Y}}{s_Y}\bigg) &amp;&amp; \text{Breaking into separate sums} \\
+&amp;=\frac{1}{n}\displaystyle\sum^n_{i=1}(Z_X)(Z_Y) &amp;&amp; \text{Recognize each sum is the z-score for that r.v.} \\
+\end{align*}\]</span></p>
+<p>Correlation has some useful properties that should be familiar to you:</p>
+<ul>
+<li>Correlation is between <span class="math inline">\(-1\)</span> and 1</li>
+<li>A correlation of -1 is a downward sloping straight line</li>
+<li>A correlation of 1 is an upward sloping straight line</li>
+<li>A correlation of 0 implies no relationship</li>
+</ul>
+<section id="calculating-correlation-example" class="level3">
+<h3 class="anchored" data-anchor-id="calculating-correlation-example">Calculating Correlation Example</h3>
+<p>We can calculate the correlation of a simple data set (of 4 observations) using <code>R</code> to show how correlation is calculated. We will use the <span class="math inline">\(Z\)</span>-score method. Begin with a simple set of data in <span class="math inline">\((X_i, Y_i)\)</span> points:</p>
+<p><span class="math display">\[ (1,1), (2,2), (3,4), (4,9) \]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>corr_example <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">9</span>))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> corr_example)<span class="sc">+</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> x,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> y)<span class="sc">+</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="2.3-appendix_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>corr_example <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_x =</span> <span class="fu">mean</span>(x), <span class="co">#find mean of x, its 2.5</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_x =</span> <span class="fu">sd</span>(x), <span class="co">#find sd of x, its 1.291</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_y =</span> <span class="fu">mean</span>(y), <span class="co">#find mean of y, its 4</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_y =</span> <span class="fu">sd</span>(y)) <span class="co">#find sd of y, its 3.559</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  mean_x  sd_x mean_y  sd_y
+   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+1    2.5  1.29      4  3.56</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#take z score of x,y for each pair and multiply them</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>corr_example <span class="ot">&lt;-</span> corr_example <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z_product =</span> ((x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">/</span><span class="fu">sd</span>(x)) <span class="sc">*</span> ((y <span class="sc">-</span> <span class="fu">mean</span>(y))<span class="sc">/</span><span class="fu">sd</span>(y)))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>corr_example <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_z_product =</span> <span class="fu">sum</span>(z_product)<span class="sc">/</span>(<span class="fu">n</span>() <span class="sc">-</span> <span class="dv">1</span>), <span class="co"># average z products over n-1</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">actual_corr =</span> <span class="fu">cor</span>(x,y), <span class="co">#compare our answer to actual cor() command!</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">covariance =</span> <span class="fu">cov</span>(x,y)) <span class="co"># just for kicks, what's the covariance? </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  avg_z_product actual_corr covariance
+          &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;
+1         0.943       0.943       4.33</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1" role="doc-endnote"><p>Note there will be a different in notation depending on whether we refer to a population (e.g.&nbsp;<span class="math inline">\(\mu_{X}\)</span>) or to a sample (e.g.&nbsp;<span class="math inline">\(\bar{X}\)</span>). As the overwhelming majority of cases we will deal with samples, I will use sample notation for means).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Again, to be technically correct, <span class="math inline">\(\sigma_{X,Y}\)</span> refers to populations, <span class="math inline">\(s_{X,Y}\)</span> refers to samples, in line with population vs.&nbsp;sample variance and standard deviation. Recall also that sample estimates of variance and standard deviation divide by <span class="math inline">\(n-1\)</span>, rather than <span class="math inline">\(n\)</span>. In large sample sizes, this difference is negligible.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2022 by <a href="https://www.ryansafner.com">Ryan Safner</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/ryansafner/metricsf22">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

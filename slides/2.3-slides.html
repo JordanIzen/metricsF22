@@ -396,11 +396,11 @@
 </section>
 <section id="contents" class="slide level2" data-background-color="#314f4f">
 <h2>Contents</h2>
-<p><a href="#/the-two-big-problems-with-data">The Two Big Problems with Data</a></p>
-<p><a href="#/data-101">Data 101</a></p>
-<p><a href="#/descriptive-statistics">Descriptive Statistics</a></p>
-<p><a href="#/measures-of-center">Measures of Center</a></p>
-<p><a href="#/measures-of-dispersion">Measures of Dispersion</a></p>
+<p><a href="#/exploring-relationships">Exploring Relationships</a></p>
+<p><a href="#/quantifying-relationships">Quantifying Relationships</a></p>
+<p><a href="#/linear-regression">Linear Regression</a></p>
+<p><a href="#/deriving-ols-estimators">Deriving OLS Estimators</a></p>
+<p><a href="#/our-class-size-example-in-r">Our Class Size Example in R</a></p>
 </section>
 <section>
 <section id="exploring-relationships" class="title-slide slide level1 centered center" data-background-color="#314f4f">
@@ -939,13 +939,11 @@ $ es_frac  &lt;dbl&gt; 0.01000000, 0.03583334, 0.29000002, 0.01000000, 0.1285767
 <ul>
 <li>Suppose <span class="math inline">\(\beta=-0.6\)</span>. If we shrank class size by 2 students, our model predicts:</li>
 </ul>
-<p>$$<span class="math display">\[\begin{align*}
-
-
+<p><span class="math display">\[\begin{align*}
     \Delta \text{test score} &amp;= -2 \times \beta\\
     \Delta \text{test score} &amp;= -2 \times -0.6\\
     \Delta \text{test score}&amp;= 1.2  \\
-\end{align*}\]</span>$$</p>
+\end{align*}\]</span></p>
 <p>Test scores would improve by 1.2 points, <em>on average</em>.</p>
 </div><div class="column" style="width:50%;">
 <p><img data-src="images/smallclass.jpg"></p>
@@ -986,9 +984,9 @@ $ es_frac  &lt;dbl&gt; 0.01000000, 0.03583334, 0.29000002, 0.01000000, 0.1285767
 </div>
 </div>
 </section>
-<section id="econometric-models-overview" class="slide level2">
-<h2>Econometric Models: Overview</h2>
-<p><span class="math display">\[Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + u\]</span></p>
+<section id="econometric-models-overview-i" class="slide level2">
+<h2>Econometric Models: Overview I</h2>
+<p><span class="math display">\[Y = \beta_0 + \beta_1 X + u\]</span></p>
 <div class="fragment">
 <ul>
 <li><span class="math inline">\(Y\)</span> is the <span class="hi">dependent variable</span> of interest
@@ -999,9 +997,9 @@ $ es_frac  &lt;dbl&gt; 0.01000000, 0.03583334, 0.29000002, 0.01000000, 0.1285767
 </div>
 <div class="fragment">
 <ul>
-<li><span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are <span class="hi">independent variables</span>
+<li><span class="math inline">\(X_1\)</span> is an <span class="hi">independent variable</span>
 <ul>
-<li>AKA “explanatory variables”, “regressors,” “Right-hand side (RHS) variables”, “covariates”</li>
+<li>AKA “explanatory variable”, “regressor,” “Right-hand side (RHS) variable”, “covariate”</li>
 </ul></li>
 </ul>
 </div>
@@ -1010,11 +1008,13 @@ $ es_frac  &lt;dbl&gt; 0.01000000, 0.03583334, 0.29000002, 0.01000000, 0.1285767
 <li>Our data consists of a spreadsheet of observed values of <span class="math inline">\((X_{1i}, X_{2i}, Y_i)\)</span></li>
 </ul>
 </div>
-<div class="fragment">
+</section>
+<section id="econometric-models-overview-ii" class="slide level2">
+<h2>Econometric Models: Overview II</h2>
+<p><span class="math display">\[Y = \beta_0 + \beta_1 X + u\]</span></p>
 <ul>
-<li>To model, we <span class="hi-turquoise">“regress Y on <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>”</span></li>
+<li>To model, we <span class="hi-turquoise">“regress Y on <span class="math inline">\(X_1\)</span>”</span></li>
 </ul>
-</div>
 <div class="fragment">
 <ul>
 <li><span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are <span class="hi-purple">parameters</span> that describe the population relationships between the variables
@@ -1051,17 +1051,20 @@ $ es_frac  &lt;dbl&gt; 0.01000000, 0.03583334, 0.29000002, 0.01000000, 0.1285767
 </div>
 </section></section>
 <section>
-<section id="deriving-ols-estimators" class="title-slide slide level1 center">
+<section id="deriving-ols-estimators" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>Deriving OLS Estimators</h1>
 
 </section>
-<section id="deriving-ols-estimators-1" class="slide level2">
-<h2>Deriving OLS Estimators</h2>
+<section id="actual-predicted-and-residual-values" class="slide level2">
+<h2>Actual, Predicted, and Residual Values</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>Suppose we have some data points</li>
+<li>With a simple linear regression model, for each associated <span class="math inline">\(X\)</span> value, we have</li>
 </ul>
+<ol type="1">
+<li>The <span class="blue"><strong>observed</strong></span> (or <span class="blue"><strong>actual</strong></span>) <span class="blue"><strong>values</strong></span> of <span class="math inline">\(\color{#0047AB}{Y_i}\)</span></li>
+</ol>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
@@ -1071,14 +1074,17 @@ $ es_frac  &lt;dbl&gt; 0.01000000, 0.03583334, 0.29000002, 0.01000000, 0.1285767
 </div>
 </div>
 </section>
-<section id="deriving-ols-estimators-2" class="slide level2">
-<h2>Deriving OLS Estimators</h2>
+<section id="actual-predicted-and-residual-values-1" class="slide level2">
+<h2>Actual, Predicted, and Residual Values</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>Suppose we have some data points</li>
-<li>We add a line</li>
+<li>With a simple linear regression model, for each associated <span class="math inline">\(X\)</span> value, we have</li>
 </ul>
+<ol type="1">
+<li>The <span class="blue"><strong>observed</strong></span> (or <span class="blue"><strong>actual</strong></span>) <span class="blue"><strong>values</strong></span> of <span class="math inline">\(\color{#0047AB}{Y_i}\)</span></li>
+<li><span class="green"><strong>Predicted</strong></span> (or <span class="green"><strong>fitted</strong></span>) <span class="green"><strong>values</strong></span>, <span class="math inline">\(\color{#047806}{\hat{Y}_i}\)</span></li>
+</ol>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
@@ -1088,16 +1094,22 @@ $ es_frac  &lt;dbl&gt; 0.01000000, 0.03583334, 0.29000002, 0.01000000, 0.1285767
 </div>
 </div>
 </section>
-<section id="deriving-ols-estimators-3" class="slide level2">
-<h2>Deriving OLS Estimators</h2>
+<section id="actual-predicted-and-residual-values-2" class="slide level2">
+<h2>Actual, Predicted, and Residual Values</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>Suppose we have some data points</li>
-<li>We add a line</li>
-<li>The <span class="hi">residual</span>, <span class="math inline">\(\hat{u_i}\)</span> of each data point is the difference between the <span class="hi-purple">actual</span> and the <span class="hi-purple">predicted</span> value of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>:</li>
+<li>With a simple linear regression model, for each associated <span class="math inline">\(X\)</span> value, we have</li>
 </ul>
-<p><span class="math display">\[\hat{u_i} = Y_i - \hat{Y_i}\]</span></p>
+<ol type="1">
+<li>The <span class="blue"><strong>observed</strong></span> (or <span class="blue"><strong>actual</strong></span>) <span class="blue"><strong>values</strong></span> of <span class="math inline">\(\color{#0047AB}{Y_i}\)</span></li>
+<li><span class="green"><strong>Predicted</strong></span> (or <span class="green"><strong>fitted</strong></span>) <span class="green"><strong>values</strong></span>, <span class="math inline">\(\color{#047806}{\hat{Y}_i}\)</span></li>
+<li>The <span class="red"><strong>residual</strong></span> (or <span class="red"><strong>error</strong></span>), <span class="math inline">\(\color{#D7250E}{\hat{u}_i}=\color{#0047AB}{Y_i}-\color{#047806}{\hat{Y}_i}\)</span> … the difference between predicted and observed values</li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+\color{#0047AB}{Y_i} &amp;= \color{#047806}{\hat{Y}_i} + \color{#D7250E}{\hat{u}_i} \\
+\color{#0047AB}{\text{Observed}_i} &amp;= \color{#047806}{\text{Model}_i} + \color{#D7250E}{\text{Error}_i} \\
+\end{align*}\]</span></p>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
@@ -1107,18 +1119,12 @@ $ es_frac  &lt;dbl&gt; 0.01000000, 0.03583334, 0.29000002, 0.01000000, 0.1285767
 </div>
 </div>
 </section>
-<section id="deriving-ols-estimators-4" class="slide level2">
+<section id="deriving-ols-estimators-1" class="slide level2">
 <h2>Deriving OLS Estimators</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>Suppose we have some data points</li>
-<li>We add a line</li>
-<li>The <span class="hi">residual</span>, <span class="math inline">\(\hat{u_i}\)</span> of each data point is the difference between the <span class="hi-purple">actual</span> and the <span class="hi-purple">predicted</span> value of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>:</li>
-</ul>
-<p><span class="math display">\[\hat{u_i} = Y_i - \hat{Y_i}\]</span></p>
-<ul>
-<li>We square each residual</li>
+<li>Take the residuals <span class="math inline">\(\color{#D7250E}{\hat{u}_i}\)</span> and square them (why)?</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -1129,21 +1135,15 @@ $ es_frac  &lt;dbl&gt; 0.01000000, 0.03583334, 0.29000002, 0.01000000, 0.1285767
 </div>
 </div>
 </section>
-<section id="deriving-ols-estimators-5" class="slide level2">
+<section id="deriving-ols-estimators-2" class="slide level2">
 <h2>Deriving OLS Estimators</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>Suppose we have some data points</li>
-<li>We add a line</li>
-<li>The <span class="hi">residual</span>, <span class="math inline">\(\hat{u_i}\)</span> of each data point is the difference between the <span class="hi-purple">actual</span> and the <span class="hi-purple">predicted</span> value of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>:</li>
+<li><p>Take the residuals <span class="math inline">\(\color{#D7250E}{\hat{u}_i}\)</span> and square them (why)?</p></li>
+<li><p><span class="hi-purple">The regression line <em>minimizes</em> the sum of the squared residuals (SSR)</span></p></li>
 </ul>
-<p><span class="math display">\[\hat{u_i} = Y_i - \hat{Y_i}\]</span></p>
-<ul>
-<li>We square each residual, <span class="math inline">\(\hat{u}_i^2\)</span></li>
-<li>Add them: <span class="hi">Sum of Squared Residuals (SSR)</span></li>
-</ul>
-<p><span class="math display">\[SSE = \sum^n_{i=1} \hat{u}_i^2\]</span></p>
+<p><span class="math display">\[SSR = \sum^n_{i=1} \color{#D7250E}{\hat{u}_i}^2\]</span></p>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
@@ -1153,42 +1153,15 @@ $ es_frac  &lt;dbl&gt; 0.01000000, 0.03583334, 0.29000002, 0.01000000, 0.1285767
 </div>
 </div>
 </section>
-<section id="deriving-ols-estimators-6" class="slide level2">
-<h2>Deriving OLS Estimators</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li>Suppose we have some data points</li>
-<li>We add a line</li>
-<li>The <span class="hi">residual</span>, <span class="math inline">\(\hat{u_i}\)</span> of each data point is the difference between the <span class="hi-purple">actual</span> and the <span class="hi-purple">predicted</span> value of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X\)</span>:</li>
-</ul>
-<p><span class="math display">\[\hat{u_i} = Y_i - \hat{Y_i}\]</span></p>
-<ul>
-<li>We square each residual, <span class="math inline">\(\hat{u}_i^2\)</span></li>
-<li>Add them: <span class="hi">Sum of Squared Residuals (SSR)</span></li>
-</ul>
-<p><span class="math display">\[SSE = \sum^n_{i=1} \hat{u}_i^2\]</span></p>
-<ul>
-<li><span class="hi-purple">The line of best fit <em>minimizes</em> SSE</span></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="2.3-slides_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
-</div>
-</div>
-</div>
-</div>
-</section>
 <section id="o-rdinary-l-east-s-quares-estimators" class="slide level2">
-<h2><em>O</em> rdinary <em>L</em> east <em>S</em> quares Estimators</h2>
+<h2><em>O</em>-rdinary <em>L</em>-east <em>S</em>-quares Estimators</h2>
 <ul>
 <li>The <span class="hi">Ordinary Least Squares (OLS) estimators</span> of the unknown population parameters <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>, solve the calculus problem:</li>
 </ul>
 <p><span class="math display">\[\min_{\beta_0, \beta_1} \sum^n_{i=1}[\underbrace{Y_i-(\underbrace{\beta_0+\beta_1 X_i}_{\hat{Y_i}})}_{\hat{u_i}}]^2\]</span></p>
 <div class="fragment">
 <ul>
-<li>Intuitively, OLS estimators <span class="hi-purple">minimize the average squared distance between the actual values <span class="math inline">\(Y_i\)</span> and the predicted values <span class="math inline">\(\hat{Y_i}\)</span> along the estimated regression line</span></li>
+<li>Intuitively, OLS estimators <span class="hi-purple">minimize the sum of the squared residuals (distance between the actual values <span class="math inline">\(Y_i\)</span> and the predicted values <span class="math inline">\(\hat{Y_i}\)</span>) along the estimated regression line</span></li>
 </ul>
 </div>
 </section>
@@ -1220,14 +1193,37 @@ $ es_frac  &lt;dbl&gt; 0.01000000, 0.03583334, 0.29000002, 0.01000000, 0.1285767
 <li>The solution to the SSE minimization problem yields:<sup>1</sup></li>
 </ul>
 <div class="fragment">
-<p><span class="math display">\[\hat{\beta}_0=\bar{Y}-\hat{\beta_1}\bar{X}\]</span></p>
+<p><span class="math display">\[\hat{\beta}_0=\bar{Y}-\hat{\beta}_1\bar{X}\]</span></p>
 </div>
 <div class="fragment">
 <p><span class="math display">\[\hat{\beta}_1=\frac{\displaystyle\sum^n_{i=1}(X_i-\bar{X})(Y_i-\bar{Y})}{\displaystyle\sum^n_{i=1}(X_i-\bar{X})^2}=\frac{s_{XY}}{s^2_X}= \frac{cov(X,Y)}{var(X)}\]</span></p>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn4" role="doc-endnote"><p>See <a href="/resources/appendices/2.4-appendix">next class’ appendix page</a> for proofs.</p></li></ol></aside></section></section>
+<aside><ol class="aside-footnotes"><li id="fn4" role="doc-endnote"><p>See <a href="/resources/appendices/2.4-appendix">next class’ appendix page</a> for proofs.</p></li></ol></aside></section>
+<section id="some-properties-of-ols" class="slide level2">
+<h2>(Some) Properties of OLS</h2>
+<ol type="1">
+<li>The regression line goes through the “center of mass” point <span class="math inline">\((\bar{X},\bar{Y})\)</span></li>
+</ol>
+<ul>
+<li>Again, <span class="math inline">\(\hat{\beta}_0= \bar{Y}-\hat{\beta}_1 \bar{X}\)</span></li>
+</ul>
+<ol start="2" type="1">
+<li>The slope, <span class="math inline">\(\hat{\beta}_1\)</span> has the same sign as the correlation coefficient <span class="math inline">\(r_{X,Y}\)</span>, and is related</li>
+</ol>
+<p><span class="math display">\[\hat{\beta}_1=r\frac{s_Y}{s_X}\]</span></p>
+<ol start="3" type="1">
+<li>The residuals sum and average to zero</li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+\sum^n_{i=1} \hat{u}_i &amp;= 0\\
+\mathbb{E}[\hat{u}] &amp;= 0 \\
+\end{align*}\]</span></p>
+<ol start="4" type="1">
+<li>The residuals and <span class="math inline">\(X\)</span> are uncorrelated</li>
+</ol>
+</section></section>
 <section>
-<section id="our-class-size-example-in-r" class="title-slide slide level1 center">
+<section id="our-class-size-example-in-r" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>Our Class Size Example in R</h1>
 
 </section>
@@ -1245,7 +1241,7 @@ $ es_frac  &lt;dbl&gt; 0.01000000, 0.03583334, 0.29000002, 0.01000000, 0.1285767
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="2.3-slides_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
+<p><img data-src="2.3-slides_files/figure-revealjs/unnamed-chunk-26-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1254,7 +1250,7 @@ $ es_frac  &lt;dbl&gt; 0.01000000, 0.03583334, 0.29000002, 0.01000000, 0.1285767
 <section id="class-size-scatterplot-with-regression-line" class="slide level2">
 <h2>Class Size Scatterplot with Regression Line</h2>
 
-<img data-src="2.3-slides_files/figure-revealjs/unnamed-chunk-28-1.png" width="1152" class="r-stretch"></section>
+<img data-src="2.3-slides_files/figure-revealjs/unnamed-chunk-27-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
 <section id="linear-regression-in-r-i" class="slide level2">
 <h2>Linear Regression in R I</h2>
 <div class="columns">
@@ -1272,10 +1268,10 @@ $ es_frac  &lt;dbl&gt; 0.01000000, 0.03583334, 0.29000002, 0.01000000, 0.1285767
 <li><p><code>x</code> is the independent variable</p></li>
 <li><p><code>df</code> is name of dataframe where data is stored</p></li>
 </ul>
-<p>This is <code>base R</code> (there’s no good <code>tidyverse</code> way to do this yet…ish)</p>
+<p>This is <code>base R</code> (there’s no good <code>tidyverse</code> way to do this yet…ish<sup>1</sup>)</p>
 </div>
 </div>
-</section>
+<aside><ol class="aside-footnotes"><li id="fn5" role="doc-endnote"><p><a href="https://www.tidymodels.org/"><code>tidymodels</code></a> appears to be the new contender. It is used primarily for machine learning, but standardizes modeling, including OLS, in a tidy way. I think it’s a bit unnecessary for us to use, for now.</p></li></ol></aside></section>
 <section id="linear-regression-in-r-ii" class="slide level2">
 <h2>Linear Regression in R II</h2>
 <div class="columns">
@@ -1477,10 +1473,10 @@ F-statistic: 22.58 on 1 and 418 DF,  p-value: 2.783e-06</code></pre>
 <ul>
 <li>Using OLS, we find:</li>
 </ul>
-<p><span class="math display">\[\widehat{\text{test score}_i}=689.9-2.28 \, str_i\]</span></p>
+<p><span class="math display">\[\widehat{\text{test score}_i}=689.93-2.28 \, str_i\]</span></p>
 <div class="fragment">
 <ul>
-<li><span class="math inline">\(\hat{\beta_0} = 689.9\)</span>: test score for <span class="math inline">\(str=0\)</span></li>
+<li><span class="math inline">\(\hat{\beta_0} = 689.93\)</span>: test score for <span class="math inline">\(str=0\)</span></li>
 </ul>
 </div>
 <div class="fragment">
@@ -1489,7 +1485,7 @@ F-statistic: 22.58 on 1 and 418 DF,  p-value: 2.783e-06</code></pre>
 </ul>
 </div>
 <div class="fragment">
-<p><span class="math display">\[\text{test score}_i = 689.9 - 2.28 \, str_i + \hat{u}_i\]</span></p>
+<p><span class="math display">\[\text{test score}_i = 689.93 - 2.28 \, str_i + \hat{u}_i\]</span></p>
 </div>
 </section>
 <section id="class-size-regression-residuals" class="slide level2">
@@ -1499,7 +1495,7 @@ F-statistic: 22.58 on 1 and 418 DF,  p-value: 2.783e-06</code></pre>
 <p><span class="math display">\[\hat{u}_i = \text{test score}_i - \widehat{\text{test score}}_i\]</span></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[\hat{u}_i = \text{test score}_i - (689.9-2.28 \, str_i)\]</span></p>
+<p><span class="math display">\[\hat{u}_i = \text{test score}_i - (689.93-2.28 \, str_i)\]</span></p>
 </div>
 </section>
 <section id="class-size-regression-fitted-and-residual-values" class="slide level2">
@@ -1584,29 +1580,168 @@ F-statistic: 22.58 on 1 and 418 DF,  p-value: 2.783e-06</code></pre>
 <div id="tabset-3-1">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="2.3-slides_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></p>
+<p><img data-src="2.3-slides_files/figure-revealjs/unnamed-chunk-39-1.png" width="960"></p>
 </div>
 </div>
 </div>
 <div id="tabset-3-2">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="2.3-slides_files/figure-revealjs/unnamed-chunk-41-1.png" width="960"></p>
+<p><img data-src="2.3-slides_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></p>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="columns">
-<div class="column" style="width:50%;">
-
-</div><div class="column" style="width:50%;">
-
+</section>
+<section id="making-predictions" class="slide level2">
+<h2>Making Predictions</h2>
+<ul>
+<li>We can use the regression model to make a prediction for a particular <span class="math inline">\(x_i\)</span></li>
+</ul>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<p>Suppose we have a school district with a student/teacher ratio of 18. What is the predicted average district test score?</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*}
+\widehat{\text{test score}_i} &amp;= \hat{\beta_0}+\hat{\beta_1} \, \text{str}_i \\
+&amp;= 698.93 - 2.28 (18)\\
+&amp;= 657.89\\
+\end{align*}\]</span></p>
+</div>
+</section>
+<section id="making-predictions-in-r" class="slide level2">
+<h2>Making Predictions In <code>R</code></h2>
+<ul>
+<li>We can do this in <code>R</code> with the <code>predict()</code><sup>1</sup> function, which requires (at least) two inputs:
+<ol type="1">
+<li>An <code>lm</code> object (saved regression)</li>
+<li><code>newdata</code> with <span class="math inline">\(X\)</span> value(s) to predict <span class="math inline">\(\hat{Y}\)</span> for, as a <code>data.frame</code> (or <code>tibble</code>)</li>
+</ol></li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>some_district <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">str =</span> <span class="dv">18</span>) <span class="co"># make a dataframe of "new data"'</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a></span>
+<span id="cb28-3"><a href="#cb28-3"></a>some_district <span class="co"># look at it just to see</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+    str
+  &lt;dbl&gt;
+1    18</code></pre>
+</div>
+</div>
+<p><br></p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">predict</span>(school_reg, <span class="co"># regression lm object</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>        <span class="at">newdata =</span> some_district) <span class="co"># a dataframe of new data)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code>       1 
+657.8964 </code></pre>
+</div>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn6" role="doc-endnote"><p>See more options <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/predict.lm.html">here</a></p></li></ol></aside></section>
+<section id="making-predictions-in-r-manually-i" class="slide level2">
+<h2>Making Predictions In <code>R</code>, Manually I</h2>
+<ul>
+<li>Of course we could do it ourselves…</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># save tidied regression</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a></span>
+<span id="cb32-3"><a href="#cb32-3"></a>tidy_reg <span class="ot">&lt;-</span> <span class="fu">tidy</span>(school_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># look at it, again</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>tidy_reg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  term        estimate std.error statistic   p.value
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)   699.       9.47      73.8  6.57e-242
+2 str            -2.28     0.480     -4.75 2.78e-  6</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="making-predictions-in-r-manually-ii" class="slide level2">
+<h2>Making Predictions In <code>R</code>, Manually II</h2>
+<ul>
+<li>Of course we could do it ourselves…</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># extract and save beta_0</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>beta_0 <span class="ot">&lt;-</span> tidy_reg <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"(Intercept)"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a>  <span class="fu">pull</span>(estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># check it </span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>beta_0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 698.933</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="making-predictions-in-r-manually-ii-1" class="slide level2">
+<h2>Making Predictions In <code>R</code>, Manually II</h2>
+<ul>
+<li>Of course we could do it ourselves…</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># extract and save beta_1</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>beta_1 <span class="ot">&lt;-</span> tidy_reg <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a>  <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"str"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb38-4"><a href="#cb38-4"></a>  <span class="fu">pull</span>(estimate)</span>
+<span id="cb38-5"><a href="#cb38-5"></a><span class="co"># check it</span></span>
+<span id="cb38-6"><a href="#cb38-6"></a>beta_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.279808</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># predict for str = 18</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a>beta_0 <span class="sc">+</span> beta_1 <span class="sc">*</span> <span class="dv">18</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 657.8964</code></pre>
 </div>
 </div>
 <p><img src="../images/metrics_hex.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p><a href="https://metricsF22.classes.ryansafner.com">ECON 480 — Econometrics</a></p>
+</div>
 </div>
 </section></section>
 
