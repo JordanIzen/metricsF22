@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ECON 480 — Econometrics - 2.4 — Goodness of Fit and Bias — Appendix</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../files/images/metrics_hex.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="ECON 480 — Econometrics - 2.4 — Goodness of Fit and Bias — Appendix">
+<meta property="og:description" content="The population linear regression model is:">
+<meta property="og:site-name" content="ECON 480 — Econometrics">
+<meta name="twitter:title" content="ECON 480 — Econometrics - 2.4 — Goodness of Fit and Bias — Appendix">
+<meta name="twitter:description" content="The population linear regression model is:">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <img src="../../files/images/metrics_hex.png" alt="">
+    <span class="navbar-title">ECON 480 — Econometrics</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../syllabus.html">Syllabus</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../schedule.html">Schedule</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../content/index.html">Content</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../assignments/index.html">Assignments</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../resources/index.html" aria-current="page">Resources</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://hoodcollegeeconomics.slack.com"><i class="bi bi-slack" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../rstudio.cloud"><i class="bi bi-cloud-fill" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">2.4 — Goodness of Fit and Bias — Appendix</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Overview</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/index.html" class="sidebar-item-text sidebar-link">Resources</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Computing Guides</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/pdfs.html" class="sidebar-item-text sidebar-link">How to Make a PDF</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/zipping.html" class="sidebar-item-text sidebar-link">Zipping and Unzipping Files</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">R Resources</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/installing-r.html" class="sidebar-item-text sidebar-link">Installing R and R Studio</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/coding-style.html" class="sidebar-item-text sidebar-link">Suggested Code Style Guide</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Advice</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/tips.html" class="sidebar-item-text sidebar-link">Tips for Success</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/data.html" class="sidebar-item-text sidebar-link">Data Sources &amp; Suggestions</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/appendices.qmd" class="sidebar-item-text sidebar-link">Math &amp; R Appendices</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/statistics.html" class="sidebar-item-text sidebar-link">Statistics Guide</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Math &amp; Stats Appendices</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/appendices/2.1-appendix.html" class="sidebar-item-text sidebar-link">Appendix 2.1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/appendices/2.2-appendix.html" class="sidebar-item-text sidebar-link">Appendix 2.2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/appendices/2.3-appendix.html" class="sidebar-item-text sidebar-link">Appendix 2.3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../resources/appendices/2.4-appendix.html" class="sidebar-item-text sidebar-link active">Appendix 2.4</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#deriving-the-ols-estimators" id="toc-deriving-the-ols-estimators" class="nav-link active" data-scroll-target="#deriving-the-ols-estimators">Deriving the OLS Estimators</a>
+  <ul class="collapse">
+  <li><a href="#finding-hatbeta_0" id="toc-finding-hatbeta_0" class="nav-link" data-scroll-target="#finding-hatbeta_0">Finding <span class="math inline">\(\hat{\beta_0}\)</span></a></li>
+  <li><a href="#finding-hatbeta_1" id="toc-finding-hatbeta_1" class="nav-link" data-scroll-target="#finding-hatbeta_1">Finding <span class="math inline">\(\hat{\beta_1}\)</span></a></li>
+  </ul></li>
+  <li><a href="#algebraic-properties-of-ols-estimators" id="toc-algebraic-properties-of-ols-estimators" class="nav-link" data-scroll-target="#algebraic-properties-of-ols-estimators">Algebraic Properties of OLS Estimators</a></li>
+  <li><a href="#bias-in-hatbeta_1" id="toc-bias-in-hatbeta_1" class="nav-link" data-scroll-target="#bias-in-hatbeta_1">Bias in <span class="math inline">\(\hat{\beta_1}\)</span></a></li>
+  <li><a href="#proof-of-the-unbiasedness-of-hatbeta_1" id="toc-proof-of-the-unbiasedness-of-hatbeta_1" class="nav-link" data-scroll-target="#proof-of-the-unbiasedness-of-hatbeta_1">Proof of the Unbiasedness of <span class="math inline">\(\hat{\beta_1}\)</span></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">2.4 — Goodness of Fit and Bias — Appendix</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="deriving-the-ols-estimators" class="level2">
+<h2 class="anchored" data-anchor-id="deriving-the-ols-estimators">Deriving the OLS Estimators</h2>
+<p>The population linear regression model is:</p>
+<p><span class="math display">\[Y_i=\beta_0+\beta_1 X_i + u _i\]</span></p>
+<p>The errors <span class="math inline">\((u_i)\)</span> are unobserved, but for candidate values of <span class="math inline">\(\hat{\beta_0}\)</span> and <span class="math inline">\(\hat{\beta_1}\)</span>, we can obtain an estimate of the residual. Algebraically, the error is:</p>
+<p><span class="math display">\[\hat{u_i}=    Y_i-\hat{\beta_0}-\hat{\beta_1}X_i\]</span></p>
+<p>Recall our goal is to find <span class="math inline">\(\hat{\beta_0}\)</span> and <span class="math inline">\(\hat{\beta_1}\)</span> that <em>minimizes</em> the sum of squared errors (SSE):</p>
+<p><span class="math display">\[SSE= \sum^n_{i=1} \hat{u_i}^2\]</span></p>
+<p>So our minimization problem is:</p>
+<p><span class="math display">\[\min_{\hat{\beta_0}, \hat{\beta_1}} \sum^n_{i=1} (Y_i-\hat{\beta_0}-\hat{\beta_1}X_i)^2\]</span></p>
+<p>Using calculus, we take the partial derivatives and set it equal to 0 to find a minimum. The first order conditions are:</p>
+<p><span class="math display">\[\begin{align*}
+\frac{\partial SSE}{\partial \hat{\beta_0}}&amp;=-2\displaystyle\sum^n_{i=1} (Y_i-\hat{\beta_0}-\hat{\beta_1} X_i)=0\\
+\frac{\partial SSE}{\partial \hat{\beta_1}}&amp;=-2\displaystyle\sum^n_{i=1} (Y_i-\hat{\beta_0}-\hat{\beta_1} X_i)X_i=0\\
+\end{align*}\]</span></p>
+<section id="finding-hatbeta_0" class="level3">
+<h3 class="anchored" data-anchor-id="finding-hatbeta_0">Finding <span class="math inline">\(\hat{\beta_0}\)</span></h3>
+<p>Working with the first FOC, divide both sides by <span class="math inline">\(-2\)</span>:</p>
+<p><span class="math display">\[\displaystyle\sum^n_{i=1} (Y_i-\hat{\beta_0}-\hat{\beta_1} X_i)=0\]</span></p>
+<p>Then expand the summation across all terms and divide by <span class="math inline">\(n\)</span>:</p>
+<p><span class="math display">\[\underbrace{\frac{1}{n}\sum^n_{i=1} Y_i}_{\bar{Y}}-\underbrace{\frac{1}{n}\sum^n_{i=1}\hat{\beta_0}}_{\hat{\beta_0}}-\underbrace{\frac{1}{n}\sum^n_{i=1} \hat{\beta_1} X_i}_{\hat{\beta_1}\bar{X}}=0\]</span></p>
+<p>Note the first term is <span class="math inline">\(\bar{Y}\)</span>, the second is <span class="math inline">\(\hat{\beta_0}\)</span>, the third is <span class="math inline">\(\hat{\beta_1}\bar{X}\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>So we can rewrite as:</p>
+<p><span class="math display">\[\bar{Y}-\hat{\beta_0}-\beta_1=0\]</span></p>
+<p>Rearranging:</p>
+<p><span class="math display">\[\hat{\beta_0}=\bar{Y}-\bar{X}\beta_1\]</span></p>
+</section>
+<section id="finding-hatbeta_1" class="level3">
+<h3 class="anchored" data-anchor-id="finding-hatbeta_1">Finding <span class="math inline">\(\hat{\beta_1}\)</span></h3>
+<p>To find <span class="math inline">\(\hat{\beta_1}\)</span>, take the second FOC and divide by <span class="math inline">\(-2\)</span>:</p>
+<p><span class="math display">\[\displaystyle\sum^n_{i=1} (Y_i-\hat{\beta_0}-\hat{\beta_1} X_i)X_i=0\]</span></p>
+<p>From the formula for <span class="math inline">\(\hat{\beta_0}\)</span>, substitute in for <span class="math inline">\(\hat{\beta_0}\)</span>:</p>
+<p><span class="math display">\[\displaystyle\sum^n_{i=1} \bigg(Y_i-[\bar{Y}-\hat{\beta_1}\bar{X}]-\hat{\beta_1} X_i\bigg)X_i=0\]</span></p>
+<p>Combining similar terms:</p>
+<p><span class="math display">\[\displaystyle\sum^n_{i=1} \bigg([Y_i-\bar{Y}]-[X_i-\bar{X}]\hat{\beta_1}\bigg)X_i=0\]</span></p>
+<p>Distribute <span class="math inline">\(X_i\)</span> and expand terms into the subtraction of two sums (and pull out <span class="math inline">\(\hat{\beta_1}\)</span> as a constant in the second sum:</p>
+<p><span class="math display">\[\displaystyle\sum^n_{i=1} [Y_i-\bar{Y}]X_i-\hat{\beta_1}\displaystyle\sum^n_{i=1}[X_i-\bar{X}]X_i=0\]</span></p>
+<p>Move the second term to the righthand side:</p>
+<p><span class="math display">\[\displaystyle\sum^n_{i=1} [Y_i-\bar{Y}]X_i=\hat{\beta_1}\displaystyle\sum^n_{i=1}[X_i-\bar{X}]X_i\]</span></p>
+<p>Divide to keep just <span class="math inline">\(\hat{\beta_1}\)</span> on the right:</p>
+<p><span class="math display">\[\frac{\displaystyle\sum^n_{i=1} [Y_i-\bar{Y}]X_i}{\displaystyle\sum^n_{i=1}[X_i-\bar{X}]X_i}=\hat{\beta_1}\]</span></p>
+<p>Note that from the <a href="https://metricsf19.classes.ryansafner.com/class/07-class/#the-summation-operatorproperties">rules about summation operators</a>:</p>
+<p><span class="math display">\[\displaystyle\sum^n_{i=1} [Y_i-\bar{Y}]X_i=\displaystyle\sum^n_{i=1} (Y_i-\bar{Y})(X_i-\bar{X})\]</span></p>
+<p>and:</p>
+<p><span class="math display">\[\displaystyle\sum^n_{i=1} [X_i-\bar{X}]X_i=\displaystyle\sum^n_{i=1} (X_i-\bar{X})(X_i-\bar{X})=\displaystyle\sum^n_{i=1}(X_i-\bar{X})^2\]</span></p>
+<p>Plug in these two facts:</p>
+<p><span class="math display">\[\frac{\displaystyle\sum^n_{i=1} (Y_i-\bar{Y})(X_i-\bar{X})}{\displaystyle\sum^n_{i=1}(X_i-\bar{X})^2}=\hat{\beta_1}\]</span></p>
+</section>
+</section>
+<section id="algebraic-properties-of-ols-estimators" class="level2">
+<h2 class="anchored" data-anchor-id="algebraic-properties-of-ols-estimators">Algebraic Properties of OLS Estimators</h2>
+<p>The OLS residuals <span class="math inline">\(\hat{u}\)</span> and predicted values <span class="math inline">\(\hat{Y}\)</span> are chosen by the minimization problem to satisfy:</p>
+<ol type="1">
+<li>The expected value (average) error is 0:</li>
+</ol>
+<p><span class="math display">\[E(u_i)=\frac{1}{n}\displaystyle \sum_{i=1}^n \hat{u_i}=0\]</span></p>
+<ol start="2" type="1">
+<li>The covariance between <span class="math inline">\(X\)</span> and the errors is 0:</li>
+</ol>
+<p><span class="math display">\[\hat{\sigma}_{X,u}=0\]</span></p>
+<p>Note the first two properties imply strict <strong>exogeneity</strong>. That is, this is only a valid model if <span class="math inline">\(X\)</span> and <span class="math inline">\(u\)</span> are not correlated.</p>
+<ol start="3" type="1">
+<li>The expected predicted value of <span class="math inline">\(Y\)</span> is equal to the expected value of <span class="math inline">\(Y\)</span>:</li>
+</ol>
+<p><span class="math display">\[\bar{\hat{Y}}=\frac{1}{n} \displaystyle\sum_{i=1}^n \hat{Y_i} = \bar{Y}\]</span></p>
+<ol start="4" type="1">
+<li>Total sum of squares is equal to the explained sum of squares plus sum of squared errors:</li>
+</ol>
+<p><span class="math display">\[\begin{align*}TSS&amp;=ESS+SSE\\
+\sum_{i=1}^n (Y_i-\bar{Y})^2&amp;=\sum_{i=1}^n (\hat{Y_i}-\bar{Y})^2 + \sum_{i=1}^n {u}^2\\
+\end{align*}\]</span></p>
+<p>Recall <span class="math inline">\(R^2\)</span> is <span class="math inline">\(\frac{ESS}{TSS}\)</span> or <span class="math inline">\(1-SSE\)</span></p>
+<ol start="5" type="1">
+<li>The regression line passes through the point <span class="math inline">\((\bar{X},\bar{Y})\)</span>, i.e.&nbsp;the mean of <span class="math inline">\(X\)</span> and the mean of <span class="math inline">\(Y\)</span>.</li>
+</ol>
+</section>
+<section id="bias-in-hatbeta_1" class="level2">
+<h2 class="anchored" data-anchor-id="bias-in-hatbeta_1">Bias in <span class="math inline">\(\hat{\beta_1}\)</span></h2>
+<p>Begin with the formula we derived for <span class="math inline">\(\hat{\beta_1}\)</span>:</p>
+<p><span class="math display">\[\hat{\beta_1}=\frac{\displaystyle \sum^n_{i=1} (Y_i-\bar{Y})(X_i-\bar{X})}{\displaystyle\sum^n_{i=1} (X_i-\bar{X})^2}\]</span></p>
+<p>Recall from <strong>Rule 6</strong> of summations, we can rewrite the numerator as</p>
+<p><span class="math display">\[\begin{align*}
+    =&amp;\displaystyle \sum^n_{i=1} (Y_i-\bar{Y})(X_i-\bar{X})\\
+    =&amp; \displaystyle \sum^n_{i=1} Y_i(X_i-\bar{X})\\
+\end{align*}\]</span></p>
+<p><span class="math display">\[\hat{\beta_1}=\frac{\displaystyle \sum^n_{i=1} Y_i(X_i-\bar{X})}{\displaystyle\sum^n_{i=1} (X_i-\bar{X})^2}\]</span></p>
+<p>We know the true population relationship is expressed as:</p>
+<p><span class="math display">\[Y_i=\beta_0+\beta_1 X_i+u_i\]</span></p>
+<p>Substituting this in for <span class="math inline">\(Y_i\)</span> in equation 2:</p>
+<p><span class="math display">\[\hat{\beta_1}=\frac{\displaystyle \sum^n_{i=1} (\beta_0+\beta_1X_i+u_i)(X_i-\bar{X})}{\displaystyle\sum^n_{i=1} (X_i-\bar{X})^2}\]</span></p>
+<p>Breaking apart the sums in the numerator:</p>
+<p><span class="math display">\[\hat{\beta_1}=\frac{\displaystyle \sum^n_{i=1} \beta_0(X_i-\bar{X})+\displaystyle \sum^n_{i=1} \beta_1X_i(X_i-\bar{X})+\displaystyle \sum^n_{i=1} u_i(X_i-\bar{X})}{\displaystyle\sum^n_{i=1} (X_i-\bar{X})^2}\]</span></p>
+<p>We can simplify equation 4 using <strong>Rules 4 and 5</strong> of summations</p>
+<ol type="1">
+<li>The first term in the numerator <span class="math inline">\(\left[\displaystyle \sum^n_{i=1} \beta_0(X_i-\bar{X})\right]\)</span> has the constant <span class="math inline">\(\beta_0\)</span>, which can be pulled out of the summation. This gives us the summation of deviations, which add up to 0 as per <strong>Rule 4</strong>:</li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+\displaystyle \sum^n_{i=1} \beta_0(X_i-\bar{X})&amp;= \beta_0 \displaystyle \sum^n_{i=1} (X_i-\bar{X})\\
+&amp;=\beta_0 (0)\\
+&amp;=0\\
+\end{align*}\]</span></p>
+<ol start="2" type="1">
+<li>The second term in the numerator <span class="math inline">\(\left[\displaystyle \sum^n_{i=1} \beta_1X_i(X_i-\bar{X})\right]\)</span> has the constant <span class="math inline">\(\beta_1\)</span>, which can be pulled out of the summation. Additionally, <strong>Rule 5</strong> tells us <span class="math inline">\(\displaystyle \sum^n_{i=1} X_i(X_i-\bar{X})=\displaystyle \sum^n_{i=1}(X_i-\bar{X})^2\)</span>:</li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+\displaystyle \sum^n_{i=1} \beta_1X_1(X_i-\bar{X})&amp;= \beta_1 \displaystyle \sum^n_{i=1} X_i(X_i-\bar{X})\\
+&amp;=\beta_1\displaystyle \sum^n_{i=1}(X_i-\bar{X})^2\\
+\end{align*}\]</span></p>
+<p>When placed back in the context of being the numerator of a fraction, we can see this term simplifies to just <span class="math inline">\(\beta_1\)</span>:</p>
+<p><span class="math display">\[\begin{align*}
+    \frac{\beta_1\displaystyle \sum^n_{i=1}(X_i-\bar{X})^2}{\displaystyle\sum^n_{i=1} (X_i-\bar{X})^2} &amp;=\frac{\beta_1}{1} \times \frac{\displaystyle \sum^n_{i=1}(X_i-\bar{X})^2}{\displaystyle\sum^n_{i=1} (X_i-\bar{X})^2}\\
+    &amp;=\beta_1   \\
+\end{align*}\]</span></p>
+<p>Thus, we are left with:</p>
+<p><span class="math display">\[\hat{\beta_1}=\beta_1+\frac{\displaystyle \sum^n_{i=1} u_i(X_i-\bar{X})}{\displaystyle\sum^n_{i=1} (X_i-\bar{X})^2}\]</span></p>
+<p>Now, take the expectation of both sides:</p>
+<p><span class="math display">\[E[\hat{\beta_1}]=E\left[\beta_1+\frac{\displaystyle \sum^n_{i=1} u_i(X_i-\bar{X})}{\displaystyle\sum^n_{i=1} (X_i-\bar{X})^2} \right]\]</span></p>
+<p>We can break this up, using properties of expectations. First, recall <span class="math inline">\(E[a+b]=E[a]+E[b]\)</span>, so we can break apart the two terms.</p>
+<p><span class="math display">\[E[\hat{\beta_1}]=E[\beta_1]+E\left[\frac{\displaystyle \sum^n_{i=1} u_i(X_i-\bar{X})}{\displaystyle\sum^n_{i=1} (X_i-\bar{X})^2} \right]\]</span></p>
+<p>Second, the true population value of <span class="math inline">\(\beta_1\)</span> is a constant, so <span class="math inline">\(E[\beta_1]=\beta_1\)</span>.</p>
+<p>Third, since we assume <span class="math inline">\(X\)</span> is also “fixed” and not random, the variance of <span class="math inline">\(X\)</span>, <span class="math inline">\(\displaystyle\sum_{i=1}^n (X_i-\bar{X})\)</span>, in the denominator, is just a constant, and can be brought outside the expectation.</p>
+<p><span class="math display">\[E[\hat{\beta_1}]=\beta_1+\frac{E\left[\displaystyle \sum^n_{i=1} u_i(X_i-\bar{X})\right]  }{\displaystyle\sum^n_{i=1} (X_i-\bar{X})^2}\]</span></p>
+<p>Thus, the properties of the equation are primarily driven by the expectation <span class="math inline">\(E\bigg[\displaystyle \sum^n_{i=1} u_i(X_i-\bar{X})\bigg]\)</span>. We now turn to this term.</p>
+<p>Use the property of summation operators to expand the numerator term:</p>
+<p><span class="math display">\[\begin{align*}
+    \hat{\beta_1}&amp;=\beta_1+\frac{\displaystyle \sum^n_{i=1} u_i(X_i-\bar{X})}{\displaystyle\sum^n_{i=1} (X_i-\bar{X})^2} \\
+        \hat{\beta_1}&amp;=\beta_1+\frac{\displaystyle \sum^n_{i=1} (u_i-\bar{u})(X_i-\bar{X})}{\displaystyle\sum^n_{i=1} (X_i-\bar{X})^2} \\
+\end{align*}\]</span></p>
+<p>Now divide the numerator and denominator of the second term by <span class="math inline">\(\frac{1}{n}\)</span>. Realize this gives us the covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(u\)</span> in the numerator and variance of <span class="math inline">\(X\)</span> in the denominator, based on their respective definitions.</p>
+<p><span class="math display">\[\begin{align*}
+    \hat{\beta_1}&amp;=\beta_1+\cfrac{\frac{1}{n}\displaystyle \sum^n_{i=1} (u_i-\bar{u})(X_i-\bar{X})}{\frac{1}{n}\displaystyle\sum^n_{i=1} (X_i-\bar{X})^2} \\
+    \hat{\beta_1}&amp;=\beta_1+\cfrac{cov(X,u)}{var(X)} \\
+    \hat{\beta_1}&amp;=\beta_1+\cfrac{s_{X,u}}{s_X^2} \\
+\end{align*}\]</span></p>
+<p>By the Zero Conditional Mean assumption of OLS, <span class="math inline">\(s_{X,u}=0\)</span>.</p>
+<p>Alternatively, we can express the bias in terms of correlation instead of covariance:</p>
+<p><span class="math display">\[E[\hat{\beta_1}]=\beta_1+\cfrac{cov(X,u)}{var(X)}\]</span></p>
+<p>From the definition of correlation:</p>
+<p><span class="math display">\[\begin{align*}
+     cor(X,u)&amp;=\frac{cov(X,u)}{s_X s_u}\\
+     cor(X,u)s_Xs_u &amp;=cov(X,u)\\
+\end{align*}\]</span></p>
+<p>Plugging this in:</p>
+<p><span class="math display">\[\begin{align*}
+E[\hat{\beta_1}]&amp;=\beta_1+\frac{cov(X,u)}{var(X)} \\
+E[\hat{\beta_1}]&amp;=\beta_1+\frac{\big[cor(X,u)s_xs_u\big]}{s^2_X} \\
+E[\hat{\beta_1}]&amp;=\beta_1+\frac{cor(X,u)s_u}{s_X} \\
+E[\hat{\beta_1}]&amp;=\beta_1+cor(X,u)\frac{s_u}{s_X} \\
+\end{align*}\]</span></p>
+</section>
+<section id="proof-of-the-unbiasedness-of-hatbeta_1" class="level2">
+<h2 class="anchored" data-anchor-id="proof-of-the-unbiasedness-of-hatbeta_1">Proof of the Unbiasedness of <span class="math inline">\(\hat{\beta_1}\)</span></h2>
+<p>Begin with equation:<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><span class="math display">\[\hat{\beta_1}=\frac{\sum Y_iX_i}{\sum X_i^2}\]</span></p>
+<p>Substitute for <span class="math inline">\(Y_i\)</span>:</p>
+<p><span class="math display">\[\hat{\beta_1}=\frac{\sum (\beta_1 X_i+u_i)X_i}{\sum X_i^2}\]</span></p>
+<p>Distribute <span class="math inline">\(X_i\)</span> in the numerator:</p>
+<p><span class="math display">\[\hat{\beta_1}=\frac{\sum \beta_1 X_i^2+u_iX_i}{\sum X_i^2}\]</span></p>
+<p>Separate the sum into additive pieces:</p>
+<p><span class="math display">\[\hat{\beta_1}=\frac{\sum \beta_1 X_i^2}{\sum X_i^2}+\frac{u_i X_i}{\sum X_i^2}\]</span></p>
+<p><span class="math inline">\(\beta_1\)</span> is constant, so we can pull it out of the first sum:</p>
+<p><span class="math display">\[\hat{\beta_1}=\beta_1 \frac{\sum X_i^2}{\sum X_i^2}+\frac{u_i X_i}{\sum X_i^2}\]</span></p>
+<p>Simplifying the first term, we are left with:</p>
+<p><span class="math display">\[\hat{\beta_1}=\beta_1 +\frac{u_i X_i}{\sum X_i^2}\]</span></p>
+<p>Now if we take expectations of both sides:</p>
+<p><span class="math display">\[E[\hat{\beta_1}]=E[\beta_1] +E\left[\frac{u_i X_i}{\sum X_i^2}\right]\]</span></p>
+<p><span class="math inline">\(\beta_1\)</span> is a constant, so the expectation of <span class="math inline">\(\beta_1\)</span> is itself.</p>
+<p><span class="math display">\[E[\hat{\beta_1}]=\beta_1 +E\bigg[\frac{u_i X_i}{\sum X_i^2}\bigg]\]</span></p>
+<p>Using the properties of expectations, we can pull out <span class="math inline">\(\frac{1}{\sum X_i^2}\)</span> as a constant:</p>
+<p><span class="math display">\[E[\hat{\beta_1}]=\beta_1 +\frac{1}{\sum X_i^2} E\bigg[\sum u_i X_i\bigg]\]</span></p>
+<p>Again using the properties of expectations, we can put the expectation inside the summation operator (the expectation of a sum is the sum of expectations):</p>
+<p><span class="math display">\[E[\hat{\beta_1}]=\beta_1 +\frac{1}{\sum X_i^2}\sum E[u_i X_i]\]</span></p>
+<p>Under the exogeneity condition, the correlation between <span class="math inline">\(X_i\)</span> and <span class="math inline">\(u_i\)</span> is 0.</p>
+<p><span class="math display">\[E[\hat{\beta_1}]=\beta_1\]</span></p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1" role="doc-endnote"><p>From the <a href="../../resources/appendices/2.1-appendix/#the-summation-operator">rules about summation operators</a>, we define the mean of a random variable <span class="math inline">\(X\)</span> as <span class="math inline">\(\bar{X}=\frac{1}{n}\displaystyle\sum_{i=1}^n X_i\)</span>. The mean of a constant, like <span class="math inline">\(\beta_0\)</span> or <span class="math inline">\(\beta_1\)</span> is itself.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Admittedly, this is a simplified version where <span class="math inline">\(\hat{\beta_0}=0\)</span>, but there is no loss of generality in the results.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2022 by <a href="https://www.ryansafner.com">Ryan Safner</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/ryansafner/metricsf22">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

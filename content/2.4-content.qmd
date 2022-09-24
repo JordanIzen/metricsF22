@@ -1,0 +1,55 @@
+---
+title: "2.4 — Goodness of Fit and Bias — Class Content"
+---
+
+```{r, echo = F}
+source(here::here("slides", "slide-links.R"))
+```
+
+::: {.callout-note appearance="minimal"}
+## Meeting Dates
+
+*Monday, September 26, 2022*
+:::
+
+## <i class="fas fa-info-circle fa-lg"></i> Overview
+
+Today we continue looking at basic OLS regression. We will cover how to measure if a regression line is a good fit (using $R^2$ and $\sigma_u$ or SER), and whether OLS estimators are *biased*. These will depend on four critical *assumptions about $u$.* 
+
+In doing so, we begin an ongoing exploration into inferential statistics, which will finally become clear in another week. The most confusing part is recognizing that there is a *sampling distribution of each OLS estimator*. We want to measure the center of that sampling distribution, to see if the estimator is *biased*. Next class we will measure the spread of that distribution. 
+
+We continue our extended example about class sizes and test scores, which comes from a (Stata) dataset from an old textbook that I used to use, [Stock and Watson, 2007](https://www.pearson.com/us/higher-education/product/Stock-Introduction-to-Econometrics-Update-3rd-Edition/9780133486872.html?tab=resources). Download and follow along with the data from today's example:[^1]
+
+[^1]: Note this is a `.dta` Stata file. You will need to (install and) load the package `haven` to `read_dta()` Stata files into a dataframe.
+
+-   [<i class="fas fa-table"></i> `caschool.dta`](http://metricsf22.classes.ryansafner.com/files/data/caschool.dta)
+
+I have also made a RStudio Cloud project documenting all of the things we have been doing with this data that may help you when you start working with regressions (next class):
+
+-   [<i class="fas fa-cloud"></i> Class Size Regression Analysis](https://rstudio.cloud/spaces/270168/content/4559643)
+
+## <i class="fas fa-book-reader fa-lg"></i> Readings
+
+-   <i class="fas fa-book"></i> Ch. 3.2-3.4, 3.7-3.8 in Bailey, *Real Econometrics*
+
+## <i class="fas fa-sigma"></i> Appendix
+
+See the online appendix for today's content:
+
+- [Deriving the OLS Estimators](/resources/appendices/2.4-appendix.html#deriving-the-ols-estimators)
+- [Bias in $\hat{\beta_1}$](/resources/appendices/2.4-appendix.html#bias-in-hatbeta_1)
+- [Proof of the Unbiasedness of
+ $\hat{\beta_1}$](/resources/appendices/2.4-appendix.html#proof-of-the-unbiasedness-of-hatbeta_1)
+
+## <i class="fas fa-chalkboard-teacher"></i> Slides
+
+Below, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.
+
+I suggest printing the slides beforehand and using them to take additional notes in class (*not everything* is in the slides)!
+
+```{r, eval = T}
+#| echo: false
+#| output: asis
+
+slide_links("2.4-slides")
+```

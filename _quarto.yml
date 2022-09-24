@@ -60,7 +60,10 @@ website:
               href: content/2.2-content.qmd
             - text: "2.3 — Simple Linear Regression"
               href: content/2.3-content.qmd
-            
+            - text: "2.4 — Goodness of Fit and Bias"
+              href: content/2.4-content.qmd
+            - text: "2.5 — Precision and Diagnostics"
+              href: content/2.5-content.qmd
     - title: "Assignments"
       style: "docked"
       search: false
@@ -129,6 +132,8 @@ website:
             text: "Appendix 2.2"
           - href: resources/appendices/2.3-appendix.qmd
             text: "Appendix 2.3"
+          - href: resources/appendices/2.4-appendix.qmd
+            text: "Appendix 2.4"
             
   page-footer:
     left: |
