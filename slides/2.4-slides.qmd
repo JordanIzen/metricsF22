@@ -6,7 +6,7 @@ format:
     footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
     height: 900
     width: 1600
-    #df-print: paged
+    df-print: kable
     slide-number: c
     chalkboard: true
 overview: true
@@ -63,17 +63,11 @@ school_reg_tidy <- tidy(school_reg)
 
 ## Contents {background-color="#314f4f"}
 
-[Exploring Relationships](#exploring-relationships)
+[Goodness of Fit](#goodness-of-fit)
 
-[Quantifying Relationships](#quantifying-relationships)
+[The Sampling Distributions of the OLS Estimators](#the-sampling-distributions-of-the-ols-estimators)
 
-[Linear Regression](#linear-regression)
-
-[Deriving OLS Estimators](#deriving-ols-estimators)
-
-[Our Class Size Example in R](#our-class-size-example-in-r)
-
-
+[Bias and Exogeneity](#bias-and-exogeneity)
 
 ## Actual, Predicted, and Residual Values
 
@@ -155,7 +149,7 @@ $$R^2=(r_{X,Y})^2$$
 
 - **Total Variation in Y**: Areas [**A**]{.red} + [C]{.hi-purple}
 
-$$\color{#0047AB}{SST} = \sum^n_{i=1}(Y_i-\bar{Y})^2$$
+$$SST = \sum^n_{i=1}(Y_i-\bar{Y})^2$$
 
 - [Variation in Y explained by X: Area C]{.hi-purple}
 
@@ -353,38 +347,34 @@ school_reg %>%
 ```
 
 ## Goodness of Fit: Looking at R I
+```{r}
+#| echo: true
+#| output-location: fragment
+school_reg %>% summary()
+```
 
+. . .
 
-::: columns
-::: {.column width="50%"}
 - `summary()` command in `Base R` gives:
   - `Multiple R-squared`
   - `Residual standard error` (SER)
     - Calculated with a df of $n-2$
-:::
-::: {.column width="50%"}
+
+
+## Goodness of Fit: Looking at R II
+
 ```{r}
 #| echo: true
-school_reg %>% summary()
-```
-:::
-:::
-
-## Goodness of Fit: Looking at R I
-
-
-::: columns
-::: {.column width="50%"}
-- `r.squared` is `0.05` $\implies$ about 5% of variation in `testscr` is explained by our model
-- `sigma` (SER) is `18.6` $\implies$ average test score is about 18.6 points above/below our model's prediction
-:::
-::: {.column width="50%"}
-```{r}
-#| echo: true
+#| output-location: fragment
 # using broom
 library(broom)
 school_reg %>% glance()
 ```
+
+. . .
+
+- `r.squared` is `0.05` $\implies$ about 5% of variation in `testscr` is explained by our model
+- `sigma` (SER) is `18.6` $\implies$ average test score is about 18.6 points above/below our model's prediction
 
 <br>
 
@@ -395,6 +385,71 @@ school_reg %>% glance()
 school_r_sq <- glance(school_reg) %>% pull(r.squared)
 school_r_sq
 ```
+
+
+## Two Types of Uses For Regression
+
+$$\color{orange}{Y}=\color{teal}{\beta}(\color{purple}{X})$$
+where $\color{orange}{Y}$ is numeric: 
+
+::: columns
+::: {.column width="50%"}
+
+1. [Causal inference]{.hi}: estimate $\color{teal}{\hat{\beta}}$ to determine how changes in $\color{purple}{X}$ **cause** changes in $\color{orange}{Y}$
+  - Care more about accurately estimating and understanding $\color{teal}{\beta}$
+  - Remove as much **bias** in $\color{teal}{\beta}$ as possible
+  - Don’t care much about **goodness of fit**! (You’ll never get it in the complex real world)
+
+:::
+
+::: {.column width="50"}
+2. [Prediction]{.hi-purple}: predict $\color{orange}{\hat{Y}}$ using an estimated $\color{teal}{f}$
+  - Care more about getting $\color{orange}{\hat{Y}}$ as accurate as possible, $\color{teal}{f}$ is an unknown “black-box”
+  - Tweak models to maximize $R^2$, minimize $\hat{\sigma}_u$ (at all costs)
+
+:::
+:::
+
+## Two Types of Uses For Regression
+
+::: {.callout-tip}
+## Example
+Supplemental Nutrition Assistance Program (SNAP aka “Food Stamps”) is a federal welfare program designed to assist those in poverty by supplementing their budget for nutritious food.
+:::
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+1. [Causal inference]{.hi}: what is the affect of SNAP on poverty reduction?
+
+:::
+
+::: {.column width="50"}
+2. [Prediction]{.hi-purple}: who will enroll in SNAP?
+
+:::
+:::
+
+
+## Two Types of Uses For Regression
+
+::: {.callout-tip}
+## Example
+Netflix uses your past viewing history, the day of the week, and the time of the day to guess which show you want to watch next
+:::
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+1. [Causal inference]{.hi}: how does the time of day affect what shows people select?
+
+:::
+
+::: {.column width="50"}
+2. [Prediction]{.hi-purple}: what will be the next show you select?
+
 :::
 :::
 
@@ -403,28 +458,30 @@ school_r_sq
 ## Recall: Two Big Problems with Data
 
 ::: columns
-::: {.column width="50%"}
-- We want to use econometrics to [identify]{.hi} causal relationships and make [inferences]{.hi} about them
+::: {.column width="60%"}
+- We use econometricas to [identify]{.hi} causal relationships & make [inferences]{.hi-purple} about them:
 
-1. Problem for [identification]{.hi}: [endogeneity]{.hi-purple}
-    - $X$ is **exogenous** if its variation is *unrelated* to other factors $(u)$ that affect $Y$
-    - $X$ is **endogenous** if its variation is *related* to other factors $(u)$ that affect $Y$
+1. Problem for [identification]{.hi}: [endogeneity]{.hi}
+    - $X$ is **exogenous** if its variation is **unrelated** to other factors $(u)$ that affect $Y$
+    - $X$ is **endogenous** if its variation is **related** to other factors $(u)$ that affect $Y$
     
-2. Problem for [inference]{.hi}: [randomness]{.hi-purple}
+2. Problem for [inference]{.hi-purple}: [randomness]{.hi-purple}
     - Data is random due to **natural sampling variation**
     - Taking one sample of a population will yield slightly different information than another sample of the same population
 
 :::
 
-::: {.column width="50%"}
+::: {.column width="40%"}
 
-![](images/causality.jpg){width="750" fig-align="center"}
+![](images/causality.jpg){width="450" fig-align="center"}
 
-![](images/randomimage.jpg){width="750" fig-align="center"}
+![](images/randomimage.jpg){width="450" fig-align="center"}
 :::
 :::
 
 ## Distributions of the OLS Estimators
+
+$$Y_i = \beta_0+\beta_1 X_i+u_i$$
 
 - OLS estimators $(\hat{\beta_0}$ and $\hat{\beta_1})$ are computed from a finite (specific) sample of data
 
@@ -432,13 +489,13 @@ school_r_sq
 
 . . .
 
-- [*Modeled* randomness]{.hi-purple}: population $u$ includes all factors affecting $Y$ *other* than $X$
+- [*Modeled* randomness]{.hi}: population $u_i$ includes all factors affecting $Y$ *other* than $X$
     - different samples will have different values of those other factors $(u_i)$
 
 . . .
 
 - [*Sampling* randomness]{.hi-purple}: different samples will generate different OLS estimators
-    - Thus, $\hat{\beta_0}, \hat{\beta_1}$ are *also* **random variables**, with their own [sampling distribution]{.hi}
+    - Thus, $\hat{\beta_0}, \hat{\beta_1}$ are *also* **random variables**, with their own [sampling distribution]{.hi-purple}
 
 ## Inferential Statistics and Sampling Distributions
 
@@ -483,7 +540,7 @@ Suppose you randomly select 100 people and ask how many hours they spend on the 
 ## i.i.d. Samples
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="60%"}
 - If we collect many samples, and each sample is randomly drawn from the population (and then replaced), then the distribution of samples is said to be [independently and identically distributed (i.i.d.)]{.hi-purple}
 
 - Each sample is **independent** of each other sample (due to replacement)
@@ -491,15 +548,15 @@ Suppose you randomly select 100 people and ask how many hours they spend on the 
 - Each sample comes from the **identical** underlying population distribution
 
 :::
-::: {.column width="50%"}
-![](images/sampling.jpg)
+::: {.column width="40%"}
+![](images/sampling.jpg){width="450" fig-align="center"}
 :::
 :::
 
 ## The Sampling Distribution of OLS Estimators
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="60%"}
 - Calculating OLS estimators for a sample makes the OLS estimators *themselves* random variables:
 
 - Draw of $i$ is random $\implies$ value of each $(X_i,Y_i)$ is random $\implies$ $\hat{\beta_0},\hat{\beta_1}$ are random
@@ -509,8 +566,8 @@ Suppose you randomly select 100 people and ask how many hours they spend on the 
 - Therefore, $\hat{\beta_0},\hat{\beta_1}$ each have a [sampling distribution]{.hi} across different samples 
 
 :::
-::: {.column width="50%"}
-![](images/randomimage.jpg)
+::: {.column width="40%"}
+![](images/randomimage.jpg){width="450" fig-align="center"}
 :::
 :::
 
@@ -749,8 +806,8 @@ gg_cef <- ggplot(data = df)+
   #  scale = 2.5,
   #  size = 0.3
   ) +
-  labs(x = "X",
-       y = "Y")+
+  labs(x = "Y",
+       y = "X")+
   geom_smooth(method = "lm", color = "red")+
   geom_point(alpha = 0.4)+
   #scale_fill_viridis(option = "magma") +
@@ -766,8 +823,8 @@ gg_cef
 ## Assumption 3: No Serial Correlation
 
 ::: columns
-::: {.column width="50%"}
-- Errors are not correlated across observations: 
+::: {.column width="60%"}
+3. Errors are not correlated across observations: 
 $$cor(u_i,u_j)=0 \quad \forall i \neq j$$
 
 - For simple cross-sectional data, this is rarely an issue
@@ -779,14 +836,16 @@ $$cor(u_i,u_j)=0 \quad \forall i \neq j$$
 - There are fixes to deal with autocorrelation (coming much later)
 
 :::
-::: {.column width="50%"}
+::: {.column width="40%"}
+![](images/error.png)
+
 :::
 :::
 
 ## Assumption 4: The Zero Conditional Mean Assumption
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="60%"}
 - No correlation between $X$ and the error term: 
 $$cor(X, u)=0$$
 
@@ -795,12 +854,12 @@ $$cor(X, u)=0$$
 - Often called the [Zero Conditional Mean]{.hi-purple} assumption: 
 $$E[u|X]=0$$
 
-> "Does knowing $X$ give me any useful information about $u$?"
+> "Does knowing $X_i$ give any useful information about $u_i$?"
 
   - If yes: model is **endogenous**, **biased** and **not-causal**! 
 
 :::
-::: {.column width="50%"}
+::: {.column width="40%"}
 ![](images/error.png)
 :::
 :::
