@@ -1,5 +1,8 @@
 ---
 title: "2.1 — Data 101 & Descriptive Statistics — Class Content"
+execute:
+  freeze: auto
+
 ---
 
 ```{r, echo = F}

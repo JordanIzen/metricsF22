@@ -1,5 +1,8 @@
 ---
 title: "1.4 — Data Wrangling — Practice"
+execute:
+  freeze: auto
+
 ---
 
 <p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/1_4_data_wrangling.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Quarto file</a></span> <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4456115"><span class="btn btn-primary btn-lg"><i class="fas fa-cloud"></i> R Studio Cloud</a></span></p>

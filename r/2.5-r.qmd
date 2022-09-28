@@ -1,5 +1,8 @@
 ---
 title: "2.5 — Precision and Diagnostics — Practice"
+execute:
+  freeze: auto
+
 ---
 
 <p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/2_5_precision_and_diagnostics.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Quarto file</a></span> <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4559643"><span class="btn btn-primary btn-lg"><i class="fas fa-cloud"></i> R Studio Cloud</a></span></p>

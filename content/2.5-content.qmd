@@ -1,5 +1,7 @@
 ---
 title: "2.5 — Precision and Diagnostics — Class Content"
+execute:
+  freeze: auto
 ---
 
 ```{r, echo = F}

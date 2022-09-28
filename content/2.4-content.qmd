@@ -1,5 +1,8 @@
 ---
 title: "2.4 — Goodness of Fit and Bias — Class Content"
+execute:
+  freeze: auto
+
 ---
 
 ```{r, echo = F}

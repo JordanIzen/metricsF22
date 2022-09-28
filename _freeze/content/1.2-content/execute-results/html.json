@@ -1,0 +1,14 @@
+{
+  "hash": "2b6fb2621ffe33e829e4f47a514f54e5",
+  "result": {
+    "markdown": "---\ntitle: \"1.2 — Meet R — Class Content\"\nexecute:\n  freeze: auto\n\n---\n\n::: {.cell}\n\n:::\n\n\n::: {.callout-note appearance=minimal}\n# Meeting Dates\n*Thursday, August 26, 2021*\n:::\n\n::: .{callout-warning}\n# Upcoming Assignment\n\nPlease complete the [preliminary survey](/assignment/00-preliminary-survey).\n:::\n\n## <i class=\"fas fa-info-circle fa-lg\"></i> Overview\n\nToday we begin the long slog to your mastery of `R`. We begin with the basics - how R works, how to use it, the different data types, and how to create and manipulate objects.\n\n## <i class=\"fas fa-book-reader fa-lg\"></i> Readings\n\n- <i class=\"fas fa-external-link-square-alt\"></i> Ch.1 in Wickham & Grolemund, [http://r4ds.had.co.nz/introduction.html](R for Data Science)\n\nNow that we start working with R, you should consider this book to be your *primary* reference for R-related questions. We will broadly cover the first few chapters in order over the next 2-3 class periods.\n\n## <i class=\"fas fa-registered\"></i> R Practice\n\nToday we will be working on [practice problems](/r/1.2-r). Answers will be posted later on that page.\n\n## <i class=\"fas fa-chalkboard-teacher\"></i> Slides\n\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides. \n\nI suggest printing the slides beforehand and using them to take additional notes in class (*not everything* is in the slides)!\n\n\n<p style=\"text-align:center;\"><a target=\"_blank\" href=\"/slides/1.2-slides.html\"><img src =\"/slides/1.2-slides.png\" width=600 alt = \"1.2-slides\"></a></p>\n<p style=\"text-align:center;\"><a class=\"btn btn-primary btn-lg\" target=\"_blank\" href=\"/slides/1.2-slides.pdf\"><i class=\"fas fa-file-pdf\"></i> Download as PDF</a></p>\n\n\n## <i class=\"fas fa-laptop-code\"></i> Assignments\n\n### Preliminary Statistics Survey\n\nPlease take the [preliminary survey](/assignment/00-preliminary-survey) on your statistics and software background. This will help us all have a productive semester together.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

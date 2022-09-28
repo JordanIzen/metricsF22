@@ -948,7 +948,7 @@ $$se(\hat{\beta_1})=\sqrt{var(\hat{\beta_1})} = \frac{SER}{\sqrt{n} \times sd(X)
 
 ## Heteroskedasticity III
 
-- A better formula for estimating standard errors that are **robust** to heteroskedasticity (called .hi[“robust standard errors”]):
+- A better formula for estimating standard errors that are **robust** to heteroskedasticity (called [“robust standard errors”]{.hi}):
 
 $$se(\hat{\beta_1})=\sqrt{\frac{\displaystyle\sum^n_{i=1}(X_i-\bar{X})^2\hat{u}^2}{\big[\displaystyle\sum^n_{i=1}(X_i-\bar{X})^2\big]^2}}$$
 

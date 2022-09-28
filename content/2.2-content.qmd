@@ -1,5 +1,8 @@
 ---
 title: "2.2 — Random Variables & Distributions — Class Content"
+execute:
+  freeze: auto
+
 ---
 
 ```{r, echo = F}

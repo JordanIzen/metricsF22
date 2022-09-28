@@ -1,5 +1,8 @@
 ---
 title: "1.4 — Data Wrangling — Class Content"
+execute:
+  freeze: auto
+
 ---
 
 ```{r, echo = F}

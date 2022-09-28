@@ -1,0 +1,14 @@
+{
+  "hash": "2e894fd0d5c565a5caa53c42c2432a99",
+  "result": {
+    "markdown": "---\ntitle: \"2.2 — Random Variables & Distributions — Class Content\"\nexecute:\n  freeze: auto\n\n---\n\n::: {.cell}\n\n:::\n\n\n::: {.callout-note appearance=\"minimal\"}\n## Meeting Dates\n\n*Wednesday, September 14, 2022*\n:::\n\n::: {.callout-warning}\n## Upcoming Assignment\n\n[Problem Set 1](/assignment/01-problem-set) is due on Wednesday September 21.\n\n[Problem Set 2](/assignment/02-problem-set) is due on Wednesday September 28.\n:::\n\n## <i class=\"fas fa-info-circle fa-lg\"></i> Overview\n\nToday we finish your crash course/review of basic statistics with random variables and distributions.\n\n## <i class=\"fas fa-book-reader fa-lg\"></i> Readings\n\n- <i class=\"fas fa-book\"></i> Math and Probability Background Appendix A in Bailey\n\nNow that we return to the statistics, we will do a minimal overview of basic statistics and distributions. Review all of Bailey's appendices.\n\nChapter 2 is optional, but will give you a good overview of using data.\n\n## <i class=\"fas fa-sigma\"></i> Appendix\n\nSee the online appendix for today's content:\n\n- [Properties of Expected Value and Variance](/resources/appendices/2.2-appendix.html#properties-of-expected-value-and-variance)\n- [Creating Mathematical Functions in R](/resources/appendices/2.2-appendix.html#creating-mathematical-functions-in-r)\n- [Graphing Mathematical and Statistical Functions in R](/resources/appendices/2.2-appendix.html#graphing-mathematical-and-statistical-functions-in-r)\n\n## <i class=\"fas fa-chalkboard-teacher\"></i> Slides\n\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\n\nI suggest printing the slides beforehand and using them to take additional notes in class (*not everything* is in the slides)!\n\n\n<p style=\"text-align:center;\"><a target=\"_blank\" href=\"/slides/2.2-slides.html\"><img src =\"/slides/2.2-slides.png\" width=600 alt = \"2.2-slides\"></a></p>\n<p style=\"text-align:center;\"><a class=\"btn btn-primary btn-lg\" target=\"_blank\" href=\"/slides/2.2-slides.pdf\"><i class=\"fas fa-file-pdf\"></i> Download as PDF</a></p>\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

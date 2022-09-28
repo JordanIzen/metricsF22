@@ -1,0 +1,14 @@
+{
+  "hash": "348dfc665e9535e106e9c53fdaf1f6e7",
+  "result": {
+    "markdown": "---\ntitle: \"2.1 — Data 101 & Descriptive Statistics — Class Content\"\nexecute:\n  freeze: auto\n\n---\n\n::: {.cell}\n\n:::\n\n\n::: {.callout-note appearance=\"minimal\"}\n# Meeting Dates\n\n*Wednesday, September 14, 2022*\n:::\n\n::: .{callout-warning}\n# Upcoming Assignment\n\n[Problem Set 1](/assignment/01-problem-set) is due on Wednesday September 21.\n:::\n\n\n## <i class=\"fas fa-info-circle fa-lg\"></i> Overview\n\nToday we begin with a review and overview of using data and descriptive statistics. We want to quantify characteristics about samples as *statistics*, which we will later use to *infer* things about populations (between which we will later *identify* causal relationships).\n\nNext class will be on random variables and distributions. This full week is your crash course/review of basic statistics that we will need to start the \"meat and potatoes\" of this class: linear regression next Thursday As such, I'll give you a brief homework next week to review these statistical concepts (with minimal use of `R`!).\n\n## <i class=\"fas fa-book-reader fa-lg\"></i> Readings\n\n- <i class=\"fas fa-book\"></i> Math and Probability Background Appendix A in Bailey\n\nNow that we return to the statistics, we will do a minimal overview of basic statistics and distributions. Review Bailey's appendices. Today, only A is really useful, the rest will come next class.\n\nChapter 2 is optional, but will give you a good overview of using data.\n\n## <i class=\"fas fa-sigma\"></i> Appendix\n\nSee the online appendix for today's content:\n\n- [The Summation Operator](/resources/appendices/2.1-appendix.html)\n\n## <i class=\"fas fa-chalkboard-teacher\"></i> Slides\n\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\n\nI suggest printing the slides beforehand and using them to take additional notes in class (*not everything* is in the slides)!\n\n\n<p style=\"text-align:center;\"><a target=\"_blank\" href=\"/slides/2.1-slides.html\"><img src =\"/slides/2.1-slides.png\" width=600 alt = \"2.1-slides\"></a></p>\n<p style=\"text-align:center;\"><a class=\"btn btn-primary btn-lg\" target=\"_blank\" href=\"/slides/2.1-slides.pdf\"><i class=\"fas fa-file-pdf\"></i> Download as PDF</a></p>\n\n\n## <i class=\"fas fa-laptop-code\"></i> Assignments\n\n### Problem Set 1 Due Wed Sep 21\n\n[Problem Set 1](/assignment/01-problem-set) is due by the end of the day Wednesday September 21 on Blackboard assignments.",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

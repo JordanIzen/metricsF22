@@ -1,5 +1,8 @@
 ---
 title: "1.5 — Optimize Workflow — Practice"
+execute:
+  freeze: auto
+
 ---
 
 ## Part 1
