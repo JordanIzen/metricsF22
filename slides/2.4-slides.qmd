@@ -212,7 +212,7 @@ SST <- school_reg %>%
 # find explained sum of squares
 SSM <- school_reg %>%
   augment() %>%
-  summarize(SST = sum_sq(.fitted))
+  summarize(SSM = sum_sq(.fitted))
 
 # look at them and divide to get R^2
 tribble(
@@ -291,7 +291,7 @@ school_reg %>%
   augment()
 ```
 
-## Calculating $R^2$ in `R` I
+## Calculating $R^2$ in `R` II
 
 - Or, simpler, can calculate $R^2$ in `R` as the ratio of variances in model vs. actual 
 
@@ -403,7 +403,7 @@ where $\color{orange}{Y}$ is numeric:
 :::
 
 ::: {.column width="50"}
-2. [Prediction]{.hi-purple}: predict $\color{orange}{\hat{Y}}$ using an estimated $\color{teal}{f}$
+2. [Prediction]{.hi-purple}: predict $\color{orange}{\hat{Y}}$ using an estimated $\color{teal}{\beta}$
   - Care more about getting $\color{orange}{\hat{Y}}$ as accurate as possible, $\color{teal}{f}$ is an unknown “black-box”
   - Tweak models to maximize $R^2$, minimize $\hat{\sigma}_u$ (at all costs)
 
@@ -597,7 +597,7 @@ If we collect samples of size $n$ from the same population and generate a sample
 
 - We care about $\hat{\beta_1}$ (slope) since it has economic meaning, rarely about $\hat{\beta_0}$ (intercept)
 
-$$\hat{\beta_1} \sim N(E[\hat{\beta_1}], \sigma_{\hat{\beta_1}})$$
+$$\hat{\beta_1} \sim N(\mathbb{E}[\hat{\beta_1}], \sigma_{\hat{\beta_1}})$$
 
 :::
 ::: {.column width="50%"}
@@ -624,7 +624,7 @@ beta_dist
 
 ::: columns
 ::: {.column width="50%"}
-$$\hat{\beta_1} \sim N(E[\hat{\beta_1}], \sigma_{\hat{\beta_1}})$$
+$$\hat{\beta_1} \sim N(\mathbb{E}[\hat{\beta_1}], \sigma_{\hat{\beta_1}})$$
 
 - We want to know: 
 
@@ -646,7 +646,7 @@ beta_dist
 ## Assumptions about Errors I
 ::: columns
 ::: {.column width="50%"}
-- In order to talk about $E[\hat{\beta_1}]$, we need to talk about population $u$
+- In order to talk about $\mathbb{E}[\hat{\beta_1}]$, we need to talk about population $u$
 
 - Recall: $u$ is a random variable, and we can never measure the error term
 
@@ -662,7 +662,7 @@ beta_dist
 - We make [4 critical **assumptions** about $u$]{.hi}:
 
 1. The expected value of the errors is 0
-$$E[u]=0$$
+$$\mathbb{E}[u]=0$$
 
 :::
 ::: {.column width="50%"}
@@ -676,7 +676,7 @@ $$E[u]=0$$
 - We make [4 critical **assumptions** about $u$]{.hi}:
 
 1. The expected value of the errors is 0
-$$E[u]=0$$
+$$\mathbb{E}[u]=0$$
 
 2. The variance of the errors over $X$ is constant:
 $$var(u|X)=\sigma^2_{u}$$
@@ -693,7 +693,7 @@ $$var(u|X)=\sigma^2_{u}$$
 - We make [4 critical **assumptions** about $u$]{.hi}:
 
 1. The expected value of the errors is 0
-$$E[u]=0$$
+$$\mathbb{E}[u]=0$$
 
 2. The variance of the errors over $X$ is constant:
 $$var(u|X)=\sigma^2_{u}$$
@@ -713,7 +713,7 @@ $$cor(u_i,u_j)=0 \quad \forall i \neq j$$
 - We make [4 critical **assumptions** about $u$]{.hi}:
 
 1. The expected value of the errors is 0
-$$E[u]=0$$
+$$\mathbb{E}[u]=0$$
 
 2. The variance of the errors over $X$ is constant:
 $$var(u|X)=\sigma^2_{u}$$
@@ -734,7 +734,7 @@ $$cor(X, u)=0 \text{ or } E[u|X]=0$$
 ::: columns
 ::: {.column width="50%"}
 1. The expected value of the errors is 0
-$$E[u]=0$$
+$$\mathbb{E}[u]=0$$
 
 2. The variance of the errors over $X$ is constant:
 $$var(u|X)=\sigma^2_{u}$$

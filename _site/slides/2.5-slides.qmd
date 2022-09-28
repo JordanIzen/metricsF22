@@ -1,0 +1,1458 @@
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    logo: "../images/metrics_hex.png"
+    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
+    height: 900
+    width: 1600
+    df-print: kable
+    slide-number: c
+    chalkboard: true
+overview: true
+execute:
+  echo: false
+  warning: false
+  freeze: auto
+---
+
+##  {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
+
+[2.5 --- Precision and Diagnostics]{.custom-title}
+
+[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+
+[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
+
+[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(broom)
+library(haven)
+library(kableExtra)
+library(patchwork)
+library(fontawesome)
+library(gapminder)
+library(ggthemes)
+library(scales)
+knitr::opts_chunk$set(echo=F,
+                      message=F,
+                      warning=F)
+update_geom_defaults("label", list(family = "Fira Sans Condensed"))
+update_geom_defaults("text", list(family = "Fira Sans Condensed"))
+
+```
+
+```{r}
+ca_school <- read_dta("../files/data/caschool.dta")
+scatter <- ggplot(data = ca_school)+
+  aes(x = str,
+      y = testscr)+
+  geom_point(color = "blue")+
+  labs(x = "Student to Teacher Ratio",
+       y = "Test Score")+
+  theme_pander(base_family = "Fira Sans Condensed",
+           base_size = 20)
+school_reg <- lm(testscr ~ str, data = ca_school)
+aug_reg <- school_reg %>% augment()
+school_reg_tidy <- tidy(school_reg)
+```
+
+## Contents {background-color="#314f4f"}
+
+[Goodness of Fit](#goodness-of-fit)
+
+[The Sampling Distributions of the OLS Estimators](#the-sampling-distributions-of-the-ols-estimators)
+
+[Bias and Exogeneity](#bias-and-exogeneity)
+
+## The Sampling Distribution of $\hat{\beta_1}$
+
+::: columns
+::: {.column width="50%"}
+$$\hat{\beta_1} \sim N(\mathbb{E}[\hat{\beta_1}], \sigma_{\hat{\beta_1}})$$
+
+:::
+
+::: {.column width="50%"}
+```{r, fig.retina=3}
+beta_dist <- ggplot(data = tibble(x=-4:4))+
+  aes(x = x)+
+  stat_function(fun = dnorm, geom="area", fill = "gray", alpha = 0.5)+
+  geom_segment(aes(x=0,xend=0, y=0, yend=0.4), linetype="dashed")+
+  scale_y_continuous(limits = c(0,0.4),
+                     expand = c(0,0))+
+  scale_x_continuous(breaks = NULL)+
+  labs(x = expression(hat(beta[1])),
+       y = "Probability")+
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size=20)
+beta_dist
+```
+:::
+:::
+
+
+## The Sampling Distribution of $\hat{\beta_1}$
+
+::: columns
+::: {.column width="50%"}
+$$\hat{\beta_1} \sim N(\mathbb{E}[\hat{\beta_1}], \sigma_{\hat{\beta_1}})$$
+
+1. [Center]{.hi-purple}^[Under the 4 assumptions about $u$, particularly, $cor(X,u)=0$] of the distribution: $\mathbb{E}[\hat{\beta_1}]$ (**last class**)
+
+:::
+
+::: {.column width="50%"}
+```{r, fig.retina=3}
+beta_dist+
+  scale_x_continuous(breaks = 0,
+                     labels = expression(E(hat(beta[1]))))
+```
+:::
+:::
+
+## The Sampling Distribution of $\hat{\beta_1}$
+
+::: columns
+::: {.column width="50%"}
+$$\hat{\beta_1} \sim N(\mathbb{E}[\hat{\beta_1}], \sigma_{\hat{\beta_1}})$$
+
+1. [Center]{.hi-purple}^[Under the 4 assumptions about $u$, particularly, $cor(X,u)=0$] of the distribution: $\mathbb{E}[\hat{\beta_1}]$ (**last class**)
+
+2. [Precision]{.hi-purple} or [uncertainty]{.hi-purple} of the estimate (**today**)
+    - [Variance $\sigma^2_{\hat{\beta}_1}$]{.hi-purple}
+    - [Standard error]{.hi-purple}^[Standard **“error”** is the analog of standard *deviation* when talking about the *sampling distribution* of a sample statistic (such as $\bar{X}$ or $\hat{\beta_1})$] [$\sigma_{\hat{\beta}_1} = \sqrt{var(\hat{\beta}_1)}$]{.hi-purple}
+:::
+
+::: {.column width="50%"}
+```{r, fig.retina=3}
+ggplot(data = tibble(x=-4:4))+
+  aes(x = x)+
+  stat_function(fun = dnorm, geom="area", fill = "blue", alpha = 0.5)+
+  geom_label(x=1, y=dnorm(1), label=expression(sigma[hat(beta[1])]==1), color="blue")+
+  geom_segment(aes(x=0,xend=0, y=0, yend=0.4), linetype="dashed")+
+  scale_y_continuous(limits = c(0,0.4),
+                     expand = c(0,0))+
+  labs(x = expression(hat(beta[1])),
+       y = "Probability")+
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size=20)+
+  scale_x_continuous(breaks = 0,
+                     labels = expression(E(hat(beta[1]))))
+```
+:::
+:::
+
+
+## The Sampling Distribution of $\hat{\beta_1}$
+
+::: columns
+::: {.column width="50%"}
+$$\hat{\beta_1} \sim N(\mathbb{E}[\hat{\beta_1}], \sigma_{\hat{\beta_1}})$$
+
+1. [Center]{.hi-purple}^[Under the 4 assumptions about $u$, particularly, $cor(X,u)=0$] of the distribution: $\mathbb{E}[\hat{\beta_1}]$ (**last class**)
+
+2. [Precision]{.hi-purple} or [uncertainty]{.hi-purple} of the estimate (**today**)
+    - [Variance $\sigma^2_{\hat{\beta}_1}$]{.hi-purple}
+    - [Standard error]{.hi-purple}^[Standard **“error”** is the analog of standard *deviation* when talking about the *sampling distribution* of a sample statistic (such as $\bar{X}$ or $\hat{\beta_1})$] [$\sigma_{\hat{\beta}_1} = \sqrt{var(\hat{\beta}_1)}$]{.hi-purple}
+:::
+
+::: {.column width="50%"}
+```{r, fig.retina=3}
+ggplot(data = tibble(x=-4:4))+
+  aes(x = x)+
+  stat_function(fun = dnorm, geom="area", fill = "blue", alpha = 0.5)+
+  geom_label(x=1, y=dnorm(1), label=expression(sigma[hat(beta[1])]==1), color="blue")+
+  geom_segment(aes(x=0,xend=0, y=0, yend=0.4), linetype="dashed")+
+  scale_y_continuous(limits = c(0,0.4),
+                     expand = c(0,0))+
+  labs(x = expression(hat(beta[1])),
+       y = "Probability")+
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size=20)+
+  scale_x_continuous(breaks = 0,
+                     labels = expression(E(hat(beta[1]))))+
+  stat_function(fun = dnorm, geom = "area", args=list(mean = 0, sd = 2), size=2, fill="red", alpha = 0.4)+
+  geom_label(x=2, y=dnorm(2,0,2), label=expression(sigma[hat(beta[1])]==2), color="red")
+```
+:::
+:::
+
+
+# Variation in $\hat{\beta}_1$ {.centered background-color="#314f4f"}
+
+## What Affects Variation in $\hat{\beta_1}$
+
+
+::: columns
+::: {.column width="50%"}
+
+$$var(\hat{\beta_1})=\frac{(SER)^2}{n \times var(X)}$$
+
+$$se(\hat{\beta_1})=\sqrt{var(\hat{\beta_1})} = \frac{SER}{\sqrt{n} \times sd(X)}$$
+
+:::
+::: {.column width="50%"}
+
+- Variation in $\hat{\beta_1}$ is affected by 3 things:
+
+1. [Goodness of fit of the model (SER)]{.hi-turquoise}^[<sup>.magenta[†]</sup> Recall from last class, the **S**tandard **E**rror of the **R**egression $\hat{\sigma_u} = \sqrt{\frac{\sum \hat{u_i}^2}{n-2}}$]
+]
+  - Larger $SER$ $\rightarrow$ larger $var(\hat{\beta_1})$
+2. [Sample size, n]{.hi-turquoise}
+  - Larger $n$ $\rightarrow$ smaller $var(\hat{\beta_1})$
+3. [Variance of X]{.hi-turquoise}
+  - Larger $var(X)$ $\rightarrow$ smaller $var(\hat{\beta_1})$
+
+:::
+:::
+
+## Variation in $\hat{\beta_1}$: Goodness of Fit
+
+```{r}
+#| cache: true
+data_1<-tibble(x=rnorm(50,5,1),
+               u=rnorm(50,1,1),
+               y=3+x+u)
+
+sd_x_1<-lm(y~x, data = data_1) %>%
+  tidy() %>%
+  slice(2) %>% # get second row (which is x coefficient, beta 1)
+  pull(std.error)  %>%
+  round(.,2) %>%
+  as.character()
+
+beta0_1<-lm(y~x, data = data_1) %>%
+  tidy() %>%
+  slice(1) %>% # get first row (which is intercept, beta 0)
+  pull(estimate)  %>%
+  round(.,2) %>%
+  as.character()
+
+beta1_1<-lm(y~x, data = data_1) %>%
+  tidy() %>%
+  slice(2) %>% # get second row (which is x coefficient, beta 1)
+  pull(estimate)  %>%
+  round(.,2) %>%
+  as.character()
+
+ser_1<-lm(y~x, data = data_1) %>%
+  glance() %>%
+  pull(sigma)  %>%
+  round(.,2) %>%
+  as.character()
+
+p1 <- ggplot(data = data_1)+
+  aes(x = x,
+      y = y)+
+  geom_point(color="blue")+
+  geom_smooth(method = "lm", color = "red")+
+  annotate(geom = "text", x=7,y=6, label=parse(text=paste('~hat(Y)==', beta0_1, '~+', beta1_1, '~X')))+
+  annotate(geom = "text", x=7,y=5, label=parse(text=paste('~SER==', ser_1)))+
+  annotate(geom = "text", x=7,y=4, label=parse(text=paste('~SE(hat(beta[1])) ==', sd_x_1)))+
+  #geom_text(aes(x=5,y=13.5), label=bquote(sigma[hat(beta[1])] == .(sd_x_1)))+
+  scale_x_continuous(breaks=seq(2,8,2),
+                     limits=c(2,8))+
+  scale_y_continuous(breaks=seq(3,15,3),
+                     limits=c(3,15))+
+  labs(x = "X",
+       y = "Y",
+       title = "Model With Better Fit",
+       subtitle = expression(paste("Lower SER lowers variation in ", hat(beta[1]))))+
+  theme_pander(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+```{r}
+#| cache: true
+data_2<-tibble(x=data_1$x,
+               u=rnorm(50,1,3),
+               y=3+x+u)
+
+sd_x_2<-lm(y~x, data = data_2) %>%
+  tidy() %>%
+  slice(2) %>% # get second row (which is x coefficient, beta 1)
+  pull(std.error)  %>%
+  round(.,2) %>%
+  as.character()
+
+beta0_2<-lm(y~x, data = data_2) %>%
+  tidy() %>%
+  slice(1) %>% # get first row (which is intercept, beta 0)
+  pull(estimate)  %>%
+  round(.,2) %>%
+  as.character()
+
+beta1_2<-lm(y~x, data = data_2) %>%
+  tidy() %>%
+  slice(2) %>% # get second row (which is x coefficient, beta 1)
+  pull(estimate)  %>%
+  round(.,2) %>%
+  as.character()
+
+ser_2<-lm(y~x, data = data_2) %>%
+  glance() %>%
+  pull(sigma)  %>%
+  round(.,2) %>%
+  as.character()
+
+p2 <- ggplot(data = data_2)+
+  aes(x = x,
+      y = y)+
+  geom_point(color="blue")+
+  geom_smooth(method = "lm", color = "red")+
+  annotate(geom = "text", x=7,y=6, label=parse(text=paste('~hat(Y)==', beta0_2, '~+', beta1_2, '~X')))+
+  annotate(geom = "text", x=7,y=5, label=parse(text=paste('~SER==', ser_2)))+
+  annotate(geom = "text", x=7,y=4, label=parse(text=paste('~SE(hat(beta[1])) ==', sd_x_2)))+
+  scale_x_continuous(breaks=seq(2,8,2),
+                     limits=c(2,8))+
+  scale_y_continuous(breaks=seq(3,15,3),
+                     limits=c(3,15))+
+  labs(x = "X",
+       y = "Y",
+       title = "Model With Worse Fit",
+       subtitle = expression(paste("Higher SER raises variation in ", hat(beta[1]))))+
+  theme_pander(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+
+```{r}
+#| fig-align: center
+#| fig-width: 14
+p1 | p2
+```
+
+## Variation in $\hat{\beta_1}$: Sample Size
+
+```{r, cache = T}
+# reuse data_1
+
+p3 <- ggplot(data = data_1)+
+  aes(x = x,
+      y = y)+
+  geom_point(color="blue")+
+  geom_smooth(method = "lm", color = "red")+
+  annotate(geom = "text", x=7,y=6, label=parse(text=paste('~hat(Y)==', beta0_1, '~+', beta1_1, '~X')))+
+  annotate(geom = "text", x=7,y=5, label=parse(text=paste('~SER==', ser_1)))+
+  annotate(geom = "text", x=7,y=4, label=parse(text=paste('~SE(hat(beta[1])) ==', sd_x_1)))+
+  #geom_text(aes(x=5,y=13.5), label=bquote(sigma[hat(beta[1])] == .(sd_x_1)))+
+  scale_x_continuous(breaks=seq(2,8,2),
+                     limits=c(2,8))+
+  scale_y_continuous(breaks=seq(3,15,3),
+                     limits=c(3,15))+
+  labs(x = "X",
+       y = "Y",
+       title = "Model With Fewer Observations",
+       subtitle = expression(paste("Smaller n raises variation in ", hat(beta[1]))))+
+  theme_pander(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+
+```{r, cache = T}
+data_3<-tibble(x=rnorm(100,5,1),
+               u=rnorm(100,1,1),
+               y=3+x+u)
+
+sd_x_3<-lm(y~x, data = data_3) %>%
+  tidy() %>%
+  slice(2) %>% # get second row (which is x coefficient, beta 1)
+  pull(std.error)  %>%
+  round(.,2) %>%
+  as.character()
+
+beta0_3<-lm(y~x, data = data_3) %>%
+  tidy() %>%
+  slice(1) %>% # get first row (which is intercept, beta 0)
+  pull(estimate)  %>%
+  round(.,2) %>%
+  as.character()
+
+beta1_3<-lm(y~x, data = data_3) %>%
+  tidy() %>%
+  slice(2) %>% # get second row (which is x coefficient, beta 1)
+  pull(estimate)  %>%
+  round(.,2) %>%
+  as.character()
+
+ser_3<-lm(y~x, data = data_3) %>%
+  glance() %>%
+  pull(sigma)  %>%
+  round(.,2) %>%
+  as.character()
+
+p4 <- ggplot(data = data_3)+
+  aes(x = x,
+      y = y)+
+  geom_point(color="blue")+
+  geom_smooth(method = "lm", color = "red")+
+  annotate(geom = "text", x=7,y=6, label=parse(text=paste('~hat(Y)==', beta0_3, '~+', beta1_3, '~X')))+
+  annotate(geom = "text", x=7,y=5, label=parse(text=paste('~SER==', ser_3)))+
+  annotate(geom = "text", x=7,y=4, label=parse(text=paste('~SE(hat(beta[1])) ==', sd_x_3)))+
+  scale_x_continuous(breaks=seq(2,8,2),
+                     limits=c(2,8))+
+  scale_y_continuous(breaks=seq(3,15,3),
+                     limits=c(3,15))+
+  labs(x = "X",
+       y = "Y",
+       title = "Model With More Observations",
+       subtitle = expression(paste("Larger n lowers variation in ", hat(beta[1]))))+
+  theme_pander(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+
+```{r}
+#| fig-align: center
+#| fig-width: 14
+p3 | p4
+```
+
+## Variation in $\hat{\beta_1}$: Variation in $X$
+
+```{r, cache = T}
+# reuse data_3
+
+sd_X_3<-data_3 %>%
+  summarize(sd_x_3=sd(x)) %>%
+  round(.,2) %>%
+  as.character()
+
+p5 <- ggplot(data = data_3)+
+  aes(x = x,
+      y = y)+
+  geom_point(color="blue")+
+  geom_smooth(method = "lm", color = "red")+
+  annotate(geom = "text", x=7,y=6, label=parse(text=paste('~hat(Y)==', beta0_1, '~+', beta1_1, '~X')))+
+  annotate(geom = "text", x=7,y=5, label=parse(text=paste('~SER==', ser_1)))+
+  annotate(geom = "text", x=7,y=4, label=parse(text=paste('~SD(X) ==', sd_X_3)))+
+  geom_text(geom = "text", x=7,y=3, label=parse(text=paste('~SE(hat(beta[1])) ==', sd_x_1)))+
+  #geom_text(aes(x=5,y=13.5), label=bquote(sigma[hat(beta[1])] == .(sd_x_1)))+
+  scale_x_continuous(breaks=seq(2,8,2),
+                     limits=c(2,8))+
+  scale_y_continuous(breaks=seq(3,15,3),
+                     limits=c(3,15))+
+  labs(x = "X",
+       y = "Y",
+       title = "Model With More Variation in X",
+       subtitle = expression(paste("Larger ", var(X), " lowers variation in ", hat(beta[1]))))+
+  theme_pander(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+
+```{r, cache = T}
+#subset data_3
+
+data_4<-data_3 %>%
+  filter(x>4.5, x<5.5)
+
+sd_X_4<-data_4 %>%
+  summarize(sd_x_4=sd(x)) %>%
+  round(.,2) %>%
+  as.character()
+
+sd_x_4<-lm(y~x, data = data_4) %>%
+  tidy() %>%
+  slice(2) %>% # get second row (which is x coefficient, beta 1)
+  pull(std.error)  %>%
+  round(.,2) %>%
+  as.character()
+
+beta0_4<-lm(y~x, data = data_4) %>%
+  tidy() %>%
+  slice(1) %>% # get first row (which is intercept, beta 0)
+  pull(estimate)  %>%
+  round(.,2) %>%
+  as.character()
+
+beta1_4<-lm(y~x, data = data_4) %>%
+  tidy() %>%
+  slice(2) %>% # get second row (which is x coefficient, beta 1)
+  pull(estimate)  %>%
+  round(.,2) %>%
+  as.character()
+
+ser_4<-lm(y~x, data = data_4) %>%
+  glance() %>%
+  pull(sigma)  %>%
+  round(.,2) %>%
+  as.character()
+
+p6 <- ggplot(data = data_4)+
+  aes(x = x,
+      y = y)+
+  geom_point(color="blue")+
+  geom_point(data = data_3, aes(x = x, y = y), color="blue", alpha=0.3)+
+  geom_smooth(method = "lm", color = "red")+
+  annotate(geom = "text", x=7,y=6, label=parse(text=paste('~hat(Y)==', beta0_4, '~+', beta1_4, '~X')))+
+  annotate(geom = "text", x=7,y=5, label=parse(text=paste('~SER==', ser_4)))+
+  annotate(geom = "text", x=7,y=4, label=parse(text=paste('~SD(X) ==', sd_X_4)))+
+  annotate(geom = "text", x=7,y=3, label=parse(text=paste('~SE(hat(beta[1])) ==', sd_x_4)))+
+  scale_x_continuous(breaks=seq(2,8,2),
+                     limits=c(2,8))+
+  scale_y_continuous(breaks=seq(3,15,3),
+                     limits=c(3,15))+
+  labs(x = "X",
+       y = "Y",
+       title = "Model With Less Variation in X",
+       subtitle = expression(paste("Smaller ", var(X), " raises variation in ", hat(beta[1]))))+
+  theme_pander(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+
+```{r}
+#| fig-align: center
+#| fig-width: 14
+p5 | p6
+```
+
+# Presenting Regression Results {.centered background-color="#314f4f"}
+
+## Our Class Size Regression
+
+```{r}
+#| echo: true
+school_reg %>% summary()
+```
+
+. . .
+
+- How can we present all of this information in a tidy way?
+
+## Our Class Size Regression
+
+```{r}
+#| echo: true
+library(broom)
+school_reg %>% tidy()
+```
+
+<br>
+
+. . .
+
+```{r}
+#| echo: true
+school_reg %>% glance()
+```
+
+
+. . .
+
+- Better (?), but still not how you see regressions reported in reports...especially when you have many regression models!
+
+## Regression Tables
+
+::: columns
+::: {.column width="50%"}
+- Professional journals and papers often have a [regression table]{.hi-purple}, including:
+  - Estimates of $\hat{\beta_0}$ and $\hat{\beta_1}$
+  - Standard errors of $\hat{\beta_0}$ and $\hat{\beta_1}$ (often below, in parentheses)
+  - Indications of statistical significance (often with asterisks)
+  - Measures of regression fit: $R^2$, $SER$, etc
+
+- Later: multiple rows & columns for multiple variables & models
+
+:::
+::: {.column width="50%"}
+```{r}
+tab1 <- modelsummary::modelsummary(models = list("Test Score" = school_reg),
+             fmt = 2, # round to 2 decimals
+             output = "html",
+             coef_rename = c("(Intercept)" = "Constant",
+                             "str" = "STR"),
+             gof_map = list(
+               list("raw" = "nobs", "clean" = "n", "fmt" = 0),
+               list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
+               #list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
+               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
+             ),
+             escape = FALSE,
+             stars = c('*' = .1, '**' = .05, '***' = 0.01)
+)
+tab1
+```
+:::
+:::
+
+
+
+## Regression Output Tables
+
+::: columns
+::: {.column width="50%"}
+
+- A number of packages (and documentation/guides) that will make nice regression output tables for you:
+    - [modelsummary](https://vincentarelbundock.github.io/modelsummary/articles/modelsummary.html)
+    - [stargazer](https://cran.r-project.org/web/packages/stargazer/index.html) (and a good [cheat sheet](https://www.jakeruss.com/cheatsheets/stargazer/))
+    - [huxtable](https://cran.r-project.org/web/packages/huxtable/vignettes/huxtable.html)
+:::
+::: {.column width="50%"}
+```{r}
+tab1
+```
+:::
+:::
+
+## Using `modelsummary` I
+
+::: columns
+::: {.column width="50%"}
+- You will need to first `install.packages("modelsummary")`
+
+- Load with `library(modelsummary)`
+
+- Command: `modelsummary()`
+
+- Main argument is the name of your `lm` regression object
+
+- Default output is *fine*, but often we want to customize a bit!
+
+```{r}
+#| echo: true
+#| eval: false
+# install.packages("modelsummary") # install first!
+# load package
+library(modelsummary)
+
+modelsummary(school_reg) # our regression
+```
+
+:::
+::: {.column width="50%"}
+```{r}
+library(modelsummary)
+modelsummary(school_reg)
+```
+:::
+:::
+
+## Using `modelsummary` II
+
+- Whole command is `modelsummary()`, everything will go in `()`
+
+. . .
+
+1. `models`, a `list()` of models to use, can give a name to each model, will show up as column title in table
+
+```{r}
+#| echo: true
+#| eval: false
+
+models = list("Test Score" = school_reg) # set name to "Test Score"
+```
+
+. . .
+
+2. `coef_rename` if you want to rename any independent variables as something nicer than their names in the dataset
+    - `"old name" = "new name"` (yes annoying!)
+
+```{r}
+#| echo: true
+#| eval: false
+
+coef_rename = list("(Intercept)" = "Constant",
+                   "str" = "Student Teacher Ratio")
+
+```
+
+## Using `modelsummary` III
+
+- Whole command is `modelsummary()`, everything will go in `()`
+
+3. `gof_map`: a `list()` of goodness of fit statistics, can customize what you want to include/exclude, what you want to label them in the table...a bit advanced, here's what I like:
+
+```{r}
+#| echo: true
+#| eval: false
+
+gof_map = list(
+  list("raw" = "nobs", "clean" = "n", "fmt" = 0),
+  list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
+  #list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2), # we'll want this later!
+  list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
+  )
+```
+
+. . .
+
+4. Other minor options (combine with commas):
+
+```{r}
+#| echo: true
+#| eval: false
+
+fmt = 2, # round to 2 decimals
+output = "html" # depending on type of document creating; pdf would be "latex"
+escape = FALSE # allows formatting of things like <sup>2</sup>
+stars = c('*' = .1, '**' = .05, '***' = 0.01) # show significance levels if set to true, I don't like the defaults so I set my own
+```
+
+## Using `modelsummary` IV
+
+::: columns
+::: {.column width="60%"}
+```{r}
+#| echo: true
+#| eval: false
+
+modelsummary(models = list("Test Score" = school_reg),
+             fmt = 2, # round to 2 decimals
+             output = "html",
+             coef_rename = c("(Intercept)" = "Constant",
+                             "str" = "STR"),
+             gof_map = list(
+               list("raw" = "nobs", "clean" = "n", "fmt" = 0),
+               list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
+               #list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
+               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
+             ),
+             escape = FALSE,
+             stars = c('*' = .1, '**' = .05, '***' = 0.01)
+)
+```
+:::
+::: {.column width="40%"}
+```{r}
+tab1
+```
+:::
+:::
+
+## `modelplot()` in  `modelsummary`
+
+Also nice about the `modelsummary` package is the command `modelplot()`
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+modelplot(school_reg)
+```
+
+## `modelplot()` in  `modelsummary`
+
+Also nice about the `modelsummary` package is the command `modelplot()`
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+modelplot(school_reg,
+          coef_omit = 'Intercept') # don't show intercept
+```
+
+# Diagnostics About Regression
+
+## Diagnostics: Residuals I
+
+- We often look at the residuals of a regression to get more insight about its **goodness of fit** and its **bias**
+
+- Recall `broom`'s `augment` creates some useful new variables
+    - `.fitted` are fitted (predicted) values from model, i.e. $\hat{Y}_i$
+    - `.resid` are residuals (errors) from model, i.e. $\hat{u}_i$
+
+## Diagnostics: Residuals II
+
+- Often a good idea to store in a new object (so we can make some plots)
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+aug_reg <- augment(school_reg)
+
+aug_reg %>% head()
+```
+
+
+## Recall: Assumptions about Errors {.smaller}
+
+::: columns
+::: {.column width="50%"}
+- We make [4 critical **assumptions** about $u$]{.hi}:
+
+1. The expected value of the errors is 0
+$$\mathbb{E}[u]=0$$
+
+2. The variance of the errors over $X$ is constant:
+$$var(u|X)=\sigma^2_{u}$$
+
+3. Errors are not correlated across observations: 
+$$cor(u_i,u_j)=0 \quad \forall i \neq j$$
+
+4. There is no correlation between $X$ and the error term: 
+$$cor(X, u)=0 \text{ or } E[u|X]=0$$
+
+:::
+::: {.column width="50%"}
+![](images/error.png)
+:::
+:::
+
+## Assumptions 1 and 2: Errors are i.i.d.
+
+- Assumptions 1 and 2 assume that errors are coming from the same (*normal*) distribution
+$$u \sim N(0, \sigma_u)$$
+  - Assumption 1: $E[u]=0$
+  - Assumption 2: $sd(u|X)=\sigma_u$
+      - virtually always unknown...
+
+- We often can visually check by plotting a **histogram** of $u$
+
+## Plotting a Histogram of Residuals
+
+::: {.panel-tabset}
+
+## Plot
+```{r}
+ggplot(data = aug_reg)+
+  aes(x = .resid)+
+  geom_histogram(color = "white", fill = "pink")+
+  labs(x = expression(paste("Residual, ", hat(u))))+
+  theme_bw(base_family = "Fira Sans Condensed",
+           base_size = 20)
+```
+
+## Code
+```{r}
+#| echo: true
+#| eval: false
+
+ggplot(data = aug_reg)+
+  aes(x = .resid)+
+  geom_histogram(color="white", fill = "pink")+
+  labs(x = expression(paste("Residual, ", hat(u))))+
+  theme_pander(base_family = "Fira Sans Condensed",
+           base_size=20)
+
+```
+:::
+
+## Checking the Distribution of Residuals
+
+```{r}
+#| echo: true
+#| output-location: fragment
+school_reg %>% summary()
+```
+
+. . .
+
+```{r}
+#| echo: true
+#| output-location: fragment
+aug_reg %>%
+  summarize(E_u = mean(.resid),
+            sd_u = sd(.resid))
+```
+
+## Residual Plot
+
+- We often plot a [residual plot]{.hi} to see any odd patterns about residuals
+    - $x$-axis are $\hat{Y}_i$ values (`.fitted`)
+    - $y$-axis are $u_i$ values (`.resid`)
+
+::: {.panel-tabset}
+
+## Plot
+
+```{r}
+ggplot(data = aug_reg)+
+  aes(x = .fitted,
+      y = .resid)+
+  geom_point(color = "blue")+
+  geom_hline(aes(yintercept = 0), color = "red")+
+  labs(x = expression(paste("Predicted Test Score,", hat(y)[i])),
+       y = expression(paste("Residual, ", hat(u)[i])))+
+  theme_pander(base_family = "Fira Sans Condensed",
+           base_size = 20)
+
+```
+
+## Code
+
+```{r}
+#| echo: true
+#| eval: false
+ggplot(data = aug_reg)+
+  aes(x = .fitted,
+      y = .resid)+
+  geom_point(color = "blue")+
+  geom_hline(aes(yintercept = 0), color = "red")+
+  labs(x = expression(paste("Predicted Test Score,", hat(y)[i])),
+       y = expression(paste("Residual, ", hat(u)[i])))+
+  theme_pander(base_family = "Fira Sans Condensed",
+           base_size = 20)
+
+```
+
+:::
+
+# Heteroskedasticity
+
+## Homoskedasticity
+
+- "[Homoskedasticity]{.hi}:" variance of the residuals over $X$ is constant, written:
+$$var(u|X)=\sigma^2_{u}$$
+
+- Knowing the value of $X$ does not affect the variance (spread) of the errors 
+
+## Heteroskedasticity I
+
+- "[Heteroskedasticity]{.hi}:" variance of the residuals over $X$ is **NOT** constant:
+$$var(u|X) \neq \sigma^2_{u}$$
+
+- **This does not cause $\hat{\beta_1}$ to be biased**, but it does cause the standard error of $\hat{\beta_1}$ to be incorrect
+
+- This **does** cause a problem for [inference]{.hi-purple}!
+  - Specifically, it will make $se(\hat{\beta}_1)$ wrong (often too small)
+
+## Heteroskedasticity II
+
+- Recall the formula for the standard error of $\hat{\beta_1}$:
+
+$$se(\hat{\beta_1})=\sqrt{var(\hat{\beta_1})} = \frac{SER}{\sqrt{n} \times sd(X)}$$
+
+- This actually *assumes* homoskedasticity
+
+## Heteroskedasticity III
+
+- A better formula for estimating standard errors that are **robust** to heteroskedasticity (called .hi[“robust standard errors”]):
+
+$$se(\hat{\beta_1})=\sqrt{\frac{\displaystyle\sum^n_{i=1}(X_i-\bar{X})^2\hat{u}^2}{\big[\displaystyle\sum^n_{i=1}(X_i-\bar{X})^2\big]^2}}$$
+
+- Don't learn formula, **do learn what heteroskedasticity is and how it affects our model!**
+
+
+## Visualizing Heteroskedasticity I
+
+::: columns
+::: {.column width="50%"}
+- Our original scatterplot with regression line
+
+- Does the spread of the errors change over different values of $str$?
+    - No: homoskedastic
+    - Yes: heteroskedastic
+:::
+::: {.column width="50%"}
+```{r}
+scatter +
+  geom_smooth(method = "lm", color = "red")
+```
+:::
+:::
+
+## Visualizing Heteroskedasticity
+
+```{r}
+#| fig-width: 14
+#| fig-align: center
+
+library(ggridges)
+means_school <- ca_school %>%
+  mutate(str = round(str)) %>%
+  group_by(str) %>%
+  summarize(testscr = mean(testscr))
+
+ca_school_strs <- school_reg %>%
+  augment() %>%
+  mutate(str = round(str))
+
+ca_school_str_cut <- ca_school %>%
+  mutate(str_bins = cut_width(str, width = 2)) %>%
+  select(str, testscr)
+
+school_reg_sigmas <- school_reg %>%
+  augment() %>%
+  mutate(str = round(str)) %>%
+  group_by(str) %>%
+  summarize(sigmas = as.character(round(sd(.resid),2))) #%>%
+  #slice(1:6) # remove NA row 7
+
+ca_school_strs %>%
+  ggplot()+
+  aes(x = .resid,
+      y = as.factor(str))+
+  geom_density_ridges_gradient(aes(fill = as.factor(str)))+
+  #geom_point(data = ca_school,
+  #           aes(y = str,
+  #               x = testscr))+
+  labs(y = "Student Teacher Ratio",
+       x = expression(paste("Residuals, ", hat(u)[i])),
+       title = "Conditional Distribution of Residuals by STR",
+       subtitle = "Regression line in red",
+       caption = expression(paste(hat(sigma)[u], " given for each level of STR")))+
+  geom_vline(xintercept = 0, color = "red", size = 1)+
+  geom_label(data = school_reg_sigmas, aes(x = 0, y = as.factor(str), label = sigmas, color = as.factor(str)))+
+  #geom_smooth(data = ca_school, aes(x = testscr, y = str), method = "lm")+
+  scale_fill_viridis_d()+
+  scale_color_viridis_d()+
+  guides(fill = "none",
+         color = "none")+
+  #scale_y_continuous()+
+  #scale_x_continuous()+
+  coord_flip()+
+  theme_light()
+```
+. . .
+
+- Notice the distribution of $\hat{u}$, changes for different values of STR, and $\sigma_{\hat{u}}$ is not constant 
+
+## More Obvious Heteroskedasticity
+
+::: columns
+::: {.column width="50%"}
+- Visual cue: data is "fan-shaped"
+    - Data points are closer to line in some areas
+    - Data points are more spread from line in other areas
+:::
+::: {.column width="50%"}
+```{r}
+het_data<-tibble(x = runif(500,0,10),
+                 y = rnorm(500,x,x))
+
+ggplot(data = het_data)+
+  aes(x = x,
+      y = y)+
+  geom_point(color="blue")+
+  geom_smooth(method="lm", color="red")+
+  scale_x_continuous(breaks=seq(0,10,1))+
+    labs(x = "X",
+       y = "Y")+
+  theme_pander(base_family = "Fira Sans Condensed",
+           base_size=20)
+
+```
+:::
+:::
+
+## More Obvious Heteroskedasticity
+
+::: columns
+::: {.column width="50%"}
+- Visual cue: data is "fan-shaped"
+    - Data points are closer to line in some areas
+    - Data points are more spread from line in other areas
+:::
+::: {.column width="50%"}
+```{r}
+het_reg <- lm(y~x, data = het_data)
+aug_het_reg <- het_reg %>%
+  augment() %>%
+  mutate(x = round(x))
+
+aug_het_reg_sigmas<- aug_het_reg %>%
+  group_by(x) %>%
+  summarize(sigmas = as.character(round(sd(.resid),2))) #%>%
+
+aug_het_reg %>%
+ggplot()+
+  aes(x = .resid,
+      y = as.factor(x))+
+  geom_density_ridges_gradient(
+    aes(fill = as.factor(x)),
+    #color = "white",
+    #scale = 2.5,
+    #size = 0.5
+  )+
+  labs(y = "X",
+       x = expression(paste("Residuals, ", hat(u)[i])),
+       title = "Conditional Distribution of Residuals by X",
+       subtitle = "Regression line in red",
+       caption = expression(paste(hat(sigma)[u], " given for each level of X")))+
+  geom_vline(xintercept = 0, color = "red", size = 1)+
+  geom_label(data = aug_het_reg_sigmas, aes(x = 0, y = as.factor(x), label = sigmas, color = as.factor(x)), alpha = 0.7)+
+  #geom_smooth(data = ca_school, aes(x = testscr, y = str), method = "lm")+
+  scale_fill_viridis_d()+
+  scale_color_viridis_d()+
+  guides(fill = "none",
+         color = "none")+
+  #scale_y_continuous()+
+  #scale_x_continuous()+
+  coord_flip()+
+  theme_light()
+```
+:::
+:::
+
+
+## What Might Cause Heteroskedastic Errors?
+
+$$wage_i=\beta_0+\beta_1educ_i+u_i$$
+
+. . .
+
+```{r}
+#| fig-align: center
+#| fig-width: 14
+
+library(wooldridge)
+
+wage_plot <- ggplot(data = wage1)+
+  aes(x = educ,
+      y = wage)+
+  geom_point(color="blue")+
+  scale_x_continuous(breaks=seq(0,20,2))+
+  scale_y_continuous(labels=scales::dollar,
+                     limits = c(-2.5,25),
+                     expand = c(0,0))+
+    labs(x = "Years of Schooling",
+       y = "Hourly Wage")+
+  theme_pander(base_family = "Fira Sans Condensed",
+           base_size=20)
+wage_plot
+```
+
+## What Might Cause Heteroskedastic Errors?
+
+$$wage_i=\beta_0+\beta_1educ_i+u_i$$
+
+
+```{r}
+#| fig-align: center
+#| fig-width: 14
+
+wage_plot +
+  geom_smooth(method="lm", color="red")
+```
+
+## What Might Cause Heteroskedastic Errors?
+
+::: columns
+::: {.column width="50%"}
+
+$$wage_i=\beta_0+\beta_1educ_i+u_i$$
+```{r}
+
+wage_reg <- lm(wage ~ educ, data = wage1)
+modelsummary(models = list("Wage" = wage_reg),
+             fmt = 2,
+       coef_rename = c("(Intercept)" = "Intercept",
+                       "educ" = "Years of Schooling"),
+       gof_map = list(
+               list("raw" = "nobs", "clean" = "n", "fmt" = 0),
+               list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
+               #list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
+               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
+             ),
+             escape = FALSE,
+             stars = c('*' = .1, '**' = .05, '***' = 0.01))
+```
+
+:::
+::: {.column width="50%"}
+```{r}
+wage_plot+
+  geom_smooth(method="lm", color="red")
+```
+:::
+:::
+
+## What Might Cause Heteroskedastic Errors?
+
+```{r}
+#| fig-align: center
+#| fig-width: 14
+
+wage_reg <- lm(wage ~ educ, data = wage1)
+aug_wage_reg <- wage_reg %>%
+  augment()
+
+aug_wage_reg_sigmas<- aug_wage_reg %>%
+  group_by(educ) %>%
+  summarize(sigmas = as.character(round(sd(.resid),2))) #%>%
+  #slice(c(1,4, 6:18))
+
+aug_wage_reg %>%
+ggplot()+
+  aes(x = .resid,
+      y = as.factor(educ))+
+  geom_density_ridges_gradient(
+    aes(fill = as.factor(educ)),
+    #color = "white",
+    #scale = 2.5,
+    #size = 0.5
+  )+
+  labs(y = "X",
+       x = expression(paste("Residuals, ", hat(u)[i])),
+       title = "Conditional Distribution of Residuals by Years of Schooling",
+       subtitle = "Regression line in red",
+       caption = expression(paste(hat(sigma)[u], " given for each year of schooling")))+
+  geom_vline(xintercept = 0, color = "red", size = 1)+
+  geom_label(data = aug_wage_reg_sigmas, aes(x = 0, y = as.factor(educ), label = sigmas, color = as.factor(educ)), alpha = 0.7)+
+  #geom_smooth(data = ca_school, aes(x = testscr, y = str), method = "lm")+
+  scale_fill_viridis_d()+
+  scale_color_viridis_d()+
+  guides(fill = "none",
+         color = "none")+
+  #scale_y_continuous()+
+  #scale_x_continuous()+
+  coord_flip()+
+  theme_light()
+```
+
+## Detecting Heteroskedasticity I
+
+- Several tests to check if data is heteroskedastic 
+- One common test is **Breusch-Pagan test** 
+- Can use the `lmtest` package's function `bptest()`
+    - $H_0$: homoskedastic^[More on hypothesis testing next week!]
+    - If $p$-value < 0.05, reject $H_0\implies$ heteroskedastic
+
+. . .
+
+```{r}
+#| echo: true
+#| output-location: fragment
+#| # install.packages("lmtest")
+library("lmtest")
+school_reg %>% bptest()
+
+```
+
+. . .
+
+- Since $p<0.05$, can reject $H_0$ that errors are homoskedastic and conclude they are *heteroskedastic*
+
+## How About the Wages Regression?
+
+. . .
+
+```{r}
+#| echo: true
+#| output-location: fragment
+wage_reg %>% bptest()
+
+```
+
+## Fixing Heteroskedasticity I
+
+- Heteroskedasticity is easy to fix with software that can calculate [robust standard errors]{.hi} (using the more complicated formula above)
+
+. . .
+
+- Easiest method is to use `estimatr` package
+  - `lm_robust()` command (*instead* of `lm`) to run regression
+  - set `se_type = "stata"` to calculate robust SEs using the formula above^[This uses the method that Stata uses with the `robust` command, one advantage Stata has over `R`.]
+
+. . .
+
+```{r}
+#| echo: true
+#install.packages("estimatr")
+library(estimatr)
+```
+
+## Fixing Heteroskedasticity II
+
+```{r}
+#| echo: true
+#| output-location: fragment
+school_reg_robust <- lm_robust(testscr ~ str, data = ca_school,
+                              se_type = "stata")
+
+school_reg_robust
+```
+
+<br> 
+
+. . .
+
+```{r}
+#| echo: true
+#| output-location: fragment
+school_reg_robust %>% summary()
+```
+
+## Fixing Heteroskedasticity III
+
+```{r}
+#| echo: true
+#| output-location: fragment
+# can tidy, glance, augment, etc
+school_reg_robust %>% tidy()
+```
+
+<br>
+
+. . .
+
+```{r}
+#| echo: true
+#| #| output-location: fragment
+
+school_reg_robust %>% glance()
+```
+
+## Showing The Effect of Heteroskedasticity (on $se(\hat{\beta}_1)$)
+
+::: columns
+::: {.column width="50%"}
+
+```{r}
+#| echo: true
+#| eval: false
+
+modelsummary(models = list("Normal SE" = school_reg,
+                           "Robust SE" = school_reg_robust),
+             fmt = 2, # round to 2 decimals
+             output = "html",
+             coef_rename = c("(Intercept)" = "Constant",
+                             "str" = "STR"),
+             gof_map = list(
+               list("raw" = "nobs", "clean" = "n", "fmt" = 0),
+               list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
+               #list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
+               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
+             ),
+             escape = FALSE,
+             stars = c('*' = .1, '**' = .05, '***' = 0.01)
+)
+```
+
+:::
+::: {.column width="50%"}
+
+```{r}
+modelsummary(models = list("Normal SE" = school_reg,
+                           "Robust SE" = school_reg_robust),
+             fmt = 2, # round to 2 decimals
+             output = "html",
+             coef_rename = c("(Intercept)" = "Constant",
+                             "str" = "STR"),
+             gof_map = list(
+               list("raw" = "nobs", "clean" = "n", "fmt" = 0),
+               list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
+               #list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
+               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
+             ),
+             escape = FALSE,
+             stars = c('*' = .1, '**' = .05, '***' = 0.01)
+)
+```
+
+:::
+:::
+
+. . .
+
+- What changed? 
+
+# Outliers
+
+## Outliers Can Bias OLS! I
+
+- [Outliers]{.hi} can affect the slope (and intercept) of the line and add [bias]{.hi}
+    - May be result of human error (measurement, transcribing, etc)
+    - May be meaningful and accurate
+
+- In any case, compare how including/dropping outliers affects regression and always discuss outliers! 
+
+## Outliers Can Bias OLS! II
+
+
+```{r}
+scatter + 
+  geom_smooth(method = "lm", color = "red") + 
+  scale_x_continuous(breaks = seq(14, 30, 2),
+                     limits = c(12, 32),
+                     expand = c(0,0))+
+  scale_y_continuous(breaks = seq(600,850,50),
+                     limits = c(600,860),
+                     expand = c(0,0))
+```
+
+## Outliers Can Bias OLS! II
+
+```{r}
+# Just to simplify the dataset, let's make a new, smaller data frame with just the variables: observation, district, testscr, and str 
+ca_simple <- ca_school %>% select(observat, district, testscr, str)
+
+ca_outliers <- tibble(
+  observat = c(421, 422, 423),
+  district = c("Crazy District 1", "Crazy District 2", "Crazy District 3"),
+  testscr = c(800, 850, 820),
+  str = c(30, 28, 29)
+)
+
+#And add them to a new dataframe 
+ca_school_outliers <- ca_simple %>%
+  bind_rows(ca_outliers)
+
+```
+
+```{r}
+the_outliers <- ca_school_outliers %>%
+  filter(testscr > 790)
+
+# Scatterplot with the outlier 
+outlier_plot <- ggplot(data = ca_simple)+
+  aes(x = str,
+      y = testscr)+
+  geom_point(color = "blue")+ #the normal data points
+  geom_smooth(data = ca_simple, method = lm, color = "red")+ #the regression line
+  geom_point(data = the_outliers, color="magenta")+ #the outliers (in magenta)
+  geom_smooth(data = ca_school_outliers, method = lm, color = "purple")+ #the regression line with outliers
+  scale_x_continuous(breaks = seq(14, 30, 2),
+                     limits = c(12, 32),
+                     expand = c(0,0))+
+  scale_y_continuous(breaks = seq(600,850,50),
+                     limits = c(600,860),
+                     expand = c(0,0))+
+  labs(x = "Student to Teacher Ratio",
+       y = "Test Score")+
+    theme_classic(base_family = "Fira Sans Condensed",
+           base_size = 20)
+outlier_plot
+```
+
+## Outliers Can Bias OLS! III
+
+::: columns
+::: {.column width="50%"}
+```{r}
+
+school_outlier_reg <- lm(testscr ~ str, data = ca_school_outliers)
+
+
+modelsummary(models = list("Original" = school_reg,
+                           "With Outliers" = school_outlier_reg),
+             fmt = 2, # round to 2 decimals
+             output = "html",
+             coef_rename = c("(Intercept)" = "Constant",
+                             "str" = "STR"),
+             gof_map = list(
+               list("raw" = "nobs", "clean" = "n", "fmt" = 0),
+               list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
+               #list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
+               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
+             ),
+             escape = FALSE,
+             stars = c('*' = .1, '**' = .05, '***' = 0.01)
+)
+
+```
+:::
+::: {.column width="50%"}
+```{r}
+outlier_plot
+```
+:::
+:::
+
+## Detecting Outliers
+
+- The `car` package has an `outlierTest` command to run on the regression
+
+```{r}
+#| echo: true
+# install.packages("car")
+library("car")
+
+# Use Bonferonni test 
+outlierTest(school_outlier_reg) # will point out which obs #s seem outliers
+
+# find these observations
+ca_school_outliers %>%
+  slice(c(422,423,421)) # find observations 422, 423, 421
+```

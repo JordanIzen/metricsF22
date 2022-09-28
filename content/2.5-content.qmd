@@ -41,6 +41,10 @@ I have also made a RStudio Cloud project documenting all of the things we have b
 
 -   <i class="fas fa-book"></i> Finish Ch.3 in Bailey, *Real Econometrics*
 
+## <i class="fas fa-registered"></i> R Practice
+
+Today (and next class) you will be working on [practice problems](/r/2.5-r). Answers will be posted on that page later.
+
 ## <i class="fas fa-sigma"></i> Appendix
 
 See the online appendix for today's content:

@@ -524,7 +524,7 @@
 <span id="cb1-9"><a href="#cb1-9"></a><span class="co"># find explained sum of squares</span></span>
 <span id="cb1-10"><a href="#cb1-10"></a>SSM <span class="ot">&lt;-</span> school_reg <span class="sc">%&gt;%</span></span>
 <span id="cb1-11"><a href="#cb1-11"></a>  <span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>  <span class="fu">summarize</span>(<span class="at">SST =</span> <span class="fu">sum_sq</span>(.fitted))</span>
+<span id="cb1-12"><a href="#cb1-12"></a>  <span class="fu">summarize</span>(<span class="at">SSM =</span> <span class="fu">sum_sq</span>(.fitted))</span>
 <span id="cb1-13"><a href="#cb1-13"></a></span>
 <span id="cb1-14"><a href="#cb1-14"></a><span class="co"># look at them and divide to get R^2</span></span>
 <span id="cb1-15"><a href="#cb1-15"></a><span class="fu">tribble</span>(</span>
@@ -11536,8 +11536,8 @@ str
 </div>
 </div>
 </section>
-<section id="calculating-r2-in-r-i-1" class="slide level2">
-<h2>Calculating <span class="math inline">\(R^2\)</span> in <code>R</code> I</h2>
+<section id="calculating-r2-in-r-ii" class="slide level2">
+<h2>Calculating <span class="math inline">\(R^2\)</span> in <code>R</code> II</h2>
 <ul>
 <li>Or, simpler, can calculate <span class="math inline">\(R^2\)</span> in <code>R</code> as the ratio of variances in model vs.&nbsp;actual</li>
 </ul>
@@ -11838,7 +11838,7 @@ nobs
 </ul>
 </div><div class="column" style="width:50;">
 <ol start="2" type="1">
-<li><span class="hi-purple">Prediction</span>: predict <span class="math inline">\(\color{orange}{\hat{Y}}\)</span> using an estimated <span class="math inline">\(\color{teal}{f}\)</span></li>
+<li><span class="hi-purple">Prediction</span>: predict <span class="math inline">\(\color{orange}{\hat{Y}}\)</span> using an estimated <span class="math inline">\(\color{teal}{\beta}\)</span></li>
 </ol>
 <ul>
 <li>Care more about getting <span class="math inline">\(\color{orange}{\hat{Y}}\)</span> as accurate as possible, <span class="math inline">\(\color{teal}{f}\)</span> is an unknown “black-box”</li>
@@ -12094,7 +12094,7 @@ nobs
 <li><p>The CLT allows us to approximate the sampling distributions of <span class="math inline">\(\hat{\beta_0}\)</span> and <span class="math inline">\(\hat{\beta_1}\)</span> as normal</p></li>
 <li><p>We care about <span class="math inline">\(\hat{\beta_1}\)</span> (slope) since it has economic meaning, rarely about <span class="math inline">\(\hat{\beta_0}\)</span> (intercept)</p></li>
 </ul>
-<p><span class="math display">\[\hat{\beta_1} \sim N(E[\hat{\beta_1}], \sigma_{\hat{\beta_1}})\]</span></p>
+<p><span class="math display">\[\hat{\beta_1} \sim N(\mathbb{E}[\hat{\beta_1}], \sigma_{\hat{\beta_1}})\]</span></p>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
@@ -12108,7 +12108,7 @@ nobs
 <h2>The Sampling Distribution of <span class="math inline">\(\hat{\beta_1}\)</span> II</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><span class="math display">\[\hat{\beta_1} \sim N(E[\hat{\beta_1}], \sigma_{\hat{\beta_1}})\]</span></p>
+<p><span class="math display">\[\hat{\beta_1} \sim N(\mathbb{E}[\hat{\beta_1}], \sigma_{\hat{\beta_1}})\]</span></p>
 <ul>
 <li>We want to know:</li>
 </ul>
@@ -12135,7 +12135,7 @@ nobs
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li><p>In order to talk about <span class="math inline">\(E[\hat{\beta_1}]\)</span>, we need to talk about population <span class="math inline">\(u\)</span></p></li>
+<li><p>In order to talk about <span class="math inline">\(\mathbb{E}[\hat{\beta_1}]\)</span>, we need to talk about population <span class="math inline">\(u\)</span></p></li>
 <li><p>Recall: <span class="math inline">\(u\)</span> is a random variable, and we can never measure the error term</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
@@ -12153,7 +12153,7 @@ nobs
 <ol type="1">
 <li>The expected value of the errors is 0</li>
 </ol>
-<p><span class="math display">\[E[u]=0\]</span></p>
+<p><span class="math display">\[\mathbb{E}[u]=0\]</span></p>
 </div><div class="column" style="width:50%;">
 <p><img data-src="images/error.png"></p>
 </div>
@@ -12169,7 +12169,7 @@ nobs
 <ol type="1">
 <li>The expected value of the errors is 0</li>
 </ol>
-<p><span class="math display">\[E[u]=0\]</span></p>
+<p><span class="math display">\[\mathbb{E}[u]=0\]</span></p>
 <ol start="2" type="1">
 <li>The variance of the errors over <span class="math inline">\(X\)</span> is constant:</li>
 </ol>
@@ -12189,7 +12189,7 @@ nobs
 <ol type="1">
 <li>The expected value of the errors is 0</li>
 </ol>
-<p><span class="math display">\[E[u]=0\]</span></p>
+<p><span class="math display">\[\mathbb{E}[u]=0\]</span></p>
 <ol start="2" type="1">
 <li>The variance of the errors over <span class="math inline">\(X\)</span> is constant:</li>
 </ol>
@@ -12213,7 +12213,7 @@ nobs
 <ol type="1">
 <li>The expected value of the errors is 0</li>
 </ol>
-<p><span class="math display">\[E[u]=0\]</span></p>
+<p><span class="math display">\[\mathbb{E}[u]=0\]</span></p>
 <ol start="2" type="1">
 <li>The variance of the errors over <span class="math inline">\(X\)</span> is constant:</li>
 </ol>
@@ -12238,7 +12238,7 @@ nobs
 <ol type="1">
 <li>The expected value of the errors is 0</li>
 </ol>
-<p><span class="math display">\[E[u]=0\]</span></p>
+<p><span class="math display">\[\mathbb{E}[u]=0\]</span></p>
 <ol start="2" type="1">
 <li>The variance of the errors over <span class="math inline">\(X\)</span> is constant:</li>
 </ol>

@@ -1,0 +1,440 @@
+---
+title: "2.5 — Precision and Diagnostics — R Practice"
+author: "Your Name Here!"
+date: "September 28, 2022"
+format:
+  html: 
+    self-contained: true # so we don't need other files (like plot images)
+    toc: true # show a table of contents
+    toc-location: left
+    theme: default
+    df-print: paged # by default, show tables (tibbles) as paged tables
+editor: visual
+execute:
+  echo: true # shows all code on rendered document
+---
+
+# Required Packages & Data
+
+Load all the required packages we will use (**note I have installed them already into the cloud project**) by running (clicking the green play button) the chunk below:
+
+```{r}
+#| label: load-packages
+#| include: false
+library(tidyverse) # your friend and mine
+library(fivethirtyeight) # for the fandango data
+library(broom) # for tidy regression
+library(lmtest) # for heteroskedasticity test
+library(estimatr) # for robust SEs
+library(modelsummary) # for nice regression tables
+library(car) # for outlier test
+
+movies <- fandango
+```
+
+**How do critics evaluation of movies affect user ratings?**
+
+Our data comes from fivethirtyeight's public data repository, and was used to write [this article about online movie ratings](https://fivethirtyeight.com/features/fandango-movies-ratings/). You could find this data on fivethirtyeight's [github repository](https://github.com/fivethirtyeight/data/tree/master/fandango) and, if you wanted some practice, download and load in the data yourself using `read_csv()`.\
+\
+However, conveniently, some statistics professors wrote an `R` package called `fivethirtyeight`, which provides an easier way to import and work with the (pre-tidied) data! We loaded this package in the chunk above, and we will be using the `fandango` dataset from `fivethirtyeight`. To make it an explicit tibble in our workspace, run the code below.
+
+```{r}
+# save fandango dataset as "movies" tibble
+movies <- fandango
+```
+
+Note I am calling the tibble `movies`, feel free to name it whatever you like, but I will assume in my code chunks below that you are calling it `movies` - change as appropriate.
+
+# Exploratory Analysis
+
+Let's first take a look at what the data looks like:
+
+```{r}
+movies
+
+glimpse(movies)
+```
+
+How many variables are there? How many observations?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+## Question 1
+
+The dataset contains a lot of variables (many are from different ratings websites like IMDB, Fandango, and Rotten Tomatoes. Let's just use the rotten tomatoes data, and while we're at it, keep just the few variables we'll want to look at and rename them to make our lives easier going forward.
+
+Put your data wrangling skills to the test again, and (1) rename the variable `rottentomatoes` to `critics` and the variable `rottentomatoes_user` to `audience`; and (2) keep only the variables `film`, `year`, `critics`, and `audience`.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+## Question 2
+
+Get the covariance and the correlation between `critics` and `audience`.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+## Question 3
+
+Make a scatterplot of `audience` (as `y`) on `critics` (as `x`) and add a regression line by adding an additional layer: `geom_smooth(method = "lm")` .
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+# Regression
+
+## Question 4
+
+Let's try to estimate the effect of the critics' score on the audience's score. The population regression model we want to estimate is:
+
+$$
+\text{Audience Score}_i = \beta_0+\beta_1 \, \text{Critics Score}_i+u_i
+$$
+
+### Part A
+
+Run your regression and save it as an object. Then get a `summary()` of your regression object.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### Part B
+
+What is the estimated $\hat{\beta}_0$ for this model? What does it mean in terms of the graph, and in terms of the context of our question?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+### Part C
+
+What is the estimated $\hat{\beta}_1$ for this model? What does it mean in terms of the graph, and in terms of the context of our question?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+## Question 5
+
+Let's make our regression output a bit tidier using the commands from the `broom` package (already loaded above).
+
+### Part A
+
+Use the `tidy()` function on your regression object saved from question 4. Save it as an object and look at it.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### Part B
+
+Run the `glance()` function on your original regression object. What does it show you? Find $R^2$ and the SER and confirm they are the same from the Base R `lm` output.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### Part C
+
+Now run the `augment()` function on your original regression object, and save this as an object. Look at it. What does it show you?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### 
+
+## Question 6
+
+Let's present our findings in a nice regression output table using the `modelsummary` package (already loaded above). You can try the default settings which is just to include your regression object name as the only argument inside `modelsummary()`. If you want to customize it, you can copy and tweak my code from the [slides](https://metricsf22.classes.ryansafner.com/slides/2.5-slides.html#/using-modelsummary-iv).
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+Note when you run this chunk, it might not show anything. The table will show properly when you render this document.
+
+# Goodness of Fit
+
+## Question 7
+
+Let\'s use our results to interpret the goodness of fit statistics, and also calculate them ourselves to verify what they measure.
+
+### Part A
+
+Look both at your results from the regression `lm` object in Question 4, and the `glance()` results from `broom` in Question 5B. What is the $R^2$ for our estimated regression? What does it mean in the context of our question?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+### Part B
+
+Use your results from Question 5C (the `augment()`ed data) to calculate $R^2$ as the fraction of total variation in $Y$ explained by variation in $\hat{Y}$:
+
+$$
+R^2 = \frac{var(\text{.fitted})}{var(\text{audience})}
+$$
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+**Optional Challenge**: calculate $R^2$ as the fraction of variation explained using the sum of squares methods:
+
+$$R^2 = \frac{SSM}{SST}=\frac{\displaystyle\sum^{n}_{i=1}(\hat{Y}_i-\bar{Y})^2}{\displaystyle\sum^{n}_{i=1}(Y_i-\bar{Y})^2}$$
+
+$$
+ R^2=1-\left(\frac{SSR}{SST}\right)=1-\left(\frac{\displaystyle\sum^{n}_{i=1}\hat{u}_i^2}{\displaystyle\sum^{n}_{i=1}(Y_i-\bar{Y})^2}\right)
+$$
+
+You can do so by defining a function I'll call `sum_sq`, which takes the sum of the squared deviations of a variable from its mean:
+
+```{r}
+sum_sq <- function(x){sum((x - mean(x))^2)}
+```
+
+and then use this on `.fitted`, `.resid`, and `audience` to find SSM, SSR, and SST.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+And, of course, you can square the correlation coefficient from Question 2.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### Part C
+
+Calculate the standard error of the regression (SER), $\hat{\sigma}_u$ using the `.fitted` values.
+
+$$
+\hat{\sigma}_u=\sqrt{\frac{SSR}{n-2}}=\sqrt{\frac{\displaystyle\sum^{n}_{i=1}\hat{u}_i^2}{n-2}}
+$$
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+Also compare this to taking the standard deviation of `.resid`. How close is this to the SER, and why?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### 
+
+# Predictions
+
+## Question 8
+
+Now let's use our model to make a prediction about what the `audience` score will be for a given `critics` score.
+
+### Part A
+
+Suppose we have a movie that has a critics score of 20. Use the `predict()` function, which requires us to make a tibble of new data to use. So first make a tibble of `critics` values to use:
+
+```{r}
+to_predict <- tibble(
+  critics = c(20)
+)
+```
+
+Then use the predict function, which has two arguments: the saved regression object, and `newdata`, which we'll set equal to our tibble (I've) called `to_predict`.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### Part B
+
+We of course can calculate a prediction using the OLS regression equation. First, write out the equation we've estimated, and then use it to predict an $\widehat{\text{audience}}_i$ score for a critics score of 74.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+We of course can also use `R` to extract the coefficients and calculate the prediction ourselves. Using the `tidy` regression object you saved in Question 5A, use `filter()` and `pull()` to save $\hat{\beta}_0$ and $\hat{\beta}_1$ as objects, and then use them to estimate:
+
+$$
+\widehat{\text{Audience}}_i=\hat{\beta}_0+\hat{\beta}_1 \, (74)
+$$
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### Part C
+
+One actual movie in the data that has a critics score of 74 is `"Avengers: Age of Ultron"`. Find it in the data with `filter()`.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+Notice it has an *actual* `audience` score, since its in the data. Use the actual value and the predicted value to calculate the residual value for *Avengers: Age of Ultron*.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+Now look in the `augment`ed regression object (saved from Question 5C) to find this movie (you can `filter()` by the `critics` score to help you find it). What is the `.resid` value? It should match yours, with some rounding error.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+**Optional Challenge**: Add another two layers to your scatterplot from Question 2A highlighting *Avengers: Age of Ultron* on the plot. `filter` your data to only include this movie, and save it as a tibble to use as the `data` for these new layers (I'll pretend you called this `ultron` as an example): one layer should be `geom_point(data = ultron)` with a unique color. The second layer should be a `geom_text_repel(data = ultron, aes(label = film)` layer with that color again. These two layers will plot the point and then a label for it in a unique color, to stand out from the rest of your points.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+# Diagnostics
+
+## Question 9
+
+### Part A
+
+Now let\'s start looking at the residuals of the regression. Take the `augment`ed regression object saved from Question 5C and use it as the source of your data to create a histogram with `ggplot()`, setting `aes(x = .resid)`. Does it look roughly normal?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+While we're at it, let's check the mean of the residuals to make sure it is in fact 0, since $\mathbb{E}[\hat{u}]$ should be 0.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### Part B
+
+Now the `augment`ed regression object and make a residual plot, which is a scatterplot where `x` is the `.fitted` values $(\hat{Y}_i)$ and `y` is the `.resid` $(\hat{u}_i)$. Feel free to add a horizontal line at 0 with `geom_hline(yintercept = 0)` as an additional layer.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+## Question 10
+
+Let's now check for heteroskedasticity of the residuals.
+
+### Part A
+
+Looking at the scatterplot and residual plot, does it appear that the errors are homoskedastic or heteroskedastic?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+### Part B
+
+Run the `bptest()` function (from the `lmtest` package, already loaded above) on your saved `lm` regression object. According to the test, is the data heteroskedastic or homoskedastic?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### Part C
+
+Now let\'s make some heteroskedasticity-robust standard errors. Use the `lm_robust()` command (instead of the `lm()` command) from the `estimatr` package (already loaded above) to run a new regression (and save it). Make sure you add `se_type = "stata"` inside the command to calculate robust SEs (in the same way that the Stata software does...long story). Save this new regression object and get a `summary` of it. What has changed?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### Part D
+
+Now let's compare the normal standard errors and the robust standard errors in a new side-by-side regression table using `modelsummary()` . Use the same command you used for Question 6, but now we need to set the `models` argument equal to a `list()` of our original regression object and this new regression object from Part C (and optionally, you can name these two columns).
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+## Question 11
+
+Finally, let's test for outliers. Looking at the scatterplot and regression line, do there appear to be any?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+We can officially test for them using the `outlierTest()` command from the `car` package (already loaded above) on your saved regression object.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
