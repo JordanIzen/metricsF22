@@ -204,13 +204,12 @@ $$se(\hat{\beta_1})=\sqrt{var(\hat{\beta_1})} = \frac{SER}{\sqrt{n} \times sd(X)
 
 - Variation in $\hat{\beta_1}$ is affected by 3 things:
 
-1. [Goodness of fit of the model (SER)]{.hi-turquoise}^[<sup>.magenta[†]</sup> Recall from last class, the **S**tandard **E**rror of the **R**egression $\hat{\sigma_u} = \sqrt{\frac{\sum \hat{u_i}^2}{n-2}}$]
-]
-  - Larger $SER$ $\rightarrow$ larger $var(\hat{\beta_1})$
+1. [Goodness of fit of the model (SER)]{.hi-turquoise}^[Recall from last class, the **S**tandard **E**rror of the **R**egression $\hat{\sigma_u} = \sqrt{\frac{\sum \hat{u_i}^2}{n-2}}$]
+    - Larger $SER$ $\rightarrow$ larger $var(\hat{\beta_1})$
 2. [Sample size, n]{.hi-turquoise}
-  - Larger $n$ $\rightarrow$ smaller $var(\hat{\beta_1})$
+    - Larger $n$ $\rightarrow$ smaller $var(\hat{\beta_1})$
 3. [Variance of X]{.hi-turquoise}
-  - Larger $var(X)$ $\rightarrow$ smaller $var(\hat{\beta_1})$
+    - Larger $var(X)$ $\rightarrow$ smaller $var(\hat{\beta_1})$
 
 :::
 :::
