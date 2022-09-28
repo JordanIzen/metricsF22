@@ -54,7 +54,7 @@ scatter <- ggplot(data = ca_school)+
   geom_point(color = "blue")+
   labs(x = "Student to Teacher Ratio",
        y = "Test Score")+
-  theme_pander(base_family = "Fira Sans Condensed",
+  theme_light(base_family = "Fira Sans Condensed",
            base_size = 20)
 school_reg <- lm(testscr ~ str, data = ca_school)
 aug_reg <- school_reg %>% augment()
@@ -63,11 +63,15 @@ school_reg_tidy <- tidy(school_reg)
 
 ## Contents {background-color="#314f4f"}
 
-[Goodness of Fit](#goodness-of-fit)
+[Variation in $\hat{\beta}_1$](#variation-in-hatbeta_1)
 
-[The Sampling Distributions of the OLS Estimators](#the-sampling-distributions-of-the-ols-estimators)
+[Presenting Regression Results](#presenting-regression-results)
 
-[Bias and Exogeneity](#bias-and-exogeneity)
+[Diagnostics About Regression](#diagnostics-about-regression)
+
+[Heteroskedasticity](#heteroskedasticity)
+
+[Outliers](#outliers)
 
 ## The Sampling Distribution of $\hat{\beta_1}$
 
@@ -263,7 +267,7 @@ p1 <- ggplot(data = data_1)+
        y = "Y",
        title = "Model With Better Fit",
        subtitle = expression(paste("Lower SER lowers variation in ", hat(beta[1]))))+
-  theme_pander(base_family = "Fira Sans Condensed",
+  theme_light(base_family = "Fira Sans Condensed",
            base_size=20)
 ```
 ```{r}
@@ -315,7 +319,7 @@ p2 <- ggplot(data = data_2)+
        y = "Y",
        title = "Model With Worse Fit",
        subtitle = expression(paste("Higher SER raises variation in ", hat(beta[1]))))+
-  theme_pander(base_family = "Fira Sans Condensed",
+  theme_light(base_family = "Fira Sans Condensed",
            base_size=20)
 ```
 
@@ -347,7 +351,7 @@ p3 <- ggplot(data = data_1)+
        y = "Y",
        title = "Model With Fewer Observations",
        subtitle = expression(paste("Smaller n raises variation in ", hat(beta[1]))))+
-  theme_pander(base_family = "Fira Sans Condensed",
+  theme_light(base_family = "Fira Sans Condensed",
            base_size=20)
 ```
 
@@ -399,7 +403,7 @@ p4 <- ggplot(data = data_3)+
        y = "Y",
        title = "Model With More Observations",
        subtitle = expression(paste("Larger n lowers variation in ", hat(beta[1]))))+
-  theme_pander(base_family = "Fira Sans Condensed",
+  theme_light(base_family = "Fira Sans Condensed",
            base_size=20)
 ```
 
@@ -437,7 +441,7 @@ p5 <- ggplot(data = data_3)+
        y = "Y",
        title = "Model With More Variation in X",
        subtitle = expression(paste("Larger ", var(X), " lowers variation in ", hat(beta[1]))))+
-  theme_pander(base_family = "Fira Sans Condensed",
+  theme_light(base_family = "Fira Sans Condensed",
            base_size=20)
 ```
 
@@ -497,7 +501,7 @@ p6 <- ggplot(data = data_4)+
        y = "Y",
        title = "Model With Less Variation in X",
        subtitle = expression(paste("Smaller ", var(X), " raises variation in ", hat(beta[1]))))+
-  theme_pander(base_family = "Fira Sans Condensed",
+  theme_light(base_family = "Fira Sans Condensed",
            base_size=20)
 ```
 
@@ -726,7 +730,8 @@ Also nice about the `modelsummary` package is the command `modelplot()`
 
 ```{r}
 #| echo: true
-#| output-location: column-fragment
+#| output-location: fragment
+#| fig-align: center
 modelplot(school_reg)
 ```
 
@@ -736,12 +741,32 @@ Also nice about the `modelsummary` package is the command `modelplot()`
 
 ```{r}
 #| echo: true
-#| output-location: column-fragment
+#| output-location: fragment
+#| fig-align: center
 modelplot(school_reg,
           coef_omit = 'Intercept') # don't show intercept
 ```
 
-# Diagnostics About Regression
+## Though You Could Make It Yourself in `ggplot`
+
+- Use the `conf.low` and `conf.high` (from a `tidy` regression) as `xmin` and `xmax` `aes`thetics inside `geom_errorbarh()`.
+
+```{r}
+#| echo: true
+#| output-location: column-fragment
+school_reg %>%
+  tidy(conf.int = TRUE) %>%
+  filter(term == "str") %>%
+  ggplot()+
+  aes(x = estimate,
+      y = term)+
+  geom_point(size = 3)+
+  geom_errorbarh(aes(xmin = conf.low, xmax = conf.high),
+                 height = 0.1)+ # height of whiskers
+  theme_light()
+```
+
+# Diagnostics About Regression {.centered background-color="#314f4f"}
 
 ## Diagnostics: Residuals I
 
@@ -805,11 +830,15 @@ $$u \sim N(0, \sigma_u)$$
 
 ## Plot
 ```{r}
+#| fig-width: 14
+#| fig-align: center
 ggplot(data = aug_reg)+
   aes(x = .resid)+
   geom_histogram(color = "white", fill = "pink")+
   labs(x = expression(paste("Residual, ", hat(u))))+
-  theme_bw(base_family = "Fira Sans Condensed",
+  scale_y_continuous(limits = c(0, 40),
+                     expand = c(0,0))+
+  theme_light(base_family = "Fira Sans Condensed",
            base_size = 20)
 ```
 
@@ -822,7 +851,9 @@ ggplot(data = aug_reg)+
   aes(x = .resid)+
   geom_histogram(color="white", fill = "pink")+
   labs(x = expression(paste("Residual, ", hat(u))))+
-  theme_pander(base_family = "Fira Sans Condensed",
+  scale_y_continuous(limits = c(20, 40),
+                     expand = c(0,0))+
+  theme_light(base_family = "Fira Sans Condensed",
            base_size=20)
 
 ```
@@ -857,14 +888,15 @@ aug_reg %>%
 ## Plot
 
 ```{r}
+#| fig-align: center
 ggplot(data = aug_reg)+
   aes(x = .fitted,
       y = .resid)+
   geom_point(color = "blue")+
   geom_hline(aes(yintercept = 0), color = "red")+
-  labs(x = expression(paste("Predicted Test Score,", hat(y)[i])),
+  labs(x = expression(paste("Predicted Test Score, ", hat(y)[i])),
        y = expression(paste("Residual, ", hat(u)[i])))+
-  theme_pander(base_family = "Fira Sans Condensed",
+  theme_light(base_family = "Fira Sans Condensed",
            base_size = 20)
 
 ```
@@ -881,14 +913,14 @@ ggplot(data = aug_reg)+
   geom_hline(aes(yintercept = 0), color = "red")+
   labs(x = expression(paste("Predicted Test Score,", hat(y)[i])),
        y = expression(paste("Residual, ", hat(u)[i])))+
-  theme_pander(base_family = "Fira Sans Condensed",
+  theme_light(base_family = "Fira Sans Condensed",
            base_size = 20)
 
 ```
 
 :::
 
-# Heteroskedasticity
+# Heteroskedasticity {.centered background-color="#314f4f"}
 
 ## Homoskedasticity
 
@@ -905,7 +937,7 @@ $$var(u|X) \neq \sigma^2_{u}$$
 - **This does not cause $\hat{\beta_1}$ to be biased**, but it does cause the standard error of $\hat{\beta_1}$ to be incorrect
 
 - This **does** cause a problem for [inference]{.hi-purple}!
-  - Specifically, it will make $se(\hat{\beta}_1)$ wrong (often too small)
+  - Specifically, it will make $se(\hat{\beta}_1)$ wrong (often too small)^[Later, when we learn about hypothesis testing, having standard errors incorrectly too small will *overstate* the significance of the finding.]
 
 ## Heteroskedasticity II
 
@@ -913,7 +945,7 @@ $$var(u|X) \neq \sigma^2_{u}$$
 
 $$se(\hat{\beta_1})=\sqrt{var(\hat{\beta_1})} = \frac{SER}{\sqrt{n} \times sd(X)}$$
 
-- This actually *assumes* homoskedasticity
+- This *assumes* homoskedasticity (Assumption 2)
 
 ## Heteroskedasticity III
 
@@ -1019,7 +1051,7 @@ ggplot(data = het_data)+
   scale_x_continuous(breaks=seq(0,10,1))+
     labs(x = "X",
        y = "Y")+
-  theme_pander(base_family = "Fira Sans Condensed",
+  theme_light(base_family = "Fira Sans Condensed",
            base_size=20)
 
 ```
@@ -1028,14 +1060,10 @@ ggplot(data = het_data)+
 
 ## More Obvious Heteroskedasticity
 
-::: columns
-::: {.column width="50%"}
-- Visual cue: data is "fan-shaped"
-    - Data points are closer to line in some areas
-    - Data points are more spread from line in other areas
-:::
-::: {.column width="50%"}
 ```{r}
+#| fig-align: center
+#| fig-width: 14
+
 het_reg <- lm(y~x, data = het_data)
 aug_het_reg <- het_reg %>%
   augment() %>%
@@ -1072,8 +1100,6 @@ ggplot()+
   coord_flip()+
   theme_light()
 ```
-:::
-:::
 
 
 ## What Might Cause Heteroskedastic Errors?
@@ -1098,7 +1124,7 @@ wage_plot <- ggplot(data = wage1)+
                      expand = c(0,0))+
     labs(x = "Years of Schooling",
        y = "Hourly Wage")+
-  theme_pander(base_family = "Fira Sans Condensed",
+  theme_light(base_family = "Fira Sans Condensed",
            base_size=20)
 wage_plot
 ```
@@ -1338,7 +1364,7 @@ modelsummary(models = list("Normal SE" = school_reg,
 
 - What changed? 
 
-# Outliers
+# Outliers {.centered background-color="#314f4f"}
 
 ## Outliers Can Bias OLS! I
 
@@ -1401,7 +1427,7 @@ outlier_plot <- ggplot(data = ca_simple)+
                      expand = c(0,0))+
   labs(x = "Student to Teacher Ratio",
        y = "Test Score")+
-    theme_classic(base_family = "Fira Sans Condensed",
+    theme_light(base_family = "Fira Sans Condensed",
            base_size = 20)
 outlier_plot
 ```
