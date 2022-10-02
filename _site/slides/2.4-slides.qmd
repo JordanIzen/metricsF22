@@ -459,7 +459,7 @@ Netflix uses your past viewing history, the day of the week, and the time of the
 
 ::: columns
 ::: {.column width="60%"}
-- We use econometricas to [identify]{.hi} causal relationships & make [inferences]{.hi-purple} about them:
+- We use econometrics to [identify]{.hi} causal relationships & make [inferences]{.hi-purple} about them:
 
 1. Problem for [identification]{.hi}: [endogeneity]{.hi}
     - $X$ is **exogenous** if its variation is **unrelated** to other factors $(u)$ that affect $Y$

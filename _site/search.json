@@ -511,6 +511,69 @@
     "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
   },
   {
+    "objectID": "content/2.6-content.html#overview",
+    "href": "content/2.6-content.html#overview",
+    "title": "2.6 — Statistical Inference — Class Content",
+    "section": " Overview",
+    "text": "Overview\nWe begin with some more time for you to work on the R Practice from last class.\nThis week is about inferential statistics: using statistics calculated from a sample of data to infer the true (and unmeasurable) parameters that describe a population. In doing so, we can run hypothesis tests on our sample to determine a point estimate of a parameter, or construct a confidence interval from our sample to cast a range for the true parameter.\nThis is standard principles of statistics - you hopefully should have learned it before. If it has been a while (or never) since your last statistics class, this is one of the hardest concepts to understand at first glance. I recommend Khan Academy [From sampling distributions through significance tests, for this. Though the whole class is helpful!] or Google for these concepts, as every statistics class will cover them in the standard way.\nThat being said, I do not cover inferential statistics in the standard way (see the appendix today below for an overview of the standard way). I think it will be more intuitive if I show you where these concepts come from by simulating a sampling distribution, as opposed to reciting the theoretical sampling distributions."
+  },
+  {
+    "objectID": "content/2.6-content.html#readings",
+    "href": "content/2.6-content.html#readings",
+    "title": "2.6 — Statistical Inference — Class Content",
+    "section": " Readings",
+    "text": "Readings\n\n Ch.4 in Bailey, Real Econometrics\n Ch. 10 (optionally 8-9) in Modern Dive\n Visualizing Probability and Inference\n\nBailey teaches inferential statistics in the classical way (with reference to theoretical \\(Z\\) and \\(t\\) distributions, and \\(Z\\) and \\(t\\) tests). This is all valid. Again, you may wish to brush up with Khan Academy [From sampling distributions through significance tests, for this. Though the whole class is helpful!].\nThe latter “book” (also free online, like R4DS) uses the infer package to run simulations for inferential statistics. Chapter 10 is focused on regression (but I also recommend the chapters leading up to it, which are on inferential statistics broadly, using this method).\nThe final link is a great website for visualizing basic statistic concepts like probability, distributions, confidence intervals, hypothesis tests, central limit theorem, and regression."
+  },
+  {
+    "objectID": "content/2.6-content.html#r-practice",
+    "href": "content/2.6-content.html#r-practice",
+    "title": "2.6 — Statistical Inference — Class Content",
+    "section": " R Practice",
+    "text": "R Practice\nToday we will finish working on practice problems. Answers will be posted on that page later."
+  },
+  {
+    "objectID": "content/2.6-content.html#appendix",
+    "href": "content/2.6-content.html#appendix",
+    "title": "2.6 — Statistical Inference — Class Content",
+    "section": " Appendix",
+    "text": "Appendix\nSee the online appendix for today’s content:\n\nInference via Simulation vs. Classical Statistics"
+  },
+  {
+    "objectID": "content/2.6-content.html#slides",
+    "href": "content/2.6-content.html#slides",
+    "title": "2.6 — Statistical Inference — Class Content",
+    "section": " Slides",
+    "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
+  },
+  {
+    "objectID": "content/2.7-content.html#overview",
+    "href": "content/2.7-content.html#overview",
+    "title": "2.7 — Hypothesis Testing for Regression — Class Content",
+    "section": " Overview",
+    "text": "Overview\nToday we finish our discussion of statistical inference, focusing on hypothesis testing about our regression. We will hopefully have time at the end to work on a few practice problems."
+  },
+  {
+    "objectID": "content/2.7-content.html#readings",
+    "href": "content/2.7-content.html#readings",
+    "title": "2.7 — Hypothesis Testing for Regression — Class Content",
+    "section": " Readings",
+    "text": "Readings\n\n Ch.4 in Bailey, Real Econometrics\n Ch.4 in Bailey, Real Econometrics\n Ch. 10 (optionally 8-9) in Modern Dive\n Visualizing Probability and Inference\n Last Week Tonight with John Oliver: Scientific Studies\n“There is Still Only One Test”\n\nThe readings are the same as last class, plus one highly recommended additional video: be sure to watch the excellent and hilarious discussion of the limits and misuses of scientific studies and statistical significance \\((p\\)-values) in the Last Week Tonight clip. I also added the blog post that I reference in class about all hypothesis testing is really one common procedure."
+  },
+  {
+    "objectID": "content/2.7-content.html#r-practice",
+    "href": "content/2.7-content.html#r-practice",
+    "title": "2.7 — Hypothesis Testing for Regression — Class Content",
+    "section": " R Practice",
+    "text": "R Practice\nToday we be working on practice problems. Answers will be posted on that page later."
+  },
+  {
+    "objectID": "content/2.7-content.html#slides",
+    "href": "content/2.7-content.html#slides",
+    "title": "2.7 — Hypothesis Testing for Regression — Class Content",
+    "section": " Slides",
+    "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
+  },
+  {
     "objectID": "content/index.html",
     "href": "content/index.html",
     "title": "Overview",
@@ -749,6 +812,13 @@
     "text": "Proof of the Unbiasedness of \\(\\hat{\\beta_1}\\)\nBegin with equation:2\n\\[\\hat{\\beta_1}=\\frac{\\sum Y_iX_i}{\\sum X_i^2}\\]\nSubstitute for \\(Y_i\\):\n\\[\\hat{\\beta_1}=\\frac{\\sum (\\beta_1 X_i+u_i)X_i}{\\sum X_i^2}\\]\nDistribute \\(X_i\\) in the numerator:\n\\[\\hat{\\beta_1}=\\frac{\\sum \\beta_1 X_i^2+u_iX_i}{\\sum X_i^2}\\]\nSeparate the sum into additive pieces:\n\\[\\hat{\\beta_1}=\\frac{\\sum \\beta_1 X_i^2}{\\sum X_i^2}+\\frac{u_i X_i}{\\sum X_i^2}\\]\n\\(\\beta_1\\) is constant, so we can pull it out of the first sum:\n\\[\\hat{\\beta_1}=\\beta_1 \\frac{\\sum X_i^2}{\\sum X_i^2}+\\frac{u_i X_i}{\\sum X_i^2}\\]\nSimplifying the first term, we are left with:\n\\[\\hat{\\beta_1}=\\beta_1 +\\frac{u_i X_i}{\\sum X_i^2}\\]\nNow if we take expectations of both sides:\n\\[E[\\hat{\\beta_1}]=E[\\beta_1] +E\\left[\\frac{u_i X_i}{\\sum X_i^2}\\right]\\]\n\\(\\beta_1\\) is a constant, so the expectation of \\(\\beta_1\\) is itself.\n\\[E[\\hat{\\beta_1}]=\\beta_1 +E\\bigg[\\frac{u_i X_i}{\\sum X_i^2}\\bigg]\\]\nUsing the properties of expectations, we can pull out \\(\\frac{1}{\\sum X_i^2}\\) as a constant:\n\\[E[\\hat{\\beta_1}]=\\beta_1 +\\frac{1}{\\sum X_i^2} E\\bigg[\\sum u_i X_i\\bigg]\\]\nAgain using the properties of expectations, we can put the expectation inside the summation operator (the expectation of a sum is the sum of expectations):\n\\[E[\\hat{\\beta_1}]=\\beta_1 +\\frac{1}{\\sum X_i^2}\\sum E[u_i X_i]\\]\nUnder the exogeneity condition, the correlation between \\(X_i\\) and \\(u_i\\) is 0.\n\\[E[\\hat{\\beta_1}]=\\beta_1\\]"
   },
   {
+    "objectID": "resources/appendices/2.6-appendix.html",
+    "href": "resources/appendices/2.6-appendix.html",
+    "title": "2.6 — Statistical Inference — Appendix",
+    "section": "",
+    "text": "Footnotes\n\n\nThat is, for each simulation, we randomly selected observations from our existing sample to be in the simulation, and then did not put that observation back in the pool to possibly be selected again.↩︎\nEven when I was in graduate school, 2011–2015↩︎\nIf samples are i.i.d. (independently and identically distributed if they are drawn from the same population randomly and then replaced) we don’t even need to know the population distribution to assume normality↩︎\nInstead of the “standard deviation”. “Standard error” refers to the sampling variability of a sample statistic, and is always talking about a sampling distribution.↩︎\nWhich we need to know! We often do not know it!↩︎\n“Student” was the penname of William Sealy Gosset, who has one of the more interesting stories in statistics. He worked for Guiness in Ireland testing the quality of beer. He found that with small sample sizes, normal distributions did not yield accurate results. He came up with a more accurate distribution, and since Guiness would not let him publish his findings, published it under the pseudonym of “Student.”↩︎\nDegrees of freedom, \\(df\\) are the number of independent values used for the calculation of a statistic minus the number of other statistics used as intermediate steps. For sample standard deviation \\(s\\), we use \\(n\\) deviations \\((x_i-\\bar{x})\\) and 1 parameter \\((\\bar{x})\\), hence \\(df=n-1\\)↩︎\nEquivalently, \\(\\alpha\\) is the probability of a Type I error: a false positive finding where we incorrectly reject a null hypothesis when it the null hypothesis is in fact true.↩︎\nOf course, if we don’t know the population \\(\\sigma\\), we need to use the \\(t\\)-distribution and find critical \\(t\\)-scores instead of \\(Z\\)-scores. See above.↩︎\nNote this is the precise value behind the rule of thumb that 95% of observations fall within 2 standard deviations of the mean!↩︎"
+  },
+  {
     "objectID": "resources/coding-style.html",
     "href": "resources/coding-style.html",
     "title": "Suggested Code Style Guide",
@@ -984,7 +1054,7 @@
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
-    "text": "Content materials contains suggested readings, more details about assignments, math appendices, and other helpful resources. I suggest you view these before each class.\n\n Slides are “Quarto” html presentations that can be opened in any browser (You can find a downloadable PDF on content pages)\n\n\n R materials contain extra tutorials, videos, practice exercises for using R\n\n\n Assignments are listed with due dates\n\n\nPlease note that the lesson numbers, topics, and titles (e.g. 1.1) are my design, and do not match up with the textbook!\nRelevant materials, if applicable will be posted before class meets and become colored links.\n\n\n\n\n\n\n\n\n\n\n\n\n\nI. Data Analysis in R\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\n\n\nPreliminary Survey\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Aug 22\n\n\n1.1 — Introduction to Econometrics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Aug 24\n\n\n1.2 — Meet R\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Aug 31\n\n\n1.3 — Data Visualization\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 07\n\n\n1.4 — Data Wrangling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 12\n\n\n1.5 — Optimize Workflow\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 1 due Fri Sep 23\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nII. Linear Regression\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nWed Sep 14\n\n\n2.1 — Data and Descriptive Statistics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 19\n\n\n2.2 — Random Variables and Distributions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 2 due Fri Sep 30\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 21\n\n\n2.3 — Simple Linear Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 26\n\n\n2.4 — Goodness of Fit and Bias\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 28\n\n\n2.5 — Precision and Diagnostics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 03\n\n\n2.6 — Statistical Inference\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Oct 05\n\n\n2.7 — Inference for Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Exam\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIII. Causal Inference\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nWed Oct 19\n\n\n3.1 — The Fundamental Problem of Causal Inference & Potential Outcomes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 24\n\n\n3.2 — Causal Inference & DAGs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Oct 26\n\n\n3.3 — Omitted Variable Bias\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIV. Multivariate Linear Regression\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nMon Oct 31\n\n\n3.4 — Multivariate OLS Estimators: Bias, Precision, and Fit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 02\n\n\n3.5 — Writing an Empirical Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Nov 07\n\n\n3.6 — Regression with Categorical Data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 09\n\n\n3.7 — Regression with Interaction Effects\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Nov 14\n\n\n3.8 — Polynomial Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 16\n\n\n3.9 — Logarithmic Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nV. Panel Data and Advanced Models\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nMon Nov 21\n\n\n4.1 — Panel Data and Fixed Effects Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Nov 28\n\n\n4.2 — Difference-in-Difference Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 30\n\n\n4.3 — Instrumental Variables Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Dec 05\n\n\n4.4 — Logistic Regression Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nResearch Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinal Exam"
+    "text": "Content materials contains suggested readings, more details about assignments, math appendices, and other helpful resources. I suggest you view these before each class.\n\n Slides are “Quarto” html presentations that can be opened in any browser (You can find a downloadable PDF on content pages)\n\n\n R materials contain extra tutorials, videos, practice exercises for using R\n\n\n Assignments are listed with due dates\n\n\nPlease note that the lesson numbers, topics, and titles (e.g. 1.1) are my design, and do not match up with the textbook!\nRelevant materials, if applicable will be posted before class meets and become colored links.\n\n\n\n\n\n\n\n\n\n\n\n\n\nI. Data Analysis in R\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\n\n\nPreliminary Survey\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Aug 22\n\n\n1.1 — Introduction to Econometrics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Aug 24\n\n\n1.2 — Meet R\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Aug 31\n\n\n1.3 — Data Visualization\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 07\n\n\n1.4 — Data Wrangling\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 12\n\n\n1.5 — Optimize Workflow\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 1 due Fri Sep 23\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nII. Linear Regression\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nWed Sep 14\n\n\n2.1 — Data and Descriptive Statistics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 19\n\n\n2.2 — Random Variables and Distributions\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 2 due Fri Sep 30\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 21\n\n\n2.3 — Simple Linear Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Sep 26\n\n\n2.4 — Goodness of Fit and Bias\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Sep 28\n\n\n2.5 — Precision and Diagnostics\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 03\n\n\n2.6 — Statistical Inference\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Oct 05\n\n\n2.7 — Hypothesis Testing for Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMidterm Exam\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIII. Causal Inference\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nWed Oct 19\n\n\n3.1 — The Fundamental Problem of Causal Inference & Potential Outcomes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Oct 24\n\n\n3.2 — Causal Inference & DAGs\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Oct 26\n\n\n3.3 — Omitted Variable Bias\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIV. Multivariate Linear Regression\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nMon Oct 31\n\n\n3.4 — Multivariate OLS Estimators: Bias, Precision, and Fit\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 4\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 02\n\n\n3.5 — Writing an Empirical Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Nov 07\n\n\n3.6 — Regression with Categorical Data\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 09\n\n\n3.7 — Regression with Interaction Effects\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Nov 14\n\n\n3.8 — Polynomial Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 16\n\n\n3.9 — Logarithmic Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProblem Set 5\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nV. Panel Data and Advanced Models\n\n\n\n\n\n\n\nTitle\n\n\nContent\n\n\nSlides\n\n\nR\n\n\nAssignment\n\n\n\n\n\n\nMon Nov 21\n\n\n4.1 — Panel Data and Fixed Effects Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Nov 28\n\n\n4.2 — Difference-in-Difference Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWed Nov 30\n\n\n4.3 — Instrumental Variables Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMon Dec 05\n\n\n4.4 — Logistic Regression Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nResearch Paper\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFinal Exam"
   },
   {
     "objectID": "syllabus.html",

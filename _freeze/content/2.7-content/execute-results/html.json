@@ -1,0 +1,14 @@
+{
+  "hash": "ef2c0aabf107e63797419c99804fc0fc",
+  "result": {
+    "markdown": "---\ntitle: \"2.7 — Hypothesis Testing for Regression — Class Content\"\nexecute:\n  freeze: auto\n---\n\n::: {.cell}\n\n:::\n\n\n::: {.callout-note appearance=\"minimal\"}\n## Meeting Dates\n\n*Wednesday, October 5, 2022*\n:::\n\n## <i class=\"fas fa-info-circle fa-lg\"></i> Overview\n\nToday we finish our discussion of statistical inference, focusing on hypothesis testing about our regression. We will hopefully have time at the end to work on a few practice problems.\n\n## <i class=\"fas fa-book-reader fa-lg\"></i> Readings\n\n- <i class=\"fas fa-book\"></i> Ch.4 in Bailey, *Real Econometrics*\n- <i class=\"fas fa-book\"></i> Ch.4 in Bailey, *Real Econometrics*\n- [<i class=\"fas fa-external-link-square-alt\"></i> Ch. 10 (optionally 8-9) in *Modern Dive* ](https://moderndive.netlify.com/10-inference-for-regression.html)\n- [<i class=\"fas fa-external-link-square-alt\"></i> Visualizing Probability and Inference ](https://seeing-theory.brown.edu/frequentist-inference/index.html)\n- [<i class=\"fab fa-youtube\"></i> *Last Week Tonight with John Oliver*: Scientific Studies](https://www.youtube.com/watch?v=0Rnq1NpHdmw)\n- [“There is Still Only One Test”](https://allendowney.blogspot.com/2016/06/there-is-still-only-one-test.html)\n\nThe readings are the same as last class, plus one highly recommended additional video: be sure to watch the excellent and hilarious discussion of the limits and misuses of scientific studies and statistical significance $(p$-values) in the *Last Week Tonight* clip. I also added the blog post that I reference in class about all hypothesis testing is really one common procedure.\n\n## <i class=\"fas fa-registered\"></i> R Practice\n\nToday we be working on [practice problems](/r/2.7-r). Answers will be posted on that page later.\n\n## <i class=\"fas fa-chalkboard-teacher\"></i> Slides\n\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\n\nI suggest printing the slides beforehand and using them to take additional notes in class (*not everything* is in the slides)!\n\n\n<p style=\"text-align:center;\"><a target=\"_blank\" href=\"/slides/2.7-slides.html\"><img src =\"/slides/2.7-slides.png\" width=600 alt = \"2.7-slides\"></a></p>\n<p style=\"text-align:center;\"><a class=\"btn btn-primary btn-lg\" target=\"_blank\" href=\"/slides/2.7-slides.pdf\"><i class=\"fas fa-file-pdf\"></i> Download as PDF</a></p>\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

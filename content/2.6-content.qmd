@@ -1,0 +1,60 @@
+---
+title: "2.6 — Statistical Inference — Class Content"
+execute:
+  freeze: auto
+---
+
+```{r, echo = F}
+source(here::here("slides", "slide-links.R"))
+```
+
+::: {.callout-note appearance="minimal"}
+## Meeting Dates
+
+*Monday, October 3, 2022*
+:::
+
+## <i class="fas fa-info-circle fa-lg"></i> Overview
+
+We begin with some more time for you to work on the [R Practice](/r/2.5-r) from last class.
+
+This week is about inferential statistics: using *statistics* calculated from a *sample* of data to **infer** the true (and unmeasurable) *parameters* that describe a *population.* In doing so, we can run *hypothesis tests* on our sample to determine a *point* estimate of a parameter, or construct a *confidence interval* from our sample to cast a range for the true parameter. 
+
+This is standard principles of statistics - you hopefully should have learned it before. If it has been a while (or never) since your last statistics class, this is one of the hardest concepts to understand at first glance. I recommend [Khan Academy](https://www.khanacademy.org/math/statistics-probability) [From sampling distributions through significance tests, for this. Though the whole class is helpful!] or Google for these concepts, as *every* statistics class will cover them in the standard way.
+
+That being said, I *do not* cover inferential statistics in the standard way (see the [appendix](#Appendix) today below for an overview of the standard way). I think it will be more intuitive if I *show* you where these concepts come from by *simulating* a sampling distribution, as opposed to reciting the theoretical sampling distributions.
+
+## <i class="fas fa-book-reader fa-lg"></i> Readings
+
+- <i class="fas fa-book"></i> Ch.4 in Bailey, *Real Econometrics*
+- [<i class="fas fa-external-link-square-alt"></i> Ch. 10 (optionally 8-9) in *Modern Dive* ](https://moderndive.netlify.com/10-inference-for-regression.html)
+- [<i class="fas fa-external-link-square-alt"></i> Visualizing Probability and Inference ](https://seeing-theory.brown.edu/frequentist-inference/index.html)
+
+Bailey teaches inferential statistics in the classical way (with reference to theoretical $Z$ and $t$ distributions, and $Z$ and $t$ tests). This is all valid. Again, you may wish to brush up with [Khan Academy](https://www.khanacademy.org/math/statistics-probability) [From sampling distributions through significance tests, for this. Though the whole class is helpful!].
+
+The latter "book" (also free online, like R4DS) uses the `infer` package to run simulations for inferential statistics. Chapter 10 is focused on regression (but I also recommend the chapters leading up to it, which are on inferential statistics broadly, using this method).
+
+The final link is a great website for visualizing basic statistic concepts like probability, distributions, confidence intervals, hypothesis tests, central limit theorem, and regression.
+
+## <i class="fas fa-registered"></i> R Practice
+
+Today we will finish working on [practice problems](/r/2.5-r). Answers will be posted on that page later.
+
+## <i class="fas fa-sigma"></i> Appendix
+
+See the online appendix for today's content:
+
+- [Inference via Simulation vs. Classical Statistics](/resources/appendices/2.6-appendix.html#inference-via-simulation-vs-classical-statistics)
+
+## <i class="fas fa-chalkboard-teacher"></i> Slides
+
+Below, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.
+
+I suggest printing the slides beforehand and using them to take additional notes in class (*not everything* is in the slides)!
+
+```{r, eval = T}
+#| echo: false
+#| output: asis
+
+slide_links("2.6-slides")
+```
