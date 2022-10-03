@@ -18,7 +18,7 @@ execute:
 
 ##  {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
 
-[2.6 --- Statistical Inference]{.custom-title}
+[2.6 --- Inference for Regression]{.custom-title}
 
 [ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
 
@@ -38,6 +38,7 @@ library(fontawesome)
 library(gapminder)
 library(ggthemes)
 library(scales)
+library(infer)
 knitr::opts_chunk$set(echo=F,
                       message=F,
                       warning=F)
@@ -63,15 +64,13 @@ school_reg_tidy <- tidy(school_reg)
 
 ## Contents {background-color="#314f4f"}
 
-[Variation in $\hat{\beta}_1$](#variation-in-hatbeta_1)
+[Why Uncertainty Matters](#why-uncertainty-matters)
 
-[Presenting Regression Results](#presenting-regression-results)
+[Confidence Intervals](#confidence-intervals)
 
-[Diagnostics About Regression](#diagnostics-about-regression)
+[Confidence Intervals Using the `infer` Package](#confidence-intervals-using-the-infer-package)
 
-[Heteroskedasticity](#heteroskedasticity)
-
-[Outliers](#outliers)
+[Confidence Intervals, Theory](#outliers)
 
 # Why Uncertainty Matters {.centered background-color="#314f4f"}
 
@@ -137,244 +136,149 @@ $$Y_i = \beta_0+\beta_1 X_i+u_i$$
   - We *don't* know the *population distribution* of data
   - [Randomness problem]{.hi-purple}
 
-## Why Sample vs. Population Matters
+## Why Sample vs. Population Matters {.smaller}
 
-::: columns
-::: {.column width="50%"}
 ```{R, gen-dataset, include = F, cache = T}
-library(parallel)
+set.seed(2)
+sample_1 <- ca_school %>%
+  sample_n(size = 50)
+lm1 <- lm(testscr ~ str, data = sample_1)
+sample_2 <- ca_school %>%
+  sample_n(size = 50)
+lm2 <- lm(testscr ~ str, data = sample_1)
+sample_3 <- ca_school %>%
+  sample_n(size = 50)
+lm3 <- lm(testscr ~ str, data = sample_1)
 
-# Set population and sample sizes
-n_p <- 100
-n_s <- 30
-
-# Generate data
-pop_df <- tibble(
-  i = 3,
-  x = rnorm(n_p, mean = 5, sd = 1.5),
-  e = rnorm(n_p, mean = 0, sd = 1),
-  y = i + 0.5 * x + e,
-  row = rep(1:sqrt(n_p), times = sqrt(n_p)),
-  col = rep(1:sqrt(n_p), each = sqrt(n_p)),
-  s1 = sample(x = c(rep(T, n_s), rep(F, n_p - n_s))),
-  s2 = sample(x = c(rep(T, n_s), rep(F, n_p - n_s))),
-  s3 = sample(x = c(rep(T, n_s), rep(F, n_p - n_s)))
-)
-
-# Regressions
-lm0 <- lm(y ~ x, data = pop_df)
-lm1 <- lm(y ~ x, data = filter(pop_df, s1 == T))
-lm2 <- lm(y ~ x, data = filter(pop_df, s2 == T))
-lm3 <- lm(y ~ x, data = filter(pop_df, s3 == T))
-
-# Simulation
-sim_df <- mclapply(mc.cores = 10, X = 1:1e4, FUN = function(x, size = n_s) {
-  lm(y ~ x, data = pop_df %>% sample_n(size = size)) %>% tidy()
-  }) %>% 
-  do.call(rbind, .) %>%
-  as_tibble()
 ```
 
 ```{r}
-ggplot(data = pop_df, aes(x = row, y = col)) +
-geom_point(color = "darkslategray", size = 10) +
-theme_void()
+#| fig-align: center
+#| fig-width: 14
+scatter_base <- ggplot(data = ca_school)+
+  aes(x = str,
+      y = testscr)+
+  geom_point(color = "blue", alpha = 0.25)+
+  geom_smooth(method = "lm", color = "red", se = F)+
+  labs(x = "Student to Teacher Ratio",
+       y = "Test Score")+
+  theme_light(base_family = "Fira Sans Condensed",
+           base_size = 20)
+scatter_base
 ```
 
-**Population**
-:::
-::: {.column width="50%"}
-```{r}
-ggplot(data = pop_df, aes(x = x, y = y)) +
-geom_abline(
-  intercept = lm0$coefficients[1], slope = lm0$coefficients[2],
-  color = "#e64173", size = 3
-) +
-geom_point(color = "darkslategray", size = 6) +
-theme_void()
-
-```
 
 **Population relationship**
 <br>
-$Y_i = `r round(lm0$coefficients[1], 2)` + `r round(lm0$coefficients[2], 2)` X_i + u_i$
+$Y_i = `r round(school_reg$coefficients[1], 2)` + `r round(school_reg$coefficients[2], 2)` X_i + u_i$
 
 $Y_i = \beta_0 + \beta_1 X_i + u_i$
 
-:::
-:::
+## Why Sample vs. Population Matters {.smaller}
 
-## Why Sample vs. Population Matters
-
-::: columns
-::: {.column width="50%"}
 ```{r}
-ggplot(data = pop_df, aes(x = row, y = col, shape = s1)) +
-geom_point(color = "darkslategray", size = 10) +
-scale_shape_manual(values = c(1, 19)) +
-theme_void()+
-  theme(legend.position = "FALSE")
+#| fig-align: center
+#| fig-width: 14
+
+scatter_1 <- scatter_base+
+  geom_point(data = sample_1, aes(x = str, y = testscr), color = "blue")+
+  geom_smooth(data = sample_1, aes(x = str, y = testscr), method = "lm", color = "black", se = F)
+scatter_1
 ```
 
-**Sample 1:** 30 random individuals
-:::
-::: {.column width="50%"}
-```{r}
-ggplot(data = pop_df, aes(x = x, y = y)) +
-geom_abline(
-  intercept = lm0$coefficients[1], slope = lm0$coefficients[2],
-  color = "#e64173", size = 3, alpha = 0.3
-) +
-geom_point(aes(shape = s1), color = "darkslategray", size = 6) +
-geom_abline(
-  intercept = lm1$coefficients[1], slope = lm1$coefficients[2],
-  size = 2, linetype = 2, color = "black"
-) +
-scale_shape_manual(values = c(1, 19)) +
-theme_void()+
-  theme(legend.position = "FALSE")
-
-```
+**Sample 1:** 50 random observations
 
 **Population relationship**
 <br>
-$Y_i = `r round(lm0$coefficients[1], 2)` + `r round(lm0$coefficients[2], 2)` X_i + u_i$
+$Y_i = `r round(school_reg$coefficients[1], 2)` + `r round(school_reg$coefficients[2], 2)` X_i + u_i$
 
 **Sample relationship**
 <br>
 $\hat{Y}_i = `r round(lm1$coefficients[1], 2)` + `r round(lm1$coefficients[2], 2)` X_i$
 
-:::
-:::
 
-## Why Sample vs. Population Matters
+## Why Sample vs. Population Matters {.smaller}
 
-::: columns
-::: {.column width="50%"}
 ```{r}
-ggplot(data = pop_df, aes(x = row, y = col, shape = s2)) +
-geom_point(color = "darkslategray", size = 10) +
-scale_shape_manual(values = c(1, 19)) +
-theme_void()+
-  theme(legend.position = "FALSE")
+#| fig-align: center
+#| fig-width: 14
+
+scatter_2 <- scatter_1+
+  geom_point(data = sample_2, aes(x = str, y = testscr), color = "blue")+
+  geom_smooth(data = sample_2, aes(x = str, y = testscr), method = "lm", color = "black", se = F)
+scatter_2
 ```
 
-**Sample 2:** 30 random individuals
-:::
-::: {.column width="50%"}
-```{r}
-ggplot(data = pop_df, aes(x = x, y = y)) +
-geom_abline(
-  intercept = lm0$coefficients[1], slope = lm0$coefficients[2],
-  color = "#e64173", size = 3, alpha = 0.3
-) +
-geom_point(aes(shape = s2), color = "darkslategray", size = 6) +
-geom_abline(
-  intercept = lm1$coefficients[1], slope = lm1$coefficients[2],
-  size = 2, linetype = 2, color = "black", alpha = 0.3
-) +
-geom_abline(
-  intercept = lm2$coefficients[1], slope = lm2$coefficients[2],
-  size = 2, linetype = 2, color = "black"
-) +
-scale_shape_manual(values = c(1, 19)) +
-theme_void()+
-  theme(legend.position = "FALSE")
-
-```
+**Sample 2:** 50 random individuals
 
 **Population relationship**
 <br>
-$Y_i = `r round(lm0$coefficients[1], 2)` + `r round(lm0$coefficients[2], 2)` X_i + u_i$
+$Y_i = `r round(school_reg$coefficients[1], 2)` + `r round(school_reg$coefficients[2], 2)` X_i + u_i$
 
 **Sample relationship**
 <br>
 $\hat{Y}_i = `r round(lm2$coefficients[1], 2)` + `r round(lm2$coefficients[2], 2)` X_i$
 
-:::
-:::
+## Why Sample vs. Population Matters {.smaller}
 
-## Why Sample vs. Population Matters
-
-::: columns
-::: {.column width="50%"}
 ```{r}
-ggplot(data = pop_df, aes(x = row, y = col, shape = s3)) +
-geom_point(color = "darkslategray", size = 10) +
-scale_shape_manual(values = c(1, 19)) +
-theme_void()+
-  theme(legend.position = "FALSE")
+#| fig-align: center
+#| fig-width: 14
+
+scatter_3 <- scatter_2+
+  geom_point(data = sample_3, aes(x = str, y = testscr), color = "blue")+
+  geom_smooth(data = sample_3, aes(x = str, y = testscr), method = "lm", color = "black", se = F)
+scatter_3
 ```
 
-**Sample 3:** 30 random individuals
-:::
-::: {.column width="50%"}
-```{r}
-ggplot(data = pop_df, aes(x = x, y = y)) +
-geom_abline(
-  intercept = lm0$coefficients[1], slope = lm0$coefficients[2],
-  color = "#e64173", size = 3, alpha = 0.3
-) +
-geom_point(aes(shape = s3), color = "darkslategray", size = 6) +
-geom_abline(
-  intercept = lm1$coefficients[1], slope = lm1$coefficients[2],
-  size = 2, linetype = 2, color = "black", alpha = 0.3
-) +
-geom_abline(
-  intercept = lm2$coefficients[1], slope = lm2$coefficients[2],
-  size = 2, linetype = 2, color = "black", alpha = 0.3
-) +
-geom_abline(
-  intercept = lm3$coefficients[1], slope = lm3$coefficients[2],
-  size = 2, linetype = 2, color = "black"
-) +
-scale_shape_manual(values = c(1, 19)) +
-theme_void()+
-  theme(legend.position = "FALSE")
+**Sample 3:** 50 random individuals
 
-```
 
 **Population relationship**
 <br>
-$Y_i = `r round(lm0$coefficients[1], 2)` + `r round(lm0$coefficients[2], 2)` X_i + u_i$
+$Y_i = `r round(school_reg$coefficients[1], 2)` + `r round(school_reg$coefficients[2], 2)` X_i + u_i$
 
 **Sample relationship**
 <br>
 $\hat{Y}_i = `r round(lm3$coefficients[1], 2)` + `r round(lm3$coefficients[2], 2)` X_i$
 
-:::
-:::
-
 ## Why Sample vs. Population Matters
 
-::: columns
-::: {.column width="50%"}
 - Let's repeat this process **10,000 times**!
 
 - This exercise is called a [(Monte Carlo) simulation]{.hi-purple}
   - I'll show you how to do this next class with the `infer` package
 
-:::
-::: {.column width="50%"}
-```{r}
-#| output-location: fragment
-line_df <- tibble(
-  intercept = sim_df %>% filter(term != "x") %>% select(estimate) %>% unlist(),
-  slope = sim_df %>% filter(term == "x") %>% select(estimate) %>% unlist()
-)
-sim_scatter <- ggplot() +
-geom_abline(data = line_df, aes(intercept = intercept, slope = slope), alpha = 0.01) +
-geom_point(data = pop_df, aes(x = x, y = y), size = 6, color = "darkslategray") +
-geom_abline(
-  intercept = lm0$coefficients[1], slope = lm0$coefficients[2],
-  color = "#e64173", size = 3
-) +
-theme_void()
+. . .
 
+```{r, cache = TRUE}
+boots <- ca_school %>%
+  specify(testscr ~ str) %>%
+  generate(reps = 1000,
+           type = "bootstrap") %>%
+  nest(data = -c(replicate)) %>%
+ mutate(model = map(data, ~lm(testscr ~ str, data = .x)), 
+         coefs = map(model, tidy)) %>% 
+  unnest(coefs) %>% 
+  select(-data, -model)
+
+boot_coefs <- boots %>%
+  select(replicate, term, estimate) %>%
+  group_by(replicate) %>%
+  pivot_wider(names_from = "term", values_from = "estimate") %>%
+  rename(intercept = "(Intercept)",
+         slope = "str")
+```
+
+```{r}
+#| fig-align: center
+#| fig-width: 14
+
+sim_scatter <- scatter + 
+  geom_abline(data = boot_coefs, aes(intercept = intercept, slope = slope, group = replicate), color = "gray")+
+  geom_smooth(method = "lm", color = "red", se = F)
 sim_scatter
 ```
-:::
-:::
 
 ## Why Sample vs. Population Matters
 
@@ -959,12 +863,7 @@ ca_school %>%
 ::: footer
 :::
 
-
-. . .
-
-- `visualize()` is just a wrapper for `ggplot()`
-
-# Confidence Intervals, Theory
+# Confidence Intervals, Theory {.centered background-color="#314f4f"}
 
 ## Confidence Intervals, Theory
 
@@ -988,8 +887,8 @@ $\bigg( \big[$ estimate - MOE $\big]$, $\big[$ estimate + MOE $\big] \bigg)$
 
 ::: columns
 ::: {.column width="50%"}
-- $\color{#6A5ACD}{(1- \alpha)}$ is the .hi-purple[confidence level] of our confidence interval
-  - $\color{#6A5ACD}{\alpha}$ is the .hi-purple[“significance level”] that we use in hypothesis testing
+- $\color{#6A5ACD}{(1- \alpha)}$ is the [confidence level]{.hi-purple} of our confidence interval
+  - $\color{#6A5ACD}{\alpha}$ is the [“significance level”]{.hi-purple} that we use in hypothesis testing
   - $\color{#6A5ACD}{\alpha}=$ probability that the true parameter is *not* contained within our interval
 
 - Typical levels: 90%, 95%, 99%
@@ -1043,7 +942,7 @@ ggplot(data = tibble(x=-4:4))+
 
 ::: columns
 ::: {.column width="50%"}
-- Recall the .hi-purple[68-95-99.7% empirical rule] for (standard) normal distributions!^[I’m playing fast and loose here, we can’t actually use the normal distribution, we use the Student’s t-distribution with n-k-1 degrees of freedom. But there’s no need to complicate things you don’t need to know about. Look at today’s [appendix](/resources/appendices/2.6-appendix) for more.]
+- Recall the [68-95-99.7% empirical rule]{.hi-purple} for (standard) normal distributions!^[I’m playing fast and loose here, we can’t actually use the normal distribution, we use the Student’s t-distribution with n-k-1 degrees of freedom. But there’s no need to complicate things you don’t need to know about. Look at today’s [appendix](/resources/appendices/2.6-appendix) for more.]
 
 - 95% of data falls within 2 standard deviations of the mean
 
@@ -1077,9 +976,42 @@ ggplot(data = tibble(x=-4:4))+
 
 ## Interpretting Confidence Intervals
 
-::: columns
-::: {.column width="50%"}
-:::
-::: {.column width="50%"}
-:::
-:::
+- So our confidence interval for our slope is (-3.22, -1.33), what does this mean again?
+
+. . .
+
+❌ [95% of the time, the true effect of class size on test score will be between  -3.22 and -1.33]{.red}
+
+. . .
+
+❌ [We are 95% confident that a randomly selected school district will have an effect of class size on test score between -3.22 and -1.33]{.red}
+
+. . .
+
+❌  [The effect of class size on test score is  -2.28 95% of the time.]{.red}
+
+. . .
+
+✅ [We are 95% confident that in similarly constructed samples, the true effect is between  -3.22 and -1.33]{.green}
+
+## Estimating in `R`
+
+- `base R` doesn't show confidence intervals in the `lm summary()` output, need the `confint` command
+
+```{r}
+#| echo: true
+#| output-location: fragment
+
+confint(school_reg)
+```
+
+## Estimating with `broom`
+
+- `broom`'s `tidy()` command can include confidence intervals
+
+```{r}
+#| echo: true
+#| output-location: fragment
+school_reg %>%
+  tidy(conf.int = TRUE)
+```

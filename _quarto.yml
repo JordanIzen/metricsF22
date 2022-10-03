@@ -64,7 +64,7 @@ website:
               href: content/2.4-content.qmd
             - text: "2.5 — Precision and Diagnostics"
               href: content/2.5-content.qmd
-            - text: "2.6 — Statistical Inference"
+            - text: "2.6 — Inference for Regression"
               href: content/2.6-content.qmd
             - text: "2.7 — Hypothesis Testing for Regression"
               href: content/2.7-content.qmd
