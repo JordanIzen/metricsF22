@@ -7,6 +7,10 @@ execute:
 
 <p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/2_5_precision_and_diagnostics.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Quarto file</a></span> <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4559643"><span class="btn btn-primary btn-lg"><i class="fas fa-cloud"></i> R Studio Cloud</a></span></p>
 
+## Answers
+
+<p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/2_5_precision_and_diagnostic_answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> Answer Key (html) </a></span> <a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/2_5_precision_and_diagnostics_answers.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Answer Key (.qmd)</a></span></p>
+
 ## Getting Set Up
 
 First, create a new R project on your computer by choosing `File -> New Project...`, create a new directory (a folder somewhere on your computer), and then choose `New Project` and then give it a name like `2.5-R-Practice` [This is a good time to practice not using spaces in file and folder names!].
