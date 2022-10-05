@@ -1,0 +1,19 @@
+---
+title: "2.7 — Hypothesis Testing for Regression — Practice"
+execute:
+  freeze: auto
+---
+
+<p style="text-align:center">
+
+<a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/2_7_hypothesis_testing_for_regression.qmd"><i class="fas fa-file-archive"></i>[Quarto file</a>]{.btn .btn-primary .btn-lg} <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4662807"><i class="fas fa-cloud"></i>[R Studio Cloud</a>]{.btn .btn-primary .btn-lg}
+
+</p>
+
+## Getting Set Up
+
+First, create a new R project on your computer by choosing `File -> New Project...`, create a new directory (a folder somewhere on your computer), and then choose `New Project` and then give it a name like `2.7-R-Practice` \[This is a good time to practice not using spaces in file and folder names!\].
+
+Then, download and open the Quarto file above and move it to the file folder on your computer that you just created for the R Project, and open it in R Studio. If there are any packages that you are missing, a yellow banner on top may inform you `Package X is required but is not installed`, click `Install` to install them, or equivalently use the console to `install.packages()`.
+
+**Alternatively**, you can do everything on RStudio.Cloud, which has its own R Project that includes the Quarto file.

@@ -735,6 +735,20 @@
     "text": "Getting Set Up\nFirst, create a new R project on your computer by choosing File -> New Project..., create a new directory (a folder somewhere on your computer), and then choose New Project and then give it a name like 2.5-R-Practice [This is a good time to practice not using spaces in file and folder names!].\nThen, download and open the Quarto file above and move it to the file folder on your computer that you just created for the R Project, and open it in R Studio. If there are any packages that you are missing, a yellow banner on top may inform you Package X is required but is not installed, click Install to install them, or equivalently use the console to install.packages().\nAlternatively, you can do everything on RStudio.Cloud, which has its own R Project that includes the Quarto file."
   },
   {
+    "objectID": "r/2.7-r.html",
+    "href": "r/2.7-r.html",
+    "title": "2.7 — Hypothesis Testing for Regression — Practice",
+    "section": "",
+    "text": "Quarto file R Studio Cloud"
+  },
+  {
+    "objectID": "r/2.7-r.html#getting-set-up",
+    "href": "r/2.7-r.html#getting-set-up",
+    "title": "2.7 — Hypothesis Testing for Regression — Practice",
+    "section": "Getting Set Up",
+    "text": "Getting Set Up\nFirst, create a new R project on your computer by choosing File -> New Project..., create a new directory (a folder somewhere on your computer), and then choose New Project and then give it a name like 2.7-R-Practice [This is a good time to practice not using spaces in file and folder names!].\nThen, download and open the Quarto file above and move it to the file folder on your computer that you just created for the R Project, and open it in R Studio. If there are any packages that you are missing, a yellow banner on top may inform you Package X is required but is not installed, click Install to install them, or equivalently use the console to install.packages().\nAlternatively, you can do everything on RStudio.Cloud, which has its own R Project that includes the Quarto file."
+  },
+  {
     "objectID": "resources/R-packages.html",
     "href": "resources/R-packages.html",
     "title": "R Packages Used in this Course",

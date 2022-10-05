@@ -1,0 +1,1333 @@
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    logo: "../images/metrics_hex.png"
+    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
+    height: 900
+    width: 1600
+    df-print: paged
+    slide-number: c
+    chalkboard: true
+overview: true
+execute:
+  echo: false
+  warning: false
+  freeze: auto
+---
+
+##  {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
+
+[2.7 --- Hypothesis Testing (Regression)]{.custom-title}
+
+[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+
+[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
+
+[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(broom)
+library(haven)
+library(kableExtra)
+library(patchwork)
+library(fontawesome)
+library(gapminder)
+library(ggthemes)
+library(scales)
+library(infer)
+knitr::opts_chunk$set(echo=F,
+                      message=F,
+                      warning=F)
+update_geom_defaults("label", list(family = "Fira Sans Condensed"))
+update_geom_defaults("text", list(family = "Fira Sans Condensed"))
+
+```
+
+```{r}
+ca_school <- read_dta("../files/data/CASchool.dta")
+scatter <- ggplot(data = ca_school)+
+  aes(x = str,
+      y = testscr)+
+  geom_point(color = "blue")+
+  labs(x = "Student to Teacher Ratio",
+       y = "Test Score")+
+  theme_light(base_family = "Fira Sans Condensed",
+           base_size = 20)
+school_reg <- lm(testscr ~ str, data = ca_school)
+aug_reg <- school_reg %>% augment()
+school_reg_tidy <- tidy(school_reg)
+```
+
+## Contents {background-color="#314f4f"}
+
+[Hypothesis Testing](#hypothesis-testing)
+
+[Digression: p-Values and the Philosophy of Science](#digression-p-values-and-the-philosophy-of-science)
+
+[Hypothesis Testing by Simulation with `infer`](#hypothesis-testing-by-simulation-with-infer)
+
+[Theory-Based Hypothesis Testing (What R Calculates)](#theory-based-hypothesis-testing-what-r-calculates)
+
+[The Use and Abuse of p-Values](#the-use-and-abuse-of-p-values)
+
+# Hypothesis Testing {.centered background-color="#314f4f"}
+
+## Estimation and Hypothesis Testing I
+
+::: columns
+::: {.column width="50%"}
+- We want to **test** if our estimates are [statistically significant]{.hi} and they describe the population
+  - this is the “bread and butter” of using inferential statistics
+  
+::: {.callout-tip}
+
+## Examples
+- Does reducing class size improve test scores?
+- Do more years of education increase your wages?
+- Is the gender wage gap between men and women 23%?
+:::
+:::
+::: {.column width="50%"}
+![](images/scientifictesting.jpg){width="750" fig-align="center"}
+:::
+:::
+
+[All modern science is built upon statistical hypothesis testing, so understand it well]{.hi-purple}
+
+
+## Estimation and Hypothesis Testing II
+
+- Note, we can test a lot of hypotheses about a lot of population parameters, e.g.
+  - A population mean $\mu$ 
+      - [**Example**: average height of adults]{.green}
+  - A population proportion $p$
+      - [**Example**: percent of voters who voted for Biden]{.green}
+  - A difference in population means $\mu_A-\mu_B$
+      - [**Example**: difference in average wages of men vs. women]{.green}
+  - A difference in population proportions $p_A-p_B$
+      - [**Example**: difference in percent of patients reporting symptoms of drug A vs B]{.green}
+
+- We will focus on hypotheses about [population regression slope]{.hi-purple} $(\beta_1)$, i.e. the [causal effect]{.hi-purple}^[With a model this simple, it's almost certainly **not** causal, but this is the ultimate direction we are heading...] of $X$ on $Y$
+
+
+## Null and Alternative Hypotheses I
+
+- All scientific inquiries begin with a [null hypothesis $(H_0)$]{.hi} that proposes a specific value of a population parameter
+    - Notation: add a subscript 0: $\beta_{1,0}$ (or $\mu_0$, $p_0$, etc)
+
+. . .
+
+- We suggest an [alternative hypothesis $(H_a)$]{.hi}, often the one we hope to verify
+    - Note, can be multiple alternative hypotheses: $H_1, H_2, \ldots , H_n$
+
+. . .
+
+- Ask: ["Does our data (sample) give us sufficient evidence to reject $H_0$ in favor of $H_a$?"]{.hi-purple}
+    - Note: **the test is *always* about** $\mathbf{H_0}$! 
+    - See if we have sufficient evidence to reject the status quo
+
+## Null and Alternative Hypotheses II
+
+- Null hypothesis assigns a value (or a range) to a population parameter
+  - e.g. $\beta_1=2$ or $\beta_1 \leq 20$
+  - [Most common is $\beta_1=0$]{.hi-purple} $\implies$ $X$ has no effect on $Y$ (no slope for a line)
+  - Note: always an equality!
+
+. . .
+
+- Alternative hypothesis must mathematically *contradict* the null hypothesis
+    - e.g. $\beta_1 \neq 2$ or $\beta_1 > 20$ or $\beta_1 \neq 0$
+    - Note: always an inequality!
+
+. . .
+
+- Alternative hypotheses come in two forms:
+  1. [One-sided alternative]{.hi-turquoise}: $\beta_1 >H_0$ or $\beta_1< H_0$
+  2. [Two-sided alternative]{.hi-turquoise}: $\beta_1 \neq H_0$
+        - Note this means either $\beta_1 < H_0$ or $\beta_1 > H_0$
+
+:::
+footer
+:::
+
+## Components of a Valid Hypothesis Test
+
+- All statistical hypothesis tests have the following components:
+
+. . .
+
+1. A [null hypothesis, $H_0$]{.hi-purple}
+
+. . .
+
+2. An [alternative hypothesis, $H_a$]{.hi-purple}
+
+. . .
+
+3. A [test statistic]{.hi-purple} to determine if we reject $H_0$ when the statistic reaches a "critical value"
+    - Beyond the critical value is the "rejection region", sufficient evidence to reject $H_0$
+
+. . .
+
+4. A [conclusion]{.hi-purple} whether or not to reject $H_0$ in favor of $H_a$
+
+## Type I and Type II Errors I
+
+- Sample statistic $(\hat{\beta_1})$ will rarely be exactly equal to the hypothesized parameter $(\beta_1)$
+
+- Difference between observed statistic and true parameter could be because:
+
+. . .
+
+1. [Parameter is *not* the hypothesized value]{.hi-turquoise}
+    - $H_0$ is *false*
+
+. . . 
+
+2. [Parameter truly *is* the hypothesized value, but *sampling variability* gave us a different estimate]{.hi-turquoise}
+    - $H_0$ is *true*
+
+. . .
+
+- [We cannot distinguish between these two possibilities with any certainty]{.hi-purple}
+
+- So, we can interpret our estimates probabilistically as committing one of two types of error
+
+## Type I and Type II Errors II
+
+1. [Type I error (false positive)]{.hi}: rejecting $H_0$ when it is in fact true
+    - Believing we found an important result when there is truly no relationship
+
+. . .
+
+2. [Type II error (false negative)]{.hi}: failing to reject $H_0$ when it is in fact false
+    - Believing we found nothing when there was truly a relationship to find
+
+## Type I and Type II Errors III
+
+![](images/type_errors.png){fig-align="center"}
+
+- Depending on context, committing one type of error may be more serious than the other
+
+## Type I and Type II Errors IV
+
+![](images/type_errors_crime.png){fig-align="center"}
+
+- Anglo-American common law *presumes* defendant is innocent: $H_0$
+
+. . .
+
+- Jury judges whether the evidence presented against the defendant is plausible *assuming the defendant were in fact innocent*
+
+. . .
+
+- If highly improbable (beyond a “reasonable doubt”): sufficient evidence to reject $H_0$ and convict
+
+## Type I and Type II Errors V
+
+::: columns
+::: {.column width="30%"}
+![](images/blackstone.png)
+
+William Blackstone
+
+(1723-1780)
+
+:::
+
+::: {.column width="70%"}
+
+> "It is better that ten guilty persons escape than that one innocent suffer."
+
+- Type I error is worse than a Type II error in law!
+
+[Blackstone, William, 1765-1770, *Commentaries on the Laws of England*]{.source}
+
+:::
+:::
+
+## Type I and Type II Errors VI
+
+![](images/errorspregnant.png){fig-align="center"}
+
+
+## Type I and Type II Errors VII
+
+![](images/typesoferrorsfunny.jpg){fig-align="center"}
+
+
+## Significance Level, $\alpha$, and Confidence Level $1-\alpha$
+
+- The [significance level, $\alpha$]{.hi}, is the probability of a **Type I error** 
+
+$$\alpha=P(\text{Reject } H_0 | H_0 \text{ is true})$$
+
+. . .
+
+
+- The [confidence level]{.hi} is defined as [$(1-\alpha)$]{.hi}
+  - Specify *in advance* an $\alpha$-level (0.10, 0.05, 0.01) with associated confidence level (90%, 95%, 99%)
+
+. . .
+
+- The probability of a **Type II error** is defined as $\beta$:
+
+$$\beta=P(\text{Don't reject } H_0 | H_0 \text{ is false})$$
+
+## $\alpha$ and $\beta$
+
+![](images/types_errors_symbols.png)
+
+## Power and p-values
+
+- The statistical [power of the test]{.hi} is $(1-\beta)$: the probability of correctly rejecting $H_0$ when $H_0$ is in fact false (e.g. convicting a guilty person)
+
+$$\text{Power} = 1- \beta = P(\text{Reject }H_0|H_0 \text{ is false})$$
+
+. . .
+
+- The [p-value]{.hi} or [significance probability]{.hi} is the probability that, if the null hypothesis were true, the test statistic from any sample will be *at least as extreme* as the test statistic from *our* sample
+$$p(\delta \geq \delta_i|H_0 \text{ is true})$$
+  - where $\delta$ represents some test statistic
+  - $\delta_i$ is the test statistic we observe in our sample
+  - More on this in a bit
+
+## p-values and Statistical Significance
+
+- After running our test, we need to make a *decision* between the competing hypotheses
+
+- Compare $p$-value with *pre-determined* $\alpha$ (commonly, $\alpha=0.05$, 95% confidence level)
+
+- If $p<\alpha$: [statistically significant]{.hi-purple} evidence sufficient to *reject* $H_0$ in favor of $H_a$
+  - Note this does **not** mean $H_a$ is true! We merely have *rejected* $H_0$!
+
+- If $p \geq \alpha$: *insufficient* evidence to reject $H_0$
+  - Note this does **not** mean $H_0$ is true! We merely have *failed* to *reject* $H_0$!
+  
+# Digression: p-Values and the Philosophy of Science {.centered background-color="#314f4f"}
+
+## Hypothesis Testing and the Philosophy of Science I
+
+::: columns
+::: {.column width="30%"}
+![](images/rafisher.jpg){fig-align="center" width="400"}
+
+Sir Ronald A. Fisher
+
+(1890-1962)
+
+:::
+
+::: {.column width="70%"}
+
+> "The null hypothesis is never proved or established, but is possibly disproved, in the course of experimentation. Every experiment may be said to exist only in order to give the facts a chance of disproving the null hypothesis."
+
+[Fisher, R.A., 1931, *The Design of Experiments*]{.source}
+
+:::
+:::
+
+## Hypothesis Testing and the Philosophy of Science II
+
+::: columns
+::: {.column width="60%"}
+- Modern philosophy of science is largely based off of hypothesis testing and [falsifiability]{.hi-purple}, which form the "**Scientific Method**"^[Note: economics is a very different kind of "science" with a different methodology!]
+
+- For something to be "scientific", it must be [falsifiable]{.hi-purple}, or at least [testable]{.hi-purple} (at least in principle)
+
+- Hypotheses can be *corroborated* with evidence, but always *tentative* until falsified by data in suggesting an alternative hypothesis
+
+- **"All swans are white"** is a hypothesis rejected upon discovery of a single black swan 
+
+:::
+
+::: {.column width="40%"}
+![](images/blackswan.jpg)
+:::
+:::
+
+## Hypothesis Testing and p-Values
+
+- Hypothesis testing, confidence intervals, and p-values are probably the hardest thing to understand in statistics
+
+<iframe src="https://fivethirtyeight.abcnews.go.com/video/embed/56150342" width="980" height="550" scrolling="no" style="border:none;" allowfullscreen></iframe>
+
+[Fivethirtyeight: Not Even Scientists Can Easily Explain P-values](https://fivethirtyeight.com/features/not-even-scientists-can-easily-explain-p-values/)
+
+## Hypothesis Testing: Which Test? I
+
+- Rigorous course on statistics ([**ECMG 212**](https://ryansafner.com/courses/ecmg-212.html) or **MATH 112**) will spend weeks going through different types of tests:
+    - Sample mean; difference of means
+    - Proportion; difference of proportions
+    - Z-test vs t-test
+    - 1 sample vs. 2 samples
+    - $\chi^2$ test
+
+## Hypothesis Testing: Which Test? II
+
+![](images/hypothesistestflowchart.png){fig-align="center"}
+
+## There is Only One Test!
+
+- Fortunately, some clever statisticians realized [“**there is only one test**”](https://allendowney.blogspot.com/2011/05/there-is-only-one-test.html) and some built a nice `R` package called `infer`
+
+1. **Calculate** a statistic, $\delta_i$^[$\delta$ can stand in for any test-statistic in any hypothesis test! For our purposes, $\delta$ is the slope of our regression sample, $\hat{\beta}_1$.], from a sample of data
+
+2. **Simulate** a world where $\delta$ is null $(H_0)$
+
+3. **Examine** the distribution of $\delta$ across the null world
+
+4. **Calculate** the probability that $\delta_i$ could exist in the null world
+
+5. **Decide** if $\delta_i$ is statistically significant
+
+## Elements of a Hypothesis Test
+
+![](images/onetest.png){fig-align="center"}
+
+[Alan Downey: “There is still only one test”](https://allendowney.blogspot.com/2016/06/there-is-still-only-one-test.html)
+
+
+## Hypothesis Testing with the infer Package I
+
+- R naturally runs the following hypothesis test on any regression as part of `lm()`:
+
+$$\begin{align*}
+H_0: \; & \beta_1=0\\
+H_1: \; & \beta_1 \neq 0
+\end{align*}$$
+
+- `infer` allows you to run through these steps manually to understand the process:
+
+. . .
+
+1. `specify()` a model
+
+. . . 
+
+2. `hypothesize()` the null 
+
+. . .
+
+3. `generate()` simulations of the null world 
+
+. . .
+
+4. `calculate()` the $p$-value
+
+. . .
+
+5. `visualize()` with a histogram (optional)
+
+## Hypothesis Testing with the infer Package II
+
+![](images/infer0jpeg.jpeg){fig-align="center"}
+
+
+## Hypothesis Testing with the infer Package II
+
+![](images/infer1jpeg.jpeg){fig-align="center"}
+
+## Hypothesis Testing with the infer Package II
+
+![](images/infer2jpeg.jpeg){fig-align="center"}
+
+## Hypothesis Testing with the infer Package II
+
+![](images/infer3jpeg.jpeg){fig-align="center"}
+
+## Hypothesis Testing with the infer Package II
+
+![](images/infer4jpeg.jpeg){fig-align="center"}
+
+## Hypothesis Testing with the infer Package II
+
+![](images/infer5jpeg.jpeg){fig-align="center"}
+
+
+## Theory-Based Inference: Critical Values of Test Statistic
+
+- [Test statistic $\delta$]{.hi-purple}: measures **how far what we observed in our sample $(\hat{\beta_1})$ is from what we would expect if the null hypothesis were true $(\beta_1=0)$**
+  - Calculated from a sampling distribution of the estimator (i.e. $\hat{\beta_1})$
+  - In econometrics, we use $t$-distributions which have $n-k-1$ degrees of freedom^[Again, see last class's [appendix](/resources/appendices/2.6-appendix) for more on the t-distribution. $k$ is the number of independent variables our model has, in this case, with just one $X$, $k=1$. We use two degrees of freedom to calculate $\hat{\beta}_0$ and $\hat{\beta}_1$, hence we have $n-2$ df.]
+
+- [Rejection region]{.hi-purple}: if the test statistic reaches a ["critical value"]{.hi-purple} of $\delta$, then we **reject** the null hypothesis
+
+## Theory-Based Inference: Critical Values of Test Statistic
+
+![](images/tdistributionmeme.jpg){fig-align="center"}
+
+
+# Hypothesis Testing by Simulation, with `infer` {.centered background-color="#314f4f"}
+
+## Imagine a Null World, where $H_0$ is True
+
+![](images/parallelworld.jpeg){fig-align="center"}
+
+Our world, and a world where $\beta_1=0$ by assumption.
+
+## Comparing the Worlds I {.smaller}
+
+- From that null world where $H_0: \, \beta_1=0$ is true, we **simulate** another sample and calculate OLS estimators again
+
+::: columns
+::: {.column width="50%"}
+```{r}
+tidy(school_reg)
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+library(infer)
+ca_school %>%
+  specify(testscr ~ str) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1, type = "permute") %>%
+  lm(testscr ~ str, data = .) %>%
+  tidy()
+```
+:::
+:::
+
+## Comparing the Worlds II {.smaller}
+
+- From that null world where $H_0: \, \beta_1=0$ is true, let's **simulate 1,000** samples and calculate slope $(\hat{\beta_1})$ for each
+
+. . .
+
+```{r}
+ca_school %>%
+  specify(testscr ~ str) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000, type = "permute") %>%
+  calculate(stat = "slope")%>%
+  rename(sample = replicate,
+         slope = stat)
+```
+
+## Prepping the `infer` Pipeline
+
+- Before I show you how to do this, let's first save our estimated slope from our *actual* sample
+    - We'll want this later!
+
+```{r}
+#| echo: true
+
+# save as our_slope
+our_slope <- school_reg %>% 
+  tidy() %>%
+  filter(term == "str") %>%
+  pull(estimate)
+
+# look at it
+our_slope
+```
+
+## The `infer` Pipeline: `specify()` 
+
+![](images/infer1jpeg.jpeg){fig-align="center"}
+
+## The `infer` Pipeline: `specify()` {.smaller}
+
+::: columns
+::: {.column width="30%"}
+
+
+`data %>%`
+
+`  specify(y ~ x)`
+
+:::
+::: {.column width="70%"}
+- Take our data and pipe it into the `specify()` function, which is essentially a `lm()` function for regression (for our purposes)
+
+```{r}
+#| echo: true
+#| eval: false
+ca_school %>%
+  specify(testscr ~ str)
+```
+
+```{r}
+ca_school %>%
+  specify(testscr ~ str) %>%
+  rmarkdown::paged_table(., options = list(rows.print = 5))
+```
+
+:::
+:::
+
+## The `infer` Pipeline: `hypothesize()`
+
+![](images/infer2jpeg.jpeg){fig-align="center"}
+
+## The `infer` Pipeline: `hypothesize()` {.smaller}
+
+::: columns
+::: {.column width="30%"}
+
+
+`data %>%`
+
+`  specify(y ~ x) %>%`
+
+`  hypothesize(null = "independence")`
+
+:::
+::: {.column width="70%"}
+- Describe what the null hypothesis is here
+- In `infer`'s language, `str` and `testscr` are `independent` $(\beta_1=0)$^[See more [here](https://moderndive.netlify.com/9-hypothesis-testing.html) about what other hypotheses you can test with `infer`]
+
+```{r}
+#| echo: true
+ca_school %>%
+  specify(testscr ~ str) %>%
+  hypothesize(null = "independence")
+```
+
+:::
+:::
+
+::: footer
+:::
+
+## The `infer` Pipeline: `generate()`
+
+![](images/infer3jpeg.jpeg){fig-align="center"}
+
+## The `infer` Pipeline: `generate()` {.smaller}
+
+::: columns
+::: {.column width="30%"}
+
+
+`data %>%`
+
+`  specify(y ~ x) %>%`
+
+`  hypothesize(null = "independence") %>%`
+
+`  generate(reps = n, type = "permute")`
+
+:::
+::: {.column width="70%"}
+- Now the magic starts, as we run a number of simulated samples
+- Set the number of `reps` and set the `type` equal to `"permute"` (not `bootstrap`)
+  - Permutation randomly matches $X$-values and $Y$-values from the data so that there is no relationship between $X$ and $Y$
+
+```{r}
+#| echo: true
+ca_school %>%
+  specify(testscr ~ str) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000,
+           type = "permute")
+```
+
+:::
+:::
+
+## The `infer` Pipeline: `calculate()`
+
+![](images/infer4jpeg.jpeg){fig-align="center"}
+
+## The `infer` Pipeline: `calculate()` {.smaller}
+
+::: columns
+::: {.column width="30%"}
+
+
+`data %>%`
+
+`  specify(y ~ x) %>%`
+
+`  hypothesize(null = "independence") %>%`
+
+`  generate(reps = n, type = "permute") %>%`
+
+`  calculate(stat = "slope")`
+
+:::
+::: {.column width="70%"}
+- We `calculate` sample statistics for each of the 1,000 `replicate` samples
+
+- In our case, calculate the slope^[See [package information](https://infer.netlify.com/) for other `stats` you can estimate] $(\hat{\beta}_1)$ for each `replicate`
+
+```{r}
+#| echo: true
+ca_school %>%
+  specify(testscr ~ str) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000,
+           type = "permute") %>%
+  calculate(stat = "slope")
+```
+
+:::
+:::
+
+## The `infer` Pipeline: `get_p_value()` {.smaller}
+
+::: columns
+::: {.column width="30%"}
+
+
+`data %>%`
+
+`  specify(y ~ x) %>%`
+
+`  hypothesize(null = "independence") %>%`
+
+`  generate(reps = n, type = "permute") %>%`
+
+`  calculate(stat = "slope") %>%`
+
+`  get_p_value(obs stat = "", direction = "both")`
+:::
+::: {.column width="70%"}
+- We can calculate the [p-value]{.hi}
+  - the probability of seeing a value at least as large as `our_slope` (`r round(our_slope, 3)`) in our simulated null distribution
+
+- [Two-sided alternative]{.hi-purple} $H_a: \beta_1 \neq 0$, we double the raw $p$-value
+
+```{r}
+#| echo: true
+ca_school %>%
+  specify(testscr ~ str) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000,
+           type = "permute") %>%
+  calculate(stat = "slope") %>%
+  get_p_value(obs_stat = our_slope,
+              direction = "both")
+```
+
+:::
+:::
+
+## The `infer` Pipeline: `visualize()`
+
+![](images/infer5jpeg.jpeg){fig-align="center"}
+
+## The `infer` Pipeline: `visualize()` {.smaller}
+
+::: columns
+::: {.column width="30%"}
+`data %>%`
+
+`  specify(y ~ x) %>%`
+
+`  hypothesize(null = "independence") %>%`
+
+`  generate(reps = n, type = "permute") %>%`
+
+`  calculate(stat = "slope") %>%`
+
+`  visualize()`
+:::
+::: {.column width="70%"}
+- Make a histogram of our null distribution of $\beta_1$
+  - Note it is centered at $\beta_1=0$ because that's $H_0$! 
+
+```{r}
+#| echo: true
+ca_school %>%
+  specify(testscr ~ str) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000,
+           type = "permute") %>%
+  calculate(stat = "slope") %>%
+  visualize()
+```
+
+:::
+:::
+
+## The `infer` Pipeline: `visualize()` {.smaller}
+
+::: columns
+::: {.column width="30%"}
+`data %>%`
+
+`  specify(y ~ x) %>%`
+
+`  hypothesize(null = "independence") %>%`
+
+`  generate(reps = n, type = "permute") %>%`
+
+`  calculate(stat = "slope") %>%`
+
+`  visualize()`
+:::
+::: {.column width="70%"}
+- Add our `our_slope` to show our finding on the null distr.
+
+```{r}
+#| echo: true
+ca_school %>%
+  specify(testscr ~ str) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000,
+           type = "permute") %>%
+  calculate(stat = "slope") %>%
+  visualize(obs_stat = our_slope)
+```
+
+:::
+:::
+
+
+## The `infer` Pipeline: `visualize()` {.smaller}
+
+::: columns
+::: {.column width="30%"}
+`data %>%`
+
+`  specify(y ~ x) %>%`
+
+`  hypothesize(null = "independence") %>%`
+
+`  generate(reps = n, type = "permute") %>%`
+
+`  calculate(stat = "slope") %>%`
+
+`  visualize() + shade_p_value()`
+:::
+::: {.column width="70%"}
+- Add `shade_p_value()` to see what $p$ is
+
+```{r}
+#| echo: true
+ca_school %>%
+  specify(testscr ~ str) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000,
+           type = "permute") %>%
+  calculate(stat = "slope") %>%
+  visualize(obs_stat = our_slope) +
+  shade_p_value(obs_stat = our_slope, #<<
+                direction = "two_sided")
+```
+
+:::
+:::
+
+## `visualize()` is Just a Wrapper for `ggplot`
+
+::: {.panel-tabset}
+
+## Plot
+```{r}
+#| fig-align: center
+#| fig-width: 14
+# infer
+ca_school %>%
+  specify(testscr ~ str) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000,
+           type = "permute") %>%
+  calculate(stat = "slope") %>%
+  # pipe into ggplot
+  ggplot(data = )+
+  aes(x = stat)+
+  geom_histogram(color="white", fill="#e64173")+
+  geom_vline(xintercept = our_slope,
+             color = "blue",
+             size = 2,
+             linetype = "dashed")+
+  annotate(geom = "label",
+           x = -2.28,
+           y = 100,
+           label = expression(paste("Our ", hat(beta[1]))),
+           color = "blue")+
+  scale_y_continuous(lim=c(0,130),
+                     expand = c(0,0))+
+  labs(x = expression(paste("Sampling distribution of ", hat(beta)[1], " under ", H[0], ":  ", beta[1]==0)),
+       y = "Samples")+
+    theme_classic(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+
+## Code
+
+```{r}
+#| echo: true
+#| eval: false
+# infer
+ca_school %>%
+  specify(testscr ~ str) %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 1000,
+           type = "permute") %>%
+  calculate(stat = "slope") %>%
+  # pipe into ggplot
+  ggplot(data = )+
+  aes(x = stat)+
+  geom_histogram(color="white", fill="#e64173")+
+  geom_vline(xintercept = our_slope,
+             color = "blue",
+             size = 2,
+             linetype = "dashed")+
+  annotate(geom = "label",
+           x = -2.28,
+           y = 100,
+           label = expression(paste("Our ", hat(beta[1]))),
+           color = "blue")+
+  scale_y_continuous(lim=c(0,130),
+                     expand = c(0,0))+
+  labs(x = expression(paste("Sampling distribution of ", hat(beta)[1], " under ", H[0], ":  ", beta[1]==0)),
+       y = "Samples")+
+    theme_classic(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+:::
+
+# Theory-Based Hypothesis Testing (What R Calculates) {.centered background-color="#314f4f"}
+
+## What R Does: Theory-Based Statistical Inference I
+
+::: columns
+::: {.column width="50%"}
+- R does things the old-fashioned way, using a *theoretical* null distribution instead of *simulating* one
+
+- A [t-distribution]{.hi} with $n-k-1$ df^[$k$ is the number of $X$ variables.]
+
+- Calculate a $t$-statistic for $\hat{\beta_1}$:
+
+$$\text{test statistic} = \frac{\text{estimate} - \text{null hypothesis}}{\text{standard error of estimate}}$$
+
+:::
+
+::: {.column width="50%"}
+```{r}
+t_ex<-ggplot(data = tibble(x=-5:5))+
+  aes(x = x)+
+  stat_function(fun = dt, args=list(df = 418), size=2, color="#e64173")+
+  #stat_function(fun=dt, geom="area", fill="blue", xlim=c(-5,4.75), alpha=0.5)+
+  #stat_function(fun=dt, geom="area", fill="blue", xlim=c(4.75,5), alpha=0.5)+
+  #geom_vline(xintercept = c(-4.75, 4.75), size = 1, color = "red", linetype = "dashed")+
+  #geom_rect(xmin=-5,xmax=-4.75, ymin=0, ymax=0.4, fill="red", alpha=0.3)+
+  #geom_rect(xmin=4.75,xmax=5, ymin=0, ymax=0.4, fill="red", alpha=0.3)+
+  labs(x = "Test Statistic, t",
+       y = "Probability",
+       caption = expression(paste("t measures number of std. devs our ", hat(beta[1]), " is from E[", hat(beta[1]), "] if ", H[0], " were True")))+
+  scale_x_continuous(breaks = seq(-5,5,1),
+                     lim = c(-5,5),
+                     expand = c(0,0))+
+  scale_y_continuous(breaks = seq(0,0.4,0.1),
+                     lim = c(0,0.45),
+                     expand = c(0,0))+
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size=16)
+t_ex
+```
+:::
+:::
+
+## What R Does: Theory-Based Statistical Inference II
+
+::: columns
+::: {.column width="50%"}
+$$\text{test statistic} = \frac{\text{estimate} - \text{null hypothesis}}{\text{standard error of estimate}}$$
+
+- $t$ same interpretation as $Z$: number of std. dev. away from the sampling distribution's expected value $E[\hat{\beta_1}]$^[The expected value is 0, because our null hypothesis was $\beta_1 =0$] (if $H_0$ were true)
+
+- Compares to a .hi-purple[critical value] of $t^*$ (pre-determined by $\alpha$-level & $n-k-1$ df)
+    - For 95% confidence, $\alpha=0.05$, $t^* \approx 2$^[Again, the **68-95-99.7%** empirical rule!]
+
+:::
+
+::: {.column width="50%"}
+```{r}
+t_ex
+```
+:::
+:::
+
+## What R Does: Theory-Based Statistical Inference III
+
+::: columns
+::: {.column width="50%"}
+\begin{align*}
+t &= \frac{\hat{\beta_1}-\beta_{1,0}}{se(\hat{\beta_1})}\\
+t &= \frac{-2.28-0}{0.48}\\
+t &= -4.75\\ \end{align*}
+
+- Our sample slope $\hat{\beta_1}$ is **4.75 standard deviations below** the expected value $E[\hat{\beta_1}]$ (i.e. 0) if $H_0$ were true 
+
+:::
+
+::: {.column width="50%"}
+```{r}
+t_ex+
+  geom_vline(xintercept = -4.75,
+             color = "blue",
+             size = 2,
+             linetype = "dashed")+
+  annotate(geom = "label",
+           x = -4.6,
+           y = 0.38,
+           label = expression(paste("Our ",t[i])),
+           color = "blue")
+```
+:::
+:::
+
+## What R Does: Theory-Based Statistical Inference IV
+
+::: columns
+::: {.column width="50%"}
+$$\begin{align*}
+t &= \frac{\hat{\beta_1}-\beta_{1,0}}{se(\hat{\beta_1})}\\
+t &= \frac{-2.28-0}{0.48}\\
+t &= -4.75\\ \end{align*}$$
+
+- .hi[p-value]: prob. of a test statistic at least as large (in magnitude) as ours if the null hypothesis were true
+  - Continuous distribution implies we need probability of area *beyond* our value
+  - p-value is **2-sided** for $H_a: \beta_1 \neq 0$
+
+- $2 \times p(t_{418}> \vert -4.75\vert)=0.0000028$
+
+:::
+
+::: {.column width="50%"}
+```{r}
+t_ex+
+  geom_rect(xmin = -5, xmax = -4.75, ymin=0, ymax = 0.5, fill = "#e64173", alpha = 0.25)+
+  geom_rect(xmin = 4.75, xmax = 5, ymin=0, ymax = 0.5, fill = "#e64173", alpha = 0.25)+
+  geom_vline(xintercept = c(-4.75, 4.75),
+             color = "blue",
+             size = 2,
+             linetype = "dashed")+
+  annotate(geom = "label",
+           x = c(-4.6, 4.6),
+           y = 0.38,
+           label = expression(paste("Our ",t[i])),
+           color = "blue")+
+  labs(caption = "p-value is probability in the tails beyond our t")
+```
+:::
+:::
+
+## One-Sided Tests & p-Values
+
+::: columns
+::: {.column width="50%"}
+
+$H_a: \beta_1<0$
+
+p-value: $p(t \leq t_i)$
+
+```{r, fig.retina=3, fig.height=5, fig.align="center"}
+ggplot(data = tibble(x=-4:4))+
+  aes(x = x)+
+  stat_function(fun = dnorm, size=2, color="#e64173")+
+  stat_function(fun=dnorm, xlim=c(-4,-2), geom="area", fill="#e64173", alpha=0.5)+
+  labs(x = "Test Statistic t",
+       y = "Probability",
+       caption = expression(paste("p-value is probability in the tail(s) beyond our test statistic, ", t[i], " of our sample slope ", hat(beta[1]))))+
+  scale_x_continuous(breaks=c(-2),
+                      label=c(expression(-t[i])))+
+  scale_y_continuous(limits = c(0,0.45),
+                     expand = c(0,0))+
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size=16)
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+$H_a: \beta_1>0$
+
+p-value: $p(t \geq t_i)$
+
+```{r, fig.retina=3, fig.height=5, fig.align="center"}
+ggplot(data = tibble(x=-4:4))+
+  aes(x = x)+
+  stat_function(fun = dnorm, size=2, color="#e64173")+
+  stat_function(fun=dnorm, xlim=c(2,4), geom="area", fill="#e64173", alpha=0.5)+
+  labs(x = "Test Statistic t",
+       y = "Probability",
+       caption = expression(paste("p-value is probability in the tail(s) beyond our test statistic, ", t[i], " of our sample slope ", hat(beta[1]))))+
+  scale_x_continuous(breaks=c(2),
+                      label=c(expression(t[i])))+
+  scale_y_continuous(limits = c(0,0.45),
+                     expand = c(0,0))+
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size=16)
+```
+
+:::
+:::
+
+## Two-Sided Tests and p-Values
+
+$H_a: \beta_1 \neq 0$
+
+p-value: $2 \times p(t \geq |t_i|)$
+
+```{r, fig.retina=3, fig.height=5, fig.align="center"}
+ggplot(data = tibble(x=-4:4))+
+  aes(x = x)+
+  stat_function(fun = dnorm, size=2, color="#e64173")+
+  stat_function(fun=dnorm, xlim=c(2,4), geom="area", fill="#e64173", alpha=0.5)+
+  stat_function(fun=dnorm, xlim=c(-4,-2), geom="area", fill="#e64173", alpha=0.5)+
+  labs(x = "Test Statistic t",
+       y = "Probability",
+       caption = expression(paste("p-value is probability in the tail(s) beyond our test statistic, ", t[i], " of our sample slope ", hat(beta[1]))))+
+  scale_x_continuous(breaks=c(-2,2),
+                      label=c(expression(-t[i]), expression(t[i])))+
+    scale_y_continuous(limits = c(0,0.45),
+                     expand = c(0,0))+
+  theme_classic(base_family = "Fira Sans Condensed",
+           base_size=16)
+```
+
+## Calculating p-Values in `R`
+
+::: columns
+::: {.column width="50%"}
+- `pt()` calculates `p`robabilities on a `t` distribution with arguments:
+  - the t-score
+  - `df = ` the degrees of freedom
+  - `lower.tail = ` 
+      - `TRUE` if looking at area to *LEFT* of value
+      - `FALSE` if looking at area to *RIGHT* of value
+
+```{r, echo = T}
+2 * pt(4.75, # I'll double the right tail
+       df = 418,
+       lower.tail = F) # right tail
+```
+- $2 \times p(t_{418}> \vert -4.75\vert)=0.0000028$
+
+:::
+
+::: {.column width="50%"}
+```{r}
+t_ex+
+  geom_rect(xmin = -5, xmax = -4.75, ymin=0, ymax = 0.5, fill = "#e64173", alpha = 0.25)+
+  geom_rect(xmin = 4.75, xmax = 5, ymin=0, ymax = 0.5, fill = "#e64173", alpha = 0.25)+
+  geom_vline(xintercept = c(-4.75, 4.75),
+             color = "blue",
+             size = 2,
+             linetype = "dashed")+
+  annotate(geom = "label",
+           x = c(-4.6, 4.6),
+           y = 0.38,
+           label = expression(paste("Our ",t[i])),
+           color = "blue")+
+  labs(caption = "p-value is probability in the tails beyond our t")
+
+```
+:::
+:::
+
+## Hypothesis Tests in Regression Output I
+
+```{r}
+#| echo: true
+school_reg %>% summary()
+```
+
+## Hypothesis Tests in Regression Output II
+
+- In `broom`'s `tidy()` (with confidence intervals)
+
+```{r, echo=T, eval = T}
+tidy(school_reg, conf.int=TRUE)
+```
+
+```{r, echo = F, eval = F}
+library(kableExtra)
+tidy(school_reg, conf.int=TRUE) %>%
+  knitr::kable() %>%
+  column_spec(c(3,4), color = "#e64173")
+```
+
+- p-value on `str` is 0.00000278. 
+
+## Conclusions
+
+\begin{align*}
+H_0: \,& \beta_1=0\\
+H_a: \, & \beta_a \neq 0\\
+\end{align*}
+
+- Because the hypothesis test's $p$-value $<$ $\alpha$ (0.05)...
+
+- [We have sufficient evidence to reject $H_0$ in favor of our alternative hypothesis. Our sample suggests that there *is a relationship* between class size and test scores.]{.hi-purple}
+
+. . .
+
+- Using the confidence intervals:
+
+- [We are 95% confident that, from similarly constructed samples, the true marginal effect of class size on test scores is between -3.22 and -1.34.]{.hi-purple}
+
+## Hypothesis Testing vs. Confidence Intervals {.smaller}
+
+- Confidence intervals are all *two-sided* by nature
+$$CI_{0.95}=\left(\left[\hat{\beta_1}-\underbrace{2 \times se(\hat{\beta_1})}_{MOE}\right], \, \left[\hat{\beta_1}+\underbrace{2 \times se(\hat{\beta_1})}_{MOE}\right] \right)$$
+
+- Hypothesis test $(t$-test) of $H_0: \, \beta_1=0$ computes a $t$-value of6[Since our null hypothesis is that $\beta_{1,0}=0$, the test statistic simplifies to this neat fraction.]
+$$t=\frac{\hat{\beta_1}}{se(\hat{\beta_1})}$$
+and $p<0.05$ when $t\geq2$ (approximately)
+
+. . .
+
+- If our confidence interval contains the $H_0$ value (i.e. $0$, for our test), then *we fail to reject* $H_0$.
+
+# The Use and Abuse of $p$-values {.centered background-color="#314f4f"}
+
+## p-Hacking
+
+![](images/xkcdjellybeans1.png){fig-align="center"}
+
+## p-Hacking
+
+![](images/xkcdjellybeans2.png){fig-align="center"}
+
+## p-Hacking
+
+![](images/xkcdjellybeans3.png){fig-align="center"}
+
+## p-Hacking
+
+![](images/xkcdjellybeans4.png){fig-align="center"}
+
+## p-Hacking
+
+::: columns
+::: {.column width="50%"}
+- Consider what 95% confident or $\alpha=0.05$ means
+
+- If we repeat a procedure 20 times, we should expect $\frac{1}{20}$ (5%) to produce a fluke result!
+
+[Image source: [Seeing Theory](https://seeing-theory.brown.edu/frequentist-inference/index.html)]{.source}
+
+:::
+
+::: {.column width="50%"}
+![](images/ci_gif.gif)
+:::
+:::
+
+## Abusing p-values and “Science”
+
+![](images/chocolatefake.png){fig-align="center"}
+
+[Source: [Washington Post](https://www.washingtonpost.com/news/morning-mix/wp/2015/05/28/how-and-why-a-journalist-tricked-news-outlets-into-thinking-chocolate-makes-you-thin/?hpid=z5)]{.source}
+
+## Abusing p-Values and “Science” I
+
+::: columns
+::: {.column width="50%"}
+![](images/smbc1623-1.png)
+:::
+
+::: {.column width="50%"}
+![](images/smbc1623-2.png)
+:::
+:::
+
+[Source: [SMBC](http://www.smbc-comics.com/?id=1623)]{.source}
+
+## Abusing p-Values and “Science” II
+
+::: columns
+::: {.column width="30%"}
+![](/images/asalogo.jpg)
+:::
+
+::: {.column width="70%"}
+
+> “The widespread use of 'statistical significance' (generally interpreted as $(p \leq 0.05)$ as a license for making a claim of a scientific finding (or implied truth) leads to considerable distortion of the scientific process.”
+
+[Wasserstein, Ronald L. and Nicole A. Lazar, (2016), ["The ASA's Statement on p-Values: Context, Process, and Purpose](http://www.tandfonline.com/doi/full/10.1080/00031305.2016.1154108)," *The American Statistician* 30(2): 129-133]{.source}
+:::
+:::
+
+## Abusing p-Values and “Science” III
+
+::: columns
+::: {.column width="30%"}
+![](/images/cult_of_stat_sig.jpg)
+:::
+
+::: {.column width="70%"}
+
+> “No economist has achieved scientific success as a result of a statistically significant coefficient. Massed observations, clever common sense, elegant theorems, new policies, sagacious economic reasoning, historical perspective, relevant accounting, these have all led to scientific success. Statistical significance has not,” (p.112).
+
+[McCloskey, Dierdre N and Stephen Ziliak, 1996, *The Cult of Statistical Significance*]{.source}
+:::
+:::
+
+## Common Misconceptions About p-Values
+
+❌ $p$ **is the probability that the alternative hypothesis is false**
+  - We can never *prove* an alternative hypothesis, only tentatively reject a null hypothesis
+
+. . .
+
+❌ $p$ **is the probability that the null hypothesis is true**
+  - We're not *proving* the $H_0$ is false, only saying that it's very unlikely that if $H_0$ were true, we'd obtain a slope as rare as our sample's slope
+
+. . .
+
+❌ $p$ **is the probability that our observed effects were produced purely by random chance**
+  - $p$ is computed under a specific model (think about our null world) that *assumes* $H_0$ is true
+
+. . .
+
+❌ $p$ **tells us how significant our finding is**
+  - $p$ tells us nothing about the *size* or the *real world significance* of any effect deemed “statistically significant”
+  - it only tells us that the slope is statistically significantly different from 0 (if $H_0$ is $\beta_1=0)$ 
+
+## p-Values: Restatement
+
+- Again, [**p-value is the probability that, if the null hypothesis were true, we obtain (by pure random chance) a test statistic at least as extreme as the one we estimated for our sample**]{.green}
+
+- A low p-value means either (and we can't distinguish which):
+    1. $H_0$ is true and a highly improbable event has occurred OR
+    2. $H_0$ is false
+
+
+## Statistical Significance In Regression Tables
+
+::: columns
+::: {.column width="50%"}
+```{r}
+modelsummary::modelsummary(models = list("Test Score" = school_reg),
+             fmt = 2, # round to 2 decimals
+             output = "html",
+             coef_rename = c("(Intercept)" = "Constant",
+                             "str" = "STR"),
+             gof_map = list(
+               list("raw" = "nobs", "clean" = "n", "fmt" = 0),
+               list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
+               #list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
+               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
+             ),
+             escape = FALSE,
+             stars = c('*' = .1, '**' = .05, '***' = 0.01)
+)
+```
+:::
+
+::: {.column width="50%"}
+- Statistical significance is shown by asterisks, common (but not always!) standard:
+    - 1 asterisk: significant at $\alpha=0.10$
+    - 2 asterisks: significant at $\alpha=0.05$
+    - 3 asterisks: significant at $\alpha=0.01$
+
+- Rare, but sometimes regression tables include $p$-values for estimates
+
+:::
+:::
