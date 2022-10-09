@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ECON 480 — Econometrics - Problem Set 3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../files/images/metrics_hex.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="ECON 480 — Econometrics - Problem Set 3">
+<meta property="og:description" content="Please read the instructions for completing and submitting homeworks.">
+<meta property="og:site-name" content="ECON 480 — Econometrics">
+<meta name="twitter:title" content="ECON 480 — Econometrics - Problem Set 3">
+<meta name="twitter:description" content="Please read the instructions for completing and submitting homeworks.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <img src="../files/images/metrics_hex.png" alt="">
+    <span class="navbar-title">ECON 480 — Econometrics</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html">Syllabus</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html">Schedule</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../content/index.html">Content</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../assignments/index.html">Assignments</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resources/index.html">Resources</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://hoodcollegeeconomics.slack.com"><i class="bi bi-slack" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../rstudio.cloud"><i class="bi bi-cloud-fill" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#theory-and-concepts" id="toc-theory-and-concepts" class="nav-link active" data-scroll-target="#theory-and-concepts">Theory and Concepts</a>
+  <ul class="collapse">
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a></li>
+  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a></li>
+  <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a></li>
+  <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a></li>
+  <li><a href="#question-6" id="toc-question-6" class="nav-link" data-scroll-target="#question-6">Question 6</a></li>
+  <li><a href="#question-7" id="toc-question-7" class="nav-link" data-scroll-target="#question-7">Question 7</a></li>
+  </ul></li>
+  <li><a href="#theory-problems" id="toc-theory-problems" class="nav-link" data-scroll-target="#theory-problems">Theory Problems</a>
+  <ul class="collapse">
+  <li><a href="#question-8" id="toc-question-8" class="nav-link" data-scroll-target="#question-8">Question 8</a>
+  <ul class="collapse">
+  <li><a href="#part-a" id="toc-part-a" class="nav-link" data-scroll-target="#part-a">Part A</a></li>
+  <li><a href="#part-b" id="toc-part-b" class="nav-link" data-scroll-target="#part-b">Part B</a></li>
+  <li><a href="#part-c" id="toc-part-c" class="nav-link" data-scroll-target="#part-c">Part C</a></li>
+  <li><a href="#part-d" id="toc-part-d" class="nav-link" data-scroll-target="#part-d">Part D</a></li>
+  <li><a href="#part-e" id="toc-part-e" class="nav-link" data-scroll-target="#part-e">Part E</a></li>
+  <li><a href="#part-f" id="toc-part-f" class="nav-link" data-scroll-target="#part-f">Part F</a></li>
+  <li><a href="#part-g" id="toc-part-g" class="nav-link" data-scroll-target="#part-g">Part G</a></li>
+  <li><a href="#part-h" id="toc-part-h" class="nav-link" data-scroll-target="#part-h">Part H</a></li>
+  </ul></li>
+  <li><a href="#question-9" id="toc-question-9" class="nav-link" data-scroll-target="#question-9">Question 9</a>
+  <ul class="collapse">
+  <li><a href="#part-a-1" id="toc-part-a-1" class="nav-link" data-scroll-target="#part-a-1">Part A</a></li>
+  <li><a href="#part-b-1" id="toc-part-b-1" class="nav-link" data-scroll-target="#part-b-1">Part B</a></li>
+  <li><a href="#part-c-1" id="toc-part-c-1" class="nav-link" data-scroll-target="#part-c-1">Part C</a></li>
+  <li><a href="#part-d-1" id="toc-part-d-1" class="nav-link" data-scroll-target="#part-d-1">Part D</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#r-questions" id="toc-r-questions" class="nav-link" data-scroll-target="#r-questions">R Questions</a>
+  <ul class="collapse">
+  <li><a href="#question-10" id="toc-question-10" class="nav-link" data-scroll-target="#question-10">Question 10</a></li>
+  <li><a href="#part-a-2" id="toc-part-a-2" class="nav-link" data-scroll-target="#part-a-2">Part A</a></li>
+  <li><a href="#part-b-2" id="toc-part-b-2" class="nav-link" data-scroll-target="#part-b-2">Part B</a></li>
+  <li><a href="#part-c-2" id="toc-part-c-2" class="nav-link" data-scroll-target="#part-c-2">Part C</a></li>
+  <li><a href="#part-d-2" id="toc-part-d-2" class="nav-link" data-scroll-target="#part-d-2">Part D</a></li>
+  <li><a href="#part-e-1" id="toc-part-e-1" class="nav-link" data-scroll-target="#part-e-1">Part E</a></li>
+  <li><a href="#part-f-1" id="toc-part-f-1" class="nav-link" data-scroll-target="#part-f-1">Part F</a></li>
+  <li><a href="#part-g-1" id="toc-part-g-1" class="nav-link" data-scroll-target="#part-g-1">Part G</a></li>
+  <li><a href="#part-h-1" id="toc-part-h-1" class="nav-link" data-scroll-target="#part-h-1">Part H</a></li>
+  <li><a href="#part-i" id="toc-part-i" class="nav-link" data-scroll-target="#part-i">Part I</a></li>
+  <li><a href="#part-j" id="toc-part-j" class="nav-link" data-scroll-target="#part-j">Part J</a></li>
+  <li><a href="#part-k" id="toc-part-k" class="nav-link" data-scroll-target="#part-k">Part K</a></li>
+  <li><a href="#part-l" id="toc-part-l" class="nav-link" data-scroll-target="#part-l">Part L</a></li>
+  <li><a href="#part-m" id="toc-part-m" class="nav-link" data-scroll-target="#part-m">Part M</a></li>
+  <li><a href="#part-n" id="toc-part-n" class="nav-link" data-scroll-target="#part-n">Part N</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Problem Set 3</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This assignment is due by Friday October 14 by email.</p>
+</div>
+</div>
+<p>Please read the <a href="../assignments/problem-sets.html">instructions</a> for completing and submitting homeworks.</p>
+<p style="text-align:center">
+</p><p style="text-align:center">
+<a target="_blank" href="../files/assignment/03-problem-set-pdf.pdf"><span class="btn btn-primary btn-lg"><i class="fas fa-file-pdf"></i> PDF</span></a> <a target="_blank" href="../files/assignment/03-problem-set.zip"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> R Project</span></a> <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4691729"><span class="btn btn-primary btn-lg"><i class="fas fa-cloud"></i> R Studio Cloud</span></a>
+</p>
+<p></p>
+<p>The <i class="fas fa-file-pdf"></i> PDF is useful if you want to print out the problem set and write on it. The <i class="fas fa-file-archive"></i> R Project is a zipped <code>.zip</code> file which contains a <i class="fab fa-markdown"></i> <code>.qmd</code> file to write answers in, and the data, all in a logical working directory. (<a href="../resources/zipping.html">See this resource</a> for help unzipping files). You can also just write an <code>.R</code> file in the project if you don’t want to use markdown. If you use the <i class="fas fa-cloud"></i> cloud project, I have already installed <code>tidyverse</code> and <code>tinytex</code> (to produce pdfs).</p>
+<section id="theory-and-concepts" class="level1">
+<h1>Theory and Concepts</h1>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<p>In your own words, describe what exogeneity and endogeneity mean, and how they are related to bias in our regression. What things can we learn about the bias if we know <span class="math inline">\(X\)</span> is endogenous? ## Question 2</p>
+<p>In your own words, describe what <span class="math inline">\(R^2\)</span> means. How do we calculate it, what does it tell us, and how do we interpret it?</p>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
+<p>In your own words, describe what the standard error of the regression (<span class="math inline">\(SER\)</span>) means. How do we calculate it, what does it tell us, and how do we interpret it?</p>
+</section>
+<section id="question-4" class="level2">
+<h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
+<p>In your own words, describe what homoskedasticity and heteroskedasticity mean: both in ordinary English, and in terms of the graph of the OLS regression line.</p>
+</section>
+<section id="question-5" class="level2">
+<h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
+<p>In your own words, describe what the variation in <span class="math inline">\(\hat{\beta_1}\)</span> (either variance or standard error) means, or is measuring. What three things determine the variation, and in what way?</p>
+</section>
+<section id="question-6" class="level2">
+<h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
+<p>In your own words, describe what a p-value means, and how it is used to establish statistical significance.</p>
+</section>
+<section id="question-7" class="level2">
+<h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
+<p>A researcher is interested in examining the impact of illegal music downloads on commercial music sales. The author collects data on commercial sales of the top 500 singles from 2017 (Y) and the number of downloads from a web site that allows ‘file sharing’ (X). The author estimates the following model:</p>
+<p><span class="math display">\[
+\text{music sales}_i = \beta_0+\beta_1 \text{illegal downloads}_i + u_i
+\]</span></p>
+<p>The author finds a large, positive, and statistically significant estimate of <span class="math inline">\(\hat{\beta_1}\)</span>. The author concludes these results demonstrate that illegal downloads actually boost music sales. Is this an unbiased estimate of the impact of illegal music on sales? Why or why not? Do you expect the estimate to overstate or understate the true relationship between illegal downloads and sales?</p>
+</section>
+</section>
+<section id="theory-problems" class="level1">
+<h1>Theory Problems</h1>
+<p>For the following questions, please show all work and explain answers as necessary. You may lose points if you only write the correct answer. You may use R to verify your answers, but you are expected to reach the answers in this section “manually.”</p>
+<section id="question-8" class="level2">
+<h2 class="anchored" data-anchor-id="question-8">Question 8</h2>
+<p>A researcher wants to estimate the relationship between average weekly earnings (<span class="math inline">\(AWE\)</span>, measured in dollars) and <span class="math inline">\(Age\)</span> (measured in years) using a simple OLS model. Using a random sample of college-educated full-time workers aged 25-65 yields the following:</p>
+<p><span class="math display">\[
+\widehat{AWE} = 696.70+9.60 \, Age
+\]</span></p>
+<section id="part-a" class="level3">
+<h3 class="anchored" data-anchor-id="part-a">Part A</h3>
+<p>Interpret what <span class="math inline">\(\hat{\beta_0}\)</span> means in this context.</p>
+</section>
+<section id="part-b" class="level3">
+<h3 class="anchored" data-anchor-id="part-b">Part B</h3>
+<p>Interpret what <span class="math inline">\(\hat{\beta_1}\)</span> means in this context.</p>
+</section>
+<section id="part-c" class="level3">
+<h3 class="anchored" data-anchor-id="part-c">Part C</h3>
+<p>The <span class="math inline">\(R^2=0.023\)</span> for this regression. What are the units of the <span class="math inline">\(R^2\)</span>, and what does this mean?</p>
+</section>
+<section id="part-d" class="level3">
+<h3 class="anchored" data-anchor-id="part-d">Part D</h3>
+<p>The <span class="math inline">\(SER, \, \hat{\sigma_u}=624.1\)</span> for this regression. What are the units of the SER in this context, and what does it mean? Is the SER large in the context of this regression?</p>
+</section>
+<section id="part-e" class="level3">
+<h3 class="anchored" data-anchor-id="part-e">Part E</h3>
+<p>Suppose Maria is 20 years old. What is her predicted <span class="math inline">\(\widehat{AWE}\)</span>?</p>
+</section>
+<section id="part-f" class="level3">
+<h3 class="anchored" data-anchor-id="part-f">Part F</h3>
+<p>Suppose the data shows her <em>actual</em> <span class="math inline">\(AWE\)</span> is $430. What is her residual? Is this a relatively good or a bad prediction? Hint: compare your answer here to your answer in Part D.</p>
+</section>
+<section id="part-g" class="level3">
+<h3 class="anchored" data-anchor-id="part-g">Part G</h3>
+<p>What does the error term, <span class="math inline">\(u_i\)</span> represent in this case? What might individuals have different values of <span class="math inline">\(\hat{u}_i\)</span>?</p>
+</section>
+<section id="part-h" class="level3">
+<h3 class="anchored" data-anchor-id="part-h">Part H</h3>
+<p>Do you think that <span class="math inline">\(Age\)</span> is exogenous? Why or why not? Would we expect <span class="math inline">\(\hat{\beta_1}\)</span> to be too large or too small?</p>
+</section>
+</section>
+<section id="question-9" class="level2">
+<h2 class="anchored" data-anchor-id="question-9">Question 9</h2>
+<p>Suppose a researcher is interested in estimating a simple linear regression model:</p>
+<p><span class="math display">\[
+Y_i=\beta_0+\beta_1X_i+u_i
+\]</span></p>
+<p>In a sample of 48 observations, she generates the following descriptive statistics:</p>
+<ul>
+<li><span class="math inline">\(\bar{X}=30\)</span></li>
+<li><span class="math inline">\(\bar{Y}=63\)</span></li>
+<li><span class="math inline">\(\displaystyle\sum^n_{i=1}(X_i-\bar{X})^2= 6900\)</span></li>
+<li><span class="math inline">\(\displaystyle\sum^n_{i=1}(Y_i-\bar{Y})^2= 29000\)</span></li>
+<li><span class="math inline">\(\displaystyle\sum^n_{i=1}(X_i-\bar{X})(Y_i-\bar{Y})=13800\)</span></li>
+<li><span class="math inline">\(\displaystyle\sum^n_{i=1}\hat{u}^2=1656\)</span></li>
+</ul>
+<section id="part-a-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-a-1">Part A</h3>
+<p>What is the OLS estimate of <span class="math inline">\(\hat{\beta_1}\)</span>?</p>
+</section>
+<section id="part-b-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-b-1">Part B</h3>
+<p>What is the OLS estimate of <span class="math inline">\(\hat{\beta_0}\)</span>?</p>
+</section>
+<section id="part-c-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-c-1">Part C</h3>
+<p>Suppose the OLS estimate of <span class="math inline">\(\hat{\beta_1}\)</span> has a standard error of <span class="math inline">\(0.072\)</span>. Could we probably reject a null hypothesis of <span class="math inline">\(H_0: \beta_1=0\)</span> at the 5% level?</p>
+</section>
+<section id="part-d-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-d-1">Part D</h3>
+<p>Calculate the <span class="math inline">\(R^2\)</span> for this model. How much variation in <span class="math inline">\(Y\)</span> is explained by our model?</p>
+</section>
+</section>
+</section>
+<section id="r-questions" class="level1">
+<h1>R Questions</h1>
+<p>Answer the following questions using R. When necessary, please write answers in the same document (rendered to html or pdf, typed .doc(x), or handwritten) as your answers to the above questions. Be sure to include (email or print an .R file, or show in your rendered quarto document) your code and the outputs of your code with the rest of your answers.</p>
+<section id="question-10" class="level3">
+<h3 class="anchored" data-anchor-id="question-10">Question 10</h3>
+<ul>
+<li><a href="http://metricsf22.classes.ryansafner.com/files/data/MLBattend.csv"><i class="fas fa-table"></i> <code>MLBattend.csv</code></a></li>
+</ul>
+<p>Download the MLBattend dataset. This data contains data on attendance at major league baseball games for all 32 MLB teams from the 1970s-2000. We want to answer the following question:</p>
+<p><strong>“How big is home-field advantage in baseball? Does a team with higher attendance at home games over their season have score more runs over their season?”</strong></p>
+</section>
+<section id="part-a-2" class="level3">
+<h3 class="anchored" data-anchor-id="part-a-2">Part A</h3>
+<p>Clean up the data a bit by <code>mutate()</code>-ing a variable to measure home attendance in millions. This will make it easier to interpret your regression later on.</p>
+</section>
+<section id="part-b-2" class="level3">
+<h3 class="anchored" data-anchor-id="part-b-2">Part B</h3>
+<p>Get the correlation between Runs Scored and Home Attendance.</p>
+</section>
+<section id="part-c-2" class="level3">
+<h3 class="anchored" data-anchor-id="part-c-2">Part C</h3>
+<p>Plot a scatterplot of Runs Scored (<code>y</code>) on Home Attendance (<code>x</code>). Add a regression line.</p>
+</section>
+<section id="part-d-2" class="level3">
+<h3 class="anchored" data-anchor-id="part-d-2">Part D</h3>
+<p>We want to estimate a regression of Runs Scored on Home Attendance:</p>
+<p><span class="math display">\[
+\text{runs scored}_i = \beta_0 + \beta_1 \, \text{home attendance}_i + u_i
+\]</span></p>
+<p>Run this regression in R.</p>
+<p>What are <span class="math inline">\(\hat{\beta_0}\)</span> and <span class="math inline">\(\hat{\beta_1}\)</span> for this model? Interpret them in the context of our question.</p>
+<p>Hint: make sure to save your regression model as an object, and get a summary() of it. This object will be needed later.</p>
+</section>
+<section id="part-e-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-e-1">Part E</h3>
+<p>Write out the estimated regression equation.</p>
+</section>
+<section id="part-f-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-f-1">Part F</h3>
+<p>Make a regression table of the output using <code>modelsummary()</code>.</p>
+</section>
+<section id="part-g-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-g-1">Part G</h3>
+<p>Check the goodness of fit statistics. What is the <span class="math inline">\(R^2\)</span> and the <span class="math inline">\(SER\)</span> of this model? Interpret them both in the context of our question.</p>
+</section>
+<section id="part-h-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-h-1">Part H</h3>
+<p>Now let’s start running some diagnostics of the regression. Make a histogram of the residuals. Do they look roughly normal?</p>
+<p>Hint: you will need to use the <code>broom</code> package’s <code>augment()</code> command on your saved regression object to add containing the residuals (<code>.resid</code>), and save this as a new object - to be your data source for the plot in this part and the next part.</p>
+</section>
+<section id="part-i" class="level3">
+<h3 class="anchored" data-anchor-id="part-i">Part I</h3>
+<p>Make a residual plot.</p>
+</section>
+<section id="part-j" class="level3">
+<h3 class="anchored" data-anchor-id="part-j">Part J</h3>
+<p>Test the regression for heteroskedasticity. Are the errors homoskedastic or heteroskedastic?</p>
+<p>Hint: use the <code>lmtest</code> package’s <code>bptest()</code> command on your saved regression object.</p>
+<p>Run another regression using robust standard errors. Hint: use the <code>estimatr</code> package’s <code>lm_robust()</code> command and save the output like the following:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>reg_robust <span class="ot">&lt;-</span><span class="fu">lm_robust</span>(y <span class="sc">~</span> x, <span class="at">data =</span> the_data, <span class="co"># change y, x, and data names to yours</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">se_type =</span> <span class="st">"stata"</span>) <span class="co"># we'll use this method to calculate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now make another regression output table with <code>modelsummary</code>, with one column using regular standard errors (just use your original saved regression object) and another using robust standard errors (use this new saved object)</p>
+</section>
+<section id="part-k" class="level3">
+<h3 class="anchored" data-anchor-id="part-k">Part K</h3>
+<p>Test the data for outliers. If there are any, identify which team(s) and season(s) are outliers. Hint: use the <code>car</code> package’s <code>outlierTest()</code> command on your saved regression object.</p>
+</section>
+<section id="part-l" class="level3">
+<h3 class="anchored" data-anchor-id="part-l">Part L</h3>
+<p>Look back at your regression results. What is the marginal effect of home attendance on runs scored? Is this statistically significant? Why or why not?</p>
+</section>
+<section id="part-m" class="level3">
+<h3 class="anchored" data-anchor-id="part-m">Part M</h3>
+<p>Now we’ll try out the infer package to understand the <span class="math inline">\(p\)</span>-value for our observed slope in our regression model.</p>
+<p>First, save the (value of) our sample <span class="math inline">\(\hat{\beta}_1\)</span> from your regression in Part D as an object, I suggest:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>our_slope <span class="ot">&lt;-</span> <span class="dv">123</span> <span class="co"># replace "123" with whatever number you found for the slope in part D</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, using the infer package run the following simulation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save our simulations as an object (I called it "sims")</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sims <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="co"># "data" here is whatever you named your dataframe!</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(y <span class="sc">~</span> x) <span class="sc">%&gt;%</span> <span class="co"># replacing y and x with your variable names</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>) <span class="sc">%&gt;%</span> <span class="co"># H_0 is that slope is 0, x and y are independent</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">"permute"</span>) <span class="sc">%&gt;%</span> <span class="co"># make 1000 samples assuming H_0 is true</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"slope"</span>) <span class="co"># estimate slope in each sample</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># look at it</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>sims</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate p value</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>sims <span class="sc">%&gt;%</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">get_p_value</span>(<span class="at">obs_stat =</span> our_slope,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>              <span class="at">direction =</span> <span class="st">"both"</span>) <span class="co"># a two-sided H_a: slope =/= 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Compare to the p-value in your original regression output in previous parts of this question.</p>
+</section>
+<section id="part-n" class="level3">
+<h3 class="anchored" data-anchor-id="part-n">Part N</h3>
+<p>Make a histogram of the simulated slopes, and plot our sample slope on that histogram, shading the p-value.</p>
+<p>You can pipe <code>sims</code> into <code>visualize(obs_stat = our_slope)</code>, or use <code>ggplot2</code> to plot a histogram in the normal way, using <code>sims</code> as the data source and add a <code>geom_vline(xintercept = our_slope)</code> to show our finding on the distribution.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2022 by <a href="https://www.ryansafner.com">Ryan Safner</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/ryansafner/metricsf22">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

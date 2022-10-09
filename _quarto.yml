@@ -86,6 +86,9 @@ website:
             - text: "Problem Set 2"
               href: assignments/02-problem-set.qmd
         - section: "Exams"
+          contents:
+            - text: "Midterm Exam"
+              href: assignments/01-exam.qmd
         - text: "Research Paper"
           href: assignments/paper.qmd
     
@@ -99,7 +102,9 @@ website:
         - text: "1.4 — Data Wrangling"
           href: r/1.4-r.qmd
         - text: "2.5 — Precision and Diagnostics"
-          href: r/1.5-r.qmd
+          href: r/2.5-r.qmd
+        - text: "2.7 — Hypothesis Testing for Regression"
+          href: r/2.7-r.qmd
 
     - title: "Resources"
       style: "docked"

@@ -937,7 +937,7 @@ $$\text{test statistic} = \frac{\text{estimate} - \text{null hypothesis}}{\text{
 
 - $t$ same interpretation as $Z$: number of std. dev. away from the sampling distribution's expected value $E[\hat{\beta_1}]$^[The expected value is 0, because our null hypothesis was $\beta_1 =0$] (if $H_0$ were true)
 
-- Compares to a .hi-purple[critical value] of $t^*$ (pre-determined by $\alpha$-level & $n-k-1$ df)
+- Compares to a [critical value]{.hi-purple} of $t^*$ (pre-determined by $\alpha$-level & $n-k-1$ df)
     - For 95% confidence, $\alpha=0.05$, $t^* \approx 2$^[Again, the **68-95-99.7%** empirical rule!]
 
 :::
@@ -1243,7 +1243,7 @@ and $p<0.05$ when $t\geq2$ (approximately)
 
 ::: columns
 ::: {.column width="30%"}
-![](/images/asalogo.jpg)
+![](images/asalogo.jpg)
 :::
 
 ::: {.column width="70%"}
@@ -1258,7 +1258,7 @@ and $p<0.05$ when $t\geq2$ (approximately)
 
 ::: columns
 ::: {.column width="30%"}
-![](/images/cult_of_stat_sig.jpg)
+![](images/cult_of_stat_sig.jpg)
 :::
 
 ::: {.column width="70%"}

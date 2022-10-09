@@ -1,0 +1,43 @@
+---
+title: "Midterm Exam"
+execute:
+  freeze: auto
+---
+
+::: callout-warning
+The midterm exam will be in class on Monday October 17.
+:::
+
+## Exam Information
+
+**You may not have anything with you** for the exam (no notes, etc) **except a calculator.** I write questions such that you can get a perfect score *without* a calculator, and answers should typically be simple whole numbers. However, I understand that if nothing else, calculators are moral support and you can use them. I will provide simple calculators if you need to borrow one, as well as extra paper.
+
+I write the exam so that most students can complete it in less than the required time, but you will have the whole class period, plus a few minutes between classes. Questions draw from concepts in the slides and whatever we discuss in class, **no other outside knowledge is needed.**
+
+**You must show your work for all problems.** On all exam questions, **I give points for partial credit.** The more of your thought process you show (if you are unsure), the more points I am able to give. **Both correct answers with no work shown, or blank answers will not receive full points.**
+
+If you have any approved testing accommodations, or know in advance you must be absent, please confirm with me ASAP and we will make arrangements
+
+### Study Tools
+
+- [<i class="fas fa-external-link-square-alt"></i> Midterm Concepts](/resources/exams/midterm-concepts.qmd)
+<!-- [<i class="fas fa-external-link-square-alt"></i> Review Questions Slides](/slides/midterm-review.html) -->
+<!--### Midterm Review Questions
+- [<i class="fas fa-chalkboard-teacher"></i> Midterm Review Questions](/slides/midterm-review.html)-->
+- [<i class="fas fa-file-pdf"></i> Old Midterm Exam](/examprep/01-old-exam.pdf)
+- [<i class="fas fa-file-pdf"></i> Formula Sheet](/examprep/midtermformulas.pdf)
+
+## My Advice
+
+Make sure you do all of the homework problems and learn from the answer keys to the homeworks, as well as the in-class practice problems. While some of the questions should be novel applications, conceptual questions on homeworks will get you in the right headspace to think about answering a question on an exam.
+
+### Things Worth Knowing/Memorizing
+
+- The difference between exogenous and endogenous variables/models
+- How OLS estimators are chosen (minimize SSR)
+- The four assumptions made about the error term, and which one is most important, and why
+- What $R^2$ means, in English, and the methods of calculating it
+- What $SER$ means, in English
+- What homoskedasticity and heteroskedasticity mean, in English
+- How to read a regression table and various forms of regression outputs from `R`
+- Interpreting what $\hat{\beta}_0$ and $\hat{\beta}_1$ are in terms of a graph and in terms of a question
