@@ -1,0 +1,199 @@
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    logo: "../images/metrics_hex.png"
+    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
+    height: 900
+    width: 1600
+    df-print: paged
+    slide-number: c
+    chalkboard: true
+overview: true
+execute:
+  echo: false
+  warning: false
+  freeze: auto
+---
+
+##  {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
+
+[Midterm Review]{.custom-title}
+
+[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+
+[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
+
+[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(broom)
+library(haven)
+library(kableExtra)
+library(patchwork)
+library(fontawesome)
+library(gapminder)
+library(ggthemes)
+library(scales)
+library(infer)
+library(modelsummary)
+knitr::opts_chunk$set(echo=F,
+                      message=F,
+                      warning=F)
+update_geom_defaults("label", list(family = "Fira Sans Condensed"))
+update_geom_defaults("text", list(family = "Fira Sans Condensed"))
+
+```
+
+## Question 1
+
+What does *endogenous* mean, in words? What about statistically?
+
+## Question 2
+
+If a regression is *biased* (from endogeneity), what can we learn about the bias?
+
+## Question 3
+
+What does *heteroskedasticity* mean? Does *heteroskedasticity* **bias** $\hat{\beta_1}$?
+
+## Question 4
+
+Is this data likely *heteroskedastic* or *homoskedastic*?
+
+```{r, fig.align="center", fig.width=12}
+library(tidyverse)
+het_data<-tibble(x = runif(500,-3,3),
+                 y = rnorm(500, 0, sd = 2 + x^2))
+
+ggplot(data = het_data)+
+  aes(x = x,
+      y = y)+
+  geom_point(color="blue")+
+  geom_smooth(method="lm", color="red")+
+    labs(x = "X",
+       y = "Y")+
+  ggthemes::theme_pander(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+
+## Question 5
+
+What three things impact the variation of $\hat{\beta_1}$? How?
+
+
+## Question 6
+
+What are the four assumptions we make about the error term?
+
+. . .
+
+Which is most important?
+
+## Question 7
+
+$$Wages_i=\beta_0+\beta_1Education+u_i$$
+
+. . .
+
+a. What is in $u_i$?
+
+. . .
+
+b. Is $\hat{\beta_1}$ likely biased?
+
+## Question 8
+
+What does $R^2$ measure? What does it mean? How do we calculate it?
+
+## Question 9
+
+What does $\sigma_u$ (SER) measure? What does it mean?
+
+## Question 10
+
+Interpret all of these numbers (except Adjusted R-squared and the last line): 
+```{r}
+summary(lm(y~x, data = het_data))
+```
+
+## Question 11
+
+Interpret all of these numbers: 
+
+```{r}
+reg<-lm(y~x, data = het_data)
+modelsummary(models = list("y" = reg),
+             fmt = 2, # round to 2 decimals
+             output = "html",
+             coef_rename = c("(Intercept)" = "Constant",
+                             "str" = "STR"),
+             gof_map = list(
+               list("raw" = "nobs", "clean" = "n", "fmt" = 0),
+               list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
+               #list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
+               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
+             ),
+             escape = FALSE,
+             stars = c('*' = .1, '**' = .05, '***' = 0.01)
+)
+```
+
+## Question 12
+
+Suppose $Y$ is normally distributed with a mean of 10 and a standard error of 5. What is the probability that $Y$ is between 5 and 15?
+
+
+## Question 13
+
+Explain what a $Z$-score means.
+
+## Question 14
+
+Explain what a $p$-value means. 
+
+## Question 15
+
+We run the following hypothesis test at $\alpha=0.05$: 
+
+$$\begin{align*}
+H_0: \, & \beta_1=0\\
+H_1: \, & \beta_1 \neq 0 \\
+\end{align*}$$
+
+Is this test one-sided or two-sided? 
+
+We find the $p$-value is 0.02. What is our conclusion? Be specific and precise in your wording!
+
+## Question 16
+
+Suppose we ran that hypothesis test on our finding. What can we conclude?
+
+::: columns
+::: {.column width="50%"}
+```{r}
+summary(lm(y~x, data = het_data))
+```
+:::
+::: {.column width="50%"}
+```{r}
+modelsummary(models = list("y" = reg),
+             fmt = 2, # round to 2 decimals
+             output = "html",
+             coef_rename = c("(Intercept)" = "Constant",
+                             "str" = "STR"),
+             gof_map = list(
+               list("raw" = "nobs", "clean" = "n", "fmt" = 0),
+               list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
+               #list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
+               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
+             ),
+             escape = FALSE,
+             stars = c('*' = .1, '**' = .05, '***' = 0.01)
+)
+```
+:::
+:::

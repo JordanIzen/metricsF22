@@ -130,7 +130,7 @@ $$
 $$
 
 $$
-\hat{\beta_0} = \bar{Y}-\hat{\beta_1}\bar{X}		
+\hat{\beta_0} = \bar{Y}-\hat{\beta_1}\bar{X}        
 $$
 
 # Measures of Fit
@@ -153,9 +153,8 @@ $$
 
     -   $SSR = \sum u_i^2$
 
-```{=html}
 <!-- -->
-```
+
 -   Standard error of the regression (or residuals), SER: average size of $\hat{u}_i$, i.e. average distance between points and the regression line
 
     $$
