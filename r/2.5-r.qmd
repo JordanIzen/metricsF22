@@ -9,7 +9,7 @@ execute:
 
 ## Answers
 
-<p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/2_5_precision_and_diagnostic_answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> Answer Key (html) </a></span> <a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/2_5_precision_and_diagnostics_answers.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Answer Key (.qmd)</a></span></p>
+<p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/2_5_precision_and_diagnostics_answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> Answer Key (html) </a></span> <a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/2_5_precision_and_diagnostics_answers.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Answer Key (.qmd)</a></span></p>
 
 ## Getting Set Up
 
