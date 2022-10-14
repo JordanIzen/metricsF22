@@ -85,12 +85,14 @@ website:
               href: assignments/01-problem-set.qmd
             - text: "Problem Set 2"
               href: assignments/02-problem-set.qmd
+            - text: "Problem Set 3"
+              href: assignments/03-problem-set.qmd
         - section: "Exams"
           contents:
             - text: "Midterm Exam"
               href: assignments/01-exam.qmd
         - text: "Research Paper"
-          href: assignments/paper.qmd
+          href: assignments/research-paper.qmd
     
     - title: "R Practice"
       style: "docked"
