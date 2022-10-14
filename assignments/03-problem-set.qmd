@@ -23,6 +23,7 @@ The <i class="fas fa-file-pdf"></i> PDF is useful if you want to print out the p
 ## Question 1
 
 In your own words, describe what exogeneity and endogeneity mean, and how they are related to bias in our regression. What things can we learn about the bias if we know $X$ is endogenous?
+
 ## Question 2
 
 In your own words, describe what $R^2$ means. How do we calculate it, what does it tell us, and how do we interpret it?

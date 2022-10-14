@@ -68,6 +68,10 @@ website:
               href: content/2.6-content.qmd
             - text: "2.7 — Hypothesis Testing for Regression"
               href: content/2.7-content.qmd
+        - section: "III. Causal Inference"
+          contents:
+            - text: "3.1 — The Fundamental Problem of Causal Inference"
+              href: content/3.1-content.qmd
     - title: "Assignments"
       style: "docked"
       search: false
