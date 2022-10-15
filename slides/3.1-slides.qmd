@@ -1,0 +1,292 @@
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    logo: "../images/metrics_hex.png"
+    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
+    height: 900
+    width: 1600
+    df-print: paged
+    slide-number: c
+    chalkboard: true
+overview: true
+execute:
+  echo: false
+  warning: false
+  freeze: auto
+---
+
+##  {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
+
+[3.1 --- The Fundamental Problem of Causal Inference]{.custom-title}
+
+[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+
+[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
+
+[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(broom)
+library(haven)
+library(kableExtra)
+library(patchwork)
+library(fontawesome)
+library(gapminder)
+library(ggthemes)
+library(scales)
+library(infer)
+knitr::opts_chunk$set(echo=F,
+                      message=F,
+                      warning=F)
+update_geom_defaults("label", list(family = "Fira Sans Condensed"))
+update_geom_defaults("text", list(family = "Fira Sans Condensed"))
+
+```
+
+## Contents {background-color="#314f4f"}
+
+[Hypothesis Testing](#hypothesis-testing)
+
+[Digression: p-Values and the Philosophy of Science](#digression-p-values-and-the-philosophy-of-science)
+
+[Hypothesis Testing by Simulation with `infer`](#hypothesis-testing-by-simulation-with-infer)
+
+[Theory-Based Hypothesis Testing (What R Calculates)](#theory-based-hypothesis-testing-what-r-calculates)
+
+[The Use and Abuse of p-Values](#the-use-and-abuse-of-p-values)
+
+# Hypothesis Testing {#hypothesis-testing .centered background-color="#314f4f"}
+
+## Two Types of Uses For Regression
+
+$$\color{orange}{Y}=\color{teal}{\beta}(\color{purple}{X})$$
+where $\color{orange}{Y}$ is numeric: 
+
+::: columns
+::: {.column width="50%"}
+
+1. [Causal inference]{.hi}: estimate $\color{teal}{\hat{\beta}}$ to determine how changes in $\color{purple}{X}$ **cause** changes in $\color{orange}{Y}$
+  - Care more about accurately estimating and understanding $\color{teal}{\beta}$
+  - Remove as much **bias** in $\color{teal}{\beta}$ as possible
+  - Don’t care much about **goodness of fit**! (You’ll never get it in the complex real world)
+
+:::
+
+::: {.column width="50"}
+2. [Prediction]{.hi-purple}: predict $\color{orange}{\hat{Y}}$ using an estimated $\color{teal}{\beta}$
+  - Care more about getting $\color{orange}{\hat{Y}}$ as accurate as possible, $\color{teal}{f}$ is an unknown “black-box”
+  - Tweak models to maximize $R^2$, minimize $\hat{\sigma}_u$ (at all costs)
+
+:::
+:::
+
+## Recall: Two Big Problems with Data
+
+::: columns
+::: {.column width="60%"}
+- We use econometrics to [identify]{.hi} causal relationships & make [inferences]{.hi-purple} about them:
+
+1. Problem for [identification]{.hi}: [endogeneity]{.hi}
+    - $X$ is **exogenous** if its variation is **unrelated** to other factors $(u)$ that affect $Y$
+    - $X$ is **endogenous** if its variation is **related** to other factors $(u)$ that affect $Y$
+    
+2. Problem for [inference]{.hi-purple}: [randomness]{.hi-purple}
+    - Data is random due to **natural sampling variation**
+    - Taking one sample of a population will yield slightly different information than another sample of the same population
+
+:::
+
+::: {.column width="40%"}
+
+![](images/causality.jpg){width="450" fig-align="center"}
+
+![](images/randomimage.jpg){width="450" fig-align="center"}
+:::
+:::
+
+## The Two Problems: Identification and Inference
+
+[[Sample]{.b} $\color{#6A5ACD}{\xrightarrow{\text{statistical inference}}}$ [Population]{.b} $\color{#e64173}{\xrightarrow{\text{causal indentification}}}$ [Unobserved Parameters]{.b}]{.center}
+
+- We saw how to statistically [infer]{.hi-purple} values of population parameters using our sample
+  - [Purely empirical, math & statistics]{.hi-turquoise} 🤓
+
+. . .
+
+- We now confront the problem of [identifying]{.hi} causal relationships within population
+  - [Endogeneity problem]{.hi}
+  - Even if we had perfect data on the whole population, [“Does X truly cause Y?”]{.hi}, and can we measure that effect?
+  - [More philosophy & theory than math & statistics!]{..hi-turquoise} 🧐
+
+- Truly you should do this first, *before* you get data to make inferences!
+
+## What Does Causation Mean?
+
+::: columns
+::: {.column width="50%"}
+- We are going to reflect on one of the biggest problems in [epistemology]{.hi}, the philosophy of knowledge
+
+- We see that X and Y are [associated]{.hi-turquoise} (or quantitatively, [correlated]{.hi-turquoise}), but how do we know if [X *causes* Y?]{.hi-slate}
+
+:::
+::: {.column width="50%"}
+![](images/causation.jpg)
+:::
+:::
+
+# First Pass at Causation: RCTs
+
+## Random Control Trials (RCTs) I
+
+::: columns
+::: {.column width="50%"}
+- The *ideal* way to demonstrate causation is through a [randomized control trial (RCT)]{.hi-turquoise} or "random experiment"
+  - *Randomly* assign experimental units (e.g. people, firms, etc.) into groups
+  - [Treatment group(s)]{.hi} get a (kind of) treatment
+  - [Control group]{.hi-purple} gets no treatment 
+  - Compare results of treatment and control groups to observe the [average treatment effect (ATE)]{.hi-slate}
+  
+- [We will understand “causality” (for now) to mean the ATE from an ideal RCT]{.hi-slate}
+
+:::
+::: {.column width="50%"}
+![](images/groupsplit.jpeg)
+:::
+:::
+
+## Random Control Trials (RCTs) II
+
+![Classic (simplified) procedure of a randomized control trial (RCT) from medicine
+](images/rct.png){fig-align="center"}
+
+## Random Control Trials (RCTs) III
+
+![](images/scienceplacebocomic.PNG)
+
+## Random Control Trials (RCTs) IV
+
+::: columns
+::: {.column width="50%"}
+- [Random assignment]{.hi-turquoise} to groups ensures that the *only* differences between members of the treatment(s) and control groups is *receiving treatment or not*
+
+:::
+::: {.column width="25%"}
+![](images/3apples.jpg){width="400"}
+Treatment Group
+:::
+::: {.column width="25%"}
+![](images/3oranges.jpg){width="400"}
+Control Group
+:::
+:::
+
+## Random Control Trials (RCTs) IV
+
+::: columns
+::: {.column width="50%"}
+- [Random assignment]{.hi-turquoise} to groups ensures that the *only* differences between members of the treatment(s) and control groups is *receiving treatment or not*
+
+- [Selection bias:]{.hi-orange} (pre-existing) differences between members of treatment and control groups *other* than treatment, that affect the outcome 
+
+:::
+::: {.column width="25%"}
+![](images/3apples.jpg){width="400"}
+Treatment Group
+:::
+::: {.column width="25%"}
+![](images/3oranges.jpg){width="400"}
+Control Group
+:::
+:::
+
+# Potential Outcomes
+
+## The Fundamental Problem of Causal Inference
+
+- Suppose we have some outcome variable $Y$
+
+. . .
+
+- Individuals $(i)$ face a choice between two outcomes (such as being [treated]{.hi} or [not treated]{.hi-purple}):
+  - $\color{#6A5ACD}{Y_i^{0}}$: outcome when individual $i$ is [not treated]{.hi-purple}
+  - $\color{#e64173}{Y_i^{1}}$: outcome when individual $i$ is [treated]{.hi}
+
+✨ $\color{#314f4f}{\delta_i} = \color{#e64173}{Y_i^{1}} - \color{#6A5ACD}{Y_i^{0}}$  ✨
+
+- $\color{#314f4f}{\delta_i}$ is the [causal effect]{.hi-slate} of treatment on individual $i$
+
+# 
+
+![](images/twopaths.jpg)
+
+## The Fundamental Problem of Causal Inference
+
+✨ $\color{#314f4f}{\delta_i} = \color{#e64173}{Y_i^{1}} - \color{#6A5ACD}{Y_i^{0}}$  ✨
+
+. . .
+
+- This is a nice way to think about the ideal proof of causality, but this is impossible to observe!
+
+## The Fundamental Problem of Causal Inference
+
+$$\color{#314f4f}{\delta_i} = \color{red}{?} - \color{#6A5ACD}{Y_i^{0}}$$
+
+- This is a nice way to think about the ideal proof of causality, but this is impossible to observe!
+
+- [Individual counterfactuals do not exist (“the path not taken”)]{.hi-purple}
+
+- You will always only ever get one of these per individual!
+
+## The Fundamental Problem of Causal Inference
+
+$$\color{#314f4f}{\delta_i} = \color{#e64173}{Y_i^{1}} - \color{red}{?}$$
+
+- This is a nice way to think about the ideal proof of causality, but this is impossible to observe!
+
+- [Individual counterfactuals do not exist (“the path not taken”)]{.hi-purple}
+
+- You will always only ever get one of these per individual!
+
+- You will always only ever get one of these per individual!
+  - e.g. what would your life have been like if you did not go to Hood College?? 🧐
+
+- So what can we do?
+
+## The Fundamental Problem of Causal Inference
+
+$$\color{#314f4f}{ATE} = \color{#e64173}{E[Y_i^{1}]} - \color{#6A5ACD}{E[Y_i^{0}]}$$
+
+- Have large groups, and take *averages* instead!
+
+- [Average Treatment Effect (ATE)]{.hi-slate: difference in the average (expected value) of outcome $Y$ between [treated individuals]{.pink} and [untreated individuals]{.purple}
+$$\color{#314f4f}{\delta} = \color{#e64173}{(\bar{Y}|D=1)}-\color{#6A5ACD}{(\bar{Y}|D=0)}$$
+
+- $D_i$ is a [binary variable]{.hi-turquoise}, $= \begin{cases} \color{#6A5ACD}{0} & \color{#6A5ACD}{\text{ if person is not treated}}\\\color{#e64173}{1} & \color{#e64173}{\text{ if person is treated}}\\ \end{cases}$
+  - I’d much rather call this $T_i$, standing for $T$reatment, but this notation is famous
+
+## The Fundamental Problem of Causal Inference
+
+$$\color{#314f4f}{ATE} = \color{#e64173}{E[Y_i^{1}]} - \color{#6A5ACD}{E[Y_i^{0}]}$$
+
+Again: 
+
+- **Either** we observe individual $i$ in the [treatment group]{.hi} $\color{#e64173}{(D=1)}$, i.e.
+$$\color{#314f4f}{\delta_i} = \color{#e64173}{Y_i^{1}} - \color{red}{?}$$
+
+- **Or** we observe individual $i$ in the [control group]{.hi-purple} $\color{#6A5ACD}{(D=0)}$, i.e.
+$$\color{#314f4f}{\delta_i} = \color{red}{?} - \color{#6A5ACD}{Y_i^{0}} $$
+
+- **Never both** at the same time:
+
+✨ $\color{#314f4f}{\delta_i} = \color{#e64173}{Y_i^{1}} - \color{#6A5ACD}{Y_i^{0}}$  ✨
+
+::: columns
+::: {.column width="50%"}
+:::
+::: {.column width="50%"}
+:::
+:::

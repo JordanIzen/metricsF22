@@ -18,6 +18,10 @@ Please read the [instructions](/assignments/problem-sets.html) for completing an
 
 The <i class="fas fa-file-pdf"></i> PDF is useful if you want to print out the problem set and write on it. The <i class="fas fa-file-archive"></i> R Project is a zipped `.zip` file which contains a <i class="fab fa-markdown"></i> `.qmd` file to write answers in, and the data, all in a logical working directory. ([See this resource](/resources/zipping.qmd) for help unzipping files). You can also just write an `.R` file in the project if you don't want to use markdown. If you use the <i class="fas fa-cloud"></i> cloud project, I have already installed `tidyverse` and `tinytex` (to produce pdfs).
 
+# Answers
+
+<p style="text-align:center"><a target="_blank" href="/files/assignment/03-problem-set-answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> html </a></span> <a target="_blank" href="/files/assignment/03-problem-set-answers.zip"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> R Project</a></span> <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4691729"><span class="btn btn-primary btn-lg"><i class="fas fa-cloud"></i> R Studio Cloud</a></span></p>
+
 # Theory and Concepts
 
 ## Question 1
