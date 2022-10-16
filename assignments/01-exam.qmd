@@ -22,7 +22,7 @@ If you have any approved testing accommodations, or know in advance you must be 
 
 - [<i class="fas fa-external-link-square-alt"></i> Midterm Concepts](/resources/exams/midterm-concepts.qmd)
 - [<i class="fas fa-chalkboard-teacher"></i> Midterm Review Questions](/slides/midterm-review.html)
-- [<i class="fas fa-file-pdf"></i> Old Midterm Exam](/files/examprep/01-old-exam.pdf)
+- [<i class="fas fa-file-pdf"></i> Old Midterm Exam](/files/examprep/01-old-exam.pdf) ([Answer Key](/files/examprep/01-old-exam-answers.pdf))
 - [<i class="fas fa-file-pdf"></i> Formula Sheet](/files/examprep/midtermformulas.pdf)
 
 ## My Advice

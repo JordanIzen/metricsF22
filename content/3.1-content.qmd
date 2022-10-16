@@ -11,7 +11,7 @@ source(here::here("slides", "slide-links.R"))
 ::: {.callout-note appearance="minimal"}
 ## Meeting Dates
 
-*Wednesday, October 5, 2022*
+*Wednesday, October 19, 2022*
 :::
 
 ## <i class="fas fa-info-circle fa-lg"></i> Overview
