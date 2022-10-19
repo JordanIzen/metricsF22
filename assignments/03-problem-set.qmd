@@ -5,7 +5,7 @@ execute:
 ---
 
 ::: callout-warning
-This assignment is due by Friday October 14 by email.
+This assignment is due by Friday October 14 on Blackboard Assignments.
 :::
 
 Please read the [instructions](/assignments/problem-sets.html) for completing and submitting homeworks. 

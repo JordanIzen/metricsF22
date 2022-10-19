@@ -18,7 +18,7 @@ execute:
 
 ##  {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
 
-[3.1 --- The Fundamental Problem of Causal Inference]{.custom-title}
+[3.1 --- Problem of Causal Inference]{.custom-title}
 
 [ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
 
@@ -49,17 +49,13 @@ update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 
 ## Contents {background-color="#314f4f"}
 
-[Hypothesis Testing](#hypothesis-testing)
+[First Pass at Causation: RCTs](#first-pass-at-causation-rcts)
 
-[Digression: p-Values and the Philosophy of Science](#digression-p-values-and-the-philosophy-of-science)
+[The Potential Outcomes Model](#the-potential-outcomes-model)
 
-[Hypothesis Testing by Simulation with `infer`](#hypothesis-testing-by-simulation-with-infer)
+[Natural Experiments](#natural-experiments)
 
-[Theory-Based Hypothesis Testing (What R Calculates)](#theory-based-hypothesis-testing-what-r-calculates)
-
-[The Use and Abuse of p-Values](#the-use-and-abuse-of-p-values)
-
-# Hypothesis Testing {#hypothesis-testing .centered background-color="#314f4f"}
+[Attack of/on the Randomistas](#attack-ofon-the-randomistas)
 
 ## Two Types of Uses For Regression
 
@@ -70,15 +66,15 @@ where $\color{orange}{Y}$ is numeric:
 ::: {.column width="50%"}
 
 1. [Causal inference]{.hi}: estimate $\color{teal}{\hat{\beta}}$ to determine how changes in $\color{purple}{X}$ **cause** changes in $\color{orange}{Y}$
-  - Care more about accurately estimating and understanding $\color{teal}{\beta}$
-  - Remove as much **bias** in $\color{teal}{\beta}$ as possible
+  - Care more about accurately estimating and understanding $\color{teal}{\hat{\beta}}$
+  - Remove as much **bias** in $\color{teal}{\hat{\beta}}$ as possible
   - Don’t care much about **goodness of fit**! (You’ll never get it in the complex real world)
 
 :::
 
 ::: {.column width="50"}
-2. [Prediction]{.hi-purple}: predict $\color{orange}{\hat{Y}}$ using an estimated $\color{teal}{\beta}$
-  - Care more about getting $\color{orange}{\hat{Y}}$ as accurate as possible, $\color{teal}{f}$ is an unknown “black-box”
+2. [Prediction]{.hi-purple}: predict $\color{orange}{\hat{Y}}$ using an estimated $\color{teal}{\hat{\beta}}$
+  - Care more about getting $\color{orange}{\hat{Y}}$ as accurate as possible, $\color{teal}{\hat{\beta}}$ is an unknown “black-box”
   - Tweak models to maximize $R^2$, minimize $\hat{\sigma}_u$ (at all costs)
 
 :::
@@ -120,7 +116,7 @@ where $\color{orange}{Y}$ is numeric:
 - We now confront the problem of [identifying]{.hi} causal relationships within population
   - [Endogeneity problem]{.hi}
   - Even if we had perfect data on the whole population, [“Does X truly cause Y?”]{.hi}, and can we measure that effect?
-  - [More philosophy & theory than math & statistics!]{..hi-turquoise} 🧐
+  - [More philosophy & theory than math & statistics!]{.hi-turquoise} 🧐
 
 - Truly you should do this first, *before* you get data to make inferences!
 
@@ -138,23 +134,23 @@ where $\color{orange}{Y}$ is numeric:
 :::
 :::
 
-# First Pass at Causation: RCTs
+# First Pass at Causation: RCTs {.centered background-color="#314f4f"}
 
 ## Random Control Trials (RCTs) I
 
 ::: columns
 ::: {.column width="50%"}
-- The *ideal* way to demonstrate causation is through a [randomized control trial (RCT)]{.hi-turquoise} or "random experiment"
+- The *ideal* way to demonstrate causation is through a [randomized control trial (RCT)]{.hi-turquoise} or ["random experiment"]{.hi-turquoise}
   - *Randomly* assign experimental units (e.g. people, firms, etc.) into groups
-  - [Treatment group(s)]{.hi} get a (kind of) treatment
+  - [Treatment group(s)]{.hi} get a treatment
   - [Control group]{.hi-purple} gets no treatment 
-  - Compare results of treatment and control groups to observe the [average treatment effect (ATE)]{.hi-slate}
+  - Compare average results of treatment vs control groups after treatment o observe the [average treatment effect (ATE)]{.hi-slate}
   
 - [We will understand “causality” (for now) to mean the ATE from an ideal RCT]{.hi-slate}
 
 :::
 ::: {.column width="50%"}
-![](images/groupsplit.jpeg)
+![](images/groupsplit.jpeg){fig-align="center" width="600"}
 :::
 :::
 
@@ -165,7 +161,7 @@ where $\color{orange}{Y}$ is numeric:
 
 ## Random Control Trials (RCTs) III
 
-![](images/scienceplacebocomic.PNG)
+![](images/scienceplacebocomic.PNG){fig-align="center"}
 
 ## Random Control Trials (RCTs) IV
 
@@ -175,12 +171,12 @@ where $\color{orange}{Y}$ is numeric:
 
 :::
 ::: {.column width="25%"}
-![](images/3apples.jpg){width="400"}
-Treatment Group
+![Treatment Group](images/3apples.jpg){height=400}
+
 :::
 ::: {.column width="25%"}
-![](images/3oranges.jpg){width="400"}
-Control Group
+![Control Group](images/3oranges.jpg){height=400}
+
 :::
 :::
 
@@ -194,16 +190,15 @@ Control Group
 
 :::
 ::: {.column width="25%"}
-![](images/3apples.jpg){width="400"}
-Treatment Group
+![Treatment Group](images/3apples.jpg){height=400}
+
 :::
 ::: {.column width="25%"}
-![](images/3oranges.jpg){width="400"}
-Control Group
+![Control Group](images/3oranges.jpg){height=400}
 :::
 :::
 
-# Potential Outcomes
+# The Potential Outcomes Model {.centered background-color="#314f4f"}
 
 ## The Fundamental Problem of Causal Inference
 
@@ -262,11 +257,10 @@ $$\color{#314f4f}{ATE} = \color{#e64173}{E[Y_i^{1}]} - \color{#6A5ACD}{E[Y_i^{0}
 
 - Have large groups, and take *averages* instead!
 
-- [Average Treatment Effect (ATE)]{.hi-slate: difference in the average (expected value) of outcome $Y$ between [treated individuals]{.pink} and [untreated individuals]{.purple}
-$$\color{#314f4f}{\delta} = \color{#e64173}{(\bar{Y}|D=1)}-\color{#6A5ACD}{(\bar{Y}|D=0)}$$
+- [Average Treatment Effect (ATE)]{.hi-slate}: difference in the average (expected value) of outcome $Y$ between [treated individuals]{.pink} and [untreated individuals]{.purple}
+$$\color{#314f4f}{\delta} = \color{#e64173}{(\bar{Y}|T=1)}-\color{#6A5ACD}{(\bar{Y}|T=0)}$$
 
-- $D_i$ is a [binary variable]{.hi-turquoise}, $= \begin{cases} \color{#6A5ACD}{0} & \color{#6A5ACD}{\text{ if person is not treated}}\\\color{#e64173}{1} & \color{#e64173}{\text{ if person is treated}}\\ \end{cases}$
-  - I’d much rather call this $T_i$, standing for $T$reatment, but this notation is famous
+- $T_i$ is a [binary variable]{.hi-turquoise}, $= \begin{cases} \color{#6A5ACD}{0} & \color{#6A5ACD}{\text{ if person is not treated}}\\\color{#e64173}{1} & \color{#e64173}{\text{ if person is treated}}\\ \end{cases}$
 
 ## The Fundamental Problem of Causal Inference
 
@@ -274,19 +268,867 @@ $$\color{#314f4f}{ATE} = \color{#e64173}{E[Y_i^{1}]} - \color{#6A5ACD}{E[Y_i^{0}
 
 Again: 
 
-- **Either** we observe individual $i$ in the [treatment group]{.hi} $\color{#e64173}{(D=1)}$, i.e.
+- **Either** we observe individual $i$ in the [treatment group]{.hi} $\color{#e64173}{(T=1)}$, i.e.
 $$\color{#314f4f}{\delta_i} = \color{#e64173}{Y_i^{1}} - \color{red}{?}$$
 
-- **Or** we observe individual $i$ in the [control group]{.hi-purple} $\color{#6A5ACD}{(D=0)}$, i.e.
+- **Or** we observe individual $i$ in the [control group]{.hi-purple} $\color{#6A5ACD}{(T=0)}$, i.e.
 $$\color{#314f4f}{\delta_i} = \color{red}{?} - \color{#6A5ACD}{Y_i^{0}} $$
 
 - **Never both** at the same time:
 
 ✨ $\color{#314f4f}{\delta_i} = \color{#e64173}{Y_i^{1}} - \color{#6A5ACD}{Y_i^{0}}$  ✨
 
+## Example: The Effect of Having Health Insurance I
+
 ::: columns
 ::: {.column width="50%"}
+::: {.callout-tip appearance="simple" icon=false}
+
+## Example 
+What is the effect of having health insurance on health outcomes?
+
+- National Health Interview Survey (NHIS) asks “Would you say your health in general is excellent, very good, good, fair, or poor?”
+
+- **Outcome variable $(Y)$**: Index of health (1-poor to 5-excellent) in a sample of married NHIS respondents in 2009 who may or may not have health insurance
+
+- **Treatment $(X)$**: Having health insurance  (vs. not)
+:::
+
 :::
 ::: {.column width="50%"}
+![](images/healthcare.jpg)
+:::
+:::
+
+## Example: The Effect of Having Health Insurance II
+
+![](images/econometricshealthnocaption.png){fig-align="center"}
+
+[Angrist, Joshua & Jorn-Steffen Pischke, 2015, *Mostly Harmless Econometrics*]{.source}
+
+## Example: The Effect of Having Health Insurance III
+
+- $Y$: outcome variable (health index score, 1-5)
+
+- $Y_i$: health score of an individual $i$
+
+- Individual $i$ has a choice, leading to one of two outcomes:
+  - $\color{#6A5ACD}{Y^0_i}$: individual $i$ has *not* purchased health insurance [(“Control”)]{.hi-purple}
+  - $\color{#e64173}{Y^1_i}$: individual $i$ has purchased health insurance [(“Treatment”)]{.hi}
+    
+- $\color{#314f4f}{\delta_i}=\color{#e64173}{Y^1_i}-\color{#6A5ACD}{Y^0_i}$: causal effect for individual $i$ of purchasing health insurance
+
+## Example: A Hypothetical Comparison
+
+::: columns
+::: {.column width="50%"}
+| John      | Maria     |
+|-----------|-----------|
+| ![](../images/coldman2.jpg) | ![](../images/femalejogger2.jpg) |
+| $Y_J^0=3$ | $Y_M^0=5$ | 
+| $Y_J^1=4$ | $Y_M^1=5$ |
+
+:::
+::: {.column width="50%"}
+- John will choose to buy health insurance
+
+- Maria will choose to not buy health insurance
+
+:::
+:::
+
+## Example: A Hypothetical Comparison
+
+::: columns
+::: {.column width="50%"}
+| John      | Maria     |
+|-----------|-----------|
+| ![](../images/coldman2.jpg) | ![](../images/femalejogger2.jpg) |
+| $Y_J^0=3$ | $Y_M^0=5$ | 
+| $Y_J^1=4$ | $Y_M^1=5$ |
+| ✨ $\color{#314f4f}{\delta_J=1}$ | $\color{#314f4f}{\delta_M=0}$ ✨ |
+
+:::
+::: {.column width="50%"}
+- John will choose to buy health insurance
+
+- Maria will choose to not buy health insurance
+
+- Health insurance improves John's score by 1, has no effect on Maria's score (individual causal effects $\color{#314f4f}{\delta_i}$)
+
+:::
+:::
+
+## Example: A Hypothetical Comparison
+
+::: columns
+::: {.column width="50%"}
+| John      | Maria     |
+|-----------|-----------|
+| ![](../images/coldman2.jpg) | ![](../images/femalejogger2.jpg) |
+| $Y_J^0=3$ | $Y_M^0=5$ | 
+| $Y_J^1=4$ | $Y_M^1=5$ |
+| ✨ $\color{#314f4f}{\delta_J=1}$ | $\color{#314f4f}{\delta_M=0}$ ✨ |
+| $\color{#e64173}{Y_J=(Y_J^1)=4}$ | $\color{#6A5ACD}{Y_M=(Y_M^0)=5}$ | 
+
+:::
+::: {.column width="50%"}
+- John will choose to buy health insurance
+
+- Maria will choose to not buy health insurance
+
+- Health insurance improves John's score by 1, has no effect on Maria's score (individual causal effects $\color{#314f4f}{\delta_i}$)
+
+- Note, all we can observe in the data are their health outcomes *after* they have chosen (not) to buy health insurance:
+\begin{align*}
+\color{#e64173}{Y_J}&\color{#e64173}{=4}\\
+\color{#6A5ACD}{Y_M}&\color{#6A5ACD}{=5}\\
+\end{align*}
+
+:::
+:::
+
+## Example: A Hypothetical Comparison
+
+::: columns
+::: {.column width="50%"}
+| John      | Maria     |
+|-----------|-----------|
+| ![](../images/coldman2.jpg) | ![](../images/femalejogger2.jpg) |
+| $Y_J^0=3$ | $Y_M^0=5$ | 
+| $Y_J^1=4$ | $Y_M^1=5$ |
+| ✨ $\color{#314f4f}{\delta_J=1}$ | $\color{#314f4f}{\delta_M=0}$ ✨ |
+| $\color{#e64173}{Y_J=(Y_J^1)=4}$ | $\color{#6A5ACD}{Y_M=(Y_M^0)=5}$ | 
+
+:::
+::: {.column width="50%"}
+- John will choose to buy health insurance
+
+- Maria will choose to not buy health insurance
+
+- Health insurance improves John's score by 1, has no effect on Maria's score (individual causal effects $\color{#314f4f}{\delta_i}$)
+
+- Note, all we can observe in the data are their health outcomes *after* they have chosen (not) to buy health insurance:
+\begin{align*}
+\color{#e64173}{Y_J}&\color{#e64173}{=4}\\
+\color{#6A5ACD}{Y_M}&\color{#6A5ACD}{=5}\\
+\end{align*}
+
+- [*Observed* difference]{.hi-turquoise} between John and Maria: $$\color{#e64173}{Y_J}-\color{#6A5ACD}{Y_M}=-1$$
+
+:::
+:::
+
+## Counterfactuals
+
+::: columns
+::: {.column width="50%"}
+| John      | Maria     |
+|-----------|-----------|
+| ![](../images/coldman2.jpg) | ![](../images/femalejogger2.jpg) |
+| $\color{#e64173}{Y_J=4}$ | $\color{#6A5ACD}{Y_M=5}$ | 
+
+This is all the data we *actually* observe
+
+:::
+::: {.column width="50%"}
+- Observed difference between John and Maria: 
+$$Y_J-Y_M=\underbrace{\color{#e64173}{Y^1_J}-\color{#6A5ACD}{Y^0_M}}_{=-1}$$
+
+- Recall:
+    - John has bought health insurance $\color{#e64173}{Y^1_J}$
+    - Maria has not bought insurance $\color{#6A5ACD}{Y^0_M}$
+
+- We don't see the [counterfactuals]{.hi}: 
+    - John's score *without* insurance
+    - Maria score *with* insurance
+
+:::
+:::
+
+## Counterfactuals
+
+::: columns
+::: {.column width="50%"}
+| John      | Maria     |
+|-----------|-----------|
+| ![](../images/coldman2.jpg) | ![](../images/femalejogger2.jpg) |
+| $\color{#e64173}{Y_J=4}$ | $\color{#6A5ACD}{Y_M=5}$ | 
+
+This is all the data we *actually* observe
+
+:::
+::: {.column width="50%"}
+- Observed difference between John and Maria: 
+$$Y_J-Y_M=\underbrace{\color{#e64173}{Y^1_J}-\color{#6A5ACD}{Y^0_M}}_{=-1}$$
+
+- Algebra trick: add and subtract $\color{#6A5ACD}{Y^0_J}$ to equation:
+
+\begin{align*}
+Y_J-Y_M=\underbrace{\color{#e64173}{Y^1_J}-\color{#6A5ACD}{Y^0_J}}_{\color{#314f4f}{=1}}+\underbrace{\color{#6A5ACD}{Y^0_J}-\color{#6A5ACD}{Y^0_M}}_{\color{orange}{=-2}}
+\end{align*}
+
+:::
+:::
+
+## Counterfactuals
+
+::: columns
+::: {.column width="50%"}
+| John      | Maria     |
+|-----------|-----------|
+| ![](../images/coldman2.jpg) | ![](../images/femalejogger2.jpg) |
+| $\color{#e64173}{Y_J=4}$ | $\color{#6A5ACD}{Y_M=5}$ | 
+
+This is all the data we *actually* observe
+
+:::
+::: {.column width="50%"}
+\begin{align*}
+Y_J-Y_M=\underbrace{\color{#e64173}{Y^1_J}-\color{#6A5ACD}{Y^0_J}}_{\color{#314f4f}{=1}}+\underbrace{\color{#6A5ACD}{Y^0_J}-\color{#6A5ACD}{Y^0_M}}_{\color{orange}{=-2}}
+\end{align*}
+
+- $\color{#e64173}{Y^1_J}-\color{#6A5ACD}{Y^0_J}=1$: [Causal effect for John]{.hi-slate}^[This is commonly referred to as [TOT]{.hi-slate}: [effect of treatment on the *treated* group]{.hi-slate}] of buying insurance, $\color{#314f4f}{\delta_J}$
+- $\color{#6A5ACD}{Y^0_J}-\color{#6A5ACD}{Y^0_M}=-2$: Difference between John & Maria pre-treatment, [“selection bias”]{.hi-orange}
+
+:::
+:::
+
+## Selection Bias I
+
+::: columns
+::: {.column width="50%"}
+$$\color{#6A5ACD}{Y^0_J}-\color{#6A5ACD}{Y^0_M} \neq 0$$
+
+- [Selection bias:]{.hi-orange} (pre-existing) differences between members of treatment and control groups *other* than treatment, that affect the outcome
+  - i.e. John and Maria *start out* with very *different* health scores before either decides to buy insurance or not (“receive treatment” or not)
+
+:::
+::: {.column width="25%"}
+![John (treated)](images/3apples.jpg){height=400}
+
+:::
+::: {.column width="25%"}
+![Maria (control)](images/3oranges.jpg){height=400}
+:::
+:::
+
+## Selection Bias II
+
+::: columns
+::: {.column width="50%"}
+$$\color{#6A5ACD}{Y^0_J}-\color{#6A5ACD}{Y^0_M}\neq 0$$
+
+- The choice to get treatment is [endogenous]{.hi-turquoise}
+
+- A choice made by optimizing agents
+
+- John and Maria have different preferences, endowments, & constraints that cause them to make different decisions
+
+:::
+::: {.column width="25%"}
+![John (treated)](images/3apples.jpg){height=400}
+
+:::
+::: {.column width="25%"}
+![Maria (control)](images/3oranges.jpg){height=400}
+:::
+:::
+
+## Example: Our Ideal Data
+
+::: columns
+::: {.column width="50%"}
+```{r, eval = F, results="asis"}
+library("tibble")
+tribble(
+  ~i, ~Insured, ~Not_Insured, ~Diff,
+  "John", 4, 3, 1,
+  "Maria", 5, 5, 0,
+  "AVERAGE", 4.5, 4.0, 0.5
+) %>%
+  knitr::kable(., format="html")
+```
+
+
+
+| Individual | [Insured]{.hi} | [Not Insured]{.hi-purple} | [Diff]{.hi-slate} |
+|---|---------|-------------|------|
+| John | [4.0]{.pink} | [3.0]{.purple} | [1.0]{.slate} |
+| Maria | [5.0]{.pink} | [5.0]{.purple} | [0.0]{.slate} | 
+| **Average** | [4.5]{.pink} | [4.0]{.purple} | [0.5]{.hi-slate} | 
+
+: **Ideal** (but impossible) Data
+
+:::
+::: {.column width="50%"}
+
+:::
+:::
+
+## Example: Our Ideal Data
+
+::: columns
+::: {.column width="50%"}
+```{r, eval = F, results="asis"}
+library("tibble")
+tribble(
+  ~i, ~Insured, ~Not_Insured, ~Diff,
+  "John", 4, 3, 1,
+  "Maria", 5, 5, 0,
+  "AVERAGE", 4.5, 4.0, 0.5
+) %>%
+  knitr::kable(., format="html")
+```
+
+
+
+| Individual | [Insured]{.hi} | [Not Insured]{.hi-purple} | [Diff]{.hi-slate} |
+|---|---------|-------------|------|
+| John | [4.0]{.pink} | [3.0]{.purple} | [1.0]{.slate} |
+| Maria | [5.0]{.pink} | [5.0]{.purple} | [0.0]{.slate} | 
+| **Average** | [4.5]{.pink} | [4.0]{.purple} | [0.5]{.hi-slate} | 
+
+: **Ideal** (but impossible) Data
+
+- [Individual treatment effect]{.hi-slate} (for individual $i$):
+$$\color{#314f4f}{\delta_i}=\color{#e64173}{Y^1_i}-\color{#6A5ACD}{Y^0_i}$$
+:::
+::: {.column width="50%"}
+
+:::
+:::
+
+
+## Example: Our Ideal Data
+
+::: columns
+::: {.column width="50%"}
+```{r, eval = F, results="asis"}
+library("tibble")
+tribble(
+  ~i, ~Insured, ~Not_Insured, ~Diff,
+  "John", 4, 3, 1,
+  "Maria", 5, 5, 0,
+  "AVERAGE", 4.5, 4.0, 0.5
+) %>%
+  knitr::kable(., format="html")
+```
+
+
+
+| Individual | [Insured]{.hi} | [Not Insured]{.hi-purple} | [Diff]{.hi-slate} |
+|---|---------|-------------|------|
+| John | [4.0]{.pink} | [3.0]{.purple} | [1.0]{.slate} |
+| Maria | [5.0]{.pink} | [5.0]{.purple} | [0.0]{.slate} | 
+| **Average** | [4.5]{.pink} | [4.0]{.purple} | [0.5]{.hi-slate} | 
+
+: **Ideal** (but impossible) Data
+
+- [Individual treatment effect]{.hi-slate} (for individual $i$):
+$$\color{#314f4f}{\delta_i}=\color{#e64173}{Y^1_i}-\color{#6A5ACD}{Y^0_i}$$
+- [*Average* treatment effect]{.hi-slate}:
+$$\color{#314f4f}{ATE}=\frac{1}{n}\sum^n_{i=1}(\color{#e64173}{Y^1_i}-\color{#6A5ACD}{Y^0_i})$$
+:::
+::: {.column width="50%"}
+
+:::
+:::
+
+## Example: Our Ideal Data
+::: columns
+::: {.column width="50%"}
+```{r, eval = F, results="asis"}
+library("tibble")
+tribble(
+  ~i, ~Insured, ~Not_Insured, ~Diff,
+  "John", 4, 3, 1,
+  "Maria", 5, 5, 0,
+  "AVERAGE", 4.5, 4.0, 0.5
+) %>%
+  knitr::kable(., format="html")
+```
+
+| Individual | [Insured]{.hi} | [Not Insured]{.hi-purple} | [Diff]{.hi-slate} |
+|---|---------|-------------|------|
+| John | [4.0]{.pink} | [3.0]{.purple} | [1.0]{.slate} |
+| Maria | [5.0]{.pink} | [5.0]{.purple} | [0.0]{.slate} | 
+| **Average** | [4.5]{.pink} | [4.0]{.purple} | [0.5]{.hi-slate} | 
+
+: **Ideal** (but impossible) Data
+
+- [Individual treatment effect]{.hi-slate} (for individual $i$):
+$$\color{#314f4f}{\delta_i}=\color{#e64173}{Y^1_i}-\color{#6A5ACD}{Y^0_i}$$
+- [*Average* treatment effect]{.hi-slate}:
+$$\color{#314f4f}{ATE}=\frac{1}{n}\sum^n_{i=1}(\color{#e64173}{Y^1_i}-\color{#6A5ACD}{Y^0_i})$$
+:::
+::: {.column width="50%"}
+
+| Individual | [Insured]{.hi} | [Not Insured]{.hi-purple} | [Diff]{.hi-slate} |
+|---|---------|-------------|------|
+| John | [4.0]{.pink} | ? | ? |
+| Maria | ? | [5.0]{.purple} | ? | 
+| **Average** | ? | ? | ? | 
+
+: **Actual** (observed) Data
+
+- We never get to see each person's [counterfactual]{.hi-turquoise} state to compare and calculate ITEs or ATE
+  - Maria with insurance $\color{#e64173}{Y^1_M}$
+  - John without insurance $\color{#6A5ACD}{Y^0_J}$
+
+:::
+:::
+
+```{r, eval = F}
+data <- tribble(
+  ~individual, ~treated, ~"health without treatment", ~"health with treatment", ~effect,
+  1, TRUE, 3, 4, 1,
+  2, FALSE, 5, 5, 0,
+  3, TRUE, 2, 4, 2,
+  4, TRUE, 1, 3, 2,
+  5, FALSE, 3, 4, 1,
+  6, FALSE, 4, 3, 0,
+  7, TRUE, 4, 5, 1,
+  8, FALSE, 4, 4, 0 
+)
+
+data 
+
+data %>%
+  summarize(ATE = mean(effect))
+data %>%
+  filter(treated == TRUE) %>%
+  summarize(TOT = mean(effect))
+
+data %>%
+  filter(treated == FALSE) %>%
+  summarize(TUT = mean(effect))
+
+0.5 * 1.5 + 0.5 * 0.25
+```
+
+## Can’t We Just Take the Difference of Group Means?
+
+::: columns
+::: {.column width="50%"}
+- Can’t we just take the difference in group means?
+
+\begin{align*}
+diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
+\end{align*}
+
+:::
+::: {.column width="50%"}
+**Actual** (observed) Data
+
+| Individual | [Insured]{.hi} | [Not Insured]{.hi-purple} | [Diff]{.hi-slate} |
+|---|---------|-------------|------|
+| John | [4.0]{.pink} | ? | ? |
+| Maria | ? | [5.0]{.purple} | ? | 
+| **Average** | ? | ? | ? | 
+
+- We never get to see each person's [counterfactual]{.hi-turquoise} state to compare and calculate ITEs or ATE
+  - Maria with insurance $\color{#e64173}{Y^1_M}$
+  - John without insurance $\color{#6A5ACD}{Y^0_J}$
+
+:::
+:::
+
+## Can’t We Just Take the Difference of Group Means?
+
+::: columns
+::: {.column width="50%"}
+- Can’t we just take the difference in group means?
+
+\begin{align*}
+diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
+\end{align*}
+
+- Suppose a uniform treatment effect, $\color{#314f4f}{\delta_i}$
+
+\begin{align*}
+&= \color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
+&= \color{#e64173}{Avg(}\color{#314f4f}{\delta_i}+\color{#6A5ACD}{Y_i^{0}}\color{#e64173}{|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
+&= \color{#314f4f}{\delta_i}+\underbrace{\color{#e64173}{Avg(}\color{#6A5ACD}{Y_i^{0}}\color{#e64173}{|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}}_{\color{#FFA500}{\text{selection bias}}}\\
+&= \color{#314f4f}{ATE} + \color{#FFA500}{\text{selection bias}} \\
+\end{align*}
+
+:::
+::: {.column width="50%"}
+**Actual** (observed) Data
+
+| Individual | [Insured]{.hi} | [Not Insured]{.hi-purple} | [Diff]{.hi-slate} |
+|---|---------|-------------|------|
+| John | [4.0]{.pink} | ? | ? |
+| Maria | ? | [5.0]{.purple} | ? | 
+| **Average** | ? | ? | ? | 
+
+- We never get to see each person's [counterfactual]{.hi-turquoise} state to compare and calculate ITEs or ATE
+  - Maria with insurance $\color{#e64173}{Y^1_M}$
+  - John without insurance $\color{#6A5ACD}{Y^0_J}$
+
+:::
+:::
+
+## Example: Thinking About the Data
+
+::: columns
+::: {.column width="50%"}
+- Basic comparisons tell us *something* about outcomes, but not [ATE]{.hi-slate}
+
+$$diff. = \color{#314f4f}{ATE} + \color{#FFA500}{\text{Selection Bias}}$$
+
+- [Selection bias]{.hi-orange}: difference in average $Y^0_i$ between groups pre-treatment
+
+- $Y^0_i$ includes *everything* about person $i$ relevant to health *except* treatment (insurance) status
+  - Age, sex, height, weight, climate, smoker, exercise, diet, etc. 
+  - Imagine a world where *nobody* gets insurance (treatment), who would have highest health scores?
+
+:::
+::: {.column width="50%"}
+**Actual** (observed) Data
+
+| Individual | [Insured]{.hi} | [Not Insured]{.hi-purple} | [Diff]{.hi-slate} |
+|---|---------|-------------|------|
+| John | [4.0]{.pink} | ? | ? |
+| Maria | ? | [5.0]{.purple} | ? | 
+| **Average** | ? | ? | ? | 
+
+- We never get to see each person's [counterfactual]{.hi-turquoise} state to compare and calculate ITEs or ATE
+  - Maria with insurance $\color{#e64173}{Y^1_M}$
+  - John without insurance $\color{#6A5ACD}{Y^0_J}$
+
+:::
+:::
+
+## Understanding Selection Bias
+
+::: columns
+::: {.column width="50%"}
+- [Treatment group]{.hi} and [control group]{.hi-purple} differ on average, for reasons *other* than getting treatment or not!
+
+- [Control group]{.hi-purple} is not a good counterfactual for [treatment group]{.hi} without treatment
+  - Average *untreated* outcome for the treatment group differs from average untreated outcome for *untreated* group
+
+$$\color{#e64173}{Avg(}\color{#6A5ACD}{Y_i^{0}}\color{#e64173}{|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}$$
+  - Recall we cannot observe $\color{#e64173}{Avg(}\color{#6A5ACD}{Y_i^{0}}\color{#e64173}{|T=1)}$!
+
+:::
+::: {.column width="25%"}
+![John (treated)](images/3apples.jpg){height=400}
+
+:::
+::: {.column width="25%"}
+![Maria (control)](images/3oranges.jpg){height=400}
+:::
+:::
+
+## Understanding Selection Bias: Regression
+
+::: columns
+::: {.column width="50%"}
+- Consider the problem in regression form:
+
+$$Y = \beta_0+\beta_1 T_i + u_i$$
+
+- Where $T_i = \begin{cases} \color{#6A5ACD}{0} & \color{#6A5ACD}{\text{ if person is not treated}}\\\color{#e64173}{1} & \color{#e64173}{\text{ if person is treated}}\\ \end{cases}$
+
+- The problem is $cor(T,u) \neq 0$!
+  - $T_i$ (Treatment) is endogenous!
+  - *Getting* treatment is correlated with other factors that determine health!
+
+:::
+::: {.column width="25%"}
+![John (treated)](images/3apples.jpg){height=400}
+
+:::
+::: {.column width="25%"}
+![Maria (control)](images/3oranges.jpg){height=400}
+:::
+:::
+
+## Random Assignment: The Silver Bullet
+
+::: columns
+::: {.column width="50%"}
+- If treatment is [randomly assigned]{.hi} for a large sample, it eliminates selection bias!
+
+- Treatment and control groups differ **on average** by nothing *except* treatment status
+
+- Creates [ceterus paribus]{.hi} conditions in economics: groups are identical **on average** (holding constant age, sex, height, etc.)
+
+:::
+::: {.column width="25%"}
+![](images/3apples.jpg){width="400"}
+Treatment Group
+:::
+::: {.column width="25%"}
+![](images/3apples.jpg){width="400"}
+Control Group
+:::
+:::
+
+## Random Assignment: Regression
+
+::: columns
+::: {.column width="50%"}
+- Consider the problem in regression form:
+
+$$Y = \beta_0+\beta_1 T_i + u_i$$
+
+- If treatment $T_i$ is administered *randomly*, it breaks the correlation with $u_i$!
+  - Treatment becomes [exogenous]{.hi}!
+  - $cor(T,u)=0$
+
+:::
+::: {.column width="25%"}
+![](images/3apples.jpg){width="400"}
+Treatment Group
+:::
+::: {.column width="25%"}
+![](images/3apples.jpg){width="400"}
+Control Group
+:::
+:::
+
+# Natural Experiments {.centered background-color="#314f4f"}
+
+## The Quest for Causal Effects I
+
+::: columns
+::: {.column width="50%"}
+- RCTs are considered the "gold standard" for causal claims
+
+- But society is not our laboratory (probably a good thing!)
+
+- We can rarely conduct experiments to get data
+
+:::
+::: {.column width="50%"}
+![](images/madlaboratory.jpg)
+:::
+:::
+
+## The Quest for Causal Effects II
+
+::: columns
+::: {.column width="50%"}
+- Instead, we often rely on [observational data]{.hi-purple}
+
+- This data is *not random*!
+
+- Must take extra care in forming an [identification strategy]{.hi}
+
+- To make good claims about causation in society, we must get clever! 
+
+:::
+::: {.column width="50%"}
+![](images/fieldobserver.jpg)
+:::
+:::
+
+## Natural Experiments
+
+::: columns
+::: {.column width="50%"}
+- Economists often resort to searching for [natural experiments]{.hi}
+
+- “Natural” events beyond our control occur that separate *otherwise similar* entities into a "treatment" group and a "control" group that we can compare 
+
+- e.g. natural disasters, U.S. State laws, military draft 
+
+:::
+::: {.column width="50%"}
+![](images/nskorea2.png)
+:::
+:::
+
+## The First Natural Experiment
+
+::: columns
+::: {.column width="30%"}
+![](images/jonsnowmeme.jpg){fig-align="center" width="400"}
+:::
+::: {.column width="70%"}
+
+- John Snow utilized the [first famous natural experiment](http://blogs.plos.org/publichealth/2013/03/11/john-snow-the-first-epidemiologist/) to establish the foundations of epidemiology and the germ theory of disease
+
+- Water pumps with sources *downstream* of a sewage dump in the Thames river spread cholera while water pumps with sources *upstream* did not
+
+![](images/choleramap.jpg){fig-align="center" width="600"}
+:::
+:::
+
+::: footer
+:::
+
+## The First Natural Experiment
+
+::: columns
+::: {.column width="30%"}
+![](images/johnsnow.jpg)
+
+1813-1858
+:::
+::: {.column width="70%"}
+
+- John Snow utilized the [first famous natural experiment](http://blogs.plos.org/publichealth/2013/03/11/john-snow-the-first-epidemiologist/) to establish the foundations of epidemiology and the germ theory of disease
+
+- Water pumps with sources *downstream* of a sewage dump in the Thames river spread cholera while water pumps with sources *upstream* did not
+
+![](images/choleramap.jpg){fig-align="center" width="600"}
+:::
+:::
+
+::: footer
+:::
+
+## Famous Natural Experiments in Empirical Economics
+
+- [**Oregon Health Insurance Experiment**]{.green}: Oregon used lottery to grant Medicare access to 10,000 people, showing access to Medicaid increased use of health services, lowered debt, etc. relative to those not on Medicaid
+- [**Angrist (1990)**]{.green} finds that lifetime earnings of (random) drafted Vietnam veterans is 15% lower than non-veterans
+- [**Card & Kreuger (1994)**]{.green} find that minimum wage hike in fast-food restaurants on NJ side of border had no disemployment effects relative to restaurants on PA side of border during the same period
+- [**Acemoglu, Johnson, and Robinson (2001)**]{.green} find that inclusive institutions lead to higher economic development than extractive institutions, determined by a colony's disease environment in 1500
+- We will look at some of these in greater detail throughout the course
+- [A great list, with explanations is here](http://economicspsychologypolicy.blogspot.com/2015/06/list-of-19-natural-experiments.html)
+
+# Attack of/on the Randomistas {.centered background-color="#314f4f"}
+
+## 
+
+![](images/rctgoldstandard.png)
+
+
+## RCTs are All the Rage
+
+::: columns
+::: {.column width="50%"}
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Professors Esther Duflo and Abhijit Banerjee, co-directors of MIT&#39;s <a href="https://twitter.com/JPAL?ref_src=twsrc%5Etfw">@JPAL</a>, receive congratulations on the big news this morning. They share in the <a href="https://twitter.com/hashtag/NobelPrize?src=hash&amp;ref_src=twsrc%5Etfw">#NobelPrize</a> in economic sciences “for their experimental approach to alleviating global poverty.”<br> <br>Photo: Bryce Vickmark <a href="https://t.co/NWeTrjR2Bq">pic.twitter.com/NWeTrjR2Bq</a></p>&mdash; Massachusetts Institute of Technology (MIT) (@MIT) <a href="https://twitter.com/MIT/status/1183752282988564480?ref_src=twsrc%5Etfw">October 14, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+:::
+::: {.column width="50%"}
+
+![](images/voxnobelrcts.png)
+[Vox (Oct 14, 2019)](https://www.vox.com/future-perfect/2019/10/14/20913928/nobel-prize-economics-duflo-banerjee-kremer)
+
+:::
+:::
+
+::: footer
+:::
+
+## But Not Everyone Agrees I
+
+::: columns
+::: {.column width="30%"}
+![](images/deaton.jpg)
+
+Angus Deaton
+
+Economics Nobel 2015
+:::
+::: {.column width="70%"}
+
+> “The RCT is a useful tool, but I think that is a mistake to put method ahead of substance. I have written papers using RCTs...[but] no RCT can ever legitimately claim to have established causality. My theme is that RCTs have no special status, they have no exemption from the problems of inference that econometricians have always wrestled with, and there is nothing that they, and only they, can accomplish.”
+
+[Deaton, Angus, 2019, [“Randomization in the Tropics Revisited: A Theme and Eleven Variations”](https://scholar.princeton.edu/sites/default/files/deaton/files/deaton_randomization_revisited_v2_2019_01.pdf), Working Paper]{.source}
+:::
+:::
+
+
+## But Not Everyone Agrees II
+
+::: columns
+::: {.column width="30%"}
+![](images/pritchett.jpg){fig-align="center" width=400}
+
+Lant Pritchett
+:::
+::: {.column width="70%"}
+
+> “People keep saying that the recent Nobelists ‘studied global poverty.’ This is exactly wrong. They made a commitment to a method, not a subject, and their commitment to method prevented them from studying global poverty.”
+
+> “At a conference at Brookings in 2008 Paul Romer [2018 Nobelist] said: "You guys are like going to a doctor who says you have an allergy and you have cancer. With the skin rash we can divide you skin into areas and test variety of substances and identify with precision and some certainty the cause. Cancer we have some ideas how to treat it but there are a variety of approaches and since we cannot be sure and precise about which is best for you, we will ignore the cancer and not treat it.”
+
+[[Source](https://www.facebook.com/lant.pritchett/posts/10218688602381690)]{.source}
+:::
+:::
+
+## But Not Everyone Agrees III
+
+::: columns
+::: {.column width="30%"}
+![](images/deaton.jpg)
+
+Angus Deaton
+
+Economics Nobel 2015
+:::
+::: {.column width="70%"}
+
+> “Lant Pritchett is so fun to listen to, sometimes you could forget that he is completely full of shit.”
+
+[[Source](https://medium.com/@ismailalimanik/lant-pritchett-the-debate-about-rcts-in-development-is-over-ec7a28a82c17]{.source}
+:::
+:::
+
+## RCTs and "Evidence-Based Policy”
+
+::: columns
+::: {.column width="50%"}
+- Programs *randomly* assign treatment to different individuals and measure causal effect of treatment
+
+- [**RAND Health Insurance Study**]{.green}: randomly give people health insurance
+
+- [**Oregon Medicaid Expansion**]{.green}: randomly give people Medicaid
+
+- [**HUD's Moving to Opportunity**]{.green}: randomly give people moving vouchers
+
+- [**Tennessee STAR**]{.green}: randomly assign students to large vs. small classes
+
+:::
+::: {.column width="50%"}
+![](images/madlaboratory.jpg)
+:::
+:::
+
+## RCTs and External Validity I
+
+::: columns
+::: {.column width="50%"}
+- Even if a study is [internally valid]{.hi-purple} (used statistics correctly, etc.) we must still worry about [external validity]{.hi}:
+
+- Is the finding [generalizable]{.hi-turquoise} to the whole population?
+
+- If we find something in India, does that extend to Bolivia? France?
+
+- Subjects of studies & surveys are often
+  - [W]{.hi-purple}estern
+  - [E]{.hi-purple}ducated
+  - [I]{.hi-purple}ndustrialized
+  - [R]{.hi-purple}ich
+  - [D]{.hi-purple}emocracies
+
+:::
+::: {.column width="50%"}
+![](images/weirdpsychology.png)
+
+[APA (2010)](https://www.apa.org/monitor/2010/05/weird)
+
+:::
+:::
+
+## RCTs and External Validity II
+
+::: columns
+::: {.column width="50%"}
+![](images/vapingstudy.png)
+:::
+::: {.column width="50%"}
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">IN MICE<a href="https://t.co/mLuKBRhsAb">https://t.co/mLuKBRhsAb</a></p>&mdash; justsaysinmice (@justsaysinmice) <a href="https://twitter.com/justsaysinmice/status/1305905728591335424?ref_src=twsrc%5Etfw">September 15, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+[In Mice twitter account](https://twitter.com/justsaysinmice?lang=en)
+
 :::
 :::

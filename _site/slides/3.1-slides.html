@@ -325,23 +325,17 @@
 
 <section id="section" class="slide level2" data-menu-title="Title Slide" data-background-image="images/metrics_title_slide.png">
 <h2></h2>
-<p><span class="custom-title">3.1 — The Fundamental Problem of Causal Inference</span></p>
+<p><span class="custom-title">3.1 — Problem of Causal Inference</span></p>
 <p><span class="custom-subtitle">ECON 480 • Econometrics • Fall 2022</span></p>
 <p><span class="custom-author">Dr.&nbsp;Ryan Safner <br> Associate Professor of Economics</span></p>
 <p><span class="custom-institution"><a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br></span></p>
 </section>
 <section id="contents" class="slide level2" data-background-color="#314f4f">
 <h2>Contents</h2>
-<p><a href="#/hypothesis-testing">Hypothesis Testing</a></p>
-<p><a href="#/digression-p-values-and-the-philosophy-of-science">Digression: p-Values and the Philosophy of Science</a></p>
-<p><a href="#/hypothesis-testing-by-simulation-with-infer">Hypothesis Testing by Simulation with <code>infer</code></a></p>
-<p><a href="#/theory-based-hypothesis-testing-what-r-calculates">Theory-Based Hypothesis Testing (What R Calculates)</a></p>
-<p><a href="#/the-use-and-abuse-of-p-values">The Use and Abuse of p-Values</a></p>
-</section>
-<section>
-<section id="hypothesis-testing" class="title-slide slide level1 centered center" data-background-color="#314f4f">
-<h1>Hypothesis Testing</h1>
-
+<p><a href="#/first-pass-at-causation-rcts">First Pass at Causation: RCTs</a></p>
+<p><a href="#/the-potential-outcomes-model">The Potential Outcomes Model</a></p>
+<p><a href="#/natural-experiments">Natural Experiments</a></p>
+<p><a href="#/attack-ofon-the-randomistas">Attack of/on the Randomistas</a></p>
 </section>
 <section id="two-types-of-uses-for-regression" class="slide level2">
 <h2>Two Types of Uses For Regression</h2>
@@ -353,16 +347,16 @@
 <li><span class="hi">Causal inference</span>: estimate <span class="math inline">\(\color{teal}{\hat{\beta}}\)</span> to determine how changes in <span class="math inline">\(\color{purple}{X}\)</span> <strong>cause</strong> changes in <span class="math inline">\(\color{orange}{Y}\)</span></li>
 </ol>
 <ul>
-<li>Care more about accurately estimating and understanding <span class="math inline">\(\color{teal}{\beta}\)</span></li>
-<li>Remove as much <strong>bias</strong> in <span class="math inline">\(\color{teal}{\beta}\)</span> as possible</li>
+<li>Care more about accurately estimating and understanding <span class="math inline">\(\color{teal}{\hat{\beta}}\)</span></li>
+<li>Remove as much <strong>bias</strong> in <span class="math inline">\(\color{teal}{\hat{\beta}}\)</span> as possible</li>
 <li>Don’t care much about <strong>goodness of fit</strong>! (You’ll never get it in the complex real world)</li>
 </ul>
 </div><div class="column" style="width:50;">
 <ol start="2" type="1">
-<li><span class="hi-purple">Prediction</span>: predict <span class="math inline">\(\color{orange}{\hat{Y}}\)</span> using an estimated <span class="math inline">\(\color{teal}{\beta}\)</span></li>
+<li><span class="hi-purple">Prediction</span>: predict <span class="math inline">\(\color{orange}{\hat{Y}}\)</span> using an estimated <span class="math inline">\(\color{teal}{\hat{\beta}}\)</span></li>
 </ol>
 <ul>
-<li>Care more about getting <span class="math inline">\(\color{orange}{\hat{Y}}\)</span> as accurate as possible, <span class="math inline">\(\color{teal}{f}\)</span> is an unknown “black-box”</li>
+<li>Care more about getting <span class="math inline">\(\color{orange}{\hat{Y}}\)</span> as accurate as possible, <span class="math inline">\(\color{teal}{\hat{\beta}}\)</span> is an unknown “black-box”</li>
 <li>Tweak models to maximize <span class="math inline">\(R^2\)</span>, minimize <span class="math inline">\(\hat{\sigma}_u\)</span> (at all costs)</li>
 </ul>
 </div>
@@ -416,7 +410,7 @@
 <ul>
 <li><span class="hi">Endogeneity problem</span></li>
 <li>Even if we had perfect data on the whole population, <span class="hi">“Does X truly cause Y?”</span>, and can we measure that effect?</li>
-<li>[More philosophy &amp; theory than math &amp; statistics!]{..hi-turquoise} 🧐</li>
+<li><span class="hi-turquoise">More philosophy &amp; theory than math &amp; statistics!</span> 🧐</li>
 </ul></li>
 <li>Truly you should do this first, <em>before</em> you get data to make inferences!</li>
 </ul>
@@ -434,9 +428,9 @@
 <p><img data-src="images/causation.jpg"></p>
 </div>
 </div>
-</section></section>
+</section>
 <section>
-<section id="first-pass-at-causation-rcts" class="title-slide slide level1 center">
+<section id="first-pass-at-causation-rcts" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>First Pass at Causation: RCTs</h1>
 
 </section>
@@ -445,17 +439,21 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>The <em>ideal</em> way to demonstrate causation is through a <span class="hi-turquoise">randomized control trial (RCT)</span> or “random experiment”
+<li>The <em>ideal</em> way to demonstrate causation is through a <span class="hi-turquoise">randomized control trial (RCT)</span> or <span class="hi-turquoise">“random experiment”</span>
 <ul>
 <li><em>Randomly</em> assign experimental units (e.g.&nbsp;people, firms, etc.) into groups</li>
-<li><span class="hi">Treatment group(s)</span> get a (kind of) treatment</li>
+<li><span class="hi">Treatment group(s)</span> get a treatment</li>
 <li><span class="hi-purple">Control group</span> gets no treatment</li>
-<li>Compare results of treatment and control groups to observe the <span class="hi-slate">average treatment effect (ATE)</span></li>
+<li>Compare average results of treatment vs control groups after treatment o observe the <span class="hi-slate">average treatment effect (ATE)</span></li>
 </ul></li>
 <li><span class="hi-slate">We will understand “causality” (for now) to mean the ATE from an ideal RCT</span></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><img data-src="images/groupsplit.jpeg"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/groupsplit.jpeg" width="600"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -466,7 +464,7 @@
 <section id="random-control-trials-rcts-iii" class="slide level2">
 <h2>Random Control Trials (RCTs) III</h2>
 
-<img data-src="images/scienceplacebocomic.PNG" class="r-stretch"></section>
+<img data-src="images/scienceplacebocomic.PNG" class="r-stretch quarto-figure-center"></section>
 <section id="random-control-trials-rcts-iv" class="slide level2">
 <h2>Random Control Trials (RCTs) IV</h2>
 <div class="columns">
@@ -475,9 +473,19 @@
 <li><span class="hi-turquoise">Random assignment</span> to groups ensures that the <em>only</em> differences between members of the treatment(s) and control groups is <em>receiving treatment or not</em></li>
 </ul>
 </div><div class="column" style="width:25%;">
-<p><img data-src="images/3apples.jpg" width="400"> Treatment Group</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/3apples.jpg" height="400"></p>
+<p></p><figcaption>Treatment Group</figcaption><p></p>
+</figure>
+</div>
 </div><div class="column" style="width:25%;">
-<p><img data-src="images/3oranges.jpg" width="400"> Control Group</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/3oranges.jpg" height="400"></p>
+<p></p><figcaption>Control Group</figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -490,15 +498,25 @@
 <li><p><span class="hi-orange">Selection bias:</span> (pre-existing) differences between members of treatment and control groups <em>other</em> than treatment, that affect the outcome</p></li>
 </ul>
 </div><div class="column" style="width:25%;">
-<p><img data-src="images/3apples.jpg" width="400"> Treatment Group</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/3apples.jpg" height="400"></p>
+<p></p><figcaption>Treatment Group</figcaption><p></p>
+</figure>
+</div>
 </div><div class="column" style="width:25%;">
-<p><img data-src="images/3oranges.jpg" width="400"> Control Group</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/3oranges.jpg" height="400"></p>
+<p></p><figcaption>Control Group</figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 </section></section>
 <section>
-<section id="potential-outcomes" class="title-slide slide level1 center">
-<h1>Potential Outcomes</h1>
+<section id="the-potential-outcomes-model" class="title-slide slide level1 centered center" data-background-color="#314f4f">
+<h1>The Potential Outcomes Model</h1>
 
 </section>
 <section id="the-fundamental-problem-of-causal-inference" class="slide level2">
@@ -562,14 +580,11 @@
 <p><span class="math display">\[\color{#314f4f}{ATE} = \color{#e64173}{E[Y_i^{1}]} - \color{#6A5ACD}{E[Y_i^{0}]}\]</span></p>
 <ul>
 <li><p>Have large groups, and take <em>averages</em> instead!</p></li>
-<li><p>[Average Treatment Effect (ATE)]{.hi-slate: difference in the average (expected value) of outcome <span class="math inline">\(Y\)</span> between <span class="pink">treated individuals</span> and <span class="purple">untreated individuals</span></p></li>
+<li><p><span class="hi-slate">Average Treatment Effect (ATE)</span>: difference in the average (expected value) of outcome <span class="math inline">\(Y\)</span> between <span class="pink">treated individuals</span> and <span class="purple">untreated individuals</span></p></li>
 </ul>
-<p><span class="math display">\[\color{#314f4f}{\delta} = \color{#e64173}{(\bar{Y}|D=1)}-\color{#6A5ACD}{(\bar{Y}|D=0)}\]</span></p>
+<p><span class="math display">\[\color{#314f4f}{\delta} = \color{#e64173}{(\bar{Y}|T=1)}-\color{#6A5ACD}{(\bar{Y}|T=0)}\]</span></p>
 <ul>
-<li><span class="math inline">\(D_i\)</span> is a <span class="hi-turquoise">binary variable</span>, <span class="math inline">\(= \begin{cases} \color{#6A5ACD}{0} &amp; \color{#6A5ACD}{\text{ if person is not treated}}\\\color{#e64173}{1} &amp; \color{#e64173}{\text{ if person is treated}}\\ \end{cases}\)</span>
-<ul>
-<li>I’d much rather call this <span class="math inline">\(T_i\)</span>, standing for <span class="math inline">\(T\)</span>reatment, but this notation is famous</li>
-</ul></li>
+<li><span class="math inline">\(T_i\)</span> is a <span class="hi-turquoise">binary variable</span>, <span class="math inline">\(= \begin{cases} \color{#6A5ACD}{0} &amp; \color{#6A5ACD}{\text{ if person is not treated}}\\\color{#e64173}{1} &amp; \color{#e64173}{\text{ if person is treated}}\\ \end{cases}\)</span></li>
 </ul>
 </section>
 <section id="the-fundamental-problem-of-causal-inference-5" class="slide level2">
@@ -577,29 +592,1185 @@
 <p><span class="math display">\[\color{#314f4f}{ATE} = \color{#e64173}{E[Y_i^{1}]} - \color{#6A5ACD}{E[Y_i^{0}]}\]</span></p>
 <p>Again:</p>
 <ul>
-<li><strong>Either</strong> we observe individual <span class="math inline">\(i\)</span> in the <span class="hi">treatment group</span> <span class="math inline">\(\color{#e64173}{(D=1)}\)</span>, i.e.</li>
+<li><strong>Either</strong> we observe individual <span class="math inline">\(i\)</span> in the <span class="hi">treatment group</span> <span class="math inline">\(\color{#e64173}{(T=1)}\)</span>, i.e.</li>
 </ul>
 <p><span class="math display">\[\color{#314f4f}{\delta_i} = \color{#e64173}{Y_i^{1}} - \color{red}{?}\]</span></p>
 <ul>
-<li><strong>Or</strong> we observe individual <span class="math inline">\(i\)</span> in the <span class="hi-purple">control group</span> <span class="math inline">\(\color{#6A5ACD}{(D=0)}\)</span>, i.e.</li>
+<li><strong>Or</strong> we observe individual <span class="math inline">\(i\)</span> in the <span class="hi-purple">control group</span> <span class="math inline">\(\color{#6A5ACD}{(T=0)}\)</span>, i.e.</li>
 </ul>
 <p><span class="math display">\[\color{#314f4f}{\delta_i} = \color{red}{?} - \color{#6A5ACD}{Y_i^{0}} \]</span></p>
 <ul>
 <li><strong>Never both</strong> at the same time:</li>
 </ul>
 <p>✨ <span class="math inline">\(\color{#314f4f}{\delta_i} = \color{#e64173}{Y_i^{1}} - \color{#6A5ACD}{Y_i^{0}}\)</span> ✨</p>
+</section>
+<section id="example-the-effect-of-having-health-insurance-i" class="slide level2">
+<h2>Example: The Effect of Having Health Insurance I</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
+<div class="callout callout-tip no-icon callout-captioned callout-style-simple">
+<div class="callout-body">
+<div class="callout-caption">
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<p>What is the effect of having health insurance on health outcomes?</p>
+<ul>
+<li><p>National Health Interview Survey (NHIS) asks “Would you say your health in general is excellent, very good, good, fair, or poor?”</p></li>
+<li><p><strong>Outcome variable <span class="math inline">\((Y)\)</span></strong>: Index of health (1-poor to 5-excellent) in a sample of married NHIS respondents in 2009 who may or may not have health insurance</p></li>
+<li><p><strong>Treatment <span class="math inline">\((X)\)</span></strong>: Having health insurance (vs.&nbsp;not)</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/healthcare.jpg"></p>
+</div>
+</div>
+</section>
+<section id="example-the-effect-of-having-health-insurance-ii" class="slide level2">
+<h2>Example: The Effect of Having Health Insurance II</h2>
 
+<img data-src="images/econometricshealthnocaption.png" class="r-stretch quarto-figure-center"><p><span class="source">Angrist, Joshua &amp; Jorn-Steffen Pischke, 2015, <em>Mostly Harmless Econometrics</em></span></p>
+</section>
+<section id="example-the-effect-of-having-health-insurance-iii" class="slide level2">
+<h2>Example: The Effect of Having Health Insurance III</h2>
+<ul>
+<li><p><span class="math inline">\(Y\)</span>: outcome variable (health index score, 1-5)</p></li>
+<li><p><span class="math inline">\(Y_i\)</span>: health score of an individual <span class="math inline">\(i\)</span></p></li>
+<li><p>Individual <span class="math inline">\(i\)</span> has a choice, leading to one of two outcomes:</p>
+<ul>
+<li><span class="math inline">\(\color{#6A5ACD}{Y^0_i}\)</span>: individual <span class="math inline">\(i\)</span> has <em>not</em> purchased health insurance <span class="hi-purple">(“Control”)</span></li>
+<li><span class="math inline">\(\color{#e64173}{Y^1_i}\)</span>: individual <span class="math inline">\(i\)</span> has purchased health insurance <span class="hi">(“Treatment”)</span></li>
+</ul></li>
+<li><p><span class="math inline">\(\color{#314f4f}{\delta_i}=\color{#e64173}{Y^1_i}-\color{#6A5ACD}{Y^0_i}\)</span>: causal effect for individual <span class="math inline">\(i\)</span> of purchasing health insurance</p></li>
+</ul>
+</section>
+<section id="example-a-hypothetical-comparison" class="slide level2">
+<h2>Example: A Hypothetical Comparison</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table>
+<thead>
+<tr class="header">
+<th>John</th>
+<th>Maria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img data-src="../images/coldman2.jpg"></td>
+<td><img data-src="../images/femalejogger2.jpg"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Y_J^0=3\)</span></td>
+<td><span class="math inline">\(Y_M^0=5\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Y_J^1=4\)</span></td>
+<td><span class="math inline">\(Y_M^1=5\)</span></td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>John will choose to buy health insurance</p></li>
+<li><p>Maria will choose to not buy health insurance</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="example-a-hypothetical-comparison-1" class="slide level2">
+<h2>Example: A Hypothetical Comparison</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table>
+<thead>
+<tr class="header">
+<th>John</th>
+<th>Maria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img data-src="../images/coldman2.jpg"></td>
+<td><img data-src="../images/femalejogger2.jpg"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Y_J^0=3\)</span></td>
+<td><span class="math inline">\(Y_M^0=5\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Y_J^1=4\)</span></td>
+<td><span class="math inline">\(Y_M^1=5\)</span></td>
+</tr>
+<tr class="even">
+<td>✨ <span class="math inline">\(\color{#314f4f}{\delta_J=1}\)</span></td>
+<td><span class="math inline">\(\color{#314f4f}{\delta_M=0}\)</span> ✨</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>John will choose to buy health insurance</p></li>
+<li><p>Maria will choose to not buy health insurance</p></li>
+<li><p>Health insurance improves John’s score by 1, has no effect on Maria’s score (individual causal effects <span class="math inline">\(\color{#314f4f}{\delta_i}\)</span>)</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="example-a-hypothetical-comparison-2" class="slide level2">
+<h2>Example: A Hypothetical Comparison</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table>
+<thead>
+<tr class="header">
+<th>John</th>
+<th>Maria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img data-src="../images/coldman2.jpg"></td>
+<td><img data-src="../images/femalejogger2.jpg"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Y_J^0=3\)</span></td>
+<td><span class="math inline">\(Y_M^0=5\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Y_J^1=4\)</span></td>
+<td><span class="math inline">\(Y_M^1=5\)</span></td>
+</tr>
+<tr class="even">
+<td>✨ <span class="math inline">\(\color{#314f4f}{\delta_J=1}\)</span></td>
+<td><span class="math inline">\(\color{#314f4f}{\delta_M=0}\)</span> ✨</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\color{#e64173}{Y_J=(Y_J^1)=4}\)</span></td>
+<td><span class="math inline">\(\color{#6A5ACD}{Y_M=(Y_M^0)=5}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>John will choose to buy health insurance</p></li>
+<li><p>Maria will choose to not buy health insurance</p></li>
+<li><p>Health insurance improves John’s score by 1, has no effect on Maria’s score (individual causal effects <span class="math inline">\(\color{#314f4f}{\delta_i}\)</span>)</p></li>
+<li><p>Note, all we can observe in the data are their health outcomes <em>after</em> they have chosen (not) to buy health insurance: <span class="math display">\[\begin{align*}
+\color{#e64173}{Y_J}&amp;\color{#e64173}{=4}\\
+\color{#6A5ACD}{Y_M}&amp;\color{#6A5ACD}{=5}\\
+\end{align*}\]</span></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="example-a-hypothetical-comparison-3" class="slide level2">
+<h2>Example: A Hypothetical Comparison</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table>
+<thead>
+<tr class="header">
+<th>John</th>
+<th>Maria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img data-src="../images/coldman2.jpg"></td>
+<td><img data-src="../images/femalejogger2.jpg"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(Y_J^0=3\)</span></td>
+<td><span class="math inline">\(Y_M^0=5\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(Y_J^1=4\)</span></td>
+<td><span class="math inline">\(Y_M^1=5\)</span></td>
+</tr>
+<tr class="even">
+<td>✨ <span class="math inline">\(\color{#314f4f}{\delta_J=1}\)</span></td>
+<td><span class="math inline">\(\color{#314f4f}{\delta_M=0}\)</span> ✨</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\color{#e64173}{Y_J=(Y_J^1)=4}\)</span></td>
+<td><span class="math inline">\(\color{#6A5ACD}{Y_M=(Y_M^0)=5}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p>John will choose to buy health insurance</p></li>
+<li><p>Maria will choose to not buy health insurance</p></li>
+<li><p>Health insurance improves John’s score by 1, has no effect on Maria’s score (individual causal effects <span class="math inline">\(\color{#314f4f}{\delta_i}\)</span>)</p></li>
+<li><p>Note, all we can observe in the data are their health outcomes <em>after</em> they have chosen (not) to buy health insurance: <span class="math display">\[\begin{align*}
+\color{#e64173}{Y_J}&amp;\color{#e64173}{=4}\\
+\color{#6A5ACD}{Y_M}&amp;\color{#6A5ACD}{=5}\\
+\end{align*}\]</span></p></li>
+<li><p><span class="hi-turquoise"><em>Observed</em> difference</span> between John and Maria: <span class="math display">\[\color{#e64173}{Y_J}-\color{#6A5ACD}{Y_M}=-1\]</span></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="counterfactuals" class="slide level2">
+<h2>Counterfactuals</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table>
+<thead>
+<tr class="header">
+<th>John</th>
+<th>Maria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img data-src="../images/coldman2.jpg"></td>
+<td><img data-src="../images/femalejogger2.jpg"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\color{#e64173}{Y_J=4}\)</span></td>
+<td><span class="math inline">\(\color{#6A5ACD}{Y_M=5}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>This is all the data we <em>actually</em> observe</p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Observed difference between John and Maria:</li>
+</ul>
+<p><span class="math display">\[Y_J-Y_M=\underbrace{\color{#e64173}{Y^1_J}-\color{#6A5ACD}{Y^0_M}}_{=-1}\]</span></p>
+<ul>
+<li>Recall:
+<ul>
+<li>John has bought health insurance <span class="math inline">\(\color{#e64173}{Y^1_J}\)</span></li>
+<li>Maria has not bought insurance <span class="math inline">\(\color{#6A5ACD}{Y^0_M}\)</span></li>
+</ul></li>
+<li>We don’t see the <span class="hi">counterfactuals</span>:
+<ul>
+<li>John’s score <em>without</em> insurance</li>
+<li>Maria score <em>with</em> insurance</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="counterfactuals-1" class="slide level2">
+<h2>Counterfactuals</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table>
+<thead>
+<tr class="header">
+<th>John</th>
+<th>Maria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img data-src="../images/coldman2.jpg"></td>
+<td><img data-src="../images/femalejogger2.jpg"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\color{#e64173}{Y_J=4}\)</span></td>
+<td><span class="math inline">\(\color{#6A5ACD}{Y_M=5}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>This is all the data we <em>actually</em> observe</p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Observed difference between John and Maria:</li>
+</ul>
+<p><span class="math display">\[Y_J-Y_M=\underbrace{\color{#e64173}{Y^1_J}-\color{#6A5ACD}{Y^0_M}}_{=-1}\]</span></p>
+<ul>
+<li>Algebra trick: add and subtract <span class="math inline">\(\color{#6A5ACD}{Y^0_J}\)</span> to equation:</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+Y_J-Y_M=\underbrace{\color{#e64173}{Y^1_J}-\color{#6A5ACD}{Y^0_J}}_{\color{#314f4f}{=1}}+\underbrace{\color{#6A5ACD}{Y^0_J}-\color{#6A5ACD}{Y^0_M}}_{\color{orange}{=-2}}
+\end{align*}\]</span></p>
+</div>
+</div>
+</section>
+<section id="counterfactuals-2" class="slide level2">
+<h2>Counterfactuals</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table>
+<thead>
+<tr class="header">
+<th>John</th>
+<th>Maria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><img data-src="../images/coldman2.jpg"></td>
+<td><img data-src="../images/femalejogger2.jpg"></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\color{#e64173}{Y_J=4}\)</span></td>
+<td><span class="math inline">\(\color{#6A5ACD}{Y_M=5}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>This is all the data we <em>actually</em> observe</p>
+</div><div class="column" style="width:50%;">
+<p><span class="math display">\[\begin{align*}
+Y_J-Y_M=\underbrace{\color{#e64173}{Y^1_J}-\color{#6A5ACD}{Y^0_J}}_{\color{#314f4f}{=1}}+\underbrace{\color{#6A5ACD}{Y^0_J}-\color{#6A5ACD}{Y^0_M}}_{\color{orange}{=-2}}
+\end{align*}\]</span></p>
+<ul>
+<li><span class="math inline">\(\color{#e64173}{Y^1_J}-\color{#6A5ACD}{Y^0_J}=1\)</span>: <span class="hi-slate">Causal effect for John</span><sup>1</sup> of buying insurance, <span class="math inline">\(\color{#314f4f}{\delta_J}\)</span></li>
+<li><span class="math inline">\(\color{#6A5ACD}{Y^0_J}-\color{#6A5ACD}{Y^0_M}=-2\)</span>: Difference between John &amp; Maria pre-treatment, <span class="hi-orange">“selection bias”</span></li>
+</ul>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn1" role="doc-endnote"><p>This is commonly referred to as <span class="hi-slate">TOT</span>: <span class="hi-slate">effect of treatment on the <em>treated</em> group</span></p></li></ol></aside></section>
+<section id="selection-bias-i" class="slide level2">
+<h2>Selection Bias I</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[\color{#6A5ACD}{Y^0_J}-\color{#6A5ACD}{Y^0_M} \neq 0\]</span></p>
+<ul>
+<li><span class="hi-orange">Selection bias:</span> (pre-existing) differences between members of treatment and control groups <em>other</em> than treatment, that affect the outcome
+<ul>
+<li>i.e.&nbsp;John and Maria <em>start out</em> with very <em>different</em> health scores before either decides to buy insurance or not (“receive treatment” or not)</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/3apples.jpg" height="400"></p>
+<p></p><figcaption>John (treated)</figcaption><p></p>
+</figure>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/3oranges.jpg" height="400"></p>
+<p></p><figcaption>Maria (control)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="selection-bias-ii" class="slide level2">
+<h2>Selection Bias II</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[\color{#6A5ACD}{Y^0_J}-\color{#6A5ACD}{Y^0_M}\neq 0\]</span></p>
+<ul>
+<li><p>The choice to get treatment is <span class="hi-turquoise">endogenous</span></p></li>
+<li><p>A choice made by optimizing agents</p></li>
+<li><p>John and Maria have different preferences, endowments, &amp; constraints that cause them to make different decisions</p></li>
+</ul>
+</div><div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/3apples.jpg" height="400"></p>
+<p></p><figcaption>John (treated)</figcaption><p></p>
+</figure>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/3oranges.jpg" height="400"></p>
+<p></p><figcaption>Maria (control)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="example-our-ideal-data" class="slide level2">
+<h2>Example: Our Ideal Data</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table>
+<caption><strong>Ideal</strong> (but impossible) Data</caption>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 29%">
+<col style="width: 41%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Individual</th>
+<th><span class="hi">Insured</span></th>
+<th><span class="hi-purple">Not Insured</span></th>
+<th><span class="hi-slate">Diff</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>John</td>
+<td><span class="pink">4.0</span></td>
+<td><span class="purple">3.0</span></td>
+<td><span class="slate">1.0</span></td>
+</tr>
+<tr class="even">
+<td>Maria</td>
+<td><span class="pink">5.0</span></td>
+<td><span class="purple">5.0</span></td>
+<td><span class="slate">0.0</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Average</strong></td>
+<td><span class="pink">4.5</span></td>
+<td><span class="purple">4.0</span></td>
+<td><span class="hi-slate">0.5</span></td>
+</tr>
+</tbody>
+</table>
 </div><div class="column" style="width:50%;">
 
 </div>
 </div>
+</section>
+<section id="example-our-ideal-data-1" class="slide level2">
+<h2>Example: Our Ideal Data</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table>
+<caption><strong>Ideal</strong> (but impossible) Data</caption>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 29%">
+<col style="width: 41%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Individual</th>
+<th><span class="hi">Insured</span></th>
+<th><span class="hi-purple">Not Insured</span></th>
+<th><span class="hi-slate">Diff</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>John</td>
+<td><span class="pink">4.0</span></td>
+<td><span class="purple">3.0</span></td>
+<td><span class="slate">1.0</span></td>
+</tr>
+<tr class="even">
+<td>Maria</td>
+<td><span class="pink">5.0</span></td>
+<td><span class="purple">5.0</span></td>
+<td><span class="slate">0.0</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Average</strong></td>
+<td><span class="pink">4.5</span></td>
+<td><span class="purple">4.0</span></td>
+<td><span class="hi-slate">0.5</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="hi-slate">Individual treatment effect</span> (for individual <span class="math inline">\(i\)</span>):</li>
+</ul>
+<p><span class="math display">\[\color{#314f4f}{\delta_i}=\color{#e64173}{Y^1_i}-\color{#6A5ACD}{Y^0_i}\]</span></p>
+</div><div class="column" style="width:50%;">
 
-<img src="../images/metrics_hex.png" class="slide-logo r-stretch"><div class="footer footer-default">
+</div>
+</div>
+</section>
+<section id="example-our-ideal-data-2" class="slide level2">
+<h2>Example: Our Ideal Data</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table>
+<caption><strong>Ideal</strong> (but impossible) Data</caption>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 29%">
+<col style="width: 41%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Individual</th>
+<th><span class="hi">Insured</span></th>
+<th><span class="hi-purple">Not Insured</span></th>
+<th><span class="hi-slate">Diff</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>John</td>
+<td><span class="pink">4.0</span></td>
+<td><span class="purple">3.0</span></td>
+<td><span class="slate">1.0</span></td>
+</tr>
+<tr class="even">
+<td>Maria</td>
+<td><span class="pink">5.0</span></td>
+<td><span class="purple">5.0</span></td>
+<td><span class="slate">0.0</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Average</strong></td>
+<td><span class="pink">4.5</span></td>
+<td><span class="purple">4.0</span></td>
+<td><span class="hi-slate">0.5</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="hi-slate">Individual treatment effect</span> (for individual <span class="math inline">\(i\)</span>):</li>
+</ul>
+<p><span class="math display">\[\color{#314f4f}{\delta_i}=\color{#e64173}{Y^1_i}-\color{#6A5ACD}{Y^0_i}\]</span></p>
+<ul>
+<li><span class="hi-slate"><em>Average</em> treatment effect</span>:</li>
+</ul>
+<p><span class="math display">\[\color{#314f4f}{ATE}=\frac{1}{n}\sum^n_{i=1}(\color{#e64173}{Y^1_i}-\color{#6A5ACD}{Y^0_i})\]</span></p>
+</div><div class="column" style="width:50%;">
+
+</div>
+</div>
+</section>
+<section id="example-our-ideal-data-3" class="slide level2">
+<h2>Example: Our Ideal Data</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table>
+<caption><strong>Ideal</strong> (but impossible) Data</caption>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 29%">
+<col style="width: 41%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Individual</th>
+<th><span class="hi">Insured</span></th>
+<th><span class="hi-purple">Not Insured</span></th>
+<th><span class="hi-slate">Diff</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>John</td>
+<td><span class="pink">4.0</span></td>
+<td><span class="purple">3.0</span></td>
+<td><span class="slate">1.0</span></td>
+</tr>
+<tr class="even">
+<td>Maria</td>
+<td><span class="pink">5.0</span></td>
+<td><span class="purple">5.0</span></td>
+<td><span class="slate">0.0</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Average</strong></td>
+<td><span class="pink">4.5</span></td>
+<td><span class="purple">4.0</span></td>
+<td><span class="hi-slate">0.5</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><span class="hi-slate">Individual treatment effect</span> (for individual <span class="math inline">\(i\)</span>):</li>
+</ul>
+<p><span class="math display">\[\color{#314f4f}{\delta_i}=\color{#e64173}{Y^1_i}-\color{#6A5ACD}{Y^0_i}\]</span></p>
+<ul>
+<li><span class="hi-slate"><em>Average</em> treatment effect</span>:</li>
+</ul>
+<p><span class="math display">\[\color{#314f4f}{ATE}=\frac{1}{n}\sum^n_{i=1}(\color{#e64173}{Y^1_i}-\color{#6A5ACD}{Y^0_i})\]</span></p>
+</div><div class="column" style="width:50%;">
+<table>
+<caption><strong>Actual</strong> (observed) Data</caption>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 29%">
+<col style="width: 41%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Individual</th>
+<th><span class="hi">Insured</span></th>
+<th><span class="hi-purple">Not Insured</span></th>
+<th><span class="hi-slate">Diff</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>John</td>
+<td><span class="pink">4.0</span></td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr class="even">
+<td>Maria</td>
+<td>?</td>
+<td><span class="purple">5.0</span></td>
+<td>?</td>
+</tr>
+<tr class="odd">
+<td><strong>Average</strong></td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>We never get to see each person’s <span class="hi-turquoise">counterfactual</span> state to compare and calculate ITEs or ATE
+<ul>
+<li>Maria with insurance <span class="math inline">\(\color{#e64173}{Y^1_M}\)</span></li>
+<li>John without insurance <span class="math inline">\(\color{#6A5ACD}{Y^0_J}\)</span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="cell">
+
+</div>
+</section>
+<section id="cant-we-just-take-the-difference-of-group-means" class="slide level2">
+<h2>Can’t We Just Take the Difference of Group Means?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Can’t we just take the difference in group means?</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
+\end{align*}\]</span></p>
+</div><div class="column" style="width:50%;">
+<p><strong>Actual</strong> (observed) Data</p>
+<table>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 29%">
+<col style="width: 41%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Individual</th>
+<th><span class="hi">Insured</span></th>
+<th><span class="hi-purple">Not Insured</span></th>
+<th><span class="hi-slate">Diff</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>John</td>
+<td><span class="pink">4.0</span></td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr class="even">
+<td>Maria</td>
+<td>?</td>
+<td><span class="purple">5.0</span></td>
+<td>?</td>
+</tr>
+<tr class="odd">
+<td><strong>Average</strong></td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>We never get to see each person’s <span class="hi-turquoise">counterfactual</span> state to compare and calculate ITEs or ATE
+<ul>
+<li>Maria with insurance <span class="math inline">\(\color{#e64173}{Y^1_M}\)</span></li>
+<li>John without insurance <span class="math inline">\(\color{#6A5ACD}{Y^0_J}\)</span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="cant-we-just-take-the-difference-of-group-means-1" class="slide level2">
+<h2>Can’t We Just Take the Difference of Group Means?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Can’t we just take the difference in group means?</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
+\end{align*}\]</span></p>
+<ul>
+<li>Suppose a uniform treatment effect, <span class="math inline">\(\color{#314f4f}{\delta_i}\)</span></li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+&amp;= \color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
+&amp;= \color{#e64173}{Avg(}\color{#314f4f}{\delta_i}+\color{#6A5ACD}{Y_i^{0}}\color{#e64173}{|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
+&amp;= \color{#314f4f}{\delta_i}+\underbrace{\color{#e64173}{Avg(}\color{#6A5ACD}{Y_i^{0}}\color{#e64173}{|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}}_{\color{#FFA500}{\text{selection bias}}}\\
+&amp;= \color{#314f4f}{ATE} + \color{#FFA500}{\text{selection bias}} \\
+\end{align*}\]</span></p>
+</div><div class="column" style="width:50%;">
+<p><strong>Actual</strong> (observed) Data</p>
+<table>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 29%">
+<col style="width: 41%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Individual</th>
+<th><span class="hi">Insured</span></th>
+<th><span class="hi-purple">Not Insured</span></th>
+<th><span class="hi-slate">Diff</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>John</td>
+<td><span class="pink">4.0</span></td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr class="even">
+<td>Maria</td>
+<td>?</td>
+<td><span class="purple">5.0</span></td>
+<td>?</td>
+</tr>
+<tr class="odd">
+<td><strong>Average</strong></td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>We never get to see each person’s <span class="hi-turquoise">counterfactual</span> state to compare and calculate ITEs or ATE
+<ul>
+<li>Maria with insurance <span class="math inline">\(\color{#e64173}{Y^1_M}\)</span></li>
+<li>John without insurance <span class="math inline">\(\color{#6A5ACD}{Y^0_J}\)</span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="example-thinking-about-the-data" class="slide level2">
+<h2>Example: Thinking About the Data</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Basic comparisons tell us <em>something</em> about outcomes, but not <span class="hi-slate">ATE</span></li>
+</ul>
+<p><span class="math display">\[diff. = \color{#314f4f}{ATE} + \color{#FFA500}{\text{Selection Bias}}\]</span></p>
+<ul>
+<li><p><span class="hi-orange">Selection bias</span>: difference in average <span class="math inline">\(Y^0_i\)</span> between groups pre-treatment</p></li>
+<li><p><span class="math inline">\(Y^0_i\)</span> includes <em>everything</em> about person <span class="math inline">\(i\)</span> relevant to health <em>except</em> treatment (insurance) status</p>
+<ul>
+<li>Age, sex, height, weight, climate, smoker, exercise, diet, etc.</li>
+<li>Imagine a world where <em>nobody</em> gets insurance (treatment), who would have highest health scores?</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Actual</strong> (observed) Data</p>
+<table>
+<colgroup>
+<col style="width: 9%">
+<col style="width: 29%">
+<col style="width: 41%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Individual</th>
+<th><span class="hi">Insured</span></th>
+<th><span class="hi-purple">Not Insured</span></th>
+<th><span class="hi-slate">Diff</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>John</td>
+<td><span class="pink">4.0</span></td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr class="even">
+<td>Maria</td>
+<td>?</td>
+<td><span class="purple">5.0</span></td>
+<td>?</td>
+</tr>
+<tr class="odd">
+<td><strong>Average</strong></td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>We never get to see each person’s <span class="hi-turquoise">counterfactual</span> state to compare and calculate ITEs or ATE
+<ul>
+<li>Maria with insurance <span class="math inline">\(\color{#e64173}{Y^1_M}\)</span></li>
+<li>John without insurance <span class="math inline">\(\color{#6A5ACD}{Y^0_J}\)</span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="understanding-selection-bias" class="slide level2">
+<h2>Understanding Selection Bias</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p><span class="hi">Treatment group</span> and <span class="hi-purple">control group</span> differ on average, for reasons <em>other</em> than getting treatment or not!</p></li>
+<li><p><span class="hi-purple">Control group</span> is not a good counterfactual for <span class="hi">treatment group</span> without treatment</p>
+<ul>
+<li>Average <em>untreated</em> outcome for the treatment group differs from average untreated outcome for <em>untreated</em> group</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[\color{#e64173}{Avg(}\color{#6A5ACD}{Y_i^{0}}\color{#e64173}{|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\]</span></p>
+<ul>
+<li>Recall we cannot observe <span class="math inline">\(\color{#e64173}{Avg(}\color{#6A5ACD}{Y_i^{0}}\color{#e64173}{|T=1)}\)</span>!</li>
+</ul>
+</div><div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/3apples.jpg" height="400"></p>
+<p></p><figcaption>John (treated)</figcaption><p></p>
+</figure>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/3oranges.jpg" height="400"></p>
+<p></p><figcaption>Maria (control)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="understanding-selection-bias-regression" class="slide level2">
+<h2>Understanding Selection Bias: Regression</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Consider the problem in regression form:</li>
+</ul>
+<p><span class="math display">\[Y = \beta_0+\beta_1 T_i + u_i\]</span></p>
+<ul>
+<li><p>Where <span class="math inline">\(T_i = \begin{cases} \color{#6A5ACD}{0} &amp; \color{#6A5ACD}{\text{ if person is not treated}}\\\color{#e64173}{1} &amp; \color{#e64173}{\text{ if person is treated}}\\ \end{cases}\)</span></p></li>
+<li><p>The problem is <span class="math inline">\(cor(T,u) \neq 0\)</span>!</p>
+<ul>
+<li><span class="math inline">\(T_i\)</span> (Treatment) is endogenous!</li>
+<li><em>Getting</em> treatment is correlated with other factors that determine health!</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/3apples.jpg" height="400"></p>
+<p></p><figcaption>John (treated)</figcaption><p></p>
+</figure>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/3oranges.jpg" height="400"></p>
+<p></p><figcaption>Maria (control)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="random-assignment-the-silver-bullet" class="slide level2">
+<h2>Random Assignment: The Silver Bullet</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>If treatment is <span class="hi">randomly assigned</span> for a large sample, it eliminates selection bias!</p></li>
+<li><p>Treatment and control groups differ <strong>on average</strong> by nothing <em>except</em> treatment status</p></li>
+<li><p>Creates <span class="hi">ceterus paribus</span> conditions in economics: groups are identical <strong>on average</strong> (holding constant age, sex, height, etc.)</p></li>
+</ul>
+</div><div class="column" style="width:25%;">
+<p><img data-src="images/3apples.jpg" width="400"> Treatment Group</p>
+</div><div class="column" style="width:25%;">
+<p><img data-src="images/3apples.jpg" width="400"> Control Group</p>
+</div>
+</div>
+</section>
+<section id="random-assignment-regression" class="slide level2">
+<h2>Random Assignment: Regression</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Consider the problem in regression form:</li>
+</ul>
+<p><span class="math display">\[Y = \beta_0+\beta_1 T_i + u_i\]</span></p>
+<ul>
+<li>If treatment <span class="math inline">\(T_i\)</span> is administered <em>randomly</em>, it breaks the correlation with <span class="math inline">\(u_i\)</span>!
+<ul>
+<li>Treatment becomes <span class="hi">exogenous</span>!</li>
+<li><span class="math inline">\(cor(T,u)=0\)</span></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:25%;">
+<p><img data-src="images/3apples.jpg" width="400"> Treatment Group</p>
+</div><div class="column" style="width:25%;">
+<p><img data-src="images/3apples.jpg" width="400"> Control Group</p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="natural-experiments" class="title-slide slide level1 centered center" data-background-color="#314f4f">
+<h1>Natural Experiments</h1>
+
+</section>
+<section id="the-quest-for-causal-effects-i" class="slide level2">
+<h2>The Quest for Causal Effects I</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>RCTs are considered the “gold standard” for causal claims</p></li>
+<li><p>But society is not our laboratory (probably a good thing!)</p></li>
+<li><p>We can rarely conduct experiments to get data</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/madlaboratory.jpg"></p>
+</div>
+</div>
+</section>
+<section id="the-quest-for-causal-effects-ii" class="slide level2">
+<h2>The Quest for Causal Effects II</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Instead, we often rely on <span class="hi-purple">observational data</span></p></li>
+<li><p>This data is <em>not random</em>!</p></li>
+<li><p>Must take extra care in forming an <span class="hi">identification strategy</span></p></li>
+<li><p>To make good claims about causation in society, we must get clever!</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/fieldobserver.jpg"></p>
+</div>
+</div>
+</section>
+<section id="natural-experiments-1" class="slide level2">
+<h2>Natural Experiments</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Economists often resort to searching for <span class="hi">natural experiments</span></p></li>
+<li><p>“Natural” events beyond our control occur that separate <em>otherwise similar</em> entities into a “treatment” group and a “control” group that we can compare</p></li>
+<li><p>e.g.&nbsp;natural disasters, U.S. State laws, military draft</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/nskorea2.png"></p>
+</div>
+</div>
+</section>
+<section id="the-first-natural-experiment" class="slide level2">
+<h2>The First Natural Experiment</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/jonsnowmeme.jpg" width="400"></p>
+</figure>
+</div>
+</div><div class="column" style="width:70%;">
+<ul>
+<li><p>John Snow utilized the <a href="http://blogs.plos.org/publichealth/2013/03/11/john-snow-the-first-epidemiologist/">first famous natural experiment</a> to establish the foundations of epidemiology and the germ theory of disease</p></li>
+<li><p>Water pumps with sources <em>downstream</em> of a sewage dump in the Thames river spread cholera while water pumps with sources <em>upstream</em> did not</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/choleramap.jpg" width="600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="footer">
+
+</div>
+</section>
+<section id="the-first-natural-experiment-1" class="slide level2">
+<h2>The First Natural Experiment</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="images/johnsnow.jpg"></p>
+<p>1813-1858</p>
+</div><div class="column" style="width:70%;">
+<ul>
+<li><p>John Snow utilized the <a href="http://blogs.plos.org/publichealth/2013/03/11/john-snow-the-first-epidemiologist/">first famous natural experiment</a> to establish the foundations of epidemiology and the germ theory of disease</p></li>
+<li><p>Water pumps with sources <em>downstream</em> of a sewage dump in the Thames river spread cholera while water pumps with sources <em>upstream</em> did not</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/choleramap.jpg" width="600"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="footer">
+
+</div>
+</section>
+<section id="famous-natural-experiments-in-empirical-economics" class="slide level2">
+<h2>Famous Natural Experiments in Empirical Economics</h2>
+<ul>
+<li><span class="green"><strong>Oregon Health Insurance Experiment</strong></span>: Oregon used lottery to grant Medicare access to 10,000 people, showing access to Medicaid increased use of health services, lowered debt, etc. relative to those not on Medicaid</li>
+<li><span class="green"><strong>Angrist (1990)</strong></span> finds that lifetime earnings of (random) drafted Vietnam veterans is 15% lower than non-veterans</li>
+<li><span class="green"><strong>Card &amp; Kreuger (1994)</strong></span> find that minimum wage hike in fast-food restaurants on NJ side of border had no disemployment effects relative to restaurants on PA side of border during the same period</li>
+<li><span class="green"><strong>Acemoglu, Johnson, and Robinson (2001)</strong></span> find that inclusive institutions lead to higher economic development than extractive institutions, determined by a colony’s disease environment in 1500</li>
+<li>We will look at some of these in greater detail throughout the course</li>
+<li><a href="http://economicspsychologypolicy.blogspot.com/2015/06/list-of-19-natural-experiments.html">A great list, with explanations is here</a></li>
+</ul>
+</section></section>
+<section>
+<section id="attack-ofon-the-randomistas" class="title-slide slide level1 centered center" data-background-color="#314f4f">
+<h1>Attack of/on the Randomistas</h1>
+
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+
+<img data-src="images/rctgoldstandard.png" class="r-stretch"></section>
+<section id="rcts-are-all-the-rage" class="slide level2">
+<h2>RCTs are All the Rage</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<blockquote class="twitter-tweet" data-lang="en">
+<p lang="en" dir="ltr">
+Professors Esther Duflo and Abhijit Banerjee, co-directors of MIT's <a href="https://twitter.com/JPAL?ref_src=twsrc%5Etfw"><span class="citation" data-cites="JPAL">@JPAL</span></a>, receive congratulations on the big news this morning. They share in the <a href="https://twitter.com/hashtag/NobelPrize?src=hash&amp;ref_src=twsrc%5Etfw">#NobelPrize</a> in economic sciences “for their experimental approach to alleviating global poverty.”<br> <br>Photo: Bryce Vickmark <a href="https://t.co/NWeTrjR2Bq">pic.twitter.com/NWeTrjR2Bq</a>
+</p>
+— Massachusetts Institute of Technology (MIT) (<span class="citation" data-cites="MIT">@MIT</span>) <a href="https://twitter.com/MIT/status/1183752282988564480?ref_src=twsrc%5Etfw">October 14, 2019</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/voxnobelrcts.png"> <a href="https://www.vox.com/future-perfect/2019/10/14/20913928/nobel-prize-economics-duflo-banerjee-kremer">Vox (Oct 14, 2019)</a></p>
+</div>
+</div>
+<div class="footer">
+
+</div>
+</section>
+<section id="but-not-everyone-agrees-i" class="slide level2">
+<h2>But Not Everyone Agrees I</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="images/deaton.jpg"></p>
+<p>Angus Deaton</p>
+<p>Economics Nobel 2015</p>
+</div><div class="column" style="width:70%;">
+<blockquote>
+<p>“The RCT is a useful tool, but I think that is a mistake to put method ahead of substance. I have written papers using RCTs…[but] no RCT can ever legitimately claim to have established causality. My theme is that RCTs have no special status, they have no exemption from the problems of inference that econometricians have always wrestled with, and there is nothing that they, and only they, can accomplish.”</p>
+</blockquote>
+<p><span class="source">Deaton, Angus, 2019, <a href="https://scholar.princeton.edu/sites/default/files/deaton/files/deaton_randomization_revisited_v2_2019_01.pdf">“Randomization in the Tropics Revisited: A Theme and Eleven Variations”</a>, Working Paper</span></p>
+</div>
+</div>
+</section>
+<section id="but-not-everyone-agrees-ii" class="slide level2">
+<h2>But Not Everyone Agrees II</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/pritchett.jpg" width="400"></p>
+</figure>
+</div>
+<p>Lant Pritchett</p>
+</div><div class="column" style="width:70%;">
+<blockquote>
+<p>“People keep saying that the recent Nobelists ‘studied global poverty.’ This is exactly wrong. They made a commitment to a method, not a subject, and their commitment to method prevented them from studying global poverty.”</p>
+</blockquote>
+<blockquote>
+<p>“At a conference at Brookings in 2008 Paul Romer [2018 Nobelist] said:”You guys are like going to a doctor who says you have an allergy and you have cancer. With the skin rash we can divide you skin into areas and test variety of substances and identify with precision and some certainty the cause. Cancer we have some ideas how to treat it but there are a variety of approaches and since we cannot be sure and precise about which is best for you, we will ignore the cancer and not treat it.”</p>
+</blockquote>
+<p><span class="source"><a href="https://www.facebook.com/lant.pritchett/posts/10218688602381690">Source</a></span></p>
+</div>
+</div>
+</section>
+<section id="but-not-everyone-agrees-iii" class="slide level2">
+<h2>But Not Everyone Agrees III</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="images/deaton.jpg"></p>
+<p>Angus Deaton</p>
+<p>Economics Nobel 2015</p>
+</div><div class="column" style="width:70%;">
+<blockquote>
+<p>“Lant Pritchett is so fun to listen to, sometimes you could forget that he is completely full of shit.”</p>
+</blockquote>
+<p><span class="source">[Source](https://medium.com/<span class="citation" data-cites="ismailalimanik/lant-pritchett-the-debate-about-rcts-in-development-is-over-ec7a28a82c17">@ismailalimanik/lant-pritchett-the-debate-about-rcts-in-development-is-over-ec7a28a82c17</span></span></p>
+</div>
+</div>
+</section>
+<section id="rcts-and-evidence-based-policy" class="slide level2">
+<h2>RCTs and “Evidence-Based Policy”</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Programs <em>randomly</em> assign treatment to different individuals and measure causal effect of treatment</p></li>
+<li><p><span class="green"><strong>RAND Health Insurance Study</strong></span>: randomly give people health insurance</p></li>
+<li><p><span class="green"><strong>Oregon Medicaid Expansion</strong></span>: randomly give people Medicaid</p></li>
+<li><p><span class="green"><strong>HUD’s Moving to Opportunity</strong></span>: randomly give people moving vouchers</p></li>
+<li><p><span class="green"><strong>Tennessee STAR</strong></span>: randomly assign students to large vs.&nbsp;small classes</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/madlaboratory.jpg"></p>
+</div>
+</div>
+</section>
+<section id="rcts-and-external-validity-i" class="slide level2">
+<h2>RCTs and External Validity I</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Even if a study is <span class="hi-purple">internally valid</span> (used statistics correctly, etc.) we must still worry about <span class="hi">external validity</span>:</p></li>
+<li><p>Is the finding <span class="hi-turquoise">generalizable</span> to the whole population?</p></li>
+<li><p>If we find something in India, does that extend to Bolivia? France?</p></li>
+<li><p>Subjects of studies &amp; surveys are often</p>
+<ul>
+<li><span class="hi-purple">W</span>estern</li>
+<li><span class="hi-purple">E</span>ducated</li>
+<li><span class="hi-purple">I</span>ndustrialized</li>
+<li><span class="hi-purple">R</span>ich</li>
+<li><span class="hi-purple">D</span>emocracies</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/weirdpsychology.png"></p>
+<p><a href="https://www.apa.org/monitor/2010/05/weird">APA (2010)</a></p>
+</div>
+</div>
+</section>
+<section id="rcts-and-external-validity-ii" class="slide level2">
+<h2>RCTs and External Validity II</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="images/vapingstudy.png"></p>
+</div><div class="column" style="width:50%;">
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+IN MICE<a href="https://t.co/mLuKBRhsAb">https://t.co/mLuKBRhsAb</a>
+</p>
+— justsaysinmice (<span class="citation" data-cites="justsaysinmice">@justsaysinmice</span>) <a href="https://twitter.com/justsaysinmice/status/1305905728591335424?ref_src=twsrc%5Etfw">September 15, 2020</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p><a href="https://twitter.com/justsaysinmice?lang=en">In Mice twitter account</a></p>
+</div>
+</div>
+<p><img src="../images/metrics_hex.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://metricsF22.classes.ryansafner.com">ECON 480 — Econometrics</a></p>
 </div>
 </section></section>
+
     </div>
   </div>
 
