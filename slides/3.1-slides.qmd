@@ -322,7 +322,7 @@ What is the effect of having health insurance on health outcomes?
 ::: {.column width="50%"}
 | John      | Maria     |
 |-----------|-----------|
-| ![](../images/coldman2.jpg) | ![](../images/femalejogger2.jpg) |
+| ![](images/coldman2.jpg) | ![](images/femalejogger2.jpg) |
 | $Y_J^0=3$ | $Y_M^0=5$ | 
 | $Y_J^1=4$ | $Y_M^1=5$ |
 
@@ -341,7 +341,7 @@ What is the effect of having health insurance on health outcomes?
 ::: {.column width="50%"}
 | John      | Maria     |
 |-----------|-----------|
-| ![](../images/coldman2.jpg) | ![](../images/femalejogger2.jpg) |
+| ![](images/coldman2.jpg) | ![](images/femalejogger2.jpg) |
 | $Y_J^0=3$ | $Y_M^0=5$ | 
 | $Y_J^1=4$ | $Y_M^1=5$ |
 | ✨ $\color{#314f4f}{\delta_J=1}$ | $\color{#314f4f}{\delta_M=0}$ ✨ |
@@ -363,7 +363,7 @@ What is the effect of having health insurance on health outcomes?
 ::: {.column width="50%"}
 | John      | Maria     |
 |-----------|-----------|
-| ![](../images/coldman2.jpg) | ![](../images/femalejogger2.jpg) |
+| ![](images/coldman2.jpg) | ![](images/femalejogger2.jpg) |
 | $Y_J^0=3$ | $Y_M^0=5$ | 
 | $Y_J^1=4$ | $Y_M^1=5$ |
 | ✨ $\color{#314f4f}{\delta_J=1}$ | $\color{#314f4f}{\delta_M=0}$ ✨ |
@@ -392,7 +392,7 @@ What is the effect of having health insurance on health outcomes?
 ::: {.column width="50%"}
 | John      | Maria     |
 |-----------|-----------|
-| ![](../images/coldman2.jpg) | ![](../images/femalejogger2.jpg) |
+| ![](images/coldman2.jpg) | ![](images/femalejogger2.jpg) |
 | $Y_J^0=3$ | $Y_M^0=5$ | 
 | $Y_J^1=4$ | $Y_M^1=5$ |
 | ✨ $\color{#314f4f}{\delta_J=1}$ | $\color{#314f4f}{\delta_M=0}$ ✨ |
@@ -423,7 +423,7 @@ What is the effect of having health insurance on health outcomes?
 ::: {.column width="50%"}
 | John      | Maria     |
 |-----------|-----------|
-| ![](../images/coldman2.jpg) | ![](../images/femalejogger2.jpg) |
+| ![](images/coldman2.jpg) | ![](images/femalejogger2.jpg) |
 | $\color{#e64173}{Y_J=4}$ | $\color{#6A5ACD}{Y_M=5}$ | 
 
 This is all the data we *actually* observe
@@ -450,7 +450,7 @@ $$Y_J-Y_M=\underbrace{\color{#e64173}{Y^1_J}-\color{#6A5ACD}{Y^0_M}}_{=-1}$$
 ::: {.column width="50%"}
 | John      | Maria     |
 |-----------|-----------|
-| ![](../images/coldman2.jpg) | ![](../images/femalejogger2.jpg) |
+| ![](images/coldman2.jpg) | ![](images/femalejogger2.jpg) |
 | $\color{#e64173}{Y_J=4}$ | $\color{#6A5ACD}{Y_M=5}$ | 
 
 This is all the data we *actually* observe
@@ -475,7 +475,7 @@ Y_J-Y_M=\underbrace{\color{#e64173}{Y^1_J}-\color{#6A5ACD}{Y^0_J}}_{\color{#314f
 ::: {.column width="50%"}
 | John      | Maria     |
 |-----------|-----------|
-| ![](../images/coldman2.jpg) | ![](../images/femalejogger2.jpg) |
+| ![](images/coldman2.jpg) | ![](images/femalejogger2.jpg) |
 | $\color{#e64173}{Y_J=4}$ | $\color{#6A5ACD}{Y_M=5}$ | 
 
 This is all the data we *actually* observe
