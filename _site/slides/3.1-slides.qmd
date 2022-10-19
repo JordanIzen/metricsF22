@@ -1124,6 +1124,18 @@ Economics Nobel 2015
 :::
 ::: {.column width="50%"}
 
+:::
+:::
+
+
+## RCTs and External Validity II
+
+::: columns
+::: {.column width="50%"}
+![](images/vapingstudy.png)
+:::
+::: {.column width="50%"}
+
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">IN MICE<a href="https://t.co/mLuKBRhsAb">https://t.co/mLuKBRhsAb</a></p>&mdash; justsaysinmice (@justsaysinmice) <a href="https://twitter.com/justsaysinmice/status/1305905728591335424?ref_src=twsrc%5Etfw">September 15, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 [In Mice twitter account](https://twitter.com/justsaysinmice?lang=en)
