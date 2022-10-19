@@ -245,15 +245,13 @@ $$\color{#314f4f}{\delta_i} = \color{#e64173}{Y_i^{1}} - \color{red}{?}$$
 - [Individual counterfactuals do not exist (“the path not taken”)]{.hi-purple}
 
 - You will always only ever get one of these per individual!
-
-- You will always only ever get one of these per individual!
   - e.g. what would your life have been like if you did not go to Hood College?? 🧐
 
 - So what can we do?
 
 ## The Fundamental Problem of Causal Inference
 
-$$\color{#314f4f}{ATE} = \color{#e64173}{E[Y_i^{1}]} - \color{#6A5ACD}{E[Y_i^{0}]}$$
+$$\color{#314f4f}{ATE} = \color{#e64173}{\mathbb{E}[Y_i^{1}]} - \color{#6A5ACD}{\mathbb{E}[Y_i^{0}]}$$
 
 - Have large groups, and take *averages* instead!
 
@@ -264,7 +262,7 @@ $$\color{#314f4f}{\delta} = \color{#e64173}{(\bar{Y}|T=1)}-\color{#6A5ACD}{(\bar
 
 ## The Fundamental Problem of Causal Inference
 
-$$\color{#314f4f}{ATE} = \color{#e64173}{E[Y_i^{1}]} - \color{#6A5ACD}{E[Y_i^{0}]}$$
+$$\color{#314f4f}{ATE} = \color{#e64173}{\mathbb{E}[Y_i^{1}]} - \color{#6A5ACD}{\mathbb{E}[Y_i^{0}]}$$
 
 Again: 
 
