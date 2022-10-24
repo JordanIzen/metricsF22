@@ -742,6 +742,48 @@
     "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
   },
   {
+    "objectID": "content/3.2-content.html#overview",
+    "href": "content/3.2-content.html#overview",
+    "title": "3.2 — DAGs — Class Content",
+    "section": " Overview",
+    "text": "Overview\nToday we return to a more nuanced discussion of causality, given what we have learned about the fundamental problem of causal inference (counterfactuals and potential outcomes). RCTs are great, but they are not everything — and in any case, you are never going to be able to design and run an RCT in the overwhelming majority of studies.\nNow that we understand counterfactuals, we can apply our idea of exogeneity to argue that indeed, yes, correlation does imply causation when \\(X\\) is exogenous! That is, \\(X\\) being correlated with \\(Y\\) implies there is a causal connection between \\(X\\) and \\(Y\\), and if we are certain that \\(cor(X,u)=0\\), then we are clearly measuring the causal effect of \\(X \\rightarrow Y\\)! If \\(cor(X,u) \\neq 0\\) and \\(X\\) is endogenous, there is still a causal connection between \\(X\\) and \\(Y\\), but it goes through other variables that jointly cause \\(X\\) and \\(Y\\).\nWe also introduce a new tool for thinking about simple causal models, the directed acyclic graph (DAG). These are a hip new trend for thinking about causal inference, so new and trendy that they aren’t really in any mainstream textbooks yet!\nDAGS and DAG rules (front doors, back doors, colliders, mediators, etc.) will allow you to visually map the causal relationships between variables and describe to you the variables you must control for in order to properly identify the causal effect you are trying to measure. I show you a simply tool, daggity.net that will help you do this, as well as ggdag in R."
+  },
+  {
+    "objectID": "content/3.2-content.html#readings",
+    "href": "content/3.2-content.html#readings",
+    "title": "3.2 — DAGs — Class Content",
+    "section": " Readings",
+    "text": "Readings\nDAGs are a trendy new concept in econometrics and causal inference, so much so that they have yet to find their way into any major econometrics textbook! There are some resources, however, that you can look to for understanding how they work (and I base much of my lecture off of them).\n\n Ch. 3 in Cunningham (2020), Causal Inference, the Mixtape\n Pearl and MacKenzie, (2018), The Book of Why\n Heiss (2020), Causal Inference”\n Huntington-Klein (2019), Dagitty.net Cheat Sheet”\n Huntington-Klein (2019), Causal Diagrams Cheat Sheet”\n My blog post on “Econometrics, Data Science, and Causal Inference”\n\nThe best book to get more into the philosophy of causality and the major origin of DAGs is Judea Pearl (and David McKenzie)’s The Book of Why. We owe much to Pearl, he is the flagship of the causal revolution (outside of econometrics).1 And his twitter is pretty amusing.\nThe best instantiation of DAGs and causal inference into a “textbook” on econometrics and methods is Scott Cunningham’s (open source!) Causal Inference: The Mixtape chapter on DAGs. Nick Huntington-Klein has some great lecture slides, and some cheat sheets on using Dagitty.net and understanding DAGs.\nAndrew Heiss, a political science professor, has a great recent book chapter on causal inference using DAGs, complete with instructions on how to do it in R and dagitty.net.\nFinally, I have a blog post discussing the difference between econometrics, causal inference, and data science. The end touches on causality, DAGs, and Pearl."
+  },
+  {
+    "objectID": "content/3.2-content.html#slides",
+    "href": "content/3.2-content.html#slides",
+    "title": "3.2 — DAGs — Class Content",
+    "section": " Slides",
+    "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
+  },
+  {
+    "objectID": "content/3.3-content.html#overview",
+    "href": "content/3.3-content.html#overview",
+    "title": "3.3 — Omitted Variable Bias — Class Content",
+    "section": " Overview",
+    "text": "Overview\nToday we return to our regression models, now knowing something about identifying causal effects. We know from DAGs that we often need to “adjust for” or “control for variables” in order to identify the causal effect we are interested in. Now we give a particular name and set of conditions for when we need to control a variable: .b[“omitted variable bias”], where some variable both causes \\(Y\\) (is in \\(u)\\), and is correlated with \\(X\\). To avoid introducing the bias, we now include it as an additional independent variable in our regression.\nThus, we now begin exploring multivariate regression with multiple regressors:\n\\[Y_i=\\beta_0+\\beta_1 X_{1i}+ \\beta_2 X_{2i} + u_i\\]\nNext class we will learn more about how the introduction of additional variables affects our model.\nWe continue the extended example about class sizes and test scores, which comes from a (Stata) dataset from an old textbook that I used to use, Stock and Watson, 2007. Download and follow along with the data from today’s example:1\n\n caschool.dta\n\nI have also made a RStudio Cloud project documenting all of the things we have been doing with this data that may help you when you start working with regressions:\n\n Class Size Regression Analysis (Cloud R project)\n Class Size Regression Analysis (output)"
+  },
+  {
+    "objectID": "content/3.3-content.html#readings",
+    "href": "content/3.3-content.html#readings",
+    "title": "3.3 — Omitted Variable Bias — Class Content",
+    "section": " Readings",
+    "text": "Readings\n\n Ch. 5.1 in Bailey, Real Econometrics"
+  },
+  {
+    "objectID": "content/3.3-content.html#slides",
+    "href": "content/3.3-content.html#slides",
+    "title": "3.3 — Omitted Variable Bias — Class Content",
+    "section": " Slides",
+    "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
+  },
+  {
     "objectID": "content/index.html",
     "href": "content/index.html",
     "title": "Overview",
@@ -922,6 +964,48 @@
     "title": "2.7 — Hypothesis Testing for Regression — Practice",
     "section": "Getting Set Up",
     "text": "Getting Set Up\nFirst, create a new R project on your computer by choosing File -> New Project..., create a new directory (a folder somewhere on your computer), and then choose New Project and then give it a name like 2.7-R-Practice [This is a good time to practice not using spaces in file and folder names!].\nThen, download and open the Quarto file above and move it to the file folder on your computer that you just created for the R Project, and open it in R Studio. If there are any packages that you are missing, a yellow banner on top may inform you Package X is required but is not installed, click Install to install them, or equivalently use the console to install.packages().\nAlternatively, you can do everything on RStudio.Cloud, which has its own R Project that includes the Quarto file."
+  },
+  {
+    "objectID": "r/3.2-r.html",
+    "href": "r/3.2-r.html",
+    "title": "3.2 — DAGs — Practice",
+    "section": "",
+    "text": "Quarto file R Studio Cloud\nFor each of the following examples:\nDon’t forget to install ggdag!"
+  },
+  {
+    "objectID": "r/3.2-r.html#question-1",
+    "href": "r/3.2-r.html#question-1",
+    "title": "3.2 — DAGs — Practice",
+    "section": "Question 1",
+    "text": "Question 1"
+  },
+  {
+    "objectID": "r/3.2-r.html#question-2",
+    "href": "r/3.2-r.html#question-2",
+    "title": "3.2 — DAGs — Practice",
+    "section": "Question 2",
+    "text": "Question 2"
+  },
+  {
+    "objectID": "r/3.2-r.html#question-3",
+    "href": "r/3.2-r.html#question-3",
+    "title": "3.2 — DAGs — Practice",
+    "section": "Question 3",
+    "text": "Question 3"
+  },
+  {
+    "objectID": "r/3.2-r.html#question-4",
+    "href": "r/3.2-r.html#question-4",
+    "title": "3.2 — DAGs — Practice",
+    "section": "Question 4",
+    "text": "Question 4"
+  },
+  {
+    "objectID": "r/3.2-r.html#question-5",
+    "href": "r/3.2-r.html#question-5",
+    "title": "3.2 — DAGs — Practice",
+    "section": "Question 5",
+    "text": "Question 5"
   },
   {
     "objectID": "resources/R-packages.html",
