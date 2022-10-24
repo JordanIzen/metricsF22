@@ -26,9 +26,18 @@ DAGS and DAG rules (front doors, back doors, colliders, mediators, etc.) will al
 
 ## <i class="fas fa-book-reader fa-lg"></i> Readings
 
+### Recommended Reading
+
+#### On the Credibility Revolution in Econometrics
+
+- [<i class="fas fa-file-pdf"></i> Angrist & Pischke, 2010, “The Credibility Revolution in Empirical Economics: How Better Research Design is Taking the Con out of Econometrics”](/files/readings/angrist-pischke-2010.pdf)
+
+#### On DAGs
+
 DAGs are a trendy new concept in econometrics and causal inference, so much so that they have yet to find their way into any major econometrics textbook! There are some resources, however, that you can look to for understanding how they work (and I base much of my lecture off of them).
 
-- [<i class="fas fa-file-pdf"></i> Ch. 3 in Cunningham (2020), *Causal Inference, the Mixtape*](http://scunning.com/causalinference_norap.pdf#chapter*.38)
+- [<i class="fas fa-book"></i> Ch. 3 in Cunningham (2020), *Causal Inference, the Mixtape*](http://scunning.com/causalinference_norap.pdf#chapter*.38)
+- [<i class="fas fa-book"></i> Chs. 6-9 in Huntington-Klein (2022), *The Effect: An Introduction to Research Design and Causality*](https://theeffectbook.net/ch-CausalDiagrams.html)
 - [<i class="fas fa-book"></i> Pearl and MacKenzie, (2018), *The Book of Why*](https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X)
 - [<i class="fas fa-external-link-square-alt"></i> Heiss (2020), Causal Inference"](https://github.com/andrewheiss/heiss-causal-inference/blob/master/10-causal-inference.pdf)
 - [<i class="fas fa-external-link-square-alt"></i> Huntington-Klein (2019), Dagitty.net Cheat Sheet"](https://nickch-k.github.io/introcausality/Cheat%20Sheets/Dagitty_Cheat_Sheet.pdf)
