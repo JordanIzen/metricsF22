@@ -72,6 +72,11 @@ website:
           contents:
             - text: "3.1 — The Fundamental Problem of Causal Inference"
               href: content/3.1-content.qmd
+            - text: "3.2 — DAGs"
+              href: content/3.2-content.qmd
+            - text: "3.3 — Omitted Variable Bias"
+              href: content/3.3-content.qmd
+              
     - title: "Assignments"
       style: "docked"
       search: false
@@ -111,6 +116,8 @@ website:
           href: r/2.5-r.qmd
         - text: "2.7 — Hypothesis Testing for Regression"
           href: r/2.7-r.qmd
+        - text: "3.2 — DAGs"
+          href: r/3.2-r.qmd
 
     - title: "Resources"
       style: "docked"

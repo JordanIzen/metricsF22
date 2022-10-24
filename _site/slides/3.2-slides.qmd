@@ -55,7 +55,7 @@ update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 
 [DAG Rules](#dag-rules)
 
-# Causation and Correlation
+# Causation and Correlation {background-color="#314f4f" .centered}
 
 ## You Don’t Need an RCT to Talk About Causality
 
@@ -75,7 +75,7 @@ update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 
 ## The Causal Revolution
 
-![](images/causaltwitter.png)
+![](images/causaltwitter.png){fig-align="center"}
 
 ## RCTs and Evidence-Based Policy
 
@@ -102,20 +102,28 @@ Source: [British Medical Journal](https://www.bmj.com/content/363/bmj.k5094)
 
 ::: columns
 ::: {.column width="50%"}
-![](images/rctparachutes1.jpg)
+![](images/rctparachutes1.jpg){width=600 fig-align="center"}
 :::
 ::: {.column width="50%"}
-![](images/rctparachutes2.jpg)
 
 :::
 :::
 
-# Correlation vs. Causation
+## RCTs and Evidence-Based Policy II
+
+::: columns
+::: {.column width="50%"}
+![](images/rctparachutes1.jpg){width=600 fig-align="center"}
+:::
+::: {.column width="50%"}
+![](images/rctparachutes2.jpg){width=600 fig-align="center"}
+
+:::
+:::
 
 ## Correlation vs. Causation I
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">&quot;Correlation implies casuation,&quot; the dean whispered as he handed me my PhD.<br><br>&quot;But then why-&quot;<br><br>&quot;Because if they knew, they wouldn&#39;t need us.&quot;</p>&mdash; David Robinson (@drob) <a href="https://twitter.com/drob/status/877976063942512640?ref_src=twsrc%5Etfw">June 22, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 
 ## What Does Causation Mean?
 
@@ -184,10 +192,9 @@ Source: [British Medical Journal](https://www.bmj.com/content/363/bmj.k5094)
 
 ## Causation Requires Counterfactual Thinking
 
-
 ::: columns
 ::: {.column width="50%"}
-![](images/ladderofcausation.png)
+![](images/ladderofcausation.png){width=550 fig-align="center"}
 :::
 ::: {.column width="50%"}
 ![](images/bookofwhy.jpg)
@@ -369,7 +376,7 @@ If $X$ is a light switch, and $Y$ is a light:
 :::
 :::
 
-# Causal Diagrams
+# Causal Diagrams {background-color="#314f4f" .centered}
 
 ## Causal Diagrams/DAGs
 ::: columns
@@ -466,7 +473,7 @@ dagify(light ~ switch + burnt,
 
 :::
 ::: {.column width="50%"}
-```{r, fig.retina=3, outwidth="90%", fig.align="center"}
+```{r, fig.retina=3, fig.height = 10, outwidth="90%", fig.align="center"}
 library(ggdag)
 #theme_set(theme_dag_blank())
 library(gridExtra)
@@ -544,7 +551,7 @@ grid.arrange(h1, h2, h3, h4, h5, h6, ncol=2)
 
 :::
 ::: {.column width="50%"}
-![](images/causality.jpg)
+![](images/causality.jpg){fig-align="center" width=600}
 :::
 :::
 
@@ -562,7 +569,7 @@ grid.arrange(h1, h2, h3, h4, h5, h6, ncol=2)
 
 :::
 ::: {.column width="50%"}
-![](images/causality.jpg)
+![](images/causality.jpg){fig-align="center" width=600}
 :::
 :::
 
@@ -979,7 +986,7 @@ dagify(wage ~ educ + conx + year + bckg + loc,
   impliedConditionalIndependencies() #<<
 ```
 
-# DAG Rules
+# DAG Rules {background-color="#314f4f" .centered}
 
 ## DAG Rules
 
