@@ -76,7 +76,26 @@ While it is one thing to find a topic to write on, it is an altogether different
 
 Depending on the topic, you can also collect your own data, and many times you will want to create a custom dataset by simply combining data from different sources. 
 
-Don't forget to check out the [Data Resources](https://metricsF22.classes.ryansafner.com/resources/data.qmd) for ideas and examples of how and where to find data sets.
+Don't forget to check out the [Data Resources](https://metricsf22.classes.ryansafner.com/resources/data.html) for ideas and examples of how and where to find data sets.
+
+## Some Titles of Former Students' Papers
+
+- Effect of Economic Growth (GDP Per Capita) on Carbon dioxide emissions
+- Does Transfer Expenditure Impact a Team's League Position?
+- Empirical Research about the impact of immigration into the United States on the employment of Black or African American citizens
+- The Performance and Pay of Quarterbacks in the National Football League
+- Buy You a Vote
+- A Study of the Environmental Costs of Economic Growth: A Look at the Environmental Kuznets Curve
+- Corruption and Inequality: A Look Through the Shadows
+- Sweat More Make More: The Effect of Physical Activity on Income
+- Does Raising the Minimum Wage Actually Affect Unemployment?
+- Exploring the Effects of Children and Marriage on Men’s and Women’s Incomes
+- The Effect of GDP on Happiness
+- Influence of Socioeconomic Factors and Gun Laws on the Frequency of Gun Violence in America: A Statewide Analysis from 2010-2018
+- The Effect of Unemployment Benefits on the Unemployment Rate
+- Econometric Approach to Time of Game in the MLB
+- Does Spending More on the Offensive Line & the Defensive Line Affect NFL Team Wins?
+- Is Twitter Strong Enough to Measure NBA Player Performance?
 
 ## Grading Rubric and Deadlines
 
@@ -84,9 +103,9 @@ While it may be possible for many papers in your college career, is not a paper 
 
 | Assignment | Points | Due Date | Description |
 |------------|--------|----------|-------------|
-| Abstract | 5 | Fri Oct 21 | Short summary of your ideas |
-| Literature Review | 10 | Fri Nov 4 | 1-3 paragraphs on 2-3 scholarly sources |
-| Data Description | 10 | Fri Nov 18 | Description of data sources, and some summary statistics |
+| Abstract | 5 | Fri Oct 28 | Short summary of your ideas |
+| Literature Review | 10 | Fri Nov 18 | 1-3 paragraphs on 2-3 scholarly sources |
+| Data Description | 10 | Mon Nov 28 | Description of data sources, and some summary statistics |
 | Presentation | 5 | Nov 30/Dec 5 | Short presentation of your project so far |
 | Final Paper Due | 70 | Fri Dec 9 | Email to me paper, data, and code |
 
