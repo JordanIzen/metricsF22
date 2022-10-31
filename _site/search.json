@@ -791,48 +791,6 @@
     "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
   },
   {
-    "objectID": "content/3.4-content.html#overview",
-    "href": "content/3.4-content.html#overview",
-    "title": "3.4 — Multivariate OLS Estimators — Class Content",
-    "section": " Overview",
-    "text": "Overview\nToday we continue looking at multivariate regression, and see how the introduction of additional variables affects our model: the interpretation of the marginal effects (and we will measure an example of omitted variable bias), the standard errors of the estimators, and the goodness of fit of the regression.\nWe continue the extended example about class sizes and test scores, which comes from a (Stata) dataset from an old textbook that I used to use, Stock and Watson, 2007. Download and follow along with the data from today’s example:1\n\n caschool.dta\n\nI have also made a RStudio Cloud project documenting all of the things we have been doing with this data that may help you when you start working with regressions:\n\n Class Size Regression Analysis (Cloud R project)\n Class Size Regression Analysis (output)"
-  },
-  {
-    "objectID": "content/3.4-content.html#readings",
-    "href": "content/3.4-content.html#readings",
-    "title": "3.4 — Multivariate OLS Estimators — Class Content",
-    "section": " Readings",
-    "text": "Readings\n\n Ch. 5.1, 5.2, 5.4 in Bailey, Real Econometrics"
-  },
-  {
-    "objectID": "content/3.4-content.html#r-practice",
-    "href": "content/3.4-content.html#r-practice",
-    "title": "3.4 — Multivariate OLS Estimators — Class Content",
-    "section": " R Practice",
-    "text": "R Practice\nToday you will be working on R practice problems on multivariate regression. Answers will be posted later on that page."
-  },
-  {
-    "objectID": "content/3.4-content.html#assignments",
-    "href": "content/3.4-content.html#assignments",
-    "title": "3.4 — Multivariate OLS Estimators — Class Content",
-    "section": " Assignments",
-    "text": "Assignments\n\nProblem Set 4 Due Fri Nov 11\nProblem Set 4 is due by the end of the day on Tuesday, November 11."
-  },
-  {
-    "objectID": "content/3.4-content.html#happy-halloween",
-    "href": "content/3.4-content.html#happy-halloween",
-    "title": "3.4 — Multivariate OLS Estimators — Class Content",
-    "section": "Happy Halloween!",
-    "text": "Happy Halloween!"
-  },
-  {
-    "objectID": "content/3.4-content.html#slides",
-    "href": "content/3.4-content.html#slides",
-    "title": "3.4 — Multivariate OLS Estimators — Class Content",
-    "section": " Slides",
-    "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
-  },
-  {
     "objectID": "content/3.5-content.html#overview",
     "href": "content/3.5-content.html#overview",
     "title": "3.5 — Writing an Empirical Paper — Class Content",
@@ -864,6 +822,83 @@
     "objectID": "content/3.5-content.html#slides",
     "href": "content/3.5-content.html#slides",
     "title": "3.5 — Writing an Empirical Paper — Class Content",
+    "section": " Slides",
+    "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
+  },
+  {
+    "objectID": "content/4.1-content.html#overview",
+    "href": "content/4.1-content.html#overview",
+    "title": "4.1 — Multivariate OLS Estimators — Class Content",
+    "section": " Overview",
+    "text": "Overview\nToday we continue looking at multivariate regression, and see how the introduction of additional variables affects our model: the interpretation of the marginal effects (and we will measure an example of omitted variable bias), the standard errors of the estimators, and the goodness of fit of the regression.\nWe continue the extended example about class sizes and test scores, which comes from a (Stata) dataset from an old textbook that I used to use, Stock and Watson, 2007. Download and follow along with the data from today’s example:1\n\n caschool.dta\n\nI have also made a RStudio Cloud project documenting all of the things we have been doing with this data that may help you when you are working with regressions:\n\n Class Size Regression Analysis\n Class Size Regression Analysis (output)"
+  },
+  {
+    "objectID": "content/4.1-content.html#readings",
+    "href": "content/4.1-content.html#readings",
+    "title": "4.1 — Multivariate OLS Estimators — Class Content",
+    "section": " Readings",
+    "text": "Readings\n\n Ch. 5.1, 5.2, 5.4 in Bailey, Real Econometrics"
+  },
+  {
+    "objectID": "content/4.1-content.html#r-practice",
+    "href": "content/4.1-content.html#r-practice",
+    "title": "4.1 — Multivariate OLS Estimators — Class Content",
+    "section": " R Practice",
+    "text": "R Practice\nToday you will be working on R practice problems on multivariate regression. Answers will be posted later on that page."
+  },
+  {
+    "objectID": "content/4.1-content.html#assignments",
+    "href": "content/4.1-content.html#assignments",
+    "title": "4.1 — Multivariate OLS Estimators — Class Content",
+    "section": " Assignments",
+    "text": "Assignments\n\nProblem Set 4 Due Fri Nov 11\nProblem Set 4 is due by the end of the day on Tuesday, November 11."
+  },
+  {
+    "objectID": "content/4.1-content.html#happy-halloween",
+    "href": "content/4.1-content.html#happy-halloween",
+    "title": "4.1 — Multivariate OLS Estimators — Class Content",
+    "section": "Happy Halloween!",
+    "text": "Happy Halloween!"
+  },
+  {
+    "objectID": "content/4.1-content.html#slides",
+    "href": "content/4.1-content.html#slides",
+    "title": "4.1 — Multivariate OLS Estimators — Class Content",
+    "section": " Slides",
+    "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
+  },
+  {
+    "objectID": "content/4.2-content.html#overview",
+    "href": "content/4.2-content.html#overview",
+    "title": "4.2 — Writing an Empirical Paper — Class Content",
+    "section": " Overview",
+    "text": "Overview\nToday we discuss the elements of a good empirical paper, with an eye towards your paper projects.\nI highly recommend you look at my example repositories:\n\n Workflow\n Example Empirical Paper\n\nThe first is one that I showed you back in class 1.5 when we talked about R Markdown and having a reproducible, plain-text, workflow. It has an example workflow setup that I recommend you follow: create an R project for your project, and organize all of your data, code, images, & text in this set of folders inside of your project.1 You can look at Example_paper.qmd to see my text and code in R markdown to write the paper, and look at Example_paper.qdf to see the final product.\nThe second is a quick and dirty example of what I am looking for in your paper project in this class, using the ongoing example of the effect of class size on test scores. You can also look at paper.qmd to see my text and code in R markdown, and paper.pdf to see the final product. Note that this is an example I put quickly together with minimal effort as an example for you all, it does not necessarily mean it is an “A” quality paper!\nIf you are using R markdown to write your final paper, you should consult class 1.5 again, along with the 1.5 “R practice” that deals with the workflow repository."
+  },
+  {
+    "objectID": "content/4.2-content.html#readings",
+    "href": "content/4.2-content.html#readings",
+    "title": "4.2 — Writing an Empirical Paper — Class Content",
+    "section": " Readings",
+    "text": "Readings\n\n Ch. 5.1, 5.2, 5.4 in Bailey, Real Econometrics"
+  },
+  {
+    "objectID": "content/4.2-content.html#r-practice",
+    "href": "content/4.2-content.html#r-practice",
+    "title": "4.2 — Writing an Empirical Paper — Class Content",
+    "section": " R Practice",
+    "text": "R Practice\nToday you will be finishing R practice problems on multivariate regression. Answers will be posted later on that page."
+  },
+  {
+    "objectID": "content/4.2-content.html#assignments",
+    "href": "content/4.2-content.html#assignments",
+    "title": "4.2 — Writing an Empirical Paper — Class Content",
+    "section": " Assignments",
+    "text": "Assignments\n\nProblem Set 4 Due Fri Nov 11\nProblem Set 4 is due by the end of the day on Tuesday, November 11."
+  },
+  {
+    "objectID": "content/4.2-content.html#slides",
+    "href": "content/4.2-content.html#slides",
+    "title": "4.2 — Writing an Empirical Paper — Class Content",
     "section": " Slides",
     "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
   },
@@ -1092,93 +1127,93 @@
     "text": "Question 5"
   },
   {
-    "objectID": "r/3.4-r.html",
-    "href": "r/3.4-r.html",
-    "title": "3.4 — Multivariate OLS Estimators — Practice",
+    "objectID": "r/4.1-r.html",
+    "href": "r/4.1-r.html",
+    "title": "4.1 — Multivariate OLS Estimators — Practice",
     "section": "",
     "text": "Quarto file <a target=“_blank” https://rstudio.cloud/spaces/270168/content/4844198”>R Studio Cloud\nDownload and read in (read_csv) the data below.\nThis data comes from a paper by Makowsky and Strattman (2009) that we will examine later. Even though state law sets a formula for tickets based on how fast a person was driving, police officers in practice often deviate from that formula. This dataset includes information on all traffic stops. An amount for the fine is given only for observations in which the police officer decided to assess a fine. There are a number of variables in this dataset, but the one’s we’ll look at are:\nWe want to explore who gets fines, and how much. We’ll come back to the other variables (which are categorical) in this dataset in later lessons."
   },
   {
-    "objectID": "r/3.4-r.html#question-1",
-    "href": "r/3.4-r.html#question-1",
-    "title": "3.4 — Multivariate OLS Estimators — Practice",
+    "objectID": "r/4.1-r.html#question-1",
+    "href": "r/4.1-r.html#question-1",
+    "title": "4.1 — Multivariate OLS Estimators — Practice",
     "section": "Question 1",
     "text": "Question 1\nHow does the age of a driver affect the amount of the fine? Make a scatterplot of the Amount of the fine (y) and the driver’s Age (x) along with a regression line."
   },
   {
-    "objectID": "r/3.4-r.html#question-2",
-    "href": "r/3.4-r.html#question-2",
-    "title": "3.4 — Multivariate OLS Estimators — Practice",
+    "objectID": "r/4.1-r.html#question-2",
+    "href": "r/4.1-r.html#question-2",
+    "title": "4.1 — Multivariate OLS Estimators — Practice",
     "section": "Question 2",
     "text": "Question 2\nNext, we’ll want to find the correlation between Amount and Age. Do this first.\nThen notice that it won’t work. This is because there are a lot of NAs (missing data) for Amount (if tried to get the mean() of Amount, it would do the same thing.\nYou can verify the NAs with:\n\ndata %>% # use your named dataframe!\n  select(Amount) %>%\n  summary()\n\n# OR\n# data %>% count(Amount) # but this has a lot of rows!\n\nIn order to run a correlation, we need to drop or ignore all of the NAs. You could filter() the data:\n\n# this would OVERWRITE data\ndata <- data %>%\n  filter(!is.na(Amount)) # remove all NAs\n\nOr, if you don’t want to change your data, the cor() command allows you to set use = \"pairwise.complete.obs\" as an argument."
   },
   {
-    "objectID": "r/3.4-r.html#question-3",
-    "href": "r/3.4-r.html#question-3",
-    "title": "3.4 — Multivariate OLS Estimators — Practice",
+    "objectID": "r/4.1-r.html#question-3",
+    "href": "r/4.1-r.html#question-3",
+    "title": "4.1 — Multivariate OLS Estimators — Practice",
     "section": "Question 3",
     "text": "Question 3\nWe want to estimate the following model:\n\\[\\widehat{\\text{Amount}_i}= \\hat{\\beta_0}+\\hat{\\beta_1}\\text{Age}_i\\]\nRun a regression, and save it as an object. Then get a summary() of it.\n\nPart A\nWrite out the estimated regression equation.\n\n\nPart B\nWhat is \\(\\hat{\\beta_0}\\) for this model? What does it mean in the context of our question?\n\n\nPart C\nWhat is \\(\\hat{\\beta_1}\\) for this model? What does it mean in the context of our question?\n\n\nPart D\nWhat is the marginal effect of Age on Amount?"
   },
   {
-    "objectID": "r/3.4-r.html#question-4",
-    "href": "r/3.4-r.html#question-4",
-    "title": "3.4 — Multivariate OLS Estimators — Practice",
+    "objectID": "r/4.1-r.html#question-4",
+    "href": "r/4.1-r.html#question-4",
+    "title": "4.1 — Multivariate OLS Estimators — Practice",
     "section": "Question 4",
     "text": "Question 4\nRedo question 3 with the broom package. Try out tidy() and glance(). This is just to keep you versatile!"
   },
   {
-    "objectID": "r/3.4-r.html#question-5",
-    "href": "r/3.4-r.html#question-5",
-    "title": "3.4 — Multivariate OLS Estimators — Practice",
+    "objectID": "r/4.1-r.html#question-5",
+    "href": "r/4.1-r.html#question-5",
+    "title": "4.1 — Multivariate OLS Estimators — Practice",
     "section": "Question 5",
     "text": "Question 5\nHow big would the difference in expected fine be for two drivers, one 18 years old and one 40 years old?"
   },
   {
-    "objectID": "r/3.4-r.html#question-6",
-    "href": "r/3.4-r.html#question-6",
-    "title": "3.4 — Multivariate OLS Estimators — Practice",
+    "objectID": "r/4.1-r.html#question-6",
+    "href": "r/4.1-r.html#question-6",
+    "title": "4.1 — Multivariate OLS Estimators — Practice",
     "section": "Question 6",
     "text": "Question 6\nNow run the regression again, controlling for speed (MPHover).\n\nPart A\nWrite the new regression equation.\n\n\nPart B\nWhat is the marginal effect of Age on Amount? What happened to it, compared to Question 3D?\n\n\nPart C\nWhat is the marginal effect of MPHover on Amount?\n\n\nPart D\nWhat is \\(\\hat{\\beta_0}\\) for our model, and what does it mean in the context of our question?\n\n\nPart E\nWhat is the adjusted \\(\\bar{R}^2\\)? What does it mean?"
   },
   {
-    "objectID": "r/3.4-r.html#question-7",
-    "href": "r/3.4-r.html#question-7",
-    "title": "3.4 — Multivariate OLS Estimators — Practice",
+    "objectID": "r/4.1-r.html#question-7",
+    "href": "r/4.1-r.html#question-7",
+    "title": "4.1 — Multivariate OLS Estimators — Practice",
     "section": "Question 7",
     "text": "Question 7\nNow suppose both the 18 year old and the 40 year old each went 10 MPH over the speed limit. How big would the difference in expected fine be for the two drivers?"
   },
   {
-    "objectID": "r/3.4-r.html#question-8",
-    "href": "r/3.4-r.html#question-8",
-    "title": "3.4 — Multivariate OLS Estimators — Practice",
+    "objectID": "r/4.1-r.html#question-8",
+    "href": "r/4.1-r.html#question-8",
+    "title": "4.1 — Multivariate OLS Estimators — Practice",
     "section": "Question 8",
     "text": "Question 8\nWhat is the difference in expected fine between two 18 year-olds, one who went 10 MPH over, and one who went 30 MPH over?"
   },
   {
-    "objectID": "r/3.4-r.html#question-9",
-    "href": "r/3.4-r.html#question-9",
-    "title": "3.4 — Multivariate OLS Estimators — Practice",
+    "objectID": "r/4.1-r.html#question-9",
+    "href": "r/4.1-r.html#question-9",
+    "title": "4.1 — Multivariate OLS Estimators — Practice",
     "section": "Question 9",
     "text": "Question 9\nUse the modelsummary package’s modelsummary() command to make a regression table of your two regressions: the one from question 3, and the one from question 6."
   },
   {
-    "objectID": "r/3.4-r.html#question-10",
-    "href": "r/3.4-r.html#question-10",
-    "title": "3.4 — Multivariate OLS Estimators — Practice",
+    "objectID": "r/4.1-r.html#question-10",
+    "href": "r/4.1-r.html#question-10",
+    "title": "4.1 — Multivariate OLS Estimators — Practice",
     "section": "Question 10",
     "text": "Question 10\nAre our two independent variables multicollinear? Do younger people tend to drive faster?\n\nPart A\nGet the correlation between Age and MPHover.\n\n\nPart B\nMake a scatterplot of MPHover (y) on Age (x).\n\n\nPart C\nRun an auxiliary regression of MPHover on Age.\n\n\nPart D\nInterpret the coefficient on Age from this regression.\n\n\nPart E\nLook at your regression table in question 10. What happened to the standard error on Age? Why (consider the formula for variance of \\(\\hat{\\beta_1})\\)?\n\n\nPart F\nCalculate the Variance Inflation Factor (VIF) using the car package’s vif() command. Run it on your regression object saved from Question 7.\n\n\nPart G\nCalculate the VIF manually, using what you learned in this question."
   },
   {
-    "objectID": "r/3.4-r.html#question-11",
-    "href": "r/3.4-r.html#question-11",
-    "title": "3.4 — Multivariate OLS Estimators — Practice",
+    "objectID": "r/4.1-r.html#question-11",
+    "href": "r/4.1-r.html#question-11",
+    "title": "4.1 — Multivariate OLS Estimators — Practice",
     "section": "Question 11",
     "text": "Question 11\nLet’s now think about the omitted variable bias. Suppose the “true” model is the one we ran from Question 7.\n\nPart A\nDo you suppose that MPHover fits the two criteria for omitted variable bias?\n\n\nPart B\nLook at the regression we ran in Question 4. Consider this the “omitted” regression, where we left out MPHover. Does our estimate of the marginal effect of Age on Amount overstate or understate the true marginal effect?\n\n\nPart C\nUse the “true” model (Question 7), the “omitted” regression (Question 3), and our “auxiliary” regression (Question 10) to identify each of the following parameters that describe our biased estimate of the marginal effect of Age on Amount:\n\\[\\alpha_1=\\beta_1+\\beta_2\\delta_1\\]\nSee the notation I used in class.\n\n\nPart D\nFrom your answer in part C, how large is the omitted variable bias from leaving out MPHover?"
   },
   {
-    "objectID": "r/3.4-r.html#question-12",
-    "href": "r/3.4-r.html#question-12",
-    "title": "3.4 — Multivariate OLS Estimators — Practice",
+    "objectID": "r/4.1-r.html#question-12",
+    "href": "r/4.1-r.html#question-12",
+    "title": "4.1 — Multivariate OLS Estimators — Practice",
     "section": "Question 12",
     "text": "Question 12\nMake a coefficient plot of your coefficients from the regression in Question 6. The package modelsummary (which you will need to install and load) has a great command modelplot() to do this on your regression object."
   },

@@ -76,6 +76,12 @@ website:
               href: content/3.2-content.qmd
             - text: "3.3 — Omitted Variable Bias"
               href: content/3.3-content.qmd
+        - section: "IV. Multivariate Regression"
+          contents:
+            - text: "4.1 — Multivariate OLS Estimators"
+              href: content/4.1-content.qmd
+            - text: "4.2 — Writing an Empirical Paper"
+              href: content/4.2-content.qmd
               
     - title: "Assignments"
       style: "docked"
@@ -118,7 +124,7 @@ website:
           href: r/2.7-r.qmd
         - text: "3.2 — DAGs"
           href: r/3.2-r.qmd
-
+    
     - title: "Resources"
       style: "docked"
       search: true
