@@ -1,0 +1,15 @@
+---
+title: "Untitled"
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+papers<-read_csv("paperlengthsregcsv.csv")
+source("../summaries.R")
+
+```
+
+```{r}
+
+```

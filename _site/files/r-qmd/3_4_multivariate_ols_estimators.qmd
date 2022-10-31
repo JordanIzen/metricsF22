@@ -1,0 +1,359 @@
+---
+title: "3.4 — Multivariate OLS Estimators — R Practice"
+author: "Your Name Here!"
+date: "October 31, 2022"
+format:
+  html: 
+    self-contained: true # so we don't need other files (like plot images)
+    toc: true # show a table of contents
+    toc-location: left
+    theme: default
+    df-print: paged # by default, show tables (tibbles) as paged tables
+editor: visual
+execute:
+  echo: true # shows all code on rendered document
+---
+
+# Required Packages & Data
+
+Load all the required packages we will use (**note I have installed them already into the cloud project**) by running (clicking the green play button) the chunk below:
+
+```{r}
+#| label: load-packages
+#| warning: false
+#| message: false
+library(tidyverse) # your friend and mine
+library(broom) # for tidy regression
+library(modelsummary) # for nice regression tables
+library(car) # for vif command
+```
+
+**What is the effect of a diamond's carat size on its price?**
+
+Download and read in (`read_csv`) the data below.
+
+- [`speeding_tickets.csv`](https://metricsf22.classes.ryansafner.com/data/speeding_tickets.csv)
+
+```{r}
+# run or edit this chunk (if you want to rename the data)
+
+# read in data from url 
+# or you could download and upload it to this project instead
+speed <- read_csv("https://metricsf22.classes.ryansafner.com/data/speeding_tickets.csv")
+```
+
+This data comes from a paper by Makowsky and Strattman (2009) that we will examine later. Even though state law sets a formula for tickets based on how fast a person was driving, police officers in practice often deviate from that formula. This dataset includes information on all traffic stops. An amount for the fine is given only for observations in which the police officer decided to assess a fine. There are a number of variables in this dataset, but the one's we'll look at are:
+
+| Variable  | Description                                       |
+|-----------|---------------------------------------------------|
+| `Amount`  | Amount of fine (in dollars) assessed for speeding |
+| `Age`     | Age of speeding driver (in years)                 |
+| `MPHover` | Miles per hour over the speed limit               |
+
+We want to explore **who gets fines, and how much**. We'll come back to the other variables (which are categorical) in this dataset in later lessons.
+
+## Question 1
+
+*How does the age of a driver affect the amount of the fine*? Make a scatterplot of the `Amount` of the fine (`y`) and the driver's `Age` (`x`) along with a regression line.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+## Question 2
+
+Next, find the correlation between `Amount` and `Age`.
+
+```{r}
+# run or edit this chunk
+speed %>%
+  select(Amount, Age) %>%
+  cor()
+
+# note this method produces a correlation table for all selected variables
+# you could instead do:
+# speed %>%
+#   summarize(cor(Amount, Age))
+```
+
+Notice that it won't work! This is because there are a lot of `NA`s (missing data) for `Amount`. If you tried to get the `mean()` of `Amount`, for example, it would do the same thing.
+
+You can verify the `NA`s with:
+
+```{r}
+# run or edit this chunk
+speed %>%
+  select(Amount) %>%
+  summary()
+
+# OR
+# sped %>% count(Amount) # but this has a lot of rows!
+```
+
+How many `NA`'s are there?
+
+In order to run a correlation, we need to drop or ignore all of the `NA`s. You could `filter()` the data: 
+
+```{r}
+# run or edit this chunk
+speed_complete <- speed %>%
+  filter(!is.na(Amount)) # remove all NAs
+
+speed_complete %>% 
+  select(Amount) %>%
+  summary()
+
+speed_complete %>%
+  select(Amount, Age) %>%
+  cor()
+```
+
+Or, if you don't want to change your data, the `cor()` command allows you to set `use = "pairwise.complete.obs"` as an argument.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# run or edit this chunk
+speed %>%
+  select(Amount, Age) %>%
+  cor(use = "pairwise.complete.obs")
+```
+
+## Question 3
+
+We want to estimate the following model:
+
+$$\widehat{\text{Amount}_i}= \hat{\beta_0}+\hat{\beta_1}\text{Age}_i$$
+
+Run a regression, and save it as an object. Then get a `summary()` of it.
+
+
+### Part A
+
+Write out the estimated regression equation.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+### Part B
+
+What is $\hat{\beta_0}$ for this model? What does it mean in the context of our question?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+### Part C
+
+What is $\hat{\beta_1}$ for this model?  What does it mean in the context of our question?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+
+### Part D
+
+What is the marginal effect of `Age` on `Amount`?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+## Question 4
+
+Redo question 4 with the `broom` package. Try out `tidy()` and `glance()`. This is just to keep you versatile!
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+## Question 5
+
+How big would the difference in expected fine be for two drivers, one 18 years old and one 40 years old?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+## Question 6
+
+Now run the regression again, controlling for speed (`MPHover`).
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### Part A
+
+Write the new regression equation.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+### Part B
+
+What is the marginal effect of `Age` on `Amount`? What happened to it, compared to Question 3D?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+### Part C
+
+What is the marginal effect of `MPHover` on `Amount`?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+### Part D
+
+What is $\hat{\beta_0}$ for our model, and what does it mean in the context of our question?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+### Part E
+
+What is the adjusted $\bar{R}^2$? What does it mean?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+
+## Question 7
+
+Now suppose both the 18 year old and the 40 year old each went 10 MPH over the speed limit. How big would the difference in expected fine be for the two drivers?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+
+## Question 8
+
+What is the difference in expected fine between two 18 year-olds, one who went 10 MPH over, and one who went 30 MPH over?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+
+## Question 9
+
+Use the `modelsummary` package's `modelsummary()` command to make a regression table of your two regressions: the one from question 3, and the one from question 6.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+## Question 10
+
+Are our two independent variables multicollinear? Do younger people tend to drive faster? 
+
+### Part A
+
+Get the correlation between `Age` and `MPHover`.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### Part B
+
+Make a scatterplot of `MPHover` (`y`) on `Age` (`x`).
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### Part C
+
+Run an auxiliary regression of `MPHover` on `Age`.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### Part D
+
+Interpret the coefficient on `Age` from this regression.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+
+### Part E
+
+Look at your regression table in question 10. What happened to the standard error on `Age`? Why (consider the formula for variance of $\hat{\beta_1})$?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+### Part F
+
+Calculate the Variance Inflation Factor (VIF) using the `car` package's `vif()` command. Run it on your regression object saved from Question 6.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+### Part G
+
+Calculate the VIF manually, using what you learned in this question.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
+
+
+## Question 11
+
+Let's now think about the omitted variable bias. Suppose the “true” model is the one we ran from Question 6.
+
+### Part A
+
+Do you suppose that `MPHover` fits the two criteria for omitted variable bias?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+
+### Part B
+
+Look at the regression we ran in Question 3. Consider this the “omitted” regression, where we left out `MPHover`. Does our estimate of the marginal effect of `Age` on `Amount` overstate or understate the *true* marginal effect?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+### Part C
+
+Use the “true” model (Question 6), the “omitted” regression (Question 3), and our “auxiliary” regression (Question 11) to identify each of the following parameters that describe our biased estimate of the marginal effect of `Age` on `Amount`:
+$$\alpha_1=\beta_1+\beta_2\delta_1$$
+
+See the notation I used in [class](https://metricsF22.classes.ryansafner.com/slides/3.4-slides.html#measuring-ovb-in-our-class-size-example-iv-5).
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+
+### Part D
+
+From your answer in part C, how large is the omitted variable bias from leaving out `MPHover`?
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+
+## Question 12
+
+Make a coefficient plot of your coefficients from the regression in Question 6. The package `modelsummary` (which you will need to install and load) has a great command `modelplot()` to do this on your regression object.
+
+<!--WRITE YOUR ANSWERS BELOW -->
+
+```{r}
+# type your code below in this chunk
+
+```
