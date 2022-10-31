@@ -6,7 +6,7 @@ execute:
 
 <p style="text-align:center">
 
-<a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_1_multivariate_ols_estimators.qmd"><i class="fas fa-file-archive"></i>[Quarto file</a>]{.btn .btn-primary .btn-lg} <a target="_blank" https://rstudio.cloud/spaces/270168/content/4844198"><i class="fas fa-cloud"></i>[R Studio Cloud</a>]{.btn .btn-primary .btn-lg}
+<a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_1_multivariate_ols_estimators.qmd"><i class="fas fa-file-archive"></i>[Quarto file</a>]{.btn .btn-primary .btn-lg} <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4844198"><i class="fas fa-cloud"></i>[R Studio Cloud</a>]{.btn .btn-primary .btn-lg}
 
 </p>
 
