@@ -1089,7 +1089,7 @@
     "href": "r/3.2-r.html",
     "title": "3.2 — DAGs — Practice",
     "section": "",
-    "text": "Quarto file R Studio Cloud\nFor each of the following examples:\nDon’t forget to install ggdag!"
+    "text": "Answer Key (html)   Quarto file\n\nFor each of the following examples:\n\nWrite out all of the causal pathways from X (treatment of interest) to Y (outcome of interest).\nIdentify which variable(s) need to be controlled to estimate the causal effect of X on Y. You can use dagitty.net to help you, but you should start trying to recognize these on your own!\nDraw the DAGs in r using ggdag. After setting up the dag with dagify() (and specifying exposure and outcome inside dagify), pipe that into ggdag(). Try again piping it instead into ggdag_status() (to highlight what is X and what is Y). Try again piping it instead into ggdag_adjustment_set() to show what needs to be controlled.\n\nDon’t forget to install ggdag!"
   },
   {
     "objectID": "r/3.2-r.html#question-1",
