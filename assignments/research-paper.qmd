@@ -154,4 +154,4 @@ When you send your final email (by Monday December 6), it should contain the fol
 2. **The (commented!) code used for your data analysis** (i.e. loading data, making tables, making plots, running regressions). These can be either `.R` files: one or multiple (one-per-task) are equally fine OR a `.qmd` file. I want to know *how* you reached the results you got! **Reproducibility is the goal!**
 3. **Your data used**, in whatever original format you found it (e.g. `.csv`, `.xlsx`, `.dta`)
 
-Again, you are not obligated to use `R Markdown` to write your paper. Microsoft Word is fine.
+Again, you are not obligated to use `Quarto` to write your paper. Microsoft Word is fine.
