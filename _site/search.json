@@ -252,6 +252,83 @@
     "text": "Question 9\nSuppose a researcher is interested in estimating a simple linear regression model:\n\\[\nY_i=\\beta_0+\\beta_1X_i+u_i\n\\]\nIn a sample of 48 observations, she generates the following descriptive statistics:\n\n\\(\\bar{X}=30\\)\n\\(\\bar{Y}=63\\)\n\\(\\displaystyle\\sum^n_{i=1}(X_i-\\bar{X})^2= 6900\\)\n\\(\\displaystyle\\sum^n_{i=1}(Y_i-\\bar{Y})^2= 29000\\)\n\\(\\displaystyle\\sum^n_{i=1}(X_i-\\bar{X})(Y_i-\\bar{Y})=13800\\)\n\\(\\displaystyle\\sum^n_{i=1}\\hat{u}^2=1656\\)\n\n\nPart A\nWhat is the OLS estimate of \\(\\hat{\\beta_1}\\)?\n\n\nPart B\nWhat is the OLS estimate of \\(\\hat{\\beta_0}\\)?\n\n\nPart C\nSuppose the OLS estimate of \\(\\hat{\\beta_1}\\) has a standard error of \\(0.072\\). Could we probably reject a null hypothesis of \\(H_0: \\beta_1=0\\) at the 5% level?\n\n\nPart D\nCalculate the \\(R^2\\) for this model. How much variation in \\(Y\\) is explained by our model?"
   },
   {
+    "objectID": "assignments/04-problem-set.html",
+    "href": "assignments/04-problem-set.html",
+    "title": "Problem Set 4",
+    "section": "",
+    "text": "Warning\n\n\n\nThis assignment is due by Friday november 11 by email.\nPlease read the instructions for completing and submitting homeworks.\nPDF  R Project  R Studio Cloud\nThe  PDF is useful if you want to print out the problem set and write on it. The  R Project is a zipped .zip file which contains a  .qmd file to write answers in, and the data, all in a logical working directory. (See this resource for help unzipping files). You can also just write an .R file in the project if you don’t want to use markdown. If you use the  cloud project, I have already installed tidyverse and tinytex (to produce pdfs)."
+  },
+  {
+    "objectID": "assignments/04-problem-set.html#question-1",
+    "href": "assignments/04-problem-set.html#question-1",
+    "title": "Problem Set 4",
+    "section": "Question 1",
+    "text": "Question 1\nIn your own words, explain the fundamental problem of causal inference."
+  },
+  {
+    "objectID": "assignments/04-problem-set.html#question-2",
+    "href": "assignments/04-problem-set.html#question-2",
+    "title": "Problem Set 4",
+    "section": "Question 2",
+    "text": "Question 2\nIn your own words, explain how properly conducting a randomized controlled trial helps to identify the causal effect of one variable on another."
+  },
+  {
+    "objectID": "assignments/04-problem-set.html#question-3",
+    "href": "assignments/04-problem-set.html#question-3",
+    "title": "Problem Set 4",
+    "section": "Question 3",
+    "text": "Question 3\nIn your own words, describe what omitted variable bias means. What are the two conditions for a variable to bias OLS estimates if omitted?"
+  },
+  {
+    "objectID": "assignments/04-problem-set.html#question-4",
+    "href": "assignments/04-problem-set.html#question-4",
+    "title": "Problem Set 4",
+    "section": "Question 4",
+    "text": "Question 4\nIn your own words, describe what multicollinearity means. What is the cause, and what are the consequences of multicollinearity? How can we measure multicollinearity and its effects? What happens if multicollinearity is perfect?"
+  },
+  {
+    "objectID": "assignments/04-problem-set.html#question-5",
+    "href": "assignments/04-problem-set.html#question-5",
+    "title": "Problem Set 4",
+    "section": "Question 5",
+    "text": "Question 5\nExplain how we use Directed Acyclic Graphs (DAGs) to depict a causal model: what are the two criteria that must hold for identifying a causal effect of \\(X\\) on \\(Y\\)? When should we control a variable, and when should we not control for a variable?"
+  },
+  {
+    "objectID": "assignments/04-problem-set.html#question-6",
+    "href": "assignments/04-problem-set.html#question-6",
+    "title": "Problem Set 4",
+    "section": "Question 6",
+    "text": "Question 6\nA pharmaceutical company is interested in estimating the impact of a new drug on cholesterol levels. They enroll 200 people in a clinical trial. People are randomly assigned the treatment group or into the control group. Half of the people are given the new drug and half the people are given a sugar pill with no active ingredient. To examine the impact of dosage on reductions in cholesterol levels, the authors of the study regress the following model:\n\\[\\text{cholesterol level}_i = \\beta_0+\\beta_1 \\text{dosage level}_i + u_i\\]\nFor people in the control group, dosage level\\(_i=0\\) and for people in the treatment group, dosage level\\(_i\\) measures milligrams of the active ingredient. In this case, the authors find a large, negative, statistically significant estimate of \\(\\hat{\\beta_1}\\). Is this an unbiased estimate of the impact of dosage on change in cholesterol level? Why or why not? Do you expect the estimate to overstate or understate the true relationship between dosage and cholesterol level?"
+  },
+  {
+    "objectID": "assignments/04-problem-set.html#question-7",
+    "href": "assignments/04-problem-set.html#question-7",
+    "title": "Problem Set 4",
+    "section": "Question 7",
+    "text": "Question 7\nData were collected from a random sample of 220 home sales from a community in 2017.\n\\[\\widehat{Price}=119.2+0.485 \\, BDR+23.4 \\, Bath+0.156 \\, Hsize+0.002 \\, Lsize+0.090 \\, Age\\]\n\n\n\nVariable\nDescription\n\n\n\n\n\\(Price\\)\nselling price (in $1,000s)\n\n\n\\(BDR\\)\nnumber of bedrooms\n\n\n\\(Bath\\)\nnumber of bathrooms\n\n\n\\(Hsize\\)\nsize of the house (in ft\\(^2)\\)\n\n\n\\(Lsize\\)\nlot size (in ft\\(^2)\\)\n\n\n\\(Age\\)\nage of the house (in years)\n\n\n\n\nPart A\nSuppose that a homeowner converts part of an existing living space in her house to a new bathroom. What is the expected increase in the value of the house?\n\n\nPart B\nSuppose a homeowner adds a new bathroom to her house, which also increases the size of the house by 100 square feet. What is the expected increase in the value of the house?\n\n\nPart C\nSuppose the \\(R^2\\) of this regression is 0.727. Calculate the adjusted \\(\\bar{R}^2\\).\n\n\nPart D\nSuppose the following auxiliary regression for \\(BDR\\) has an \\(R^2\\) of 0.841.\n\\[\\widehat{BDR}=\\delta_0+\\delta_1Bath+\\delta_2Hsize+\\delta_3Lsize+\\delta_4Age\\]\nCalculate the Variance Inflation Factor for \\(BDR\\) and explain what it means."
+  },
+  {
+    "objectID": "assignments/04-problem-set.html#question-8",
+    "href": "assignments/04-problem-set.html#question-8",
+    "title": "Problem Set 4",
+    "section": "Question 8",
+    "text": "Question 8\nA researcher wants to investigate the effect of education on average hourly wages. Wage, education, and experience in the dataset have the following correlations:\n\n\n\n\nWage\nEducation\nExperience\n\n\n\n\nWage\n1.0000\n\n\n\n\nEducation\n0.4059\n1.0000\n\n\n\nExperience\n0.1129\n-0.2995\n1.0000\n\n\n\nShe runs a simple regression first, and gets the results:\n\\[\\widehat{\\text{Wage}} = -0.9049 +  0.5414 \\, Education\\]\nShe runs another regression, and gets the results:\n\\[\\widehat{\\text{Experience}} = 35.4615 - 1.4681 \\, Education\\]\n\nPart A\nIf the true marginal effect of experience on wages (holding education constant) is 0.0701, calculate the omitted variable bias in the first regression caused by omitting experience. Does the estimate of \\(\\hat{\\beta_1}\\) in the first regression overstate or understate the effect of education on wages?\n\n\nPart B\nKnowing this, what would be the true effect of education on wages, holding experience constant?\n\n\nPart C\nThe \\(R^2\\) for the second regression is 0.0897. If she were to run a better regression including both education and experience, how much would the variance of the coefficients on education and experience increase? Why?"
+  },
+  {
+    "objectID": "assignments/04-problem-set.html#question-9",
+    "href": "assignments/04-problem-set.html#question-9",
+    "title": "Problem Set 4",
+    "section": "Question 9",
+    "text": "Question 9\n\n heightwages.csv\n\nDownload and read in heightwages.csv dataset. If you don’t want to download/upload it, you can read it in directly from the url by running this chunk:\n\n# run or edit this chunk\nmlb <- read_csv(\"http://metricsf22.classes.ryansafner.com/files/data/heightwages.csv\")\n\nThis data is a part of a larger dataset from the National Longitudinal Survey of Youth (NLSY) 1979 cohort: a nationally representative sample of 12,686 men and women aged 14-22 years old when they were first surveyed in 1979. They were subsequently interviewed every year through 1994 and then every other year afterwards. There are many included variables, but for now we will just focus on:\n\n\n\nVariable\nDescription\n\n\n\n\nwage96\nAdult hourly wages ($/hr) reported in 1996\n\n\nheight85\nAdult height (inches) reported in 1985\n\n\nheight81\nAdolescent height (inches) reported in 1981\n\n\n\n\nWe want to figure out what is the effect of height on wages (e.g. do taller people earn more on average than shorter people?)\n\n\nPart A\nCreate a quick scatterplot between height85 (as \\(X)\\) amd wage96 (as \\(Y)\\).\n\n\nPart B\nRegress wages on adult height. Write the equation of the estimated OLS regression. Interpret the coefficient on height85.\n\n\nPart C\nHow much would someone who is 5’10” (70 in) be predicted to earn per hour, according to the model?\n\n\nPart D\nWould adolescent height cause an omitted variable bias if it were left out? Explain using both your intuition, and some statistical evidence with R.\n\n\nPart E\nNow add adolescent height to the regression, and write the new regression equation below, as before. Interpret the coefficient on height85.\n\n\nPart F\nHow much would someone who is 5’10” in 1985 and 4’8” in 1981 be predicted to earn, according to the model?\n\n\nPart G\nWhat happened to the estimate on height85 and its standard error?\n\n\nPart H\nIs there multicollinearity between height85 and height81? Explore with a scatterplot. Hint: to avoid overplotting, use geom_jitter() instead of geom_point() to get a better view of the data.\n\n\nPart I\nQuantify how much multicollinearity affects the variance of the OLS estimates on both heights. Hint: You’ll need the vif command from the car package.\n\n\nPart J\nReach the same number as in part I by running an auxiliary regression.\nHint: There’s some missing wage96 data that may give you a different answer, so take the data and filter(!is.na(wage96)) before running this regression — this will include only observations for wage96 that are not NA’s.\n\n\nPart K\nMake a regression table from part B and D using modelsummary."
+  },
+  {
+    "objectID": "assignments/04-problem-set.html#question-10",
+    "href": "assignments/04-problem-set.html#question-10",
+    "title": "Problem Set 4",
+    "section": "Question 10",
+    "text": "Question 10\nInstall and load the wooldridge package. This package contains datasets used in Jeffrey Wooldridge’s Introductory Econometrics: A Modern Approach (the textbook that I used in my econometrics classes years ago!).\nWe will use the bwght data from wooldridge, which comes from The 1988 National Health Interview Survey., used in J. Mullahy (1997), “Instrumental-Variable Estimation of Count Data Models: Applications to Models of Cigarette Smoking Behavior,” Review of Economics and Statistics 79: 596-593.\nLet’s just look at the following variables:\n\n\n\nVariable\nDescription\n\n\n\n\nbwght\nBirth Weight (ounces)\n\n\ncigs\nCigarettes smoked per day while pregnant (1988)\n\n\nmotheduc\nMother’s education (number of years)\n\n\ncigprice\nPrice of cigarette pack (1988)\n\n\nfaminc\nFamily’s income in $1,000s (1988)\n\n\n\n\nWe want to explore how a mother smoking during pregnancy affects the baby’s birthweight (which may have strong effects on outcomes over the child’s life).\n\nJust to be explicit about it, assign this as some dataframe (feel free to change the name), i.e.:\n\n# run or edit this chunk\nbirths <- bwght # feel free to rename whatever you want for the dataframe\n\n\nPart A\nMake a correlation table for our variables listed above.\nHint: select() these variables and then pipe this into cor(., use = \"pairwise.complete.obs\") to use only observations for which there are data on each variable (to avoid NA’s).\n\n\nPart B\nConsider the following causal model:\n\ndagify(bwght ~ cigs + inc,\n       cigs ~ price + educ + inc,\n       inc ~ educ,\n       exposure = \"cigs\",\n       outcome = \"bwght\") %>%\n  tidy_dagitty(seed = 256) %>%\n  ggdag_status()+\n  theme_dag_blank()+\n  theme(legend.position = \"none\")\n\n\n\n\nNote what we are hypothesizing:\n\nbwght is caused by cigs and inc\ncigs are caused by price, educ, and inc\ninc is caused by educ\n\nSee also how this is written into the notation in R to draw (plot) the DAG.\nCreate this model on dagitty.net. What does dagitty tell us the testable implications of this causal model?\nYou can answer this using dagitty.net, and/or R.\n\n\nPart C\nTest each implication given to you by dagitty.\n\nFor independencies, e.g. \\((x \\perp y)\\): run a regression of \\(y\\) on \\(x\\).\nFor conditional independencies, e.g. \\((x \\perp y | z, a)\\): run a regression of \\(y\\) on \\(x, z, a\\).\n\nFor each, test against the null hypothesis that the relevant coefficient \\((\\beta_1) =0\\) (i.e. \\(x\\) and \\(y\\) are indeed independent).\nDoes this causal model hold up well?\n\n\nPart D\nList all of the possible pathways from cigs to bwght. Which are “front-doors” and which are “back-doors?” Are any blocked by colliders?\nYou can answer this using dagitty.net, and/or R.\n\n\nPart E\nWhat is the minimal sufficient set of variables we need to control for in order to causally identify the effect of cigs on bwght?\nYou can answer this using dagitty.net, and/or R.\n\n\nPart F\nEstimate the causal effect by running the appropriate regression in R.\nFYI, on dagitty.net, you can change a variable on the diagram to be “adjusted” (controlled for) by clicking it and then hitting the A key.\n\n\nPart G\nWe saw some effect between faminc and cigprice. Perhaps there are unobserved factors (such as the economy’s performance) that affect both. Add an unobserved factor u1 to your dagitty model.\nFYI, on dagitty.net, you can make a variable be “unobserved” by double-clicking it and then hitting the U key.\n\n\nPart H\nPerhaps our model is poorly specified. Maybe motheduc actually has a causal effect on bwght? Tweak your model on dagitty.net to add this potential relationship. What testable implications does this new model imply?\n\n\nPart I\nTest these implications appropriately in R, like you did in Part C. Does this model hold up well?\n\n\nPart J\nUnder this new causal model, list all of the possible pathways from cigs to bwght. Which are “front-doors” and which are “back-doors?” Are any blocked by colliders?\nYou can answer this using dagitty.net, and/or R.\n\n\nPart K\nUnder this new causal model, what is the minimal sufficient set of variables we need to control in order to causally identify the effect of cigs on bwght?\nYou can answer this using dagitty.net, and/or R.\n\n\nPart L\nEstimate the causal effect in this new model by running the appropriate regression in R. Compare your answers to those in part F.\n\n\nPart M\nTry out drawing this model using the ggdag package in R. See my DAG in question 3 for an example."
+  },
+  {
     "objectID": "assignments/index.html",
     "href": "assignments/index.html",
     "title": "Assignment Details",
