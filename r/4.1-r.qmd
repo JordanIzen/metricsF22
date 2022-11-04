@@ -4,17 +4,11 @@ execute:
   freeze: auto
 ---
 
-<p style="text-align:center">
+<p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_1_multivariate_ols_estimators.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i>Quarto file</a></span> <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4844198"><span class="btn btn-primary btn-lg"><i class="fas fa-cloud"></i>R Studio Cloud</a></span></p>
 
-<a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_1_multivariate_ols_estimators.qmd"><i class="fas fa-file-archive"></i>[Quarto file</a>]{.btn .btn-primary .btn-lg} <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4844198"><i class="fas fa-cloud"></i>[R Studio Cloud</a>]{.btn .btn-primary .btn-lg}
+## Answers
 
-</p>
-
-<!--## Answers
-
-<p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/2_7_hypothesis_testing_for_regression_answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> Answer Key (html) </a></span> <a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/2_7_hypothesis_testing_for_regression_answers.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Answer Key (.qmd)</a></span></p>
-
--->
+<p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_1_multivariate_ols_estimators_answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> Answer Key (html) </a></span> <a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_1_multivariate_ols_estimators_answers.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Answer Key (.qmd)</a></span></p>
 
 Download and read in (`read_csv`) the data below.
 

@@ -82,6 +82,27 @@ website:
               href: content/4.1-content.qmd
             - text: "4.2 — Writing an Empirical Paper"
               href: content/4.2-content.qmd
+ 
+    - title: "R Practice"
+      style: "docked"
+      search: false
+      contents:
+        - text: "1.2 — Meet R"
+          href: r/1.2-r.qmd
+        - text: "1.3 — Data Visualization"
+          href: r/1.3-r.qmd
+        - text: "1.4 — Data Wrangling"
+          href: r/1.4-r.qmd
+        - text: "1.5 — Optimize Workflow"
+          href: r/1.5-r.qmd
+        - text: "2.5 — Precision and Diagnostics"
+          href: r/2.5-r.qmd
+        - text: "2.7 — Hypothesis Testing for Regression"
+          href: r/2.7-r.qmd
+        - text: "3.2 — DAGs"
+          href: r/3.2-r.qmd
+        - text: "4.1 — Multivariate OLS Estimators"
+          href: r/4.1-r.qmd
               
     - title: "Assignments"
       style: "docked"

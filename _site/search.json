@@ -1208,7 +1208,14 @@
     "href": "r/4.1-r.html",
     "title": "4.1 — Multivariate OLS Estimators — Practice",
     "section": "",
-    "text": "Quarto file R Studio Cloud\nDownload and read in (read_csv) the data below.\nThis data comes from a paper by Makowsky and Strattman (2009) that we will examine later. Even though state law sets a formula for tickets based on how fast a person was driving, police officers in practice often deviate from that formula. This dataset includes information on all traffic stops. An amount for the fine is given only for observations in which the police officer decided to assess a fine. There are a number of variables in this dataset, but the one’s we’ll look at are:\nWe want to explore who gets fines, and how much. We’ll come back to the other variables (which are categorical) in this dataset in later lessons."
+    "text": "Quarto file R Studio Cloud"
+  },
+  {
+    "objectID": "r/4.1-r.html#answers",
+    "href": "r/4.1-r.html#answers",
+    "title": "4.1 — Multivariate OLS Estimators — Practice",
+    "section": "Answers",
+    "text": "Answers\n\n Answer Key (html)   Answer Key (.qmd)\n\nDownload and read in (read_csv) the data below.\n\n speeding_tickets.csv\n\nThis data comes from a paper by Makowsky and Strattman (2009) that we will examine later. Even though state law sets a formula for tickets based on how fast a person was driving, police officers in practice often deviate from that formula. This dataset includes information on all traffic stops. An amount for the fine is given only for observations in which the police officer decided to assess a fine. There are a number of variables in this dataset, but the one’s we’ll look at are:\n\n\n\nVariable\nDescription\n\n\n\n\nAmount\nAmount of fine (in dollars) assessed for speeding\n\n\nAge\nAge of speeding driver (in years)\n\n\nMPHover\nMiles per hour over the speed limit\n\n\n\nWe want to explore who gets fines, and how much. We’ll come back to the other variables (which are categorical) in this dataset in later lessons."
   },
   {
     "objectID": "r/4.1-r.html#question-1",
