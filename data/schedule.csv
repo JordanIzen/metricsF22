@@ -21,10 +21,9 @@ III. Causal Inference,Mon Oct 24,3.2 — DAGs,content/3.2-content,slides/3.2-sli
 III. Causal Inference,Wed Oct 26,3.3 — Omitted Variable Bias,content/3.3-content,slides/3.3-slides,,
 IV. Multivariate Linear Regression,Mon Oct 31,"4.1 — Multivariate OLS Estimators: Bias, Precision, and Fit",content/4.1-content,slides/4.1-slides,r/4.1-r,
 IV. Multivariate Linear Regression,,<strong>Problem Set 4 due Fri Nov 11</strong>,,,,assignments/04-problem-set
-IV. Multivariate Linear Regression,Wed Nov 2,4.2 — Writing an Empirical Paper,content/3.5-content,slides/4.2-slides,,
-IV. Multivariate Linear Regression,Mon Nov 7,4.3 — Regression with Categorical Data,,,,
-IV. Multivariate Linear Regression,Wed Nov 9,4.4 — Regression with Interaction Effects,,,,
-IV. Multivariate Linear Regression,Mon Nov 14,4.5 — Transforming Variables,,,,
+IV. Multivariate Linear Regression,Wed Nov 2,4.2 — Writing an Empirical Paper,content/4.2-content,slides/4.2-slides,,
+IV. Multivariate Linear Regression,Mon Nov 7,4.3 — Categorical Data & Interactions,content/4.3-content,slides/4.3-slides,r/4.3-r,
+IV. Multivariate Linear Regression,Mon Nov 14,4.4 — Nonlinearity & Variable Transformations,,,,
 IV. Multivariate Linear Regression,,Problem Set 5,,,,
 V. Panel Data and Advanced Models,Mon Nov 16,5.1 — Panel Data and Fixed Effects Models,,,,
 V. Panel Data and Advanced Models,Mon Nov 21,5.2 — Difference-in-Difference Models,,,,
