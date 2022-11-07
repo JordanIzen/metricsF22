@@ -114,7 +114,10 @@ students %>% head(n = 5)
 
 . . .
 
-- See that `Rank` is a `character` (`<chr>`) variable, just a string of text
+- See that `rank` is a `character` (`<chr>`) variable, just a string of text
+
+::: footer
+:::
 
 ## Factors in `R` II
 
@@ -127,14 +130,10 @@ students %>% head(n = 5)
 #| output-location: fragment
 
 students <- students %>%
-  mutate(rank = as.factor(rank)) # overwrite and change class of Rank to factor
+  mutate(rank = as.factor(rank)) # overwrite and change class of rank to factor
 
 students %>% head(n = 5)
 ```
-
-. . .
-
-- See now it’s a `factor` (`<fct>`)
 
 
 ## Factors in `R` III
@@ -162,12 +161,10 @@ students %>%
 #| output-location: fragment
 
 students <- students %>%
-  mutate(rank = ordered(rank, # overwrite and change class of Rank to ordered
+  mutate(rank = ordered(rank, # overwrite and change class of rank to ordered
                         # next, specify the levels, in order
                         levels = c("Freshman", "Sophomore", "Junior", "Senior")
-                        )
-         )
-
+                        ))
 students %>% head(n = 5)
 ```
 
@@ -183,7 +180,7 @@ students %>%
 ```
 
 
-# Example Research Question with Categorical Data
+## Example Research Question with Categorical Data
 
 ::: columns
 ::: {.column width="50%"}
@@ -194,7 +191,7 @@ How much higher wages, on average, do men earn compared to women?
 :::
 :::
 ::: {.column width="50%"}
-![](images/genderpaygap.jpg)
+![](images/genderpaygap.jpg){fig-align="center" width="500"}
 :::
 :::
 
@@ -205,9 +202,9 @@ How much higher wages, on average, do men earn compared to women?
 
 - Basic statistics: can test for statistically significant difference in group means with a **t-test**^[See [today’s appendix](/resources/appendix/4.3-appendix) for this example], let:
 
-- [$Y_M$]{.blue}: average earnings of a sample of [n_M]{.blue} men
+- [$Y_M$]{.blue}: average earnings of a sample of [$n_M$]{.blue} men
 
-- [$Y_W$]{.pink: average earnings of a sample of [$n_M$]{.pink} women
+- [$Y_W$]{.pink}: average earnings of a sample of [$n_M$]{.pink} women
 
 - **Difference** in group averages: $d=$ [$\bar{Y}_M$]{.blue} $-$ [$\bar{Y}_W$]{.pink}
 
@@ -217,7 +214,7 @@ How much higher wages, on average, do men earn compared to women?
 
 :::
 ::: {.column width="50%"}
-![](images/genderpaygap.jpg)
+![](images/genderpaygap.jpg){fig-align="center" width="500"}
 
 :::
 :::
@@ -420,20 +417,20 @@ $$\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1} D_i \quad \text{ where }D_i=\{\color{#6A
 
 - [When $D_i=0$ (“Control group”):]{.hi-purple}
   - $\hat{Y_i}=\hat{\beta_0}$
-  - $\color{#6A5ACD}{E[Y_i|D_i=0]}=\hat{\beta_0}$ $\iff$ the mean of $Y$ when $D_i=0$
+  - $\color{#6A5ACD}{\mathbb{E}[Y_i|D_i=0]}=\hat{\beta_0}$ $\iff$ the mean of $Y$ when $D_i=0$
 
 . . .
 
 - [When $D_i=1$ (“Treatment group”):]{.hi}
   - $\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1} D_i$
-  - $\color{#e64173}{E[Y_i|D_i=1]}=\hat{\beta_0}+\hat{\beta_1}$ $\iff$ the mean of $Y$ when $D_i=1$
+  - $\color{#e64173}{\mathbb{E}[Y_i|D_i=1]}=\hat{\beta_0}+\hat{\beta_1}$ $\iff$ the mean of $Y$ when $D_i=1$
 
 . . .
 
 - So the **difference** in group means:
 
 \begin{align*}
-		&=\color{#e64173}{E[Y_i|D_i=1]}-\color{#6A5ACD}{E[Y_i|D_i=0]}\\
+		&=\color{#e64173}{\mathbb{E}[Y_i|D_i=1]}-\color{#6A5ACD}{\mathbb{E}[Y_i|D_i=0]}\\
 		&=(\hat{\beta_0}+\hat{\beta_1})-(\hat{\beta_0})\\
 		&=\hat{\beta_1}\\
 \end{align*}
@@ -451,7 +448,7 @@ $$\widehat{Wage}_i=\hat{\beta_0}+\hat{\beta_1} \, Female_i$$
 
 . . .
 
-$$E[Wage|Female=0]=\hat{\beta_0}$$
+$$\mathbb{E}[Wage|Female=0]=\hat{\beta_0}$$
 
 . . .
 
@@ -459,7 +456,7 @@ $$E[Wage|Female=0]=\hat{\beta_0}$$
 
 . . .
 
-$$E[Wage|Female=1]=\hat{\beta_0}+\hat{\beta_1}$$
+$$\mathbb{E}[Wage|Female=1]=\hat{\beta_0}+\hat{\beta_1}$$
 
 . . .
 
@@ -511,6 +508,38 @@ ggplot(data = wages)+
 ```
 
 $$\widehat{Wage}_i=\hat{\beta_0}+\hat{\beta_1} \, Female_i$$
+
+## Comparing Groups in Regression: Scatterplot
+
+```{r}
+#| fig-align: center
+#| fig-width: 14
+
+ggplot(data = wages)+
+  aes(x = female,
+      y = wage)+
+  geom_jitter(aes(color = gender),
+              width=0.05,
+              seed = 2)+
+  geom_smooth(method = "lm", color = "black")+
+  geom_hline(yintercept=male_avg,linetype="dashed",color="#0047AB")+
+  geom_label(x = 0.5, y=male_avg, label=expression(hat(beta[0])), color="#0047AB")+
+  geom_hline(yintercept=female_avg,linetype="dashed",color="#e64173")+
+  geom_label(x = 0.5, y=female_avg, label=expression(hat(beta[0])+hat(beta[1])), color="#e64173")+
+  geom_label(x = 0.75, y=5.5, label=expression(paste(hat(beta[1]),"= difference")), color="black")+
+  scale_color_manual(values = c("Female" = "#e64173", "Male" = "#0047AB"))+
+  scale_x_continuous(breaks=c(0,1),
+                   labels=c(0,1))+
+  scale_y_continuous(labels=scales::dollar)+
+  labs(x = "Female",
+       y = "Wage")+
+  guides(color=F)+ # hide legend
+  theme_pander(base_family = "Fira Sans Condensed",
+           base_size=20)
+```
+
+$$\widehat{Wage}_i=\hat{\beta_0}+\hat{\beta_1} \, Female_i$$
+
 ## The Data {.smaller}
 
 ```{r}
@@ -768,7 +797,7 @@ $$\widehat{Wage}_i=\hat{\beta_0}+\hat{\beta_1} \, Male_i$$
 
 . . .
 
-$$E[Wage|Male=1]=\hat{\beta_0}+\hat{\beta_1}$$
+$$\mathbb{E}[Wage|Male=1]=\hat{\beta_0}+\hat{\beta_1}$$
 
 . . .
 
@@ -776,7 +805,7 @@ $$E[Wage|Male=1]=\hat{\beta_0}+\hat{\beta_1}$$
 
 . . .
 
-$$E[Wage|Male=0]=\hat{\beta_0}$$
+$$\mathbb{E}[Wage|Male=0]=\hat{\beta_0}$$
 
 . . .
 
@@ -793,6 +822,8 @@ $$\hat{\beta_1}$$
 ::: columns
 ::: {.column width="50%"}
 ```{r}
+#| fig-height: 8
+
 ggplot(data = wages)+
   aes(x = female,
       y = wage)+
@@ -818,6 +849,8 @@ ggplot(data = wages)+
 :::
 ::: {.column width="50%"}
 ```{r}
+#| fig-height: 8
+
 ggplot(data = wages)+
   aes(x = male,
       y = wage)+
@@ -992,7 +1025,7 @@ $$Northeast_i+Midwest_i+South_i+West_i=1 \quad \forall i$$
 
 ::: callout-tip
 ## Example
-$\widehat{Wages_i}=\hat{\beta_0}+\hat{\beta_1}Northeast_i+\hat{\beta_2}Midwest_i+\hat{\beta_3}South_i$:::
+$\widehat{Wages_i}=\hat{\beta_0}+\hat{\beta_1}Northeast_i+\hat{\beta_2}Midwest_i+\hat{\beta_3}South_i$
 
 :::
 
@@ -1002,19 +1035,19 @@ $\widehat{Wages_i}=\hat{\beta_0}+\hat{\beta_1}Northeast_i+\hat{\beta_2}Midwest_i
 
 . . .
 
-- $\hat{\beta_0}$: average wage for $i$ in the West
+- $\hat{\beta_0}$: average wage for $i$ in the West (omitted reference category)
 
 . . .
 
-- $\hat{\beta_1}$: difference between West and Northeast
+- $\hat{\beta_1}$: *difference* between West and Northeast
 
 . . .
 
-- $\hat{\beta_2}$: difference between West and Midwest
+- $\hat{\beta_2}$: *difference* between West and Midwest
 
 . . .
 
-- $\hat{\beta_3}$: difference between West and South
+- $\hat{\beta_3}$: *difference* between West and South
 
 ## Regression in `R` with Categorical Variable
 
@@ -1051,10 +1084,15 @@ lm(wage ~ northeast + midwest + south + west, data = wages) %>% summary()
 ## Using Different Reference Categories in R {.smaller}
 
 ```{r}
-no_noreast_reg <- lm(wage ~ northcen + south + west, data = wages)
+wages <- wages %>%
+  mutate(midwest = ifelse(northcen == 1,
+                         1,
+                         0))
+
+no_noreast_reg <- lm(wage ~ midwest + south + west, data = wages)
 no_northcen_reg <- lm(wage ~ northeast + south + west, data = wages)
-no_south_reg <- lm(wage ~ northeast + northcen + west, data = wages)
-no_west_reg <- lm(wage ~ northeast + northcen + south, data = wages)
+no_south_reg <- lm(wage ~ northeast + midwest + west, data = wages)
+no_west_reg <- lm(wage ~ northeast + midwest + south, data = wages)
 ```
 
 ::: columns
@@ -1137,13 +1175,10 @@ $$\widehat{\text{Admitted}}_i=\hat{\beta_0}+\hat{\beta_1} \, GPA_i \quad \text{ 
 ::: callout-tip
 ## Example
 
-Consider the gender pay gap again.
-:::
-
-. . .
-
+Consider the gender pay gap again. 
 - *Gender* affects wages
 - *Experience* affects wages
+:::
 
 . . .
 
@@ -1301,7 +1336,7 @@ $$Y_i=\beta_0+\beta_1X_i+\beta_2 D_i+\beta_3 \color{#e64173}{(X_i \times D_i)}$$
 . . .
 
 
-- $\hat{\beta_0}$: $E[Y_i]$ for $X_i=0$ and $D_i=0$
+- $\hat{\beta_0}$: $\mathbb{E}[Y_i]$ for $X_i=0$ and $D_i=0$
 
 . . .
 
