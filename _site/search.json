@@ -1337,6 +1337,76 @@
     "text": "Question 12\nMake a coefficient plot of your coefficients from the regression in Question 6. The package modelsummary (which you will need to install and load) has a great command modelplot() to do this on your regression object."
   },
   {
+    "objectID": "r/4.3-r.html",
+    "href": "r/4.3-r.html",
+    "title": "4.3 — Categorical Data and Interactions — Practice",
+    "section": "",
+    "text": "Quarto file R Studio Cloud"
+  },
+  {
+    "objectID": "r/4.3-r.html#question-1",
+    "href": "r/4.3-r.html#question-1",
+    "title": "4.3 — Categorical Data and Interactions — Practice",
+    "section": "Question 1",
+    "text": "Question 1\nWe will have to do a little more cleaning to get some of the data into a more usable form.\n\nPart A\nInspect the data with str() or head() or glimpse() to see what it looks like.\n\nWhat class of variable are Black, Hispanic, Female, OutTown, and OutState?\n\n\n\nPart B\nNotice that when importing the data from the .csv file, R interpreted these variables as numeric (num) or double (dbl), but we want them to be factor (fct) variables, to ensure R recognizes that there are two groups (categories), 0 and 1.\nYou could convert the variables one at a time to factors using as.factor() inside a mutate() command. But there is a special mutate() command that allows you to apply a transformation (like changing a variable’s class to factor), which you can run the following chunk to execute:\n\n# run or edit this chunk\nspeed <- speed %>%\n  mutate_at(c(\"Black\", \"Hispanic\", \"Female\", \"OutTown\", \"OutState\"), factor)\n\nspeed\n\nConfirm that these are now factor (fct) variables.\n\n\nPart C\nFinally, recall from the last time we worked with this data that there are many NAs for Amount (these are people that were stopped but did not receive a fine). Let’s filter() only those observations for which Amount is a positive number, and save this in your dataframe (assign and overwrite it, or make a new dataframe).\n\n# run or edit this chunk\n\n# see the NAs \nspeed %>%\n  select(Amount) %>%\n  summary()\n\n# overwrite data to keep only positive Amounts\nspeed <- speed %>%\n  filter(Amount > 0)\n\n# see there are no more NAs\nspeed %>%\n  select(Amount) %>%\n  summary()"
+  },
+  {
+    "objectID": "r/4.3-r.html#question-2",
+    "href": "r/4.3-r.html#question-2",
+    "title": "4.3 — Categorical Data and Interactions — Practice",
+    "section": "Question 2",
+    "text": "Question 2\nDoes the sex of the driver affect the fine? There’s already a dummy variable Female in the dataset, so create a scatterplot between Amount (as y) and Female (as x).\nHint: Use geom_jitter() instead of geom_point() to better see the points, and play around with width settings inside geom_jitter()\n\nAs an aside, if you had not made Female a factor, and kept it numeric, it might alter the plot.\nYou can make Female a factor just for plotting purposes by setting aes(x = as.factor(Female)) inside the aes() layer of your ggplot() code."
+  },
+  {
+    "objectID": "r/4.3-r.html#question-3",
+    "href": "r/4.3-r.html#question-3",
+    "title": "4.3 — Categorical Data and Interactions — Practice",
+    "section": "Question 3",
+    "text": "Question 3\nNow let’s start looking at the distribution conditionally to find the different group means.\n\nPart A\nFind the mean and standard deviation of Amount for male drivers and again for female drivers.\nHint: properly filter() the data and then use the summarize() command.\n\n\n\nPart B\nWhat is the difference between the average Amount for Males and Females?\n\n\n\nPart C\nWe did not go over how to do this in class, but you can run a t-test for the difference in group means to see if the difference is statistically significant. The syntax is similar for a regression:\n\n# run or edit this chunk\nt.test(Amount ~ Female,\n       data = speed)\n\nIs there a statistically significant difference between Amount for male and female drivers? Hint: this is like any hypothesis test. Here \\(H_0: \\text{difference}=0\\). A \\(t\\)-value needs to be large enough to be greater than a critical value of \\(t\\). Check the \\(p\\)-value and see if it is less than our standard of \\(\\alpha=0.05.\\)"
+  },
+  {
+    "objectID": "r/4.3-r.html#question-4",
+    "href": "r/4.3-r.html#question-4",
+    "title": "4.3 — Categorical Data and Interactions — Practice",
+    "section": "Question 4",
+    "text": "Question 4\n\nPart A\nNow run the following regression to ensure we get the same result as the t-test.\n\\[\\widehat{\\text{Amount}}_i=\\hat{\\beta_0}+\\hat{\\beta_1} \\, \\text{Female}_i\\]\n\n\n\nPart B\nWrite out the estimated regression equation.\n\n\n\nPart C\nUse the regression coefficients to find\n\nthe average Amount for men\nthe average Amount for women\nthe difference in average Amount between men and women"
+  },
+  {
+    "objectID": "r/4.3-r.html#question-5",
+    "href": "r/4.3-r.html#question-5",
+    "title": "4.3 — Categorical Data and Interactions — Practice",
+    "section": "Question 5",
+    "text": "Question 5\nLet’s recode the sex variable to Male instead of Female.\n\nPart A\nMake a new variable called Male and save it in your dataframe using the ifelse() command:\n\n# run or edit this chunk\nspeed <- speed %>% # overwrite or save as another dataframe\n  mutate(Male = ifelse(test = Female == 0, # test indiv. to see if Female is 0\n                       yes = 1, # if yes (a Male), code Male as 1\n                       no  = 0), # if no (a Female), code Male as 0\n         )\n\n# Verify it worked\nspeed %>%\n  select(Female, Male)\n\n\n\nPart B\nRun the same regression as in question 4, but use Male instead of Female.\n\\[\\widehat{\\text{Amount}}_i=\\hat{\\beta_0}+\\hat{\\beta_1} \\, \\text{Male}_i\\]\n\n\n\nPart C\nWrite out the estimated regression equation.\n\n\n\nPart D\nUse the regression coefficients to find\n\nthe average Amount for men\nthe average Amount for women\nthe difference in average Amount between men and women"
+  },
+  {
+    "objectID": "r/4.3-r.html#question-6",
+    "href": "r/4.3-r.html#question-6",
+    "title": "4.3 — Categorical Data and Interactions — Practice",
+    "section": "Question 6",
+    "text": "Question 6\nRun a regression of Amount on Male and Female. What happens, and why?\n\\[\\widehat{\\text{Amount}}_i=\\hat{\\beta_0}+\\hat{\\beta_1} \\, \\text{Male}_i + \\hat{\\beta_2} \\, \\text{Female}_i\\]"
+  },
+  {
+    "objectID": "r/4.3-r.html#question-7",
+    "href": "r/4.3-r.html#question-7",
+    "title": "4.3 — Categorical Data and Interactions — Practice",
+    "section": "Question 7",
+    "text": "Question 7\nAge probably has a lot to do with differences in fines, perhaps also age affects fines differences between males and females.\n\nPart A\nRun a regression of Amount on Age and Female. How does the coefficient on Female change?\n\n\n\nPart B\nNow let’s see if the difference in fine between men and women are different depending on the driver’s age. Run the regression again, but add an interaction term between Female and Age, using Female*Age or Female:Age.\n\\[\\widehat{\\text{Amount}}_i=\\hat{\\beta_0}+\\hat{\\beta_1} \\, \\text{Age}_i + \\hat{\\beta_2} \\, \\text{Female}_i + \\hat{\\beta_3} \\, (\\text{Age}_i \\times \\text{Female}_i)\\]\n\n\n\nPart C\nWrite out your estimated regression equation.\n\n\n\nPart D\nInterpret the interaction effect. Is it statistically significant?\n\n\n\nPart E\nPlugging in 0 or 1 as necessary, rewrite (on your paper) this regression as two separate equations, one for Males and one for Females.\n\n\n\nPart F\nLet’s try to visualize this. Make a scatterplot of Age (X) and Amount (Y) and include a regression line.\nTry adding color = Female inside your original (global) aes() layer. This will produce two sets of points and regression lines colored by Female.\nBy the way, if it isn’t a factor variable already, we can ensure that it is with as.factor(Female). We shouldn’t need to in this case because we already reset Female as a faction in question 1.\n\n\n\nPart G\nAdd a final facet layer to the plot make two different sub-plots by sex with facet_wrap( ~ Female)."
+  },
+  {
+    "objectID": "r/4.3-r.html#question-8",
+    "href": "r/4.3-r.html#question-8",
+    "title": "4.3 — Categorical Data and Interactions — Practice",
+    "section": "Question 8",
+    "text": "Question 8\nNow let’s look at the possible interaction between sex (Male or Female) and whether a driver is from In-State or Out-of-State (OutState).\n\nPart A\nUse R to examine the data and find the average fine for:\n\nMales In-State\nMales Out-of-State\nFemales In-State\nFemales Out-of-State\n\n\n\n\nPart B\nNow run a regression of the following model:\n\\[\\widehat{\\text{Amount}}_i=\\hat{\\beta_0}+\\hat{\\beta_1} \\, \\text{Female}_i+\\hat{\\beta_2} \\, \\text{OutState}_i+\\hat{\\beta_3} \\, (\\text{Female}_i \\times \\text{OutState}_i)\\]\n\n\n\nPart C\nWrite out the estimated regression equation.\n\n\n\nPart D\nWhat does each coefficient mean?\n\n\n\nPart E\nUsing the regression equation, what are the average fine for\n\nMales In-State\nMales Out-of-State\nFemales In-State\nFemales Out-of-State\n\nCompare to your answers in part A."
+  },
+  {
+    "objectID": "r/4.3-r.html#question-9",
+    "href": "r/4.3-r.html#question-9",
+    "title": "4.3 — Categorical Data and Interactions — Practice",
+    "section": "Question 9",
+    "text": "Question 9\nCollect your regressions from questions 4, 5b, 7a, 7b, and 8b and output them in a regression table with modelsummary()."
+  },
+  {
     "objectID": "resources/R-packages.html",
     "href": "resources/R-packages.html",
     "title": "R Packages Used in this Course",

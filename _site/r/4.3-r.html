@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>ECON 480 — Econometrics - 4.3 — Categorical Data and Interactions — Practice</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../files/images/metrics_hex.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="ECON 480 — Econometrics - 4.3 — Categorical Data and Interactions — Practice">
+<meta property="og:description" content="Quarto file R Studio Cloud">
+<meta property="og:site-name" content="ECON 480 — Econometrics">
+<meta name="twitter:title" content="ECON 480 — Econometrics - 4.3 — Categorical Data and Interactions — Practice">
+<meta name="twitter:description" content="Quarto file R Studio Cloud">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <img src="../files/images/metrics_hex.png" alt="">
+    <span class="navbar-title">ECON 480 — Econometrics</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../syllabus.html">Syllabus</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../schedule.html">Schedule</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../content/index.html">Content</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../assignments/index.html">Assignments</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resources/index.html">Resources</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://hoodcollegeeconomics.slack.com"><i class="bi bi-slack" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../rstudio.cloud"><i class="bi bi-cloud-fill" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">4.3 — Categorical Data and Interactions — Practice</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r/1.2-r.html" class="sidebar-item-text sidebar-link">1.2 — Meet R</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r/1.3-r.html" class="sidebar-item-text sidebar-link">1.3 — Data Visualization</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r/1.4-r.html" class="sidebar-item-text sidebar-link">1.4 — Data Wrangling</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r/1.5-r.html" class="sidebar-item-text sidebar-link">1.5 — Optimize Workflow</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r/2.5-r.html" class="sidebar-item-text sidebar-link">2.5 — Precision and Diagnostics</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r/2.7-r.html" class="sidebar-item-text sidebar-link">2.7 — Hypothesis Testing for Regression</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r/3.2-r.html" class="sidebar-item-text sidebar-link">3.2 — DAGs</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r/4.1-r.html" class="sidebar-item-text sidebar-link">4.1 — Multivariate OLS Estimators</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r/4.3-r.html" class="sidebar-item-text sidebar-link active">4.3 — Categorical Data and Interactions</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#required-packages-data" id="toc-required-packages-data" class="nav-link active" data-scroll-target="#required-packages-data">Required Packages &amp; Data</a>
+  <ul class="collapse">
+  <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a>
+  <ul class="collapse">
+  <li><a href="#part-a" id="toc-part-a" class="nav-link" data-scroll-target="#part-a">Part A</a></li>
+  <li><a href="#part-b" id="toc-part-b" class="nav-link" data-scroll-target="#part-b">Part B</a></li>
+  <li><a href="#part-c" id="toc-part-c" class="nav-link" data-scroll-target="#part-c">Part C</a></li>
+  </ul></li>
+  <li><a href="#question-2" id="toc-question-2" class="nav-link" data-scroll-target="#question-2">Question 2</a></li>
+  <li><a href="#question-3" id="toc-question-3" class="nav-link" data-scroll-target="#question-3">Question 3</a>
+  <ul class="collapse">
+  <li><a href="#part-a-1" id="toc-part-a-1" class="nav-link" data-scroll-target="#part-a-1">Part A</a></li>
+  <li><a href="#part-b-1" id="toc-part-b-1" class="nav-link" data-scroll-target="#part-b-1">Part B</a></li>
+  <li><a href="#part-c-1" id="toc-part-c-1" class="nav-link" data-scroll-target="#part-c-1">Part C</a></li>
+  </ul></li>
+  <li><a href="#question-4" id="toc-question-4" class="nav-link" data-scroll-target="#question-4">Question 4</a>
+  <ul class="collapse">
+  <li><a href="#part-a-2" id="toc-part-a-2" class="nav-link" data-scroll-target="#part-a-2">Part A</a></li>
+  <li><a href="#part-b-2" id="toc-part-b-2" class="nav-link" data-scroll-target="#part-b-2">Part B</a></li>
+  <li><a href="#part-c-2" id="toc-part-c-2" class="nav-link" data-scroll-target="#part-c-2">Part C</a></li>
+  </ul></li>
+  <li><a href="#question-5" id="toc-question-5" class="nav-link" data-scroll-target="#question-5">Question 5</a>
+  <ul class="collapse">
+  <li><a href="#part-a-3" id="toc-part-a-3" class="nav-link" data-scroll-target="#part-a-3">Part A</a></li>
+  <li><a href="#part-b-3" id="toc-part-b-3" class="nav-link" data-scroll-target="#part-b-3">Part B</a></li>
+  <li><a href="#part-c-3" id="toc-part-c-3" class="nav-link" data-scroll-target="#part-c-3">Part C</a></li>
+  <li><a href="#part-d" id="toc-part-d" class="nav-link" data-scroll-target="#part-d">Part D</a></li>
+  </ul></li>
+  <li><a href="#question-6" id="toc-question-6" class="nav-link" data-scroll-target="#question-6">Question 6</a></li>
+  <li><a href="#question-7" id="toc-question-7" class="nav-link" data-scroll-target="#question-7">Question 7</a>
+  <ul class="collapse">
+  <li><a href="#part-a-4" id="toc-part-a-4" class="nav-link" data-scroll-target="#part-a-4">Part A</a></li>
+  <li><a href="#part-b-4" id="toc-part-b-4" class="nav-link" data-scroll-target="#part-b-4">Part B</a></li>
+  <li><a href="#part-c-4" id="toc-part-c-4" class="nav-link" data-scroll-target="#part-c-4">Part C</a></li>
+  <li><a href="#part-d-1" id="toc-part-d-1" class="nav-link" data-scroll-target="#part-d-1">Part D</a></li>
+  <li><a href="#part-e" id="toc-part-e" class="nav-link" data-scroll-target="#part-e">Part E</a></li>
+  <li><a href="#part-f" id="toc-part-f" class="nav-link" data-scroll-target="#part-f">Part F</a></li>
+  <li><a href="#part-g" id="toc-part-g" class="nav-link" data-scroll-target="#part-g">Part G</a></li>
+  </ul></li>
+  <li><a href="#question-8" id="toc-question-8" class="nav-link" data-scroll-target="#question-8">Question 8</a>
+  <ul class="collapse">
+  <li><a href="#part-a-5" id="toc-part-a-5" class="nav-link" data-scroll-target="#part-a-5">Part A</a></li>
+  <li><a href="#part-b-5" id="toc-part-b-5" class="nav-link" data-scroll-target="#part-b-5">Part B</a></li>
+  <li><a href="#part-c-5" id="toc-part-c-5" class="nav-link" data-scroll-target="#part-c-5">Part C</a></li>
+  <li><a href="#part-d-2" id="toc-part-d-2" class="nav-link" data-scroll-target="#part-d-2">Part D</a></li>
+  <li><a href="#part-e-1" id="toc-part-e-1" class="nav-link" data-scroll-target="#part-e-1">Part E</a></li>
+  </ul></li>
+  <li><a href="#question-9" id="toc-question-9" class="nav-link" data-scroll-target="#question-9">Question 9</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">4.3 — Categorical Data and Interactions — Practice</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p style="text-align:center">
+<a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_3_categorical_data_and_interactions.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i>Quarto file</span></a> <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4913861"><span class="btn btn-primary btn-lg"><i class="fas fa-cloud"></i>R Studio Cloud</span></a>
+</p>
+<!--## Answers
+
+<p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_1_multivariate_ols_estimators_answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> Answer Key (html) </a></span> <a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_1_multivariate_ols_estimators_answers.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Answer Key (.qmd)</a></span></p>-->
+<section id="required-packages-data" class="level1">
+<h1>Required Packages &amp; Data</h1>
+<p>Load all the required packages we will use (<strong>note I have installed them already into the cloud project</strong>) by running (clicking the green play button) the chunk below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># your friend and mine</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom) <span class="co"># for tidy regression</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary) <span class="co"># for nice regression tables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We are returning to the speeding tickets data that we began to explore in <a href="http://metricsf22.classes.ryansafner.com/r/4.1-r-practice">R Practice 4.1 on Multivariate Regression</a>. Download and read in (<code>read_csv</code>) the data below.</p>
+<ul>
+<li><a href="http://metricsf21.classes.ryansafner.com/data/speeding_tickets.csv"><i class="fas fa-table"></i> <code>speeding_tickets.csv</code></a></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run or edit this chunk (if you want to rename the data)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># read in data from url </span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or you could download and upload it to this project instead</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>speed <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://metricsf22.classes.ryansafner.com/files/data/speeding_tickets.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This data comes from a paper by Makowsky and Strattman (2009) that we will examine later. Even though state law sets a formula for tickets based on how fast a person was driving, police officers in practice often deviate from that formula. This dataset includes information on all traffic stops. An amount for the fine is given only for observations in which the police officer decided to assess a fine. There are a number of variables in this dataset, but the one’s we’ll look at are:</p>
+<p><code>Amount</code> | Amount of fine (in dollars) assessed for speeding |<br>
+<code>Age</code> | Age of speeding driver (in years) |<br>
+<code>MPHover</code> | Miles per hour over the speed limit |<br>
+<code>Black</code> | Dummy <span class="math inline">\(=1\)</span> if driver was black, <span class="math inline">\(=0\)</span> if not |<br>
+<code>Hispanic</code> | Dummy <span class="math inline">\(=1\)</span> if driver was Hispanic, <span class="math inline">\(=0\)</span> if not |<br>
+<code>Female</code> | Dummy <span class="math inline">\(=1\)</span> if driver was female, <span class="math inline">\(=0\)</span> if not |<br>
+<code>OutTown</code> | Dummy <span class="math inline">\(=1\)</span> if driver was not from local town, <span class="math inline">\(=0\)</span> if not |<br>
+<code>OutState</code> | Dummy <span class="math inline">\(=1\)</span> if driver was not from local state, <span class="math inline">\(=0\)</span> if not |<br>
+<code>StatePol</code> | Dummy <span class="math inline">\(=1\)</span> if driver was stopped by State Police, <span class="math inline">\(=0\)</span> if stopped by other (local) |</p>
+<p>We want to explore <strong>who gets fines, and how much</strong>. We’ll come back to the other variables (which are categorical) in this dataset in later lessons.</p>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<p>We will have to do a little more cleaning to get some of the data into a more usable form.</p>
+<section id="part-a" class="level3">
+<h3 class="anchored" data-anchor-id="part-a">Part A</h3>
+<p>Inspect the data with <code>str()</code> or <code>head()</code> or <code>glimpse()</code> to see what it looks like.</p>
+<!--WRITE YOUR ANSWERS BELOW -->
+<p>What <code>class</code> of variable are <code>Black</code>, <code>Hispanic</code>, <code>Female</code>, <code>OutTown</code>, and <code>OutState</code>?</p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-b" class="level3">
+<h3 class="anchored" data-anchor-id="part-b">Part B</h3>
+<p>Notice that when importing the data from the <code>.csv</code> file, <code>R</code> interpreted these variables as <code>numeric</code> (<code>num</code>) or <code>double</code> (<code>dbl</code>), but we want them to be <code>factor</code> (<code>fct</code>) variables, to ensure <code>R</code> recognizes that there are two groups (categories), 0 and 1.</p>
+<p>You could convert the variables one at a time to factors using <code>as.factor()</code> inside a <code>mutate()</code> command. But there is a special <code>mutate()</code> command that allows you to apply a transformation (like changing a variable’s class to <code>factor</code>), which you can run the following chunk to execute:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run or edit this chunk</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>speed <span class="ot">&lt;-</span> speed <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">c</span>(<span class="st">"Black"</span>, <span class="st">"Hispanic"</span>, <span class="st">"Female"</span>, <span class="st">"OutTown"</span>, <span class="st">"OutState"</span>), factor)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>speed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Confirm that these are now <code>factor</code> (<code>fct</code>) variables.</p>
+</section>
+<section id="part-c" class="level3">
+<h3 class="anchored" data-anchor-id="part-c">Part C</h3>
+<p>Finally, recall from the last time we worked with this data that there are many <code>NA</code>s for <code>Amount</code> (these are people that were stopped but did not receive a fine). Let’s <code>filter()</code> only those observations for which <code>Amount</code> is a positive number, and save this in your dataframe (assign and overwrite it, or make a new dataframe).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run or edit this chunk</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># see the NAs </span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>speed <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Amount) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># overwrite data to keep only positive Amounts</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>speed <span class="ot">&lt;-</span> speed <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Amount <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># see there are no more NAs</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>speed <span class="sc">%&gt;%</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Amount) <span class="sc">%&gt;%</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="question-2" class="level2">
+<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
+<p>Does the sex of the driver affect the fine? There’s already a dummy variable <code>Female</code> in the dataset, so create a scatterplot between <code>Amount</code> (as <code>y</code>) and Female (as <code>x</code>).</p>
+<p>Hint: Use <code>geom_jitter()</code> instead of <code>geom_point()</code> to better see the points, and play around with <code>width</code> settings inside <code>geom_jitter()</code></p>
+<!--WRITE YOUR ANSWERS BELOW -->
+<p>As an aside, if you had not made <code>Female</code> a <code>factor</code>, and kept it <code>numeric</code>, it might alter the plot.</p>
+<p>You can make <code>Female</code> a <code>factor</code> just for plotting purposes by setting <code>aes(x = as.factor(Female))</code> inside the <code>aes()</code> layer of your <code>ggplot()</code> code.</p>
+</section>
+<section id="question-3" class="level2">
+<h2 class="anchored" data-anchor-id="question-3">Question 3</h2>
+<p>Now let’s start looking at the distribution conditionally to find the different group means.</p>
+<section id="part-a-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-a-1">Part A</h3>
+<p>Find the mean and standard deviation of <code>Amount</code> for <em>male</em> drivers and again for <em>female</em> drivers.</p>
+<p>Hint: properly <code>filter()</code> the data and then use the <code>summarize()</code> command.</p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-b-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-b-1">Part B</h3>
+<p>What is the difference between the average Amount for Males and Females?</p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-c-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-c-1">Part C</h3>
+<p>We did not go over how to do this in class, but you can run a <strong>t-test for the difference in group means</strong> to see if the difference is statistically significant. The syntax is similar for a regression:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run or edit this chunk</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Amount <span class="sc">~</span> Female,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">data =</span> speed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Is there a statistically significant difference between <code>Amount</code> for male and female drivers? Hint: this is like any hypothesis test. Here <span class="math inline">\(H_0: \text{difference}=0\)</span>. A <span class="math inline">\(t\)</span>-value needs to be large enough to be greater than a critical value of <span class="math inline">\(t\)</span>. Check the <span class="math inline">\(p\)</span>-value and see if it is less than our standard of <span class="math inline">\(\alpha=0.05.\)</span></p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+</section>
+<section id="question-4" class="level2">
+<h2 class="anchored" data-anchor-id="question-4">Question 4</h2>
+<section id="part-a-2" class="level3">
+<h3 class="anchored" data-anchor-id="part-a-2">Part A</h3>
+<p>Now run the following regression to ensure we get the same result as the t-test.</p>
+<p><span class="math display">\[\widehat{\text{Amount}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Female}_i\]</span></p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-b-2" class="level3">
+<h3 class="anchored" data-anchor-id="part-b-2">Part B</h3>
+<p>Write out the estimated regression equation.</p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-c-2" class="level3">
+<h3 class="anchored" data-anchor-id="part-c-2">Part C</h3>
+<p>Use the regression coefficients to find</p>
+<ol type="i">
+<li>the average <code>Amount</code> for men</li>
+<li>the average <code>Amount</code> for women</li>
+<li>the difference in average <code>Amount</code> between men and women</li>
+</ol>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+</section>
+<section id="question-5" class="level2">
+<h2 class="anchored" data-anchor-id="question-5">Question 5</h2>
+<p>Let’s recode the sex variable to <code>Male</code> instead of <code>Female</code>.</p>
+<section id="part-a-3" class="level3">
+<h3 class="anchored" data-anchor-id="part-a-3">Part A</h3>
+<p>Make a new variable called <code>Male</code> and save it in your dataframe using the <code>ifelse()</code> command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run or edit this chunk</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>speed <span class="ot">&lt;-</span> speed <span class="sc">%&gt;%</span> <span class="co"># overwrite or save as another dataframe</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Male =</span> <span class="fu">ifelse</span>(<span class="at">test =</span> Female <span class="sc">==</span> <span class="dv">0</span>, <span class="co"># test indiv. to see if Female is 0</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">yes =</span> <span class="dv">1</span>, <span class="co"># if yes (a Male), code Male as 1</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">no  =</span> <span class="dv">0</span>), <span class="co"># if no (a Female), code Male as 0</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>         )</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify it worked</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>speed <span class="sc">%&gt;%</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Female, Male)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="part-b-3" class="level3">
+<h3 class="anchored" data-anchor-id="part-b-3">Part B</h3>
+<p>Run the same regression as in question 4, but use <code>Male</code> instead of <code>Female</code>.</p>
+<p><span class="math display">\[\widehat{\text{Amount}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i\]</span></p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-c-3" class="level3">
+<h3 class="anchored" data-anchor-id="part-c-3">Part C</h3>
+<p>Write out the estimated regression equation.</p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-d" class="level3">
+<h3 class="anchored" data-anchor-id="part-d">Part D</h3>
+<p>Use the regression coefficients to find</p>
+<ol type="i">
+<li>the average <code>Amount</code> for men</li>
+<li>the average <code>Amount</code> for women</li>
+<li>the difference in average <code>Amount</code> between men and women</li>
+</ol>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+</section>
+<section id="question-6" class="level2">
+<h2 class="anchored" data-anchor-id="question-6">Question 6</h2>
+<p>Run a regression of <code>Amount</code> on <code>Male</code> and <code>Female</code>. What happens, and why?</p>
+<p><span class="math display">\[\widehat{\text{Amount}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i + \hat{\beta_2} \, \text{Female}_i\]</span></p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="question-7" class="level2">
+<h2 class="anchored" data-anchor-id="question-7">Question 7</h2>
+<p><code>Age</code> probably has a lot to do with differences in fines, perhaps also age affects fines differences between males and females.</p>
+<section id="part-a-4" class="level3">
+<h3 class="anchored" data-anchor-id="part-a-4">Part A</h3>
+<p>Run a regression of <code>Amount</code> on <code>Age</code> and <code>Female.</code> How does the coefficient on <code>Female</code> change?</p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-b-4" class="level3">
+<h3 class="anchored" data-anchor-id="part-b-4">Part B</h3>
+<p>Now let’s see if the difference in fine between men and women are different depending on the driver’s age. Run the regression again, but add an <strong>interaction term</strong> between <code>Female</code> and <code>Age</code>, using <code>Female*Age</code> or <code>Female:Age</code>.</p>
+<p><span class="math display">\[\widehat{\text{Amount}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Age}_i + \hat{\beta_2} \, \text{Female}_i + \hat{\beta_3} \, (\text{Age}_i \times \text{Female}_i)\]</span></p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-c-4" class="level3">
+<h3 class="anchored" data-anchor-id="part-c-4">Part C</h3>
+<p>Write out your estimated regression equation.</p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-d-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-d-1">Part D</h3>
+<p>Interpret the interaction effect. Is it statistically significant?</p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-e" class="level3">
+<h3 class="anchored" data-anchor-id="part-e">Part E</h3>
+<p>Plugging in 0 or 1 as necessary, rewrite (on your paper) this regression as <em>two separate</em> equations, one for Males and one for Females.</p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-f" class="level3">
+<h3 class="anchored" data-anchor-id="part-f">Part F</h3>
+<p>Let’s try to visualize this. Make a scatterplot of <code>Age</code> (X) and <code>Amount</code> (Y) and include a regression line.</p>
+<p>Try adding <code>color = Female</code> inside your original (global) <code>aes()</code> layer. This will produce two sets of points and regression lines colored by <code>Female</code>.</p>
+<p>By the way, if it isn’t a <code>factor</code> variable already, we can ensure that it is with <code>as.factor(Female)</code>. We shouldn’t need to in <em>this</em> case because we already reset <code>Female</code> as a faction in question 1.</p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-g" class="level3">
+<h3 class="anchored" data-anchor-id="part-g">Part G</h3>
+<p>Add a final facet layer to the plot make two different sub-plots by sex with <code>facet_wrap( ~ Female)</code>.</p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+</section>
+<section id="question-8" class="level2">
+<h2 class="anchored" data-anchor-id="question-8">Question 8</h2>
+<p>Now let’s look at the possible interaction between sex (<code>Male</code> or <code>Female</code>) and whether a driver is from In-State or Out-of-State (<code>OutState</code>).</p>
+<section id="part-a-5" class="level3">
+<h3 class="anchored" data-anchor-id="part-a-5">Part A</h3>
+<p>Use <code>R</code> to examine the data and find the average fine for:</p>
+<ol type="i">
+<li>Males In-State</li>
+<li>Males Out-of-State</li>
+<li>Females In-State</li>
+<li>Females Out-of-State</li>
+</ol>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-b-5" class="level3">
+<h3 class="anchored" data-anchor-id="part-b-5">Part B</h3>
+<p>Now run a regression of the following model:</p>
+<p><span class="math display">\[\widehat{\text{Amount}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Female}_i+\hat{\beta_2} \, \text{OutState}_i+\hat{\beta_3} \, (\text{Female}_i \times \text{OutState}_i)\]</span></p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-c-5" class="level3">
+<h3 class="anchored" data-anchor-id="part-c-5">Part C</h3>
+<p>Write out the estimated regression equation.</p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-d-2" class="level3">
+<h3 class="anchored" data-anchor-id="part-d-2">Part D</h3>
+<p>What does each coefficient mean?</p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+<section id="part-e-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-e-1">Part E</h3>
+<p>Using the regression equation, what are the average fine for</p>
+<ol type="i">
+<li>Males In-State</li>
+<li>Males Out-of-State</li>
+<li>Females In-State</li>
+<li>Females Out-of-State</li>
+</ol>
+<p>Compare to your answers in part A.</p>
+<!--WRITE YOUR ANSWERS BELOW -->
+</section>
+</section>
+<section id="question-9" class="level2">
+<h2 class="anchored" data-anchor-id="question-9">Question 9</h2>
+<p>Collect your regressions from questions 4, 5b, 7a, 7b, and 8b and output them in a regression table with <code>modelsummary()</code>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Content <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> 2022 by <a href="https://www.ryansafner.com">Ryan Safner</a> <br> All content licensed under a <i class="fa-brands fa-creative-commons" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-by" aria-hidden="true"></i> <i class="fa-brands fa-creative-commons-nc" aria-hidden="true"></i> <a href="https://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)</a></div>   
+    <div class="nav-footer-right">Made with <i class="fa-brands fa-r-project" aria-hidden="true"></i> and <a href="https://quarto.org/">Quarto</a><br> <a href="https://www.github.com/ryansafner/metricsf22">View the source at <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></div>
+  </div>
+</footer>
+
+
+
+</body></html>

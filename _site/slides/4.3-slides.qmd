@@ -237,7 +237,7 @@ ggplot(data = wages)+
   geom_smooth(method = "lm", color = "black")+
   scale_y_continuous(labels = scales::dollar)+
   scale_color_manual(values = c("Female" = "#e64173", "Male" = "#0047AB"))+
-  labs(x = "Female",
+  labs(x = "Gender",
        y = "Wage")+
   guides(color = "none")+ # hide legend
   theme_bw(base_family = "Fira Sans Condensed",
@@ -256,7 +256,7 @@ ggplot(data = wages)+
   geom_smooth(method = "lm", color = "black")+
   scale_y_continuous(labels = scales::dollar)+
   scale_color_manual(values = c("Female" = "#e64173", "Male" = "#0047AB"))+
-  labs(x = "Female",
+  labs(x = "Gender",
        y = "Wage")+
   guides(color = "none")+ # hide legend
   theme_bw(base_family = "Fira Sans Condensed",
@@ -1099,10 +1099,10 @@ no_west_reg <- lm(wage ~ northeast + midwest + south, data = wages)
 ::: {.column width="50%"}
 ```{r}
 library(modelsummary)
-modelsummary(models = list("Wage" = no_noreast_reg,
-                           "Wage" = no_northcen_reg,
-                           "Wage" = no_south_reg,
-                           "Wage" = no_west_reg),
+modelsummary(models = list("No Northeast" = no_noreast_reg,
+                           "No Midwest" = no_northcen_reg,
+                           "No South" = no_south_reg,
+                           "No West" = no_west_reg),
              fmt = 2, # round to 2 decimals
              output = "html",
              coef_rename = c("(Intercept)" = "Constant"),
@@ -1344,11 +1344,11 @@ $$Y_i=\beta_0+\beta_1X_i+\beta_2 D_i+\beta_3 \color{#e64173}{(X_i \times D_i)}$$
 
 . . .
 
-- $\beta_2$: Marginal effect on $Y_i$ of difference between $D_i=0$ and $D_i=1$
+- $\beta_2$: Marginal effect on $Y_i$ of difference between $D_i=0$ and $D_i=1$ when $X=0$ (“intercepts”)
 
 . . .
 
-- $\beta_3$: The **difference** of the marginal effect of $X_i \rightarrow Y_i$ between $D_i=0$ and $D_i=1$
+- $\beta_3$: The **difference** of the marginal effect of $X_i \rightarrow Y_i$ between $D_i=0$ and $D_i=1$ (“slopes”)
 
 . . .
 
@@ -1595,15 +1595,15 @@ $$Y_i=\beta_0+\beta_1D_{1i}+\beta_2 D_{2i}+\beta_3 \color{#e64173}{(D_{1i} \time
 
 . . .
 
-- $\hat{\beta_1}$: effect on $Y$ of going from $D_{1i}=0$ to $D_{1i}=1$ when $D_{2i}=0$
+- $\hat{\beta_1}$: effect on $Y$ of going from $D_{1}=0$ to $D_{1}=1$ when $D_{2}=0$
 
 . . .
 
-- $\hat{\beta_2}$: effect on $Y$ of going from $D_{2i}=0$ to $D_{2i}=1$ when $D_{1i}=0$
+- $\hat{\beta_2}$: effect on $Y$ of going from $D_{2}=0$ to $D_{2}=1$ when $D_{1}=0$
 
 . . .
 
-- $\hat{\beta_3}$: effect on $Y$ of going from $D_{1i}=0$ to $D_{1i}=1$ when $D_{2i}=1$
+- $\hat{\beta_3}$: effect on $Y$ of going from $D_{1}=0$ to $D_{1}=1$ when $D_{2}=1$ vs. $D_2=0$^[And the effect on $Y$ of going from $$D_2=0$ to $D_2=1$ when $D_1=1$ vs. $D_1=0$.]
   - *increment* to the effect of $D_{1i}$ going from 0 to 1 when $D_{2i}=1$ (vs. 0)
 
 . . .
@@ -1619,7 +1619,7 @@ $$Y_i=\beta_0+\beta_1D_{1i}+\beta_2 D_{2i}+\beta_3 \color{#e64173}{(D_{1i} \time
 
 - To interpret coefficients, compare cases:
   - Hold $D_{2}$ constant (set to some value $D_{2}=\mathbf{d_2}$)
-  - Plug in 0s or 1s for $D_{1}$
+  - Let $D_1$ change $\color{#FFA500}{0}$ to $\color{#44C1C4}{1}$:
 
 \begin{align*}
 E(Y|D_{1}&=\color{#FFA500}{0}, D_{2}=\mathbf{d_2}) = \beta_0+\beta_2 \mathbf{d_2}\\
@@ -1919,3 +1919,29 @@ Marginal Effect of *Experience* on Wages by Years of *Education*:
 - Marginal effect of experience $\rightarrow$ wages **increases** with more education
 
 - If you want to estimate the marginal effects more precisely, and graph them, see the appendix in [today’s appendix](resources/appendices/4.3-appendix)
+
+## F
+
+```{r}
+full_controls <- lm(wage ~ educ + exper + female + married + region + exper + female:exper + female:married + educ:exper, data = wages)
+summary(full_controls)
+```
+
+```{r}
+library(modelsummary)
+modelsummary(models = list("Wage" = female_reg,
+                           "Wage" = male_reg),
+             fmt = 2, # round to 2 decimals
+             output = "html",
+             coef_rename = c("(Intercept)" = "Constant"),
+             gof_map = list(
+               list("raw" = "nobs", "clean" = "n", "fmt" = 0),
+               #list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
+               list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
+               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
+             ),
+             escape = FALSE,
+             stars = c('*' = .1, '**' = .05, '***' = 0.01)
+)
+
+```

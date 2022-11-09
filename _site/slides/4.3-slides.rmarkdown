@@ -16,6 +16,7 @@ execute:
   freeze: auto
 ---
 
+
 ##  {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
 
 [4.3 --- Categorical Data]{.custom-title}
@@ -25,6 +26,7 @@ execute:
 [Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
 
 [<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+
 
 ```{r}
 #| label: setup
@@ -56,6 +58,7 @@ wages<-wages %>%
                          "Female")))
 
 ```
+
 
 ## Contents {background-color="#314f4f"}
 
@@ -101,6 +104,7 @@ wages<-wages %>%
 
 - Suppose I have data on students:
 
+
 ```{r}
 set.seed(2)
 students <- tibble(
@@ -111,6 +115,7 @@ students <- tibble(
 
 students %>% head(n = 5)
 ```
+
 
 . . .
 
@@ -125,6 +130,7 @@ students %>% head(n = 5)
 
 . . .
 
+
 ```{r}
 #| echo: true
 #| output-location: fragment
@@ -136,7 +142,9 @@ students %>% head(n = 5)
 ```
 
 
+
 ## Factors in `R` III
+
 
 ```{r}
 #| echo: true
@@ -151,10 +159,12 @@ students %>%
 
 ```
 
+
 ## *Ordered* Factors in `R` I
 
 - If there is a rank order you wish to preserve, you can make an `ordered` (`factor`) variable
   - list the `levels` from 1st to last
+
 
 ```{r}
 #| echo: true
@@ -168,7 +178,9 @@ students <- students %>%
 students %>% head(n = 5)
 ```
 
+
 ## *Ordered* Factors in `R` II
+
 
 ```{r}
 #| echo: true
@@ -178,6 +190,7 @@ students %>%
   group_by(rank) %>%
   count()
 ```
+
 
 
 ## Example Research Question with Categorical Data
@@ -226,6 +239,7 @@ How much higher wages, on average, do men earn compared to women?
 ::: {.panel-tabset}
 
 ## Plot
+
 ```{r}
 #| fig-align: center
 #| fig-width: 14
@@ -245,7 +259,9 @@ ggplot(data = wages)+
 
 ```
 
+
 ## Code
+
 ```{r}
 #| echo: true
 #| eval: false
@@ -263,6 +279,7 @@ ggplot(data = wages)+
            base_size = 20)
 
 ```
+
 
 :::
 
@@ -289,6 +306,7 @@ ggplot(data = wages)+
 
 ::: callout-tip
 ## Example
+
 
 $$\widehat{Wage}_i=\hat{\beta_0}+\hat{\beta_1} \, Female_i \quad \quad \text{ where } Female_i =
  		 \begin{cases}
@@ -411,7 +429,9 @@ ggplot(data = wages)+
 
 ## Dummy Variables as Group Means {.smaller}
 
+
 $$\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1} D_i \quad \text{ where }D_i=\{\color{#6A5ACD}{0},\color{#e64173}{1}\}$$
+
 
 . . .
 
@@ -440,7 +460,9 @@ $$\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1} D_i \quad \text{ where }D_i=\{\color{#6A
 ::: callout-tip
 ## Example
 
+
 $$\widehat{Wage}_i=\hat{\beta_0}+\hat{\beta_1} \, Female_i$$
+
 
 :::
 
@@ -448,7 +470,9 @@ $$\widehat{Wage}_i=\hat{\beta_0}+\hat{\beta_1} \, Female_i$$
 
 . . .
 
+
 $$\mathbb{E}[Wage|Female=0]=\hat{\beta_0}$$
+
 
 . . .
 
@@ -456,7 +480,9 @@ $$\mathbb{E}[Wage|Female=0]=\hat{\beta_0}$$
 
 . . .
 
+
 $$\mathbb{E}[Wage|Female=1]=\hat{\beta_0}+\hat{\beta_1}$$
+
 
 . . .
 
@@ -464,7 +490,9 @@ $$\mathbb{E}[Wage|Female=1]=\hat{\beta_0}+\hat{\beta_1}$$
 
 . . .
 
+
 $$\hat{\beta_1}$$
+
 
 ## Comparing Groups in Regression: Scatterplot
 
@@ -507,7 +535,9 @@ ggplot(data = wages)+
            base_size=20)
 ```
 
+
 $$\widehat{Wage}_i=\hat{\beta_0}+\hat{\beta_1} \, Female_i$$
+
 
 ## Comparing Groups in Regression: Scatterplot
 
@@ -538,7 +568,9 @@ ggplot(data = wages)+
            base_size=20)
 ```
 
+
 $$\widehat{Wage}_i=\hat{\beta_0}+\hat{\beta_1} \, Female_i$$
+
 
 ## The Data {.smaller}
 
@@ -699,7 +731,9 @@ From $t$-test of difference in group means
 tidy(female_reg)
 ```
 
+
 $$\widehat{\text{Wages}_i}=7.10-2.51 \, \text{Female}_i$$
+
 :::
 :::
 
@@ -712,7 +746,9 @@ $$\widehat{\text{Wages}_i}=7.10-2.51 \, \text{Female}_i$$
 
 Suppose instead of `female` we had used:
 
+
 $$\widehat{Wage}_i=\hat{\beta_0}+\hat{\beta_1} \, Male_i \quad \quad \text{ where } Male_i = \begin{cases} 1 & \text{if person } i \text{ is } Male \\ 0 & \text{if person } i \text{ is } Female\\ \end{cases}$$
+
 :::
 
 ## Recoding Dummies in the Data
@@ -789,7 +825,9 @@ ggplot(data = wages)+
 ::: callout-tip
 ## Example
 
+
 $$\widehat{Wage}_i=\hat{\beta_0}+\hat{\beta_1} \, Male_i$$
+
 
 :::
 
@@ -797,7 +835,9 @@ $$\widehat{Wage}_i=\hat{\beta_0}+\hat{\beta_1} \, Male_i$$
 
 . . .
 
+
 $$\mathbb{E}[Wage|Male=1]=\hat{\beta_0}+\hat{\beta_1}$$
+
 
 . . .
 
@@ -805,7 +845,9 @@ $$\mathbb{E}[Wage|Male=1]=\hat{\beta_0}+\hat{\beta_1}$$
 
 . . .
 
+
 $$\mathbb{E}[Wage|Male=0]=\hat{\beta_0}$$
+
 
 . . .
 
@@ -813,7 +855,9 @@ $$\mathbb{E}[Wage|Male=0]=\hat{\beta_0}$$
 
 . . .
 
+
 $$\hat{\beta_1}$$
+
 
 
 
@@ -954,7 +998,9 @@ How do wages vary by region of the country? Let $Region_i=\{Northeast, \, Midwes
 
 - Can we run the following regression?
 
+
 $$\widehat{Wages_i}=\hat{\beta_0}+\hat{\beta_1} \, Region_i$$
+
 
 ## Using Categorical Variables in Regression II
 
@@ -965,13 +1011,17 @@ How do wages vary by region of the country? Let $Region_i=\{Northeast, \, Midwes
 :::
 
 - Code region numerically: 
+
 $$Region_i= \begin{cases}1 & \text{if } i \text{ is in }Northeast\\ 2 & \text{if } i \text{ is in } Midwest\\ 3 & \text{if } i \text{ is in } South \\ 4 & \text{if } i \text{ is in } West\\ \end{cases}$$
+
 
 . . .
 
 - Can we run the following regression?
 
+
 $$\widehat{Wages_i}=\hat{\beta_0}+\hat{\beta_1} \, Region_i$$
+
 
 ## Using Categorical Variables in Regression III
 
@@ -991,7 +1041,9 @@ How do wages vary by region of the country? Let $Region_i=\{Northeast, \, Midwes
 
 - Can we run the following regression?
 
+
 $$\widehat{Wages_i}=\hat{\beta_0}+\hat{\beta_1}Northeast_i+\hat{\beta_2}Midwest_i+\hat{\beta_3}South_i+\hat{\beta_4}West_i$$
+
 
 . . .
 
@@ -1004,12 +1056,16 @@ $$\widehat{Wages_i}=\hat{\beta_0}+\hat{\beta_1}Northeast_i+\hat{\beta_2}Midwest_
 
 ::: callout-tip
 ## Example
+
 $$\widehat{Wages_i}=\hat{\beta_0}+\hat{\beta_1}Northeast_i+\hat{\beta_2}Midwest_i+\hat{\beta_3}South_i+\hat{\beta_4}West_i$$
+
 :::
 
 - If we include *all* possible categories, they are [perfectly multicollinear]{.hi-purple}, an exact linear function of one another: 
 
+
 $$Northeast_i+Midwest_i+South_i+West_i=1 \quad \forall i$$
+
 
 - This is known as the [dummy variable trap]{.hi}, a common source of perfect multicollinearity 
 
@@ -1140,7 +1196,9 @@ modelsummary(models = list("No Northeast" = no_noreast_reg,
 ::: callout-tip
 ## Example
 
+
 $$\widehat{\text{Admitted}}_i=\hat{\beta_0}+\hat{\beta_1} \, GPA_i \quad \text{ where } \text{Admitted}_i = \begin{cases} 1 & \text{if } i \text{ is Admitted} \\ 0 & \text{if } i \text{ is Not Admitted}\\ \end{cases}$$
+
 :::
 
 . . .
@@ -1189,7 +1247,9 @@ Consider the gender pay gap again.
 
 - [Note this is *NOT the same* as just asking: “do men earn more than women *with the same amount of experience*?”]{.hi-turquoise}
 
+
 $$\widehat{\text{wages}}_i=\beta_0+\beta_1 \, \text{Gender}_i + \beta_2 \, \text{Experience}_i$$
+
 
 ## Three Types of Interactions
 
@@ -1200,17 +1260,23 @@ $$\widehat{\text{wages}}_i=\beta_0+\beta_1 \, \text{Gender}_i + \beta_2 \, \text
 . . .
 
 1. Interaction between a **dummy** and a **continuous** variable:
+
 $$Y_i=\beta_0+\beta_1X_i+\beta_2 D_i+\beta_3 \color{#e64173}{(X_i \times D_i)}$$
+
 
 . . .
 
 2. Interaction between a **two dummy** variables:
+
 $$Y_i=\beta_0+\beta_1D_{1i}+\beta_2 D_{2i}+\beta_3 \color{#e64173}{(D_{1i} \times D_{2i})}$$
+
 
 . . .
 
 3. Interaction between a **two continuous** variables:
+
 $$Y_i=\beta_0+\beta_1X_{1i}+\beta_2 X_{2i}+\beta_3 \color{#e64173}{(X_{1i} \times X_{2i})}$$
+
 
 # Interactions Between a Dummy and Continuous Variable {.centered background-color="#314f4f"}
 
@@ -1226,7 +1292,9 @@ $$Y_i=\beta_0+\beta_1X_{1i}+\beta_2 X_{2i}+\beta_3 \color{#e64173}{(X_{1i} \time
 
 - We can model an interaction by introducing a variable that is an .hi[interaction term] capturing the interaction between two variables:
 
+
 $$Y_i=\beta_0+\beta_1X_i+\beta_2 D_i+\color{#e64173}{\beta_3(X_i \times D_i)} \quad \text{ where } D_i=\{0,1\}$$
+
 . . .
 
 - $\color{#e64173}{\beta_3}$ estimates the [interaction effect]{.hi} between $X_i$ and $D_i$ on $Y_i$
@@ -1238,7 +1306,9 @@ $$Y_i=\beta_0+\beta_1X_i+\beta_2 D_i+\color{#e64173}{\beta_3(X_i \times D_i)} \q
 
 ## Dummy-Continuous Interaction Effects as Two Regressions I {.smaller}
 
+
 $$Y_i=\beta_0+\beta_1X_i+\beta_2 D_i+\beta_3 X_i \times D_i$$
+
 
 . . .
 
@@ -1293,24 +1363,32 @@ ggplot(data.frame(x=c(0,10)), aes(x=x))+
 
 - [$D_i=0$ group:]{.red}
 
+
 $$\color{#D7250E}{Y_i=\hat{\beta_0}+\hat{\beta_1}X_i}$$
+
 
 - [$D_i=1$ group:]{.blue}
 
+
 $$\color{#0047AB}{Y_i=(\hat{\beta_0}+\hat{\beta_2})+(\hat{\beta_1}+\hat{\beta_3})X_i}$$
+
 
 :::
 :::
 
 ## Interpretting Coefficients I {.smaller}
 
+
 $$Y_i=\beta_0+\beta_1X_i+\beta_2 D_i+\beta_3 \color{#e64173}{(X_i \times D_i)}$$
+
 
 - To interpret the coefficients, compare cases after changing $X$ by $\color{#e64173}{\Delta X}$:
 
 . . .
 
+
 $$Y_i+\color{#e64173}{\Delta Y_i}=\beta_0+\beta_1(X_i\color{#e64173}{+\Delta X_i})\beta_2D_i+\beta_3\big((X_i\color{#e64173}{+\Delta X_i})D_i\big)$$
+
 
 . . .
 
@@ -1331,7 +1409,9 @@ $$Y_i+\color{#e64173}{\Delta Y_i}=\beta_0+\beta_1(X_i\color{#e64173}{+\Delta X_i
 
 ## Interpretting Coefficients II
 
+
 $$Y_i=\beta_0+\beta_1X_i+\beta_2 D_i+\beta_3 \color{#e64173}{(X_i \times D_i)}$$
+
 
 . . .
 
@@ -1356,7 +1436,9 @@ $$Y_i=\beta_0+\beta_1X_i+\beta_2 D_i+\beta_3 \color{#e64173}{(X_i \times D_i)}$$
 
 ## Interpretting Coefficients III {.smaller}
 
+
 $$Y_i=\beta_0+\beta_1X_i+\beta_2 D_i+\beta_3 \color{#e64173}{(X_i \times D_i)}$$
+
 
 . . .
 
@@ -1394,18 +1476,24 @@ $$Y_i=\beta_0+\beta_1X_i+\beta_2 D_i+\beta_3 \color{#e64173}{(X_i \times D_i)}$$
 ::: callout-tip
 ## Example
 
+
 $$\widehat{wage}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{experience}_i+\hat{\beta_2} \, \text{female}_i+\hat{\beta_3} \, (\text{experience}_i \times \text{female}_i)$$
+
 :::
 
 . . .
 
 - [For men $female=0$]{.blue}:
+
 $$\widehat{wage_i}=\hat{\beta_0}+\hat{\beta_1} \, \text{experience}_i$$
+
 
 . . .
 
 - [For women $female=1$]{.pink}:
+
 $$\widehat{wage}_i=\underbrace{(\hat{\beta_0}+\hat{\beta_2})}_{\text{intercept}}+\underbrace{(\hat{\beta_1}+\hat{\beta_3})}_{\text{slope}} \, \text{experience}_i$$
+
 
 ## Interactions in Our Example: Scatterplot
 
@@ -1499,7 +1587,9 @@ modelsummary(models = list("Wage" = interaction_reg),
 
 ## Interactions in Our Example: Interpretting Coefficients
 
+
 $$\widehat{\text{wage}}_i=6.16+0.05 \, \text{experience}_i - 1.55 \, \text{female}_i - 0.06 \, (\text{experience}_i \times \text{female}_i)$$
+
 
 . . .
 
@@ -1519,12 +1609,16 @@ $$\widehat{\text{wage}}_i=6.16+0.05 \, \text{experience}_i - 1.55 \, \text{femal
 
 ## Interactions in Our Example: As Two Regressions I
 
+
 $$\widehat{\text{wage}}_i=6.16+0.05 \, \text{experience}_i - 1.55 \, \text{female}_i - 0.06 \, (\text{experience}_i \times \text{female}_i)$$
+
 
 . . .
 
 [Regression for men $female=0$]{.blue}
+
 $$\widehat{\text{wage}}_i=6.16+0.05 \, \text{experience}_i$$
+
 . . .
 
 - Men with 0 years of experience earn $6.16 on average
@@ -1535,7 +1629,9 @@ $$\widehat{\text{wage}}_i=6.16+0.05 \, \text{experience}_i$$
 
 ## Interactions in Our Example: As Two Regressions I
 
+
 $$\widehat{\text{wage}}_i=6.16+0.05 \, \text{experience}_i - 1.55 \, \text{female}_i - 0.06 \, (\text{experience}_i \times \text{female}_i)$$
+
 
 . . .
 
@@ -1557,7 +1653,9 @@ $$\widehat{\text{wage}}_i=6.16+0.05 \, \text{experience}_i - 1.55 \, \text{femal
 
 ## Interactions in Our Example: Hypothesis Testing {.smaller}
 
+
 $$\widehat{\text{wage}}_i=6.16+0.05 \, \text{experience}_i - 1.55 \, \text{female}_i - 0.06 \, (\text{experience}_i \times \text{female}_i)$$
+
 
 ```{r}
 tidy(interaction_reg)
@@ -1589,7 +1687,9 @@ tidy(interaction_reg)
 
 ## Interactions Between Two Dummy Variables {.smaller}
 
+
 $$Y_i=\beta_0+\beta_1D_{1i}+\beta_2 D_{2i}+\beta_3 \color{#e64173}{(D_{1i} \times D_{2i})}$$
+
 
 - $D_{1i}$ and $D_{2i}$ are dummy variables
 
@@ -1613,7 +1713,9 @@ $$Y_i=\beta_0+\beta_1D_{1i}+\beta_2 D_{2i}+\beta_3 \color{#e64173}{(D_{1i} \time
 
 ## 2 Dummy Interaction: Interpretting Coefficients {.smaller}
 
+
 $$Y_i=\beta_0+\beta_1D_{1i}+\beta_2 D_{2i}+\beta_3 \color{#e64173}{(D_{1i} \times D_{2i})}$$
+
 
 . . .
 
@@ -1630,7 +1732,9 @@ E(Y|D_{1}&=\color{#44C1C4}{1}, D_{2}=\mathbf{d_2}) = \beta_0+\beta_1(\color{#44C
 
 - Subtracting the two, the difference is:
 
+
 $$\color{#6A5ACD}{\beta_1+\beta_3 \mathbf{d_2}}$$
+
 
 - [The marginal effect of]{.hi-purple} $\color{#6A5ACD}{D_{1} \rightarrow Y}$ [depends on the value of]{.hi-purple} $\color{#6A5ACD}{D_{2}\\}$
   - $\color{#e64173}{\hat{\beta_3}}$ is the *increment* to the effect of $D_1$ on $Y$ when $D_2$ goes from $0$ to $1$
@@ -1642,7 +1746,9 @@ $$\color{#6A5ACD}{\beta_1+\beta_3 \mathbf{d_2}}$$
 
 Does the gender pay gap change if a person is married vs. single?
 
+
 $$\widehat{\text{wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{female}_i+\hat{\beta_2} \, \text{married}_i+\hat{\beta_3} \, (\text{female}_i \times \text{married}_i)$$
+
 :::
 
 - Logically, there are 4 possible combinations of $female_i = \{\color{#0047AB}{0},\color{#e64173}{1}\}$ and $married_i = \{\color{#FFA500}{0},\color{#44C1C4}{1}\}$
@@ -1652,18 +1758,26 @@ $$\widehat{\text{wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{female}_i+\hat{\b
 ::: columns
 ::: {.column width="50%"}
 1) [Unmarried]{.hi-orange} [men]{.hi-blue} $(female_i=\color{#0047AB}{0}, \, married_i=\color{#FFA500}{0})$
+
 $$\widehat{wage_i}=\hat{\beta_0}$$
 
+
 2) [Married]{.hi-turquoise} [men]{.hi-blue} $(female_i=\color{#0047AB}{0}, \, married_i=\color{#44C1C4}{1})$
+
 $$\widehat{wage_i}=\hat{\beta_0}+\hat{\beta_2}$$
+
 
 :::
 ::: {.column width="50%"}
 3) [Unmarried]{.hi-orange} [women]{.hi} $(female_i=\color{#e64173}{1}, \, married_i=\color{#FFA500}{0})$
+
 $$\widehat{wage_i}=\hat{\beta_0}+\hat{\beta_1}$$
 
+
 4) [Married]{.hi-turquoise} [women]{.hi} $(female_i=\color{#e64173}{1}, \, married_i=\color{#44C1C4}{1})$
+
 $$\widehat{wage_i}=\hat{\beta_0}+\hat{\beta_1}+\hat{\beta_2}+\hat{\beta_3}$$
+
 
 :::
 :::
@@ -1712,7 +1826,9 @@ wages %>%
 
 ## Two Dummies Interaction: Group Means
 
+
 $$\widehat{\text{wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{female}_i+\hat{\beta_2} \, \text{married}_i+\hat{\beta_3} \, (\text{female}_i \times \text{married}_i)$$
+
 
 |  | [Men]{.hi-blue} | [Women]{.hi} |
 |--------|-----------|---------|
@@ -1750,7 +1866,9 @@ modelsummary(models = list("Wage" = reg_dummies),
 
 ## Two Dummies Interaction: Interpretting Coefficients I {.smaller}
 
+
 $$\widehat{\text{wage}}_i=5.17-0.56 \, \text{female}_i+2.82 \, \text{married}_i-2.86 \, (\text{female}_i \times \text{married}_i)$$
+
 
 |  | [Men]{.hi-blue} | [Women]{.hi} |
 |--------|-----------|---------|
@@ -1775,7 +1893,9 @@ $$\widehat{\text{wage}}_i=5.17-0.56 \, \text{female}_i+2.82 \, \text{married}_i-
 
 ## Two Dummies Interaction: Interpretting Coefficients II {.smaller}
 
+
 $$\widehat{\text{wage}}_i=5.17-0.56 \, \text{female}_i+2.82 \, \text{married}_i-2.86 \, (\text{female}_i \times \text{married}_i)$$
+
 
 |  | [Men]{.hi-blue} | [Women]{.hi} | **Diff**
 |--------|-----------|---------|---------|
@@ -1814,13 +1934,17 @@ $$\widehat{\text{wage}}_i=5.17-0.56 \, \text{female}_i+2.82 \, \text{married}_i-
 
 ## Interactions Between Two Continuous Variables {.smaller}
 
+
 $$Y_i=\beta_0+\beta_1X_{1i}+\beta_2 X_{2i}+\beta_3 \color{#e64173}{(X_{1i} \times X_{2i})}$$
+
 
 . . .
 
 - To interpret coefficients, compare changes after changing $\color{#e64173}{\Delta X_{1i}}$ (holding $X_2$ constant):
 
+
 $$Y_i+\color{#e64173}{\Delta Y_i}=\beta_0+\beta_1(X_1+\color{#e64173}{\Delta X_{1i}})\beta_2X_{2i}+\beta_3((X_{1i}+\color{#e64173}{\Delta X_{1i}}) \times X_{2i})$$
+
 
 . . .
 
@@ -1845,14 +1969,18 @@ $$Y_i+\color{#e64173}{\Delta Y_i}=\beta_0+\beta_1(X_1+\color{#e64173}{\Delta X_{
 
 Do education and experience interact in their determination of wages?
 
+
 $$\widehat{\text{wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{education}_i+\hat{\beta_2} \, \text{experience}_i+\hat{\beta_3} \, (\text{education}_i \times \text{experience}_i)$$
+
 :::
 
 - Estimated effect of education on wages depends on the amount of experience (and vice versa)!
 
+
 $$\frac{\Delta \text{wage}}{\Delta \text{education}}=\hat{\beta_1}+\beta_3 \, \text{experience}_i$$
 
 $$\frac{\Delta \text{wage}}{\Delta \text{experience}}=\hat{\beta_2}+\beta_3 \, \text{education}_i$$
+
 
 - This is a type of nonlinearity (we will examine nonlinearities next lesson)
 
@@ -1887,7 +2015,9 @@ modelsummary(models = list("Wage" = reg_cont),
 
 ## Continuous Variables Interaction: Marginal Effects
 
+
 $$\widehat{\text{wage}}_i=-2.860+0.602 \, \text{education}_i+0.047 \, \text{experience}_i+0.002\, (\text{education}_i \times \text{experience}_i)$$
+
 . . .
 
 Marginal Effect of *Education* on Wages by Years of *Experience*: 
@@ -1902,7 +2032,9 @@ Marginal Effect of *Education* on Wages by Years of *Experience*:
 
 ## Continuous Variables Interaction: Marginal Effects
 
+
 $$\widehat{\text{wage}}_i=-2.860+0.602 \, \text{education}_i+0.047 \, \text{experience}_i+0.002\, (\text{education}_i \times \text{experience}_i)$$
+
 
 . . .
 
