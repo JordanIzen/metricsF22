@@ -6,7 +6,7 @@ execute:
 
 ## Answers
 
-<p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/2_7_hypothesis_testing_for_regression_answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> Answer Key (html) </a></span> <a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/3_2_dags_answers.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Quarto file</a></span></p>
+<p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/3_2_dags_answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> Answer Key (html) </a></span> <a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/3_2_dags_answers.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Quarto file</a></span></p>
 
 
 For each of the following examples:

@@ -151,6 +151,10 @@ website:
           href: r/2.7-r.qmd
         - text: "3.2 — DAGs"
           href: r/3.2-r.qmd
+        - text: "4.1 — Multivariate OLS Estimators"
+          href: r/4.1-r.qmd
+        - text: "4.3 — Categorical Data and Interactions"
+          href: r/4.3-r.qmd
     
     - title: "Resources"
       style: "docked"

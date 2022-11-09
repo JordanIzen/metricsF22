@@ -1581,7 +1581,7 @@ tidy(interaction_reg)
 
 ## Interactions Between Two Dummy Variables
 
-![](../images/dummyswitches.png){fig-align="center"}
+![](images/dummyswitches.png){fig-align="center"}
 
 . . .
 
@@ -1920,28 +1920,3 @@ Marginal Effect of *Experience* on Wages by Years of *Education*:
 
 - If you want to estimate the marginal effects more precisely, and graph them, see the appendix in [today’s appendix](resources/appendices/4.3-appendix)
 
-## F
-
-```{r}
-full_controls <- lm(wage ~ educ + exper + female + married + region + exper + female:exper + female:married + educ:exper, data = wages)
-summary(full_controls)
-```
-
-```{r}
-library(modelsummary)
-modelsummary(models = list("Wage" = female_reg,
-                           "Wage" = male_reg),
-             fmt = 2, # round to 2 decimals
-             output = "html",
-             coef_rename = c("(Intercept)" = "Constant"),
-             gof_map = list(
-               list("raw" = "nobs", "clean" = "n", "fmt" = 0),
-               #list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
-               list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
-               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
-             ),
-             escape = FALSE,
-             stars = c('*' = .1, '**' = .05, '***' = 0.01)
-)
-
-```

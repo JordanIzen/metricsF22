@@ -2294,7 +2294,7 @@ F-statistic: 3.099 on 3 and 522 DF,  p-value: 0.02646</code></pre>
 <section id="interactions-between-two-dummy-variables-1" class="slide level2">
 <h2>Interactions Between Two Dummy Variables</h2>
 
-<img data-src="../images/dummyswitches.png" class="r-stretch quarto-figure-center"><div class="fragment">
+<img data-src="images/dummyswitches.png" class="r-stretch quarto-figure-center"><div class="fragment">
 <ul>
 <li>Does the marginal effect on <span class="math inline">\(Y\)</span> of one dummy going from “off” to “on” change depending on whether the <em>other</em> dummy is “off” or “on”?</li>
 </ul>
@@ -2931,109 +2931,10 @@ E(Y|D_{1}&amp;=\color{#44C1C4}{1}, D_{2}=\mathbf{d_2}) = \beta_0+\beta_1(\color{
 <li><p>Marginal effect of experience <span class="math inline">\(\rightarrow\)</span> wages <strong>increases</strong> with more education</p></li>
 <li><p>If you want to estimate the marginal effects more precisely, and graph them, see the appendix in <a href="resources/appendices/4.3-appendix">today’s appendix</a></p></li>
 </ul>
-</div>
-</section>
-<section id="f" class="slide level2">
-<h2>F</h2>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = wage ~ educ + exper + female + married + region + 
-    exper + female:exper + female:married + educ:exper, data = wages)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--7.3200 -1.6063 -0.5186  1.0277 14.3891 
-
-Coefficients:
-                 Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)     -2.276787   1.157682  -1.967 0.049757 *  
-educ             0.491121   0.082764   5.934 5.43e-09 ***
-exper            0.030090   0.040403   0.745 0.456775    
-female           0.171616   0.478821   0.358 0.720181    
-married          1.817684   0.415499   4.375 1.47e-05 ***
-regionNortheast  0.811128   0.374571   2.165 0.030809 *  
-regionSouth     -0.011135   0.339701  -0.033 0.973864    
-regionWest       1.207254   0.406542   2.970 0.003121 ** 
-exper:female    -0.058258   0.020259  -2.876 0.004198 ** 
-female:married  -2.172472   0.565545  -3.841 0.000138 ***
-educ:exper       0.004564   0.003180   1.435 0.151842    
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 2.945 on 515 degrees of freedom
-Multiple R-squared:  0.3764,    Adjusted R-squared:  0.3642 
-F-statistic: 31.08 on 10 and 515 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-
-<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:center;"> Wage </th>
-   <th style="text-align:center;"> Wage  </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Constant </td>
-   <td style="text-align:center;"> 7.10*** </td>
-   <td style="text-align:center;"> 4.59*** </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:center;"> (0.21) </td>
-   <td style="text-align:center;"> (0.22) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:center;"> −2.51*** </td>
-   <td style="text-align:center;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:center;"> (0.30) </td>
-   <td style="text-align:center;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:center;">  </td>
-   <td style="text-align:center;"> 2.51*** </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;box-shadow: 0px 1px">  </td>
-   <td style="text-align:center;box-shadow: 0px 1px">  </td>
-   <td style="text-align:center;box-shadow: 0px 1px"> (0.30) </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> n </td>
-   <td style="text-align:center;"> 526 </td>
-   <td style="text-align:center;"> 526 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Adj. R<sup>2</sup> </td>
-   <td style="text-align:center;"> 0.11 </td>
-   <td style="text-align:center;"> 0.11 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> SER </td>
-   <td style="text-align:center;"> 3.47 </td>
-   <td style="text-align:center;"> 3.47 </td>
-  </tr>
-</tbody>
-<tfoot><tr><td style="padding: 0; " colspan="100%">
-<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td></tr></tfoot>
-</table>
-
-</div>
-</div>
-
-<img src="../images/metrics_hex.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<p><img src="../images/metrics_hex.png" class="slide-logo"></p>
+<div class="footer footer-default">
 <p><a href="https://metricsF22.classes.ryansafner.com">ECON 480 — Econometrics</a></p>
+</div>
 </div>
 </section></section>
 
