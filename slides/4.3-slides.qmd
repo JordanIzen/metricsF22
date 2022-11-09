@@ -1814,13 +1814,13 @@ $$\widehat{\text{wage}}_i=5.17-0.56 \, \text{female}_i+2.82 \, \text{married}_i-
 
 ## Interactions Between Two Continuous Variables {.smaller}
 
-$$Y_i=\beta_0+\beta_1X_{1i}+\beta_2 X_{2i}+\beta_3 \color{#e64173}{(X_{1i} \times X_{2i})}$$
+$$Y=\beta_0+\beta_1X_{1}+\beta_2 X_{2}+\beta_3 \color{#e64173}{(X_{1} \times X_{2})}$$
 
 . . .
 
-- To interpret coefficients, compare changes after changing $\color{#e64173}{\Delta X_{1i}}$ (holding $X_2$ constant):
+- To interpret coefficients, compare changes after changing $\color{#e64173}{\Delta X_{1}}$ (holding $X_2$ constant):
 
-$$Y_i+\color{#e64173}{\Delta Y_i}=\beta_0+\beta_1(X_1+\color{#e64173}{\Delta X_{1i}})\beta_2X_{2i}+\beta_3((X_{1i}+\color{#e64173}{\Delta X_{1i}}) \times X_{2i})$$
+$$Y+\color{#e64173}{\Delta Y}=\beta_0+\beta_1(X_1+\color{#e64173}{\Delta X_{1}})+\beta_2X_{2}+\beta_3((X_{1}+\color{#e64173}{\Delta X_{1}}) \times X_{2})$$
 
 . . .
 
@@ -1829,15 +1829,23 @@ $$Y_i+\color{#e64173}{\Delta Y_i}=\beta_0+\beta_1(X_1+\color{#e64173}{\Delta X_{
 . . .
 
 \begin{align*}
-\Delta Y_i &= \beta_1 \Delta X_{1i}+ \beta_3 X_{2i} \Delta X_{1i}\\
-\color{#6A5ACD}{\frac{\Delta Y_i}{\Delta X_{1i}}} &= \color{#6A5ACD}{\beta_1+\beta_3 X_{2i}}\\ 	
+\Delta Y &= \beta_1 \Delta X_{1}+ \beta_3 X_{2} \Delta X_{1}\\
+\color{#6A5ACD}{\frac{\Delta Y_i}{\Delta X_{1}}} &= \color{#6A5ACD}{\beta_1+\beta_3 X_{2}}\\ 	
 \end{align*}
 
 . . .
 
 - [The effect of $X_1 \rightarrow Y$ depends on the value of $X_2$]{.hi-purple}
   - $\color{#e64173}{\beta_3}$: *increment* to the effect of $X_1 \rightarrow Y$ for every 1 unit change in $X_2$
-  
+
+. . .
+
+
+- Likewise: [the effect of $X_2 \rightarrow Y$ depends on the value of $X_1$]{.hi-purple}
+
+$$\frac{\Delta Y}{\Delta X_2} = \color{#6A5ACD}{\beta_2+\beta_3 X_{1}}$$
+  - $\color{#e64173}{\beta_3}$: *increment* to the effect of $X_2 \rightarrow Y$ for every 1 unit change in $X_1$
+
 ## Continuous Variables Interaction: Example
 
 ::: callout-tip

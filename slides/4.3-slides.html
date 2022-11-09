@@ -2710,12 +2710,12 @@ E(Y|D_{1}&amp;=\color{#44C1C4}{1}, D_{2}=\mathbf{d_2}) = \beta_0+\beta_1(\color{
 </section>
 <section id="interactions-between-two-continuous-variables-3" class="slide level2 smaller">
 <h2>Interactions Between Two Continuous Variables</h2>
-<p><span class="math display">\[Y_i=\beta_0+\beta_1X_{1i}+\beta_2 X_{2i}+\beta_3 \color{#e64173}{(X_{1i} \times X_{2i})}\]</span></p>
+<p><span class="math display">\[Y=\beta_0+\beta_1X_{1}+\beta_2 X_{2}+\beta_3 \color{#e64173}{(X_{1} \times X_{2})}\]</span></p>
 <div class="fragment">
 <ul>
-<li>To interpret coefficients, compare changes after changing <span class="math inline">\(\color{#e64173}{\Delta X_{1i}}\)</span> (holding <span class="math inline">\(X_2\)</span> constant):</li>
+<li>To interpret coefficients, compare changes after changing <span class="math inline">\(\color{#e64173}{\Delta X_{1}}\)</span> (holding <span class="math inline">\(X_2\)</span> constant):</li>
 </ul>
-<p><span class="math display">\[Y_i+\color{#e64173}{\Delta Y_i}=\beta_0+\beta_1(X_1+\color{#e64173}{\Delta X_{1i}})\beta_2X_{2i}+\beta_3((X_{1i}+\color{#e64173}{\Delta X_{1i}}) \times X_{2i})\]</span></p>
+<p><span class="math display">\[Y+\color{#e64173}{\Delta Y}=\beta_0+\beta_1(X_1+\color{#e64173}{\Delta X_{1}})+\beta_2X_{2}+\beta_3((X_{1}+\color{#e64173}{\Delta X_{1}}) \times X_{2})\]</span></p>
 </div>
 <div class="fragment">
 <ul>
@@ -2724,8 +2724,8 @@ E(Y|D_{1}&amp;=\color{#44C1C4}{1}, D_{2}=\mathbf{d_2}) = \beta_0+\beta_1(\color{
 </div>
 <div class="fragment">
 <p><span class="math display">\[\begin{align*}
-\Delta Y_i &amp;= \beta_1 \Delta X_{1i}+ \beta_3 X_{2i} \Delta X_{1i}\\
-\color{#6A5ACD}{\frac{\Delta Y_i}{\Delta X_{1i}}} &amp;= \color{#6A5ACD}{\beta_1+\beta_3 X_{2i}}\\  
+\Delta Y &amp;= \beta_1 \Delta X_{1}+ \beta_3 X_{2} \Delta X_{1}\\
+\color{#6A5ACD}{\frac{\Delta Y_i}{\Delta X_{1}}} &amp;= \color{#6A5ACD}{\beta_1+\beta_3 X_{2}}\\    
 \end{align*}\]</span></p>
 </div>
 <div class="fragment">
@@ -2734,6 +2734,15 @@ E(Y|D_{1}&amp;=\color{#44C1C4}{1}, D_{2}=\mathbf{d_2}) = \beta_0+\beta_1(\color{
 <ul>
 <li><span class="math inline">\(\color{#e64173}{\beta_3}\)</span>: <em>increment</em> to the effect of <span class="math inline">\(X_1 \rightarrow Y\)</span> for every 1 unit change in <span class="math inline">\(X_2\)</span></li>
 </ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Likewise: <span class="hi-purple">the effect of <span class="math inline">\(X_2 \rightarrow Y\)</span> depends on the value of <span class="math inline">\(X_1\)</span></span></li>
+</ul>
+<p><span class="math display">\[\frac{\Delta Y}{\Delta X_2} = \color{#6A5ACD}{\beta_2+\beta_3 X_{1}}\]</span></p>
+<ul>
+<li><span class="math inline">\(\color{#e64173}{\beta_3}\)</span>: <em>increment</em> to the effect of <span class="math inline">\(X_2 \rightarrow Y\)</span> for every 1 unit change in <span class="math inline">\(X_1\)</span></li>
 </ul>
 </div>
 </section>
