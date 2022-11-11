@@ -15,6 +15,12 @@ source(here::here("slides", "slide-links.R"))
 *Wednesday, November 9, 2022*
 :::
 
+::: {.callout-warning}
+## Upcoming Assignment
+
+[Problem Set 3](/assignment/02-problem-set) is due on Friday November 11.
+:::
+
 ## <i class="fas fa-info-circle fa-lg"></i> Overview
 
 This week, we look at how to use data that is categorical (i.e. variables that indicate an observation's membership in a particular group or category). We introduce them into regression models as **dummy variables** that can equal 0 or 1: where 1 indicates membership in a category, and 0 indicates non-membership.
@@ -39,7 +45,7 @@ This week you will be working on [R practice problems](/r/4.3-r) on categorical 
 ## <i class="fas fa-laptop-code"></i> Assignments
 
 ### Problem Set 4 Due Fri Nov 11
-[Problem Set 4](/assignments/04-problem-set) is due by the end of the day on Tuesday, November 11.
+[Problem Set 4](/assignments/04-problem-set) is due by the end of the day on Friday, November 11.
 
 ## <i class="fas fa-chalkboard-teacher"></i> Slides
 

@@ -235,6 +235,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <a href="../r/4.3-r.html" class="sidebar-item-text sidebar-link active">4.3 — Categorical Data and Interactions</a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../r/4.4-r.qmd" class="sidebar-item-text sidebar-link">4.4 — Nonlinearity and Variable Transformations</a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -244,8 +249,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#required-packages-data" id="toc-required-packages-data" class="nav-link active" data-scroll-target="#required-packages-data">Required Packages &amp; Data</a>
-  <ul class="collapse">
+  <li><a href="#answers" id="toc-answers" class="nav-link active" data-scroll-target="#answers">Answers</a></li>
+  <li><a href="#required-packages-data" id="toc-required-packages-data" class="nav-link" data-scroll-target="#required-packages-data">Required Packages &amp; Data</a></li>
   <li><a href="#question-1" id="toc-question-1" class="nav-link" data-scroll-target="#question-1">Question 1</a>
   <ul class="collapse">
   <li><a href="#part-a" id="toc-part-a" class="nav-link" data-scroll-target="#part-a">Part A</a></li>
@@ -292,7 +297,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#part-e-1" id="toc-part-e-1" class="nav-link" data-scroll-target="#part-e-1">Part E</a></li>
   </ul></li>
   <li><a href="#question-9" id="toc-question-9" class="nav-link" data-scroll-target="#question-9">Question 9</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -318,11 +322,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p style="text-align:center">
 <a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_3_categorical_data_and_interactions.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i>Quarto file</span></a> <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4913861"><span class="btn btn-primary btn-lg"><i class="fas fa-cloud"></i>R Studio Cloud</span></a>
 </p>
-<!--## Answers
-
-<p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_1_multivariate_ols_estimators_answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> Answer Key (html) </a></span> <a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_1_multivariate_ols_estimators_answers.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Answer Key (.qmd)</a></span></p>-->
-<section id="required-packages-data" class="level1">
-<h1>Required Packages &amp; Data</h1>
+<section id="answers" class="level2">
+<h2 class="anchored" data-anchor-id="answers">Answers</h2>
+<p style="text-align:center">
+<a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_3_categorical_data_and_interactions_answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> Answer Key (html) </span></a> <a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_3_categorical_data_and_interactions_answers.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Answer Key (.qmd)</span></a>
+</p>
+</section>
+<section id="required-packages-data" class="level2">
+<h2 class="anchored" data-anchor-id="required-packages-data">Required Packages &amp; Data</h2>
 <p>Load all the required packages we will use (<strong>note I have installed them already into the cloud project</strong>) by running (clicking the green play button) the chunk below:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># your friend and mine</span></span>
@@ -341,16 +348,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>speed <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://metricsf22.classes.ryansafner.com/files/data/speeding_tickets.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This data comes from a paper by Makowsky and Strattman (2009) that we will examine later. Even though state law sets a formula for tickets based on how fast a person was driving, police officers in practice often deviate from that formula. This dataset includes information on all traffic stops. An amount for the fine is given only for observations in which the police officer decided to assess a fine. There are a number of variables in this dataset, but the one’s we’ll look at are:</p>
-<p><code>Amount</code> | Amount of fine (in dollars) assessed for speeding |<br>
-<code>Age</code> | Age of speeding driver (in years) |<br>
-<code>MPHover</code> | Miles per hour over the speed limit |<br>
-<code>Black</code> | Dummy <span class="math inline">\(=1\)</span> if driver was black, <span class="math inline">\(=0\)</span> if not |<br>
-<code>Hispanic</code> | Dummy <span class="math inline">\(=1\)</span> if driver was Hispanic, <span class="math inline">\(=0\)</span> if not |<br>
-<code>Female</code> | Dummy <span class="math inline">\(=1\)</span> if driver was female, <span class="math inline">\(=0\)</span> if not |<br>
-<code>OutTown</code> | Dummy <span class="math inline">\(=1\)</span> if driver was not from local town, <span class="math inline">\(=0\)</span> if not |<br>
-<code>OutState</code> | Dummy <span class="math inline">\(=1\)</span> if driver was not from local state, <span class="math inline">\(=0\)</span> if not |<br>
-<code>StatePol</code> | Dummy <span class="math inline">\(=1\)</span> if driver was stopped by State Police, <span class="math inline">\(=0\)</span> if stopped by other (local) |</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Amount</code></td>
+<td>Amount of fine (in dollars) assessed for speeding</td>
+</tr>
+<tr class="even">
+<td><code>Age</code></td>
+<td>Age of speeding driver (in years)</td>
+</tr>
+<tr class="odd">
+<td><code>MPHover</code></td>
+<td>Miles per hour over the speed limit</td>
+</tr>
+<tr class="even">
+<td><code>Black</code></td>
+<td>Dummy <span class="math inline">\(=1\)</span> if driver was black, <span class="math inline">\(=0\)</span> if not</td>
+</tr>
+<tr class="odd">
+<td><code>Hispanic</code></td>
+<td>Dummy <span class="math inline">\(=1\)</span> if driver was Hispanic, <span class="math inline">\(=0\)</span> if not</td>
+</tr>
+<tr class="even">
+<td><code>Female</code></td>
+<td>Dummy <span class="math inline">\(=1\)</span> if driver was female, <span class="math inline">\(=0\)</span> if not</td>
+</tr>
+<tr class="odd">
+<td><code>OutTown</code></td>
+<td>Dummy <span class="math inline">\(=1\)</span> if driver was not from local town, <span class="math inline">\(=0\)</span> if not</td>
+</tr>
+<tr class="even">
+<td><code>OutState</code></td>
+<td>Dummy <span class="math inline">\(=1\)</span> if driver was not from local state, <span class="math inline">\(=0\)</span> if not</td>
+</tr>
+<tr class="odd">
+<td><code>StatePol</code></td>
+<td>Dummy <span class="math inline">\(=1\)</span> if driver was stopped by State Police, <span class="math inline">\(=0\)</span> if stopped by other (local)</td>
+</tr>
+</tbody>
+</table>
 <p>We want to explore <strong>who gets fines, and how much</strong>. We’ll come back to the other variables (which are categorical) in this dataset in later lessons.</p>
+</section>
 <section id="question-1" class="level2">
 <h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
 <p>We will have to do a little more cleaning to get some of the data into a more usable form.</p>
@@ -591,7 +640,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Collect your regressions from questions 4, 5b, 7a, 7b, and 8b and output them in a regression table with <code>modelsummary()</code>.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

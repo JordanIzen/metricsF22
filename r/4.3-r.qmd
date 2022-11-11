@@ -6,11 +6,11 @@ execute:
 
 <p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_3_categorical_data_and_interactions.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i>Quarto file</a></span> <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4913861"><span class="btn btn-primary btn-lg"><i class="fas fa-cloud"></i>R Studio Cloud</a></span></p>
 
-<!--## Answers
+## Answers
 
-<p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_1_multivariate_ols_estimators_answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> Answer Key (html) </a></span> <a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_1_multivariate_ols_estimators_answers.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Answer Key (.qmd)</a></span></p>-->
+<p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_3_categorical_data_and_interactions_answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> Answer Key (html) </a></span> <a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_3_categorical_data_and_interactions_answers.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Answer Key (.qmd)</a></span></p>
 
-#  Required Packages & Data
+## Required Packages & Data
 
 Load all the required packages we will use (**note I have installed them already into the cloud project**) by running (clicking the green play button) the chunk below:
 
@@ -39,6 +39,8 @@ speed <- read_csv("https://metricsf22.classes.ryansafner.com/files/data/speeding
 
 This data comes from a paper by Makowsky and Strattman (2009) that we will examine later. Even though state law sets a formula for tickets based on how fast a person was driving, police officers in practice often deviate from that formula. This dataset includes information on all traffic stops. An amount for the fine is given only for observations in which the police officer decided to assess a fine. There are a number of variables in this dataset, but the one's we'll look at are:
 
+| Variable | Description |
+|----|----|
 | `Amount` | Amount of fine (in dollars) assessed for speeding |
 | `Age` | Age of speeding driver (in years) |
 | `MPHover` | Miles per hour over the speed limit |

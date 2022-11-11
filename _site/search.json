@@ -1005,12 +1005,47 @@
     "href": "content/4.3-content.html#assignments",
     "title": "4.3 — Categorical Data & Interactions — Class Content",
     "section": " Assignments",
-    "text": "Assignments\n\nProblem Set 4 Due Fri Nov 11\nProblem Set 4 is due by the end of the day on Tuesday, November 11."
+    "text": "Assignments\n\nProblem Set 4 Due Fri Nov 11\nProblem Set 4 is due by the end of the day on Friday, November 11."
   },
   {
     "objectID": "content/4.3-content.html#slides",
     "href": "content/4.3-content.html#slides",
     "title": "4.3 — Categorical Data & Interactions — Class Content",
+    "section": " Slides",
+    "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
+  },
+  {
+    "objectID": "content/4.4-content.html#overview",
+    "href": "content/4.4-content.html#overview",
+    "title": "4.4 — Categorical Data & Interactions — Class Content",
+    "section": " Overview",
+    "text": "Overview\nThis week we will cover non-linear models, which we anticipated last week with an interaction effect between two continuous variables: \\(X_1 \\times X_2\\), where the marginal effect of \\(X_1 \\rightarrow Y\\) is dependent on the value of \\(X_2\\).\nWe cover two types of nonlinear models. First, we cover polynomial models, where we include higher-order \\(X\\) variables to explain a non-linear effect.\nNext we will cover logarithmic models, which are more frequently used — as well as a few final tests and transformations for multivariate regression before we turn to panel data (Unit IV) next week: standardizing variables to compare effect sizes, and joint hypothesis tests.\nInterpretting logged variables can often be difficult to remember, so here I reproduce the tables that describe the interpretations of the marginal effect of \\(X \\rightarrow Y\\), as well as some visual examples from the slides:\n\n\n\n\n\n\n\n\nModel\nEquation\nInterpretation\n\n\n\n\nLinear-Log\n\\(Y=\\beta_0+\\beta_1 \\mathbf{ln(X)}\\)\n1% change in \\(X \\rightarrow \\frac{\\hat{\\beta_1}}{100}\\) unit change in \\(Y\\)\n\n\nLog-Linear\n\\(\\mathbf{ln(Y)}=\\beta_0+\\beta_1X\\)\n1 unit change in \\(X \\rightarrow \\hat{\\beta_1}\\times 100\\)% change in \\(Y\\)\n\n\nLog-Log\n\\(\\mathbf{ln(Y)}=\\beta_0+\\beta_1\\mathbf{ln(X)}\\)\n1% change in \\(X \\rightarrow \\hat{\\beta_1}\\)% change in \\(Y\\)\n\n\n\n\nHint: the variable that gets logged changes in percent terms, the variable not logged changes in unit terms\n\n\n\n\n\n\n\n\n\nLinear-Log\nLog-Linear\nLog-Log\n\n\n\n\n\n\n\n\n\n\\(\\hat{Y_i}=\\hat{\\beta_0}+\\hat{\\beta_1}\\mathbf{ln(X_i)}\\)\n\\(\\mathbf{ln(\\hat{Y_i})}=\\hat{\\beta_0}+\\hat{\\beta_1}X_i\\)\n\\(\\mathbf{ln(\\hat{Y_i})}=\\hat{\\beta_0}+\\hat{\\beta_1}\\mathbf{ln(X_i)}\\)\n\n\n\\(R^2=0.65\\)\n\\(R^2=0.30\\)\n\\(R^2=0.61\\)\n\n\n\nAfter we finish, we will do another set of practice problems in R., and you will be given your final graded HW 5 to work on this material."
+  },
+  {
+    "objectID": "content/4.4-content.html#readings",
+    "href": "content/4.4-content.html#readings",
+    "title": "4.4 — Categorical Data & Interactions — Class Content",
+    "section": " Readings",
+    "text": "Readings\n\n Ch. 7 in Bailey, Real Econometrics"
+  },
+  {
+    "objectID": "content/4.4-content.html#r-practice",
+    "href": "content/4.4-content.html#r-practice",
+    "title": "4.4 — Categorical Data & Interactions — Class Content",
+    "section": " R Practice",
+    "text": "R Practice\nThis week you will be working on R practice problems on nonlinear data. Answers will be posted later on that page."
+  },
+  {
+    "objectID": "content/4.4-content.html#assignments",
+    "href": "content/4.4-content.html#assignments",
+    "title": "4.4 — Categorical Data & Interactions — Class Content",
+    "section": " Assignments",
+    "text": "Assignments\n\nProblem Set 5 Due Mon Nov 28\nProblem Set 5 is due by the end of the day on Wednesday, November 28."
+  },
+  {
+    "objectID": "content/4.4-content.html#slides",
+    "href": "content/4.4-content.html#slides",
+    "title": "4.4 — Categorical Data & Interactions — Class Content",
     "section": " Slides",
     "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
   },
@@ -1342,6 +1377,20 @@
     "title": "4.3 — Categorical Data and Interactions — Practice",
     "section": "",
     "text": "Quarto file R Studio Cloud"
+  },
+  {
+    "objectID": "r/4.3-r.html#answers",
+    "href": "r/4.3-r.html#answers",
+    "title": "4.3 — Categorical Data and Interactions — Practice",
+    "section": "Answers",
+    "text": "Answers\n\n Answer Key (html)   Answer Key (.qmd)"
+  },
+  {
+    "objectID": "r/4.3-r.html#required-packages-data",
+    "href": "r/4.3-r.html#required-packages-data",
+    "title": "4.3 — Categorical Data and Interactions — Practice",
+    "section": "Required Packages & Data",
+    "text": "Required Packages & Data\nLoad all the required packages we will use (note I have installed them already into the cloud project) by running (clicking the green play button) the chunk below:\n\nlibrary(tidyverse) # your friend and mine\nlibrary(broom) # for tidy regression\nlibrary(modelsummary) # for nice regression tables\n\nWe are returning to the speeding tickets data that we began to explore in R Practice 4.1 on Multivariate Regression. Download and read in (read_csv) the data below.\n\n speeding_tickets.csv\n\n\n# run or edit this chunk (if you want to rename the data)\n\n# read in data from url \n# or you could download and upload it to this project instead\nspeed <- read_csv(\"https://metricsf22.classes.ryansafner.com/files/data/speeding_tickets.csv\")\n\nThis data comes from a paper by Makowsky and Strattman (2009) that we will examine later. Even though state law sets a formula for tickets based on how fast a person was driving, police officers in practice often deviate from that formula. This dataset includes information on all traffic stops. An amount for the fine is given only for observations in which the police officer decided to assess a fine. There are a number of variables in this dataset, but the one’s we’ll look at are:\n\n\n\n\n\n\n\nVariable\nDescription\n\n\n\n\nAmount\nAmount of fine (in dollars) assessed for speeding\n\n\nAge\nAge of speeding driver (in years)\n\n\nMPHover\nMiles per hour over the speed limit\n\n\nBlack\nDummy \\(=1\\) if driver was black, \\(=0\\) if not\n\n\nHispanic\nDummy \\(=1\\) if driver was Hispanic, \\(=0\\) if not\n\n\nFemale\nDummy \\(=1\\) if driver was female, \\(=0\\) if not\n\n\nOutTown\nDummy \\(=1\\) if driver was not from local town, \\(=0\\) if not\n\n\nOutState\nDummy \\(=1\\) if driver was not from local state, \\(=0\\) if not\n\n\nStatePol\nDummy \\(=1\\) if driver was stopped by State Police, \\(=0\\) if stopped by other (local)\n\n\n\nWe want to explore who gets fines, and how much. We’ll come back to the other variables (which are categorical) in this dataset in later lessons."
   },
   {
     "objectID": "r/4.3-r.html#question-1",
