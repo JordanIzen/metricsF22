@@ -1,5 +1,5 @@
 ---
-title: "4.4 — Categorical Data & Interactions — Class Content"
+title: "4.4 — Nonlinearities and Variable Transformations — Class Content"
 execute:
   freeze: auto
 ---

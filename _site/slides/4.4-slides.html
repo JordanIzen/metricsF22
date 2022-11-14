@@ -1,0 +1,2528 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="4.4-slides_files/libs/clipboard/clipboard.min.js"></script>
+<script src="4.4-slides_files/libs/quarto-html/tabby.min.js"></script>
+<script src="4.4-slides_files/libs/quarto-html/popper.min.js"></script>
+<script src="4.4-slides_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="4.4-slides_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="4.4-slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="4.4-slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.0.37">
+
+  <title>slides</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="4.4-slides_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="4.4-slides_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="4.4-slides_files/libs/revealjs/dist/theme/quarto.css" id="theme">
+  <link href="4.4-slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="4.4-slides_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="4.4-slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="4.4-slides_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="4.4-slides_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="4.4-slides_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-captioned.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-captioned) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-captioned.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-captioned .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-captioned .callout-caption  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-captioned.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-captioned.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-caption {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-caption {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-caption {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-captioned .callout-body > .callout-content > :last-child {
+    margin-bottom: 0.5rem;
+  }
+
+  .callout.callout-captioned .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-captioned) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-caption {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-caption {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-caption {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-caption {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-caption {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  
+  <script src="4.4-slides_files/libs/kePrint-0.0.1/kePrint.js"></script>
+  <link href="4.4-slides_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+  <link href="4.4-slides_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+  <script src="4.4-slides_files/libs/pagedtable-1.1/js/pagedtable.js"></script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="section" class="slide level2" data-menu-title="Title Slide" data-background-image="images/metrics_title_slide.png">
+<h2></h2>
+<p><span class="custom-title">4.3 — Nonlinearity &amp; Transformations</span></p>
+<p><span class="custom-subtitle">ECON 480 • Econometrics • Fall 2022</span></p>
+<p><span class="custom-author">Dr.&nbsp;Ryan Safner <br> Associate Professor of Economics</span></p>
+<p><span class="custom-institution"><a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br></span></p>
+</section>
+<section id="contents" class="slide level2" data-background-color="#314f4f">
+<h2>Contents</h2>
+<h3 id="nonlinear-effects"><a href="#/nonlinear-effects">Nonlinear Effects</a></h3>
+<h3 id="polynomial-models"><a href="#/regression-with-dummy-variables-1">Polynomial Models</a></h3>
+<h3 id="quadratic-model"><a href="#/quadratic-model">Quadratic Model</a></h3>
+<h3 id="logarithmic-models"><a href="#/logarithmic-models">Logarithmic Models</a></h3>
+<h3 id="linear-log-model"><a href="#/linear-log-model">Linear-Log Model</a></h3>
+<h3 id="log-linear-model"><a href="#/log-linear-model">Log-Linear Model</a></h3>
+<h3 id="log-log-model"><a href="#/log-log-model">Log-Log Model</a></h3>
+<h3 id="standardizing-comparing-across-units"><a href="#/standardizing-comparing-across-units">Standardizing &amp; Comparing Across Units</a></h3>
+<h3 id="joint-hypothesis-testing"><a href="#/joint-hypothesis-testing">Joint Hypothesis Testing</a></h3>
+</section>
+<section>
+<section id="nonlinear-effects-1" class="title-slide slide level1 centered center" data-background-color="#314f4f">
+<h1>Nonlinear Effects</h1>
+
+</section>
+<section id="linear-regression" class="slide level2">
+<h2><em>Linear</em> Regression</h2>
+<ul>
+<li><p>OLS is commonly known as “<span class="hi"><em>linear</em> regression</span>” as it fits a <strong>straight line</strong> to data points</p></li>
+<li><p>Often, data and relationships between variables may <em>not</em> be linear</p></li>
+</ul>
+</section>
+<section id="linear-regression-1" class="slide level2 smaller">
+<h2><em>Linear</em> Regression</h2>
+
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-2-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
+<section id="linear-regression-2" class="slide level2 smaller">
+<h2><em>Linear</em> Regression</h2>
+
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-3-1.png" width="1344" class="r-stretch quarto-figure-center"><p><span class="math display">\[\color{red}{\widehat{\text{Life Expectancy}_i}=\hat{\beta_0}+\hat{\beta_1}\text{GDP}_i}\]</span></p>
+</section>
+<section id="linear-regression-3" class="slide level2 smaller">
+<h2><em>Linear</em> Regression</h2>
+
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-4-1.png" width="1344" class="r-stretch quarto-figure-center"><p><span class="math display">\[\color{red}{\widehat{\text{Life Expectancy}_i}=\hat{\beta_0}+\hat{\beta_1}\text{GDP}_i}\]</span></p>
+<p><span class="math display">\[\color{green}{\widehat{\text{Life Expectancy}_i}=\hat{\beta_0}+\hat{\beta_1}\text{GDP}_i+\hat{\beta_2}\text{GDP}_i^2}\]</span></p>
+</section>
+<section id="linear-regression-4" class="slide level2 smaller">
+<h2><em>Linear</em> Regression</h2>
+
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-5-1.png" width="1344" class="r-stretch quarto-figure-center"><p><span class="math display">\[\color{red}{\widehat{\text{Life Expectancy}_i}=\hat{\beta_0}+\hat{\beta_1}\text{GDP}_i}\]</span></p>
+<p><span class="math display">\[\color{green}{\widehat{\text{Life Expectancy}_i}=\hat{\beta_0}+\hat{\beta_1}\text{GDP}_i+\hat{\beta_2}\text{GDP}_i^2}\]</span></p>
+<p><span class="math display">\[\color{orange}{\widehat{\text{Life Expectancy}_i}=\hat{\beta_0}+\hat{\beta_1}\ln \text{GDP}_i}\]</span></p>
+</section>
+<section id="sources-of-nonlinearities" class="slide level2">
+<h2>Sources of Nonlinearities</h2>
+<ul>
+<li>Effect of <span class="math inline">\(X_1 \rightarrow Y\)</span> might be nonlinear if:</li>
+</ul>
+<div class="fragment">
+<ol type="1">
+<li><span class="math inline">\(X_1 \rightarrow Y\)</span> is different for different levels of <span class="math inline">\(X_1\)</span>
+<ul>
+<li>e.g.&nbsp;<strong>diminishing returns</strong>: <span class="math inline">\(\uparrow X_1\)</span> increases <span class="math inline">\(Y\)</span> at a <em>decreasing</em> rate</li>
+<li>e.g.&nbsp;<strong>increasing returns</strong>: <span class="math inline">\(\uparrow X_1\)</span> increases <span class="math inline">\(Y\)</span> at an <em>increasing</em> rate</li>
+</ul></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li><span class="math inline">\(X_1 \rightarrow Y\)</span> is different for different levels of <span class="math inline">\(X_2\)</span>
+<ul>
+<li>e.g.&nbsp;interaction effects (last lesson)</li>
+</ul></li>
+</ol>
+</div>
+</section>
+<section id="nonlinearities-alter-marginal-effects" class="slide level2">
+<h2>Nonlinearities Alter Marginal Effects</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>Linear</strong>:</li>
+</ul>
+<p><span class="math display">\[Y=\hat{\beta_0}+\hat{\beta_1}X\]</span></p>
+<ul>
+<li>marginal effect (slope), <span class="math inline">\((\hat{\beta_1}) = \frac{\Delta Y}{\Delta X}\)</span> is constant for all <span class="math inline">\(X\)</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="nonlinearities-alter-marginal-effects-1" class="slide level2">
+<h2>Nonlinearities Alter Marginal Effects</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>Polynomial</strong>:</li>
+</ul>
+<p><span class="math display">\[Y=\hat{\beta_0}+\hat{\beta_1}X+\hat{\beta_2}X^2\]</span></p>
+<ul>
+<li>Marginal effect, “slope” <span class="math inline">\(\left(\neq \hat{\beta_1}\right)\)</span> <em>depends on the value of</em> <span class="math inline">\(X\)</span>!</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="nonlinearities-alter-marginal-effects-2" class="slide level2">
+<h2>Nonlinearities Alter Marginal Effects</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><strong>Interaction Effect</strong>:</li>
+</ul>
+<p><span class="math display">\[\hat{Y}=\hat{\beta_0}+\hat{\beta_1}X_1+\hat{\beta_2}X_2+\hat{\beta_3}X_1 \times X_2\]</span></p>
+<ul>
+<li><p>Marginal effect, “slope” <em>depends on the value of</em> <span class="math inline">\(X_2\)</span>!</p></li>
+<li><p>Easy example: if <span class="math inline">\(X_2\)</span> is a dummy variable:</p>
+<ul>
+<li><span class="blue"><span class="math inline">\(X_2=0\)</span> (control)</span> vs.&nbsp;<span class="pink"><span class="math inline">\(X_2=1\)</span> (treatment)</span></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="polynomial-models-1" class="title-slide slide level1 centered center" data-background-color="#314f4f">
+<h1>Polynomial Models</h1>
+
+</section>
+<section id="polynomial-functions-of-x-i" class="slide level2 smaller">
+<h2>Polynomial Functions of <span class="math inline">\(X\)</span> I</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="blue">Linear</span></li>
+</ul>
+<p><span class="math display">\[\hat{Y}=\hat{\beta_0}+\hat{\beta_1}X\]</span></p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="polynomial-functions-of-x-i-1" class="slide level2 smaller">
+<h2>Polynomial Functions of <span class="math inline">\(X\)</span> I</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="blue">Linear</span></li>
+</ul>
+<p><span class="math display">\[\hat{Y}=\hat{\beta_0}+\hat{\beta_1}X\]</span></p>
+<ul>
+<li><span class="green">Quadratic</span></li>
+</ul>
+<p><span class="math display">\[\hat{Y}=\hat{\beta_0}+\hat{\beta_1}X+\hat{\beta_2}X^2\]</span></p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="polynomial-functions-of-x-i-2" class="slide level2 smaller">
+<h2>Polynomial Functions of <span class="math inline">\(X\)</span> I</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="blue">Linear</span></li>
+</ul>
+<p><span class="math display">\[\hat{Y}=\hat{\beta_0}+\hat{\beta_1}X\]</span></p>
+<ul>
+<li><span class="green">Quadratic</span></li>
+</ul>
+<p><span class="math display">\[\hat{Y}=\hat{\beta_0}+\hat{\beta_1}X+\hat{\beta_2}X^2\]</span></p>
+<ul>
+<li><span class="orange">Cubic</span></li>
+</ul>
+<p><span class="math display">\[\hat{Y}=\hat{\beta_0}+\hat{\beta_1}X+\hat{\beta_2}X^2+\hat{\beta_3}X^3\]</span></p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="polynomial-functions-of-x-i-3" class="slide level2 smaller">
+<h2>Polynomial Functions of <span class="math inline">\(X\)</span> I</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><span class="blue">Linear</span></li>
+</ul>
+<p><span class="math display">\[\hat{Y}=\hat{\beta_0}+\hat{\beta_1}X\]</span></p>
+<ul>
+<li><span class="green">Quadratic</span></li>
+</ul>
+<p><span class="math display">\[\hat{Y}=\hat{\beta_0}+\hat{\beta_1}X+\hat{\beta_2}X^2\]</span></p>
+<ul>
+<li><span class="orange">Cubic</span></li>
+</ul>
+<p><span class="math display">\[\hat{Y}=\hat{\beta_0}+\hat{\beta_1}X+\hat{\beta_2}X^2+\hat{\beta_3}X^3\]</span></p>
+<ul>
+<li><span class="purple">Quartic</span></li>
+</ul>
+<p><span class="math display">\[\hat{Y}=\hat{\beta_0}+\hat{\beta_1}X+\hat{\beta_2}X^2+\hat{\beta_3}X^3+\hat{\beta_4}X^4\]</span></p>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="polynomial-functions-of-x-ii" class="slide level2">
+<h2>Polynomial Functions of <span class="math inline">\(X\)</span> II</h2>
+<p><span class="math display">\[\hat{Y_i} = \hat{\beta_0} + \hat{\beta_1} X_i + \hat{\beta_2} X_i^2 + \cdots + \hat{\beta_{\color{#e64173}{r}}} X_i^{\color{#e64173}{r}} + u_i\]</span></p>
+<div class="fragment">
+<ul>
+<li>Where <span class="math inline">\(\color{e64173}{r}\)</span> is the highest power <span class="math inline">\(X_i\)</span> is raised to
+<ul>
+<li>quadratic <span class="math inline">\(\color{e64173}{r=2}\)</span></li>
+<li>cubic <span class="math inline">\(\color{e64173}{r=3}\)</span></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>The graph of an <span class="math inline">\(r\)</span><sup>th</sup>-degree polynomial function has <span class="math inline">\((r-1)\)</span> bends</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Just another multivariate OLS regression model!</li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="quadratic-model-1" class="title-slide slide level1 centered center" data-background-color="#314f4f">
+<h1>Quadratic Model</h1>
+
+</section>
+<section id="quadratic-model-2" class="slide level2">
+<h2>Quadratic Model</h2>
+<p><span class="math display">\[\hat{Y_i} = \hat{\beta_0} + \hat{\beta_1} X_i + \hat{\beta_2} X_i^2\]</span></p>
+<ul>
+<li><span class="hi">Quadratic model</span> has <span class="math inline">\(X\)</span> and <span class="math inline">\(X^2\)</span> variables in it (yes, need both!)</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>How to interpret coefficients (betas)?
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> as “intercept” and <span class="math inline">\(\beta_1\)</span> as “slope” makes no sense 🧐</li>
+<li><span class="math inline">\(\beta_1\)</span> as effect <span class="math inline">\(X_i \rightarrow Y_i\)</span> holding <span class="math inline">\(X_i^2\)</span> constant??<sup>1</sup></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Estimate marginal effects</strong> by calculating predicted <span class="math inline">\(\hat{Y_i}\)</span> for different levels of <span class="math inline">\(X_i\)</span></li>
+</ul>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn1" role="doc-endnote"><p>Note: this is <em>not</em> a perfect multicollinearity problem! Correlation only measures <em>linear</em> relationships!</p></li></ol></aside></section>
+<section id="quadratic-model-calculating-marginal-effects" class="slide level2">
+<h2>Quadratic Model: Calculating Marginal Effects</h2>
+<p><span class="math display">\[\hat{Y_i} = \hat{\beta_0} + \hat{\beta_1} X_i + \hat{\beta_2} X_i^2\]</span></p>
+<ul>
+<li>What is the <span class="hi">marginal effect</span> of <span class="math inline">\(\Delta X_i \rightarrow \Delta Y_i\)</span>?</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Take the <strong>derivative</strong> of <span class="math inline">\(Y_i\)</span> with respect to <span class="math inline">\(X_i\)</span>:</li>
+</ul>
+<p><span class="math display">\[\frac{\partial \, Y_i}{\partial \, X_i} = \hat{\beta_1}+2\hat{\beta_2} X_i\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="hi">Marginal effect</span> of a 1 unit change in <span class="math inline">\(X_i\)</span> is a <span class="math inline">\(\color{#6A5ACD}{\left(\hat{\beta_1}+2\hat{\beta_2} X_i \right)}\)</span> unit change in <span class="math inline">\(Y\)</span></li>
+</ul>
+</div>
+</section>
+<section id="quadratic-model-example-i" class="slide level2">
+<h2>Quadratic Model: Example I</h2>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[\widehat{\text{Life Expectancy}_i} = \hat{\beta_0}+\hat{\beta_1} \, \text{GDP per capita}_i+\hat{\beta_2}\, \text{GDP per capita}^2_i\]</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Use <code>gapminder</code> package and data</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(gapminder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="quadratic-model-example-ii" class="slide level2">
+<h2>Quadratic Model: Example II</h2>
+<ul>
+<li>These coefficients will be very large, so let’s transform <code>gdpPercap</code> to be in $1,000’s</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>gapminder <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">mutate</span>(<span class="at">GDP_t =</span> gdpPercap<span class="sc">/</span><span class="dv">1000</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a>gapminder <span class="sc">%&gt;%</span> <span class="fu">head</span>() <span class="co"># look at it</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["fct"],"align":["left"]},{"label":["continent"],"name":[2],"type":["fct"],"align":["left"]},{"label":["year"],"name":[3],"type":["int"],"align":["right"]},{"label":["lifeExp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["pop"],"name":[5],"type":["int"],"align":["right"]},{"label":["gdpPercap"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["GDP_t"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"Asia","3":"1952","4":"28.801","5":"8425333","6":"779.4453","7":"0.7794453"},{"1":"Afghanistan","2":"Asia","3":"1957","4":"30.332","5":"9240934","6":"820.8530","7":"0.8208530"},{"1":"Afghanistan","2":"Asia","3":"1962","4":"31.997","5":"10267083","6":"853.1007","7":"0.8531007"},{"1":"Afghanistan","2":"Asia","3":"1967","4":"34.020","5":"11537966","6":"836.1971","7":"0.8361971"},{"1":"Afghanistan","2":"Asia","3":"1972","4":"36.088","5":"13079460","6":"739.9811","7":"0.7399811"},{"1":"Afghanistan","2":"Asia","3":"1977","4":"38.438","5":"14880372","6":"786.1134","7":"0.7861134"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="quadratic-model-example-ii-1" class="slide level2">
+<h2>Quadratic Model: Example II</h2>
+<ul>
+<li>Let’s also create a squared term, <code>gdp_sq</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>gapminder <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">mutate</span>(<span class="at">GDP_sq =</span> GDP_t<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>gapminder <span class="sc">%&gt;%</span> <span class="fu">head</span>() <span class="co"># look at it</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["fct"],"align":["left"]},{"label":["continent"],"name":[2],"type":["fct"],"align":["left"]},{"label":["year"],"name":[3],"type":["int"],"align":["right"]},{"label":["lifeExp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["pop"],"name":[5],"type":["int"],"align":["right"]},{"label":["gdpPercap"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["GDP_t"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["GDP_sq"],"name":[8],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"Asia","3":"1952","4":"28.801","5":"8425333","6":"779.4453","7":"0.7794453","8":"0.6075350"},{"1":"Afghanistan","2":"Asia","3":"1957","4":"30.332","5":"9240934","6":"820.8530","7":"0.8208530","8":"0.6737997"},{"1":"Afghanistan","2":"Asia","3":"1962","4":"31.997","5":"10267083","6":"853.1007","7":"0.8531007","8":"0.7277808"},{"1":"Afghanistan","2":"Asia","3":"1967","4":"34.020","5":"11537966","6":"836.1971","7":"0.8361971","8":"0.6992257"},{"1":"Afghanistan","2":"Asia","3":"1972","4":"36.088","5":"13079460","6":"739.9811","7":"0.7399811","8":"0.5475720"},{"1":"Afghanistan","2":"Asia","3":"1977","4":"38.438","5":"14880372","6":"786.1134","7":"0.7861134","8":"0.6179742"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="quadratic-model-example-iv" class="slide level2">
+<h2>Quadratic Model: Example IV</h2>
+<ul>
+<li>Can “manually” run a multivariate regression with <code>GDP_t</code> and <code>GDP_sq</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(lifeExp <span class="sc">~</span> GDP_t <span class="sc">+</span> GDP_sq, <span class="at">data =</span> gapminder)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a>reg1 <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"50.52400578","3":"0.2978134673","4":"169.64984","5":"0.000000e+00"},{"1":"GDP_t","2":"1.55099112","3":"0.0373734945","4":"41.49976","5":"1.292863e-260"},{"1":"GDP_sq","2":"-0.01501927","3":"0.0005794139","4":"-25.92149","5":"3.935809e-125"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="quadratic-model-example-iv-1" class="slide level2">
+<h2>Quadratic Model: Example IV</h2>
+<ul>
+<li>OR use <code>gdp_t</code> and add the <code>I()</code> operator to transform the variable in the regression, <code>I(gdp_t^2)</code><sup>1</sup></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>reg1_alt <span class="ot">&lt;-</span> <span class="fu">lm</span>(lifeExp <span class="sc">~</span> GDP_t <span class="sc">+</span> <span class="fu">I</span>(GDP_t<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> gapminder)</span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a>reg1_alt <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"50.52400578","3":"0.2978134673","4":"169.64984","5":"0.000000e+00"},{"1":"GDP_t","2":"1.55099112","3":"0.0373734945","4":"41.49976","5":"1.292863e-260"},{"1":"I(GDP_t^2)","2":"-0.01501927","3":"0.0005794139","4":"-25.92149","5":"3.935809e-125"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn2" role="doc-endnote"><p><a href="https://stackoverflow.com/questions/8055508/in-r-formulas-why-do-i-have-to-use-the-i-function-on-power-terms-like-y-i">Here</a> is a decent explanation of what <code>I()</code> does. An alternative is to use <code>poly(GDP_t, 2)</code> to make the squared term, but this <a href="https://stats.stackexchange.com/questions/25975/how-to-add-second-order-terms-into-the-model-in-r">has some issues</a>.</p></li></ol></aside></section>
+<section id="quadratic-model-example-v" class="slide level2">
+<h2>Quadratic Model: Example V</h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"50.52400578","3":"0.2978134673","4":"169.64984","5":"0.000000e+00"},{"1":"GDP_t","2":"1.55099112","3":"0.0373734945","4":"41.49976","5":"1.292863e-260"},{"1":"GDP_sq","2":"-0.01501927","3":"0.0005794139","4":"-25.92149","5":"3.935809e-125"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\widehat{\text{Life Expectancy}_i} = 50.52+1.55 \, \text{GDP}_i - 0.02\, \text{GDP}^2_i\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li><p>Positive effect <span class="math inline">\((\hat{\beta_1}&gt;0)\)</span>, with diminishing returns <span class="math inline">\((\hat{\beta_2}&lt;0)\)</span></p></li>
+<li><p>Marginal effect of GDP on Life Expectancy <strong>depends on initial value of GDP!</strong></p></li>
+</ul>
+</div>
+</section>
+<section id="quadratic-model-example-vi" class="slide level2">
+<h2>Quadratic Model: Example VI</h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"50.52400578","3":"0.2978134673","4":"169.64984","5":"0.000000e+00"},{"1":"GDP_t","2":"1.55099112","3":"0.0373734945","4":"41.49976","5":"1.292863e-260"},{"1":"GDP_sq","2":"-0.01501927","3":"0.0005794139","4":"-25.92149","5":"3.935809e-125"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<ul>
+<li><span class="hi">Marginal effect</span> of GDP on Life Expectancy:</li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*}
+\frac{\partial \, Y}{\partial \; X} &amp;= \hat{\beta_1}+2\hat{\beta_2} X_i\\
+\frac{\partial \, \text{Life Expectancy}}{\partial \, \text{GDP}} &amp;\approx 1.55+2(-0.02) \, \text{GDP}\\
+&amp;\approx \color{#e64173}{1.55-0.04 \, \text{GDP}}\\
+\end{align*}\]</span></p>
+<div class="footer">
+
+</div>
+</div>
+</section>
+<section id="quadratic-model-example-vii" class="slide level2">
+<h2>Quadratic Model: Example VII</h2>
+<p><span class="math display">\[\frac{\partial \, \text{Life Expectancy}}{\partial \, \text{GDP}} = 1.55-0.04 \, \text{GDP}\]</span></p>
+<div class="fragment">
+<p>Marginal effect of GDP if GDP <span class="math inline">\(=5\)</span> ($ thousand):</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*}
+\frac{\partial \, \text{Life Expectancy}}{\partial \, \text{GDP}} &amp;= 1.55-0.04\text{GDP}\\
+&amp;= 1.55-0.04(5)\\
+&amp;= 1.55-0.20\\
+&amp;=1.35\\
+\end{align*}\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>i.e.&nbsp;for every addition $1 (thousand) in GDP per capita, average life expectancy increases by 1.35 years</li>
+</ul>
+</div>
+</section>
+<section id="quadratic-model-example-viii" class="slide level2">
+<h2>Quadratic Model: Example VIII</h2>
+<p><span class="math display">\[\frac{\partial \, \text{Life Expectancy}}{\partial \, \text{GDP}} = 1.55-0.04 \, \text{GDP}\]</span></p>
+<p>Marginal effect of GDP if GDP <span class="math inline">\(=25\)</span> ($ thousand):</p>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*}
+\frac{\partial \, \text{Life Expectancy}}{\partial \, \text{GDP}} &amp;= 1.55-0.04\text{GDP}\\
+&amp;= 1.55-0.04(25)\\
+&amp;= 1.55-1.00\\
+&amp;=0.55\\
+\end{align*}\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>i.e.&nbsp;for every addition $1 (thousand) in GDP per capita, average life expectancy increases by 0.55 years</li>
+</ul>
+</div>
+</section>
+<section id="quadratic-model-example-x" class="slide level2">
+<h2>Quadratic Model: Example X</h2>
+<p><span class="math display">\[\frac{\partial \, \text{Life Expectancy}}{\partial \, \text{GDP}} = 1.55-0.04 \, \text{GDP}\]</span></p>
+<p>Marginal effect of GDP if GDP <span class="math inline">\(=50\)</span> ($ thousand):</p>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*}
+\frac{\partial \, \text{Life Expectancy}}{\partial \, \text{GDP}} &amp;= 1.55-0.04\text{GDP}\\
+&amp;= 1.55-0.04(50)\\
+&amp;= 1.55-2.00\\
+&amp;=-0.45\\
+\end{align*}\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>i.e.&nbsp;for every addition $1 (thousand) in GDP per capita, average life expectancy <em>decreases</em> by 0.45 years</li>
+</ul>
+</div>
+</section>
+<section id="quadratic-model-example-xi" class="slide level2">
+<h2>Quadratic Model: Example XI</h2>
+<p><span class="math display">\[\begin{align*}\widehat{\text{Life Expectancy}_i} &amp;= 50.52+1.55 \, \text{GDP per capita}_i - 0.02\, \text{GDP per capita}^2_i \\
+\frac{\partial \, \text{Life Expectancy}}{d \, \text{GDP}} &amp;= 1.55-0.04\text{GDP} \\ \end{align*}\]</span></p>
+<table>
+<colgroup>
+<col style="width: 44%">
+<col style="width: 55%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><em>Initial</em> GDP per capita</th>
+<th style="text-align: right;">Marginal Effect<sup>1</sup></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>$5,000</td>
+<td style="text-align: right;"><span class="math inline">\(1.35\)</span> years</td>
+</tr>
+<tr class="even">
+<td>$25,000</td>
+<td style="text-align: right;"><span class="math inline">\(0.55\)</span> years</td>
+</tr>
+<tr class="odd">
+<td>$50,000</td>
+<td style="text-align: right;"><span class="math inline">\(-0.45\)</span> years</td>
+</tr>
+</tbody>
+</table>
+<aside><ol class="aside-footnotes"><li id="fn3" role="doc-endnote"><p>Of +$1,000 GDP/capita on Life Expectancy.</p></li></ol></aside></section>
+<section id="quadratic-model-example-xii" class="slide level2">
+<h2>Quadratic Model: Example XII</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder)<span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> GDP_t,</span>
+<span id="cb6-3"><a href="#cb6-3"></a>      <span class="at">y =</span> lifeExp)<span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6"></a>              <span class="at">formula =</span> y <span class="sc">~</span> x <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">2</span>),</span>
+<span id="cb6-7"><a href="#cb6-7"></a>              <span class="at">color =</span> <span class="st">"green"</span>)<span class="sc">+</span> </span>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">25</span>,<span class="dv">50</span>),</span>
+<span id="cb6-9"><a href="#cb6-9"></a>             <span class="at">linetype =</span> <span class="st">"dashed"</span>,</span>
+<span id="cb6-10"><a href="#cb6-10"></a>             <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar,</span>
+<span id="cb6-12"><a href="#cb6-12"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">120</span>,<span class="dv">10</span>))<span class="sc">+</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">10</span>),</span>
+<span id="cb6-14"><a href="#cb6-14"></a>                     <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))<span class="sc">+</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"GDP per Capita (in Thousands)"</span>,</span>
+<span id="cb6-16"><a href="#cb6-16"></a>       <span class="at">y =</span> <span class="st">"Life Expectancy (Years)"</span>)<span class="sc">+</span></span>
+<span id="cb6-17"><a href="#cb6-17"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
+<span id="cb6-18"><a href="#cb6-18"></a>           <span class="at">base_size=</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-20-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
+<section id="quadratic-model-maxima-and-minima-i" class="slide level2">
+<h2>Quadratic Model: Maxima and Minima I</h2>
+<ul>
+<li>For a polynomial model, we can also find the predicted <strong>maximum</strong> or <strong>minimum</strong> of <span class="math inline">\(\hat{Y_i}\)</span></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>A quadratic model has a single global maximum or minimum (1 bend)</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>By calculus, a minimum or maximum occurs where:</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+        \frac{ \partial \, Y_i}{\partial \, X_i} &amp;=0\\
+        \beta_1 + 2\beta_2 X_i &amp;= 0\\
+        2\beta_2 X_i&amp;= -\beta_1\\
+        X_i^*&amp;=-\frac{\beta_1}{2\beta_2}\\
+\end{align*}\]</span></p>
+</div>
+</section>
+<section id="quadratic-model-maxima-and-minima-ii" class="slide level2">
+<h2>Quadratic Model: Maxima and Minima II</h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"50.52400578","3":"0.2978134673","4":"169.64984","5":"0.000000e+00"},{"1":"GDP_t","2":"1.55099112","3":"0.0373734945","4":"41.49976","5":"1.292863e-260"},{"1":"GDP_sq","2":"-0.01501927","3":"0.0005794139","4":"-25.92149","5":"3.935809e-125"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p><span class="math display">\[\begin{align*}
+GDP_i^*&amp;=-\frac{\beta_1}{2\beta_2}\\
+GDP_i^*&amp;=-\frac{(1.55)}{2(-0.015)}\\
+GDP_i^*&amp; \approx 51.67\\
+\end{align*}\]</span></p>
+</section>
+<section id="quadratic-model-maxima-and-minima-iii" class="slide level2">
+<h2>Quadratic Model: Maxima and Minima III</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder)<span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> GDP_t,</span>
+<span id="cb7-3"><a href="#cb7-3"></a>      <span class="at">y =</span> lifeExp)<span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6"></a>              <span class="at">formula =</span> y <span class="sc">~</span> x <span class="sc">+</span> <span class="fu">I</span>(x<span class="sc">^</span><span class="dv">2</span>),</span>
+<span id="cb7-7"><a href="#cb7-7"></a>              <span class="at">color =</span> <span class="st">"green"</span>)<span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="fl">51.67</span>, <span class="at">linetype=</span><span class="st">"dashed"</span>, <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>  <span class="fu">geom_label</span>(<span class="at">x=</span><span class="fl">51.67</span>, <span class="at">y=</span><span class="dv">90</span>, <span class="at">label=</span><span class="st">"$51.67"</span>, <span class="at">color=</span><span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar,</span>
+<span id="cb7-11"><a href="#cb7-11"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">120</span>,<span class="dv">10</span>))<span class="sc">+</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">10</span>),</span>
+<span id="cb7-13"><a href="#cb7-13"></a>                     <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))<span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"GDP per Capita (in Thousands)"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15"></a>       <span class="at">y =</span> <span class="st">"Life Expectancy (Years)"</span>)<span class="sc">+</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
+<span id="cb7-17"><a href="#cb7-17"></a>           <span class="at">base_size=</span><span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-22-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
+<section id="determining-if-polynomials-are-necessary-i" class="slide level2">
+<h2>Determining If Polynomials Are Necessary I</h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"50.52400578","3":"0.2978134673","4":"169.64984","5":"0.000000e+00"},{"1":"GDP_t","2":"1.55099112","3":"0.0373734945","4":"41.49976","5":"1.292863e-260"},{"1":"GDP_sq","2":"-0.01501927","3":"0.0005794139","4":"-25.92149","5":"3.935809e-125"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<ul>
+<li>Is the quadratic term necessary?</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Determine if <span class="math inline">\(\hat{\beta_2}\)</span> (on <span class="math inline">\(X_i^2)\)</span> is statistically significant:
+<ul>
+<li><span class="math inline">\(H_0: \hat{\beta_2}=0\)</span></li>
+<li><span class="math inline">\(H_a: \hat{\beta_2} \neq 0\)</span></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Statistically significant <span class="math inline">\(\implies\)</span> we should keep the quadratic model
+<ul>
+<li>If we only ran a linear model, it would be incorrect!</li>
+</ul></li>
+</ul>
+<div class="footer">
+
+</div>
+</div>
+</section>
+<section id="determining-polynomials-are-necessary-ii" class="slide level2">
+<h2>Determining Polynomials are Necessary II</h2>
+<ul>
+<li>Should we keep going up in polynomials?</li>
+</ul>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-24-1.png" width="1344"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="determining-polynomials-are-necessary-ii-1" class="slide level2">
+<h2>Determining Polynomials are Necessary II</h2>
+<ul>
+<li>Should we keep going up in polynomials?</li>
+</ul>
+
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-25-1.png" width="1344" class="r-stretch quarto-figure-center"><p><span class="math display">\[\color{#6A5ACD}{\widehat{\text{Life Expectancy}_i} = \hat{\beta_0}+\hat{\beta_1} GDP_i+\hat{\beta_2}GDP^2_i+\hat{\beta_3}GDP_i^3}\]</span></p>
+</section>
+<section id="determining-polynomials-are-necessary-iii" class="slide level2">
+<h2>Determining Polynomials are Necessary III</h2>
+<ul>
+<li><p>In general, you should have a <span class="hi-purple">compelling theoretical reason</span> why data or relationships should <span class="hi-purple">“change direction”</span> multiple times</p></li>
+<li><p>Or clear data patterns that have multiple “bends”</p></li>
+<li><p>Recall, <a href="https://metricsf22.classes.ryansafner.com/slides/3.1-slides.html#/two-types-of-uses-for-regression">we care more</a> about accurately measuring the causal effect of <span class="math inline">\(X \rightarrow Y\)</span>, rather than getting the most accurate prediction possible for <span class="math inline">\(\hat{Y}\)</span></p></li>
+</ul>
+
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-26-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
+<section id="determining-polynomials-are-necessary-iv" class="slide level2">
+<h2>Determining Polynomials are Necessary IV</h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"47.4755069510","3":"0.3227816126","4":"147.08244","5":"0.000000e+00"},{"1":"GDP_t","2":"2.7226370698","3":"0.0742733639","4":"36.65698","5":"2.816848e-217"},{"1":"I(GDP_t^2)","2":"-0.0681545071","3":"0.0030340927","4":"-22.46290","5":"4.574160e-98"},{"1":"I(GDP_t^3)","2":"0.0004093149","3":"0.0000230101","4":"17.78849","5":"4.713120e-65"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(\hat{\beta_3}\)</span> is statistically significant…</li>
+<li>…but can we really think of a good reason to complicate the model?</li>
+</ul>
+</div>
+</section>
+<section id="if-you-kept-going" class="slide level2 smaller">
+<h2>If You Kept Going…</h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"4.003294e+01","3":"5.846282e-01","4":"68.475901","5":"0.000000e+00"},{"1":"GDP_t","2":"8.722968e+00","3":"5.290582e-01","4":"16.487728","5":"9.307692e-57"},{"1":"I(GDP_t^2)","2":"-1.081312e+00","3":"1.294759e-01","4":"-8.351460","5":"1.383586e-16"},{"1":"I(GDP_t^3)","2":"7.190930e-02","3":"1.334295e-02","4":"5.389309","5":"8.066753e-08"},{"1":"I(GDP_t^4)","2":"-2.705563e-03","3":"7.010624e-04","4":"-3.859233","5":"1.180104e-04"},{"1":"I(GDP_t^5)","2":"6.063170e-05","3":"2.056983e-05","4":"2.947604","5":"3.246284e-03"},{"1":"I(GDP_t^6)","2":"-8.254873e-07","3":"3.495442e-07","4":"-2.361610","5":"1.830836e-02"},{"1":"I(GDP_t^7)","2":"6.685309e-09","3":"3.408241e-09","4":"1.961513","5":"4.998276e-02"},{"1":"I(GDP_t^8)","2":"-2.956581e-11","3":"1.766287e-11","4":"-1.673896","5":"9.433565e-02"},{"1":"I(GDP_t^9)","2":"5.490732e-14","3":"3.765889e-14","4":"1.458017","5":"1.450211e-01"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li><p>It takes until a 9<sup>th</sup>-degree polynomial for one of the terms to become insignificant…</p></li>
+<li><p>…but does this make the model <em>better</em>? <em>more interpretable</em>?</p></li>
+<li><p>A famous problem of <span class="hi">overfitting</span></p></li>
+</ul>
+</div>
+</section>
+<section id="if-you-kept-goingvisually" class="slide level2">
+<h2>If You Kept Going…Visually</h2>
+
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-29-1.png" width="960" class="r-stretch"></section>
+<section id="if-you-kept-goingvisually-1" class="slide level2">
+<h2>If You Kept Going…Visually</h2>
+
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-30-1.png" width="960" class="r-stretch"><p>A 4<sup>th</sup>-degree polynomial</p>
+</section>
+<section id="if-you-kept-goingvisually-2" class="slide level2">
+<h2>If You Kept Going…Visually</h2>
+
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-31-1.png" width="960" class="r-stretch"><p>A 9<sup>th</sup>-degree polynomial</p>
+</section>
+<section id="if-you-kept-goingvisually-3" class="slide level2">
+<h2>If You Kept Going…Visually</h2>
+
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-32-1.png" width="960" class="r-stretch"><p>A 14<sup>th</sup>-degree polynomial</p>
+</section>
+<section id="strategy-for-polynomial-model-specification" class="slide level2">
+<h2>Strategy for Polynomial Model Specification</h2>
+<ol type="1">
+<li>Are there good theoretical reasons for relationships changing (e.g.&nbsp;increasing/decreasing returns)?</li>
+</ol>
+<div class="fragment">
+<ol start="2" type="1">
+<li>Plot your data: does a straight line fit well enough?</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li>Specify a polynomial function of a higher power (start with 2) and estimate OLS regression</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="4" type="1">
+<li>Use <span class="math inline">\(t\)</span>-test to determine if higher-power term is significant</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="5" type="1">
+<li>Interpret effect of change in <span class="math inline">\(X\)</span> on <span class="math inline">\(Y\)</span></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="6" type="1">
+<li>Repeat steps 3-5 as necessary (if there are good theoretical reasons)</li>
+</ol>
+</div>
+</section></section>
+<section>
+<section id="logarithmic-models-1" class="title-slide slide level1 centered center" data-background-color="#314f4f">
+<h1>Logarithmic Models</h1>
+
+</section>
+<section id="linear-regression-5" class="slide level2 smaller">
+<h2><em>Linear</em> Regression</h2>
+
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-33-1.png" width="1344" class="r-stretch quarto-figure-center"><p><span class="math display">\[\color{red}{\widehat{\text{Life Expectancy}_i}=\hat{\beta_0}+\hat{\beta_1}\text{GDP}_i}\]</span></p>
+<p><span class="math display">\[\color{green}{\widehat{\text{Life Expectancy}_i}=\hat{\beta_0}+\hat{\beta_1}\text{GDP}_i+\hat{\beta_2}\text{GDP}_i^2}\]</span></p>
+<p><span class="math display">\[\color{orange}{\widehat{\text{Life Expectancy}_i}=\hat{\beta_0}+\hat{\beta_1}\ln \text{GDP}_i}\]</span></p>
+</section>
+<section id="logarithmic-models-2" class="slide level2">
+<h2>Logarithmic Models</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Another useful model for nonlinear data is the <span class="hi">logarithmic model</span><sup>1</sup>
+<ul>
+<li>We transform either <span class="math inline">\(X\)</span>, <span class="math inline">\(Y\)</span>, or <em>both</em> by taking the <span class="hi-purple">(natural) logarithm</span></li>
+</ul></li>
+<li>Logarithmic model has two additional advantages
+<ol type="1">
+<li>We can easily interpret coefficients as <strong>percentage changes</strong> or <strong>elasticities</strong></li>
+<li>Useful economic shape: diminishing returns (production functions, utility functions, etc)</li>
+</ol></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-34-1.png" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn4" role="doc-endnote"><p>Don’t confuse this with a <span class="hi">logistic (logit) model</span> for <em>dependent</em> dummy variables.</p></li></ol></aside></section>
+<section id="the-natural-logarithm" class="slide level2">
+<h2>The Natural Logarithm</h2>
+
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-35-1.png" width="960" class="r-stretch quarto-figure-center"><ul>
+<li><p>The <span class="red">exponential function</span>, <span class="math inline">\(Y=e^X\)</span> or <span class="math inline">\(Y=exp(X)\)</span>, where base <span class="math inline">\(e=2.71828...\)</span></p></li>
+<li><p><span class="blue">Natural logarithm</span> is the inverse, <span class="math inline">\(Y=ln(X)\)</span></p></li>
+</ul>
+</section>
+<section id="the-natural-logarithm-review-i" class="slide level2 smaller">
+<h2>The Natural Logarithm: Review I</h2>
+<ul>
+<li><span class="hi">Exponents</span> are defined as</li>
+</ul>
+<p><span class="math display">\[\color{#6A5ACD}{b}^{\color{#e64173}{n}}=\underbrace{\color{#6A5ACD}{b} \times \color{#6A5ACD}{b} \times \cdots \times \color{#6A5ACD}{b}}_{\color{#e64173}{n} \text{ times}}\]</span></p>
+<ul>
+<li>where base <span class="math inline">\(\color{#6A5ACD}{b}\)</span> is multiplied by itself <span class="math inline">\(\color{#e64173}{n}\)</span> times</li>
+</ul>
+<div class="fragment">
+<ul>
+<li><span class="green"><strong>Example</strong></span>: <span class="math inline">\(\color{#6A5ACD}{2}^{\color{#e64173}{3}}=\underbrace{\color{#6A5ACD}{2} \times \color{#6A5ACD}{2} \times \color{#6A5ACD}{2}}_{\color{#e64173}{n=3}}=\color{#314f4f}{8}\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="hi-purple">Logarithms</span> are the inverse, defined as the exponents in the expressions above</li>
+</ul>
+<p><span class="math display">\[\text{If } \color{#6A5ACD}{b}^{\color{#e64173}{n}}=\color{#314f4f}{y}\text{, then }log_{\color{#6A5ACD}{b}}(\color{#314f4f}{y})=\color{#e64173}{n}\]</span></p>
+<ul>
+<li><span class="math inline">\(\color{#e64173}{n}\)</span> is the number you must raise <span class="math inline">\(\color{#6A5ACD}{b}\)</span> to in order to get <span class="math inline">\(\color{#314f4f}{y}\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="green"><strong>Example</strong></span>: <span class="math inline">\(log_{\color{#6A5ACD}{2}}(\color{#314f4f}{8})=\color{#e64173}{3}\)</span></li>
+</ul>
+</div>
+</section>
+<section id="the-natural-logarithm-review-ii" class="slide level2">
+<h2>The Natural Logarithm: Review II</h2>
+<ul>
+<li>Logarithms can have any base, but common to use the <span class="hi-purple">natural logarithm</span> <span class="math inline">\((\ln)\)</span> with base <span class="math inline">\(\mathbf{e=2.71828...}\)</span></li>
+</ul>
+<p><span class="math display">\[\text{If } e^n=y\text{, then } \ln(y)=n\]</span></p>
+</section>
+<section id="the-natural-logarithm-properties" class="slide level2">
+<h2>The Natural Logarithm: Properties</h2>
+<ul>
+<li>Natural logs have a lot of useful properties:
+<ol type="1">
+<li><span class="math inline">\(\ln(\frac{1}{x})=-\ln(x)\)</span></li>
+<li><span class="math inline">\(\ln(ab)=\ln(a)+\ln(b)\)</span></li>
+<li><span class="math inline">\(\ln(\frac{x}{a})=\ln(x)-\ln(a)\)</span></li>
+<li><span class="math inline">\(\ln(x^a)=a \, \ln(x)\)</span></li>
+<li><span class="math inline">\(\frac{d \, \ln \, x}{d \, x} = \frac{1}{x}\)</span></li>
+</ol></li>
+</ul>
+</section>
+<section id="the-natural-logarithm-example" class="slide level2 smaller">
+<h2>The Natural Logarithm: Example</h2>
+<ul>
+<li>Most useful property: for small change in <span class="math inline">\(x\)</span>, <span class="math inline">\(\Delta x\)</span>:</li>
+</ul>
+<p><span class="math display">\[\underbrace{\ln(x+\Delta x) - \ln(x)}_{\text{Difference in logs}} \approx \underbrace{\frac{\Delta x}{x}}_{\text{Relative change}}\]</span></p>
+<div class="fragment">
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <span class="math inline">\(x=100\)</span> and <span class="math inline">\(\Delta x =1\)</span>, relative change is:</p>
+<p><span class="math display">\[\frac{\Delta x}{x} = \frac{(101-100)}{100} = 0.01 \text{ or }1\%\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>The logged difference:</li>
+</ul>
+<p><span class="math display">\[\ln(101)-\ln(100) = 0.00995 \approx 1\%\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>This allows us to very easily interpret coefficients as <strong>percent changes</strong> or <span class="hi-purple">elasticities</span></li>
+</ul>
+</div>
+</section>
+<section id="elasticity" class="slide level2">
+<h2>Elasticity</h2>
+<ul>
+<li>An <span class="hi">elasticity</span> between any two variables, <span class="math inline">\(\epsilon_{Y,X}\)</span> describes the <span class="hi-purple">responsiveness</span> (in %) of one variable <span class="math inline">\((Y)\)</span> to a change in another <span class="math inline">\((X)\)</span></li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[\epsilon_{Y,X}=\frac{\% \Delta Y}{\% \Delta X} =\cfrac{\left(\frac{\Delta Y}{Y}\right)}{\left( \frac{\Delta X}{X}\right)}\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>Numerator is relative change in <span class="math inline">\(Y\)</span>, Denominator is relative change in <span class="math inline">\(X\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="hi-purple">Interpretation</span>: a 1% change in <span class="math inline">\(X\)</span> will cause a <span class="math inline">\(\epsilon_{Y,X}\)</span>% change in <span class="math inline">\(Y\)</span></li>
+</ul>
+</div>
+</section>
+<section id="math-fyi-cobb-douglas-functions-and-logs" class="slide level2">
+<h2>Math FYI: Cobb Douglas Functions and Logs</h2>
+<ul>
+<li>One of the (many) reasons why economists love Cobb-Douglas functions:</li>
+</ul>
+<p><span class="math display">\[Y=AL^{\alpha}K^{\beta}\]</span></p>
+<div class="fragment">
+<ul>
+<li>Taking logs, relationship becomes linear:</li>
+</ul>
+<p><span class="math display">\[\ln(Y)=\ln(A)+\alpha \ln(L)+ \beta \ln(K)\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>With data on <span class="math inline">\((Y, L, K)\)</span> and linear regression, can estimate <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>
+<ul>
+<li><span class="math inline">\(\alpha\)</span>: elasticity of <span class="math inline">\(Y\)</span> with respect to <span class="math inline">\(L\)</span>
+<ul>
+<li>A 1% change in <span class="math inline">\(L\)</span> will lead to an <span class="math inline">\(\alpha\)</span>% change in <span class="math inline">\(Y\)</span></li>
+</ul></li>
+<li><span class="math inline">\(\beta\)</span>: elasticity of <span class="math inline">\(Y\)</span> with respect to <span class="math inline">\(K\)</span>
+<ul>
+<li>A 1% change in <span class="math inline">\(K\)</span> will lead to a <span class="math inline">\(\beta\)</span>% change in <span class="math inline">\(Y\)</span></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="math-fyi-cobb-douglas-functions-and-logs-1" class="slide level2">
+<h2>Math FYI: Cobb Douglas Functions and Logs</h2>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[Y=2L^{0.75}K^{0.25}\]</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Taking logs:</li>
+</ul>
+<p><span class="math display">\[\ln Y=\ln 2+0.75 \ln L + 0.25 \ln K\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li><p>A 1% change in <span class="math inline">\(L\)</span> will yield a 0.75% change in output <span class="math inline">\(Y\)</span></p></li>
+<li><p>A 1% change in <span class="math inline">\(K\)</span> will yield a 0.25% change in output <span class="math inline">\(Y\)</span></p></li>
+</ul>
+</div>
+</section>
+<section id="logarithms-in-r-i" class="slide level2">
+<h2>Logarithms in <code>R</code> I</h2>
+<ul>
+<li>The <code>log()</code> function can easily take the logarithm</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>gapminder <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">mutate</span>(<span class="at">loggdp =</span> <span class="fu">log</span>(gdpPercap)) <span class="co"># log GDP per capita</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a>gapminder <span class="sc">%&gt;%</span> <span class="fu">head</span>() <span class="co"># look at it</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["fct"],"align":["left"]},{"label":["continent"],"name":[2],"type":["fct"],"align":["left"]},{"label":["year"],"name":[3],"type":["int"],"align":["right"]},{"label":["lifeExp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["pop"],"name":[5],"type":["int"],"align":["right"]},{"label":["gdpPercap"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["GDP_t"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["GDP_sq"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["loggdp"],"name":[9],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"Asia","3":"1952","4":"28.801","5":"8425333","6":"779.4453","7":"0.7794453","8":"0.6075350","9":"6.658583"},{"1":"Afghanistan","2":"Asia","3":"1957","4":"30.332","5":"9240934","6":"820.8530","7":"0.8208530","8":"0.6737997","9":"6.710344"},{"1":"Afghanistan","2":"Asia","3":"1962","4":"31.997","5":"10267083","6":"853.1007","7":"0.8531007","8":"0.7277808","9":"6.748878"},{"1":"Afghanistan","2":"Asia","3":"1967","4":"34.020","5":"11537966","6":"836.1971","7":"0.8361971","8":"0.6992257","9":"6.728864"},{"1":"Afghanistan","2":"Asia","3":"1972","4":"36.088","5":"13079460","6":"739.9811","7":"0.7399811","8":"0.5475720","9":"6.606625"},{"1":"Afghanistan","2":"Asia","3":"1977","4":"38.438","5":"14880372","6":"786.1134","7":"0.7861134","8":"0.6179742","9":"6.667101"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="logarithms-in-r-ii" class="slide level2">
+<h2>Logarithms in <code>R</code> II</h2>
+<ul>
+<li>Note, <code>log()</code> by default is the <strong>natural logarithm <span class="math inline">\(ln()\)</span></strong>, i.e.&nbsp;base <code>e</code>
+<ul>
+<li>Can change base with e.g.&nbsp;<code>log(x, base = 5)</code></li>
+<li>Some common built-in logs: <code>log10</code>, <code>log2</code></li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">log10</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">log2</span>(<span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">log</span>(<span class="dv">19683</span>, <span class="at">base=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+</section>
+<section id="logarithms-in-r-iii" class="slide level2">
+<h2>Logarithms in <code>R</code> III</h2>
+<ul>
+<li>Note when running a regression, you can pre-transform the data into logs (as I did above), or just add <code>log()</code> around a variable in the regression</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"-9.100889","3":"1.227674","4":"-7.413117","5":"1.934812e-13"},{"1":"loggdp","2":"8.405085","3":"0.148762","4":"56.500206","5":"0.000000e+00"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="types-of-logarithmic-models" class="slide level2">
+<h2>Types of Logarithmic Models</h2>
+<ul>
+<li>Three types of log regression models, depending on which variables we log</li>
+</ul>
+<div class="fragment">
+<ol type="1">
+<li><span class="hi-purple">Linear-log model:</span> <span class="math inline">\(Y_i=\beta_0+\beta_1 \color{#e64173}{\ln X_i}\)</span></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li><span class="hi-purple">Log-linear model:</span> <span class="math inline">\(\color{#e64173}{\ln Y_i}=\beta_0+\beta_1X_i\)</span></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li><span class="hi-purple">Log-log model:</span> <span class="math inline">\(\color{#e64173}{\ln Y_i}=\beta_0+\beta_1 \color{#e64173}{\ln X_i}\)</span></li>
+</ol>
+</div>
+</section></section>
+<section>
+<section id="linear-log-model-1" class="title-slide slide level1 centered center" data-background-color="#314f4f">
+<h1>Linear-Log Model</h1>
+
+</section>
+<section id="linear-log-model-interpretation" class="slide level2">
+<h2>Linear-Log Model: Interpretation</h2>
+<ul>
+<li><span class="hi-purple">Linear-log model</span> has an independent variable <span class="math inline">\((X)\)</span> that is logged</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+Y&amp;=\beta_0+\beta_1 \color{#e64173}{\ln X_i}\\
+\beta_1&amp;=\cfrac{\Delta Y}{\big(\frac{\Delta X}{X}\big)}\\
+\end{align*}\]</span></p>
+<div class="fragment">
+<ul>
+<li><span class="hi-purple"><strong>Marginal effect of</strong> <span class="math inline">\(\mathbf{X \rightarrow Y}\)</span>: a <strong>1%</strong> change in <span class="math inline">\(X \rightarrow\)</span> a <span class="math inline">\(\frac{\beta_1}{100}\)</span> <strong>unit</strong> change in <span class="math inline">\(Y\)</span></span></li>
+</ul>
+</div>
+</section>
+<section id="linear-log-model-in-r" class="slide level2 smaller">
+<h2>Linear-Log Model in <code>R</code></h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"-9.100889","3":"1.227674","4":"-7.413117","5":"1.934812e-13"},{"1":"loggdp","2":"8.405085","3":"0.148762","4":"56.500206","5":"0.000000e+00"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\widehat{\text{Life Expectancy}}_i=-9.10+8.41 \, \text{ln GDP}_i\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>A <strong>1% change in GDP</strong> <span class="math inline">\(\rightarrow\)</span> a <span class="math inline">\(\frac{9.41}{100}=\)</span> <strong>0.0841 year increase</strong> in Life Expectancy</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>A <strong>25% fall in GDP</strong> <span class="math inline">\(\rightarrow\)</span> a <span class="math inline">\((-25 \times 0.0841)=\)</span> <strong>2.1025 year <em>decrease</em></strong> in Life Expectancy</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>A <strong>100% rise in GDP</strong> <span class="math inline">\(\rightarrow\)</span> a <span class="math inline">\((100 \times 0.0841)=\)</span> <strong>8.4100 year increase</strong> in Life Expectancy</li>
+</ul>
+</div>
+</section>
+<section id="linear-log-model-graph-linear-x-axis" class="slide level2">
+<h2>Linear-Log Model Graph (Linear X-Axis)</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder)<span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap,</span>
+<span id="cb15-3"><a href="#cb15-3"></a>      <span class="at">y =</span> lifeExp)<span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6"></a>              <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">log</span>(x),</span>
+<span id="cb15-7"><a href="#cb15-7"></a>              <span class="at">color =</span> <span class="st">"orange"</span>)<span class="sc">+</span> </span>
+<span id="cb15-8"><a href="#cb15-8"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar,</span>
+<span id="cb15-9"><a href="#cb15-9"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">120000</span>,<span class="dv">20000</span>))<span class="sc">+</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">10</span>),</span>
+<span id="cb15-11"><a href="#cb15-11"></a>                     <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))<span class="sc">+</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"GDP per Capita"</span>,</span>
+<span id="cb15-13"><a href="#cb15-13"></a>       <span class="at">y =</span> <span class="st">"Life Expectancy (Years)"</span>)<span class="sc">+</span></span>
+<span id="cb15-14"><a href="#cb15-14"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
+<span id="cb15-15"><a href="#cb15-15"></a>           <span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-40-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
+<section id="linear-log-model-graph-log-x-axis" class="slide level2">
+<h2>Linear-Log Model Graph (Log X-Axis)</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder)<span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> loggdp,</span>
+<span id="cb16-3"><a href="#cb16-3"></a>      <span class="at">y =</span> lifeExp)<span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6"></a>              <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">log</span>(x),</span>
+<span id="cb16-7"><a href="#cb16-7"></a>              <span class="at">color =</span> <span class="st">"orange"</span>)<span class="sc">+</span> </span>
+<span id="cb16-8"><a href="#cb16-8"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">10</span>),</span>
+<span id="cb16-9"><a href="#cb16-9"></a>                     <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))<span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Log GDP per Capita"</span>,</span>
+<span id="cb16-11"><a href="#cb16-11"></a>       <span class="at">y =</span> <span class="st">"Life Expectancy (Years)"</span>)<span class="sc">+</span></span>
+<span id="cb16-12"><a href="#cb16-12"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
+<span id="cb16-13"><a href="#cb16-13"></a>           <span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-41-1.png" width="1344" class="r-stretch quarto-figure-center"></section></section>
+<section>
+<section id="log-linear-model-1" class="title-slide slide level1 centered center" data-background-color="#314f4f">
+<h1>Log-Linear Model</h1>
+
+</section>
+<section id="log-linear-model-interpretation" class="slide level2">
+<h2>Log-Linear Model: Interpretation</h2>
+<ul>
+<li><span class="hi-purple">Log-linear model</span> has the dependent variable <span class="math inline">\((Y)\)</span> logged</li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*}
+\color{#e64173}{\ln Y_i}&amp;=\beta_0+\beta_1 X\\
+\beta_1&amp;=\cfrac{\big(\frac{\Delta Y}{Y}\big)}{\Delta X}\\
+\end{align*}\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="hi-purple"><strong>Marginal effect of</strong> <span class="math inline">\(\mathbf{X \rightarrow Y}\)</span>: a <strong>1 unit</strong> change in <span class="math inline">\(X \rightarrow\)</span> a <span class="math inline">\(\beta_1 \times 100\)</span> <strong>%</strong> change in <span class="math inline">\(Y\)</span></span></li>
+</ul>
+</div>
+</section>
+<section id="log-linear-model-in-r-preliminaries" class="slide level2">
+<h2>Log-Linear Model in <code>R</code> (Preliminaries)</h2>
+<ul>
+<li><p>We will again have very large/small coefficients if we deal with GDP directly, again let’s transform <code>gdpPercap</code> into $1,000s, call it <code>gdp_t</code></p></li>
+<li><p>Then log LifeExp</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>gapminder <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">mutate</span>(<span class="at">gdp_t =</span> gdpPercap<span class="sc">/</span><span class="dv">1000</span>, <span class="co"># first make GDP/capita in $1000s</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a>         <span class="at">loglife =</span> <span class="fu">log</span>(lifeExp)) <span class="co"># take the log of LifeExp</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>gapminder <span class="sc">%&gt;%</span> <span class="fu">head</span>() <span class="co"># look at it</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["country"],"name":[1],"type":["fct"],"align":["left"]},{"label":["continent"],"name":[2],"type":["fct"],"align":["left"]},{"label":["year"],"name":[3],"type":["int"],"align":["right"]},{"label":["lifeExp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["pop"],"name":[5],"type":["int"],"align":["right"]},{"label":["gdpPercap"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["GDP_t"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["GDP_sq"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["loggdp"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["gdp_t"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["loglife"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"Afghanistan","2":"Asia","3":"1952","4":"28.801","5":"8425333","6":"779.4453","7":"0.7794453","8":"0.6075350","9":"6.658583","10":"0.7794453","11":"3.360410"},{"1":"Afghanistan","2":"Asia","3":"1957","4":"30.332","5":"9240934","6":"820.8530","7":"0.8208530","8":"0.6737997","9":"6.710344","10":"0.8208530","11":"3.412203"},{"1":"Afghanistan","2":"Asia","3":"1962","4":"31.997","5":"10267083","6":"853.1007","7":"0.8531007","8":"0.7277808","9":"6.748878","10":"0.8531007","11":"3.465642"},{"1":"Afghanistan","2":"Asia","3":"1967","4":"34.020","5":"11537966","6":"836.1971","7":"0.8361971","8":"0.6992257","9":"6.728864","10":"0.8361971","11":"3.526949"},{"1":"Afghanistan","2":"Asia","3":"1972","4":"36.088","5":"13079460","6":"739.9811","7":"0.7399811","8":"0.5475720","9":"6.606625","10":"0.7399811","11":"3.585960"},{"1":"Afghanistan","2":"Asia","3":"1977","4":"38.438","5":"14880372","6":"786.1134","7":"0.7861134","8":"0.6179742","9":"6.667101","10":"0.7861134","11":"3.649047"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="log-linear-model-in-r" class="slide level2 smaller">
+<h2>Log-Linear Model in <code>R</code></h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"3.966639","3":"0.0058345501","4":"679.85339","5":"0.000000e+00"},{"1":"gdp_t","2":"0.012917","3":"0.0004777072","4":"27.03958","5":"2.920378e-134"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\widehat{\ln\text{Life Expectancy}}_i=3.967+0.013 \, \text{GDP}_i\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>A <strong>$1 (thousand) change in GDP</strong> <span class="math inline">\(\rightarrow\)</span> a <span class="math inline">\(0.013 \times 100\%=\)</span> <strong>1.3% increase</strong> in Life Expectancy</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>A <strong>$25 (thousand) fall in GDP</strong> <span class="math inline">\(\rightarrow\)</span> a <span class="math inline">\((-25 \times 1.3\%)=\)</span> <strong>32.5% decrease</strong> in Life Expectancy</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>A <strong>$100 (thousand) rise in GDP</strong> <span class="math inline">\(\rightarrow\)</span> a <span class="math inline">\((100 \times 1.3\%)=\)</span> <strong>130% increase</strong> in Life Expectancy</li>
+</ul>
+</div>
+</section>
+<section id="linear-log-model-graph" class="slide level2">
+<h2>Linear-Log Model Graph</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder)<span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> gdp_t,</span>
+<span id="cb18-3"><a href="#cb18-3"></a>      <span class="at">y =</span> loglife)<span class="sc">+</span> </span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"orange"</span>)<span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>dollar,</span>
+<span id="cb18-7"><a href="#cb18-7"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">120</span>,<span class="dv">20</span>))<span class="sc">+</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"GDP per Capita ($ Thousands)"</span>,</span>
+<span id="cb18-9"><a href="#cb18-9"></a>       <span class="at">y =</span> <span class="st">"Log Life Expectancy"</span>)<span class="sc">+</span></span>
+<span id="cb18-10"><a href="#cb18-10"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
+<span id="cb18-11"><a href="#cb18-11"></a>           <span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-44-1.png" width="1344" class="r-stretch quarto-figure-center"></section></section>
+<section>
+<section id="log-log-model-1" class="title-slide slide level1 centered center" data-background-color="#314f4f">
+<h1>Log-Log Model</h1>
+
+</section>
+<section id="log-log-model-2" class="slide level2">
+<h2>Log-Log Model</h2>
+<ul>
+<li><span class="hi-purple">Log-log model</span> has both variables <span class="math inline">\((X \text{ and } Y)\)</span> logged</li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*}
+\color{#e64173}{\ln Y_i}&amp;=\beta_0+\beta_1 \color{#e64173}{\ln X_i}\\
+\beta_1&amp;=\cfrac{\big(\frac{\Delta Y}{Y}\big)}{\big(\frac{\Delta X}{X}\big)}\\
+\end{align*}\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li><p><span class="hi-purple"><strong>Marginal effect of</strong> <span class="math inline">\(\mathbf{X \rightarrow Y}\)</span>: a <strong>1%</strong> change in <span class="math inline">\(X \rightarrow\)</span> a <span class="math inline">\(\beta_1\)</span> <strong>%</strong> change in <span class="math inline">\(Y\)</span></span></p></li>
+<li><p><span class="math inline">\(\beta_1\)</span> is the <span class="hi-turquoise">elasticity</span> of <span class="math inline">\(Y\)</span> with respect to <span class="math inline">\(X\)</span>!</p></li>
+</ul>
+</div>
+</section>
+<section id="log-log-model-in-r" class="slide level2 smaller">
+<h2>Log-Log Model in <code>R</code></h2>
+<div class="cell">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"2.864177","3":"0.02328274","4":"123.01718","5":"0"},{"1":"loggdp","2":"0.146549","3":"0.00282126","4":"51.94452","5":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\widehat{\text{ln Life Expectancy}}_i=2.864+0.147 \, \text{ln GDP}_i\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>A <strong>1% change in GDP</strong> <span class="math inline">\(\rightarrow\)</span> a <strong>0.147% increase</strong> in Life Expectancy</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>A <strong>25% fall in GDP</strong> <span class="math inline">\(\rightarrow\)</span> a <span class="math inline">\((-25 \times 0.147\%)=\)</span> <strong>3.675% decrease</strong> in Life Expectancy</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>A <strong>100% rise in GDP</strong> <span class="math inline">\(\rightarrow\)</span> a <span class="math inline">\((100 \times 0.147\%)=\)</span> <strong>14.7% increase</strong> in Life Expectancy</li>
+</ul>
+</div>
+</section>
+<section id="log-log-model-graph" class="slide level2">
+<h2>Log-Log Model Graph</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder)<span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> loggdp,</span>
+<span id="cb19-3"><a href="#cb19-3"></a>      <span class="at">y =</span> loglife)<span class="sc">+</span> </span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"orange"</span>)<span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Log GDP per Capita"</span>,</span>
+<span id="cb19-7"><a href="#cb19-7"></a>       <span class="at">y =</span> <span class="st">"Log Life Expectancy"</span>)<span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
+<span id="cb19-9"><a href="#cb19-9"></a>           <span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-46-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
+<section id="comparing-log-models-i" class="slide level2">
+<h2>Comparing Log Models I</h2>
+<table>
+<colgroup>
+<col style="width: 21%">
+<col style="width: 30%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Equation</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Linear-<span class="hi">Log</span></td>
+<td><span class="math inline">\(Y=\beta_0+\beta_1 \color{#e64173}{\ln X}\)</span></td>
+<td>1<span class="hi">%</span> change in <span class="math inline">\(X \rightarrow \frac{\hat{\beta_1}}{100}\)</span> <strong>unit</strong> change in <span class="math inline">\(Y\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="hi">Log</span>-Linear</td>
+<td><span class="math inline">\(\color{#e64173}{\ln Y}=\beta_0+\beta_1X\)</span></td>
+<td>1 <strong>unit</strong> change in <span class="math inline">\(X \rightarrow \hat{\beta_1}\times 100\)</span><span class="hi">%</span> change in <span class="math inline">\(Y\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="hi">Log</span>-<span class="hi">Log</span></td>
+<td><span class="math inline">\(\color{#e64173}{\ln Y}=\beta_0+\beta_1\color{#e64173}{\ln X}\)</span></td>
+<td>1<span class="hi">%</span> change in <span class="math inline">\(X \rightarrow \hat{\beta_1}\)</span><span class="hi">%</span> change in <span class="math inline">\(Y\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Hint: the variable that gets <span class="hi">logged</span> changes in <span class="hi">percent</span> terms, the <strong>linear</strong> variable (not logged) changes in <strong>unit</strong> terms
+<ul>
+<li>Going from units <span class="math inline">\(\rightarrow\)</span> percent: multiply by 100</li>
+<li>Going from percent <span class="math inline">\(\rightarrow\)</span> units: divide by 100</li>
+</ul></li>
+</ul>
+</section>
+<section id="comparing-models-ii" class="slide level2 smaller">
+<h2>Comparing Models II</h2>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">modelsummary</span>(<span class="at">models =</span> <span class="fu">list</span>(<span class="st">"Life Exp."</span> <span class="ot">=</span> lin_log_reg,</span>
+<span id="cb20-3"><a href="#cb20-3"></a>                           <span class="st">"Log Life Exp."</span> <span class="ot">=</span> log_lin_reg,</span>
+<span id="cb20-4"><a href="#cb20-4"></a>                           <span class="st">"Log Life Exp."</span> <span class="ot">=</span> log_log_reg),</span>
+<span id="cb20-5"><a href="#cb20-5"></a>             <span class="at">fmt =</span> <span class="dv">2</span>, <span class="co"># round to 2 decimals</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>             <span class="at">output =</span> <span class="st">"html"</span>,</span>
+<span id="cb20-7"><a href="#cb20-7"></a>             <span class="at">coef_rename =</span> <span class="fu">c</span>(<span class="st">"(Intercept)"</span> <span class="ot">=</span> <span class="st">"Constant"</span>,</span>
+<span id="cb20-8"><a href="#cb20-8"></a>                             <span class="st">"gdp_t"</span> <span class="ot">=</span> <span class="st">"GDP per capita ($1,000s)"</span>,</span>
+<span id="cb20-9"><a href="#cb20-9"></a>                             <span class="st">"loggdp"</span> <span class="ot">=</span> <span class="st">"Log GDP per Capita"</span>),</span>
+<span id="cb20-10"><a href="#cb20-10"></a>             <span class="at">gof_map =</span> <span class="fu">list</span>(</span>
+<span id="cb20-11"><a href="#cb20-11"></a>               <span class="fu">list</span>(<span class="st">"raw"</span> <span class="ot">=</span> <span class="st">"nobs"</span>, <span class="st">"clean"</span> <span class="ot">=</span> <span class="st">"n"</span>, <span class="st">"fmt"</span> <span class="ot">=</span> <span class="dv">0</span>),</span>
+<span id="cb20-12"><a href="#cb20-12"></a>               <span class="co">#list("raw" = "r.squared", "clean" = "R&lt;sup&gt;2&lt;/sup&gt;", "fmt" = 2),</span></span>
+<span id="cb20-13"><a href="#cb20-13"></a>               <span class="fu">list</span>(<span class="st">"raw"</span> <span class="ot">=</span> <span class="st">"adj.r.squared"</span>, <span class="st">"clean"</span> <span class="ot">=</span> <span class="st">"Adj. R&lt;sup&gt;2&lt;/sup&gt;"</span>, <span class="st">"fmt"</span> <span class="ot">=</span> <span class="dv">2</span>),</span>
+<span id="cb20-14"><a href="#cb20-14"></a>               <span class="fu">list</span>(<span class="st">"raw"</span> <span class="ot">=</span> <span class="st">"rmse"</span>, <span class="st">"clean"</span> <span class="ot">=</span> <span class="st">"SER"</span>, <span class="st">"fmt"</span> <span class="ot">=</span> <span class="dv">2</span>)</span>
+<span id="cb20-15"><a href="#cb20-15"></a>             ),</span>
+<span id="cb20-16"><a href="#cb20-16"></a>             <span class="at">escape =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb20-17"><a href="#cb20-17"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">'*'</span> <span class="ot">=</span> .<span class="dv">1</span>, <span class="st">'**'</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">'***'</span> <span class="ot">=</span> <span class="fl">0.01</span>)</span>
+<span id="cb20-18"><a href="#cb20-18"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:center;"> Life Exp. </th>
+   <th style="text-align:center;"> Log Life Exp. </th>
+   <th style="text-align:center;"> Log Life Exp.  </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Constant </td>
+   <td style="text-align:center;"> −9.10*** </td>
+   <td style="text-align:center;"> 3.97*** </td>
+   <td style="text-align:center;"> 2.86*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (1.23) </td>
+   <td style="text-align:center;"> (0.01) </td>
+   <td style="text-align:center;"> (0.02) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Log GDP per Capita </td>
+   <td style="text-align:center;"> 8.41*** </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> 0.15*** </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:center;"> (0.15) </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> (0.00) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> GDP per capita ($1,000s) </td>
+   <td style="text-align:center;">  </td>
+   <td style="text-align:center;"> 0.01*** </td>
+   <td style="text-align:center;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px">  </td>
+   <td style="text-align:center;box-shadow: 0px 1px"> (0.00) </td>
+   <td style="text-align:center;box-shadow: 0px 1px">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> n </td>
+   <td style="text-align:center;"> 1704 </td>
+   <td style="text-align:center;"> 1704 </td>
+   <td style="text-align:center;"> 1704 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Adj. R<sup>2</sup> </td>
+   <td style="text-align:center;"> 0.65 </td>
+   <td style="text-align:center;"> 0.30 </td>
+   <td style="text-align:center;"> 0.61 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> SER </td>
+   <td style="text-align:center;"> 7.62 </td>
+   <td style="text-align:center;"> 0.19 </td>
+   <td style="text-align:center;"> 0.14 </td>
+  </tr>
+</tbody>
+<tfoot><tr><td style="padding: 0; " colspan="100%">
+<sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td></tr></tfoot>
+</table>
+
+</div>
+</div>
+<ul>
+<li>Models are very different units, how to choose?
+<ol type="1">
+<li>Compare intuition</li>
+<li>Compare <span class="math inline">\(R^2\)</span>’s</li>
+<li>Compare graphs</li>
+</ol></li>
+</ul>
+</section>
+<section id="comparing-models-iii" class="slide level2">
+<h2>Comparing Models III</h2>
+<table>
+<colgroup>
+<col style="width: 36%">
+<col style="width: 36%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Linear-<span class="hi">Log</span></th>
+<th style="text-align: center;"><span class="hi">Log</span>-Linear</th>
+<th style="text-align: center;"><span class="hi">Log</span>-<span class="hi">Log</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-36-1.png"></td>
+<td style="text-align: center;"><img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-39-1.png"></td>
+<td style="text-align: center;"><img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-41-1.png"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1}\color{#e64173}{\ln X_i}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\color{#e64173}{\ln Y_i}=\hat{\beta_0}+\hat{\beta_1}X_i\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\color{#e64173}{\ln Y_i}=\hat{\beta_0}+\hat{\beta_1}\color{#e64173}{\ln X_i}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(R^2=0.65\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(R^2=0.30\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(R^2=0.61\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="when-to-log" class="slide level2">
+<h2>When to Log?</h2>
+<ul>
+<li>In practice, the following types of variables are usually logged:
+<ul>
+<li>Variables that must always be <strong>positive</strong> (prices, sales, market values)</li>
+<li><strong>Very large</strong> numbers (population, GDP)</li>
+<li>Variables we want to talk about as <strong>percentage changes or growth rates</strong> (money supply, population, GDP)</li>
+<li>Variables that have <strong>diminishing returns</strong> (output, utility)</li>
+<li>Variables that have nonlinear scatterplots</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li><em>Avoid</em> logs for:
+<ul>
+<li>Variables that are less than one, decimals, 0, or negative</li>
+<li>Categorical variables (season, gender, political party)</li>
+<li>Time variables (year, week, day)</li>
+</ul></li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="standardizing-comparing-across-units-1" class="title-slide slide level1 centered center" data-background-color="#314f4f">
+<h1>Standardizing &amp; Comparing Across Units</h1>
+
+</section>
+<section id="comparing-coefficients-of-different-units-i" class="slide level2">
+<h2>Comparing Coefficients of Different Units I</h2>
+<p><span class="math display">\[\hat{Y_i}=\beta_0+\beta_1 X_1+\beta_2 X_2\]</span></p>
+<ul>
+<li><p>We often want to compare coefficients to see which variable <span class="math inline">\(X_1\)</span> or <span class="math inline">\(X_2\)</span> has a bigger effect on <span class="math inline">\(Y\)</span></p></li>
+<li><p>What if <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are different units?</p></li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[\begin{align*}
+\widehat{\text{Salary}_i}&amp;=\beta_0+\beta_1\, \text{Batting average}_i+\beta_2\, \text{Home runs}_i\\
+\widehat{\text{Salary}_i}&amp;=-\text{2,869,439.40}+\text{12,417,629.72} \, \text{Batting average}_i+\text{129,627.36}\, \text{Home runs}_i\\
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="comparing-coefficients-of-different-units-ii" class="slide level2">
+<h2>Comparing Coefficients of Different Units II</h2>
+<ul>
+<li>An easy way is to <span class="hi">standardize</span><sup>1</sup> the variables (i.e.&nbsp;take the <span class="math inline">\(Z\)</span>-score)</li>
+</ul>
+<p><span class="math display">\[X_Z=\frac{X_i-\overline{X}}{sd(X)}\]</span></p>
+<ul>
+<li>Note doing this will make the constant 0, as both distributions of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are now centered at 0.</li>
+</ul>
+<aside><ol class="aside-footnotes"><li id="fn5" role="doc-endnote"><p>Also called “centering” or “scaling.”</p></li></ol></aside></section>
+<section id="comparing-coefficients-of-different-units-example" class="slide level2 smaller">
+<h2>Comparing Coefficients of Different Units: Example</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Mean</th>
+<th>Std. Dev.</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Salary</td>
+<td>$2,024,616</td>
+<td>$2,764,512</td>
+</tr>
+<tr class="even">
+<td>Batting Average</td>
+<td>0.267</td>
+<td>0.031</td>
+</tr>
+<tr class="odd">
+<td>Home Runs</td>
+<td>12.11</td>
+<td>10.31</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p><span class="math display">\[\begin{align*}\scriptsize  
+    \widehat{\text{Salary}_i}&amp;=-\text{2,869,439.40}+\text{12,417,629.72} \, \text{Batting average}_i+\text{129,627.36} \, \text{Home runs}_i\\
+    \widehat{\text{Salary}_Z}&amp;=\text{0.00}+\text{0.14} \, \text{Batting average}_Z+\text{0.48} \, \text{Home runs}_Z\\
+\end{align*}\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="hi-purple">Marginal effects</span> on <span class="math inline">\(Y\)</span> (in <em>standard deviations</em> of <span class="math inline">\(Y\)</span>) from 1 <em>standard deviation</em> change in <span class="math inline">\(X\)</span>:</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(\hat{\beta_1}\)</span>: a 1 standard deviation increase in Batting Average increases Salary by 0.14 standard deviations</li>
+</ul>
+<p><span class="math display">\[0.14 \times \$2,764,512=\$387,032\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(\hat{\beta_2}\)</span>: a 1 standard deviation increase in Home Runs increases Salary by 0.48 standard deviations</li>
+</ul>
+<p><span class="math display">\[0.48 \times \$2,764,512=\$1,326,966\]</span></p>
+</div>
+</section>
+<section id="standardizing-in-r" class="slide level2">
+<h2>Standardizing in <code>R</code></h2>
+<table>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">SD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>LifeExp</code></td>
+<td style="text-align: right;">59.47</td>
+<td style="text-align: right;">12.92</td>
+</tr>
+<tr class="even">
+<td><code>gdpPercap</code></td>
+<td style="text-align: right;">$7215.32</td>
+<td style="text-align: right;">$9857.46</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<ul>
+<li>Use the <code>scale()</code> command inside <code>mutate()</code> function to standardize a variable</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>gapminder <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">mutate</span>(<span class="at">life_Z =</span> <span class="fu">scale</span>(lifeExp),</span>
+<span id="cb21-3"><a href="#cb21-3"></a>         <span class="at">gdp_Z =</span> <span class="fu">scale</span>(gdpPercap))</span>
+<span id="cb21-4"><a href="#cb21-4"></a></span>
+<span id="cb21-5"><a href="#cb21-5"></a>std_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(life_Z <span class="sc">~</span> gdp_Z, <span class="at">data =</span> gapminder)</span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="fu">tidy</span>(std_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell fragment">
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"1.095650e-16","3":"0.01967569","4":"5.568547e-15","5":"1.000000e+00"},{"1":"gdp_Z","2":"5.837062e-01","3":"0.01968147","4":"2.965766e+01","5":"3.565724e-156"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>A 1 standard deviation increase in <code>gdpPercap</code> will increase <code>lifeExp</code> by 0.584 standard deviations <span class="math inline">\((0.584 \times 12.92 = 7.55\)</span> years)</li>
+</ul>
+<div class="footer">
+
+</div>
+</div>
+</section>
+<section id="rescaling-visually" class="slide level2">
+<h2>Rescaling: Visually</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder)<span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap,</span>
+<span id="cb22-3"><a href="#cb22-3"></a>      <span class="at">y =</span> lifeExp)<span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"GDP per Capita"</span>,</span>
+<span id="cb22-6"><a href="#cb22-6"></a>       <span class="at">y =</span> <span class="st">"Life Expectancy (Years)"</span>)<span class="sc">+</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
+<span id="cb22-8"><a href="#cb22-8"></a>           <span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-49-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
+<section id="rescaling-visually-1" class="slide level2">
+<h2>Rescaling: Visually</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> gapminder)<span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> gdp_Z,</span>
+<span id="cb23-3"><a href="#cb23-3"></a>      <span class="at">y =</span> life_Z)<span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>)<span class="sc">+</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)<span class="sc">+</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>)<span class="sc">+</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"GDP per Capita (Standardized)"</span>,</span>
+<span id="cb23-8"><a href="#cb23-8"></a>       <span class="at">y =</span> <span class="st">"Life Expectancy (Standardized)"</span>)<span class="sc">+</span></span>
+<span id="cb23-9"><a href="#cb23-9"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
+<span id="cb23-10"><a href="#cb23-10"></a>           <span class="at">base_size =</span> <span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="4.4-slides_files/figure-revealjs/unnamed-chunk-50-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
+<section id="rescaling-visually-2" class="slide level2">
+<h2>Rescaling: Visually</h2>
+<ul>
+<li>Both <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> now have means of 0 and sd of 1</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">summarize</span>(<span class="at">mean_gdp =</span> <span class="fu">mean</span>(gdp_Z), <span class="at">sd_gdp =</span> <span class="fu">sd</span>(gdp_Z), <span class="at">mean_life =</span> <span class="fu">mean</span>(life_Z), <span class="at">sd_life =</span> <span class="fu">sd</span>(life_Z)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">round</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["mean_gdp"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["sd_gdp"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mean_life"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sd_life"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"0","2":"1","3":"0","4":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section></section>
+<section id="joint-hypothesis-testing-1" class="title-slide slide level1 centered center" data-background-color="#314f4f">
+<h1>Joint Hypothesis Testing</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+
+</div><div class="column" style="width:50%;">
+
+</div>
+</div>
+
+<img src="../images/metrics_hex.png" class="slide-logo r-stretch"><div class="footer footer-default">
+<p><a href="https://metricsF22.classes.ryansafner.com">ECON 480 — Econometrics</a></p>
+</div>
+</section>
+
+
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="4.4-slides_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="4.4-slides_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="4.4-slides_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="4.4-slides_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="4.4-slides_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="4.4-slides_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="4.4-slides_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="4.4-slides_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="4.4-slides_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="4.4-slides_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="4.4-slides_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'smaller': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        target: function(trigger) {
+          return trigger.previousElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        setTimeout(function() {
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn) {
+        const config = {
+          allowHTML: true,
+          content: contentFn,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'quarto-reveal',
+          placement: 'bottom-start'
+        };
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          let href = ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+        tippyHover(ref, function() {
+          var popup = window.document.createElement('div');
+          cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    });
+    </script>
+    
+
+</body></html>
