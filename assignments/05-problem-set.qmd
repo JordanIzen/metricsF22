@@ -12,7 +12,7 @@ Please read the [instructions](/assignments/problem-sets.html) for completing an
 
 <p style="text-align:center">
 
-<p style="text-align:center"><a target="_blank" href="/files/assignment/05-problem-set-pdf.pdf"><span class="btn btn-primary btn-lg"><i class="fas fa-file-pdf"></i> PDF</a></span> <a target="_blank" href="/files/assignment/05-problem-set.zip"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> R Project</a></span> <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4867728"><span class="btn btn-primary btn-lg"><i class="fas fa-cloud"></i> R Studio Cloud</a></span></p>
+<p style="text-align:center"><a target="_blank" href="/files/assignment/05-problem-set-pdf.pdf"><span class="btn btn-primary btn-lg"><i class="fas fa-file-pdf"></i> PDF</a></span> <a target="_blank" href="/files/assignment/05-problem-set.zip"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> R Project</a></span> <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4975403"><span class="btn btn-primary btn-lg"><i class="fas fa-cloud"></i> R Studio Cloud</a></span></p>
 
 </p>
 
