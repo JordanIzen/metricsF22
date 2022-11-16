@@ -1662,7 +1662,7 @@ $$\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+\hat{\bet
 
 - [Restricted model]{.hi-purple}:
 
-$$\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+$$
+$$\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i$$
 . . .
 
 - $F$-test: **does going from [restricted]{.hi-purple} to [unrestricted]{.hi} model statistically significantly improve $R^2$?**
@@ -1721,7 +1721,7 @@ $$F_{q,(n-k-1)}=\cfrac{\left(\displaystyle\frac{(\color{#e64173}{R^2_u}-\color{#
 
 - $q$: number of restrictions (number of $\beta's=0$ under null hypothesis)
 
-- $k$: number of $X$ variables in .hi[unrestricted model] (all variables)
+- $k$: number of $X$ variables in [unrestricted model]{.hi} (all variables)
 
 - $F$ has two sets of degrees of freedom:
   - $q$ for the numerator, $(n-k-1)$ for the denominator
@@ -1771,7 +1771,7 @@ $$\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+\hat{\bet
 
 - [Restricted model]{.hi-purple}:
 
-$$\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+$$
+$$\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i$$
 
 - $H_0: \beta_2 = \beta_3 = \beta_4 =0$
 
