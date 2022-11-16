@@ -2156,21 +2156,374 @@ Y&amp;=\beta_0+\beta_1 \color{#e64173}{\ln X_i}\\
 </div>
 </div>
 </section></section>
+<section>
 <section id="joint-hypothesis-testing-1" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>Joint Hypothesis Testing</h1>
+
+</section>
+<section id="joint-hypothesis-testing-i" class="slide level2">
+<h2>Joint Hypothesis Testing I</h2>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<p>Return again to:</p>
+<p><span class="math display">\[\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+\hat{\beta_2}\text{Northeast}_i+\hat{\beta_3}\,\text{Midwest}_i+\hat{\beta_4}\,\text{South}_i\]</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Maybe region doesn’t affect wages <em>at all</em>?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(H_0: \beta_2=0, \, \beta_3=0, \, \beta_4=0\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>This is a <span class="hi">joint hypothesis</span> (of multiple parameters) to test</li>
+</ul>
+</div>
+</section>
+<section id="joint-hypothesis-testing-ii" class="slide level2">
+<h2>Joint Hypothesis Testing II</h2>
+<ul>
+<li>A <span class="hi">joint hypothesis</span> tests against the null hypothesis of a value for <strong>multiple</strong> parameters:</li>
+</ul>
+<p><span class="math display">\[\mathbf{H_0: \beta_1= \beta_2=0}\]</span></p>
+<p>the hypotheses that <strong>multiple</strong> regressors are equal to zero (have no causal effect on the outcome)</p>
+<div class="fragment">
+<ul>
+<li>Our <span class="hi-purple">alternative hypothesis</span> is that:</li>
+</ul>
+<p><span class="math display">\[H_1: \text{ either } \beta_1\neq0\text{ or } \beta_2\neq0\text{ or both}\]</span></p>
+<p>or simply, that <span class="math inline">\(H_0\)</span> is not true</p>
+</div>
+</section>
+<section id="types-of-joint-hypothesis-tests" class="slide level2">
+<h2>Types of Joint Hypothesis Tests</h2>
+<ol type="1">
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1=\beta_2=0\)</span>
+<ul>
+<li>Testing against the claim that multiple variables don’t matter</li>
+<li>Useful under high multicollinearity between variables</li>
+<li><span class="math inline">\(H_a\)</span>: at least one parameter <span class="math inline">\(\neq\)</span> 0</li>
+</ul></li>
+</ol>
+<div class="fragment">
+<ol start="2" type="1">
+<li><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1=\beta_2\)</span>
+<ul>
+<li>Testing whether two variables matter the same</li>
+<li>Variables must be the same units</li>
+<li><span class="math inline">\(H_a: \beta_1 (\neq, &lt;, \text{ or }&gt;) \beta_2\)</span></li>
+</ul></li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li><span class="math inline">\(H_0:\)</span> ALL <span class="math inline">\(\beta\)</span>’s <span class="math inline">\(=0\)</span>
+<ul>
+<li>The “<strong>Overall F-test”</strong></li>
+<li>Testing against claim that regression model explains <em>NO</em> variation in <span class="math inline">\(Y\)</span></li>
+</ul></li>
+</ol>
+</div>
+</section>
+<section id="joint-hypothesis-tests-f-statistic" class="slide level2">
+<h2>Joint Hypothesis Tests: F-statistic</h2>
+<ul>
+<li>The <span class="hi-turquoise">F-statistic</span> is the test-statistic used to test joint hypotheses about regression coefficients with an <span class="hi-turquoise">F-test</span></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>This involves comparing two models:
+<ol type="1">
+<li><span class="hi">Unrestricted model</span>: regression with all coefficients</li>
+<li><span class="hi-purple">Restricted model</span>: regression under null hypothesis (coefficients equal hypothesized values)</li>
+</ol></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(F\)</span> is an <span class="hi-turquoise">analysis of variance (ANOVA)</span>
+<ul>
+<li>essentially tests whether <span class="math inline">\(R^2\)</span> increases statistically significantly as we go from the restricted model<span class="math inline">\(\rightarrow\)</span>unrestricted model</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(F\)</span> has its own distribution, with <em>two</em> sets of degrees of freedom</li>
+</ul>
+</div>
+</section>
+<section id="joint-hypothesis-f-test-example-i" class="slide level2">
+<h2>Joint Hypothesis F-test: Example I</h2>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+\hat{\beta_2}\text{Northeast}_i+\hat{\beta_3}\,\text{Midwest}_i+\hat{\beta_4}\,\text{South}_i\]</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(H_0: \beta_2=\beta_3=\beta_4=0\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(H_a\)</span>: <span class="math inline">\(H_0\)</span> is not true (at least one <span class="math inline">\(\beta_i \neq 0\)</span>)</li>
+</ul>
+</div>
+</section>
+<section id="joint-hypothesis-f-test-example-ii" class="slide level2">
+<h2>Joint Hypothesis F-test: Example II</h2>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+\hat{\beta_2}\text{Northeast}_i+\hat{\beta_3}\,\text{Midwest}_i+\hat{\beta_4}\,\text{South}_i\]</span></p>
+</div>
+</div>
+</div>
+<ul>
+<li><span class="hi">Unrestricted model</span>:</li>
+</ul>
+<p><span class="math display">\[\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+\hat{\beta_2}\text{Northeast}_i+\hat{\beta_3}\,\text{Midwest}_i+\hat{\beta_4}\,\text{South}_i\]</span></p>
+<ul>
+<li><span class="hi-purple">Restricted model</span>:</li>
+</ul>
+<p><span class="math display">\[\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+\]</span></p>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(F\)</span>-test: <strong>does going from <span class="hi-purple">restricted</span> to <span class="hi">unrestricted</span> model statistically significantly improve <span class="math inline">\(R^2\)</span>?</strong></li>
+</ul>
+</div>
+</section>
+<section id="calculating-the-f-statistic" class="slide level2">
+<h2>Calculating the F-statistic</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-
+<p><span class="math display">\[F_{q,(n-k-1)}=\cfrac{\left(\displaystyle\frac{(R^2_u-R^2_r)}{q}\right)}{\left(\displaystyle\frac{(1-R^2_u)}{(n-k-1)}\right)}\]</span></p>
 </div><div class="column" style="width:50%;">
 
 </div>
 </div>
+</section>
+<section id="calculating-the-f-statistic-1" class="slide level2">
+<h2>Calculating the F-statistic</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[F_{q,(n-k-1)}=\cfrac{\left(\displaystyle\frac{(\color{#e64173}{R^2_u}-R^2_r)}{q}\right)}{\left(\displaystyle\frac{(1-\color{#e64173}{R^2_u})}{(n-k-1)}\right)}\]</span></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><span class="math inline">\(\color{#e64173}{R^2_u}\)</span>: the <span class="math inline">\(R^2\)</span> from the <span class="hi">unrestricted model</span> (all variables)</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="calculating-the-f-statistic-2" class="slide level2">
+<h2>Calculating the F-statistic</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[F_{q,(n-k-1)}=\cfrac{\left(\displaystyle\frac{(\color{#e64173}{R^2_u}-\color{#6A5ACD}{R^2_r})}{q}\right)}{\left(\displaystyle\frac{(1-\color{#e64173}{R^2_u})}{(n-k-1)}\right)}\]</span></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p><span class="math inline">\(\color{#e64173}{R^2_u}\)</span>: the <span class="math inline">\(R^2\)</span> from the <span class="hi">unrestricted model</span> (all variables)</p></li>
+<li><p><span class="math inline">\(\color{#6A5ACD}{R^2_r}\)</span>: the <span class="math inline">\(R^2\)</span> from the <span class="hi-purple">restricted model</span> (null hypothesis)</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="calculating-the-f-statistic-3" class="slide level2">
+<h2>Calculating the F-statistic</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[F_{q,(n-k-1)}=\cfrac{\left(\displaystyle\frac{(\color{#e64173}{R^2_u}-\color{#6A5ACD}{R^2_r})}{q}\right)}{\left(\displaystyle\frac{(1-\color{#e64173}{R^2_u})}{(n-k-1)}\right)}\]</span></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p><span class="math inline">\(\color{#e64173}{R^2_u}\)</span>: the <span class="math inline">\(R^2\)</span> from the <span class="hi">unrestricted model</span> (all variables)</p></li>
+<li><p><span class="math inline">\(\color{#6A5ACD}{R^2_r}\)</span>: the <span class="math inline">\(R^2\)</span> from the <span class="hi-purple">restricted model</span> (null hypothesis)</p></li>
+<li><p><span class="math inline">\(q\)</span>: number of restrictions (number of <span class="math inline">\(\beta's=0\)</span> under null hypothesis)</p></li>
+<li><p><span class="math inline">\(k\)</span>: number of <span class="math inline">\(X\)</span> variables in .hi[unrestricted model] (all variables)</p></li>
+<li><p><span class="math inline">\(F\)</span> has two sets of degrees of freedom:</p>
+<ul>
+<li><span class="math inline">\(q\)</span> for the numerator, <span class="math inline">\((n-k-1)\)</span> for the denominator</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="calculating-the-f-statistic-4" class="slide level2">
+<h2>Calculating the F-statistic</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[F_{q,(n-k-1)}=\cfrac{\left(\displaystyle\frac{(R^2_u-R^2_r)}{q}\right)}{\left(\displaystyle\frac{(1-R^2_u)}{(n-k-1)}\right)}\]</span></p>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p><span class="hi-purple">Key takeaway</span>: The bigger the difference between <span class="math inline">\((R^2_u-R^2_r)\)</span>, the greater the improvement in fit by adding variables, the larger the <span class="math inline">\(F\)</span>!</p></li>
+<li><p>This formula is (believe it or not) actually a simplified version (assuming homoskedasticity)</p>
+<ul>
+<li>I give you this formula to <strong>build your intuition of what F is measuring</strong></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="f-test-example-i" class="slide level2">
+<h2>F-test Example I</h2>
+<ul>
+<li>We’ll use the <code>wooldridge</code> package’s <code>wage1</code> data again</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># load in data from wooldridge package</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">library</span>(wooldridge)</span>
+<span id="cb25-3"><a href="#cb25-3"></a>wages <span class="ot">&lt;-</span> wage1</span>
+<span id="cb25-4"><a href="#cb25-4"></a></span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="co"># run regressions</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a>unrestricted_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> female <span class="sc">+</span> northcen <span class="sc">+</span> west <span class="sc">+</span> south, <span class="at">data =</span> wages)</span>
+<span id="cb25-7"><a href="#cb25-7"></a>restricted_reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(wage <span class="sc">~</span> female, <span class="at">data =</span> wages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="f-test-example-ii" class="slide level2">
+<h2>F-test Example II</h2>
+<ul>
+<li><span class="hi">Unrestricted model</span>:</li>
+</ul>
+<p><span class="math display">\[\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+\hat{\beta_2}\text{Northeast}_i+\hat{\beta_3}\,\text{Midwest}_i+\hat{\beta_4}\,\text{South}_i\]</span></p>
+<ul>
+<li><span class="hi-purple">Restricted model</span>:</li>
+</ul>
+<p><span class="math display">\[\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(H_0: \beta_2 = \beta_3 = \beta_4 =0\)</span></p></li>
+<li><p><span class="math inline">\(q = 3\)</span> restrictions (F numerator df)</p></li>
+<li><p><span class="math inline">\(n-k-1 = 526-4-1=521\)</span> (F denominator df)</p></li>
+</ul>
+</section>
+<section id="f-test-example-iii" class="slide level2">
+<h2>F-test Example III</h2>
+<ul>
+<li>We can use the <code>car</code> package’s <code>linearHypothesis()</code> command to run an <span class="math inline">\(F\)</span>-test:
+<ul>
+<li>first argument: name of the (unrestricted) regression</li>
+<li>second argument: vector of variable names (in quotes) you are testing</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># load car package for additional regression tools</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">library</span>(car) </span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="co"># F-test</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="fu">linearHypothesis</span>(unrestricted_reg, <span class="fu">c</span>(<span class="st">"northcen"</span>, <span class="st">"west"</span>, <span class="st">"south"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Res.Df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["RSS"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sum of Sq"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"524","2":"6332.194","3":"NA","4":"NA","5":"NA","6":"NA","_rn_":"1"},{"1":"521","2":"6174.831","3":"3","4":"157.3625","5":"4.425809","6":"0.00437678","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(p\)</span>-value on <span class="math inline">\(F\)</span>-test <span class="math inline">\(&lt;0.05\)</span>, so we can reject <span class="math inline">\(H_0\)</span></li>
+</ul>
+</div>
+</section>
+<section id="all-f-test-i" class="slide level2 smaller">
+<h2>All F-test I</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = wage ~ female + northcen + west + south, data = wages)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.3269 -2.0105 -0.7871  1.1898 17.4146 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   7.5654     0.3466  21.827   &lt;2e-16 ***
+female       -2.5652     0.3011  -8.520   &lt;2e-16 ***
+northcen     -0.5918     0.4362  -1.357   0.1755    
+west          0.4315     0.4838   0.892   0.3729    
+south        -1.0262     0.4048  -2.535   0.0115 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.443 on 521 degrees of freedom
+Multiple R-squared:  0.1376,    Adjusted R-squared:  0.131 
+F-statistic: 20.79 on 4 and 521 DF,  p-value: 6.501e-16</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Last line of regression output from <code>summary()</code> is an <strong>All F-test</strong>
+<ul>
+<li><span class="math inline">\(H_0:\)</span> all <span class="math inline">\(\beta's=0\)</span>
+<ul>
+<li>the regression explains no variation in <span class="math inline">\(Y\)</span></li>
+</ul></li>
+<li>Calculates an <code>F-statistic</code> that, if high enough, is significant (<code>p-value</code> <span class="math inline">\(&lt;0.05)\)</span> enough to reject <span class="math inline">\(H_0\)</span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="all-f-test-ii" class="slide level2 smaller">
+<h2>All F-test II</h2>
+<ul>
+<li>Alternatively, if you use <code>broom</code> instead of <code>summary()</code>:
+<ul>
+<li><code>glance()</code> command makes table of regression summary statistics</li>
+<li><code>tidy()</code> only shows coefficients</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">glance</span>(unrestricted_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["r.squared"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["adj.r.squared"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["sigma"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["df"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["logLik"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["AIC"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["BIC"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["deviance"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["df.residual"],"name":[11],"type":["int"],"align":["right"]},{"label":["nobs"],"name":[12],"type":["int"],"align":["right"]}],"data":[{"1":"0.1376433","2":"0.1310225","3":"3.442656","4":"20.78959","5":"6.500683e-16","6":"4","7":"-1394.114","8":"2800.227","9":"2825.819","10":"6174.831","11":"521","12":"526"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<ul>
+<li><code>statistic</code> is the All F-test, <code>p.value</code> next to it is the p-value from the F test</li>
+</ul>
 
 <img src="../images/metrics_hex.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p><a href="https://metricsF22.classes.ryansafner.com">ECON 480 — Econometrics</a></p>
 </div>
-</section>
-
+</section></section>
 
     </div>
   </div>

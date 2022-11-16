@@ -1456,6 +1456,69 @@
     "text": "Question 9\nCollect your regressions from questions 4, 5b, 7a, 7b, and 8b and output them in a regression table with modelsummary()."
   },
   {
+    "objectID": "r/4.4-r.html",
+    "href": "r/4.4-r.html",
+    "title": "4.4 — Nonlinearities & Variable Transformations — Practice",
+    "section": "",
+    "text": "Quarto file R Studio Cloud"
+  },
+  {
+    "objectID": "r/4.4-r.html#required-packages-data",
+    "href": "r/4.4-r.html#required-packages-data",
+    "title": "4.4 — Nonlinearities & Variable Transformations — Practice",
+    "section": "Required Packages & Data",
+    "text": "Required Packages & Data\nLoad all the required packages we will use (note I have installed them already into the cloud project) by running (clicking the green play button) the chunk below:\n\nlibrary(tidyverse) # your friend and mine\nlibrary(broom) # for tidy regression\nlibrary(modelsummary) # for nice regression tables\nlibrary(car) # for F-test\n\nWe are returning to the speeding tickets data that we began to explore in R Practice 4.1 on Multivariate Regression and R Practice 4.3 on Categorical Data nad Interactions. Download and read in (read_csv) the data below.\n\n speeding_tickets.csv\n\n\n# read in data from url \n# or you could download and upload it to this project instead\nspeed <- read_csv(\"https://metricsf22.classes.ryansafner.com/files/data/speeding_tickets.csv\") %>%\n  mutate_at(c(\"Black\", \"Hispanic\", \"Female\", \"OutTown\", \"OutState\"), factor) %>%\n  filter(Amount > 0)\n\nThis data comes from a paper by Makowsky and Strattman (2009) that we will examine later. Even though state law sets a formula for tickets based on how fast a person was driving, police officers in practice often deviate from that formula. This dataset includes information on all traffic stops. An amount for the fine is given only for observations in which the police officer decided to assess a fine. There are a number of variables in this dataset, but the one’s we’ll look at are:\n\n\n\n\n\n\n\nVariable\nDescription\n\n\n\n\nAmount\nAmount of fine (in dollars) assessed for speeding\n\n\nAge\nAge of speeding driver (in years)\n\n\nMPHover\nMiles per hour over the speed limit\n\n\nBlack\nDummy \\(=1\\) if driver was black, \\(=0\\) if not\n\n\nHispanic\nDummy \\(=1\\) if driver was Hispanic, \\(=0\\) if not\n\n\nFemale\nDummy \\(=1\\) if driver was female, \\(=0\\) if not\n\n\nOutTown\nDummy \\(=1\\) if driver was not from local town, \\(=0\\) if not\n\n\nOutState\nDummy \\(=1\\) if driver was not from local state, \\(=0\\) if not\n\n\nStatePol\nDummy \\(=1\\) if driver was stopped by State Police, \\(=0\\) if stopped by other (local)\n\n\n\nWe want to explore who gets fines, and how much. We’ll come back to the other variables (which are categorical) in this dataset in later lessons."
+  },
+  {
+    "objectID": "r/4.4-r.html#question-1",
+    "href": "r/4.4-r.html#question-1",
+    "title": "4.4 — Nonlinearities & Variable Transformations — Practice",
+    "section": "Question 1",
+    "text": "Question 1\nRun a regression of Amount on Age. Write out the estimated regression equation, and interpret the coefficient on Age."
+  },
+  {
+    "objectID": "r/4.4-r.html#question-2",
+    "href": "r/4.4-r.html#question-2",
+    "title": "4.4 — Nonlinearities & Variable Transformations — Practice",
+    "section": "Question 2",
+    "text": "Question 2\nIs the effect of Age on Amount nonlinear? Let’s run a quadratic regression.\n\nPart A\nCreate a new variable for \\(Age^2\\). Then run a quadratic regression:\n\\[\\widehat{\\text{Amount}}_i=\\beta_0+\\beta_1 \\, \\text{Age}_i+\\beta_2 \\, \\text{Age}_i^2\\]\n\n\n\nPart B\nTry running the same regression using the alternate notation: lm(Y ~ X + I(X^2)), replacing X and Y with our variables. This method allows you to run a quadratric regression without having to create a new variable first. Do you get the same results?\n\n\n\nPart C\nWrite out the estimated regression equation.\n\n\n\nPart D\nIs this model an improvement from the linear model? Compared \\(\\bar{R}^2\\).\n\n\n\nPart E\nIs the coefficient on the quadratic term statistically significantly different from zero? i.e. could we reject \\(H_0: \\beta_2\\)?\n\n\n\nPart F\nWrite an equation for the marginal effect of Age on Amount.\n\n\n\nPart G\nPredict the marginal effect on Amount of being one year older when you are 18. How about when you are 40?\n\n\n\nPart H\nOur quadratic function is a \\(U\\)-shape. According to the model, at what age is the amount of the fine minimized?\n\n\n\nPart I\nCreate a scatterplot between Amount (y) and Age (x). Add a layer with a linear regression (as usual, geom_smooth(method = \"lm\")), and an additional layer of with the predicted quadratic regression curve. This additional layer is similar but we need to specify the formula of the curve to be quadratic:\n\n\n\nPart J\nIt’s quite hard to see the quadratic curve with all those data points. Redo another plot and this time, only keep the quadratic geom_smooth() layer and leave out the geom_point() layer. This will only plot the regression curve."
+  },
+  {
+    "objectID": "r/4.4-r.html#question-3",
+    "href": "r/4.4-r.html#question-3",
+    "title": "4.4 — Nonlinearities & Variable Transformations — Practice",
+    "section": "Question 3",
+    "text": "Question 3\nShould we use a higher-order polynomial equation? Run the following cubic regression, and determine whether it is necessary.\n\\[\\widehat{\\text{Amount}}_i = \\beta_0 + \\beta_1 \\, \\text{Age}_i + \\beta_2 \\, \\text{Age}_i^2 + \\beta_3 \\, \\text{Age}_i^3\\]"
+  },
+  {
+    "objectID": "r/4.4-r.html#question-4",
+    "href": "r/4.4-r.html#question-4",
+    "title": "4.4 — Nonlinearities & Variable Transformations — Practice",
+    "section": "Question 4",
+    "text": "Question 4\nRun an \\(F\\)-test to check if a nonlinear model is appropriate. Use the car package’s linearHypothesis() command, which looks like:\n\nlinearHypothesis(reg_name, # name of your saved regression object\n                 c(\"var1\", \"var2\")) # name of the variables you are testing\n\nYour null hypothesis is \\(H_0: \\beta_2=\\beta_3=0\\) from the regression in question 4. The command is"
+  },
+  {
+    "objectID": "r/4.4-r.html#question5",
+    "href": "r/4.4-r.html#question5",
+    "title": "4.4 — Nonlinearities & Variable Transformations — Practice",
+    "section": "Question5",
+    "text": "Question5\nNow let’s take a look at speed (MPHover the speed limit).\n\nPart A\nCreating new variables as necessary, run a linear-log model of Amount on MPHover. Write down the estimated regression equation, and interpret the coefficient on MPHover \\((\\hat{\\beta_1})\\). Make a scatterplot with the regression line. Hint: The simple geom_smooth(method = \"lm\") layer is sufficient, so long as you use the right variables on the plot!\n\n\n\nPart B\nCreating new variables as necessary, run a log-linear model of Amount on MPHover. Write down the estimated regression equation, and interpret the coefficient on MPHover \\((\\hat{\\beta_1})\\). Make a scatterplot with the regression line. Hint: The simple geom_smooth(method = \"lm\") is sufficient, so long as you use the right variables on the plot!\n\n\n\nPart C\nCreating new variables as necessary, run a log-log model of Amount on MPHover. Write down the estimated regression equation, and interpret the coefficient on MPHover \\((\\hat{\\beta_1})\\). Make a scatterplot with the regression line. Hint: The simple geom_smooth(method = \"lm\") is sufficient, so long as you use the right variables on the plot!\n\n\n\nPart D\nWhich of the three log models has the best fit? Hint: Check \\(R^2\\)"
+  },
+  {
+    "objectID": "r/4.4-r.html#question-6",
+    "href": "r/4.4-r.html#question-6",
+    "title": "4.4 — Nonlinearities & Variable Transformations — Practice",
+    "section": "Question 6",
+    "text": "Question 6\nReturn to the quadratic model from Question 3. Run a quadratic regression of Amount on Age, Age\\(^2\\), MPHover, and all of the race dummy variables. Test the null hypothesis: “the race of the driver has no effect on Amount”"
+  },
+  {
+    "objectID": "r/4.4-r.html#question-7",
+    "href": "r/4.4-r.html#question-7",
+    "title": "4.4 — Nonlinearities & Variable Transformations — Practice",
+    "section": "Question 7",
+    "text": "Question 7\nNow let’s try standardizing variables. Let’s try running a regression of Amount on Age and MPHover, but standardizing each variable.\n\nPart A\nCreate new standardized variables for Amount, Age, and MPHover:\n\n\n\nPart B\nRun a regression of standardized Amount_Z on standardized Age_Z and MPHover_Z. Interpret \\(\\hat{\\beta_1}\\) and \\(\\hat{\\beta_2}\\). Which variable has a bigger effect on Amount?"
+  },
+  {
     "objectID": "resources/R-packages.html",
     "href": "resources/R-packages.html",
     "title": "R Packages Used in this Course",

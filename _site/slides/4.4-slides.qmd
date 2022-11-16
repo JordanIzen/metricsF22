@@ -1557,10 +1557,275 @@ gapminder %>%
 
 # Joint Hypothesis Testing {.centered background-color="#314f4f"}
 
+## Joint Hypothesis Testing I
+
+::: callout-tip
+## Example
+
+Return again to:
+
+$$\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+\hat{\beta_2}\text{Northeast}_i+\hat{\beta_3}\,\text{Midwest}_i+\hat{\beta_4}\,\text{South}_i$$
+:::
+
+. . .
+
+- Maybe region doesn't affect wages *at all*?
+
+. . .
+
+- $H_0: \beta_2=0, \, \beta_3=0, \, \beta_4=0$
+
+. . .
+
+- This is a [joint hypothesis]{.hi} (of multiple parameters) to test
+
+## Joint Hypothesis Testing II
+
+- A [joint hypothesis]{.hi} tests against the null hypothesis of a value for **multiple** parameters:
+$$\mathbf{H_0: \beta_1= \beta_2=0}$$
+the hypotheses that **multiple** regressors are equal to zero (have no causal effect on the outcome) 
+
+. . .
+
+- Our [alternative hypothesis]{.hi-purple} is that:
+$$H_1: \text{ either } \beta_1\neq0\text{ or } \beta_2\neq0\text{ or both}$$
+
+or simply, that $H_0$ is not true 
+
+## Types of Joint Hypothesis Tests
+
+1. $H_0$: $\beta_1=\beta_2=0$
+    - Testing against the claim that multiple variables don't matter
+    - Useful under high multicollinearity between variables
+    - $H_a$: at least one parameter $\neq$ 0
+
+. . .
+
+2. $H_0$: $\beta_1=\beta_2$
+    - Testing whether two variables matter the same
+    - Variables must be the same units
+    - $H_a: \beta_1 (\neq, <, \text{ or }>) \beta_2$
+
+. . .
+
+3. $H_0:$ ALL $\beta$'s $=0$
+    - The "**Overall F-test"**
+    - Testing against claim that regression model explains *NO* variation in $Y$
+
+## Joint Hypothesis Tests: F-statistic
+
+- The [F-statistic]{.hi-turquoise} is the test-statistic used to test joint hypotheses about regression coefficients with an [F-test]{.hi-turquoise}
+
+. . .
+
+- This involves comparing two models:
+  1. [Unrestricted model]{.hi}: regression with all coefficients
+  2. [Restricted model]{.hi-purple}: regression under null hypothesis (coefficients equal hypothesized values)
+
+. . .
+
+- $F$ is an [analysis of variance (ANOVA)]{.hi-turquoise}
+  - essentially tests whether $R^2$ increases statistically significantly as we go from the restricted model$\rightarrow$unrestricted model
+
+. . .
+
+- $F$ has its own distribution, with *two* sets of degrees of freedom 
+
+## Joint Hypothesis F-test: Example I
+
+::: callout-tip
+## Example
+$$\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+\hat{\beta_2}\text{Northeast}_i+\hat{\beta_3}\,\text{Midwest}_i+\hat{\beta_4}\,\text{South}_i$$
+
+:::
+
+. . .
+
+- $H_0: \beta_2=\beta_3=\beta_4=0$
+
+. . .
+
+- $H_a$: $H_0$ is not true (at least one $\beta_i \neq 0$)
+
+## Joint Hypothesis F-test: Example II
+
+::: callout-tip
+## Example
+$$\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+\hat{\beta_2}\text{Northeast}_i+\hat{\beta_3}\,\text{Midwest}_i+\hat{\beta_4}\,\text{South}_i$$
+
+:::
+
+- [Unrestricted model]{.hi}:
+
+$$\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+\hat{\beta_2}\text{Northeast}_i+\hat{\beta_3}\,\text{Midwest}_i+\hat{\beta_4}\,\text{South}_i$$
+
+
+- [Restricted model]{.hi-purple}:
+
+$$\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+$$
+. . .
+
+- $F$-test: **does going from [restricted]{.hi-purple} to [unrestricted]{.hi} model statistically significantly improve $R^2$?**
+
+## Calculating the F-statistic
+
 ::: columns
 ::: {.column width="50%"}
+$$F_{q,(n-k-1)}=\cfrac{\left(\displaystyle\frac{(R^2_u-R^2_r)}{q}\right)}{\left(\displaystyle\frac{(1-R^2_u)}{(n-k-1)}\right)}$$
 :::
 
 ::: {.column width="50%"}
+
 :::
 :::
+
+## Calculating the F-statistic
+
+::: columns
+::: {.column width="50%"}
+$$F_{q,(n-k-1)}=\cfrac{\left(\displaystyle\frac{(\color{#e64173}{R^2_u}-R^2_r)}{q}\right)}{\left(\displaystyle\frac{(1-\color{#e64173}{R^2_u})}{(n-k-1)}\right)}$$
+:::
+
+::: {.column width="50%"}
+- $\color{#e64173}{R^2_u}$: the $R^2$ from the [unrestricted model]{.hi} (all variables)
+
+:::
+:::
+
+## Calculating the F-statistic
+
+::: columns
+::: {.column width="50%"}
+$$F_{q,(n-k-1)}=\cfrac{\left(\displaystyle\frac{(\color{#e64173}{R^2_u}-\color{#6A5ACD}{R^2_r})}{q}\right)}{\left(\displaystyle\frac{(1-\color{#e64173}{R^2_u})}{(n-k-1)}\right)}$$
+:::
+
+::: {.column width="50%"}
+- $\color{#e64173}{R^2_u}$: the $R^2$ from the [unrestricted model]{.hi} (all variables)
+
+
+- $\color{#6A5ACD}{R^2_r}$: the $R^2$ from the [restricted model]{.hi-purple} (null hypothesis)
+:::
+:::
+
+## Calculating the F-statistic
+
+::: columns
+::: {.column width="50%"}
+$$F_{q,(n-k-1)}=\cfrac{\left(\displaystyle\frac{(\color{#e64173}{R^2_u}-\color{#6A5ACD}{R^2_r})}{q}\right)}{\left(\displaystyle\frac{(1-\color{#e64173}{R^2_u})}{(n-k-1)}\right)}$$
+:::
+
+::: {.column width="50%"}
+- $\color{#e64173}{R^2_u}$: the $R^2$ from the [unrestricted model]{.hi} (all variables)
+
+- $\color{#6A5ACD}{R^2_r}$: the $R^2$ from the [restricted model]{.hi-purple} (null hypothesis)
+
+- $q$: number of restrictions (number of $\beta's=0$ under null hypothesis)
+
+- $k$: number of $X$ variables in .hi[unrestricted model] (all variables)
+
+- $F$ has two sets of degrees of freedom:
+  - $q$ for the numerator, $(n-k-1)$ for the denominator
+
+:::
+:::
+
+## Calculating the F-statistic
+
+::: columns
+::: {.column width="50%"}
+$$F_{q,(n-k-1)}=\cfrac{\left(\displaystyle\frac{(R^2_u-R^2_r)}{q}\right)}{\left(\displaystyle\frac{(1-R^2_u)}{(n-k-1)}\right)}$$
+:::
+
+::: {.column width="50%"}
+- [Key takeaway]{.hi-purple}: The bigger the difference between $(R^2_u-R^2_r)$, the greater the improvement in fit by adding variables, the larger the $F$!
+
+- This formula is (believe it or not) actually a simplified version (assuming homoskedasticity)
+  - I give you this formula to **build your intuition of what F is measuring**
+
+:::
+:::
+
+## F-test Example I
+
+- We'll use the `wooldridge` package's `wage1` data again
+
+```{r}
+#| echo: true
+
+# load in data from wooldridge package
+library(wooldridge)
+wages <- wage1
+
+# run regressions
+unrestricted_reg <- lm(wage ~ female + northcen + west + south, data = wages)
+restricted_reg <- lm(wage ~ female, data = wages)
+```
+
+## F-test Example II
+
+
+- [Unrestricted model]{.hi}:
+
+$$\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+\hat{\beta_2}\text{Northeast}_i+\hat{\beta_3}\,\text{Midwest}_i+\hat{\beta_4}\,\text{South}_i$$
+
+
+- [Restricted model]{.hi-purple}:
+
+$$\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+$$
+
+- $H_0: \beta_2 = \beta_3 = \beta_4 =0$
+
+- $q = 3$ restrictions (F numerator df)
+
+- $n-k-1 = 526-4-1=521$ (F denominator df)
+
+## F-test Example III
+
+- We can use the `car` package's `linearHypothesis()` command to run an $F$-test:
+  - first argument: name of the (unrestricted) regression
+  - second argument: vector of variable names (in quotes) you are testing
+
+. . .
+
+```{r}
+#| echo: true
+# load car package for additional regression tools
+library(car) 
+# F-test
+linearHypothesis(unrestricted_reg, c("northcen", "west", "south")) 
+```
+
+. . .
+
+- $p$-value on $F$-test $<0.05$, so we can reject $H_0$
+
+## All F-test I {.smaller}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+summary(unrestricted_reg)
+```
+:::
+
+::: {.column width="50%"}
+- Last line of regression output from `summary()` is an **All F-test**
+  - $H_0:$ all $\beta's=0$ 
+      - the regression explains no variation in $Y$
+  - Calculates an `F-statistic` that, if high enough, is significant (`p-value` $<0.05)$ enough to reject $H_0$
+
+:::
+:::
+
+## All F-test II {.smaller}
+
+- Alternatively, if you use `broom` instead of `summary()`:
+  - `glance()` command makes table of regression summary statistics
+  - `tidy()` only shows coefficients
+
+```{r}
+#| echo: true
+glance(unrestricted_reg)
+```
+
+- `statistic` is the All F-test, `p.value` next to it is the p-value from the F test
