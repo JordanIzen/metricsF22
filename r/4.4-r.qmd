@@ -6,10 +6,9 @@ execute:
 
 <p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_4_nonlinearities_and_variable_transformations.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i>Quarto file</a></span> <a target="_blank" href="https://rstudio.cloud/spaces/270168/content/4968381"><span class="btn btn-primary btn-lg"><i class="fas fa-cloud"></i>R Studio Cloud</a></span></p>
 
-<!--## Answers
+## Answers
 
-<p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_3_categorical_data_and_interactions_answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> Answer Key (html) </a></span> <a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_3_categorical_data_and_interactions_answers.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Answer Key (.qmd)</a></span></p>
--->
+<p style="text-align:center"><a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_4_nonlinearities_and_variable_transformations_answers.html"><span class="btn btn-primary btn-lg"><i class="fas fa-external-link-square-alt"></i> Answer Key (html) </a></span> <a target="_blank" href="https://metricsF22.classes.ryansafner.com/files/r-qmd/4_4_nonlinearities_and_variable_transformations_answers.qmd"><span class="btn btn-primary btn-lg"><i class="fas fa-file-archive"></i> Answer Key (.qmd)</a></span></p>
 
 ## Required Packages & Data
 
