@@ -1071,7 +1071,7 @@ $ year_num      &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007
 </section>
 <section id="estimating-fixed-effects-models" class="slide level2">
 <h2>Estimating Fixed Effects Models</h2>
-<p><span class="math display">\[\widehat{Y}_{it} = \beta_0+\beta_1 X_{it} +\alpha_i+\epsilon_{it}\]</span></p>
+<p><span class="math display">\[\hat{Y}_{it} = \beta_0+\beta_1 X_{it} +\alpha_i+\epsilon_{it}\]</span></p>
 <ul>
 <li>Two methods to estimate fixed effects models:</li>
 </ul>
@@ -1154,6 +1154,7 @@ $ year_num      &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007
 <section id="our-example-in-r-regression-ii" class="slide level2 smaller">
 <h2>Our Example in <code>R</code>: Regression II</h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>fe_reg_1 <span class="sc">%&gt;%</span> <span class="fu">glance</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1199,7 +1200,7 @@ $ year_num      &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007
 <li>Subtract the means equation from the pooled equation to get:</li>
 </ul>
 <p><span class="math display">\[\begin{align*}
-Y_{it}-\bar{Y}_i&amp;=\beta_1(X_{it}-\bar{X}_i)+\tilde{\epsilon}_{it}\\
+Y_{it}-\bar{Y}_i&amp;=\beta_1(X_{it}-\bar{X}_i)+\alpha_i+\epsilon_{it}-\bar{\alpha}_i-\bar{\epsilon}_{it}\\
 \tilde{Y}_{it}&amp;=\beta_1 \tilde{X}_{it}+\tilde{\epsilon}_{it}\\
 \end{align*}\]</span></p>
 </div>
@@ -1241,14 +1242,14 @@ Y_{it}-\bar{Y}_i&amp;=\beta_1(X_{it}-\bar{X}_i)+\tilde{\epsilon}_{it}\\
 <section id="looking-at-the-data-in-r-i" class="slide level2 smaller">
 <h2>Looking at the Data in <code>R</code> I</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># get means of Y and X by state</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>means_state <span class="ot">&lt;-</span> phones <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">summarize</span>(<span class="at">avg_deaths =</span> <span class="fu">mean</span>(deaths),</span>
-<span id="cb15-5"><a href="#cb15-5"></a>            <span class="at">avg_phones =</span> <span class="fu">mean</span>(cell_plans))</span>
-<span id="cb15-6"><a href="#cb15-6"></a></span>
-<span id="cb15-7"><a href="#cb15-7"></a><span class="co"># look at it</span></span>
-<span id="cb15-8"><a href="#cb15-8"></a>means_state</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># get means of Y and X by state</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>means_state <span class="ot">&lt;-</span> phones <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a>  <span class="fu">summarize</span>(<span class="at">avg_deaths =</span> <span class="fu">mean</span>(deaths),</span>
+<span id="cb16-5"><a href="#cb16-5"></a>            <span class="at">avg_phones =</span> <span class="fu">mean</span>(cell_plans))</span>
+<span id="cb16-6"><a href="#cb16-6"></a></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="co"># look at it</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a>means_state</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1264,35 +1265,62 @@ Y_{it}-\bar{Y}_i&amp;=\beta_1(X_{it}-\bar{X}_i)+\tilde{\epsilon}_{it}\\
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> means_state)<span class="sc">+</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(state, avg_deaths),</span>
-<span id="cb16-3"><a href="#cb16-3"></a>      <span class="at">y =</span> avg_deaths,</span>
-<span id="cb16-4"><a href="#cb16-4"></a>      <span class="at">color =</span> state)<span class="sc">+</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb16-6"><a href="#cb16-6"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="dv">0</span>,</span>
-<span id="cb16-7"><a href="#cb16-7"></a>                   <span class="at">yend =</span> avg_deaths,</span>
-<span id="cb16-8"><a href="#cb16-8"></a>                   <span class="at">x =</span> state,</span>
-<span id="cb16-9"><a href="#cb16-9"></a>                   <span class="at">xend =</span> state))<span class="sc">+</span></span>
-<span id="cb16-10"><a href="#cb16-10"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
-<span id="cb16-11"><a href="#cb16-11"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Cell Phones Per 10,000 People"</span>,</span>
-<span id="cb16-12"><a href="#cb16-12"></a>       <span class="at">y =</span> <span class="st">"Deaths Per Billion Miles Driven"</span>,</span>
-<span id="cb16-13"><a href="#cb16-13"></a>       <span class="at">color =</span> <span class="cn">NULL</span>)<span class="sc">+</span></span>
-<span id="cb16-14"><a href="#cb16-14"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
-<span id="cb16-15"><a href="#cb16-15"></a>           <span class="at">base_size=</span><span class="dv">10</span>)<span class="sc">+</span></span>
-<span id="cb16-16"><a href="#cb16-16"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> means_state)<span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(state, avg_deaths),</span>
+<span id="cb17-3"><a href="#cb17-3"></a>      <span class="at">y =</span> avg_deaths,</span>
+<span id="cb17-4"><a href="#cb17-4"></a>      <span class="at">color =</span> state)<span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="dv">0</span>,</span>
+<span id="cb17-7"><a href="#cb17-7"></a>                   <span class="at">yend =</span> avg_deaths,</span>
+<span id="cb17-8"><a href="#cb17-8"></a>                   <span class="at">x =</span> state,</span>
+<span id="cb17-9"><a href="#cb17-9"></a>                   <span class="at">xend =</span> state))<span class="sc">+</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
+<span id="cb17-11"><a href="#cb17-11"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"State"</span>,</span>
+<span id="cb17-12"><a href="#cb17-12"></a>       <span class="at">y =</span> <span class="st">"Deaths Per Billion Miles Driven"</span>,</span>
+<span id="cb17-13"><a href="#cb17-13"></a>       <span class="at">color =</span> <span class="cn">NULL</span>,</span>
+<span id="cb17-14"><a href="#cb17-14"></a>       <span class="at">title =</span> <span class="st">"Deaths Vary By State"</span>)<span class="sc">+</span></span>
+<span id="cb17-15"><a href="#cb17-15"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
+<span id="cb17-16"><a href="#cb17-16"></a>           <span class="at">base_size=</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb17-17"><a href="#cb17-17"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
 <img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-28-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
+<section id="looking-at-the-data-in-r-iii" class="slide level2">
+<h2>Looking at the Data in <code>R</code> III</h2>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> means_state)<span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(state, avg_phones),</span>
+<span id="cb18-3"><a href="#cb18-3"></a>      <span class="at">y =</span> avg_phones,</span>
+<span id="cb18-4"><a href="#cb18-4"></a>      <span class="at">color =</span> state)<span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="dv">0</span>,</span>
+<span id="cb18-7"><a href="#cb18-7"></a>                   <span class="at">yend =</span> avg_phones,</span>
+<span id="cb18-8"><a href="#cb18-8"></a>                   <span class="at">x =</span> state,</span>
+<span id="cb18-9"><a href="#cb18-9"></a>                   <span class="at">xend =</span> state))<span class="sc">+</span></span>
+<span id="cb18-10"><a href="#cb18-10"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span></span>
+<span id="cb18-11"><a href="#cb18-11"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"State"</span>,</span>
+<span id="cb18-12"><a href="#cb18-12"></a>       <span class="at">y =</span> <span class="st">"Cell Phone Plans Per 10,000 Population"</span>,</span>
+<span id="cb18-13"><a href="#cb18-13"></a>       <span class="at">color =</span> <span class="cn">NULL</span>,</span>
+<span id="cb18-14"><a href="#cb18-14"></a>       <span class="at">title =</span> <span class="st">"Cell Phone Plans Vary By State"</span>)<span class="sc">+</span></span>
+<span id="cb18-15"><a href="#cb18-15"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
+<span id="cb18-16"><a href="#cb18-16"></a>           <span class="at">base_size=</span><span class="dv">10</span>)<span class="sc">+</span></span>
+<span id="cb18-17"><a href="#cb18-17"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-29-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
 <section id="de-meaning-the-data-in-r" class="slide level2 smaller">
 <h2>De-Meaning the Data in <code>R</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>phones_dm <span class="ot">&lt;-</span> phones <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">select</span>(state, year, cell_plans, deaths) <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span> <span class="co"># for each state...</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">mutate</span>(<span class="at">phones_dm =</span> cell_plans <span class="sc">-</span> <span class="fu">mean</span>(cell_plans), <span class="co"># de-mean X</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a>         <span class="at">deaths_dm =</span> deaths <span class="sc">-</span> <span class="fu">mean</span>(deaths)) <span class="co"># de-mean Y</span></span>
-<span id="cb17-6"><a href="#cb17-6"></a>phones_dm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>phones_dm <span class="ot">&lt;-</span> phones <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">select</span>(state, year, cell_plans, deaths) <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">group_by</span>(state) <span class="sc">%&gt;%</span> <span class="co"># for each state...</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">mutate</span>(<span class="at">phones_dm =</span> cell_plans <span class="sc">-</span> <span class="fu">mean</span>(cell_plans), <span class="co"># de-mean X</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>         <span class="at">deaths_dm =</span> deaths <span class="sc">-</span> <span class="fu">mean</span>(deaths)) <span class="co"># de-mean Y</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a>phones_dm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output-display">
@@ -1308,9 +1336,9 @@ Y_{it}-\bar{Y}_i&amp;=\beta_1(X_{it}-\bar{X}_i)+\tilde{\epsilon}_{it}\\
 <section id="de-meaning-the-data-in-r-ii" class="slide level2 smaller">
 <h2>De-Meaning the Data in <code>R</code> II</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>phones_dm <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a> <span class="co">#ungroup() %&gt;% # it's still grouped by state</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">summarize</span>(<span class="at">mean_deaths =</span> <span class="fu">round</span>(<span class="fu">mean</span>(deaths_dm),<span class="dv">2</span>), <span class="at">sd_deaths =</span> <span class="fu">round</span>(<span class="fu">sd</span>(deaths_dm),<span class="dv">2</span>), <span class="at">mean_phones =</span> <span class="fu">round</span>(<span class="fu">mean</span>(phones_dm),<span class="dv">2</span>), <span class="at">sd_phones =</span> <span class="fu">round</span>(<span class="fu">sd</span>(phones_dm),<span class="dv">2</span>)) <span class="co">#%&gt;%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>phones_dm <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a> <span class="co">#ungroup() %&gt;% # it's still grouped by state</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">summarize</span>(<span class="at">mean_deaths =</span> <span class="fu">round</span>(<span class="fu">mean</span>(deaths_dm),<span class="dv">2</span>), <span class="at">sd_deaths =</span> <span class="fu">round</span>(<span class="fu">sd</span>(deaths_dm),<span class="dv">2</span>), <span class="at">mean_phones =</span> <span class="fu">round</span>(<span class="fu">mean</span>(phones_dm),<span class="dv">2</span>), <span class="at">sd_phones =</span> <span class="fu">round</span>(<span class="fu">sd</span>(phones_dm),<span class="dv">2</span>)) <span class="co">#%&gt;%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output-display">
@@ -1328,24 +1356,24 @@ Y_{it}-\bar{Y}_i&amp;=\beta_1(X_{it}-\bar{X}_i)+\tilde{\epsilon}_{it}\\
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> phones_dm)<span class="sc">+</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> phones_dm,</span>
-<span id="cb19-3"><a href="#cb19-3"></a>      <span class="at">y =</span> deaths_dm,</span>
-<span id="cb19-4"><a href="#cb19-4"></a>      <span class="at">color =</span> state)<span class="sc">+</span></span>
-<span id="cb19-5"><a href="#cb19-5"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb19-6"><a href="#cb19-6"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"black"</span>)<span class="sc">+</span></span>
-<span id="cb19-7"><a href="#cb19-7"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)<span class="sc">+</span></span>
-<span id="cb19-8"><a href="#cb19-8"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>)<span class="sc">+</span></span>
-<span id="cb19-9"><a href="#cb19-9"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"De-Meaned Cell Phones Per 10,000 People"</span>,</span>
-<span id="cb19-10"><a href="#cb19-10"></a>       <span class="at">y =</span> <span class="st">"De-Meaned Deaths Per Billion Miles Driven"</span>,</span>
-<span id="cb19-11"><a href="#cb19-11"></a>       <span class="at">color =</span> <span class="cn">NULL</span>)<span class="sc">+</span></span>
-<span id="cb19-12"><a href="#cb19-12"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
-<span id="cb19-13"><a href="#cb19-13"></a>           <span class="at">base_size =</span> <span class="dv">12</span>)<span class="sc">+</span></span>
-<span id="cb19-14"><a href="#cb19-14"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> phones_dm)<span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> phones_dm,</span>
+<span id="cb21-3"><a href="#cb21-3"></a>      <span class="at">y =</span> deaths_dm,</span>
+<span id="cb21-4"><a href="#cb21-4"></a>      <span class="at">color =</span> state)<span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"black"</span>)<span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>)<span class="sc">+</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>)<span class="sc">+</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"De-Meaned Cell Phones Per 10,000 People"</span>,</span>
+<span id="cb21-10"><a href="#cb21-10"></a>       <span class="at">y =</span> <span class="st">"De-Meaned Deaths Per Billion Miles Driven"</span>,</span>
+<span id="cb21-11"><a href="#cb21-11"></a>       <span class="at">color =</span> <span class="cn">NULL</span>)<span class="sc">+</span></span>
+<span id="cb21-12"><a href="#cb21-12"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
+<span id="cb21-13"><a href="#cb21-13"></a>           <span class="at">base_size =</span> <span class="dv">12</span>)<span class="sc">+</span></span>
+<span id="cb21-14"><a href="#cb21-14"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-31-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
+<img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-32-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
 <section id="de-meaning-the-data-in-r-regression-i" class="slide level2">
 <h2>De-Meaning the Data in <code>R</code>: Regression I</h2>
 <div class="cell">
@@ -1379,9 +1407,9 @@ Y_{it}-\bar{Y}_i&amp;=\beta_1(X_{it}-\bar{X}_i)+\tilde{\epsilon}_{it}\\
 <li><p><code>feols()</code> function is just like <code>lm()</code>, with some additional arguments:</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">library</span>(fixest)</span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">feols</span>(y <span class="sc">~</span> x <span class="sc">|</span> g, <span class="co"># after |, g is the group variable</span></span>
-<span id="cb20-3"><a href="#cb20-3"></a>      <span class="at">data =</span> df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">library</span>(fixest)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">feols</span>(y <span class="sc">~</span> x <span class="sc">|</span> g, <span class="co"># after |, g is the group variable</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a>      <span class="at">data =</span> df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="using-fixest-ii" class="slide level2 smaller">
@@ -1390,10 +1418,10 @@ Y_{it}-\bar{Y}_i&amp;=\beta_1(X_{it}-\bar{X}_i)+\tilde{\epsilon}_{it}\\
 
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>fe_reg_1_alt <span class="ot">&lt;-</span> <span class="fu">feols</span>(deaths <span class="sc">~</span> cell_plans <span class="sc">|</span> state,</span>
-<span id="cb21-2"><a href="#cb21-2"></a>                      <span class="at">data =</span> phones)</span>
-<span id="cb21-3"><a href="#cb21-3"></a></span>
-<span id="cb21-4"><a href="#cb21-4"></a>fe_reg_1_alt <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>fe_reg_1_alt <span class="ot">&lt;-</span> <span class="fu">feols</span>(deaths <span class="sc">~</span> cell_plans <span class="sc">|</span> state,</span>
+<span id="cb23-2"><a href="#cb23-2"></a>                      <span class="at">data =</span> phones)</span>
+<span id="cb23-3"><a href="#cb23-3"></a></span>
+<span id="cb23-4"><a href="#cb23-4"></a>fe_reg_1_alt <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1408,7 +1436,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 RMSE: 1.05007     Adj. R2: 0.886524
                 Within R2: 0.357238</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>fe_reg_1_alt <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>fe_reg_1_alt <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1501,17 +1529,99 @@ RMSE: 1.05007     Adj. R2: 0.886524
 <h2>Two-Way Fixed Effects</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-
+<ul>
+<li><p>State fixed effect controls for all factors that vary by state but are stable over time</p></li>
+<li><p>But there are still other (often unobservable) factors that affect both Phones and Deaths, that <em>don’t</em> vary by State</p>
+<ul>
+<li>The country’s macroeconomic performance, federal laws, etc</li>
+</ul></li>
+</ul>
 </div><div class="column" style="width:50%;">
-
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-39-1.png" width="960"></p>
 </div>
 </div>
+</div>
+</div>
+</section>
+<section id="two-way-fixed-effects-3" class="slide level2">
+<h2>Two-Way Fixed Effects</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-
+<ul>
+<li><p>State fixed effect controls for all factors that vary by state but are stable over time</p></li>
+<li><p>But there are still other (often unobservable) factors that affect both Phones and Deaths, that <em>don’t</em> vary by State</p>
+<ul>
+<li>The country’s macroeconomic performance, federal laws, etc</li>
+</ul></li>
+<li><p>If these factors systematically vary over time, but are the same by State, then we can <span class="hi-purple">“control for Year”</span> to safely remove the influence of all of these factors!</p></li>
+</ul>
 </div><div class="column" style="width:50%;">
-
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-40-1.png" width="960"></p>
 </div>
+</div>
+</div>
+</div>
+</section>
+<section id="two-way-fixed-effects-4" class="slide level2">
+<h2>Two-Way Fixed Effects</h2>
+<ul>
+<li>A <span class="hi">one-way fixed effects model</span> estimates a fixed effect for <strong>groups</strong></li>
+</ul>
+<div class="fragment">
+<ul>
+<li><span class="hi">Two-way fixed effects model (TWFE)</span> estimates fixed effects for <em>both</em> <strong>groups</strong> <em>and</em> <strong>time periods</strong></li>
+</ul>
+<p><span class="math display">\[\hat{Y_{it}}=\beta_0+\beta_1 X_{it}+ \color{#6A5ACD}{\alpha_{i}} + \color{#44C1C4}{\theta_{t}} + \color{#e64173}{\nu_{it}}\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(\color{#6A5ACD}{\alpha_{i}}\)</span>: group fixed effects
+<ul>
+<li>accounts for <strong>time-invariant differences across groups</strong></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(\color{#44C1C4}{\theta_{t}}\)</span>: time fixed effects
+<ul>
+<li>accounts for <strong>group-invariant differences over time</strong></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(\color{#e64173}{\nu_{it}}\)</span> remaining random error
+<ul>
+<li>all remaining factors that affect <span class="math inline">\(Y_{it}\)</span> that vary by state <em>and</em> change over time</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="two-way-fixed-effects-our-example" class="slide level2">
+<h2>Two-Way Fixed Effects: Our Example</h2>
+<p><span class="math display">\[\widehat{\text{Deaths}}_{it} = \beta_0+\beta_1 \text{Cell phones}_{it} +\color{#6A5ACD}{\alpha_{i}} + \color{#44C1C4}{\theta_{t}} +  \color{#e64173}{\nu_{it}}\]</span></p>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(\color{#6A5ACD}{\alpha_{i}}\)</span>: <span class="purple">State fixed effects</span>
+<ul>
+<li>differences <strong>across states</strong> that are <strong>stable over time</strong> (note subscript <span class="math inline">\(i\)</span> only)</li>
+<li>e.g.&nbsp;geography, culture, (unchanging) state laws</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(\color{#44C1C4}{\theta_{t}}\)</span>: <span class="turquoise">Year fixed effects</span>
+<ul>
+<li>differences <strong>over time</strong> that are <strong>stable across states</strong> (note subscript <span class="math inline">\(t\)</span> only)</li>
+<li>e.g.&nbsp;economy-wide macroeconomic changes, <em>federal</em> laws passed</li>
+</ul></li>
+</ul>
 </div>
 </section>
 <section id="looking-at-the-data-change-over-time" class="slide level2">
@@ -1519,31 +1629,31 @@ RMSE: 1.05007     Adj. R2: 0.886524
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> phones)<span class="sc">+</span></span>
-<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> cell_plans,</span>
-<span id="cb24-3"><a href="#cb24-3"></a>      <span class="at">y =</span> deaths,</span>
-<span id="cb24-4"><a href="#cb24-4"></a>      <span class="at">color =</span> year)<span class="sc">+</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span> </span>
-<span id="cb24-6"><a href="#cb24-6"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)<span class="sc">+</span></span>
-<span id="cb24-7"><a href="#cb24-7"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Cell Phones Per 10,000 People"</span>,</span>
-<span id="cb24-8"><a href="#cb24-8"></a>       <span class="at">y =</span> <span class="st">"Deaths Per Billion Miles Driven"</span>,</span>
-<span id="cb24-9"><a href="#cb24-9"></a>       <span class="at">color =</span> <span class="cn">NULL</span>)<span class="sc">+</span></span>
-<span id="cb24-10"><a href="#cb24-10"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
-<span id="cb24-11"><a href="#cb24-11"></a>           <span class="at">base_size =</span> <span class="dv">14</span>)<span class="sc">+</span></span>
-<span id="cb24-12"><a href="#cb24-12"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)<span class="sc">+</span></span>
-<span id="cb24-13"><a href="#cb24-13"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>year, <span class="at">ncol =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> phones)<span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> cell_plans,</span>
+<span id="cb26-3"><a href="#cb26-3"></a>      <span class="at">y =</span> deaths,</span>
+<span id="cb26-4"><a href="#cb26-4"></a>      <span class="at">color =</span> year)<span class="sc">+</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span> </span>
+<span id="cb26-6"><a href="#cb26-6"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)<span class="sc">+</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Cell Phones Per 10,000 People"</span>,</span>
+<span id="cb26-8"><a href="#cb26-8"></a>       <span class="at">y =</span> <span class="st">"Deaths Per Billion Miles Driven"</span>,</span>
+<span id="cb26-9"><a href="#cb26-9"></a>       <span class="at">color =</span> <span class="cn">NULL</span>)<span class="sc">+</span></span>
+<span id="cb26-10"><a href="#cb26-10"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
+<span id="cb26-11"><a href="#cb26-11"></a>           <span class="at">base_size =</span> <span class="dv">14</span>)<span class="sc">+</span></span>
+<span id="cb26-12"><a href="#cb26-12"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)<span class="sc">+</span></span>
+<span id="cb26-13"><a href="#cb26-13"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>year, <span class="at">ncol =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-38-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
+<img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-41-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
 <section id="looking-at-the-data-change-over-time-ii" class="slide level2">
 <h2>Looking at the Data: Change Over Time II</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>means_year <span class="ot">&lt;-</span> phones <span class="sc">%&gt;%</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">summarize</span>(<span class="at">avg_deaths =</span> <span class="fu">mean</span>(deaths),</span>
-<span id="cb25-4"><a href="#cb25-4"></a>            <span class="at">avg_phones =</span> <span class="fu">mean</span>(cell_plans))</span>
-<span id="cb25-5"><a href="#cb25-5"></a>means_year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>means_year <span class="ot">&lt;-</span> phones <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">summarize</span>(<span class="at">avg_deaths =</span> <span class="fu">mean</span>(deaths),</span>
+<span id="cb27-4"><a href="#cb27-4"></a>            <span class="at">avg_phones =</span> <span class="fu">mean</span>(cell_plans))</span>
+<span id="cb27-5"><a href="#cb27-5"></a>means_year</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1559,57 +1669,57 @@ RMSE: 1.05007     Adj. R2: 0.886524
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> phones)<span class="sc">+</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
-<span id="cb26-3"><a href="#cb26-3"></a>      <span class="at">y =</span> deaths)<span class="sc">+</span></span>
-<span id="cb26-4"><a href="#cb26-4"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">color =</span> year), <span class="at">width =</span> <span class="fl">0.05</span>)<span class="sc">+</span></span>
-<span id="cb26-5"><a href="#cb26-5"></a>  <span class="co"># Add the yearly means as black points</span></span>
-<span id="cb26-6"><a href="#cb26-6"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> means_year,</span>
-<span id="cb26-7"><a href="#cb26-7"></a>             <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
-<span id="cb26-8"><a href="#cb26-8"></a>                 <span class="at">y =</span> avg_deaths),</span>
-<span id="cb26-9"><a href="#cb26-9"></a>             <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb26-10"><a href="#cb26-10"></a>             <span class="at">color =</span> <span class="st">"black"</span>)<span class="sc">+</span></span>
-<span id="cb26-11"><a href="#cb26-11"></a>  <span class="co"># connect the means with a line</span></span>
-<span id="cb26-12"><a href="#cb26-12"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> means_year,</span>
-<span id="cb26-13"><a href="#cb26-13"></a>            <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.numeric</span>(year),</span>
-<span id="cb26-14"><a href="#cb26-14"></a>                <span class="at">y =</span> avg_deaths),</span>
-<span id="cb26-15"><a href="#cb26-15"></a>            <span class="at">color =</span> <span class="st">"black"</span>,</span>
-<span id="cb26-16"><a href="#cb26-16"></a>            <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb26-17"><a href="#cb26-17"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
-<span id="cb26-18"><a href="#cb26-18"></a>           <span class="at">base_size =</span> <span class="dv">14</span>)<span class="sc">+</span></span>
-<span id="cb26-19"><a href="#cb26-19"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> phones)<span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
+<span id="cb28-3"><a href="#cb28-3"></a>      <span class="at">y =</span> deaths)<span class="sc">+</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">color =</span> year), <span class="at">width =</span> <span class="fl">0.05</span>)<span class="sc">+</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>  <span class="co"># Add the yearly means as black points</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> means_year,</span>
+<span id="cb28-7"><a href="#cb28-7"></a>             <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
+<span id="cb28-8"><a href="#cb28-8"></a>                 <span class="at">y =</span> avg_deaths),</span>
+<span id="cb28-9"><a href="#cb28-9"></a>             <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb28-10"><a href="#cb28-10"></a>             <span class="at">color =</span> <span class="st">"black"</span>)<span class="sc">+</span></span>
+<span id="cb28-11"><a href="#cb28-11"></a>  <span class="co"># connect the means with a line</span></span>
+<span id="cb28-12"><a href="#cb28-12"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> means_year,</span>
+<span id="cb28-13"><a href="#cb28-13"></a>            <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.numeric</span>(year),</span>
+<span id="cb28-14"><a href="#cb28-14"></a>                <span class="at">y =</span> avg_deaths),</span>
+<span id="cb28-15"><a href="#cb28-15"></a>            <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb28-16"><a href="#cb28-16"></a>            <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb28-17"><a href="#cb28-17"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
+<span id="cb28-18"><a href="#cb28-18"></a>           <span class="at">base_size =</span> <span class="dv">14</span>)<span class="sc">+</span></span>
+<span id="cb28-19"><a href="#cb28-19"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-40-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
+<img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-43-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
 <section id="looking-at-the-data-change-in-cell-phones-over-time" class="slide level2">
 <h2>Looking at the Data: Change in <em>Cell Phones</em> Over Time</h2>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> phones)<span class="sc">+</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
-<span id="cb27-3"><a href="#cb27-3"></a>      <span class="at">y =</span> cell_plans)<span class="sc">+</span></span>
-<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">color =</span> year), <span class="at">width =</span> <span class="fl">0.05</span>)<span class="sc">+</span></span>
-<span id="cb27-5"><a href="#cb27-5"></a>  <span class="co"># Add the yearly means as black points</span></span>
-<span id="cb27-6"><a href="#cb27-6"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> means_year,</span>
-<span id="cb27-7"><a href="#cb27-7"></a>             <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
-<span id="cb27-8"><a href="#cb27-8"></a>                 <span class="at">y =</span> avg_phones),</span>
-<span id="cb27-9"><a href="#cb27-9"></a>             <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb27-10"><a href="#cb27-10"></a>             <span class="at">color =</span> <span class="st">"black"</span>)<span class="sc">+</span></span>
-<span id="cb27-11"><a href="#cb27-11"></a>  <span class="co"># connect the means with a line</span></span>
-<span id="cb27-12"><a href="#cb27-12"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> means_year,</span>
-<span id="cb27-13"><a href="#cb27-13"></a>            <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.numeric</span>(year),</span>
-<span id="cb27-14"><a href="#cb27-14"></a>                <span class="at">y =</span> avg_phones),</span>
-<span id="cb27-15"><a href="#cb27-15"></a>            <span class="at">color =</span> <span class="st">"black"</span>,</span>
-<span id="cb27-16"><a href="#cb27-16"></a>            <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb27-17"><a href="#cb27-17"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
-<span id="cb27-18"><a href="#cb27-18"></a>           <span class="at">base_size =</span> <span class="dv">14</span>)<span class="sc">+</span></span>
-<span id="cb27-19"><a href="#cb27-19"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> phones)<span class="sc">+</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
+<span id="cb29-3"><a href="#cb29-3"></a>      <span class="at">y =</span> cell_plans)<span class="sc">+</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">color =</span> year), <span class="at">width =</span> <span class="fl">0.05</span>)<span class="sc">+</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a>  <span class="co"># Add the yearly means as black points</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> means_year,</span>
+<span id="cb29-7"><a href="#cb29-7"></a>             <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
+<span id="cb29-8"><a href="#cb29-8"></a>                 <span class="at">y =</span> avg_phones),</span>
+<span id="cb29-9"><a href="#cb29-9"></a>             <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb29-10"><a href="#cb29-10"></a>             <span class="at">color =</span> <span class="st">"black"</span>)<span class="sc">+</span></span>
+<span id="cb29-11"><a href="#cb29-11"></a>  <span class="co"># connect the means with a line</span></span>
+<span id="cb29-12"><a href="#cb29-12"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> means_year,</span>
+<span id="cb29-13"><a href="#cb29-13"></a>            <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.numeric</span>(year),</span>
+<span id="cb29-14"><a href="#cb29-14"></a>                <span class="at">y =</span> avg_phones),</span>
+<span id="cb29-15"><a href="#cb29-15"></a>            <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb29-16"><a href="#cb29-16"></a>            <span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb29-17"><a href="#cb29-17"></a>  <span class="fu">theme_bw</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
+<span id="cb29-18"><a href="#cb29-18"></a>           <span class="at">base_size =</span> <span class="dv">14</span>)<span class="sc">+</span></span>
+<span id="cb29-19"><a href="#cb29-19"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
-<img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-41-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
+<img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-44-1.png" width="1344" class="r-stretch quarto-figure-center"></section>
 <section id="estimating-two-way-fixed-effects" class="slide level2">
 <h2>Estimating Two-Way Fixed Effects</h2>
 <p><span class="math display">\[\hat{Y}_{it} = \beta_0+\beta_1 X_{it} +\alpha_i+\theta_t+\nu_{it}\]</span></p>
@@ -1637,10 +1747,10 @@ RMSE: 1.05007     Adj. R2: 0.886524
 <section id="lsdv-method" class="slide level2 smaller">
 <h2>LSDV Method</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>fe2_reg_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(deaths <span class="sc">~</span> cell_plans <span class="sc">+</span> state <span class="sc">+</span> year,</span>
-<span id="cb28-2"><a href="#cb28-2"></a>                <span class="at">data =</span> phones)</span>
-<span id="cb28-3"><a href="#cb28-3"></a></span>
-<span id="cb28-4"><a href="#cb28-4"></a>fe2_reg_1 <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>fe2_reg_1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(deaths <span class="sc">~</span> cell_plans <span class="sc">+</span> state <span class="sc">+</span> year,</span>
+<span id="cb30-2"><a href="#cb30-2"></a>                <span class="at">data =</span> phones)</span>
+<span id="cb30-3"><a href="#cb30-3"></a></span>
+<span id="cb30-4"><a href="#cb30-4"></a>fe2_reg_1 <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1654,10 +1764,10 @@ RMSE: 1.05007     Adj. R2: 0.886524
 <section id="with-fixest" class="slide level2">
 <h2>With <code>fixest</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>fe2_reg_2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(deaths <span class="sc">~</span> cell_plans <span class="sc">|</span> state <span class="sc">+</span> year,</span>
-<span id="cb29-2"><a href="#cb29-2"></a>                 <span class="at">data =</span> phones)</span>
-<span id="cb29-3"><a href="#cb29-3"></a></span>
-<span id="cb29-4"><a href="#cb29-4"></a>fe2_reg_2 <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>fe2_reg_2 <span class="ot">&lt;-</span> <span class="fu">feols</span>(deaths <span class="sc">~</span> cell_plans <span class="sc">|</span> state <span class="sc">+</span> year,</span>
+<span id="cb31-2"><a href="#cb31-2"></a>                 <span class="at">data =</span> phones)</span>
+<span id="cb31-3"><a href="#cb31-3"></a></span>
+<span id="cb31-4"><a href="#cb31-4"></a>fe2_reg_2 <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>OLS estimation, Dep. Var.: deaths
 Observations: 306 
@@ -1670,7 +1780,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 RMSE: 0.930036     Adj. R2: 0.909197
                  Within R2: 0.011989</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>fe2_reg_2 <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>fe2_reg_2 <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1701,7 +1811,7 @@ RMSE: 0.930036     Adj. R2: 0.909197
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-44-1.png" width="960"></p>
+<p><img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-47-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1710,12 +1820,12 @@ RMSE: 0.930036     Adj. R2: 0.909197
 <section id="adding-covariates-necessary" class="slide level2">
 <h2>Adding Covariates — Necessary?</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>phones <span class="sc">%&gt;%</span></span>
-<span id="cb32-2"><a href="#cb32-2"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">count</span>(cell_ban) <span class="sc">%&gt;%</span></span>
-<span id="cb32-4"><a href="#cb32-4"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> cell_ban, <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span></span>
-<span id="cb32-5"><a href="#cb32-5"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">States Without a Ban</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span>,</span>
-<span id="cb32-6"><a href="#cb32-6"></a>         <span class="st">`</span><span class="at">States With Cell Phone Ban</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>phones <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb34-3"><a href="#cb34-3"></a>  <span class="fu">count</span>(cell_ban) <span class="sc">%&gt;%</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> cell_ban, <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span></span>
+<span id="cb34-5"><a href="#cb34-5"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">States Without a Ban</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span>,</span>
+<span id="cb34-6"><a href="#cb34-6"></a>         <span class="st">`</span><span class="at">States With Cell Phone Ban</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1729,12 +1839,12 @@ RMSE: 0.930036     Adj. R2: 0.909197
 <section id="adding-covariates-necessary-1" class="slide level2">
 <h2>Adding Covariates — Necessary?</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>phones <span class="sc">%&gt;%</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb33-3"><a href="#cb33-3"></a>  <span class="fu">count</span>(text_ban) <span class="sc">%&gt;%</span></span>
-<span id="cb33-4"><a href="#cb33-4"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> text_ban, <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span></span>
-<span id="cb33-5"><a href="#cb33-5"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">States Without a Ban</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span>,</span>
-<span id="cb33-6"><a href="#cb33-6"></a>         <span class="st">`</span><span class="at">States With a Texting Ban</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>phones <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a>  <span class="fu">count</span>(text_ban) <span class="sc">%&gt;%</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> text_ban, <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">States Without a Ban</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span>,</span>
+<span id="cb35-6"><a href="#cb35-6"></a>         <span class="st">`</span><span class="at">States With a Texting Ban</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1748,7 +1858,7 @@ RMSE: 0.930036     Adj. R2: 0.909197
 <section id="adding-covariates-necessary-2" class="slide level2">
 <h2>Adding Covariates — Necessary?</h2>
 
-<img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-47-1.png" width="960" class="r-stretch"></section>
+<img data-src="5.1-slides_files/figure-revealjs/unnamed-chunk-50-1.png" width="960" class="r-stretch"></section>
 <section id="adding-covariates-ii" class="slide level2">
 <h2>Adding Covariates II</h2>
 <p><span class="math display">\[\widehat{\text{Deaths}}_{it}=\beta_1 \,\text{Cell Phones}_{it}+\alpha_i+\theta_t+\beta_2 \, \text{urban pct}_{it}+\beta_3 \,\text{cell ban}_{it}+\beta_4 \, \text{text ban}_{it}\]</span></p>
@@ -1763,10 +1873,10 @@ RMSE: 0.930036     Adj. R2: 0.909197
 <section id="adding-covariates-iii-fixest" class="slide level2 smaller">
 <h2>Adding Covariates III (<code>fixest</code>)</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>fe2_controls_reg <span class="ot">&lt;-</span> <span class="fu">feols</span>(deaths <span class="sc">~</span> cell_plans <span class="sc">+</span> text_ban <span class="sc">+</span> urban_percent <span class="sc">+</span> cell_ban <span class="sc">|</span> state <span class="sc">+</span> year,</span>
-<span id="cb34-2"><a href="#cb34-2"></a>                          <span class="at">data =</span> phones) </span>
-<span id="cb34-3"><a href="#cb34-3"></a></span>
-<span id="cb34-4"><a href="#cb34-4"></a>fe2_controls_reg <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>fe2_controls_reg <span class="ot">&lt;-</span> <span class="fu">feols</span>(deaths <span class="sc">~</span> cell_plans <span class="sc">+</span> text_ban <span class="sc">+</span> urban_percent <span class="sc">+</span> cell_ban <span class="sc">|</span> state <span class="sc">+</span> year,</span>
+<span id="cb36-2"><a href="#cb36-2"></a>                          <span class="at">data =</span> phones) </span>
+<span id="cb36-3"><a href="#cb36-3"></a></span>
+<span id="cb36-4"><a href="#cb36-4"></a>fe2_controls_reg <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -1784,7 +1894,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 RMSE: 0.920123     Adj. R2: 0.910039
                  Within R2: 0.032939</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>fe2_controls_reg <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>fe2_controls_reg <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -1982,7 +2092,7 @@ ggplot(data = phones_2dm)+
 ```
 
 ::: {.cell-output-display}
-![](5.1-slides_files/figure-revealjs/unnamed-chunk-52-1.png){fig-align='center' width=1344}
+![](5.1-slides_files/figure-revealjs/unnamed-chunk-55-1.png){fig-align='center' width=1344}
 :::
 :::
 

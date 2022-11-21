@@ -659,7 +659,7 @@ $$\widehat{\text{Deaths}}_{it} = \beta_0+\beta_1 \text{Cell phones}_{it} +\color
 
 ## Estimating Fixed Effects Models
 
-$$\widehat{Y}_{it} = \beta_0+\beta_1 X_{it} +\alpha_i+\epsilon_{it}$$
+$$\hat{Y}_{it} = \beta_0+\beta_1 X_{it} +\alpha_i+\epsilon_{it}$$
 
 - Two methods to estimate fixed effects models:
 
@@ -715,6 +715,7 @@ fe_reg_1 %>% tidy()
 ## Our Example in `R`: Regression II {.smaller}
 
 ```{r}
+#| echo: true
 fe_reg_1 %>% glance()
 ```
 
@@ -747,7 +748,7 @@ $$\bar{Y}_i=\beta_0+\beta_1 \bar{X}_i+\bar{\alpha}_i+\bar{\epsilon}_{it}$$
 - Subtract the means equation from the pooled equation to get:
 
 \begin{align*}
-Y_{it}-\bar{Y}_i&=\beta_1(X_{it}-\bar{X}_i)+\tilde{\epsilon}_{it}\\
+Y_{it}-\bar{Y}_i&=\beta_1(X_{it}-\bar{X}_i)+\alpha_i+\epsilon_{it}-\bar{\alpha}_i-\bar{\epsilon}_{it}\\
 \tilde{Y}_{it}&=\beta_1 \tilde{X}_{it}+\tilde{\epsilon}_{it}\\
 \end{align*}
 
@@ -811,9 +812,37 @@ ggplot(data = means_state)+
                    x = state,
                    xend = state))+
   coord_flip()+
-  labs(x = "Cell Phones Per 10,000 People",
+  labs(x = "State",
        y = "Deaths Per Billion Miles Driven",
-       color = NULL)+
+       color = NULL,
+       title = "Deaths Vary By State")+
+  theme_bw(base_family = "Fira Sans Condensed",
+           base_size=10)+
+  theme(legend.position = "none")
+
+```
+
+## Looking at the Data in `R` III
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| fig-align: center
+#| fig-width: 14
+ggplot(data = means_state)+
+  aes(x = fct_reorder(state, avg_phones),
+      y = avg_phones,
+      color = state)+
+  geom_point()+
+  geom_segment(aes(y = 0,
+                   yend = avg_phones,
+                   x = state,
+                   xend = state))+
+  coord_flip()+
+  labs(x = "State",
+       y = "Cell Phone Plans Per 10,000 Population",
+       color = NULL,
+       title = "Cell Phone Plans Vary By State")+
   theme_bw(base_family = "Fira Sans Condensed",
            base_size=10)+
   theme(legend.position = "none")
@@ -946,21 +975,91 @@ modelsummary(models = list("Pooled Regression" = pooled,
 
 ::: columns
 ::: {.column width="50%"}
+- State fixed effect controls for all factors that vary by state but are stable over time
+
+- But there are still other (often unobservable) factors that affect both Phones and Deaths, that *don’t* vary by State
+  - The country’s macroeconomic performance, federal laws, etc
 
 :::
 ::: {.column width="50%"}
+```{r}
+dagify(Deaths~Phones+State+Macro+FedLaw,
+       Phones~State+Macro+FedLaw,
+       coords = list(x = c(Phones = 1, Macro = 2, State = 3, FedLaw = 4, Deaths = 5),
+                     y = c(Phones = 0, Macro = 1, State = -1, FedLaw = 1, Geog = 1, Pop = -1, Deaths = 0)),
+       exposure = "Phones",
+       outcome = "Deaths") %>%
+  tidy_dagitty(seed = 20) %>%
+  ggdag_status()+theme_dag()+theme(legend.position = "none")
+```
+:::
+:::
 
-:::
-:::
+## Two-Way Fixed Effects
 
 ::: columns
 ::: {.column width="50%"}
+- State fixed effect controls for all factors that vary by state but are stable over time
+
+- But there are still other (often unobservable) factors that affect both Phones and Deaths, that *don’t* vary by State
+  - The country’s macroeconomic performance, federal laws, etc
+
+- If these factors systematically vary over time, but are the same by State, then we can [“control for Year”]{.hi-purple} to safely remove the influence of all of these factors!
 
 :::
 ::: {.column width="50%"}
+```{r}
+dagify(Deaths~Phones+State+Year,
+       Phones~State+Year,
+       coords = list(x = c(Phones = 1, State = 3, Year = 3, Deaths = 5),
+                     y = c(Phones = 0, State = -1, Year = 1, Deaths = 0)),
+       exposure = "Phones",
+       outcome = "Deaths") %>%
+  tidy_dagitty(seed = 20) %>%
+  ggdag_status()+theme_dag()+theme(legend.position = "none")
+```
+:::
+:::
 
-:::
-:::
+## Two-Way Fixed Effects
+
+- A [one-way fixed effects model]{.hi} estimates a fixed effect for **groups**
+
+. . .
+
+- [Two-way fixed effects model (TWFE)]{.hi} estimates fixed effects for *both* **groups** *and* **time periods**
+$$\hat{Y_{it}}=\beta_0+\beta_1 X_{it}+ \color{#6A5ACD}{\alpha_{i}} + \color{#44C1C4}{\theta_{t}} + \color{#e64173}{\nu_{it}}$$
+
+. . .
+
+- $\color{#6A5ACD}{\alpha_{i}}$: group fixed effects
+  - accounts for **time-invariant differences across groups**
+
+. . .
+
+- $\color{#44C1C4}{\theta_{t}}$: time fixed effects
+  - accounts for **group-invariant differences over time**
+
+. . .
+
+- $\color{#e64173}{\nu_{it}}$ remaining random error
+  - all remaining factors that affect $Y_{it}$ that vary by state *and* change over time
+
+## Two-Way Fixed Effects: Our Example
+
+$$\widehat{\text{Deaths}}_{it} = \beta_0+\beta_1 \text{Cell phones}_{it} +\color{#6A5ACD}{\alpha_{i}} + \color{#44C1C4}{\theta_{t}} +  \color{#e64173}{\nu_{it}}$$
+
+. . .
+
+- $\color{#6A5ACD}{\alpha_{i}}$: [State fixed effects]{.purple}
+    - differences **across states** that are **stable over time** (note subscript $i$ only)
+    - e.g. geography, culture, (unchanging) state laws
+
+. . .
+
+- $\color{#44C1C4}{\theta_{t}}$: [Year fixed effects]{.turquoise}
+    - differences **over time** that are **stable across states** (note subscript $t$ only)
+    - e.g. economy-wide macroeconomic changes, *federal* laws passed
 
 ## Looking at the Data: Change Over Time
 
