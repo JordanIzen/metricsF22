@@ -1155,6 +1155,55 @@
     "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
   },
   {
+    "objectID": "content/5.2-content.html#overview",
+    "href": "content/5.2-content.html#overview",
+    "title": "5.2 — Difference-in-Differences — Class Content",
+    "section": " Overview",
+    "text": "Overview\nToday, we look at one of the most commonly used by professional researchers and econometricians: difference-in-differences, also called “diff-in-diff” or “DND.” The setup of this regression is actually quite simple, consisting (primarily) of a series of dummy variables and an interaction effect:\n\\[Y_{it}=\\beta_0+\\beta_1 \\text{Before}_{t}+ \\beta_2 \\text{Treated}_{i}+\\beta_3(\\text{Before}_i \\times \\text{Treated}_{t})+u_{it}\\]\nwhere\n\\[\\text{Treated}_i= \\begin{cases}1 \\text{ if } i \\text{ is in treatment group}\\\\ 0 \\text{ if } i \\text{ is not in treatment group}\\end{cases} \\quad \\text{After}_t= \\begin{cases}1 \\text{ if } t \\text{ is after treatment period}\\\\ 0 \\text{ if } t \\text{ is before treatment period}\\end{cases}\\]\nThus, \\(\\hat{\\beta_3}\\) is the causal effect of the treatment we aim to measure. As an interaction effect between two dummies, we can interpret \\(\\hat{\\beta_1}\\) as measuring the difference across treatment & control group before any treatments happen, \\(\\hat{\\beta_2}\\) as the difference over time, and \\(\\hat{\\beta_3}\\) as the difference of the differences:\n\n\n\n\n\n\n\n\n\n\nControl\nTreatment\nGroup Diff \\((\\Delta Y_i)\\)\n\n\n\n\nBefore\n\\(\\beta_0\\)\n\\(\\beta_0+\\beta_1\\)\n\\(\\beta_1\\)\n\n\nAfter\n\\(\\beta_0+\\beta_2\\)\n\\(\\beta_0+\\beta_1+\\beta_2+\\beta_3\\)\n\\(\\beta_1+\\beta_3\\)\n\n\nTime Diff \\((\\Delta Y_t)\\)\n\\(\\beta_2\\)\n\\(\\beta_2+\\beta_3\\)\nDiff-in-diff \\(\\Delta_i \\Delta_t: \\beta_3\\)"
+  },
+  {
+    "objectID": "content/5.2-content.html#readings",
+    "href": "content/5.2-content.html#readings",
+    "title": "5.2 — Difference-in-Differences — Class Content",
+    "section": " Readings",
+    "text": "Readings\n\n Ch. 8.5 in Bailey, Real Econometrics\n Dynarski, 1999, “Hope for Whom? Financial Aid for the Middle Class and its Impact on College Attendance”\n Card and Kreuger, 1994, “Minimum Wages and Unemployment: A Case Study of the Fast-Food Industry in New Jersey and Pennsylvania”"
+  },
+  {
+    "objectID": "content/5.2-content.html#assignments",
+    "href": "content/5.2-content.html#assignments",
+    "title": "5.2 — Difference-in-Differences — Class Content",
+    "section": " Assignments",
+    "text": "Assignments\n\nProblem Set 5 Due Mon Nov 28\nProblem Set 5 is due by the end of the day on Wednesday, November 28."
+  },
+  {
+    "objectID": "content/5.2-content.html#slides",
+    "href": "content/5.2-content.html#slides",
+    "title": "5.2 — Difference-in-Differences — Class Content",
+    "section": " Slides",
+    "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
+  },
+  {
+    "objectID": "content/5.3-content.html#overview",
+    "href": "content/5.3-content.html#overview",
+    "title": "5.3 — Instrumental Variables — Class Content",
+    "section": " Overview",
+    "text": "Overview\nToday, we look at another of the most commonly used by professional researchers and econometricians: instrumental variables."
+  },
+  {
+    "objectID": "content/5.3-content.html#readings",
+    "href": "content/5.3-content.html#readings",
+    "title": "5.3 — Instrumental Variables — Class Content",
+    "section": " Readings",
+    "text": "Readings\n\n Ch. 9 in Bailey, Real Econometrics\n Levitt, 2002, “Using Electoral Cycles in Police Hiring to Estimate the Effect of Police on Crime: Reply”"
+  },
+  {
+    "objectID": "content/5.3-content.html#slides",
+    "href": "content/5.3-content.html#slides",
+    "title": "5.3 — Instrumental Variables — Class Content",
+    "section": " Slides",
+    "text": "Slides\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\nI suggest printing the slides beforehand and using them to take additional notes in class (not everything is in the slides)!\n\n\n\n\n Download as PDF"
+  },
+  {
     "objectID": "content/index.html",
     "href": "content/index.html",
     "title": "Overview",

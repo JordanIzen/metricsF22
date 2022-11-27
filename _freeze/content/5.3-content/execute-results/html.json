@@ -1,0 +1,14 @@
+{
+  "hash": "d99154efa64cfcb563333a78bdc3044f",
+  "result": {
+    "markdown": "---\ntitle: \"5.3 — Instrumental Variables — Class Content\"\nexecute:\n  freeze: auto\n---\n\n::: {.cell}\n\n:::\n\n\n::: {.callout-note appearance=\"minimal\"}\n## Meeting Dates\n\n*Wednesday, November 30, 2022*\n:::\n\n## <i class=\"fas fa-info-circle fa-lg\"></i> Overview\n\nToday, we look at another of the most commonly used by professional researchers and econometricians: instrumental variables.\n\n## <i class=\"fas fa-book-reader fa-lg\"></i> Readings\n\n- <i class=\"fas fa-book\"></i> Ch. 9 in Bailey, *Real Econometrics*\n- [<i class=\"fas fa-file-pdf\"></i> Levitt, 2002, “Using Electoral Cycles in Police Hiring to Estimate the Effect of Police on Crime: Reply”](/files/readings/Levitt-2002.pdf)\n<!--## <i class=\"fas fa-laptop-code\"></i> Assignments\n\n### Problem Set 5 Due Mon Nov 28\n\n[Problem Set 5](/assignments/05-problem-set) is due by the end of the day on Wednesday, November 28.-->\n\n## <i class=\"fas fa-chalkboard-teacher\"></i> Slides\n\nBelow, you can find the slides in two formats. Clicking the image will bring you to the html version of the slides in a new tab. The lower button will allow you to download a PDF version of the slides.\n\nI suggest printing the slides beforehand and using them to take additional notes in class (*not everything* is in the slides)!\n\n\n<p style=\"text-align:center;\"><a target=\"_blank\" href=\"/slides/5.3-slides.html\"><img src =\"/slides/5.3-slides.png\" width=600 alt = \"5.3-slides\"></a></p>\n<p style=\"text-align:center;\"><a class=\"btn btn-primary btn-lg\" target=\"_blank\" href=\"/slides/5.3-slides.pdf\"><i class=\"fas fa-file-pdf\"></i> Download as PDF</a></p>\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
