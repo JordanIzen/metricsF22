@@ -90,6 +90,10 @@ website:
           contents:
             - text: "5.1 — Panel Data and Fixed Effects"
               href: content/5.1-content.qmd
+            - text: "5.2 — Difference-in-Differences"
+              href: content/5.2-content.qmd
+            - text: "5.3 — Instrumental Variables"
+              href: content/5.3-content.qmd
               
     - title: "R Practice"
       style: "docked"
