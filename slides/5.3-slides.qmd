@@ -1429,9 +1429,9 @@ ggplot(data=tibble(x=1:10), aes(x=x))+
 :::
 ::: {.column width="50%"}
 
-- [Instrumental variables] can identify the demand relationship
+- [Instrumental variables]{.hi} can identify the demand relationship
 
-- Conceptually, use some supply shifter (like cost changes, $C)$ correlated with price $\color{blue}{P}$, but not correlated with $\color{blue}{u_D}$
+- Conceptually, use some supply shifter (like cost changes, $\color{red}{C})$ correlated with price $\color{blue}{P}$, but not correlated with $\color{blue}{u_D}$
 
 - Essentially: traces out unique [demand]{.blue} relationship by allowing [supply]{.red} to vary & shift
 
@@ -1444,7 +1444,7 @@ ggplot(data=tibble(x=1:10), aes(x=x))+
 
 ::: callout-tip
 ## Example
-Consider a famous the demand for broiler chickens 1960-1999
+Consider the consumption of broiler chickens from 1960-1999
 :::
 
 $$\ln \text{quantity}_{t} = \beta_0 + \beta_1 \, \ln \text{price of chicken}_{t} + \beta_2 \, \ln\text{price of beef}_{t} + \beta_3 \, \ln\text{population}_{t} + \beta_4 \, \ln\text{income}_{t}+u_{t}$$
@@ -1656,19 +1656,3 @@ modelsummary(models = list("OLS" = demand_reg,
              stars = c('*' = .1, '**' = .05, '***' = 0.01)
 )
 ```
-
-## 
-:::
-::: {.column width="50%"}
-
-:::
-:::
-
-::: columns
-::: {.column width="50%"}
-
-:::
-::: {.column width="50%"}
-
-:::
-:::
