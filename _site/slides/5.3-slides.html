@@ -802,7 +802,19 @@
 <td>Election cycles</td>
 </tr>
 <tr class="odd">
-<td>Crime</td>
+<td>Crime rates</td>
+<td>Patrol hours</td>
+<td>number of criminals</td>
+<td>Firefighters</td>
+</tr>
+<tr class="even">
+<td>Crime rates</td>
+<td>Patrol hours</td>
+<td>number of criminals</td>
+<td>Terror Alert levels</td>
+</tr>
+<tr class="odd">
+<td>Crime rates</td>
 <td>Incarceration rates</td>
 <td>Simultaneous causality</td>
 <td>Overcrowding litigations</td>
@@ -826,6 +838,19 @@
 <h2>Good Instruments are Hard to Find (And Weird) II</h2>
 
 <img data-src="images/iv_examples.png" class="r-stretch quarto-figure-center"><p><span class="source">Angrist, Joshua D and Alan B Kreuger, 2001, “Instrumental Variables and the Search for Identification: From Supply and Demand to Natural Experiments,” <em>Journal of Economic Perspectives</em> 15(4): 69-85</span></p>
+</section>
+<section id="exogeneity-the-huh-factor-1" class="slide level2">
+<h2>Exogeneity: The “Huh?” Factor</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><img data-src="images/mixtape.jpg"></p>
+</div><div class="column" style="width:70%;">
+<blockquote>
+<p>“Remember what I said about how instruments having a certain ridiculousness to them? That is, you know you have a good instrument if the instrument itself doesn’t seem relevant for explaining the outcome of interest because <em>that’s what the exclusion restriction implies.</em> Why would quarter of birth affect earnings? It doesn’t make any obvious, logical sense why it should. But, if I told you that people born later in the year got more schooling than those with less <em>because of compulsory schooling,</em> then the relationship between the instrument and the outcome snaps into place. The only reason we can think of as to why the instrument would affect earnings is if the instrument were operating through schooling. Instruments only explain the outcome, in other words, when you understand their effect on the endogenous variable,” (p.123).</p>
+</blockquote>
+<p><span class="source">Cunningham, Scott, 2021, <a href="https://mixtape.scunning.com/07-instrumental_variables"><em>Causal Inference: The Mixtape</em></a></span></p>
+</div>
+</div>
 </section>
 <section id="good-instruments-are-hard-to-find-and-weird-iii" class="slide level2">
 <h2>Good Instruments are Hard to Find (And Weird) III</h2>
@@ -1571,7 +1596,144 @@ F-test (1st stage), education: stat = 93.3     , p &lt; 2.2e-16 , on 2 and 719 D
                        Sargan: stat =  0.111147, p = 0.738842, on 1 DoF.</code></pre>
 </div>
 </div>
-</section></section>
+</section>
+<section id="another-example-levitt-2002-i" class="slide level2">
+<h2>Another Example: Levitt (2002) I</h2>
+<div class="callout callout-tip callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<p>How do police affect crime?</p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[Crime_{it}=\beta_0+\beta_1 Police_{it}+u_{it}\]</span></p>
+<div class="fragment">
+<ul>
+<li>Police<span class="math inline">\(\rightarrow\)</span>crime (more police reduces crime)</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Crime<span class="math inline">\(\rightarrow\)</span>Police (high crime areas tend to have more police)</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(cor(Police, \epsilon)\neq 0\)</span>: population, income per capita, drug use, recessions, demography, etc.</li>
+</ul>
+</div>
+</section>
+<section id="another-example-levitt-2002-ii" class="slide level2">
+<h2>Another Example: Levitt (2002) II</h2>
+<ul>
+<li><p>Levitt (2002): use number of firefighters as an instrumental variable</p></li>
+<li><p>Some police are hired for <strong>endogenous</strong> reasons (respond to crime, changes in economy, demographics, etc)</p></li>
+<li><p>Some police are hired for <strong>exogenous</strong> reasons (city just gains a larger budget and so hires more police)</p>
+<ul>
+<li>These exogenous dynamics affect the number of firefighters in a city — <em>not</em> due to crime, but due to excess budgets, etc.</li>
+</ul></li>
+<li><p>Isolate that portion of variation in Police that covaries with Firefighters for those <strong>exogenous</strong> changes (i.e.&nbsp;for reasons <em>other</em> than crime or its causes), see how <em>these</em> changes in Police affect crime</p></li>
+</ul>
+<p><span class="source">Levitt, Steven D, (2002), “Using Electoral Cycles in Police Hiring to Estimate the Effect of Police on Crime: Reply,” <em>American Economic Review</em> 92(4): 1244-1250</span></p>
+</section>
+<section id="another-example-levitt-2002-iii" class="slide level2">
+<h2>Another Example: Levitt (2002) III</h2>
+<ul>
+<li>Levitt’s (2002) paper, First Stage:</li>
+</ul>
+<p><span class="math display">\[ln(Police_{ct})=\gamma_1ln(Firefighters_{ct})+\alpha_c + \tau_t+ \gamma_2Controls_{ct}+\nu_{ct}\]</span></p>
+<p>subscripts for city <span class="math inline">\(c\)</span> at year <span class="math inline">\(t\)</span>, two-way fixed effects: <span class="math inline">\(\alpha_c\)</span> city fixed-effects, <span class="math inline">\(\tau_t\)</span> year fixed-effects</p>
+<div class="fragment">
+<ul>
+<li>Second stage:</li>
+</ul>
+<p><span class="math display">\[\widehat{ln(Crime_{ct})}=\beta_1 \widehat{ln(Police_{c{t-1}})}+\alpha_c + \tau_t+\beta_2 Controls_{ct}+\epsilon_{ct}  \]</span></p>
+<p>lag for police (last year’s police force determines this year’s crime rates)</p>
+</div>
+</section>
+<section id="another-example-levitt-2002-iv" class="slide level2">
+<h2>Another Example: Levitt (2002) IV</h2>
+
+<img data-src="images/levitt2002a.png" class="r-stretch quarto-figure-center"><div class="fragment">
+<p>Instrument is statistically significant (<span class="math inline">\(t \approx 5\)</span>), inclusion condition met</p>
+<p>A 1% increase in firefighters is associated with a 0.206-0.251% increase in police</p>
+</div>
+</section>
+<section id="another-example-levitt-2002-v" class="slide level2">
+<h2>Another Example: Levitt (2002) V</h2>
+
+<img data-src="images/levitt2002b.png" class="r-stretch quarto-figure-center"><p>A 1% increase in police (last year) leads to a 0.435% decrease in violent crimes, 0.501% decrease in property crimes</p>
+</section>
+<section id="another-example-ajr-2001-i" class="slide level2">
+<h2>Another Example: AJR (2001) I</h2>
+
+<img data-src="images/europeanempires.png" class="r-stretch quarto-figure-center"></section>
+<section id="another-example-ajr-2001-ii" class="slide level2">
+<h2>Another Example: AJR (2001) II</h2>
+<ul>
+<li>Acemoglu, Johnson, and Robinson (2001): countries’ wealth or poverty today depends strongly on how they were colonized.</li>
+<li>Europeans set up one of two types of colonies depending on the disease environment of the country:
+<ul>
+<li><strong>“Extractive institutions”</strong>: Europeans facing high mortality rates set up extractive colonies primarily to exploit indigenous population to mine resources to ship back to Europe</li>
+<li><strong>“Inclusive institutions”</strong>: Europeans facing low mortality rates set up inclusive colonies primarily for settlement and promoting open access to trade and politics</li>
+</ul></li>
+<li>Those initial colonies carried through to institutions in present countries; inclusive colonies grew wealthy, extractive colonies remain stagnant</li>
+</ul>
+<p><span class="source">Acemoglu, Daron, Simon Johnson, and James A Robinson, (2001), “The Colonial Origins of Comparative Development: An Empirical Investigation,” <em>American Economic Review</em> 91(5): 1369-1401</span></p>
+</section>
+<section id="another-example-ajr-2001-iii" class="slide level2">
+<h2>Another Example: AJR (2001) III</h2>
+<ul>
+<li>Instrument: Settler Mortality in 1500</li>
+<li><strong>Inclusion Restriction</strong>: Settler mortality in 1500 determines risk of expropriation today</li>
+<li><strong>{Exclusion Restriction</strong>: Settler mortality in 1500 <strong>does not</strong> affect Present GDP
+<ul>
+<li>Settler mortality in 1500 <strong>only</strong> affects Present GDP <strong>through</strong> institutions determined by historical path set by settler mortality rates</li>
+</ul></li>
+</ul>
+
+<img data-src="images/ajr3.png" class="r-stretch quarto-figure-center"><p><span class="source">Acemoglu, Daron, Simon Johnson, and James A Robinson, (2001), “The Colonial Origins of Comparative Development: An Empirical Investigation,” <em>American Economic Review</em> 91(5): 1369-1401</span></p>
+</section>
+<section id="another-example-ajr-2001-iv" class="slide level2">
+<h2>Another Example: AJR (2001) IV</h2>
+<ul>
+<li>First Stage:</li>
+</ul>
+<p><span class="math display">\[\text{Expropriation Risk}_i=\gamma_0+\gamma_1ln(\text{Settler Mortality in 1500}_i)+\gamma_2Controls+\nu_i\]</span></p>
+<div class="fragment">
+<ul>
+<li>Second Stage:</li>
+</ul>
+<p><span class="math display">\[\text{ln(Present GDP per capita)}=\beta_0+\beta_1\widehat{\text{Expropriation Risk}_i}+\cdots+\beta_2\text{Controls}+u
+_i\]</span></p>
+</div>
+</section>
+<section id="another-example-ajr-2001-v" class="slide level2">
+<h2>Another Example: AJR (2001) V</h2>
+<p>Relationship Between <span class="math inline">\(Y\)</span> and <span class="math inline">\(IV\)</span></p>
+
+<img data-src="images/ajr1.png" class="r-stretch quarto-figure-center"></section>
+<section id="another-example-ajr-2001-vi" class="slide level2">
+<h2>Another Example: AJR (2001) VI</h2>
+<p>Relationship Between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p>
+
+<img data-src="images/ajr5.png" class="r-stretch quarto-figure-center"></section>
+<section id="another-example-ajr-2001-vii" class="slide level2">
+<h2>Another Example: AJR (2001) VII</h2>
+<p>Relationship Between <span class="math inline">\(X\)</span> and <span class="math inline">\(IV\)</span></p>
+
+<img data-src="images/ajr6.png" class="r-stretch quarto-figure-center"></section>
+<section id="another-example-ajr-2001-viii" class="slide level2">
+<h2>Another Example: AJR (2001) VIII</h2>
+<p>2SLS Results</p>
+
+<img data-src="images/ajr7.png" class="r-stretch quarto-figure-center"></section></section>
 <section>
 <section id="simultaneous-causation-structural-equation-modeling-1" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>Simultaneous Causation &amp; Structural Equation Modeling</h1>
@@ -1839,16 +2001,13 @@ F-test (1st stage), education: stat = 93.3     , p &lt; 2.2e-16 , on 2 and 719 D
 </div>
 <ul>
 <li><p><code>statistic</code> <span class="math inline">\((F\)</span>) is high enough, jointly significant</p></li>
-<li><p>Can also see correlations:</p></li>
+<li><p>Can also see correlations: ::: {.cell} ::: {.cell-output .cell-output-stdout}</p></li>
 </ul>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
 <pre><code>               log_price log_feed_price log_corn_price
 log_price      1.0000000      0.9464933      0.7742719
 log_feed_price 0.9464933      1.0000000      0.9097980
 log_corn_price 0.7742719      0.9097980      1.0000000</code></pre>
-</div>
-</div>
+<p>::: :::</p>
 </section>
 <section id="instruments-1" class="slide level2 smaller">
 <h2>Instruments</h2>
