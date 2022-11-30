@@ -1,0 +1,1674 @@
+---
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    logo: "../images/metrics_hex.png"
+    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
+    height: 900
+    width: 1600
+    df-print: paged
+    slide-number: c
+    chalkboard: true
+overview: true
+execute:
+  echo: false
+  warning: false
+  freeze: auto
+---
+
+##  {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
+
+[5.3 --- Instrumental Variables]{.custom-title}
+
+[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+
+[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
+
+[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(broom)
+library(haven)
+library(kableExtra)
+library(patchwork)
+library(fontawesome)
+library(gapminder)
+library(ggthemes)
+library(scales)
+library(infer)
+library(ggdag)
+library(dagitty)
+library(modelsummary)
+knitr::opts_chunk$set(echo=F,
+                      message=F,
+                      warning=F)
+update_geom_defaults("label", list(family = "Fira Sans Condensed"))
+update_geom_defaults("text", list(family = "Fira Sans Condensed"))
+```
+
+## Contents {background-color="#314f4f"}
+
+### [Instrumental Variables Models](#instrumental-variables-models)
+
+### [Two Stage Least Squares](#two-stage-least-squares-2sls)
+
+### [Simultaneous Causation & Structural Equation Modeling](#simultaneous-causation-structural-equation-modeling)
+
+## Clever Research Designs Identify Causality
+
+Again, **this toolkit** of research designs to **identify causal effects** is the economist’s **comparative advantage** that firms and governments want!
+
+```{r, fig.retina=3, fig.align="center", fig.width=14}
+ggplot(data = tibble(x=c(0,10),
+                     y=c(0,10)))+
+  aes(x = x,
+      y = y)+
+  geom_text(x=1,y=0.75, label="Correlation", size =10, color = "#fde0dd")+
+  geom_text(x=5,y=0.75, label="Causation", size = 10, color = "#7a0177")+
+  
+  
+  geom_text(x=1,y=1.5, label="Differences", size =5, color = "#fde0dd")+
+  geom_text(x=1,y=1.25, label="Pre-Post", size =5, color = "#fde0dd")+
+  geom_text(x=2,y=1.75, label="Multivariate Regression", size =5, color = "#fbb4b9")+
+  geom_text(x=2,y=1.25, label="Matching", size =5, color = "#fbb4b9")+
+    geom_text(x=3,y=2, label="Fixed Effects", size =5, color = "#f768a1")+
+    geom_text(x=3.5,y=2.25, label="Diff-in-Diff", size =5, color = "#c51b8a")+
+  geom_text(x=4,y=1.25, label="Natural Experiments", size =5, color = "#c51b8a")+
+  geom_text(x=3.5,y=1.5, label="Regression Discontinuity", size =5, color = "#c51b8a")+
+  geom_text(x=3.5,y=1.75, label="Synthetic Control", size =5, color = "#c51b8a")+
+  geom_text(x=4, y=2, label="Instrumental Variables", size =5, color = "#c51b8a")+
+  geom_text(x=5,y=1.75, label="RCTs", size =5, color = "#7a0177")+
+  annotate("segment", x = 1, xend = 5, y = 1, yend = 1, colour = "black", size=2, alpha=1, arrow=arrow(length=unit(0.5,"cm"), ends="last", type="closed"))+
+  scale_x_continuous(breaks=seq(0,6,1),
+                     limits=c(0,6))+
+  scale_y_continuous(breaks=seq(0,3,1),
+                     limits=c(0.5,2.3))+
+  theme_void(base_family="Fira Sans Condensed", base_size = 14)
+```
+
+## Identification Strategies
+
+::: columns
+::: {.column width="50%"}
+
+- [Endogeneity]{.hi-purple} remains the hardest (and most common) econometric challenge
+
+- Diff-n-diff/fixed effects are one strategy to minimize endogeneity
+  - *Requires* panel data
+  - Can't use time-varying omitted variables that are correlated with regressors
+
+- Another strategy to is to find some source of exogenous variation that removes the endogeneity of a variable, using that source as a [instrumental variable]{.hi}
+
+:::
+::: {.column width="50%"}
+
+:::
+:::
+
+## Identification Strategies
+
+::: columns
+::: {.column width="50%"}
+
+- [Endogeneity]{.hi-purple} remains the hardest (and most common) econometric challenge
+
+- Diff-n-diff/fixed effects are one strategy to minimize endogeneity
+  - *Requires* panel data
+  - Can't use time-varying omitted variables that are correlated with regressors
+
+- Another strategy to is to find some source of exogenous variation that removes the endogeneity of a variable, using that source as a [instrumental variable]{.hi}
+
+:::
+::: {.column width="50%"}
+![](images/ivhot.jpg)
+:::
+:::
+
+# Instrumental Variables Models {.centered background-color="#314f4f"}
+
+## Understanding Instruments
+
+::: columns
+::: {.column width="50%"}
+```{r}
+library(ggdag)
+library(ggraph)
+node_colors <- tribble(
+  ~name, ~Variable,
+  "X", "Endogenous",
+  "Y", "Endogenous",
+  "Z", "Endogenous",
+  "I", "Exogenous",
+)
+
+dag <- dagify(Y ~ X + Z,
+              X ~ I + Z,
+              outcome = "Y",
+              exposure = "X") %>% 
+  tidy_dagitty(layout = "dh", seed = 256) 
+
+# Add node types/colors to DAG data
+dag$data <- dag$data %>% 
+  left_join(node_colors, by = "name")
+
+dag_plot<-ggplot(data = dag)+
+  aes(x = x,
+      y = y,
+      xend = xend,
+      yend = yend)+
+  geom_dag_point(size = 10, mapping = aes(color = Variable)) +
+  geom_dag_edges(start_cap = circle(4, "mm"),
+                 end_cap = circle(4, "mm")) +
+  geom_dag_text(size = 5, family = "Fira Sans") +
+  scale_dag()+
+  theme_void()+
+  theme(legend.position = "bottom")
+dag_plot
+```
+
+:::
+::: {.column width="50%"}
+
+- [**X**]{.red} and [**Y**]{.red} are correlated
+
+- Consider confounding variable [**Z**]{.red} that would meet the conditions of omitted variable bias:
+  1. Causes $Y$ (in error term $u)$
+  2. Correlated with $X$
+
+- Causal pathways from $X$ to $Y$:
+  1. $X \rightarrow Y$ (causal, front door)
+  2. $X \leftarrow Z \rightarrow Y$ (non-causal, back door)
+
+- Consider variable [**I**]{.blue} which causes [**X**]{.red} but *not* [**Y**]{.red}
+:::
+:::
+
+## Understanding Instruments
+
+::: columns
+::: {.column width="50%"}
+```{r}
+dag_plot
+```
+
+:::
+::: {.column width="50%"}
+
+- Variable [**I**]{.blue} has no backdoors between it and $Y$
+
+- The only way to reach $Y$ from $I$ is through $X$:
+  - $I \rightarrow X \rightarrow Y$
+
+- Variable [**I**]{.blue} is a good [instrument]{.hi} for $X$ if it satisfies two conditions:
+  1. [Inclusion condition]{.hi-purple}: $I$ statistically-significantly explains $X$
+  2. [Exclusion condition]{.hi-purple}: $I$ is uncorrelated with $u$, so it does not directly affect $Y$
+    - $I$ only affects $Y$ *through* its effect on $X$
+:::
+:::
+
+## Example I: Veterans' Earnings
+
+::: columns
+::: {.column width="50%"}
+
+::: callout-tip
+## Example
+How does veteran status affect lifetime earnings?
+:::
+
+$$\text{Earnings}_{i}=\beta_0+\beta_1 \, \text{Veteran}_{i}+\text{u}_{i}$$
+- $\text{Veteran}_i$ is endogenous, correlated with other things in $u_i$
+  - Choice to enlist in military for non-random reasons
+
+:::
+::: {.column width="50%"}
+![](images/veteranhat.jpg)
+:::
+:::
+
+## Example I: Exogeneous and Endogenous Variation
+
+- Imagine if we could split variation in $\text{Veteran}_i$ into an [exogenous]{.blue} part and an [endogenous]{.red} part:
+
+. . .
+
+\begin{align*}
+\color{green}{\text{Earnings}_i} &= \beta_0 + \beta_1 \, \color{red}{\text{Veteran}_i} + u_i \\
+\end{align*}
+
+## Example I: Exogeneous and Endogenous Variation
+
+- Imagine if we could split variation in $\text{Veteran}_i$ into an [exogenous]{.blue} part and an [endogenous]{.red} part:
+
+\begin{align*}
+\color{green}{\text{Earnings}_i} &= \beta_0 + \beta_1 \, \color{red}{\text{Veteran}_i} + u_i \\
+\color{green}{\text{Earnings}_i} &= \beta_0 + \beta_1 \,  (\color{blue}{\text{Veteran}_i^{Ex.}}+\color{red}{\text{Veteran}_i^{End.}})+u_i\\
+\end{align*}
+
+## Example I: Exogeneous and Endogenous Variation
+
+- Imagine if we could split variation in $\text{Veteran}_i$ into an [exogenous]{.blue} part and an [endogenous]{.red} part:
+
+\begin{align*}
+\color{green}{\text{Earnings}_i} &= \beta_0 + \beta_1 \, \color{red}{\text{Veteran}_i} + u_i \\
+\color{green}{\text{Earnings}_i} &= \beta_0 + \beta_1 \,  (\color{blue}{\text{Veteran}_i^{Ex.}}+\color{red}{\text{Veteran}_i^{End.}})+u_i\\
+\color{green}{\text{Earnings}_i} &= \beta_0 + \beta_1 \, \color{blue}{\text{Veteran}_i^{Ex.}}+ \underbrace{\beta_1 \color{red}{\text{Veteran}_i^{End.}}+u_i}_{w_i}\\
+\end{align*}
+
+## Example I: Exogeneous and Endogenous Variation
+
+- Imagine if we could split variation in $\text{Veteran}_i$ into an [exogenous]{.blue} part and an [endogenous]{.red} part:
+
+\begin{align*}
+\color{green}{\text{Earnings}_i} &= \beta_0 + \beta_1 \, \color{red}{\text{Veteran}_i} + u_i \\
+\color{green}{\text{Earnings}_i} &= \beta_0 + \beta_1 \,  (\color{blue}{\text{Veteran}_i^{Ex.}}+\color{red}{\text{Veteran}_i^{End.}})+u_i\\
+\color{green}{\text{Earnings}_i} &= \beta_0 + \beta_1 \, \color{blue}{\text{Veteran}_i^{Ex.}}+ \underbrace{\beta_1 \color{red}{\text{Veteran}_i^{End.}}+u_i}_{w_i}\\
+\color{green}{\text{Earnings}_i} &= \beta_0 + \beta_1 \, \color{blue}{\text{Veteran}_i^{Ex.}}+ w_i\\
+\end{align*}
+
+. . .
+
+- What would a plausible source of $\color{blue}{\text{Veteran}_i^{Ex.}}$ be?
+
+. . .
+
+- Choices to enlist in the military for "random" reasons, uncorrelated with $u_i$ (other things that affect Earnings$_i)$
+
+## Inclusion & Exclusion Conditions for Instruments
+
+- We isolate the *exogenous variation* in $X_i$ with an [instrumental variable]{.hi} that is:
+
+1. Correlated with the explanatory variable ([relevance]{.hi-purple})
+    - Often called the [“inclusion condition”]{.hi-purple}
+2. Uncorrelated with the error term ([exogenous]{.hi-purple})
+    - Often called the [“exclusion condition”]{.hi-purple}
+  
+. . .
+
+- So for our example:
+
+::: callout-tip
+$$\text{Earnings}_{i}=\beta_0+\beta_1 \, \text{Veteran}_{i}+\text{u}_{i}$$
+We want an instrument $I$ for Veteran$_i$ which is:
+
+1. [Relevant:]{.hi-purple} $cor(Veteran_i, I)\neq 0$
+2. [Exogenous:]{.hi-purple} $cor(I, u_i)\neq 0$
+
+
+:::
+
+## Example Instrument: Relevance
+
+- [Relevance (“inclusion condition”)]{.hi-purple}: we need $I$ to vary with our endogenous $X$ variable
+
+- We can *test* this condition using a regression and $t$-test on the relevant coefficient (checking correlations also helps)
+
+::: callout-tip
+## Example
+
+For $\text{Veteran}_i$ status, consider several potential $I$ variables:
+:::
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+1. Social security number
+:::
+::: {.column width="50%"}
+**Probably not relevant** <br> uncorrelated with military service
+:::
+:::
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+2. Physical fitness
+:::
+::: {.column width="50%"}
+**Possibly relevant** <br> may be correlated with military service
+:::
+:::
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+
+3. Vietnam War Draft
+:::
+::: {.column width="50%"}
+**Relevant** <br> being drawn in draft causes military service
+:::
+:::
+
+## Example Instrument: Exogeneity
+
+- [Exogeneity (“exclusion condition”)]{.hi-purple} we need $I$ to be "as good as randomly assigned", uncorrelated with $u$ (other factors that determine $Y)$
+
+- **This is not testable!** (Need a good argument from theory/intuition)
+  - Does $I$ *only* affect $Y$ through $X$?
+
+::: callout-tip
+## Example
+
+For $\text{Veteran}_i$ status, consider several potential $I$ variables:
+:::
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+1. Social security number
+:::
+::: {.column width="50%"}
+**Exogenous** <br> uncorrelated with other factors of earnings
+:::
+:::
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+2. Physical fitness
+:::
+::: {.column width="50%"}
+**Not exogeous** <br> correlated with many other factors of earnings
+:::
+:::
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+3. Vietnam War draft
+:::
+::: {.column width="50%"}
+**Exogenous** <br> lottery was random!
+:::
+:::
+
+## Exogeneity: The “Huh?” Factor
+
+::: columns
+::: {.column width="30%"}
+![](images/mixtape.jpg)
+:::
+
+::: {.column width="70%"}
+> “A necessary but not a sufficient condition for having an instrument that can satisfy the exclusion restriction is if people are confused when you tell them about the instrument's relationship to the outcome,” (p.123).
+
+[Cunningham, Scott, 2021, [*Causal Inference: The Mixtape*](https://mixtape.scunning.com/07-instrumental_variables)]{.source}
+
+:::
+:::
+
+
+## Good Instruments are Hard to Find (And Weird) I {.smaller}
+
+| Outcome | Endogenous Variable | Unobservables | Instrument |
+|---------|--------|---------------|------------|
+| Income | Education | Ability | Quarter of birth |
+| Income | Education | Ability | Father's education |
+| Income | Education | Ability | Distance to college |
+| Income | Education | Ability | Military draft |
+| Health | Smoking | Other negative health behaviors | Tobacco taxes |
+| Crime rates | Patrol hours | number of criminals | Election cycles |
+| Crime rates | Patrol hours | number of criminals | Firefighters |
+| Crime rates | Patrol hours | number of criminals | Terror Alert levels |
+| Crime rates | Incarceration rates | Simultaneous causality | Overcrowding litigations |
+| Labor market success | Americanization | Ability | Scrabble score of name |
+| Conflict | Economic growth | Simultaneous causality | Rainfall |
+
+## Good Instruments are Hard to Find (And Weird) II
+
+![](images/iv_examples.png){fig-align="center"}
+
+[Angrist, Joshua D and Alan B Kreuger, 2001, “Instrumental Variables and the Search for Identification: From Supply and Demand to Natural Experiments,” *Journal of Economic Perspectives* 15(4): 69-85]{.source}
+
+
+## Exogeneity: The “Huh?” Factor
+
+::: columns
+::: {.column width="30%"}
+![](images/mixtape.jpg)
+:::
+
+::: {.column width="70%"}
+> “Remember what I said about how instruments having a certain ridiculousness to them? That is, you know you have a good instrument if the instrument itself doesn’t seem relevant for explaining the outcome of interest because *that’s what the exclusion restriction implies.* Why would quarter of birth affect earnings? It doesn’t make any obvious, logical sense why it should. But, if I told you that people born later in the year got more schooling than those with less *because of compulsory schooling,* then the relationship between the instrument and the outcome snaps into place. The only reason we can think of as to why the instrument would affect earnings is if the instrument were operating through schooling. Instruments only explain the outcome, in other words, when you understand their effect on the endogenous variable,” (p.123).
+
+[Cunningham, Scott, 2021, [*Causal Inference: The Mixtape*](https://mixtape.scunning.com/07-instrumental_variables)]{.source}
+
+:::
+:::
+
+
+## Good Instruments are Hard to Find (And Weird) III
+
+![](images/rain-paper.png)
+
+
+## “Testing” the Exclusion Restriction
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| fig-height: 9 
+iv_node_colors <- tribble(
+  ~name, ~label, ~Variable,
+  "Y", "Outcome", "Outcome",
+  "X", "Policy/Treatment",  "Endogenous",
+  "Z", "Instrument", "Exogenous",
+  "U", "Confounders", "Exogenous"
+)
+
+iv_dag <- dagify(
+  Y ~ X + U,
+  X ~ Z + U,
+  exposure = "X",
+  outcome = "Y"
+) %>% 
+  tidy_dagitty(layout = "dh", seed = 20) 
+
+# Add node types/colors to DAG data
+iv_dag$data <- iv_dag$data %>% 
+  left_join(iv_node_colors, by = "name")
+
+iv_dag<-ggplot(data = iv_dag)+
+  aes(x = x,
+      y = y,
+      xend = xend,
+      yend = yend)+
+  geom_dag_point(size = 10, mapping = aes(color = Variable)) +
+  geom_dag_edges(start_cap = circle(4, "mm"),
+                 end_cap = circle(4, "mm")) +
+  geom_dag_label_repel(size = 5, family = "Fira Sans", aes(label = label), alpha = 0.75, seed = 5) +
+  scale_dag()+
+  theme_void()+
+  theme(legend.position = "none")
+iv_dag
+```
+:::
+::: {.column width="50%"}
+- Can you argue that the instrument does **not** affect outcome $Y$ **except only** through $X$?
+
+::: callout-tip
+## Examples
+- Instrument $\rightarrow$ ? $\rightarrow$ outcome
+- Quarter of birth $\rightarrow$ ? $\rightarrow$ wages
+- Rainfall $\rightarrow$ ? $\rightarrow$ civil war
+- Scrabble score of name $\rightarrow$ ? $\rightarrow$ wages
+:::
+
+:::
+:::
+
+## Example: Review {.smaller}
+
+- Instrument must be
+    1. Correlated with our endogenous variable $(X_i)$ (inclusion restriction)
+    2. Uncorrelated with omitted variables that affect $Y_i$ (exclusion restriction)
+
+- To summarize: **the instrument [only]{.ul} affects the outcome through its relationship with the endogenous variable**
+
+. . .
+
+::: callout-tip
+## Example
+
+For $\text{Veteran}_i$ status, our several potential $I$ variables:
+:::
+
+. . . 
+
+::: columns
+::: {.column width="50%"}
+1. Social security number:
+:::
+::: {.column width="50%"}
+ **Not relevant** <br> **Exogenous**
+:::
+:::
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+2. Physical fitness:
+:::
+::: {.column width="50%"}
+ **Relevant** <br> **Not exogenous**
+:::
+:::
+
+. . .
+
+::: columns
+::: {.column width="50%"}
+3. Vietnam War Draft:
+:::
+::: {.column width="50%"}
+ **Relevant** <br> **Exogenous**
+:::
+:::
+
+- The Vietnam War Draft is the only **_valid_ instrument**
+
+## Example I: DAG Form
+
+::: columns
+::: {.column width="50%"}
+```{r}
+vet_colors <- tribble(
+  ~name, ~Variable, ~Adjusted,
+  "Vet", "X", "Not",
+  "Earn", "Y", "Not",
+  "Draft", "Z", "Not",
+  "U", "Z", "Not",
+)
+
+vet_dag <- dagify(Earn ~ Vet + U,
+              Vet ~ Draft + U,
+              outcome = "Earn",
+              exposure = "Vet") %>% 
+  tidy_dagitty(seed = 256) 
+
+# Add node types/colors to DAG data
+vet_dag$data <- vet_dag$data %>% 
+  left_join(vet_colors, by = "name")
+
+vet_plot<-ggplot(data = vet_dag)+
+  aes(x = x,
+      y = y,
+      xend = xend,
+      yend = yend)+
+  geom_dag_point(size = 10,
+                 aes(color = Variable,
+                     shape = Adjusted)) +
+  geom_dag_edges(start_cap = circle(4, "mm"),
+                 end_cap = circle(4, "mm")) +
+  geom_dag_text(size = 3, family = "Fira Sans") +
+  scale_dag()+
+  theme_void()+
+  scale_shape_manual(values = c(16,17))+
+  theme(legend.position = "none")
+vet_plot
+```
+:::
+::: {.column width="50%"}
+- Causal pathways from $X$ to $Y$:
+  1. $\color{red}{Vet} \rightarrow \color{green}{Earn}$
+  2. $\color{red}{Vet} \leftarrow \color{blue}{U} \rightarrow \color{green}{Earn}$
+  
+- We want the causal effect of
+$$\color{red}{Vet} \rightarrow \color{green}{Earn}$$
+
+- With our instrument
+$$\color{blue}{Draft} \rightarrow \color{red}{Vet} \rightarrow \color{green}{Earn}$$
+
+:::
+:::
+
+## Example I: DAG Form {.smaller}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+vet_plot
+```
+:::
+::: {.column width="50%"}
+- With our instrument
+$$\color{blue}{Draft} \rightarrow \color{red}{Vet} \rightarrow \color{green}{Earn}$$
+
+- Based on our assumptions on independence and exogeneity:
+
+(Effect of [draft]{.blue} on [earnings]{.green}) $=$
+<br>(Effect of [draft]{.blue} on [veteran]{.red}) $\times$ (Effect of [veteran]{.red} on [earnings]{.green})
+
+:::
+:::
+
+## Example I: DAG Form {.smaller}
+
+::: columns
+::: {.column width="50%"}
+```{r}
+vet_plot
+```
+:::
+::: {.column width="50%"}
+- With our instrument
+$$\color{blue}{Draft} \rightarrow \color{red}{Vet} \rightarrow \color{green}{Earn}$$
+
+- Based on our assumptions on independence and exogeneity:
+
+(Effect of [draft]{.blue} on [earnings]{.green}) $=$ <br>
+(Effect of [draft]{.blue} on [veteran]{.red}) $\times$ (Effect of [veteran]{.red} on [earnings]{.green})
+
+- To find effect of [veteran]{.red} on [earnings]{.green}, rearrange!
+
+(Effect of [veteran]{.red} on [earnings]{.green}) $=$
+<br>(Effect of [draft]{.blue} on [earnings]{.green}) <br> [(Effect of [draft]{.blue} on [veteran]{.red})]{.bottom}
+
+:::
+:::
+
+## Estimating The Effect With Instrumental Variables {.smaller}
+
+*Recall:* We want to estimate the effect of veteran status on earnings.
+
+$$\color{green}{\text{Earnings}_i} = \beta_0 + \beta_1 \,  \color{red}{\text{Veteran}_i} + u_i$$
+
+. . .
+
+- Consider two other relationships:
+
+. . .
+
+1. Effect of [instrument]{.blue} on the [endogenous variable]{.red}
+
+$$\color{red}{\text{Veteran}_i} = \gamma_0 + \mathbf{\gamma_1} \, \color{blue}{\text{Draft}_i} + w_i$$
+. . .
+
+2. Effect of [instrument]{.blue} on the [outcome variable]{.green} ([“reduced form”]{.hi})
+$$
+\color{green}{\text{Earnings}_i} = \pi_0 + \mathbf{\pi_1} \color{blue}{\text{Draft}_i} + v_i
+$$
+
+
+. . .
+
+- Using these, we can estimate our desired effect, (Effect of [veteran status]{.red} on [earnings]{.green}):
+$$\beta_1^{IV}= \frac{\pi_1}{\gamma_1}$$
+
+## Estimating The Effect With Instrumental Variables
+
+- With our instrument, we estimate $\beta_1$ using
+
+$$\hat{\beta}_1^{IV}= \frac{\hat{\mathbf{\pi}}_1}{\hat{\mathbf{\gamma}}_1}$$
+where $\hat{\pi}_1$ and $\hat{\gamma}_1$ come from the regressions in the last slide
+
+. . .
+
+- Is this estimator unbiased? 
+
+. . .
+
+$$\mathbb{E}[\hat{\beta}_1^{IV}] = \beta_1 + \frac{\text{cov}(\color{blue}{Instrument}, u)}{\text{cov}(\color{blue}{\text{Instrument}}, \color{red}{\text{Endog. variable}})}$$
+
+. . .
+
+- Yes: so long as the [instrument]{.blue} is **valid**, i.e. [exogenous]{.hi-purple} (numerator) and [relevant]{.hi-purple} (denominator)
+
+
+## Example: Education 
+
+::: callout-tip
+## Example
+Consider the age-old question of how education affects wages.
+:::
+
+. . .
+
+$$\text{wage}_i = \beta_0 + \beta_1 \, \text{education}_i + u_i$$
+
+```{r}
+library(wooldridge)
+wage_df <- wage2 %>% transmute(wage, education = educ, education_dad = feduc, education_mom = meduc) %>% na.omit() %>% as_tibble()
+```
+
+```{r}
+#| echo: true
+ols_reg <- lm(wage ~ education, data = wage_df)
+tidy(ols_reg)
+```
+
+- `education` is endogenous
+
+. . .
+
+- What if we use `mother's education` as an instrument?
+
+## Example: Instrument
+
+::: columns
+::: {.column width="50%"}
+```{r}
+educ_colors <- tribble(
+  ~name, ~Variable, ~Adjusted,
+  "educ", "X", "Not",
+  "wage", "Y", "Not",
+  "mom", "Z", "Not",
+  "U", "Z", "Not",
+)
+
+educ_dag <- dagify(wage ~ educ + U,
+              educ ~ mom + U,
+              outcome = "wage",
+              exposure = "educ") %>% 
+  tidy_dagitty(seed = 256) 
+
+# Add node types/colors to DAG data
+educ_dag$data <- educ_dag$data %>% 
+  left_join(educ_colors, by = "name")
+
+educ_plot<-ggplot(data = educ_dag)+
+  aes(x = x,
+      y = y,
+      xend = xend,
+      yend = yend)+
+  geom_dag_point(size = 10,
+                 aes(color = Variable,
+                     shape = Adjusted)) +
+  geom_dag_edges(start_cap = circle(4, "mm"),
+                 end_cap = circle(4, "mm")) +
+  geom_dag_text(size = 3, family = "Fira Sans") +
+  scale_dag()+
+  theme_void()+
+  scale_shape_manual(values = c(16,17))+
+  theme(legend.position = "none")
+educ_plot
+```
+:::
+::: {.column width="50%"}
+- Causal pathways from $educ$ to $wage$:
+  1. $\color{red}{educ} \rightarrow \color{green}{wage}$
+  2. $\color{red}{educ} \leftarrow \color{blue}{U} \rightarrow \color{green}{wage}$
+  
+- We want the causal effect of
+$$\color{red}{educ} \rightarrow \color{green}{wage}$$
+
+- With our instrument
+$$\color{blue}{mom} \rightarrow \color{red}{educ} \rightarrow \color{green}{wage}$$
+
+:::
+:::
+
+## Example: Relevance
+
+- We can check the [relevance]{.hi} of [mother's education]{.blue} as an instrument for [education]{.red}
+
+- This regression is known as the [“first stage”]{.hi}: effect of the [instrument]{.blue} on the [endogenous variable]{.red}
+
+$$\color{red}{\text{Education}_i}=\gamma_0 + \gamma_1 \color{blue}{\text{Mother's education}_i} + v_i$$
+
+. . .
+
+```{r}
+#| echo: true
+#| output-locaion: fragment
+first_stage <- lm(education ~ education_mom, data = wage_df)
+tidy(first_stage)
+```
+
+
+. . .
+
+- $p$-value suggests this is a very relevant instrument! 
+
+## First-Stage Visualized
+
+```{r}
+ggplot(data = wage_df)+
+  aes(x = education_mom,
+      y = education)+
+  geom_point(alpha = 0.4)+
+  geom_smooth(method = "lm")+
+  labs(x = "Mother's Years of Education",
+       y = "(Own) Years of Education")+
+  theme_bw(base_family = "Fira Sans Condensed", base_size = 14)
+```
+
+## Exogeneity
+
+- We need our instrument, [mother's education]{.blue} to be [exogenous]{.hi}
+
+1. [Mother's education]{.blue} must only affect [wages]{.green} through [(own) education]{.red}
+2. [Mother's education]{.blue} must be uncorrelated with other factors that affect [wages]{.green} (i.e. the error term $u_i$)
+
+. . .
+
+- We want to be able to compare two individuals $A$ and $B$ whose mothers have different levels of education and say their *only differences* between $A$ and $B$ are their mothers' education levels.
+
+## Reduced Form
+
+- The estimate for the [reduced form]{.hi} (effect of [instrument]{.blue} on [outcome]{.green})
+
+$$
+\color{green}{\text{Wage}_i} = \pi_0 + \mathbf{\pi_1} \color{blue}{\text{Mother's education}_i} + v_i
+$$
+
+. . .
+
+```{r}
+reduced_form <- lm(wage ~ education_mom, data = wage_df)
+tidy(reduced_form)
+```
+
+## The Effect We're After {.smaller}
+
+- So what's our estimate of the returns to [education]{.red} on [wages]{.green}
+
+$$\color{green}{\text{Wages}_i} = \beta_0 + \beta_1 \,  \color{red}{\text{Education}_i} + u_i$$
+
+- We know the IV estimate for $\beta_1$ is
+$$\beta_1^{IV}= \frac{\pi_1}{\gamma_1}$$
+
+. . .
+
+1. In the reduced form equation, we estimated $\hat{\pi}_1 \approx 31.81$
+
+. . .
+
+2. In the first-stage equation, we estimated $\hat{\gamma}_1 \approx 0.294$
+
+. . .
+
+$$\hat{\beta}_1^{IV}= \frac{\hat{\pi}_1}{\hat{\gamma}_1} \approx \frac{31.81}{0.294} \approx 108.2$$
+## Example in R: `estimatr` {.smaller}
+
+- `estimatr` package 
+
+```{r}
+#| echo: true
+#| output-location: fragment
+library(estimatr)
+
+iv_reg <- iv_robust(wage ~ education | education_mom, data = wage_df)
+summary(iv_reg)
+tidy(iv_reg)
+```
+
+## Example in R: `fixest` {.smaller}
+
+- `fixest` package
+
+```{r}
+#| echo: true
+#| output-location: fragment
+library(fixest)
+
+iv_reg_2 <- feols(wage ~ 1 | education ~ education_mom, data = wage_df)
+summary(iv_reg_2)
+tidy(iv_reg_2)
+```
+
+# Two-Stage Least Squares (2SLS) {.centered background-color="#314f4f"}
+
+## Instrumental Variables & 2SLS
+
+- Now we know how to use instruments (when there is **1** [endogenous $X$ variable]{.red}, and **1** [instrumental variable $I$]{.blue}):
+  1. Estimate reduced form (regress [outcome]{.green} `~` [instrument]{.blue})
+  2. Estimate first stage (regress [endog. variable]{.red} `~` [instrument]{.blue})
+  3. Calculate IV-estimate of [outcome]{.green} `~` [endog. variable]{.red} using (1) and (2)
+
+. . .
+
+- [Instrument]{.blue} isolates only the exogenous variation in the [endogenous variable]{.red}
+
+. . .
+
+- What if we want to use **multiple** endogenous variables and/or **multiple** instruments?
+
+. . .
+
+- Extend this approach using [two-stage least squares (2SLS)]{.hi}^[In practice, since 2SLS is used so commonly, most people conflate instrumental variables approaches with 2SLS, but it is just *one* approach to using instruments.]
+
+## Intuitions from Instruments & 2SLS
+
+- We already have a lot of intuitions from IV to talk about 2SLS:
+
+\begin{align}
+  {\color{#c5c5c5}{\text{Endogenous model}}}& &\color{green}{\text{Outcome}_i} &= \beta_0 + \beta_1 \color{red}{\left( \text{Endog. var.} \right)_i} + u_i\\[0.5em]
+  {\text{First stage}}& &\color{red}{\left( \text{Endog. var.} \right)_i} &= \pi_0 + \pi_1 \color{blue}{\text{Instrument}_i} + v_i\\[0.25em]
+  {\text{Second stage}}& &\color{green}{\text{Outcome}_i} &= \delta_0 + \delta_1 \color{red}{\widehat{\left( \text{Endog. var.} \right)}_i} + \varepsilon_i\\[0.5em]
+  {\color{#c5c5c5}{\text{Reduced form}}}& &\color{green}{\text{Outcome}_i} &= \pi_0 + \pi_1 \color{blue}{\text{Instrument}_i} + w_i\\[0.25em]
+\end{align}
+
+where $\color{red}{\widehat{\left( \text{Endog. var.} \right)}_i}$ are the predicted values (*fitted values*) from the first-stage regression
+
+## 2SLS: Advantages
+
+- 2SLS is very flexible:
+  - Can add additional endogenous variables
+  - Can use additional instruments for endogenous variables
+  - Can add additional (exogenous) control variables $(X_2, \cdots, X_k)$
+
+- Of course, your instruments still need to be [valid]{.hi}:
+  1. Exogenous
+  2. Relevant
+
+## 2SLS: Multiple Instruments {.smaller}
+
+::: callout-tip
+## Example
+Come back to to our returns to education on wages example.
+
+$$\text{wage}_i = \beta_0 + \beta_1 \, \text{education}_i + u_i$$
+
+:::
+
+. . .
+
+- Suppose both [mother's education]{.blue} and [father's education]{.blue} are **valid** instruments (relevant and exogenous)
+
+. . . 
+
+- Then the **first stage** regression is:
+
+$$\color{red}{\text{Education}_i}=\gamma_0 + \gamma_1 \color{blue}{\text{Mother's education}_i} + \gamma_2 \color{blue}{\text{Father's education}_i} + v_i$$
+
+. . . 
+
+```{r}
+first_stage_multiple_IVs <- lm(education ~ education_mom + education_dad, data = wage_df)
+tidy(first_stage_multiple_IVs)
+```
+
+. . .
+
+## First Stage: Checking Relevance {.smaller}
+
+```{r}
+tidy(first_stage_multiple_IVs)
+```
+
+. . .
+
+- Both instruments appear to be relevant (small $p$-values), but we can more formally test their relevance **jointly** (i.e., an $F$-test)
+
+. . . 
+
+```{r}
+#| echo: true
+#| output-location: fragment
+library(car)
+linearHypothesis(first_stage_multiple_IVs, c("education_mom", "education_dad"))
+```
+. . .
+
+- $p$-value is small, so they are jointly significant, i.e. relevant instruments
+
+## Aside: The Problem of Weak Instruments
+
+- [Weak instruments]{.hi} have low relevance (i.e. $\text{cor}(X,I)$ is weak) and add little explanatory power
+
+- This can make OLS (and 2SLS) unreliable in small samples, and significantly raises the variance of OLS estimates
+
+- This likelihood also increases when we have multiple instruments, or more instruments than endogenous variables (a problem of [“overidentification”]{.hi-purple})
+
+
+## Second-Stage
+
+```{r}
+#| echo: true
+# add fitted values from first stage
+wage_df$education_hat <- first_stage_multiple_IVs$fitted.values
+```
+
+. . .
+
+- Now run the **second stage** regression:
+
+$$\color{green}{\text{Wage}_i} = \delta_0 + \delta_1 \color{red}{\widehat{\left( \text{education} \right)}_i} + \varepsilon_i$$
+
+. . .
+
+```{r}
+second_stage <- lm(wage ~ education_hat, data = wage_df)
+tidy(second_stage)
+```
+
+## Comparing Results
+
+```{r}
+modelsummary(models = list("OLS" = ols_reg,
+                           "IV" = iv_reg,
+                           "2SLS (two instruments)" = second_stage),
+             fmt = 2, # round to 2 decimals
+             output = "html",
+             coef_rename = c("(Intercept)" = "Constant",
+                             "education_hat" = "education"
+                             #"loggdp" = "Log GDP per Capita"
+                             ),
+             gof_map = list(
+               list("raw" = "nobs", "clean" = "n", "fmt" = 0),
+               #list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
+               list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
+               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
+             ),
+             escape = FALSE,
+             stars = c('*' = .1, '**' = .05, '***' = 0.01)
+)
+```
+
+## Using `estimatr` or `fixest` {.smaller}
+
+- You can do this “by hand” as we did, but `R` packages will run both stages for you
+
+- `estimatr` package: `iv_robust(y ~ x1 + x2 + ... | z1 + z2 + ..., data = df)`
+  - `x1`, `x2`, `...` are your endogenous variables
+  - `z1`, `z2`, `...` are instruments
+  - `df` is the dataframe
+
+```{r}
+#| echo: true
+#| output-location: fragment
+iv_robust(wage ~ education | education_mom + education_dad, data = wage_df)
+```
+
+## Using `estimatr` or `fixest` {.smaller}
+
+- `fixest` package: `feols()`
+```{r}
+#| echo: true
+#| output-location: fragment
+feols(wage ~ 1 | education ~ education_mom + education_dad, data = wage_df)
+```
+
+## Another Example: Levitt (2002) I
+
+::: callout-tip
+## Example
+
+How do police affect crime? 
+
+:::
+
+$$Crime_{it}=\beta_0+\beta_1 Police_{it}+u_{it}$$
+
+. . .
+
+- Police$\rightarrow$crime (more police reduces crime)
+
+. . .
+
+- Crime$\rightarrow$Police (high crime areas tend to have more police)
+
+. . .
+
+- $cor(Police, \epsilon)\neq 0$: population, income per capita, drug use, recessions, demography, etc.
+
+## Another Example: Levitt (2002) II
+
+- Levitt (2002): use number of firefighters as an instrumental variable
+
+- Some police are hired for **endogenous** reasons (respond to crime, changes in economy, demographics, etc)
+
+- Some police are hired for **exogenous** reasons (city just gains a larger budget and so hires more police)
+  - These exogenous dynamics affect the number of firefighters in a city — *not* due to crime, but due to excess budgets, etc.
+
+- Isolate that portion of variation in Police that covaries with Firefighters for those **exogenous** changes (i.e. for reasons *other* than crime or its causes), see how *these* changes in Police affect crime
+
+[Levitt, Steven D, (2002), "Using Electoral Cycles in Police Hiring to Estimate the Effect of Police on Crime: Reply," *American Economic Review* 92(4): 1244-1250]{.source}
+
+
+## Another Example: Levitt (2002) III
+
+- Levitt's (2002) paper, First Stage: 
+
+$$ln(Police_{ct})=\gamma_1ln(Firefighters_{ct})+\alpha_c + \tau_t+ \gamma_2Controls_{ct}+\nu_{ct}$$
+
+subscripts for city $c$ at year $t$, two-way fixed effects: $\alpha_c$ city fixed-effects, $\tau_t$ year fixed-effects
+
+. . .
+
+- Second stage:
+
+$$\widehat{ln(Crime_{ct})}=\beta_1 \widehat{ln(Police_{c{t-1}})}+\alpha_c + \tau_t+\beta_2 Controls_{ct}+\epsilon_{ct}	$$
+
+lag for police (last year's police force determines this year's crime rates) 
+
+## Another Example: Levitt (2002) IV
+
+![](images/levitt2002a.png){fig-align="center"}
+
+. . .
+
+Instrument is statistically significant ($t \approx 5$), inclusion condition met 
+
+A 1% increase in firefighters is associated with a 0.206-0.251% increase in police  
+
+## Another Example: Levitt (2002) V
+
+![](images/levitt2002b.png){fig-align="center"}
+
+A 1% increase in police (last year) leads to a 0.435% decrease in violent crimes, 0.501% decrease in property crimes 
+
+## Another Example: AJR (2001) I
+
+![](images/europeanempires.png){fig-align="center"}
+
+## Another Example: AJR (2001) II
+
+- Acemoglu, Johnson, and Robinson (2001): countries' wealth or poverty today depends strongly on how they were colonized.
+- Europeans set up one of two types of colonies depending on the disease environment of the country:
+    - **"Extractive institutions"**: Europeans facing high mortality rates set up extractive colonies primarily to exploit indigenous population to mine resources to ship back to Europe
+    - **"Inclusive institutions"**: Europeans facing low mortality rates set up inclusive colonies primarily for settlement and promoting open access to trade and politics
+- Those initial colonies carried through to institutions in present countries; inclusive colonies grew wealthy, extractive colonies remain stagnant 
+
+
+[Acemoglu, Daron, Simon Johnson, and James A Robinson, (2001), "The Colonial Origins of Comparative Development: An Empirical Investigation," *American Economic Review* 91(5): 1369-1401]{.source}
+
+## Another Example: AJR (2001) III
+
+- Instrument: Settler Mortality in 1500
+- **Inclusion Restriction**: Settler mortality in 1500 determines risk of expropriation today
+- **{Exclusion Restriction**: Settler mortality in 1500 **does not** affect Present GDP
+    - Settler mortality in 1500 **only** affects Present GDP **through** institutions determined by historical path set by settler mortality rates  
+
+![](images/ajr3.png){fig-align="center"}
+
+[Acemoglu, Daron, Simon Johnson, and James A Robinson, (2001), "The Colonial Origins of Comparative Development: An Empirical Investigation," *American Economic Review* 91(5): 1369-1401]{.source}
+
+## Another Example: AJR (2001) IV
+
+- First Stage:  	
+$$\text{Expropriation Risk}_i=\gamma_0+\gamma_1ln(\text{Settler Mortality in 1500}_i)+\gamma_2Controls+\nu_i$$
+
+. . .
+
+- Second Stage:
+$$\text{ln(Present GDP per capita)}=\beta_0+\beta_1\widehat{\text{Expropriation Risk}_i}+\cdots+\beta_2\text{Controls}+u
+_i$$
+
+## Another Example: AJR (2001) V
+
+Relationship Between $Y$ and $IV$
+
+![](images/ajr1.png){fig-align="center"}
+
+## Another Example: AJR (2001) VI
+
+Relationship Between $X$ and $Y$
+
+![](images/ajr5.png){fig-align="center"}
+
+## Another Example: AJR (2001) VII
+
+Relationship Between $X$ and $IV$
+
+![](images/ajr6.png){fig-align="center"}
+
+## Another Example: AJR (2001) VIII
+
+2SLS Results
+
+![](images/ajr7.png){fig-align="center"}
+
+
+# Simultaneous Causation & Structural Equation Modeling {.centered background-color="#314f4f"}
+
+## Simultaneous Causation
+
+- Another classic use of instrumental variables in econometrics is to break through the problem of [simultaneous causation]{.hi}
+
+$$X \leftrightarrow Y$$
+
+- This is a major source of endogeneity
+
+. . .
+
+
+## Supply and Demand
+
+::: columns
+::: {.column width="50%"}
+```{r}
+points<-tribble(
+  ~x, ~y, ~label,
+  3, 5, "A",
+  4, 4, "B",
+  2, 6, "C",
+  2, 4, "D",
+  1, 5, "E",
+  3, 3, "F",
+  3, 7, "G",
+  4, 6, "H",
+  5, 5, "I",
+  5, 1, "J",
+  6, 2, "L",
+  7, 3, "K"
+)
+```
+ 
+```{r}
+eqs_plot<-ggplot(data = points)+
+  aes(x = x,
+      y = y)+
+  geom_point(size = 3)+
+  scale_x_continuous(breaks = seq(0,10,1),
+                     limits = c(0,10),
+                     expand=c(0,0))+
+  scale_y_continuous(breaks = seq(0,10,1),
+                     labels = scales::dollar,
+                     limits = c(0,10),
+                     expand=c(0,0))+
+  theme_classic(base_family = "Fira Sans Condensed", base_size=20)+
+  labs(x = "Quantity",
+       y = "Price")
+eqs_plot
+```
+
+:::
+::: {.column width="50%"}
+- A famous example, foundational to our discipline, [Supply]{.red} and [Demand]{.blue}
+
+- Suppose you have data on price and quantity, and want to estimate a [Demand curve]{.blue} with regression
+
+:::
+:::
+
+## Supply and Demand
+
+::: columns
+::: {.column width="50%"}
+```{r}
+eqs_plot+geom_smooth(method="lm", color="blue", size = 2)
+```
+
+:::
+::: {.column width="50%"}
+- A famous example, foundational to our discipline, [Supply]{.red} and [Demand]{.blue}
+
+- Suppose you have data on price and quantity, and want to estimate a [Demand curve]{.blue} with regression
+
+- Why can't we estimate the demand curve with a simple regression here?
+
+$$\ln(\text{Quantity}_{it}) = \beta_0 + \beta_1 \ln(\text{Price}_{it}) + u_{it}$$
+- With natural logs, $\beta_1$ is the [price elasticity of Demand]{.hi-purple}
+
+:::
+:::
+
+## Supply and Demand: Simultaneous Causality
+
+::: columns
+::: {.column width="50%"}
+```{r}
+demand_a=function(x){8-x}
+supply_a=function(x){2+x}
+
+demand_b=function(x){6-x}
+demand_c=function(x){10-x}
+
+supply_b=function(x){0+x}
+supply_c=function(x){4+x}
+
+supply_d=function(x){-4+x}
+
+eqs_lines<-ggplot(data=tibble(x=1:10), aes(x=x))+
+  stat_function(fun=demand_a, geom="line", size=2, color="blue")+
+  stat_function(fun=supply_a, geom="line", size=2, color="red")+
+  geom_label(x=7,y=demand_a(7), color="blue", label=expression(Demand[A]))+
+  geom_label(x=6,y=supply_a(6), color="red", label=expression(Supply[A]))+
+  
+  stat_function(fun=demand_b, geom="line", size=2, color="blue")+
+  geom_label(x=4,y=demand_b(4), color="blue", label=expression(Demand[B]))+
+
+  stat_function(fun=demand_c, geom="line", size=2, color="blue")+
+  geom_label(x=3.5,y=demand_c(3.5), color="blue", label=expression(Demand[C]))+
+  
+  stat_function(fun=supply_b, geom="line", size=2, color="red")+
+  geom_label(x=8,y=supply_b(8), color="red", label=expression(Supply[B]))+
+
+    stat_function(fun=supply_c, geom="line", size=2, color="red")+
+  geom_label(x=4,y=supply_c(4), color="red", label=expression(Supply[C]))+
+
+  stat_function(fun=supply_d, geom="line", size=2, color="red")+
+  geom_label(x=8,y=supply_d(8), color="red", label=expression(Supply[D]))+
+
+  geom_point(data = points, aes(x=x,y=y), size=3)+
+  #geom_label_repel(data = points, aes(x=x,y=y,label=label), seed=256)+
+ # geom_segment(x=3,xend=3, y=0, yend=5, size=1, linetype="dotted")+
+  #geom_segment(x=0,xend=3, y=5, yend=5, size=1, linetype="dotted")+
+
+
+  scale_x_continuous(breaks = seq(0,10,1),
+                     limits = c(0,10),
+                     expand=c(0,0))+
+  scale_y_continuous(breaks = seq(0,10,1),
+                     labels = scales::dollar,
+                     limits = c(0,10),
+                     expand=c(0,0))+
+  theme_classic(base_family = "Fira Sans Condensed", base_size=20)+
+  labs(x = "Quantity",
+       y = "Price")
+eqs_lines
+```
+:::
+::: {.column width="50%"}
+- The data are actually all equilibrium $(Q^*,P^*)$ points!
+
+- Result of many demand and supply curve shifts & intersections!
+
+:::
+:::
+
+## Supply and Demand: Simultaneous Causality
+
+- [Structural equation model (SEM)]{.hi} of [demand]{.blue} and of [supply]{.red}:
+
+\begin{align*}
+\color{blue}{Q_D} & \color{blue}{= \alpha_0 + \alpha_1 P + \alpha_2 M + u_D} \\
+\color{red}{Q_S} & \color{red}{= \beta_0 + \beta_1 P + \beta_2 C+ u_S} \\
+\end{align*}
+
+. . .
+
+- $\alpha$'s and $\beta$'s are parameters (to be estimated), $u$'s are unobserved error terms
+
+. . .
+
+- $P$ is price
+  - Notice $P$ [simultaneously determines]{.hi} $\color{blue}{Q_D}$ *and* $\color{red}{Q_S}$!
+
+. . .
+
+- $\color{blue}{M}$ are variables that shift demand (i.e. income, prices of other goods, etc)
+- $\color{red}{C}$ are variables that shift supply (i.e. costs, etc)
+
+## Supply and Demand: Simultaneous Causality
+
+::: columns
+::: {.column width="50%"}
+```{r}
+eqs_lines
+```
+:::
+::: {.column width="50%"}
+$$\color{blue}{Q_D = \alpha_0 + \alpha_1 P + \alpha_2 M + u_D}$$
+
+- Why can't we just estimate price elasticity of demand $(\alpha_1)$ with the demand equation?
+
+- $P$ is partially a function of [quantity supplied]{.red}!
+
+:::
+:::
+
+## Supply and Demand: Simultaneous Causality
+
+::: columns
+::: {.column width="50%"}
+```{r}
+ggplot(data=tibble(x=1:10), aes(x=x))+
+  stat_function(fun=demand_a, geom="line", size=2, color="blue")+
+  stat_function(fun=supply_a, geom="line", size=2, color="red")+
+  geom_label(x=7,y=demand_a(7), color="blue", label=expression(Demand[A]))+
+  geom_label(x=6,y=supply_a(6), color="red", label=expression(Supply[A]))+
+  
+  stat_function(fun=supply_b, geom="line", size=2, color="red")+
+  geom_label(x=8,y=supply_b(8), color="red", label=expression(Supply[B]))+
+
+    stat_function(fun=supply_c, geom="line", size=2, color="red")+
+  geom_label(x=4,y=supply_c(4), color="red", label=expression(Supply[C]))+
+
+  stat_function(fun=supply_d, geom="line", size=2, color="red")+
+  geom_label(x=8,y=supply_d(8), color="red", label=expression(Supply[D]))+
+
+  geom_point(data = points %>% filter(label %in% c("C","A","B","L")), aes(x=x,y=y), size=3)+
+  #geom_label_repel(data = points, aes(x=x,y=y,label=label), seed=256)+
+
+
+  scale_x_continuous(breaks = seq(0,10,1),
+                     limits = c(0,10),
+                     expand=c(0,0))+
+  scale_y_continuous(breaks = seq(0,10,1),
+                     labels = scales::dollar,
+                     limits = c(0,10),
+                     expand=c(0,0))+
+  theme_classic(base_family = "Fira Sans Condensed", base_size=20)+
+  labs(x = "Quantity",
+       y = "Price")
+```
+:::
+::: {.column width="50%"}
+
+- [Instrumental variables] can identify the demand relationship
+
+- Conceptually, use some supply shifter (like cost changes, $C)$ correlated with price $\color{blue}{P}$, but not correlated with $\color{blue}{u_D}$
+
+- Essentially: traces out unique [demand]{.blue} relationship by allowing [supply]{.red} to vary & shift
+
+- Then, can estimate demand elasticity $\beta_1$
+
+:::
+:::
+
+## Demand Example {.smaller}
+
+::: callout-tip
+## Example
+Consider a famous the demand for broiler chickens 1960-1999
+:::
+
+$$\ln \text{quantity}_{t} = \beta_0 + \beta_1 \, \ln \text{price of chicken}_{t} + \beta_2 \, \ln\text{price of beef}_{t} + \beta_3 \, \ln\text{population}_{t} + \beta_4 \, \ln\text{income}_{t}+u_{t}$$
+
+[Data from Epple, Dennis and Bennett T McCallum, 2006, [“Simultaneous Equation Econometrics: The Missing Example,”](http://cob.jmu.edu/doylejm/EC%20485docs/chicken_economicinquiry.pdf) *Economic Inquiry* 44(2): 374-384]{.source}
+
+## Demand Example
+
+```{r}
+chick <- read_csv("../files/data/broiler.csv")
+
+demand_plot <- ggplot(data = chick)+
+  aes(x = QPRODA,
+      y = PCHICK)+
+  geom_point()+
+  scale_x_continuous(labels = comma)+
+  scale_y_continuous(labels = dollar)+
+  labs(x = "Aggregate Quantity of Chicken (lbs)",
+       y = "Price per Chicken")
+
+demand_plot
+```
+
+## Demand Example 😨 {.smaller}
+
+```{r}
+demand_plot + geom_smooth(method = "lm")
+```
+
+## Demand Example 😨 {.smaller}
+
+```{r}
+chick <- chick %>%
+  mutate(log_quantity = log(QPRODA),
+         log_price = log(PCHICK),
+         log_income = log(Y),
+         log_beef = log(PBEEF),
+         log_pop = log(POP),
+         log_corn_price = log(PCOR),
+         log_feed_price = log(PF))
+```
+
+```{r}
+#| echo: true
+demand_reg <- lm(log_quantity ~ log_price, data = chick) 
+demand_reg %>% tidy()
+```
+
+## Demand Example With Controls {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+demand_reg_2 <- lm(log_quantity ~ log_price + log_income + log_beef + log_pop + CPI, data = chick) 
+demand_reg_2 %>% tidy()
+```
+
+. . .
+
+- $\hat{\beta_1}$: price elasticity of demand is -0.28%
+
+- But this is biased! Endogeneity from simultaneous causation with supply *and* demand!
+
+## Consider the Causality
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| fig-height: 9 
+dnode_colors <- tribble(
+  ~name, ~label, ~Variable,
+  "quantity", "Chicken Quantity Demanded", "Outcome",
+  "chick_price", "Chicken Price",  "Endogenous",
+  "income", "Income", "Exogenous",
+  "beef_price", "Price of Beef", "Exogenous",
+  "pop", "Population", "Exogenous",
+  "cpi", "CPI", "Exogenous",
+  "u", "u", "Exogenous",
+  "feed_price", "Price of Feed", "Supply",
+  "corn_price", "Price of Corn", "Supply"
+)
+
+d_dag <- dagify(
+  quantity ~ chick_price + income + beef_price + pop + cpi + u,
+  chick_price ~ feed_price + corn_price,
+  exposure = "chick_price",
+  outcome = "quantity"
+) %>% 
+  tidy_dagitty(layout = "dh", seed = 256) 
+
+# Add node types/colors to DAG data
+d_dag$data <- d_dag$data %>% 
+  left_join(dnode_colors, by = "name")
+
+demand_dag<-ggplot(data = d_dag)+
+  aes(x = x,
+      y = y,
+      xend = xend,
+      yend = yend)+
+  geom_dag_point(size = 10, mapping = aes(color = Variable)) +
+  geom_dag_edges(start_cap = circle(4, "mm"),
+                 end_cap = circle(4, "mm")) +
+  geom_dag_label_repel(size = 5, family = "Fira Sans", aes(label = label)) +
+  scale_dag()+
+  theme_void()+
+  theme(legend.position = "none")
+demand_dag
+```
+
+:::
+::: {.column width="50%"}
+
+- Factors that influence [quantity demanded]{.blue}:
+  - [price]{.red} (endogenous! — partly determined by [supply]{.purple}!)
+  - price of substitutes (beef)
+  - income
+  - number of buyers (population)
+  - price level (CPI)
+  - other unobservables (u)
+
+- Factors that influence price [(on the supply side)]{.purple}
+  - price of inputs/costs (feed and corn)
+  - use these as **instruments** for price!
+:::
+:::
+
+## Instruments {.smaller}
+
+- Use supply shifters, [Price of Feed]{.red} and [Price of Corn]{.red} (inputs/costs to raising chickens) as instruments for [Chicken price]{.blue}
+
+- Are they [relevant]{.hi-purple}? Check the first stage
+
+```{r}
+#| echo: true
+#| output-location: fragment
+demand_first_stage <- lm(log_price ~ log_feed_price + log_corn_price + log_income + log_beef + log_pop + CPI, data = chick)
+tidy(demand_first_stage)
+glance(demand_first_stage)
+```
+
+- `statistic` $(F$) is high enough, jointly significant
+
+- Can also see correlations: 
+```{r}
+chick %>%
+  select(log_price, log_feed_price, log_corn_price) %>%
+  cor()
+```
+
+## Instruments {.smaller}
+
+- Use supply shifters, [Price of Feed]{.red} and [Price of Corn]{.red} (inputs/costs to raising chickens) as instruments for [Chicken price]{.blue}
+
+- Are they [exogenous]{.hi-purple}? 
+$$\text{cor}(\text{Feed price}, u_D)=0 \quad \quad \quad \text{cor}(\text{Corn price}, u_D)=0$$
+- Argue that costs don't affect factors that affect demand (in error term); only affect supply
+
+## Second Stage {.smaller}
+
+```{r}
+#| echo: true
+chick$price_hat <- demand_first_stage$fitted.values
+```
+
+. . .
+
+Now regress quantity on the fitted values of $\widehat{price}$ (from first stage) with all the covariates (from first stage)
+
+```{r}
+#| echo: true
+demand_second_stage <- lm(log_quantity ~ price_hat + log_income + log_beef + log_pop + CPI, data = chick)
+tidy(demand_second_stage)
+glance(demand_second_stage)
+```
+
+## Using `fixest` {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: fragment
+iv_demand_reg <- feols(log_quantity ~ log_income + log_beef + log_pop + CPI | log_price ~ log_feed_price + log_corn_price, data = chick)
+iv_demand_reg
+```
+
+## Comparing {.smaller}
+
+```{r}
+modelsummary(models = list("OLS" = demand_reg,
+                           "OLS" = demand_reg_2,
+                           "2SLS (by hand)" = demand_second_stage,
+                           "2SLS (fixest)" = iv_demand_reg),
+             fmt = 3, # round to 2 decimals
+             output = "html",
+             coef_rename = c("(Intercept)" = "Constant",
+                             "log_price" = "Log Price/lb of Chicken",
+                             "log_income" = "Log Income",
+                             "log_beef" = "Log Price/lb of Beef",
+                             "log_pop"= "Log Population",
+                             "price_hat" = "Log Price/lb of Chicken",
+                             "fit_log_price" = "Log Price/lb of Chicken"
+                             ),
+             gof_map = list(
+               list("raw" = "nobs", "clean" = "n", "fmt" = 0),
+               #list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
+               list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
+               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
+             ),
+             escape = FALSE,
+             stars = c('*' = .1, '**' = .05, '***' = 0.01)
+)
+```
+
+## 
+:::
+::: {.column width="50%"}
+
+:::
+:::
+
+::: columns
+::: {.column width="50%"}
+
+:::
+::: {.column width="50%"}
+
+:::
+:::

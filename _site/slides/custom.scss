@@ -34,6 +34,11 @@ $code-block-border-color: #000000;
   float: bottom;
 }
 
+.reveal .bottom{
+  border-top:solid black 2px;
+  display:inline-block;
+  clear:left;
+}
 
 .reveal .hi {
   font-weight: bold;

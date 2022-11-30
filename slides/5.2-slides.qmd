@@ -164,44 +164,6 @@ ggplot(data = tibble(x=c(0,10),
 :::
 :::
 
-## Difference-in-Differences Models I
-
-::: columns
-::: {.column width="50%"}
-- Often, we want to examine the consequences of a change, such as a law or policy intervention
-
-::: callout-tip
-## Example
-
-- How do States that implement policy $X$ see changes in $Y$
-  - **Treatment**: States that implement $X$
-  - **Control**: States that did not implement $X$
-:::
-
-- If we have **panel data** with observations for all states **before** and **after** the change...
-    
-- Find the *difference* between treatment & control groups *in* their *differences* before and after the treatment period
-
-:::
-::: {.column width="50%"}
-```{r}
-library(ggdag)
-
-dagify(
-  Y ~ X + group + time,
-  X ~ group + time,
-  exposure = "X",
-  outcome = "Y",
-  coords = list(x = c(X = 1, Y = 3, group = 2, time = 2),
-                y = c(X = 1, Y = 1, group = 2, time = 0))) %>%
-  tidy_dagitty(seed = 2) %>%
-  ggdag_status()+
-  theme_dag()+
-  theme(legend.position = "none")
-```
-:::
-:::
-
 ## Difference-in-Differences Models II {.smaller}
 
 - The [difference-in-differences]{.hi} (aka [“diff-in-diff”]{.hi} or [“DND”]{.hi}) estimator identifies treatment effect by differencing the difference pre- and post-treatment values of $Y$ between treatment and control groups
