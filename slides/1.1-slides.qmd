@@ -3,7 +3,6 @@ format:
   revealjs:
     theme: [default, custom.scss]
     logo: "images/metrics_hex.png"
-    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
     height: 900
     width: 1600
 overview: true
@@ -13,14 +12,13 @@ execute:
   freeze: auto
 ---
 
-## {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
-[1.1 — Introduction to Econometrics]{.custom-title}
+##  {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
 
-[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+[1.1 --- Introduction to Econometrics]{.custom-title}
 
-[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
+[ECON 4470 • Econometrics]{.custom-subtitle}
 
-[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+[Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD]{.custom-author}
 
 ```{r}
 #| label: setup
@@ -34,199 +32,382 @@ update_geom_defaults("label", list(family = "Fira Sans Condensed"))
 update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 ```
 
-## About Me
+# What is Econometrics? {.centered background-color="#314f4f"}
 
-:::: {.columns}
+## Why Economist use Econometrics
 
-::: {.column width="30%"}
-![](images/meinfrontofsmith.jpg){width="600"}
+-   [Economics]{.hi} is the study of how society allocates resources and makes choices given scarcity
+
+::: incremental
+-   [Economic theory]{.hi} provides us with a framework of understanding *how* society allocates resources and the *impact* of such allocation
+    -   Think to micro theory!
+        -   If society uses prices as an allocation mechanism and a disease kills 50% of the lemon crop, what would theory suggests happens to the price of lemons?
+        -   If a utility maximizing college student is choosing between buying ramen noodles and lobster tail and their income decreases, which good would theory suggest the student buys more of? -Theory can only inform us of the *direction* of an effect, not its *magnitude*!
+-   We often care about the magnitude for firm level policy, government policy, etc.
+-   [Econometrics]{.hi} is the application of statistical and other empirical tools to quantify economic relationships in the real world
 :::
 
-::: {.column width="70%"}
-- Ph.D (Economics) — George Mason University, 2015
+## Role of Econometrics
 
-- B.A. (Economics) — University of Connecticut, 2011
+::: incremental
+-   Econometrics is used to:
 
-- 7th year teaching at Hood
+    -   Determine magnitude of an effect
 
-- Specializations:
-  - Law and Economics
-  - Austrian Economics
-  
-- Research interests
-  - modeling innovation & economic growth
-  - political economy & economic history of intellectual property
+    -   Make predictions
 
+    -   Test economic theory/hypothesis (does economic theory get the direction right?)
+
+    -   Estimate causal effects between economic variables (more on this later)
+
+-   Econometrics will provide us with [estimates]{.hi} of actual values
+
+    -   Because they are estimates we want our analysis to provide a numerical answer (usually an average) and a measure of precision for the numerical answer (how confident are we that the estimate is equal to the *true* value)
+
+-   Always remember, good theory guides econometric choices and good econometrics can inform theory
 :::
 
-::::
-
-## What's Keeping Me Busy
-
-![](images/miles2022.png)
-
-# What is Econometrics? {background-color="#314f4f" .centered}
-
-## Why Everyone, Yes *Everyone*, Should Learn Statistics
+## Questions Economists Ask
 
 ::: columns
 ::: {.column width="50%"}
+-   Does reducing class size improve educational outcomes?
 
-![[SMBC](https://www.smbc-comics.com/comic/why-i-couldn39t-be-a-math-teacher)](images/smbcmathteacher.png){.r-stretch}
+    -   Small class size can result in more one-on-one time improving test scores
 
+    -   Larger classes may benefit more social students improving test scores
 
+    -   Effect is ambiguous theoretically, but with data we can learn both direction and magnitude of effect
+
+    -   Notice this question is asking about causality!
 :::
 
 ::: {.column width="50%"}
-
-![[SMBC](https://www.smbc-comics.com/comic/2010-12-01)](images/smbc2080stats.png){.r-stretch}
+![](images/testscore.jpg)
+:::
 :::
 
+## Questions Economists Ask
+
+::: columns
+::: {.column width="65%"}
+-   Is there racial discrimination in the market for home loans?
+
+    -   Receiving a mortgage is a function of an applicant's risk profile
+
+    -   [Theory]{.underline}: If two applicants are identical in every way except for race they should have the same risk profile and therefore be equally as likely to be approved for a mortgage -
+
+    -   [Reality]{.underline}: All else constant, Black applicants are denied 19% more than White applicants (Fed Reserve Boston using 90's data)
+
+    -   Since Blacks are denied more than Whites *ceterius paribus* there does exist racial discrimination, contrary to what theory predicts
 :::
 
-## We're Not So Good at Statistics: Votes I
+::: {.column width="35%"}
+![](images/house.png)
+:::
+:::
 
-- Votes in the U.S. House of Representatives in favor of [passing]{.hi-turquoise} the *Civil Rights Act of 1964*:
+## Questions Economists Ask
+
+::: columns
+::: {.column width="65%"}
+-   How much do cigarette taxes reduce smoking?
+
+    -   Theory suggest that when a good is taxed, its consumption decreases, all else equal
+
+    -   Theory can't tell us by how much consumption will decrease, therefore we need data and econometrics
+
+    -   Essentially what we are asking is if the sales price of cigs increases by 1%, what is the percent change in cig consumption?
+
+    -   We are interested in estimating an elasticity!
+:::
+
+::: {.column width="35%"}
+![](images/cig%20Tax.png)
+:::
+:::
+
+## Questions Economists Ask
+
+::: columns
+::: {.column width="40%"}
+-   How much will U.S GDP grow next year?
+
+    -   Using past data on GDP and other macroeconomic indicators, can we predict GDP growth?
+
+    -   With what degree of prediction can we do so?
+:::
+
+::: {.column width="60%"}
+![](images/GDP.png)
+:::
+:::
+
+## Questions Economists Ask
+
+1)  Does reducing class size improve educational outcomes?
+2)  Is there racial discrimination in the market for home loans?
+3)  How much do cigarette taxes reduce smoking?
+4)  How much will U.S GDP grow next year?
+
+-   Some things to keep in mind throughout the semester:
+
+    ::: incremental
+    -   Each question requires a numerical answer. Theory can help us on what we think the answer should be (direction) or what variables to include in our econometric model
+
+    -   Using data requires a sample of the population $\Rightarrow$ uncertainty/imprecision with estimates. Using a different sample can produce different results!
+
+    -   In theory holding all else constant is important. This is very much true in econometrics as well!
+    :::
+    
+# About This Course {.centered background-color="#314f4f"}
+
+## Math Expectations
+
+![](images/opengatemath1.jpg){fig-align="center" width="600"}
+
+## Math Expectations
+
+![](images/opengatemath2.jpg){fig-align="center" width="600"}
+
+## Math Expectations
+
+![](images/opengatemath3.jpg){fig-align="center" width="800"}
+
+## Difficulty
 
 ::: columns
 ::: {.column width="50%"}
-
-| Democrat | Republican |
-|----------|------------|
-| 61%      | 80%        | 
-
+-   This will be one of the hardest courses you take at Trinity
+-   There will be moments where you have no idea what is going on  (*this is normal*)
+-   But this is one of the best courses you can take at Trinity
+-   Yes, you can still get an **A**
 :::
 
 ::: {.column width="50%"}
-
-- On average, Republicans tended to vote for passage more than Democrats
+![](images/difficultclass.png)
+:::
 :::
 
-:::
-
-## We're Not So Good at Statistics: Votes
-
-- Votes in the U.S. House of Representatives in favor of [passing]{.hi-turquoise} the *Civil Rights Act of 1964*:
+## This Class Is
 
 ::: columns
 ::: {.column width="50%"}
-
-|       |Democrat  | Republican |
-|-------|----------|------------|
-| **North** | [94%]{.hi}      | 85%       | 
-|           | (145/154)| (138/162) |
-| **South** | [7%]{.hi}      | 0%        |
-|           | (7/94)   | (0/10)    |
-| **Overall** | 61%    | [80%]{.hi-purple}      |
-|             | (152/248) | (138/172) |
-
+-   **Economics**: take your *preexisting* intuition and models for causal inference
+-   **Statistics**: add regression and statistical inference
+-   **Computer Programming**: using `R` and `R Studio` for analyzing and presenting data
 :::
 
 ::: {.column width="50%"}
+```{r}
+class<-data.frame(Percentage=c(50,40,10),
+                  Subject=c("Economics","Statistics","Computer Programming"))
 
-- Larger proportion of Democrats $(\frac{94}{248}$, 38%) than Republicans $(\frac{10}{172}$, 6%) were from South
+#ggplot(class, aes(x="", y=Percentage, fill=Subject))+
+#  geom_col()+theme_void()+scale_fill_viridis_d()
 
-- The 7% of southern Democrats voting *for* the Act dragged down the Democrats' *overall* percentage more than the 0% of southern Republicans
+library(treemapify)
+ggplot(class, aes(area=Percentage, fill=Subject))+
+  geom_treemap()+
+  guides(fill=F)+
+  geom_treemap_text(aes(label = Subject),
+                  colour = "white",
+                  place = "topleft",
+                  reflow = T,
+                  grow = TRUE)+
+  #scale_fill_brewer(palette="viridis")+
+  scale_fill_viridis_d()
+```
+:::
 :::
 
-:::
-
-## We're Not So Good at Statistics: Kidney Stones
-
-::: columns
-::: {.column width="70%"}
-
-- Suppose you suffer from kidney stones, your doctor offers you [treatment A]{.hi} or [treatment B]{.hi-purple}
-
-- In clinical trials, [Treatment A]{.hi} was effective for a higher percentage of patients with *large* stones and a higher percentage of patients with *small* stones
-
-- [Treatment B]{.hi-purple} was effective for a larger percentage of patients overall than [treatment A]{.hi}
-
-- Wait, what?
-
-:::
-
-::: {.column width="30%"}
-
-![](images/pills2.jpg)
-
-:::
-
-:::
-
-## We're Not So Good at Statistics: Kidney Stones
-
+## 
 
 ::: columns
 ::: {.column width="50%"}
+### [Old School Metrics Courses]{style="color:#6A5ACD;"}
 
-From a real [medical study](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1339981/): 
+-   $\bar{x} = \frac{1}{n} \displaystyle\sum^n_{i=1} x_i$
 
-|       | [Treatment A]{.hi}  | [Treatment B]{.hi-purple} |
-|-------|----------|------------|
-| **Small Stones** | [93%]{.hi}      | 87%       | 
-|                  | (81/87)| (234/270) |
-| **Large Stones** | [73%]{.hi}       | 69%        |
-|                  | (192/263)   | (55/80)    |
-| **Overall**      | 78%    | [83%]{.hi-purple}       |
-|                  | (273/350) | (289/350) |
+-   $\sigma_x = \displaystyle \sqrt{\frac{1}{n} \sum^n_{i=1} (x_i-\bar{x})^2}$
 
+-   $r_{xy}= \displaystyle \frac{\displaystyle\sum^n_{i=1}(x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\displaystyle\sum^n_{i=1}(x_i-\bar{x})^2\sum^n_{i=1}(y_i-\bar{y})^2}}$
 
-[C R Charig, D R Webb, S R Payne, and J E Wickham, 1986, "Comparison of treatment of renal calculi by open surgery, percutaneous nephrolithotomy, and extracorporeal shockwave lithotripsy," *Br Med J* (Clin Res Ed) 292(6524): 879–882. ]{.source}
-
+-   Use pre-cleaned "toy" data, if at all
+-   Heavy focus on derivations 
 :::
 
 ::: {.column width="50%"}
-
-:::
-
-:::
-
-## We're Not So Good at Statistics: Kidney Stones
-
-
-::: columns
-::: {.column width="50%"}
-
-From a real [medical study](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1339981/): 
-
-|       | [Treatment A]{.hi}  | [Treatment B]{.hi-purple} |
-|-------|----------|------------|
-| **Small Stones** | [93%]{.hi}      | 87%       | 
-|                  | (81/**87**)| (234/**270**) |
-| **Large Stones** | [73%]{.hi}       | 69%        |
-|                  | (192/**263**)   | (55/**80**)    |
-| **Overall**      | 78%    | [83%]{.hi-purple}       |
-|                  | (273/350) | (289/350) |
-
-
-[C R Charig, D R Webb, S R Payne, and J E Wickham, 1986, "Comparison of treatment of renal calculi by open surgery, percutaneous nephrolithotomy, and extracorporeal shockwave lithotripsy," *Br Med J* (Clin Res Ed) 292(6524): 879–882. ]{.source}
-
-:::
-
-::: {.column width="50%"}
-
-- The *sizes* of the two groups (i.e. who gets A vs B) are *very* different
-
-:::
-
-:::
-
-## We're Not So Good at Statistics: Kidney Stones
-
-::: columns
-::: {.column width="50%"}
+### [This Course]{style="color:#e64173;"}
 
 ```{r}
-#| echo: false
-#| fig-width: 8
-#| out-width: "100%"
+#| echo: true
+#| eval: false
+
+mean(x)
+sd(x)
+cor(x, y)
+```
+
+-   Import, tidy, and manipulate raw data from scratch (like *real life*!)
+-   Will still do derivations, put emphasize modern econometric methods, some data science, and how to produce applied research using econometrics 
+:::
+:::
+
+## Prerequisites
+
+-   **Officially (Courses)**:
+    -   Principles of Macro
+    -   Intermediate Micro
+    -   Business Stats
+    -   Calculus 2
+
+. . .
+
+-   **Math Skills**:
+    -   Algebra
+    -   Probability-ish
+    -   Statistics-ish
+    -   Calculus
+
+. . .
+
+-   **Programming Skills**:
+    -   None 
+
+## What You'll Get Out of This Class
+
+::: columns
+::: {.column width="50%"}
+By the end of this semester, you will:
+
+1.  understand how to evaluate statistical and empirical claims;
+2.  use the fundamental models of causal inference and research design;
+3.  gather, analyze, and communicate with real data in R.
+:::
+
+::: {.column width="50%"}
+![](images/r.png)
+:::
+:::
+
+
+## Two Types of Uses For Econometrics
+
+$$\color{orange}{Y}=\color{teal}{f}(\color{purple}{X})$$
+
+::: columns
+::: {.column width="50%"}
+1.  [Causal inference]{.hi}: estimate $\color{teal}{\hat{f}}$ to determine how changes in $\color{purple}{X}$ **cause** changes in $\color{orange}{Y}$
+
+-   Care more about accurately estimating $\color{teal}{f}$ than getting an accurate $\color{orange}{\hat{Y}}$
+-   Measure the **causal effect** of $X \mapsto Y$
+-   primarily regression-based
+:::
+
+::: {.column width="50"}
+2.  [Prediction]{.hi}: predict $\color{orange}{\hat{Y}}$ using an estimated $\color{teal}{f}$
+
+-   Care more about getting $\color{orange}{\hat{Y}}$ as accurate as possible, $\color{teal}{f}$ is an unknown "black-box"
+-   Use for **forecasting**, **classification**, etc.
+-   less regression, more machine-learning methods
+:::
+:::
+
+. . .
+
+-   More and more "data science" focuses on the second...but
+
+. . .
+
+-   We care (in this class at least) only about the first...because
+
+## Causal Inference --- Economists' Comparative Advantage
+
+::: columns
+::: {.column width="50%"}
+
+-   With the right models and research designs, we *can* say "X causes Y" and quantify it!
+-   Economists are in a unique position to make *causal* claims that mere statistics cannot
+:::
+
+::: {.column width="50%"}
+![](images/coding.jpeg)
+:::
+:::
+
+
+
+## Causal Inference --- Economists' Comparative Advantage
+
+::: columns
+::: {.column width="40%"}
+![](images/econtechcompanies.png) [Harvard Business Review](https://hbr.org/2019/02/why-tech-companies-hire-so-many-economists)
+:::
+
+::: {.column width="60%"}
+"\[T\]he field of economics has spent decades developing a toolkit aimed at investigating empirical relationships, focusing on techniques to help understand which correlations speak to a causal relationship and which do not. This comes up all the time --- does Uber Express Pool grow the full Uber user base, or simply draw in users from other Uber products? Should eBay advertise on Google, or does this simply syphon off people who would have come through organic search anyway? Are African-American Airbnb users rejected on the basis of their race? These are just a few of the countless questions that tech companies are grappling with, investing heavily in understanding the extent of a causal relationship."
+:::
+:::
+
+
+
+## Your Textbooks
+
+::: columns
+::: {.column width="50%"}
+![](images/baileyeconometrics.jpg){width="500"}
+:::
+
+::: {.column width="50%"}
+![](images/r4ds.png){width="500"}
+:::
+:::
+
+
+
+
+
+
+
+
+
+# Causality {.centered background-color="#314f4f"}
+
+## Smoking
+
+::: columns
+::: {.column width="50%"}
+-   In 1964 the U.S Surgeon General issued a report claiming that cigarette smoking *causes* lung cancer
+    -   Used evidence based on *correlations* between cig smoking and lung cancer
+    -   Is this enough to establish causality?
+:::
+
+::: {.column width="50%"}
+![](images/cig.png)
+:::
+:::
+
+## Smoking
+
+::: columns
+::: {.column width="50%"}
+-   Obviously, the tobacco companies didn't think so!
+-   And neither did Ronald Fisher, the "father of modern statistics"
+    -   He claimed there could be a 'hidden' variable (maybe genetics) that causes *both* lung cancer AND people wanting to smoke (nicotine craving)
+    -   If true, despite a correlation between smoking and lung cancer, the act of smoking would have no impact on whether you get lung cancer!
+-   We can represent these statistical links using a [directed acyclic graph (DAG)]{.hi}
+:::
+
+::: {.column width="50%"}
+[**Surgeon General's DAG**]{.underline}
+
+```{r}
 library("ggdag")
-dagify(Y~X+Z,
-       X~Z,
+dagify(Y~X,
        exposure = "X",
        outcome = "Y",
-       labels = c("X" = "Treatment", "Y" = "Outcome", "Z" = "Stone Size"),
+       labels = c("X" = "Smoking", "Y" = "Cancer"),
        coords = list(x = c(X = 1, Y = 0, Z = -1),
                   y = c(X = 1, Y = 0, Z = 1))
       ) %>% 
@@ -248,99 +429,25 @@ dagify(Y~X+Z,
   guides(color = F)+
   theme_dag(base_family = "Fira Sans Condensed")
 ```
-
+:::
 :::
 
-::: {.column width="50%"}
-
-- The *sizes* of the two groups (i.e. who gets A vs B) are *very* different
-- A **lurking variable** in the study is the severity of the case: doctors tended to give treatment B for less severe cases
-
-:::
-
-:::
-
-## Simpson's Paradox
+## Smoking
 
 ::: columns
 ::: {.column width="50%"}
-
-:::{.callout-important appearance=minimal}
-#
-
-**Simpson's Paradox**: The correlation between two variables can change (even reverse!) when additional variables are considered]
-:::
-
-:::
-
-::: {.column width="50%"}
-
-![](images/homerdoh.jpg)
-:::
-:::
-
-## We're Not so Good at Statistics: Smoking
-
-::: columns
-::: {.column width="50%"}
-- 1964: U.S. Surgeon General issued a [report](http://profiles.nlm.nih.gov/ps/access/NNBBMQ.pdf) claiming that cigarette smoking causes lung cancer
-
-- Evidence based primarily on *correlations* between cigarette smoking and lung cancer
-
+-   Obviously, the tobacco companies didn't think so!
+-   And neither did Ronald Fisher, the "father of modern statistics"
+    -   He claimed there could be a 'hidden' variable (maybe genetics) that causes *both* lung cancer AND people wanting to smoke (nicotine craving)
+    -   If true, despite a correlation between smoking and lung cancer, the act of smoking would have no impact on whether you get lung cancer!
+-   We can represent these statistical links using a [directed acyclic graph (DAG)]{.hi}
 :::
 
 ::: {.column width="50%"}
-![](images/smokingwarning.jpg)
-:::
-:::
-
-## We're Not so Good at Statistics: Smoking
-
-::: columns
-::: {.column width="50%"}
-- Tobacco companies attacked the report, naturally
-
-:::
-
-::: {.column width="50%"}
-![](images/bigtobaccotestify.jpg)
-:::
-:::
-
-## We're Not so Good at Statistics: Smoking
-
-::: columns
-::: {.column width="30%"}
-
-![](images/fishersmoke.png)
-
-Ronald A. Fisher
-
-1890—1924
-
-:::
-
-::: {.column width="70%"}
-- But [so did R. A. Fisher](https://priceonomics.com/why-the-father-of-modern-statistics-didnt-believe/), the "father of modern statistics"
-:::
-:::
-
-## We're Not so Good at Statistics: Smoking
-
-::: columns
-::: {.column width="50%"}
-
-- There could be a **confounding variable** ("smoking gene") that causes *both* lung cancer *and* the urge to smoke
-
-- Would imply: decision to smoke or not would have *no impact* on lung cancer! 
-
-- Correlation between smoking and cancer is spurious!
-
-:::
-
-::: {.column width="50%"}
+[**Fisher's DAG**]{.underline}
 
 ```{r}
+library("ggdag")
 dagify(Y~X+Z,
        X~Z,
        exposure = "X",
@@ -370,9 +477,24 @@ dagify(Y~X+Z,
 :::
 :::
 
+## Smoking
+
+::: columns
+::: {.column width="50%"}
+-   There could be a [confounding variable]{.hi} ("smoking gene") that causes *both* lung cancer *and* the urge to smoke
+
+-   Would imply: decision to smoke or not would have *no impact* on lung cancer!
+
+-   Correlation between smoking and cancer is spurious!
+:::
+
+::: {.column width="50%"}
+:::
+:::
+
 ## Correlation Does Not Imply Causation
 
-- The goal of every intro statistics class ever
+-   The goal of every intro statistics class ever
 
 ![](images/xkcdcorrelation.png){width="750" fig-align="center"}
 
@@ -388,656 +510,198 @@ dagify(Y~X+Z,
 
 ::: columns
 ::: {.column width="50%"}
+-   It's always good to be skeptical of causal claims
 
-- It's always good to be skeptical of causal claims
+    -   But this is actually where econometrics shines
 
-- But this is actually where [econometrics]{.hi} shines
+-   We can't infer$X$ causes $Y$ from correlation alone for several reasons
 
+    -   A confounding variable is affecting $X$ and $Y$
+
+        -   Not taking confounding variables into account can harm the accuracy of our estimates. This is known as [omitted variable bias]{.hi} (much more on this later) and the conclusion that something is causal even if it isn't
 :::
 
 ::: {.column width="50%"}
-
 ![](images/causation.jpg)
 :::
 :::
 
-## Econometrics
+## Correlation Does Not Imply Causation...
 
 ::: columns
 ::: {.column width="50%"}
+-   It's always good to be skeptical of causal claims
 
-- [Econometrics]{.hi} is the application of statistical tools to *quantify* economic relationships in the real world
+    -   But this is actually where econometrics shines
 
-- Uses real data to
-    - test economic hypotheses
-    - quantitatively estimate the magnitude of relationships between economic variables
-    - forecast future events 
+-   We can't infer$X$ causes $Y$ from correlation alone for several reasons
 
+    -   A confounding variable is affecting $X$ and $Y$
+    -   Maybe $Y$ causes $X$, or both cause each other ([reverse causation]{.hi})
+        -   What is the kid's DAG vs. the actual DAG?
 :::
 
 ::: {.column width="50%"}
-
-![](images/statsgraphs.jpg)
+![](images/Turbulance.png)
 :::
 :::
 
-## Econometrics and Causal Inference
+## Causal Effects
+
+-   What exactly do we mean by causality?
+
+::: incremental
+-   An action is said to [cause]{.hi} an outcome if the outcome is a direct result or consequence of the action
+    -   Studying more *causes* higher test scores
+    -   Fertilizing plants *causes* improved growth
+    -   Running *causes* your heart to beat faster
+-   Suppose we want to measure the [causal effect]{.hi} of fertilizer on tomato yield
+    -   Put another way, we want to identify if fertilizer causes tomato yield to improve
+    -   How would we measure this?
+    -   Through a [randomized control experiment]{.hi}!
+:::
+
+## Randomized Control Experiments
+
+-   Suppose we find wild tomato plants and give them fertilize and observe how this changes the quantity of fruit
+
+::: incremental
+-   This is not enough to establish causality since there may be unobserved factors that vary for the different pants (i.e soil quality, water, sunlight)
+-   Further, if we fertilize all the wild plants we have no [counterfactual]{.hi} to compare the fruiting to
+    -   That is, no plant that didn't receive fertilize but had all other factors the same
+-   This is why we require randomized controlled experiments:
+    1)  To ensure we control for all confounding variables
+    2)  Have a valid counterfactual group ([control group]{.hi})
+:::
+
+## Randomized Control Experiments
+
+-   What do we need to run an RCE?
+
+::: incremental
+1)  [Treatment group]{.hi} - group that receives the intervention (i.e fertilizer). Ideally, we would like different plants to receive different amounts of fertilize (i.e some plants 10g, 20g,...) to estimate the magnitude of the effect and not just establish causlity
+
+2)  [Control group]{.hi} - group that does not recieve intervention
+
+3)  [Randomized assignment]{.hi} - tomato plants are randomly assigned to groups; eliminates possibility of a systematic relationship between confounders (like sunlight) and outcomes
+
+-   To estimate causal effect, we compare tomato amount from treatment group relative to control group
+
+-   Random assignment is VERY important because it allows us to not worry about confounders
+:::
+
+## Random Assignment
+
+-   To illustrate why random assignment is critical consider the tomato experiment
 
 ::: columns
 ::: {.column width="50%"}
-
-- What sets econometrics apart from mere statistics (or uses of statistics in other disciplines) is its role in [causal inference]{.hi}
-
-- We can, with proper tools and interprations, make *quantitative* *causal* claims
-    - about the effects of individual choices
-    - about the effects of policy interventions
-    - about the impact of political institutions
-    - about economic history and economic development
-    - etc...
-
+![](images/Random%20Assign%201.png)
 :::
 
 ::: {.column width="50%"}
+-   Suppose we have a [control group]{.hi-turquoise} and a [treatment group]{.hi}, where each circle represents a plant.
 
-![](images/causation.jpg)
+-   The control group is entirely in the sun and the treatment group in the shade.
+
+-   We would observe that fertilizer reduces plant the quantity of tomatoes.
+
+-   This would be inferring incorrect causality because we don't have random assignment and there for are failing to control for a confounder.
 :::
 :::
 
-## Causal Inference: Examples {.smaller}
+## Random Assignment
+
+-   Now suppose we have random assignment, where plants are randomly assigned treatment and control groups
 
 ::: columns
 ::: {.column width="50%"}
+![](images/Random%20Assign%202.png)
+:::
 
-> A 50% increase in police presence in a metropolitan area lowers crime rates by 15%, on average^[Klick, Jonathan and Alexander Tabarrok, 2005, "Using Terror Alert Levels to Estimate the Effect of Police on Crime," *Journal of Law and Economics* 48(1): 267-279]
+::: {.column width="50%"}
+-   Since we have a more even mix of plants from either group exposed to the sun and darkness, we can infer causality since we are considering confounding variables
 
-> Being an incumbent in office raises the probability of re-election by 40-45 percentage points^[Lee, David S, 2001, "The Electoral Advantage to Incumbency and Voters' Valuation of Politicians' Experience: A Regression Discontinuity Analysis of Elections to the U.S," *NBER Working Paper* 8441]
+-   The important thing to remember about establishing causality is we need to compare apples to apples! This is why your counterfactual is so important
+:::
+:::
 
-> European cities with at least one printing press in 1500 were at least 29% more likely to become Protestant by 1600^[Rubin, Jared, 2014, "Printing and Protestants: An Empirical Test of the Role of Printing in the Reformation," *Review of Economics and Statistics* 96(2): 270-286]
+## Random Assignment
+
+-   Alternatively, consider you create a new asthma medication, and you want to test its effectiveness before entering the market
+-   You decide to conduct a randomized control trial (RCT)
+    -   You gather participants for your control group by asking individuals with asthma from low-income areas and individuals for your treatment group from more affluent areas
+    -   What is the problem with this?
+
+::: incremental
+-   To infer causality, you want to randomly assign participants into groups to avoid issues of confounding variables
+:::
+
+## Natural Experiments
+
+-   Often, in economics it is difficult if not impossible to conduct an experiment to answer a research question
+    -   It unethical to say, "What happens if we give half the country \$1M and the other half nothing"
+
+::: incremental
+-   Therefore, economist rely on [natural experiments]{.hi} where a policy or interventions creates control and treatment groups that are "as good as randomly" assigned
+
+-   Example: Economist and policymakers are interested in how immigration impacts labor markets
+
+    -   What are some concerns with increased immigration, from theory?
+        -   Depressed wages of existing workers
+        -   Increased unemployment
+    -   How would we design an RCE to test this?
+:::
+
+## Natural Experiments
+
+:::columns
+::: {.column width="50%"}
+- There are ethical concerns with randomly selecting immigrants and forcing them into the U.S
+
+- David Card (1990) used a natural experiment to test what happens wages and unemployment when there is an influx of immigrants
+
+- While this is a natural experiment, is it as good as random?
+  - No, the immigrants were largely low-skilled and selected into (choose to) immigration
 
 :::
 
 ::: {.column width="50%"}
-
-![](images/causation.jpg)
+![](images/boat lift.png)
 :::
 :::
 
-## Example 1: Education
+## Forecasting and Causality
+ - Some economic questions do not require identifying causal effects, but instead use data to predict what will happen
 
-::: columns
+:::incremental
+- [Prediction]{.hi} is the usage of information on variables to make statements about another variable 
+  - Can include subjectivity
+  - Suppose you have a deck of cards and you are looking at 40 of the cards. If you want to predict what card you will draw next you will use information on the 40 you observe and a ‘gut feeling’
+
+- [Forecasting]{.hi} is an estimation about the value of a variable in the future
+   - Uses statistical models
+  - Weather forecast uses data on atmospheric conditions to forecast temp, percip, wind, etc.
+
+- Knowing causality is not required to make good predictions. Why?
+
+:::
+
+## Forecsting and Causality
+
+:::columns
 ::: {.column width="50%"}
-
-::: {.callout-tip appearance="simple" icon=false}
-
-## Example 
-- Does reducing class sizes improve student performance?
+- Consider the two variables in the plot and look at the correlation coefficient 
+- Does either cause the other?
+- Can we make strong forecasts about cheese consumption based on deaths?
 
 :::
 
-- A policy-relevant tradeoff with a budget constraint
-- What is the *precise* effect of class size on performance?
-- Is it worth hiring new teachers and building more schools over?
-
-:::
-
-::: {.column width="50%"}
-
-![](images/smallclass.jpg)
-:::
-:::
-
-## Example 2: Discrimination in Lending
-
-::: columns
-::: {.column width="50%"}
-
-::: {.callout-tip appearance="simple" icon=false}
-
-## Example 
-- Is there racial discrimination in home mortgage lending?
-
-:::
-
-- Boston Fed: 28% of African-Americans are denied mortgages compared to only 9% of White Americans
-- Is this due to factors such as credit history, income, or discrimination *purely* because of race? 
-
-
-:::
 
 ::: {.column width="50%"}
-
-![](images/mortgageapp.jpg)
+![](images/cheese.png)
 :::
 :::
 
-## Example 3: Public Health and Public Finance
 
-::: columns
-::: {.column width="50%"}
 
-::: {.callout-tip appearance="simple" icon=false}
-
-## Example 
-- How much do state cigarette taxes reduce smoking rates?
-
-:::
-
-- Econ 101: raise price $\rightarrow$ lower quantity consumed
-- What is the [price elasticity of demand]{.hi-turquoise} for smoking?
-- How much tax revenue will this generate?
-- Probably: $Taxes \rightarrow Smokers$
-- Maybe?: $Taxes \leftarrow Smokers$
-
-:::
-
-::: {.column width="50%"}
-
-![](images/smokingwarning.jpg)
-:::
-:::
-
-# About This Course {background-color="#314f4f" .centered}
-
-## Real Talk: The Math
-
-![](images/opengatemath1.jpg){fig-align="center" width="600"}
-
-## Real Talk: The Math
-
-![](images/opengatemath2.jpg){fig-align="center" width="600"}
-
-## Real Talk: The Math
-
-![](images/opengatemath3.jpg){fig-align="center" width="800"}
-
-## Real Talk: Difficulty
-::: columns
-::: {.column width="50%"}
-
-- This will be one of the hardest courses you take at Hood 
-- There will be moments where you have no idea WTF is going on 🤯 (*this is normal*)
-- But this is one of the best courses you can take at Hood
-- Yes, you can still get an **A**
-:::
-
-::: {.column width="50%"}
-
-![](images/difficultclass.png)
-:::
-:::
-
-## This Class Is
-
-::: columns
-::: {.column width="50%"}
-
-- **Economics**: take your *preexisting* intuition and models for causal inference
-- **Statistics**: add regression and statistical inference
-- **Computer Programming**: using `R` and `R Studio` for analyzing and presenting data
-
-:::
-
-::: {.column width="50%"}
-
-```{r}
-class<-data.frame(Percentage=c(50,40,10),
-                  Subject=c("Economics","Statistics","Computer Programming"))
-
-#ggplot(class, aes(x="", y=Percentage, fill=Subject))+
-#  geom_col()+theme_void()+scale_fill_viridis_d()
-
-library(treemapify)
-ggplot(class, aes(area=Percentage, fill=Subject))+
-  geom_treemap()+
-  guides(fill=F)+
-  geom_treemap_text(aes(label = Subject),
-                  colour = "white",
-                  place = "topleft",
-                  reflow = T,
-                  grow = TRUE)+
-  #scale_fill_brewer(palette="viridis")+
-  scale_fill_viridis_d()
-```
-:::
-:::
-
-##
-
-::: columns
-::: {.column width="50%"}
-
-### [Old School Statistics Courses]{style="color:#6A5ACD;"}
-
-- $\bar{x} = \frac{1}{n} \displaystyle\sum^n_{i=1} x_i$
-
-- $\sigma_x = \displaystyle \sqrt{\frac{1}{n} \sum^n_{i=1} (x_i-\bar{x})^2}$
-
-- $r_{xy}= \displaystyle \frac{\displaystyle\sum^n_{i=1}(x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\displaystyle\sum^n_{i=1}(x_i-\bar{x})^2\sum^n_{i=1}(y_i-\bar{y})^2}}$
-
-- Use pre-cleaned "toy" data, if at all
-
-:::
-
-::: {.column width="50%"}
-
-### [Hip New "Data Science" Courses]{style="color:#e64173;"}
-
-```{r}
-#| echo: true
-#| eval: false
-
-mean(x)
-sd(x)
-cor(x, y)
-```
-
-- Import, tidy, and manipulate raw data from scratch (like *real life*!)
-
-:::
-:::
-
-## Prerequisites
-
-- **Officially (Courses)**:
-    - ECON 205
-  - ECON 206
-  - ECON 305 or ECON 306
-  - MATH 112 or ECMG 212
-
-. . .
-
-- **Math Skills**:
-  - Basic algebra
-  - Probability-ish
-  - Statistics-ish
-
-. . .
-
-- **Computer Science Skills**:
-  - None 🤖
-
-## What You'll Get Out of This Class
-
-::: columns
-::: {.column width="50%"}
-By the end of this semester, you will: 
-
-1. understand how to evaluate statistical and empirical claims;
-2. use the fundamental models of causal inference and research design;
-3. gather, analyze, and communicate with real data in R.
-
-:::
-
-::: {.column width="50%"}
-![](images/r.png)
-:::
-
-:::
-
-## This Class Opens Doors
-
-![](images/metricshelpful.png){fig-align="center" width="1200"}
-
-## Building Industry-Demanded Data Science Skills
-
-::: columns
-::: {.column width="50%"}
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Data Scientist (n.): Person who is better at statistics than any software engineer and better at software engineering than any statistician.</p>&mdash; Josh Wills (@josh_wills) <a href="https://twitter.com/josh_wills/status/198093512149958656?ref_src=twsrc%5Etfw">May 3, 2012</a></blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-:::
-::: {.column width="50%"}
-![](images/datascience1.png)
-:::
-:::
-
-## Building Industry-Demanded Data Science Skills
-
-::: columns
-::: {.column width="50%"}
-![](images/datascientist.png)
-
-[Harvard Business Review](https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century)
-:::
-::: {.column width="50%"}
-![](images/datasciencelinkedin.png)
-[LinkedIn 2018 Emerging Jobs Report](https://economicgraph.linkedin.com/research/linkedin-2018-emerging-jobs-report)
-:::
-:::
-
-## Building Industry-Demanded Data Science Skills
-
-![[LinkedIn 2020 Emerging Jobs Report](https://business.linkedin.com/content/dam/me/business/en-us/talent-solutions/emerging-jobs-report/Emerging_Jobs_Report_U.S._FINAL.pdf)](images/linkedindatascientist2020.png)
-
-## R Can Be Used for Data Science
-
-```{r}
-#| cache: true
-kaggle <- read_csv("../data/kaggle_survey_2021_responses.csv")
-```
-
-```{r}
-clean_langs <- kaggle %>%
-  select(Q7_Part_1:Q7_OTHER,
-         Q8) %>%
-  rename(Python = Q7_Part_1,
-         R = Q7_Part_2,
-         SQL = Q7_Part_3,
-         C = Q7_Part_4,
-         `C++` = Q7_Part_5,
-         Java = Q7_Part_6,
-         javascript = Q7_Part_7,
-         Julia = Q7_Part_8,
-         Swift = Q7_Part_9,
-         Bash = Q7_Part_10,
-         MATLAB = Q7_Part_11,
-         None = Q7_Part_12,
-         Other = Q7_OTHER,
-         Recd = Q8) %>%
-  #mutate_all(factor) %>%
-  # mutate_all(as.numeric) %>%
-  slice(-1)
-
-totals <- clean_langs %>%
-  select(-Recd) %>%
-    summarize(across((1:13), ~ sum(!is.na(.))))
-  #summarize(across((1:5), ~ sum(.x, na.rm = T)))
-```
-
-```{r}
-p1 <- totals %>%
-  pivot_longer(cols = 1:13, names_to = "Language", values_to = "n") %>%
-  arrange(desc(n)) %>%
-  mutate(perc = round((n/sum(n) * 100),2)) %>%
-  slice(1:10) %>%
-  ggplot(., aes(x = reorder(Language, n), 
-                y = perc,
-                fill = Language))+
-  geom_col()+
-  scale_y_continuous(breaks=seq(0,60,10),
-                     label = function(x){paste0(x,"%")})+
-  theme_minimal()+
-  labs(x = "Programming Language",
-       y = "Percent",
-       title = "Programming Languages Used Most by Data Scientists",
-       caption = "Source: 2021 Kaggle Machine Learning and Data Science Survey")+
-  coord_flip()+
-  guides(fill = F)+
-  scale_fill_viridis_d()
-```
-
-```{r}
-p2 <- clean_langs %>%
-  count(Recd) %>%
-  filter(!is.na(Recd)) %>% 
-  arrange(desc(n)) %>% 
-  slice(1:10) %>%
-  mutate(perc = round((n/sum(n) * 100),2)) %>%
-  ggplot(., aes(x = reorder(Recd, n), 
-                y = perc,
-                fill = Recd))+
-  geom_col()+
-  scale_y_continuous(breaks=seq(0,80,10),
-                     label = function(x){paste0(x,"%")})+
-  theme_minimal()+
-  labs(x = "Programming Language",
-       y = "Percent",
-       title = "Programming Languages Recommended to Learn",
-       caption = "Source: 2021 Kaggle Machine Learning and Data Science Survey")+
-  coord_flip()+
-  guides(fill = F)+
-  scale_fill_viridis_d()
-```
-
-```{r}
-library(patchwork)
-p1 | p2
-```
-
-## Two Types of Uses For Econometrics
-
-$$\color{orange}{Y}=\color{teal}{f}(\color{purple}{X})$$
-
-::: columns
-::: {.column width="50%"}
-
-1. [Causal inference]{.hi}: estimate $\color{teal}{\hat{f}}$ to determine how changes in $\color{purple}{X}$ **cause** changes in $\color{orange}{Y}$
-  - Care more about accurately estimating $\color{teal}{f}$ than getting an accurate $\color{orange}{\hat{Y}}$
-  - Measure the **causal effect** of $X \mapsto Y$
-  - primarily regression-based
-
-:::
-
-::: {.column width="50"}
-2. [Prediction]{.hi}: predict $\color{orange}{\hat{Y}}$ using an estimated $\color{teal}{f}$
-  - Care more about getting $\color{orange}{\hat{Y}}$  as accurate as possible, $\color{teal}{f}$ is an unknown “black-box”
-  - Use for **forecasting**, **classification**, etc.
-  - less regression, more machine-learning methods
-
-:::
-:::
-
-. . .
-
-- More and more “data science” focuses on the second...but
-
-. . .
-
-- We care (in this class at least) only about the first...because
-
-## Causal Inference — Economists' Comparative Advantage
-
-::: columns
-::: {.column width="50%"}
-- Machine learning and artificial intelligence are "dumb"^[For more, see [my blog post](https://ryansafner.com/post/econometrics-data-science-and-causal-inference/), and Pearl & MacKenzie (2018), *The Book of Why*]
-- With the right models and research designs, we *can* say "X causes Y" and quantify it!
-- Economists are in a unique position to make *causal* claims that mere statistics cannot
-:::
-
-::: {.column width="50%"}
-![](images/coding.jpeg)
-:::
-:::
-
-## Causal Inference — Economists' Comparative Advantage
-
-::: columns
-::: {.column width="40%"}
-![](images/econtechcompanies.png)
-[Harvard Business Review](https://hbr.org/2019/02/why-tech-companies-hire-so-many-economists)
-:::
-
-::: {.column width="60%"}
-“[T]he field of economics has spent decades developing a toolkit aimed at investigating empirical relationships, focusing on techniques to help understand which correlations speak to a causal relationship and which do not. This comes up all the time — does Uber Express Pool grow the full Uber user base, or simply draw in users from other Uber products? Should eBay advertise on Google, or does this simply syphon off people who would have come through organic search anyway? Are African-American Airbnb users rejected on the basis of their race? These are just a few of the countless questions that tech companies are grappling with, investing heavily in understanding the extent of a causal relationship.”
-
-:::
-:::
-
-## Building Good Workflow Habits
-
-::: columns
-::: {.column width="50%"}
-- I will show you the tools to make your workflow:
-    - Reproducible
-    - Computer- and Human-Readable (!)
-    - Automated
-    - All in one program
-:::
-
-::: {.column width="50%"}
-![](images/rmdout.png)
-:::
-:::
-
-## For Example
-
-::: {.panel-tabset}
-
-## Output
-
-```{r}
-#| eval: true
-#| echo: false
-#| cache: true
-library(gapminder)
-library(gganimate)
-gapminder %>%
-  filter(continent != "Oceania") %>%
-ggplot(aes(x = gdpPercap,
-           y = lifeExp,
-           color = country,
-           size = pop))+
-  geom_point(alpha=0.3)+
-	scale_x_log10(breaks=c(1000,10000, 100000),
-	              label=scales::dollar)+
-  scale_size(range = c(0.5, 12)) +
-  scale_color_manual(values = gapminder::country_colors) +
- 	labs(x = "GDP/Capita",
-	     y = "Life Expectancy (Years)",
-	     caption = "Source: Hans Rosling's gapminder.org",
-	     title = "Income & Life Expectancy - {frame_time}")+
-  facet_wrap(~continent)+
-  guides(color = F, size = F)+
-  theme_bw(base_family = "Fira Sans Condensed")+
-  transition_time(year)+
-  ease_aes("linear")
-```
-
-## Code
-```{r}
-#| echo: true
-#| eval: false
-library(gapminder)
-library(gganimate)
-gapminder %>%
-  filter(continent != "Oceania") %>%
-ggplot(aes(x = gdpPercap,
-           y = lifeExp,
-           color = country,
-           size = pop))+
-  geom_point(alpha=0.3)+
-	scale_x_log10(breaks=c(1000,10000, 100000),
-	              label=scales::dollar)+
-  scale_size(range = c(0.5, 12)) +
-  scale_color_manual(values = gapminder::country_colors) +
- 	labs(x = "GDP/Capita",
-	     y = "Life Expectancy (Years)",
-	     caption = "Source: Hans Rosling's gapminder.org",
-	     title = "Income & Life Expectancy - {frame_time}")+
-  facet_wrap(~continent)+
-  guides(color = F, size = F)+
-  theme_minimal(base_family = "Fira Sans Condensed")+
-  transition_time(year)+
-  ease_aes("linear")
-```
-
-:::
-
-::: footer
-:::
-
-## Assignments
-
-::: columns
-::: {.column width="50%"}
-- Research project:
-    - Come up with a testable research question
-    - Find data
-    - Analyze data
-    - Present your results (in writing and verbally)
-- HWs
-- Midterm, Final exam
-
-:::
-
-::: {.column width="50%"}
-```{r}
-tribble(
-  ~"",  ~Assignment, ~Percent,
-  "1", "Research Project", "30%",
-  "n"     , "Homeworks (Average)", "25%",
-  "1", "Midterm", "20%",
-  "1"     , "Final", "25%"
-) %>% 
-kbl(., "html")
-```
-
-:::
-:::
-
-## Logistics
-
-::: columns
-::: {.column width="50%"}
-- Office hours: MW 1:30-2:30 PM & by appt
-  - Office: 114 Rosenstock
-
-- `r fa("slack", fill ="#5E81AC")` Slack channel
-
-- See the [resources page](http://metricsF22.classes.ryansafner.com/resources) for tips for success and more helpful resources
-:::
-::: {.column width="50%"}
-![](images/learning.png)
-
-:::
-:::
-
-## Your Textbooks
-
-
-::: columns
-::: {.column width="50%"}
-![](images/baileyeconometrics.jpg){width="500"}
-:::
-::: {.column width="50%"}
-![](images/r4ds.png){width="500"}
-
-:::
-:::
-
-# You Can Do This. {background-color="#314f4f" .centered}
-
-## Tips for Success in This Course
-
-
-::: columns
-::: {.column width="50%"}
-- *Take notes. On paper. Really.*
-
-- **Work together** on assignments and study together.
-
-- Ask questions, come to office hours. Don't struggle in silence, you are not alone!
-
-- [The biggest skill you are developing is learning how to learn]{.hi}^[A properly worded Google search will become your secret weapon. Believe me. It's still mine]
-
-- See the [reference page](http://metricsf21.classes.ryansafner.com/reference) for more
-:::
-::: {.column width="50%"}
-![](images/learning.png)
-
-:::
-:::
-
-## Course Website
-
-![](images/metrics_website_F22.png){width="750" fig-align="center"}
-
-[metricsF22.classes.ryansafner.com](http://metricsF22.classes.ryansafner.com)
-
-## Roadmap for the Semester
-
-![](images/metrics_flowchart_blankbg.png)
-
-## For Next Class
-
-![](images/rstudiocloud.png)
-
-::: footer
-:::
-
-## For Next Class
-
-- Take the [preliminary survey on statistics and software](https://metricsF22.classes.ryansafner.com/assignments/00-preliminary-survey)
-
-- Register for [R Studio Cloud](https://rstudio.cloud)
-
-- (Optional but highly recommended) [Install R and R Studio on your computer](https://metricsF22.classes.ryansafner.com/resources/installing-R)

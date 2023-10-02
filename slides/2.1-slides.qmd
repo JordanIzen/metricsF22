@@ -18,13 +18,13 @@ execute:
 
 ##  {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
 
-[2.1 --- Data 101 & Descriptive Statistics]{.custom-title}
+[2.1 --- Data 101 & Descriptive Stats]{.custom-title}
 
-[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+[ECON 4470 • Econometrics]{.custom-subtitle}
 
-[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
+[Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD]{.custom-author}
 
-[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+
 
 ```{r}
 #| label: setup
@@ -410,22 +410,7 @@ ggplot(diamonds, aes(x=cut, fill=cut))+
 :::
 :::
 
-## Categorical Data: Pie Charts
 
-::: columns
-::: {.column width="50%"}
-- Avoid pie charts!
-
-- People are *not* good at judging 2-d differences (angles, area)
-
-- People *are* good at judging 1-d differences (length)
-
-:::
-
-::: {.column width="50%"}
-![](images/piechart.jpg){width="750" fig-align="center"}
-:::
-:::
 
 ## Categorical Data: Alternatives to Pie Charts I
 
@@ -807,7 +792,8 @@ $$x_{\color{#D7250E}{i}\color{#0047AB}{t}}$$
 
 1. [Descriptive Statistics:]{.hi} describes or summarizes the properties of a sample
 
-2. [Inferential Statistics:]{.hi} infers properties about a larger population from the properties of a sample^[We'll encounter inferential statistics mainly in the context of regression later.]
+2. [Inferential Statistics:]{.hi} infers properties about a larger population from the properties of a sample
+  - We'll encounter inferential statistics mainly in the context of regression later.
 
 :::
 ::: {.column width="50%"}
@@ -966,7 +952,7 @@ ggplot(quizzes,aes(x=scores))+
 
 ## Mode
 
-- The .hi[mode] of a variable is simply its most frequent value
+- The [mode]{.hi} of a variable is simply its most frequent value
 
 - A variable can have multiple modes
 
@@ -1137,7 +1123,6 @@ $$\mu=\frac{x_1+x_2+...+x_N}{N} = \frac{1}{N} \sum^N_{i=1} x_i$$
 
 - For $N$ values of variable $x$, "mu" is the sum of all individual $x$ values $(x_i)$ from 1 to $N$, divided by the $N$ number of values^[Note the mean need not be an actual value of the data!]
 
-- See [today's appendix](/resources/appendices/2.1-appendix) for more about the [summation operator, $\displaystyle\sum$]{.hi-purple}, it'll come up again!
 
 ## Arithmetic Mean (Sample)
 
@@ -1470,47 +1455,6 @@ ggplot(data = quizzes_long)+
 :::
 :::
 
-## Aside: Making Nice Summary Tables I
-
-- I don't like the options available for printing out summary statistics
-
-- So I wrote my own `R function` called `summary_table()` that makes nice summary tables (it uses `dplyr` and `tidyr`!). To use:
-
-1. Download the `summaries.R` [file](/files/summaries.R) from the website^[One day I'll make this part of a package I'll write.] and move it to your working directory/project folder
-
-2. Load the function with the `source()` command:^[If it *was* a package, then you'd load with `library()`. But you can run a single `.R` script with `source()`.]
-
-```{r}
-#| eval: false
-#| echo: true
-source("summaries.R")
-
-```
-
-## Aside: Making Nice Summary Tables II
-
-3) The function has at least 2 arguments: the `data.frame` (automatically piped in if you use the pipe!) and then all variables you want to summarize, separated by commas^[There is one restriction: No variable name can have an underscore `(_)` in it. You will have to rename them or else you will break the function!]
-
-```{r, echo=F, eval=T}
-source("../files/summaries.R")
-```
-
-
-```{r, echo=T}
-mpg %>%
-  summary_table(hwy, cty, cyl)
-```
-
-## Aside: Making Nice Summary Tables III
-
-4) When `render`ed in `Quarto`, it looks nicer:
-
-```{r, echo=T, results="asis"}
-mpg %>%
-  summary_table(hwy, cty, cyl) %>%
-  knitr::kable(., format="html")
-```
-
 
 ## Measures of Dispersion: Deviations
 
@@ -1558,7 +1502,6 @@ $$\sigma^2 = \frac{1}{n-1}\displaystyle\sum^n_{i=1} (x_i-\bar{x})^2$$
 - Square root the sample variance to get the [sample standard deviation $s$]{.hi}, the average deviation from the *sample* mean (in same units as $x$)
 
 $$s=\sqrt{s^2}=\sqrt{\frac{1}{n-1}\displaystyle\sum^n_{i=1} (x_i-\bar{x})^2	}$$
-## Sample Standard Deviation: Example
 
 ::: {.callout-tip}
 ## Example
