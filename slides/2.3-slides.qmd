@@ -3,7 +3,6 @@ format:
   revealjs:
     theme: [default, custom.scss]
     logo: "../images/metrics_hex.png"
-    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
     height: 900
     width: 1600
     #df-print: paged
@@ -20,11 +19,9 @@ execute:
 
 [2.3 --- Simple Linear Regression]{.custom-title}
 
-[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+[ECON 4470 • Econometrics]{.custom-subtitle}
 
-[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
-
-[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+[Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD]{.custom-author}
 
 ```{r}
 #| label: setup
@@ -400,6 +397,9 @@ econfreedom %>%
   summarize(covariance = cov(ef, gdp),
             correlation = cor(ef, gdp))
 ```
+
+## Properties of Covarience and Correlation
+- Let's discuss some properties of covarience and correlation on the board
 
 ## Correlation and Endogeneity
 
@@ -887,7 +887,7 @@ $$\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1}X_i$$
 
 ## The OLS Regression Estimators
 
-- The solution to the SSE minimization problem yields:^[See [next class’ appendix page](/resources/appendices/2.4-appendix) for proofs.]
+- The solution to the SSE minimization problem yields:
 
 . . .
 
@@ -898,6 +898,7 @@ $$\hat{\beta}_0=\bar{Y}-\hat{\beta}_1\bar{X}$$
 $$\hat{\beta}_1=\frac{\displaystyle\sum^n_{i=1}(X_i-\bar{X})(Y_i-\bar{Y})}{\displaystyle\sum^n_{i=1}(X_i-\bar{X})^2}=\frac{s_{XY}}{s^2_X}= \frac{cov(X,Y)}{var(X)}$$
 
 . . .
+- Let's prove that these are the OLS Estimators on the board
 
 ## (Some) Properties of OLS
 
@@ -968,7 +969,7 @@ Format for regression is `lm(y ~ x, data = df)`
 
 - `df` is name of dataframe where data is stored
 
-This is `base R` (there's no good `tidyverse` way to do this yet...ish^[[`tidymodels`](https://www.tidymodels.org/) appears to be the new contender. It is used primarily for machine learning, but standardizes modeling, including OLS, in a tidy way. I think it's a bit unnecessary for us to use, for now.])
+This is `base R` (`tidymodels` is an alternative package that is a bit closer to `tidyverse`, but is a bit more complex to use) 
 
 :::
 :::
@@ -1022,7 +1023,7 @@ school_reg %>% summary()
 
 :::
 ::: {.column width="70%"}
-- The `broom` package allows us to work with regression objects as tidier `tibbles`
+- The `broom` package allows us to work with regression objects as tidier `tibbles` (as opposed to lists)
 
 - Several useful commands:
 
@@ -1200,7 +1201,7 @@ ggplot(data = ca_school,
            base_size = 20)
 ```
 
-## Code
+## Predicted Richmond
 
 ```{r}
 richmond <- aug_reg %>%

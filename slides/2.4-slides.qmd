@@ -3,7 +3,6 @@ format:
   revealjs:
     theme: [default, custom.scss]
     logo: "../images/metrics_hex.png"
-    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
     height: 900
     width: 1600
     df-print: kable
@@ -20,11 +19,9 @@ execute:
 
 [2.4 --- Goodness of Fit and Bias]{.custom-title}
 
-[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+[ECON 4470 • Econometrics]{.custom-subtitle}
 
-[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
-
-[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+[Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD]{.custom-author}
 
 ```{r}
 #| label: setup
@@ -113,22 +110,29 @@ $$\underbrace{\color{#0047AB}{Y_i}}_{\color{#0047AB}{Observed}}=\underbrace{\col
 
 ## $R^2$
 
-- Primary measure^[Sometimes called the ["coefficient of determination"]{.hi}] is [R-squared]{.hi}, the fraction of variation in $\color{#0047AB}{Y_i}$ explained by variation in predicted values $\color{#047806}{\hat{Y}_i}$
+- Primary measure is [R-squared]{.hi}, aka [coefficient of determination]{.hi}, the fraction of variation in $\color{#0047AB}{Y_i}$ explained by variation in predicted values $\color{#047806}{\hat{Y}_i}$
 
 $$R^2 = \frac{var(\color{#047806}{\hat{Y}_i})}{var(\color{#0047AB}{Y_i})}$$
+
+. . .
+
+
+- $R^2 \in [0,1]$ and can be interpreted as the percent of the variation in $Y$ explained by variation in $X$ when there is one variable in the regression
+
+- $R^2$ will always increase as we add more variables to the regression so we loose that interpretation when we exceed one variable. We will talk about $R^2$-adjusted later in the course, which will explain the goodness of fit better when we have multiple regressors 
+
 ## $R^2$ Formula I
 
-$$R^2 = \frac{\color{#047806}{SSM}}{\color{#0047AB}{SST}}$$
+$$R^2 = \frac{\color{#047806}{SSE}}{\color{#0047AB}{SST}}$$
+
+
+- [**Explained Sum of Squares (SSE)**]{.green}: sum of squared deviations of *predicted* values from their mean
+
+$$\color{#047806}{SSE} = \sum^n_{i=1}(\hat{Y_i}-\bar{Y})^2$$
 
 . . .
 
-- [**Model Sum of Squares (SSM)**]{.green}:^[Sometimes called Explained Sum of Squares (ESS) or Regression Sum of Squares (RSS) in other textbooks.] sum of squared deviations of *predicted* values from their mean^[It can be shown that $\color{#047806}{\bar{\hat{Y_i}}}=\color{#0047AB}{\bar{Y_i}}$]
-
-$$\color{#047806}{SSM} = \sum^n_{i=1}(\hat{Y_i}-\bar{Y})^2$$
-
-. . .
-
-- [**Total Sum of Squares (TSS)**]{.blue}: sum of squared deviations of *observed* values from their mean
+- [**Total Sum of Squares (SST)**]{.blue}: sum of squared deviations of *observed* values from their mean
 
 $$\color{#0047AB}{SST} = \sum^n_{i=1}(Y_i-\bar{Y})^2$$
 
@@ -137,11 +141,11 @@ $$\color{#0047AB}{SST} = \sum^n_{i=1}(Y_i-\bar{Y})^2$$
 - Equivalently, $R^2$ is the complement of the fraction of **unexplained** variation in $Y_i$ 
 
 $$R^2=1-\left(\frac{\color{#D7250E}{SSR}}{\color{#0047AB}{SST}}\right)$$
-. . .
 
 - Equivalently, the square of the correlation coefficient between $X$ and $Y$^[The correlation coefficient between $X$ and $Y$ is the same as the correlation coefficient between $Y$ and $\hat{Y}$: $r_{X,Y}=r_{Y,\hat{Y}}$, so squaring either would also result in $R^2$.]: 
 
 $$R^2=(r_{X,Y})^2$$
+
 ## Visualizing $R^2$ I
 
 ::: columns
@@ -153,7 +157,7 @@ $$SST = \sum^n_{i=1}(Y_i-\bar{Y})^2$$
 
 - [Variation in Y explained by X: Area C]{.hi-purple}
 
-$$\color{#047806}{SSM} = \sum^n_{i=1}(\hat{Y_i}-\bar{Y})^2$$
+$$\color{#047806}{SSE} = \sum^n_{i=1}(\hat{Y_i}-\bar{Y})^2$$
 
 - [**Unexplained variation in Y: Area A**]{.red}
 $$\color{#D7250E}{SSR} = \sum^n_{i=1}(\hat{u_i})^2$$
@@ -210,14 +214,14 @@ SST <- school_reg %>%
   summarize(SST = sum_sq(testscr))
 
 # find explained sum of squares
-SSM <- school_reg %>%
+SSE <- school_reg %>%
   augment() %>%
-  summarize(SSM = sum_sq(.fitted))
+  summarize(SSE = sum_sq(.fitted))
 
 # look at them and divide to get R^2
 tribble(
-  ~SSM, ~SST, ~R_sq,
-  SSM, SST, SSM/SST
+  ~SSE, ~SST, ~R_sq,
+  SSE, SST, SSE/SST
   ) %>%
   knitr::kable()
 ```
@@ -225,7 +229,7 @@ tribble(
 :::
 ::: {.column width="50%"}
 
-$$R^2 = \frac{SSM}{SST} = \frac{\color{purple}{C}}{\color{red}{A}+\color{purple}{C}}=0.05$$
+$$R^2 = \frac{SSE}{SST} = \frac{\color{purple}{C}}{\color{red}{A}+\color{purple}{C}}=0.05$$
 
 ```{r}
 library(ggforce)
@@ -303,14 +307,14 @@ school_reg %>%
 ```
 
 
-$$R^2 = \frac{var(\hat{Y})}{var(Y)} = \frac{\color{red}{\frac{1}{n-1}}\sum^n_{i=1}(\hat{Y_i}-\bar{Y})^2}{\color{red}{\frac{1}{n-1}}\sum^n_{i=1}(Y_i-\bar{Y})^2} \rightarrow \frac{SSM}{SST}$$
+$$R^2 = \frac{var(\hat{Y})}{var(Y)} = \frac{\color{red}{\frac{1}{n-1}}\sum^n_{i=1}(\hat{Y_i}-\bar{Y})^2}{\color{red}{\frac{1}{n-1}}\sum^n_{i=1}(Y_i-\bar{Y})^2} \rightarrow \frac{SSE}{SST}$$
 
-- SSM and SST are simply the numerators of the variance of $\hat{Y}$ and $Y$, respectively (i.e. before dividing by $n-1$, which will cancel out).
+- SSE and SST are simply the numerators of the variance of $\hat{Y}$ and $Y$, respectively (i.e. before dividing by $n-1$, which will cancel out).
 
 
 ## Standard Error of the Regression
 
-- [Standard Error of the Regression]{.hi}^[In machine learning and other contexts, focus on [Root Mean Square Error (RMSE)]{.hi}:$$RMSE = \sqrt{\frac{SSR}{n}} = \sqrt{\frac{\sum \hat{u}_i^2}{n}}$$ i.e. the positive root of the average squared residuals...so, average residual.], $\color{#e64173}{\hat{\sigma}_u}$ is an estimator of the standard deviation of $u_i$
+- [Standard Error of the Regression]{.hi} $\color{#e64173}{\hat{\sigma}_u}$ is an estimator of the standard deviation of $u_i$
 
 . . . 
 
@@ -336,7 +340,7 @@ school_reg %>%
 
 . . .
 
-In large samples (where $n-2 \approx n)$, SER $\rightarrow$ standard deviation of the residuals
+In large samples (where $n-2 \approx n)$, SER $\rightarrow$ standard deviation of the residuals. This is why it is important to have large samples! Standard errors will be smaller
 
 ```{r}
 #| echo: true
@@ -351,6 +355,8 @@ school_reg %>%
 #| echo: true
 #| output-location: fragment
 school_reg %>% summary()
+
+# Scroll down to find R2
 ```
 
 . . .
@@ -507,7 +513,7 @@ $$Y_i = \beta_0+\beta_1 X_i+u_i$$
   - Characteristics about (relationships between variables describing) populations are called [“parameters”]{.hi-turquoise} 
 
 - [Sample]{.hi-purple}: some portion of the population of interest to *represent the whole*
-  - Samples examine part of a population to generate .hi-turquoise[statistics] used to [estimate]{.hi} population [parameters]{.hi-turquoise}
+  - Samples examine part of a population to generate [statistics]{.hi-turquoise} used to [estimate]{.hi} population [parameters]{.hi-turquoise}
 
 :::
 ::: {.column width="50%"}
@@ -628,9 +634,9 @@ $$\hat{\beta_1} \sim N(\mathbb{E}[\hat{\beta_1}], \sigma_{\hat{\beta_1}})$$
 
 - We want to know: 
 
-1. $\mathbb{E}[\hat{\beta_1}]$; what is the [center]{.hi-purple} of the distribution? (today)
+1. $\mathbb{E}[\hat{\beta_1}]$; what is the [center]{.hi-purple} of the distribution? 
 
-2. $\sigma_{\hat{\beta_1}}$; how [precise]{.hi-purple} is our estimate? (next class)
+2. $\sigma_{\hat{\beta_1}}$; how [precise]{.hi-purple} is our estimate? 
 
 :::
 ::: {.column width="50%"}
@@ -773,7 +779,7 @@ $$var(u|X)=\sigma^2_{u}$$
 - Often this assumption is violated: errors may be [“heteroskedastic”]{.hi-purple}:
  they do not have the same variance across $X$
 
-- This *is* a problem for **inference**, but we have a simple fix for this (next class)
+- This *is* a problem for **inference**, but we have a simple fix for this (more on this later)
 
 :::
 ::: {.column width="50%"}
@@ -919,7 +925,7 @@ We want to estimate the average height (H) of U.S. adults (population) and have 
 
 ::: columns
 ::: {.column width="50%"}
-- $\mathbf{\hat{\beta_1}}$ is the [Best Linear Unbiased Estimator (BLUE)]{.hi} estimator of  $\mathbf{\beta_1}$ **when $X$ is exogenous**^[The proof for this is known as the famous [Gauss-Markov Theorem](https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem). See today's [appendix](/resources/appendices/2.4-appendix) for a simplified proof.]
+- $\mathbf{\hat{\beta_1}}$ is the [Best Linear Unbiased Estimator (BLUE)]{.hi} estimator of  $\mathbf{\beta_1}$ **when $X$ is exogenous**^[The proof for this is known as the famous [Gauss-Markov Theorem](https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem). We will prove this now.]
 
 - No systematic difference, on average, between sample values of $\hat{\beta_1}$ and the true population $\beta_1$:
 
@@ -974,7 +980,7 @@ $$\text{Violent crimes}_t=\beta_0+\beta_1\text{Ice cream sales}_t+u_t$$
 
 ## Endogeneity and Bias: Takeaways
 
-- The true expected value of $\hat{\beta_1}$ is actually:^[See today's [appendix](/resources/appendices/2.4-appendix) for proof.]
+- The true expected value of $\hat{\beta_1}$ is actually:^[We will prove this now]
 
 $$E[\hat{\beta_1}]=\beta_1+cor(X,u)\frac{\sigma_u}{\sigma_X}$$
 
