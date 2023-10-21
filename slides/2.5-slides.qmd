@@ -3,7 +3,6 @@ format:
   revealjs:
     theme: [default, custom.scss]
     logo: "../images/metrics_hex.png"
-    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
     height: 900
     width: 1600
     df-print: kable
@@ -20,11 +19,11 @@ execute:
 
 [2.5 --- Precision and Diagnostics]{.custom-title}
 
-[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+[ECON 4470 • Econometrics]{.custom-subtitle}
 
-[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
+[Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD]{.custom-author}
 
-[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+
 
 ```{r}
 #| label: setup
@@ -38,6 +37,7 @@ library(fontawesome)
 library(gapminder)
 library(ggthemes)
 library(scales)
+library(modelsummary)
 knitr::opts_chunk$set(echo=F,
                       message=F,
                       warning=F)
@@ -106,7 +106,7 @@ beta_dist
 ::: {.column width="50%"}
 $$\hat{\beta_1} \sim N(\mathbb{E}[\hat{\beta_1}], \sigma_{\hat{\beta_1}})$$
 
-1. [Center]{.hi-purple}^[Under the 4 assumptions about $u$, particularly, $cor(X,u)=0$] of the distribution: $\mathbb{E}[\hat{\beta_1}]$ (**last class**)
+1. [Center]{.hi-purple}^[Under the 4 assumptions about $u$, particularly, $cor(X,u)=0$] of the distribution: $\mathbb{E}[\hat{\beta_1}]$ (**last lecture**)
 
 :::
 
@@ -1221,7 +1221,7 @@ ggplot()+
 - Several tests to check if data is heteroskedastic 
 - One common test is **Breusch-Pagan test** 
 - Can use the `lmtest` package's function `bptest()`
-    - $H_0$: homoskedastic^[More on hypothesis testing next week!]
+    - $H_0$: homoskedastic^[More on hypothesis testing soon!]
     - If $p$-value < 0.05, reject $H_0\implies$ heteroskedastic
 
 . . .
@@ -1252,7 +1252,7 @@ wage_reg %>% bptest()
 
 ## Fixing Heteroskedasticity I
 
-- Heteroskedasticity is easy to fix with software that can calculate [robust standard errors]{.hi} (using the more complicated formula above)
+- Heteroskedasticity is easy to fix with software that can calculate [robust standard errors]{.hi} (using the more complicated formula earlier)
 
 . . .
 
