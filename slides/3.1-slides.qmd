@@ -3,7 +3,6 @@ format:
   revealjs:
     theme: [default, custom.scss]
     logo: "../images/metrics_hex.png"
-    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
     height: 900
     width: 1600
     df-print: paged
@@ -20,11 +19,9 @@ execute:
 
 [3.1 --- Problem of Causal Inference]{.custom-title}
 
-[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+[ECON 4470 • Econometrics]{.custom-subtitle}
 
-[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
-
-[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+[Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD]{.custom-author}
 
 ```{r}
 #| label: setup
@@ -109,14 +106,14 @@ where $\color{orange}{Y}$ is numeric:
 [[Sample]{.b} $\color{#6A5ACD}{\xrightarrow{\text{statistical inference}}}$ [Population]{.b} $\color{#e64173}{\xrightarrow{\text{causal indentification}}}$ [Unobserved Parameters]{.b}]{.center}
 
 - We saw how to statistically [infer]{.hi-purple} values of population parameters using our sample
-  - [Purely empirical, math & statistics]{.hi-turquoise} 🤓
+  - [Purely empirical, math & statistics]{.hi-turquoise} 
 
 . . .
 
 - We now confront the problem of [identifying]{.hi} causal relationships within population
   - [Endogeneity problem]{.hi}
   - Even if we had perfect data on the whole population, [“Does X truly cause Y?”]{.hi}, and can we measure that effect?
-  - [More philosophy & theory than math & statistics!]{.hi-turquoise} 🧐
+  - [More philosophy, theory, and creativity than math & statistics!]{.hi-turquoise} 
 
 - Truly you should do this first, *before* you get data to make inferences!
 
@@ -144,7 +141,7 @@ where $\color{orange}{Y}$ is numeric:
   - *Randomly* assign experimental units (e.g. people, firms, etc.) into groups
   - [Treatment group(s)]{.hi} get a treatment
   - [Control group]{.hi-purple} gets no treatment 
-  - Compare average results of treatment vs control groups after treatment o observe the [average treatment effect (ATE)]{.hi-slate}
+  - Compare average results of treatment vs control groups after treatment to observe the [average treatment effect (ATE)]{.hi-slate}
   
 - [We will understand “causality” (for now) to mean the ATE from an ideal RCT]{.hi-slate}
 
@@ -167,7 +164,7 @@ where $\color{orange}{Y}$ is numeric:
 
 ::: columns
 ::: {.column width="50%"}
-- [Random assignment]{.hi-turquoise} to groups ensures that the *only* differences between members of the treatment(s) and control groups is *receiving treatment or not*
+- [Random assignment]{.hi-turquoise} to groups ensures that the *only* differences between members of the treatment(s) and control groups is *receiving treatment or not* (even better with large $n$)
 
 :::
 ::: {.column width="25%"}
@@ -184,9 +181,10 @@ where $\color{orange}{Y}$ is numeric:
 
 ::: columns
 ::: {.column width="50%"}
-- [Random assignment]{.hi-turquoise} to groups ensures that the *only* differences between members of the treatment(s) and control groups is *receiving treatment or not*
+- [Random assignment]{.hi-turquoise} to groups ensures that the *only* differences between members of the treatment(s) and control groups is *receiving treatment or not* (even better with large $n$)
 
 - [Selection bias:]{.hi-orange} (pre-existing) differences between members of treatment and control groups *other* than treatment, that affect the outcome 
+  - For example, if only low income individuals are in control group for new medication 
 
 :::
 ::: {.column width="25%"}
@@ -245,7 +243,7 @@ $$\color{#314f4f}{\delta_i} = \color{#e64173}{Y_i^{1}} - \color{red}{?}$$
 - [Individual counterfactuals do not exist (“the path not taken”)]{.hi-purple}
 
 - You will always only ever get one of these per individual!
-  - e.g. what would your life have been like if you did not go to Hood College?? 🧐
+  - e.g. what would your life have been like if you did not go to Trinity?? 
 
 - So what can we do?
 
@@ -272,7 +270,7 @@ $$\color{#314f4f}{\delta_i} = \color{#e64173}{Y_i^{1}} - \color{red}{?}$$
 - **Or** we observe individual $i$ in the [control group]{.hi-purple} $\color{#6A5ACD}{(T=0)}$, i.e.
 $$\color{#314f4f}{\delta_i} = \color{red}{?} - \color{#6A5ACD}{Y_i^{0}} $$
 
-- **Never both** at the same time:
+- **Never both** at the same time for individual $i$:
 
 ✨ $\color{#314f4f}{\delta_i} = \color{#e64173}{Y_i^{1}} - \color{#6A5ACD}{Y_i^{0}}$  ✨
 
@@ -941,24 +939,7 @@ Control Group
 :::
 :::
 
-## The First Natural Experiment
 
-::: columns
-::: {.column width="30%"}
-![](images/jonsnowmeme.jpg){fig-align="center" width="400"}
-:::
-::: {.column width="70%"}
-
-- John Snow utilized the [first famous natural experiment](http://blogs.plos.org/publichealth/2013/03/11/john-snow-the-first-epidemiologist/) to establish the foundations of epidemiology and the germ theory of disease
-
-- Water pumps with sources *downstream* of a sewage dump in the Thames river spread cholera while water pumps with sources *upstream* did not
-
-![](images/choleramap.jpg){fig-align="center" width="600"}
-:::
-:::
-
-::: footer
-:::
 
 ## The First Natural Experiment
 
