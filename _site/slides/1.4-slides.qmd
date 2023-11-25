@@ -3,7 +3,6 @@ format:
   revealjs:
     theme: [default, custom.scss]
     logo: "../images/metrics_hex.png"
-    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
     height: 900
     width: 1600
     #df-print: paged
@@ -19,11 +18,10 @@ execute:
 
 [1.4 --- Data Wrangling]{.custom-title}
 
-[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+[ECON 4470 • Econometrics]{.custom-subtitle}
 
-[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
+[Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD]{.custom-author}
 
-[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
 
 ```{r}
 #| label: setup
@@ -68,9 +66,9 @@ knitr::opts_chunk$set(echo=T,
 ::: columns
 ::: {.column width="50%"}
 - Most data analysis is taming chaos into order
-    - Data strewn from multiple sources 😨
-    - Missing data ("`NA`") 😡
-    - Data not in a readable form 🤢
+    - Data strewn from multiple sources 
+    - Missing data ("`NA`") 
+    - Data not in a readable form 
 
 :::
 
@@ -405,7 +403,7 @@ mpg %>%
 ```{r, eval=F}
 # Example
 
-df <- read_csv("C:/Documents and Settings/Ryan Safner/Downloads/my_data.csv")
+df <- read_csv("C:/Documents/Jordan Izenwasser/Downloads/my_data.csv")
 ```
 
 - Or use a **relative path** *from* R's working directory
@@ -414,7 +412,7 @@ df <- read_csv("C:/Documents and Settings/Ryan Safner/Downloads/my_data.csv")
 # Example
 # If working directory is Documents, but data is in Downloads, like so: 
 # 
-# Ryan Safner/
+# Jordan Izenwasser/
 # |
 # |- Documents/
 # |- Downloads/
@@ -423,15 +421,39 @@ df <- read_csv("C:/Documents and Settings/Ryan Safner/Downloads/my_data.csv")
 df <- read_csv("../Downloads/my_data.csv")
 ```
 
+## Aside: File Directories
+
+- You can also change your working directory to make files easier to load in
+- For example, you can load all your data for a project into a folder called 'MyProj'
+
+```{r, eval=F}
+# Example
+
+setwd("C:/Documents/Jordan Izenwasser/MyProj")
+df <- read_csv("my_data.csv")
+```
+
+- If you are working with others, it may be useful to assign your directories to a variable
+```{r, eval=F}
+# Example
+
+a <- "C:/Documents/Jordan Izenwasser/MyProj"
+b <- "C:/Documents/Your Name/YourProj"
+
+setwd(a)
+df <- read_csv("my_data.csv")
+```
+
 ## Common Import Issues II
 
 - **Suggestion** to make your data import easier: *Download and move files to R's working directory*
+  - This means it's not a best practice to constantly be changing your working directory
 
 - Your computer and working directory are different from mine (and others)
 
 - This is *not* a reproducible workflow! 
 
-- We'll finally fix this next class with `R Projects`
+- We'll fix this soon with `R Projects`
     - The working directory is set to the Project Folder by default
     - Same for everyone on any computer!
 
@@ -667,6 +689,79 @@ ex_long %>%
 
 # Joining Datasets {.centered background-color="#314f4f"}
 
+## Joins in R
+
+:::columns
+::: {.column width="50%"}
+- Often in econometrics we have multiple sources of data we need to join (i.e want to join crime data by county with policing data by county)
+
+- We can use the `join_*` family of functions from `dplyr`
+  - Requires two data frames, `x` and `y`
+  - Can identify variable(s) we want to join on using `by = "var_name"`
+  - Joining variables must have same name in both data frames
+  - If we don't specify `by= `, `dplyr` will try to find a var with the same name to join on
+:::
+
+
+::: {.column width="50%"}
+![](images/join_diagram.png)
+:::
+:::
+
+## Joins Example
+:::columns
+::: {.column width="50%"}
+```{r}
+#| echo: false
+# make example untidy data 
+ex_long <- tribble(
+  ~"country", ~"year", ~"type", ~"count",
+  "United States", 2000, "cases", 140,
+  "United States", 2000, "population", 300,
+  "United States", 2010, "cases", 180,
+  "United States", 2010, "population", 310,
+  "Canada", 2000, "cases", 102,
+  "Canada", 2000, "population", 110,
+  "Canada", 2010, "cases", 98,
+  "Canada", 2010, "population", 121,
+  "China", 2000, "cases", 111,
+  "China", 2000, "population", 1201,
+  "China", 2010, "cases", 123,
+  "China", 2010, "population", 1241
+)
+
+ex_wide <- ex_long %>% 
+  pivot_wider(names_from = "type", # column with names of vars
+              values_from = "count") # column with values of vars
+
+ex_gdp <- tribble(
+  ~"country", ~"year", ~"gdp",
+  "United States", 2000, 10.25,
+  "United States", 2010, 15.05,
+  "Canada", 2000, .744,
+  "Canada", 2010, 1.62,
+  "China", 2000, 1.21,
+  "China", 2010, 6.09
+)
+```
+
+
+```{r}
+ex_wide
+ex_gdp
+
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+left_join(ex_wide,ex_gdp, by = c('country','year'))
+
+
+```
+:::
+:::
+
 # Wrangling Data {.centered background-color="#314f4f"}
 
 ## `dplyr` I
@@ -696,7 +791,7 @@ ex_long %>%
   1. Allows use of `%>%` pipe operator
   2. Input and output is always a `tibble`
   3. Shows the output from a manipulation, but does not save/overwrite as an object unless explicitly assigned to an object
-  4. Several packages provide backends to SQL (`dbplyr`), Apache Spark (`sparklyr`)
+
 
 :::
 :::

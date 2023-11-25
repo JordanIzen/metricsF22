@@ -3,7 +3,6 @@ format:
   revealjs:
     theme: [default, custom.scss]
     logo: "../images/metrics_hex.png"
-    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
     height: 900
     width: 1600
 overview: true
@@ -15,18 +14,19 @@ execute:
 
 ## {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
 
-[1.2 — Meet R]{.custom-title}
+[1.2 —  R]{.custom-title}
 
-[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+[ECON 4470 • Econometrics]{.custom-subtitle}
 
-[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
+[Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD]{.custom-author}
 
-[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+
 
 
 ```{r}
 #| label: setup
 #| include: false
+
 library(tidyverse)
 library(kableExtra)
 library(patchwork)
@@ -35,14 +35,8 @@ library(gapminder)
 library(scales)
 ```
 
-## Data Science
 
-- [You go into data analysis with the tools you know, not the tools you need]{.hi}
-
-- The next 2-3 weeks are all about giving you the tools you need 
-    - Admittedly, a bit before you know what you need them *for*
-
-- We will extend them as we learn specific models
+# R and R Studio {background-color="#314f4f" .centered}
 
 ## R
 
@@ -72,81 +66,6 @@ library(scales)
 :::
 :::
 
-## Excel (or Stata) Can't Do This
-
-::: {.panel-tabset}
-
-## Code
-
-```{r}
-#| echo: true
-#| eval: false
-ggplot(data = gapminder, 
-       aes(x = gdpPercap,
-           y = lifeExp,
-           color = continent))+
-  geom_point(alpha=0.3)+
-  geom_smooth(method = "lm")+
-	scale_x_log10(breaks=c(1000,10000, 100000),
-	              label=scales::dollar)+
-	labs(x = "GDP/Capita",
-	     y = "Life Expectancy (Years)")+
-  facet_wrap(~continent)+
-  guides(color = F)+
-  theme_light()
-```
-
-## Output
-
-```{r}
-#| echo: false
-#| eval: true
-ggplot(data = gapminder, 
-       aes(x = gdpPercap,
-           y = lifeExp,
-           color = continent))+
-  geom_point(alpha=0.3)+
-  geom_smooth(method = "lm")+
-	scale_x_log10(breaks=c(1000,10000, 100000),
-	              label=scales::dollar)+
-	labs(x = "GDP/Capita",
-	     y = "Life Expectancy (Years)")+
-  facet_wrap(~continent)+
-  guides(color = F)+
-  theme_light()
-```
-
-:::
-
-## Or This
-
-::: {.panel-tabset}
-
-### Input
-
-The average GDP per capita is `` ` r dollar(mean(gapminder$gdpPercap)) `  `` with a standard deviation of `` ` r dollar(sd(gapminder$gdpPercap)) ` ``.  
-
-### Output
-
-The average GDP per capita is `r dollar(mean(gapminder$gdpPercap))` with a standard deviation of `r dollar(sd(gapminder$gdpPercap))`.  
-
-:::
-
-## Or This
-
-```{r}
-#| echo: true
-#| fig-width: 18
-#| fig-align: center
-library(leaflet)
-leaflet() %>%
-  addTiles() %>%
-  addMarkers(lng = -77.420, lat = 39.421,
-             popup = "Rosenstock Hall, Hood College")
-```
-
-# Meet R and R Studio {background-color="#314f4f" .centered}
-
 ## R and R Studio
 
 ::: columns
@@ -169,13 +88,13 @@ leaflet() %>%
 ::: columns
 
 ::: {.column width="50%"}
-- [R Studio]{.hi-purple}^[The company R Studio recently [announced](https://www.rstudio.com/blog/rstudio-is-becoming-posit/) they will be rebranding later this fall as **Posit**.] is an **integrated development environment** (IDE) that makes your coding life a lot easier
+- [R Studio]{.hi-purple} is an **integrated development environment** (IDE) that makes your coding life a lot easier
   - Write code in scripts
   - Execute individual commands & scripts
   - Auto-complete, highlight syntax
   - View data, objects, and plots
   - Get help and documentation on commands and functions
-  - Integrate code into documents with `Quarto`
+  - Integrate code into documents with `Quarto` or `RMarkdown`
 
 :::
 
@@ -247,7 +166,6 @@ leaflet() %>%
 ::: {.column width="50%"}
 - A `R Project` is a way of systematically organizing your `R` history, working directory, and related files in a single, self-contained directory
 - Can easily be sent to others who can reproduce your work easily 
-- Connects well with version control software like GitHub
 - Can open multiple projects in multiple windows
 :::
 ::: {.column width="50%"}
@@ -263,7 +181,6 @@ leaflet() %>%
 
 - For more advanced uses, your project can be an `R Package` or a `Shiny Web Application`
 
-- If you have other packages that create templates installed (as I do, in the previous image), they will also show up as options
 
 :::
 ::: {.column width="50%"}
@@ -280,7 +197,6 @@ leaflet() %>%
     
 - Choose the location of the folder on your computer
 
-- Depending on if you have other packages or utilities installed (such as `git`, see below!), there may be additional options, do not check them unless you know what you are doing
 
 - Bottom left checkbox allows you to open a new instance (window) of `R` just for this project (and keep existing windows open)
 
@@ -305,10 +221,6 @@ leaflet() %>%
 . . .
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">A surprisingly large part of having expertise in a topic is not so much knowing everything about it but learning the language and sources well enough to be extremely efficient in google searches.</p>&mdash; Katie Mack (@AstroKatie) <a href="https://twitter.com/AstroKatie/status/1071442842873159681?ref_src=twsrc%5Etfw">December 8, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-
-## ...and Sucking
-
-![](images/suckingatsomething.gif)
 
 
 ## Say Hello To My Little Friend
@@ -545,8 +457,8 @@ x*y
 ```{r}
 #| echo: true
 
-name <- "Ryan Safner"
-address <- "Hood College"
+name <- "Jordan Izenwasser"
+address <- "Trinity University"
 
 name
 address

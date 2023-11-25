@@ -3,7 +3,6 @@ format:
   revealjs:
     theme: [default, custom.scss]
     logo: "../images/metrics_hex.png"
-    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
     height: 900
     width: 1600
     df-print: paged
@@ -20,11 +19,9 @@ execute:
 
 [2.6 --- Inference for Regression]{.custom-title}
 
-[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+[ECON 4470 • Econometrics]{.custom-subtitle}
 
-[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
-
-[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+[Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD]{.custom-author}
 
 ```{r}
 #| label: setup
@@ -186,7 +183,7 @@ scatter_1 <- scatter_base+
 scatter_1
 ```
 
-**Sample 1:** 50 random observations
+**Sample 1:** 50 random individuals
 
 **Population relationship**
 <br>
@@ -247,7 +244,7 @@ $\hat{Y}_i = `r round(lm3$coefficients[1], 2)` + `r round(lm3$coefficients[2], 2
 - Let's repeat this process **10,000 times**!
 
 - This exercise is called a [(Monte Carlo) simulation]{.hi-purple}
-  - I'll show you how to do this next class with the `infer` package
+  - I'll show you how to do this soon with the `infer` package
 
 . . .
 
@@ -316,7 +313,7 @@ sim_scatter
 $$\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1}X \color{#6A5ACD}{\xrightarrow{\text{🤞 hopefully 🤞}}} Y_i=\beta_0+\beta_1X+u_i$$ 
 
 - We can’t yet make [*causal* inferences]{.hi} about whether/how $X$ *causes* $Y$
-  - coming after the midterm!
+  - coming soon!
 
 ## Estimation and Statistical Inference
 
@@ -873,6 +870,7 @@ ca_school %>%
 
 $\bigg( \big[$ estimate - MOE $\big]$, $\big[$ estimate + MOE $\big] \bigg)$
 
+- MOE = (critical value)*s.e
 - The main question is, [how confident do we want to be]{.hi-turquoise} that our interval contains the true parameter?
   - Larger confidence level, larger margin of error (and thus larger interval)
 
@@ -942,7 +940,7 @@ ggplot(data = tibble(x=-4:4))+
 
 ::: columns
 ::: {.column width="50%"}
-- Recall the [68-95-99.7% empirical rule]{.hi-purple} for (standard) normal distributions!^[I’m playing fast and loose here, we can’t actually use the normal distribution, we use the Student’s t-distribution with n-k-1 degrees of freedom. But there’s no need to complicate things you don’t need to know about. Look at today’s [appendix](/resources/appendices/2.6-appendix) for more.]
+- Recall the [68-95-99.7% empirical rule]{.hi-purple} for (standard) normal distributions!^[I’m playing fast and loose here, we can’t actually use the normal distribution, we use the Student’s t-distribution with n-k-1 degrees of freedom. But there’s no need to complicate things you don’t need to know about.]
 
 - 95% of data falls within 2 standard deviations of the mean
 

@@ -3,7 +3,6 @@ format:
   revealjs:
     theme: [default, custom.scss]
     logo: "../images/metrics_hex.png"
-    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
     height: 900
     width: 1600
     df-print: paged
@@ -20,11 +19,9 @@ execute:
 
 [3.2 --- DAGs]{.custom-title}
 
-[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+[ECON 4470 • Econometrics]{.custom-subtitle}
 
-[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
-
-[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+[Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD]{.custom-author}
 
 ```{r}
 #| label: setup
@@ -61,11 +58,12 @@ update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 
 ::: columns
 ::: {.column width="50%"}
-- Statistics profession is obstinant that we cannot say anything about causality
+- While RCT's are the "gold standard" of establishing causality, in economics they are often expensive and impractical
 
-- But you have to! It's how the human brain works!
+- Economists take advantage of [natural experiments]{.hi-purple} using [quasi-experimental methods]{.hi-purple} instead of RCT's
 
-- We can’t conceive of (spurious) correlation without some causation
+- Using quasi-experimental methods often requires some creativity and a lot of institutional knowledge 
+
 
 :::
 ::: {.column width="50%"}
@@ -79,7 +77,7 @@ update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 
 ## RCTs and Evidence-Based Policy
 
-[Should we *ONLY* base policies on the evidence from Randomized Controlled Trials]{.hi-purple}
+[Should we *ONLY* base policies on the evidence from Randomized Controlled Trials?]{.hi-purple}
 
 . . .
 
@@ -121,9 +119,7 @@ Source: [British Medical Journal](https://www.bmj.com/content/363/bmj.k5094)
 :::
 :::
 
-## Correlation vs. Causation I
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">&quot;Correlation implies casuation,&quot; the dean whispered as he handed me my PhD.<br><br>&quot;But then why-&quot;<br><br>&quot;Because if they knew, they wouldn&#39;t need us.&quot;</p>&mdash; David Robinson (@drob) <a href="https://twitter.com/drob/status/877976063942512640?ref_src=twsrc%5Etfw">June 22, 2017</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## What Does Causation Mean?
 
@@ -234,7 +230,6 @@ Source: [British Medical Journal](https://www.bmj.com/content/363/bmj.k5094)
 
 - Use clever research designs to approximate [natural experiments]{.hi-purple}
 
-- Note: major disagreements between Pearl & Angrist/Imbens, etc.!
 
 :::
 :::
@@ -328,7 +323,7 @@ If $X$ is a light switch, and $Y$ is a light:
 
 ::: columns
 ::: {.column width="50%"}
-- The *sine qua non* of causal claims are [counterfactuals]{.hi}: what would $Y$ have been if $X$ had been different?
+- The thing absolutely necessary of causal claims are [counterfactuals]{.hi}: what would $Y$ have been if $X$ had been different?
 
 - It is **impossible** to make a counterfactual claim from data alone! 
 
@@ -343,7 +338,7 @@ If $X$ is a light switch, and $Y$ is a light:
 ## Counterfactuals and RCTs
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="55%"}
 - Again, RCTs are invoked as the gold standard for their ability to make counterfactual claims:
 
 - Treatment/intervention $(X)$ is **randomly assigned** to individuals
@@ -355,7 +350,7 @@ If $X$ is a light switch, and $Y$ is a light:
 - We can say this because, on average, treatment and control groups are *the same before treatment*
 
 :::
-::: {.column width="50%"}
+::: {.column width="45%"}
 ![](images/twopaths.jpg)
 :::
 :::
@@ -370,6 +365,8 @@ If $X$ is a light switch, and $Y$ is a light:
 
 - Requires us to make some [assumptions]{.hi-purple}
 
+  - Each method we use will have a unique set of assumptions
+
 :::
 ::: {.column width="50%"}
 ![](images/twopaths.jpg)
@@ -381,9 +378,9 @@ If $X$ is a light switch, and $Y$ is a light:
 ## Causal Diagrams/DAGs
 ::: columns
 ::: {.column width="50%"}
-- A surprisingly simple, yet rigorous and powerful method of modeling is using a [causal diagram]{.hi} or [DAG]{.hi}:
-  - [Directed]{.hi}: Each node has arrows that points only one direction
-  - [Acyclic]{.hi}: Arrows only have one direction, and cannot loop back
+- A surprisingly simple, yet rigorous and powerful method of modeling DGPs is using a [causal diagram]{.hi} or [DAG]{.hi}:
+  - [Directed]{.hi}: Each node has arrow pointing to other nodes in only one direction
+  - [Acyclic]{.hi}: Arrows cannot loop back
   - [Graph]{.hi}
 
 :::
@@ -608,6 +605,23 @@ dagify(wage~educ,
 ::: {.column width="50%"}
 
 - What other variables are important?
+:::
+::: {.column width="50%"}
+```{r}
+dagify(wage~educ,
+       coords = edu_earn_coords) %>% 
+  tidy_dagitty(seed = 2) %>%
+  ggdag_parents("wage", stylized = FALSE, seed=256)+theme_dag_blank()+theme(legend.position = "none")
+```
+:::
+:::
+
+## DAG Example I
+
+::: columns
+::: {.column width="50%"}
+
+- What other variables are important?
   - Ability
   - Socioeconomic status
   - Demographics
@@ -779,7 +793,7 @@ dagify(wage~educ+conx+year+bckg+loc,
 ::: {.column width="50%"}
 - Tells you [how to identify your effect]{.hi-purple}! (upper right)
 
-> [Minimal sufficient adjustment sets]{.hi-purple} containing background, location, year for estimating the total effect of educ on wage:
+> [Minimal sufficient adjustment sets]{.hi-purple} to estimate the total effect of educ on wage we need to control for:
 background, location, year
 
 :::
@@ -797,7 +811,7 @@ background, location, year
 - These are [(conditional) independencies]{.hi-turquoise}:
 
 $$X \perp Y \, | \, Z$$
-> “X is independent of Y, given Z”
+- "X is independent of Y, given Z"
 
 - Implies that by *controlling for $Z$*, $X$ and $Y$ should have *no correlation*
 
@@ -998,13 +1012,13 @@ dagify(wage ~ educ + conx + year + bckg + loc,
 
 - Comes from fancy math called “do-calculus”
 
-![](images/do-calculus.png)
+
 
 - Fortunately, these amount to a few simple rules that we can see on a DAG
 
 :::
 ::: {.column width="50%"}
-![](images/bookofwhy.jpg)
+![](images/do-calculus.png)
 :::
 :::
 
@@ -1165,7 +1179,7 @@ dagify(Y~Z+X,
 
 ::: columns
 ::: {.column width="50%"}
-- Confounders are the DAG-equivalent of [omitted variable bias]{.hi} (next class)
+- Confounders are the DAG-equivalent of [omitted variable bias]{.hi} (more soon)
 
 $$Y_i=\beta_0+\beta_1 X_i$$
 
@@ -1283,7 +1297,7 @@ dagify(Y~Z+X,
 
 ::: columns
 ::: {.column width="50%"}
-- Using our terminology from last class, we have an outcome $(Y)$, and some treatment
+- Using our terminology, we have an outcome $(Y)$, and some treatment
 
 - But there are **unobserved factors** $(u)$
 
