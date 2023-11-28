@@ -1,0 +1,124 @@
+---
+title: "Problem Set 1 Solutions"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Q6
+Start by loading in tidyverse in the data
+```{r, message=FALSE}
+library(tidyverse)
+data("mtcars")
+```
+### (a) 
+```{r}
+mtcars %>% 
+  arrange(desc(mpg)) %>% 
+  head(5)
+```
+### (b)
+```{r}
+mtcars %>% 
+  arrange(disp) %>% 
+  head(5)
+```
+### (c)
+```{r}
+mtcars %>% 
+  mutate(mpg_per_hp = mpg/hp) %>% 
+  summarise(mean = mean(mpg_per_hp),
+            sd = sd(mpg_per_hp))
+```
+### (d)
+```{r}
+mtcars %>% 
+  group_by(cyl) %>% 
+  summarise(mean_hp = mean(hp))
+```
+### (e)
+```{r}
+hist(mtcars$mpg)
+
+# Add vertical line for mean
+abline(v = mean(mtcars$mpg), col = 'blue')
+
+# Add verticle line for median
+abline(v = median(mtcars$mpg), col = 'red' )
+```
+The distribution is not symmetric and appears to be skewed right, which is further supported by the mean being greater than the median.
+
+## Q7
+Let's start by loading the data in. Not that the directory I'm using is unique to my computer and yours should be different
+
+```{r, results= 'hide'}
+disease_data <- read.csv("C:\\Users\\jorda\\Desktop\\Metrics\\R Problem Sets\\Cali_Disease.csv", header = T)
+
+disease_data <- disease_data %>% 
+  filter(County != "California")
+```
+### (a) 
+```{r}
+nrow(disease_data)
+```
+### (b)
+```{r}
+disease_data %>% 
+  distinct(County) %>% 
+  nrow()
+```
+### (c)
+```{r}
+disease_data %>% 
+  distinct(Disease) %>% 
+  nrow()
+```
+### (d)
+```{r}
+disease_data %>% 
+  group_by(Year) %>% 
+  summarise(total_disease = sum(Cases[Sex == "Total"])) %>% 
+  top_n(1,total_disease)
+```
+### (e)
+```{r}
+disease_data %>% 
+  group_by(Disease) %>% 
+  summarise(total_disease = sum(Cases[Sex == "Total"])) %>% 
+  top_n(1,total_disease)
+```
+### (f)
+```{r}
+disease_data %>% 
+  group_by(County) %>% 
+  summarise(total_disease = sum(Cases[Sex == "Total"])) %>% 
+  top_n(1,total_disease)
+```
+
+### (g) 
+```{r}
+# Lets start by creating a dataframe for Campylobacteriosis that aggregates across all counties by year and sex
+
+campy <- disease_data %>% 
+  filter(Disease == "Campylobacteriosis") %>% 
+  group_by(Year) %>% 
+  summarise(total_cases = sum(Cases[Sex == "Total"]),
+            total_cases_male = sum(Cases[Sex == "Male"], na.rm = T), #remove rows with NA
+            total_cases_female = sum(Cases[Sex == "Female"], na.rm = T))
+
+# Now we will use ggplot() to create out line graph
+ggplot(campy, aes(x = Year)) +
+  geom_line(aes(y = total_cases, color = "Total Cases")) + 
+  geom_line(aes(y = total_cases_male, color = "Total Cases Male")) + 
+  geom_line(aes(y = total_cases_female, color = "Total Cases Female")) + 
+  labs(title = "Campylobacteriosis Cases by Sex over Time",
+       x = "Year", y = "Cases") +
+  scale_color_manual(values = c("Total Cases" = "darkmagenta",
+                                "Total Cases Male" = "blue",
+                                "Total Cases Female" = "red")) +
+  theme_bw()
+
+
+```

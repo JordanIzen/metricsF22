@@ -1491,7 +1491,7 @@ $$\sigma=\sqrt{\sigma^2}=\sqrt{\frac{1}{N}\displaystyle\sum^N_{i=1} (x_i-\mu)^2	
 
 - The [sample variance $s^2$]{.hi} of a *sample* distribution measures the average of the *squared* deviations from the *sample* mean $(\bar{x})$
 
-$$\sigma^2 = \frac{1}{n-1}\displaystyle\sum^n_{i=1} (x_i-\bar{x})^2$$
+$$s^2 = \frac{1}{n-1}\displaystyle\sum^n_{i=1} (x_i-\bar{x})^2$$
 
 . . .
 
