@@ -20,11 +20,10 @@ execute:
 
 [3.3 --- Omitted Variable Bias]{.custom-title}
 
-[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+[ECON 4470 • Econometrics]{.custom-subtitle}
 
-[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
+[Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD]{.custom-author}
 
-[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
 
 ```{r}
 #| label: setup
@@ -238,7 +237,7 @@ $$\text{Test score}_i = \beta_0 + \beta_1 \text{STR}_i + u_i$$
 
 ## Recall: Endogeneity and Bias
 
-- The true expected value of $\hat{\beta_1}$ is actually: [See [class 2.4](/content/2.4-content) for proof.]
+- The true expected value of $\hat{\beta_1}$ is actually: 
 
 $$E[\hat{\beta_1}]=\beta_1+cor(X,u)\frac{\sigma_u}{\sigma_X}$$
 
@@ -789,7 +788,7 @@ $$\beta_0 =\text{predicted value of Y when } X_1=0, \; X_2=0$$
 ## You Can Keep Your Intuitions...But They're Wrong Now
 
 ::: columns
-::: {.column width="50%"}
+::: {.column width="40%"}
 - We have been envisioning OLS regressions as the equation of a line through a scatterplot of data on two variables, $X$ and $Y$
     - $\beta_0$: “intercept”
     - $\beta_1$: “slope”
@@ -797,19 +796,19 @@ $$\beta_0 =\text{predicted value of Y when } X_1=0, \; X_2=0$$
 - With 3+ variables, OLS regression is no longer a “line” for us to estimate...
 
 :::
-::: {.column width="50%"}
+::: {.column width="60%"}
 ```{r}
 library(plotly)
 elreg<-lm(testscr~str+el_pct,data=ca_school)
 axis_x <- seq(min(ca_school$str), max(ca_school$str), by = 1)
 axis_y <- seq(min(ca_school$el_pct), max(ca_school$el_pct), by = 1)
 
-# https://stackoverflow.com/questions/38331198/add-regression-plane-to-3d-scatter-plot-in-plotly
+
 lm_surface <- expand.grid(str = axis_x,el_pct = axis_y,KEEP.OUT.ATTRS = F)
 lm_surface$testscr <- predict.lm(elreg, newdata = lm_surface)
 lm_surface <- reshape2::acast(lm_surface, el_pct ~ str, value.var = "testscr") #y ~ x
 
-#z<-matrix(CASchool_aug$.fitted, nrow=620, ncol=620)
+
 
 plot_ly(ca_school, x = ~str, y = ~el_pct, z = ~testscr) %>%
   add_markers(alpha=0.75) %>%
@@ -836,7 +835,7 @@ $$Y_i=\beta_0\color{#e64173}{X_{0i}}+\beta_1X_{1i}+\beta_2X_{2i}+u_i$$
 
 - Likewise, $\beta_0$ is more generally called the [“constant”]{.hi} term in the regression (instead of the “intercept”)
 
-- This may seem silly and trivial, but this will be useful next class!  
+- This may seem silly and trivial, but this will be useful soon!  
 
 ## The Population Regression Model: Example I
 
@@ -849,7 +848,7 @@ $$\text{Beer Consumption}_i=\beta_0+\beta_1 \, \text{Price}_i+\beta_2 \, \text{I
 
 . . .
 
-- Let's see what you remember from micro(econ)!
+- Let's see what you remember from micro!
 
 . . .
 
