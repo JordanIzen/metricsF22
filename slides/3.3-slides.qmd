@@ -3,7 +3,6 @@ format:
   revealjs:
     theme: [default, custom.scss]
     logo: "../images/metrics_hex.png"
-    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
     height: 900
     width: 1600
     df-print: paged

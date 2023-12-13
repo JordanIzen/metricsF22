@@ -3,7 +3,6 @@ format:
   revealjs:
     theme: [default, custom.scss]
     logo: "../images/metrics_hex.png"
-    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
     height: 900
     width: 1600
     df-print: paged
@@ -20,11 +19,9 @@ execute:
 
 [4.1 --- Multivariate OLS Estimators]{.custom-title}
 
-[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+[ECON 4470 • Econometrics]{.custom-subtitle}
 
-[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
-
-[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+[Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD]{.custom-author}
 
 ```{r}
 #| label: setup
@@ -130,9 +127,11 @@ $$\underbrace{\begin{pmatrix}
 
 . . .
 
-- The OLS estimator for $\beta$ is $\hat{\beta}=(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{Y}$ 😱
+- The OLS estimator for $\beta$ is $\hat{\beta}=(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{Y}$ 
 
-- Appreciate that I am saving you from such sorrow 🤖
+- Appreciate that I am saving you from such sorrow 
+
+- Note that we still have a function linear in the parameters
 
 ## The Sampling Distribution of $\hat{\beta_j}$
 
@@ -997,7 +996,7 @@ mcreg %>% tidy()
 :::
 :::
 
-- Note `R` *drops* one of the multicollinear regressors (`ef_pct`) if you include both 🤡
+- Note `R` *drops* one of the multicollinear regressors (`ef_pct`) if you include both 
 
 # A Summary of Multivariate OLS Estimator Properties {background-color="#314f4f" .centered}
 
@@ -1204,7 +1203,7 @@ ggplot(data = venn_df)+
 -  We correct for this effect with the [adjusted $\bar{R}^2$]{.hi} which penalizes adding new variables: 
 
 $$\bar{R}^2 = 1- \underbrace{\frac{n-1}{n-k-1}}_{penalty} \times \frac{SSR}{SST}$$
-- In the end, recall [$R^2$ was never that useful]{.hi-turquoise}^[...for measuring causal effects (our goal). It *is* useful if you care about prediction [instead](https://metricsf21.classes.ryansafner.com/slides/3.1-slides#3)!], so don't worry about the formula
+- In the end, recall [$R^2$ was never that useful]{.hi-turquoise}^[...for measuring causal effects (our goal). It *is* useful if you care about prediction instead!], so don't worry about the formula
   - Large sample sizes $(n)$ make $R^2$ and $\bar{R}^2$ very close
 
 

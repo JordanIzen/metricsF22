@@ -731,6 +731,11 @@ $$Y = \beta_0 + \beta_1 X + u$$
 
 - $u$ is a random [error term]{.hi}
     - **‘U’nobservable**, we can't measure it, and must model with assumptions about it
+    
+. . .
+- Known as a [linear regression model]{.hi} since it is [linear]{.hi-purple} in the parameters
+  - i.e no parameter appears as exponent or is multiplied by another parameter 
+
 
 ## The Population Regression Model
 
