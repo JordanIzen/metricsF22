@@ -95,7 +95,7 @@ update_geom_defaults("text", list(family = "Fira Sans Condensed"))
 
     -   Receiving a mortgage is a function of an applicant's risk profile
 
-    -   [Theory]{.underline}: If two applicants are identical in every way except for race they should have the same risk profile and therefore be equally as likely to be approved for a mortgage -
+    -   [Theory]{.underline}: If two applicants are identical in every way except for race they should have the same risk profile and therefore be equally as likely to be approved for a mortgage 
 
     -   [Reality]{.underline}: All else constant, Black applicants are denied 19% more than White applicants (Fed Reserve Boston using 90's data)
 
@@ -257,7 +257,6 @@ cor(x, y)
 ## Prerequisites
 
 -   **Officially (Courses)**:
-    -   Principles of Macro
     -   Intermediate Micro
     -   Business Stats
     -   Calculus 2
@@ -604,7 +603,7 @@ dagify(Y~X+Z,
 
 -   The control group is entirely in the sun and the treatment group in the shade.
 
--   We would observe that fertilizer reduces plant the quantity of tomatoes.
+-   We would observe that fertilizer reduces the quantity of tomatoes.
 
 -   This would be inferring incorrect causality because we don't have random assignment and there for are failing to control for a confounder.
 :::
