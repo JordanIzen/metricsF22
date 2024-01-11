@@ -547,7 +547,7 @@ ex_wide
 :::
 ::: {.column width="70%"}
 
-- **Common source of “un-tidy” data**: [Column headers are values, not variable names!]{.hi-purple} 😨
+- **Common source of “un-tidy” data**: [Column headers are values, not variable names!]{.hi-purple} 
     - Column names are *values* of a `year` variable! (e.g. `2000`, `2010`)
     - Each row actually represents *two* observations (one in 2000 and one in 2010)!
 
@@ -632,7 +632,7 @@ ex_long
 :::
 ::: {.column width="60%"}
 
-- **Another common source of “un-tidy” data**: [observations are scattered across multiple rows!]{.hi-purple} 😨
+- **Another common source of “un-tidy” data**: [observations are scattered across multiple rows!]{.hi-purple} 
     - Each country-year has two rows per observation, one for `Cases` and one for `Population` (categorized by `type` of variable)
 
 :::
@@ -1121,6 +1121,7 @@ gapminder %>%
 gapminder %>%
   filter(continent == "Africa") 
 ```
+## A Reminder on Viewing, Saving, & Overwriting Objects I
 
 ```{r}
 # Saves as africa
@@ -1471,15 +1472,4 @@ gapminder %>%
 
 ![[R Studio: Data Wrangling Cheat Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf)](images/data-wrangling-cheatsheet.png)
 
-## Resources {.smaller}
 
-- [*R For Data Science*, Chapter 10: Tibbles](https://r4ds.had.co.nz/tibbles.html)
-- [*R For Data Science*, Chapter 11: Data Import](https://r4ds.had.co.nz/data-import.html)
-- [R Studio Cheatsheet: Data Import](https://www.rstudio.com/resources/cheatsheets/#import)
-- [*R For Data Science*, Chapter 5: Data Transformation](https://r4ds.had.co.nz/tibbles.html)
-- [R Studio Cheatsheet: Data Wrangling](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) ([New version](https://www.rstudio.com/resources/cheatsheets/#dplyr))
-- [*R For Data Science*, Chapter 12: Tidy Data](https://r4ds.had.co.nz/tidy-data.html)
-- [R Studio Cheatsheet: Data Wrangling](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
-- [R Studio Cheatsheet: Data Import](https://www.rstudio.com/resources/cheatsheets/#import)
-- [*R For Data Science*, Chapter 13: Relational Data](https://r4ds.had.co.nz/relational-data.html)
-- [R Studio Cheatsheet: Data Transformation](https://www.rstudio.com/resources/cheatsheets/#dplyr)

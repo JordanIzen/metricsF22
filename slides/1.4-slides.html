@@ -8,7 +8,7 @@
 <link href="1.4-slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="1.4-slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="1.4-slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.3.450">
 
   <title>slides</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -635,11 +635,11 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <span id="cb10-5"><a href="#cb10-5"></a>example <span class="co"># look at it</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
-      x      y colors
-  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; 
-1     2 -0.246 orange
-2     4 -0.318 green 
-3     6  0.277 blue  </code></pre>
+      x     y colors
+  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; 
+1     2  1.48 orange
+2     4 -1.22 green 
+3     6 -1.21 blue  </code></pre>
 </div>
 </div>
 </div>
@@ -1000,7 +1000,7 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </div>
 </div><div class="column" style="width:70%;">
 <ul>
-<li><strong>Common source of “un-tidy” data</strong>: <span class="hi-purple">Column headers are values, not variable names!</span> 😨
+<li><strong>Common source of “un-tidy” data</strong>: <span class="hi-purple">Column headers are values, not variable names!</span>
 <ul>
 <li>Column names are <em>values</em> of a <code>year</code> variable! (e.g.&nbsp;<code>2000</code>, <code>2010</code>)</li>
 <li>Each row actually represents <em>two</em> observations (one in 2000 and one in 2010)!</li>
@@ -1101,7 +1101,7 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </div>
 </div><div class="column" style="width:60%;">
 <ul>
-<li><strong>Another common source of “un-tidy” data</strong>: <span class="hi-purple">observations are scattered across multiple rows!</span> 😨
+<li><strong>Another common source of “un-tidy” data</strong>: <span class="hi-purple">observations are scattered across multiple rows!</span>
 <ul>
 <li>Each country-year has two rows per observation, one for <code>Cases</code> and one for <code>Population</code> (categorized by <code>type</code> of variable)</li>
 </ul></li>
@@ -1263,18 +1263,6 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 5 China          2000   111       1201  1.21 
 6 China          2010   123       1241  6.09 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">inner_join</span>(ex_wide,ex_gdp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  country        year cases population    gdp
-  &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt;
-1 United States  2000   140        300 10.2  
-2 United States  2010   180        310 15.0  
-3 Canada         2000   102        110  0.744
-4 Canada         2010    98        121  1.62 
-5 China          2000   111       1201  1.21 
-6 China          2010   123       1241  6.09 </code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -1310,7 +1298,6 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li>Allows use of <code>%&gt;%</code> pipe operator</li>
 <li>Input and output is always a <code>tibble</code></li>
 <li>Shows the output from a manipulation, but does not save/overwrite as an object unless explicitly assigned to an object</li>
-<li>Several packages provide backends to SQL (<code>dbplyr</code>), Apache Spark (<code>sparklyr</code>)</li>
 </ol></li>
 </ul>
 </div>
@@ -1378,9 +1365,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># order by smallest to largest pop</span></span>
-<span id="cb47-2"><a href="#cb47-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb47-3"><a href="#cb47-3"></a>  <span class="fu">arrange</span>(pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># order by smallest to largest pop</span></span>
+<span id="cb45-2"><a href="#cb45-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb45-3"><a href="#cb45-3"></a>  <span class="fu">arrange</span>(pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 6
    country               continent  year lifeExp   pop gdpPercap
@@ -1405,9 +1392,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li>Break ties in the value of one variable with the values of additional variables</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># order by year, with the smallest to largest pop in each year</span></span>
-<span id="cb49-2"><a href="#cb49-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb49-3"><a href="#cb49-3"></a>  <span class="fu">arrange</span>(year, pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># order by year, with the smallest to largest pop in each year</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb47-3"><a href="#cb47-3"></a>  <span class="fu">arrange</span>(year, pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 6
    country               continent  year lifeExp    pop gdpPercap
@@ -1432,9 +1419,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li>Wrap <code>desc()</code> around a variable re-order in the opposite direction</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="co"># order by largest to smallest pop</span></span>
-<span id="cb51-2"><a href="#cb51-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb51-3"><a href="#cb51-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(pop))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># order by largest to smallest pop</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb49-3"><a href="#cb49-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(pop))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -1451,9 +1438,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="co"># keep only country, year, and population variables</span></span>
-<span id="cb52-2"><a href="#cb52-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb52-3"><a href="#cb52-3"></a>  <span class="fu">select</span>(country, year, pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="co"># keep only country, year, and population variables</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb50-3"><a href="#cb50-3"></a>  <span class="fu">select</span>(country, year, pop)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 3
    country      year      pop
@@ -1478,9 +1465,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li><code>select</code> “all except” by negating a variable with <code>-</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="co"># keep all variables *except* gdpPercap</span></span>
-<span id="cb54-2"><a href="#cb54-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb54-3"><a href="#cb54-3"></a>  <span class="fu">select</span>(<span class="sc">-</span>gdpPercap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="co"># keep all variables *except* gdpPercap</span></span>
+<span id="cb52-2"><a href="#cb52-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb52-3"><a href="#cb52-3"></a>  <span class="fu">select</span>(<span class="sc">-</span>gdpPercap)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 5
    country     continent  year lifeExp      pop
@@ -1508,9 +1495,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># move pop to first column</span></span>
-<span id="cb56-2"><a href="#cb56-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb56-3"><a href="#cb56-3"></a>  <span class="fu">select</span>(pop, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="co"># move pop to first column</span></span>
+<span id="cb54-2"><a href="#cb54-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb54-3"><a href="#cb54-3"></a>  <span class="fu">select</span>(pop, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 6
         pop country     continent  year lifeExp gdpPercap
@@ -1538,9 +1525,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># keep all variables starting with "co"</span></span>
-<span id="cb58-2"><a href="#cb58-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb58-3"><a href="#cb58-3"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"co"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="co"># keep all variables starting with "co"</span></span>
+<span id="cb56-2"><a href="#cb56-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb56-3"><a href="#cb56-3"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"co"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 2
    country     continent
@@ -1568,9 +1555,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="co"># keep country and all variables containing "per"</span></span>
-<span id="cb60-2"><a href="#cb60-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb60-3"><a href="#cb60-3"></a>  <span class="fu">select</span>(country, <span class="fu">contains</span>(<span class="st">"per"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># keep country and all variables containing "per"</span></span>
+<span id="cb58-2"><a href="#cb58-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb58-3"><a href="#cb58-3"></a>  <span class="fu">select</span>(country, <span class="fu">contains</span>(<span class="st">"per"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 2
    country     gdpPercap
@@ -1598,10 +1585,10 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># rename gdpPercap to GDP and lifeExp to population</span></span>
-<span id="cb62-2"><a href="#cb62-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb62-3"><a href="#cb62-3"></a>  <span class="fu">rename</span>(<span class="at">GDP =</span> gdpPercap,</span>
-<span id="cb62-4"><a href="#cb62-4"></a>         <span class="at">LE =</span> lifeExp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="co"># rename gdpPercap to GDP and lifeExp to population</span></span>
+<span id="cb60-2"><a href="#cb60-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb60-3"><a href="#cb60-3"></a>  <span class="fu">rename</span>(<span class="at">GDP =</span> gdpPercap,</span>
+<span id="cb60-4"><a href="#cb60-4"></a>         <span class="at">LE =</span> lifeExp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 6
    country     continent  year    LE      pop   GDP
@@ -1631,9 +1618,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li><code>filter</code> keeps only selected <strong>observations</strong> (rows)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># look only at African observations</span></span>
-<span id="cb64-2"><a href="#cb64-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb64-3"><a href="#cb64-3"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="co"># look only at African observations</span></span>
+<span id="cb62-2"><a href="#cb62-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb62-3"><a href="#cb62-3"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 624 × 6
    country continent  year lifeExp      pop gdpPercap
@@ -1707,10 +1694,10 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li>Can chain multiple conditions with a <code>,</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="co"># look only at African observations in 1997</span></span>
-<span id="cb66-2"><a href="#cb66-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb66-3"><a href="#cb66-3"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span>,</span>
-<span id="cb66-4"><a href="#cb66-4"></a>         year <span class="sc">==</span> <span class="dv">1997</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a><span class="co"># look only at African observations in 1997</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb64-3"><a href="#cb64-3"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span>,</span>
+<span id="cb64-4"><a href="#cb64-4"></a>         year <span class="sc">==</span> <span class="dv">1997</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 52 × 6
    country                  continent  year lifeExp      pop gdpPercap
@@ -1732,10 +1719,10 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <section id="filter-with-conditionals-ii" class="slide level2">
 <h2><code>filter()</code> with Conditionals II</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="co"># look only at African observations OR observations in 1997</span></span>
-<span id="cb68-2"><a href="#cb68-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb68-3"><a href="#cb68-3"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span> <span class="sc">|</span> </span>
-<span id="cb68-4"><a href="#cb68-4"></a>         year <span class="sc">==</span> <span class="dv">1997</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="co"># look only at African observations OR observations in 1997</span></span>
+<span id="cb66-2"><a href="#cb66-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb66-3"><a href="#cb66-3"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span> <span class="sc">|</span> </span>
+<span id="cb66-4"><a href="#cb66-4"></a>         year <span class="sc">==</span> <span class="dv">1997</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 714 × 6
    country     continent  year lifeExp      pop gdpPercap
@@ -1757,12 +1744,12 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <section id="filter-with-conditionals-iii" class="slide level2">
 <h2><code>filter()</code> with Conditionals III</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="co"># look only at U.S. and U.K. observations in 2002</span></span>
-<span id="cb70-2"><a href="#cb70-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb70-3"><a href="#cb70-3"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> </span>
-<span id="cb70-4"><a href="#cb70-4"></a>           <span class="fu">c</span>(<span class="st">"United States"</span>,</span>
-<span id="cb70-5"><a href="#cb70-5"></a>             <span class="st">"United Kingdom"</span>),</span>
-<span id="cb70-6"><a href="#cb70-6"></a>         year <span class="sc">==</span> <span class="dv">2002</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="co"># look only at U.S. and U.K. observations in 2002</span></span>
+<span id="cb68-2"><a href="#cb68-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb68-3"><a href="#cb68-3"></a>  <span class="fu">filter</span>(country <span class="sc">%in%</span> </span>
+<span id="cb68-4"><a href="#cb68-4"></a>           <span class="fu">c</span>(<span class="st">"United States"</span>,</span>
+<span id="cb68-5"><a href="#cb68-5"></a>             <span class="st">"United Kingdom"</span>),</span>
+<span id="cb68-6"><a href="#cb68-6"></a>         year <span class="sc">==</span> <span class="dv">2002</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 6
   country        continent  year lifeExp       pop gdpPercap
@@ -1796,10 +1783,10 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <section id="mutate-setting-a-specific-value" class="slide level2">
 <h2><code>mutate()</code>: Setting a Specific Value</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="co"># create variable called "europe" if country is in Europe</span></span>
-<span id="cb72-2"><a href="#cb72-2"></a><span class="fu">mutate</span>(gapminder, </span>
-<span id="cb72-3"><a href="#cb72-3"></a>       <span class="at">europe =</span> <span class="fu">case_when</span>(continent <span class="sc">==</span> <span class="st">"Europe"</span> <span class="sc">~</span> <span class="st">"In Europe"</span>,</span>
-<span id="cb72-4"><a href="#cb72-4"></a>                          continent <span class="sc">!=</span> <span class="st">"Europe"</span> <span class="sc">~</span> <span class="st">"Not in Europe"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="co"># create variable called "europe" if country is in Europe</span></span>
+<span id="cb70-2"><a href="#cb70-2"></a><span class="fu">mutate</span>(gapminder, </span>
+<span id="cb70-3"><a href="#cb70-3"></a>       <span class="at">europe =</span> <span class="fu">case_when</span>(continent <span class="sc">==</span> <span class="st">"Europe"</span> <span class="sc">~</span> <span class="st">"In Europe"</span>,</span>
+<span id="cb70-4"><a href="#cb70-4"></a>                          continent <span class="sc">!=</span> <span class="st">"Europe"</span> <span class="sc">~</span> <span class="st">"Not in Europe"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 7
    country     continent  year lifeExp      pop gdpPercap europe       
@@ -1821,9 +1808,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <section id="mutate-changing-a-variables-scale" class="slide level2">
 <h2><code>mutate()</code>: Changing a Variable’s Scale</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="co"># create population in millions variable</span></span>
-<span id="cb74-2"><a href="#cb74-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb74-3"><a href="#cb74-3"></a>  <span class="fu">mutate</span>(<span class="at">pop_mil =</span> pop <span class="sc">/</span> <span class="dv">1000000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="co"># create population in millions variable</span></span>
+<span id="cb72-2"><a href="#cb72-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb72-3"><a href="#cb72-3"></a>  <span class="fu">mutate</span>(<span class="at">pop_mil =</span> pop <span class="sc">/</span> <span class="dv">1000000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 7
    country     continent  year lifeExp      pop gdpPercap pop_mil
@@ -1845,9 +1832,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <section id="mutate-variable-based-on-other-variables" class="slide level2">
 <h2><code>mutate()</code>: Variable Based on Other Variables</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="co"># create GDP variable from gdpPercap and pop, in billions</span></span>
-<span id="cb76-2"><a href="#cb76-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb76-3"><a href="#cb76-3"></a>  <span class="fu">mutate</span>(<span class="at">GDP =</span> ((gdpPercap <span class="sc">*</span> pop) <span class="sc">/</span> <span class="dv">1000000000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="co"># create GDP variable from gdpPercap and pop, in billions</span></span>
+<span id="cb74-2"><a href="#cb74-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb74-3"><a href="#cb74-3"></a>  <span class="fu">mutate</span>(<span class="at">GDP =</span> ((gdpPercap <span class="sc">*</span> pop) <span class="sc">/</span> <span class="dv">1000000000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 7
    country     continent  year lifeExp      pop gdpPercap   GDP
@@ -1872,9 +1859,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li>Change <code>class</code> of a variable inside <code>mutate()</code> with <code>as.*()</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="co"># change year variable from an integer to a factor</span></span>
-<span id="cb78-2"><a href="#cb78-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb78-3"><a href="#cb78-3"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.factor</span>(year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="co"># change year variable from an integer to a factor</span></span>
+<span id="cb76-2"><a href="#cb76-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb76-3"><a href="#cb76-3"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.factor</span>(year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 6
    country     continent year  lifeExp      pop gdpPercap
@@ -1899,9 +1886,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li>Can create multiple new variables with commas:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb80-2"><a href="#cb80-2"></a>  <span class="fu">mutate</span>(<span class="at">GDP =</span> gdpPercap <span class="sc">*</span> pop,</span>
-<span id="cb80-3"><a href="#cb80-3"></a>         <span class="at">pop_millions =</span> pop <span class="sc">/</span> <span class="dv">1000000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb78-2"><a href="#cb78-2"></a>  <span class="fu">mutate</span>(<span class="at">GDP =</span> gdpPercap <span class="sc">*</span> pop,</span>
+<span id="cb78-3"><a href="#cb78-3"></a>         <span class="at">pop_millions =</span> pop <span class="sc">/</span> <span class="dv">1000000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 8
    country     continent  year lifeExp      pop gdpPercap       GDP pop_millions
@@ -1926,9 +1913,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li><code>transmute</code> keeps <em>only</em> newly created variables (it <code>select()</code>s only the new <code>mutate()</code>d variables)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb82-2"><a href="#cb82-2"></a>  <span class="fu">transmute</span>(<span class="at">GDP =</span> gdpPercap <span class="sc">*</span> pop,</span>
-<span id="cb82-3"><a href="#cb82-3"></a>            <span class="at">pop_millions =</span> pop <span class="sc">/</span> <span class="dv">1000000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb80-2"><a href="#cb80-2"></a>  <span class="fu">transmute</span>(<span class="at">GDP =</span> gdpPercap <span class="sc">*</span> pop,</span>
+<span id="cb80-3"><a href="#cb80-3"></a>            <span class="at">pop_millions =</span> pop <span class="sc">/</span> <span class="dv">1000000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 2
             GDP pop_millions
@@ -1953,11 +1940,11 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li>Boolean, logical, and conditionals all work well in <code>mutate()</code>:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb84-2"><a href="#cb84-2"></a>  <span class="fu">select</span>(country, year, lifeExp) <span class="sc">%&gt;%</span></span>
-<span id="cb84-3"><a href="#cb84-3"></a>  <span class="fu">mutate</span>(<span class="at">long_life_1 =</span> lifeExp <span class="sc">&gt;</span> <span class="dv">70</span>,</span>
-<span id="cb84-4"><a href="#cb84-4"></a>         <span class="at">long_life_2 =</span> <span class="fu">case_when</span>(lifeExp <span class="sc">&gt;</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"Long"</span>,</span>
-<span id="cb84-5"><a href="#cb84-5"></a>                            lifeExp <span class="sc">&lt;=</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"Short"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb82-2"><a href="#cb82-2"></a>  <span class="fu">select</span>(country, year, lifeExp) <span class="sc">%&gt;%</span></span>
+<span id="cb82-3"><a href="#cb82-3"></a>  <span class="fu">mutate</span>(<span class="at">long_life_1 =</span> lifeExp <span class="sc">&gt;</span> <span class="dv">70</span>,</span>
+<span id="cb82-4"><a href="#cb82-4"></a>         <span class="at">long_life_2 =</span> <span class="fu">case_when</span>(lifeExp <span class="sc">&gt;</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"Long"</span>,</span>
+<span id="cb82-5"><a href="#cb82-5"></a>                            lifeExp <span class="sc">&lt;=</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"Short"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 5
    country      year lifeExp long_life_1 long_life_2
@@ -1982,10 +1969,10 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li><code>mutate()</code> is order-aware, so you can chain multiple mutates that depend on previous mutates</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb86-2"><a href="#cb86-2"></a>  <span class="fu">select</span>(country, year, lifeExp) <span class="sc">%&gt;%</span></span>
-<span id="cb86-3"><a href="#cb86-3"></a>  <span class="fu">mutate</span>(<span class="at">dog_years =</span> lifeExp <span class="sc">*</span> <span class="dv">7</span>,</span>
-<span id="cb86-4"><a href="#cb86-4"></a>         <span class="at">comment =</span> <span class="fu">paste</span>(<span class="st">"Life expectancy in"</span>, country, <span class="st">"is"</span>, dog_years, <span class="st">"in dog years."</span>, <span class="at">sep =</span> <span class="st">" "</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb84-2"><a href="#cb84-2"></a>  <span class="fu">select</span>(country, year, lifeExp) <span class="sc">%&gt;%</span></span>
+<span id="cb84-3"><a href="#cb84-3"></a>  <span class="fu">mutate</span>(<span class="at">dog_years =</span> lifeExp <span class="sc">*</span> <span class="dv">7</span>,</span>
+<span id="cb84-4"><a href="#cb84-4"></a>         <span class="at">comment =</span> <span class="fu">paste</span>(<span class="st">"Life expectancy in"</span>, country, <span class="st">"is"</span>, dog_years, <span class="st">"in dog years."</span>, <span class="at">sep =</span> <span class="st">" "</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 5
    country      year lifeExp dog_years comment                                  
@@ -2015,9 +2002,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="co"># round all observations of numeric variables to 2 digits</span></span>
-<span id="cb88-2"><a href="#cb88-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb88-3"><a href="#cb88-3"></a>  <span class="fu">mutate_if</span>(is.numeric, round, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="co"># round all observations of numeric variables to 2 digits</span></span>
+<span id="cb86-2"><a href="#cb86-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb86-3"><a href="#cb86-3"></a>  <span class="fu">mutate_if</span>(is.numeric, round, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 6
    country     continent  year lifeExp      pop gdpPercap
@@ -2047,9 +2034,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a><span class="co"># make all factor variables uppercase</span></span>
-<span id="cb90-2"><a href="#cb90-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb90-3"><a href="#cb90-3"></a>  <span class="fu">mutate_if</span>(is.factor, toupper)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="co"># make all factor variables uppercase</span></span>
+<span id="cb88-2"><a href="#cb88-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb88-3"><a href="#cb88-3"></a>  <span class="fu">mutate_if</span>(is.factor, toupper)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 6
    country     continent  year lifeExp      pop gdpPercap
@@ -2076,9 +2063,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li>If assigned, you will not see the output until you call up the new <code>tibble</code> by name</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="co"># Prints output, doesn't save/overwrite object</span></span>
-<span id="cb92-2"><a href="#cb92-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb92-3"><a href="#cb92-3"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a><span class="co"># Prints output, doesn't save/overwrite object</span></span>
+<span id="cb90-2"><a href="#cb90-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb90-3"><a href="#cb90-3"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 624 × 6
    country continent  year lifeExp      pop gdpPercap
@@ -2096,13 +2083,16 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 # ℹ 614 more rows</code></pre>
 </div>
 </div>
+</section>
+<section id="a-reminder-on-viewing-saving-overwriting-objects-i-1" class="slide level2">
+<h2>A Reminder on Viewing, Saving, &amp; Overwriting Objects I</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="co"># Saves as africa</span></span>
-<span id="cb94-2"><a href="#cb94-2"></a>africa <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb94-3"><a href="#cb94-3"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span>)</span>
-<span id="cb94-4"><a href="#cb94-4"></a></span>
-<span id="cb94-5"><a href="#cb94-5"></a><span class="co"># Look at it</span></span>
-<span id="cb94-6"><a href="#cb94-6"></a>africa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="co"># Saves as africa</span></span>
+<span id="cb92-2"><a href="#cb92-2"></a>africa <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb92-3"><a href="#cb92-3"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span>)</span>
+<span id="cb92-4"><a href="#cb92-4"></a></span>
+<span id="cb92-5"><a href="#cb92-5"></a><span class="co"># Look at it</span></span>
+<span id="cb92-6"><a href="#cb92-6"></a>africa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 624 × 6
    country continent  year lifeExp      pop gdpPercap
@@ -2127,9 +2117,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li>Neat trick:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="co"># Save and view at same time by wrapping whole command with ()</span></span>
-<span id="cb96-2"><a href="#cb96-2"></a>(africa <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb96-3"><a href="#cb96-3"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="co"># Save and view at same time by wrapping whole command with ()</span></span>
+<span id="cb94-2"><a href="#cb94-2"></a>(africa <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb94-3"><a href="#cb94-3"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 624 × 6
    country continent  year lifeExp      pop gdpPercap
@@ -2162,10 +2152,10 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </ul></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a><span class="co"># get average life expectancy and call it avg_LE</span></span>
-<span id="cb98-2"><a href="#cb98-2"></a></span>
-<span id="cb98-3"><a href="#cb98-3"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb98-4"><a href="#cb98-4"></a>  <span class="fu">summarize</span>(<span class="at">avg_LE =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a><span class="co"># get average life expectancy and call it avg_LE</span></span>
+<span id="cb96-2"><a href="#cb96-2"></a></span>
+<span id="cb96-3"><a href="#cb96-3"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb96-4"><a href="#cb96-4"></a>  <span class="fu">summarize</span>(<span class="at">avg_LE =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   avg_LE
@@ -2270,9 +2260,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li>Counts of a categorical variable are useful, and can be done a few different ways:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a><span class="co"># summarize with n() gives size of current group, has no arguments</span></span>
-<span id="cb100-2"><a href="#cb100-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb100-3"><a href="#cb100-3"></a>  <span class="fu">summarize</span>(<span class="at">amount =</span> <span class="fu">n</span>()) <span class="co"># I've called it "amount"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a><span class="co"># summarize with n() gives size of current group, has no arguments</span></span>
+<span id="cb98-2"><a href="#cb98-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb98-3"><a href="#cb98-3"></a>  <span class="fu">summarize</span>(<span class="at">amount =</span> <span class="fu">n</span>()) <span class="co"># I've called it "amount"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   amount
@@ -2282,9 +2272,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a><span class="co"># count() is a dedicated command, counts observations by specified variable</span></span>
-<span id="cb102-2"><a href="#cb102-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb102-3"><a href="#cb102-3"></a>  <span class="fu">count</span>(year) <span class="co"># counts how many observations per year</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1"></a><span class="co"># count() is a dedicated command, counts observations by specified variable</span></span>
+<span id="cb100-2"><a href="#cb100-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb100-3"><a href="#cb100-3"></a>  <span class="fu">count</span>(year) <span class="co"># counts how many observations per year</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 2
     year     n
@@ -2321,11 +2311,11 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a><span class="co"># How many countries have life </span></span>
-<span id="cb104-2"><a href="#cb104-2"></a><span class="co"># expectancy over 70 in 2007?</span></span>
-<span id="cb104-3"><a href="#cb104-3"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb104-4"><a href="#cb104-4"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb104-5"><a href="#cb104-5"></a>  <span class="fu">summarize</span>(<span class="at">Over_70 =</span> <span class="fu">sum</span>(lifeExp<span class="sc">&gt;</span><span class="dv">70</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1"></a><span class="co"># How many countries have life </span></span>
+<span id="cb102-2"><a href="#cb102-2"></a><span class="co"># expectancy over 70 in 2007?</span></span>
+<span id="cb102-3"><a href="#cb102-3"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb102-4"><a href="#cb102-4"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb102-5"><a href="#cb102-5"></a>  <span class="fu">summarize</span>(<span class="at">Over_70 =</span> <span class="fu">sum</span>(lifeExp<span class="sc">&gt;</span><span class="dv">70</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   Over_70
@@ -2335,11 +2325,11 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a><span class="co"># What *proportion* of countries have life</span></span>
-<span id="cb106-2"><a href="#cb106-2"></a><span class="co"># expectancy over 70 in 2007?</span></span>
-<span id="cb106-3"><a href="#cb106-3"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb106-4"><a href="#cb106-4"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb106-5"><a href="#cb106-5"></a>  <span class="fu">summarize</span>(<span class="at">Over_70 =</span> <span class="fu">mean</span>(lifeExp<span class="sc">&gt;</span><span class="dv">70</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1"></a><span class="co"># What *proportion* of countries have life</span></span>
+<span id="cb104-2"><a href="#cb104-2"></a><span class="co"># expectancy over 70 in 2007?</span></span>
+<span id="cb104-3"><a href="#cb104-3"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb104-4"><a href="#cb104-4"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb104-5"><a href="#cb104-5"></a>  <span class="fu">summarize</span>(<span class="at">Over_70 =</span> <span class="fu">mean</span>(lifeExp<span class="sc">&gt;</span><span class="dv">70</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   Over_70
@@ -2356,11 +2346,11 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li>Can <code>summarize()</code> multiple <em>variables</em> at once, separate by commas</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a><span class="co"># get average life expectancy and GDP </span></span>
-<span id="cb108-2"><a href="#cb108-2"></a><span class="co"># call each avg_LE, avg_GDP</span></span>
-<span id="cb108-3"><a href="#cb108-3"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb108-4"><a href="#cb108-4"></a>  <span class="fu">summarize</span>(<span class="at">avg_LE =</span> <span class="fu">mean</span>(lifeExp),</span>
-<span id="cb108-5"><a href="#cb108-5"></a>            <span class="at">avg_GDP =</span> <span class="fu">mean</span>(gdpPercap))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1"></a><span class="co"># get average life expectancy and GDP </span></span>
+<span id="cb106-2"><a href="#cb106-2"></a><span class="co"># call each avg_LE, avg_GDP</span></span>
+<span id="cb106-3"><a href="#cb106-3"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb106-4"><a href="#cb106-4"></a>  <span class="fu">summarize</span>(<span class="at">avg_LE =</span> <span class="fu">mean</span>(lifeExp),</span>
+<span id="cb106-5"><a href="#cb106-5"></a>            <span class="at">avg_GDP =</span> <span class="fu">mean</span>(gdpPercap))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   avg_LE avg_GDP
@@ -2375,14 +2365,14 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li>Can <code>summarize()</code> multiple <em>statistics</em> of a variable at once, separate by commas</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a><span class="co"># get count, mean, sd, min, max</span></span>
-<span id="cb110-2"><a href="#cb110-2"></a><span class="co"># of life Expectancy </span></span>
-<span id="cb110-3"><a href="#cb110-3"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb110-4"><a href="#cb110-4"></a>  <span class="fu">summarize</span>(<span class="at">obs =</span> <span class="fu">n</span>(),</span>
-<span id="cb110-5"><a href="#cb110-5"></a>          <span class="at">avg_LE =</span> <span class="fu">mean</span>(lifeExp),</span>
-<span id="cb110-6"><a href="#cb110-6"></a>          <span class="at">sd_LE =</span> <span class="fu">sd</span>(lifeExp),</span>
-<span id="cb110-7"><a href="#cb110-7"></a>          <span class="at">min_LE =</span> <span class="fu">min</span>(lifeExp),</span>
-<span id="cb110-8"><a href="#cb110-8"></a>          <span class="at">max_LE =</span> <span class="fu">max</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1"></a><span class="co"># get count, mean, sd, min, max</span></span>
+<span id="cb108-2"><a href="#cb108-2"></a><span class="co"># of life Expectancy </span></span>
+<span id="cb108-3"><a href="#cb108-3"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb108-4"><a href="#cb108-4"></a>  <span class="fu">summarize</span>(<span class="at">obs =</span> <span class="fu">n</span>(),</span>
+<span id="cb108-5"><a href="#cb108-5"></a>          <span class="at">avg_LE =</span> <span class="fu">mean</span>(lifeExp),</span>
+<span id="cb108-6"><a href="#cb108-6"></a>          <span class="at">sd_LE =</span> <span class="fu">sd</span>(lifeExp),</span>
+<span id="cb108-7"><a href="#cb108-7"></a>          <span class="at">min_LE =</span> <span class="fu">min</span>(lifeExp),</span>
+<span id="cb108-8"><a href="#cb108-8"></a>          <span class="at">max_LE =</span> <span class="fu">max</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 5
     obs avg_LE sd_LE min_LE max_LE
@@ -2404,11 +2394,11 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1"></a><span class="co"># get the average of all</span></span>
-<span id="cb112-2"><a href="#cb112-2"></a><span class="co"># numeric variables </span></span>
-<span id="cb112-3"><a href="#cb112-3"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb112-4"><a href="#cb112-4"></a>  <span class="fu">summarize_if</span>(is.numeric,</span>
-<span id="cb112-5"><a href="#cb112-5"></a>               <span class="fu">funs</span>(<span class="at">avg =</span> mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1"></a><span class="co"># get the average of all</span></span>
+<span id="cb110-2"><a href="#cb110-2"></a><span class="co"># numeric variables </span></span>
+<span id="cb110-3"><a href="#cb110-3"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb110-4"><a href="#cb110-4"></a>  <span class="fu">summarize_if</span>(is.numeric,</span>
+<span id="cb110-5"><a href="#cb110-5"></a>               <span class="fu">funs</span>(<span class="at">avg =</span> mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
   year_avg lifeExp_avg   pop_avg gdpPercap_avg
@@ -2418,13 +2408,13 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a><span class="co"># get mean and sd for</span></span>
-<span id="cb114-2"><a href="#cb114-2"></a><span class="co"># pop and lifeExp</span></span>
-<span id="cb114-3"><a href="#cb114-3"></a></span>
-<span id="cb114-4"><a href="#cb114-4"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb114-5"><a href="#cb114-5"></a>  <span class="fu">summarize_at</span>(<span class="fu">vars</span>(pop, lifeExp),</span>
-<span id="cb114-6"><a href="#cb114-6"></a>    <span class="fu">funs</span>(<span class="st">"avg"</span> <span class="ot">=</span> mean,</span>
-<span id="cb114-7"><a href="#cb114-7"></a>         <span class="st">"std dev"</span> <span class="ot">=</span> sd))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1"></a><span class="co"># get mean and sd for</span></span>
+<span id="cb112-2"><a href="#cb112-2"></a><span class="co"># pop and lifeExp</span></span>
+<span id="cb112-3"><a href="#cb112-3"></a></span>
+<span id="cb112-4"><a href="#cb112-4"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb112-5"><a href="#cb112-5"></a>  <span class="fu">summarize_at</span>(<span class="fu">vars</span>(pop, lifeExp),</span>
+<span id="cb112-6"><a href="#cb112-6"></a>    <span class="fu">funs</span>(<span class="st">"avg"</span> <span class="ot">=</span> mean,</span>
+<span id="cb112-7"><a href="#cb112-7"></a>         <span class="st">"std dev"</span> <span class="ot">=</span> sd))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
     pop_avg lifeExp_avg `pop_std dev` `lifeExp_std dev`
@@ -2450,11 +2440,11 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li>First define the group with <code>group_by()</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1"></a><span class="co"># get average life expectancy and gdp by continent </span></span>
-<span id="cb116-2"><a href="#cb116-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb116-3"><a href="#cb116-3"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
-<span id="cb116-4"><a href="#cb116-4"></a>  <span class="fu">summarize</span>(<span class="at">avg_life =</span> <span class="fu">mean</span>(lifeExp),</span>
-<span id="cb116-5"><a href="#cb116-5"></a>            <span class="at">avg_GDP =</span> <span class="fu">mean</span>(gdpPercap))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1"></a><span class="co"># get average life expectancy and gdp by continent </span></span>
+<span id="cb114-2"><a href="#cb114-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb114-3"><a href="#cb114-3"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
+<span id="cb114-4"><a href="#cb114-4"></a>  <span class="fu">summarize</span>(<span class="at">avg_life =</span> <span class="fu">mean</span>(lifeExp),</span>
+<span id="cb114-5"><a href="#cb114-5"></a>            <span class="at">avg_GDP =</span> <span class="fu">mean</span>(gdpPercap))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 3
   continent avg_life avg_GDP
@@ -2470,11 +2460,11 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <section id="group_by-summarize-ii" class="slide level2">
 <h2><code>group_by() + summarize()</code> II</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1"></a><span class="co"># track changes in average life expectancy and gdp over time </span></span>
-<span id="cb118-2"><a href="#cb118-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb118-3"><a href="#cb118-3"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb118-4"><a href="#cb118-4"></a>  <span class="fu">summarize</span>(<span class="at">mean_life =</span> <span class="fu">mean</span>(lifeExp),</span>
-<span id="cb118-5"><a href="#cb118-5"></a>            <span class="at">mean_GDP =</span> <span class="fu">mean</span>(gdpPercap))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1"></a><span class="co"># track changes in average life expectancy and gdp over time </span></span>
+<span id="cb116-2"><a href="#cb116-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb116-3"><a href="#cb116-3"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb116-4"><a href="#cb116-4"></a>  <span class="fu">summarize</span>(<span class="at">mean_life =</span> <span class="fu">mean</span>(lifeExp),</span>
+<span id="cb116-5"><a href="#cb116-5"></a>            <span class="at">mean_GDP =</span> <span class="fu">mean</span>(gdpPercap))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 3
     year mean_life mean_GDP
@@ -2500,11 +2490,11 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li>Can group observations by multiple variables (in proper order)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1"></a><span class="co"># track changes in average life expectancy and gdp over time </span></span>
-<span id="cb120-2"><a href="#cb120-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb120-3"><a href="#cb120-3"></a>  <span class="fu">group_by</span>(continent, year) <span class="sc">%&gt;%</span></span>
-<span id="cb120-4"><a href="#cb120-4"></a>  <span class="fu">summarize</span>(<span class="at">mean_life =</span> <span class="fu">mean</span>(lifeExp),</span>
-<span id="cb120-5"><a href="#cb120-5"></a>            <span class="at">mean_GDP =</span> <span class="fu">mean</span>(gdpPercap))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1"></a><span class="co"># track changes in average life expectancy and gdp over time </span></span>
+<span id="cb118-2"><a href="#cb118-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb118-3"><a href="#cb118-3"></a>  <span class="fu">group_by</span>(continent, year) <span class="sc">%&gt;%</span></span>
+<span id="cb118-4"><a href="#cb118-4"></a>  <span class="fu">summarize</span>(<span class="at">mean_life =</span> <span class="fu">mean</span>(lifeExp),</span>
+<span id="cb118-5"><a href="#cb118-5"></a>            <span class="at">mean_GDP =</span> <span class="fu">mean</span>(gdpPercap))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 60 × 4
 # Groups:   continent [5]
@@ -2534,22 +2524,22 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb122-2"><a href="#cb122-2"></a>  <span class="fu">group_by</span>(continent, year) <span class="sc">%&gt;%</span></span>
-<span id="cb122-3"><a href="#cb122-3"></a>  <span class="fu">summarize</span>(<span class="at">mean_life =</span> <span class="fu">mean</span>(lifeExp),</span>
-<span id="cb122-4"><a href="#cb122-4"></a>            <span class="at">mean_GDP =</span> <span class="fu">mean</span>(gdpPercap)) <span class="sc">%&gt;%</span></span>
-<span id="cb122-5"><a href="#cb122-5"></a>  <span class="co"># now pipe this tibble in as data for ggplot!</span></span>
-<span id="cb122-6"><a href="#cb122-6"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="co"># . pipes the above in (to data layer)</span></span>
-<span id="cb122-7"><a href="#cb122-7"></a>         <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
-<span id="cb122-8"><a href="#cb122-8"></a>             <span class="at">y =</span> mean_life,</span>
-<span id="cb122-9"><a href="#cb122-9"></a>             <span class="at">color =</span> continent))<span class="sc">+</span></span>
-<span id="cb122-10"><a href="#cb122-10"></a>  <span class="fu">geom_path</span>(<span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb122-11"><a href="#cb122-11"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb122-12"><a href="#cb122-12"></a>       <span class="at">y =</span> <span class="st">"Average Life Expectancy (Years)"</span>,</span>
-<span id="cb122-13"><a href="#cb122-13"></a>       <span class="at">color =</span> <span class="st">"Continent"</span>,</span>
-<span id="cb122-14"><a href="#cb122-14"></a>       <span class="at">title =</span> <span class="st">"Average Life Expectancy Over Time"</span>)<span class="sc">+</span></span>
-<span id="cb122-15"><a href="#cb122-15"></a>  <span class="fu">theme_classic</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
-<span id="cb122-16"><a href="#cb122-16"></a>                <span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb120-2"><a href="#cb120-2"></a>  <span class="fu">group_by</span>(continent, year) <span class="sc">%&gt;%</span></span>
+<span id="cb120-3"><a href="#cb120-3"></a>  <span class="fu">summarize</span>(<span class="at">mean_life =</span> <span class="fu">mean</span>(lifeExp),</span>
+<span id="cb120-4"><a href="#cb120-4"></a>            <span class="at">mean_GDP =</span> <span class="fu">mean</span>(gdpPercap)) <span class="sc">%&gt;%</span></span>
+<span id="cb120-5"><a href="#cb120-5"></a>  <span class="co"># now pipe this tibble in as data for ggplot!</span></span>
+<span id="cb120-6"><a href="#cb120-6"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> ., <span class="co"># . pipes the above in (to data layer)</span></span>
+<span id="cb120-7"><a href="#cb120-7"></a>         <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
+<span id="cb120-8"><a href="#cb120-8"></a>             <span class="at">y =</span> mean_life,</span>
+<span id="cb120-9"><a href="#cb120-9"></a>             <span class="at">color =</span> continent))<span class="sc">+</span></span>
+<span id="cb120-10"><a href="#cb120-10"></a>  <span class="fu">geom_path</span>(<span class="at">size =</span> <span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb120-11"><a href="#cb120-11"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb120-12"><a href="#cb120-12"></a>       <span class="at">y =</span> <span class="st">"Average Life Expectancy (Years)"</span>,</span>
+<span id="cb120-13"><a href="#cb120-13"></a>       <span class="at">color =</span> <span class="st">"Continent"</span>,</span>
+<span id="cb120-14"><a href="#cb120-14"></a>       <span class="at">title =</span> <span class="st">"Average Life Expectancy Over Time"</span>)<span class="sc">+</span></span>
+<span id="cb120-15"><a href="#cb120-15"></a>  <span class="fu">theme_classic</span>(<span class="at">base_family =</span> <span class="st">"Fira Sans Condensed"</span>,</span>
+<span id="cb120-16"><a href="#cb120-16"></a>                <span class="at">base_size =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-2">
@@ -2575,8 +2565,8 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb123-2"><a href="#cb123-2"></a>  tally</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb121-2"><a href="#cb121-2"></a>  tally</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
       n
@@ -2586,9 +2576,9 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb125-2"><a href="#cb125-2"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
-<span id="cb125-3"><a href="#cb125-3"></a>  tally</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb123-2"><a href="#cb123-2"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
+<span id="cb123-3"><a href="#cb123-3"></a>  tally</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   continent     n
@@ -2609,8 +2599,8 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li><code>slice()</code> subsets observations by <em>position</em> instead of <code>filter</code>ing by <em>values</em></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb127-2"><a href="#cb127-2"></a>  <span class="fu">slice</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">17</span>) <span class="co"># see 15th through 17th rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb125-2"><a href="#cb125-2"></a>  <span class="fu">slice</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">17</span>) <span class="co"># see 15th through 17th rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 6
   country continent  year lifeExp     pop gdpPercap
@@ -2621,8 +2611,8 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb129-2"><a href="#cb129-2"></a>  <span class="fu">slice</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">150</span>)) <span class="co"># see 2nd, 3rd, and 150th rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb127-2"><a href="#cb127-2"></a>  <span class="fu">slice</span>(<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">150</span>)) <span class="co"># see 2nd, 3rd, and 150th rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 6
   country                continent  year lifeExp      pop gdpPercap
@@ -2639,25 +2629,25 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li><code>pull()</code> extracts a column from a <code>tibble</code> (just like <code>$</code> for a <code>data.frame</code>)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1"></a><span class="co"># Get all U.S. life expectancy observations</span></span>
-<span id="cb131-2"><a href="#cb131-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb131-3"><a href="#cb131-3"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"United States"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb131-4"><a href="#cb131-4"></a>  <span class="fu">pull</span>(lifeExp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1"></a><span class="co"># Get all U.S. life expectancy observations</span></span>
+<span id="cb129-2"><a href="#cb129-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb129-3"><a href="#cb129-3"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"United States"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb129-4"><a href="#cb129-4"></a>  <span class="fu">pull</span>(lifeExp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 68.440 69.490 70.210 70.760 71.340 73.380 74.650 75.020 76.090 76.810
 [11] 77.310 78.242</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1"></a><span class="co"># Note this is basically a vector!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1"></a><span class="co"># Note this is basically a vector!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1"></a><span class="co"># Get U.S. life expectancy in 2007</span></span>
-<span id="cb134-2"><a href="#cb134-2"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb134-3"><a href="#cb134-3"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"United States"</span> <span class="sc">&amp;</span> year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb134-4"><a href="#cb134-4"></a>  <span class="fu">pull</span>(lifeExp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1"></a><span class="co"># Get U.S. life expectancy in 2007</span></span>
+<span id="cb132-2"><a href="#cb132-2"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb132-3"><a href="#cb132-3"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"United States"</span> <span class="sc">&amp;</span> year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb132-4"><a href="#cb132-4"></a>  <span class="fu">pull</span>(lifeExp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 78.242</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1"></a><span class="co"># Here's just one value now</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1"></a><span class="co"># Here's just one value now</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Good for extracting &amp; saving important values as objects for further use</li>
@@ -2669,8 +2659,8 @@ $ z       &lt;dbl&gt; 2.43, 2.31, 2.31, 2.63, 2.75, 2.48, 2.47, 2.53, 2.49, 2.39
 <li><code>distinct()</code> shows the distinct values of a specified variable (recall <code>n_distinct()</code> inside <code>summarize()</code> just gives you the <em>number</em> of values)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb137-2"><a href="#cb137-2"></a>  <span class="fu">distinct</span>(country)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1"></a>gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb135-2"><a href="#cb135-2"></a>  <span class="fu">distinct</span>(country)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
