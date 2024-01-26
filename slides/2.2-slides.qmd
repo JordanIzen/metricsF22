@@ -520,8 +520,6 @@ $$P(X=x_i)\rightarrow 0$$
 
 - Since $P(a)=0$ and $P(b)=0$, $P(a<X<b)=P(a \leq X \leq b)$
 
-- See [today's appendix](/resources/appendices/2.2-appendix) for how to graph math/stats functions in `ggplot`!
-
 :::
 ::: {.column width="50%"}
 ```{r}
