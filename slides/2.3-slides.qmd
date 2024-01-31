@@ -221,7 +221,7 @@ $$s_{X,Y}=E\big[(X-\bar{X})(Y-\bar{Y}) \big]$$
 
 . . .
 
-- Covariance is a common measure, but the units are meaningless, thus we rarely need to use it so **don't worry about learning the formula**
+- Covariance is a common measure, but the units are meaningless, it is non-robust to changes of scale, and does not indicate how a change in one variable can be expected to change another
 
 ## Covariance, in R
 
@@ -237,7 +237,7 @@ econfreedom %>%
 
 ## Correlation {.smaller}
 
-- Better to *standardize* covariance into a more intuitive concept: [correlation, $r_{X,Y}$]{.hi} $\in [-1, 1]$
+- Better to *standardize* covariance into a more intuitive concept which is robust to scale changes: [correlation, $r_{X,Y}$]{.hi} $\in [-1, 1]$
 
 . . .
 
@@ -249,7 +249,7 @@ $$r_{X,Y}=\frac{s_{X,Y}}{s_X s_Y}=\frac{cov(X,Y)}{sd(X)sd(Y)}$$
 
 . . .
 
-- Alternatively, take the average^[Over n-1, a *sample* statistic!] of the product of standardized $(Z$-scores for) each $(x_i,y_i)$ pair:^[See today's [appendix page](/resources/appendices/2.3-appendix) for example code to calculate correlation "by hand" in R using the second method.]
+- Alternatively, take the average^[Over n-1, a *sample* statistic!] of the product of standardized $(Z$-scores for) each $(x_i,y_i)$ pair:
 
 . . .
 
@@ -382,11 +382,7 @@ grid.arrange(corrn25, corrn50, corrn75, corr25, corr50, corr75, ncol=3)
 :::
 :::
 
-## Guess the Correlation!
 
-![](images/guessthecorrelation.png){fig-align="center"}
-
-[Guess the Correlation Game](http://guessthecorrelation.com/index.html)
 
 ## Correlation and Covariance in R
 
@@ -409,8 +405,6 @@ econfreedom %>%
     - I'll show you the difference in a few weeks (when we can actually talk about causation)
 
 - If $X$ and $Y$ are strongly correlated, $X$ can still be [endogenous]{.hi-purple}!
-
-- See [today's appendix page](/resources/appendix/2.3-appendix) for more on Covariance and Correlation
 
 :::
 ::: {.column width="50%"}
@@ -685,13 +679,13 @@ $$\text{test score} = \beta_0 + \beta_{1} \times \text{class size}$$
 ::: {.column width="50%"}
 - To get an equation that holds for *each* district, we need to include other factors
 
-$$\text{test score} = \beta_0 + \beta_1 \text{class size}+\text{other factors}$$
+$$\text{test score} = \beta_0 + \beta_1 \text{class size}+\text{factors}$$
 
-- For now, we will ignore these until Unit III
+- For now, we will ignore these "factors" until later
 
 - Thus, $\beta_0 + \beta_1 \text{class size}$ gives the [average effect]{.hi-purple} of class sizes on scores
 
-- Later, we will want to estimate the [marginal effect]{.hi} ([causal effect]{.hi}) of each factor on an individual district's test score, holding all other factors constant
+- Later, we will want to estimate the [marginal effect]{.hi} ([causal effect]{.hi}) $\beta_1$ of each factor on an individual district's test score, holding all other factors constant
 :::
 ::: {.column width="50%"}
 ![](images/smallclass.jpg)
@@ -725,7 +719,7 @@ $$Y = \beta_0 + \beta_1 X + u$$
 . . .
 
 - $\beta_0$ and $\beta_1$ are [parameters]{.hi-purple} that describe the population relationships between the variables
-    - unknown! to be estimated
+    - unknown, to be estimated
 
 . . .
 
@@ -733,6 +727,7 @@ $$Y = \beta_0 + \beta_1 X + u$$
     - **‘U’nobservable**, we can't measure it, and must model with assumptions about it
     
 . . .
+
 - Known as a [linear regression model]{.hi} since it is [linear]{.hi-purple} in the parameters
   - i.e no parameter appears as exponent or is multiplied by another parameter 
 
@@ -890,6 +885,10 @@ $$\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1}X_i$$
 
 - The [residual]{.hi-purple} or [prediction error]{.hi-purple} for the $i^{th}$ observation is the difference between observed $Y_i$ and its predicted value, $\hat{u_i}=Y_i-\hat{Y_i}$
 
+. . .
+
+- We can calculate $\hat{u_i}$ but notice that $\hat{u_i}$ does not enter our OLS regression line. Why? 
+
 ## The OLS Regression Estimators
 
 - The solution to the SSE minimization problem yields:
@@ -903,6 +902,7 @@ $$\hat{\beta}_0=\bar{Y}-\hat{\beta}_1\bar{X}$$
 $$\hat{\beta}_1=\frac{\displaystyle\sum^n_{i=1}(X_i-\bar{X})(Y_i-\bar{Y})}{\displaystyle\sum^n_{i=1}(X_i-\bar{X})^2}=\frac{s_{XY}}{s^2_X}= \frac{cov(X,Y)}{var(X)}$$
 
 . . .
+
 - Let's prove that these are the OLS Estimators on the board
 
 ## (Some) Properties of OLS
@@ -920,6 +920,27 @@ $$\begin{align*}
 \end{align*}$$
 
 4. The residuals and $X$ are uncorrelated
+
+## Regression Line as a CMF
+
+- We can think of our regression line as a [conditional mean function (cmf)]{.hi}
+
+- What is the expected value (mean) of $Y$?
+$$\begin{align*}
+\mathbb{E}(Y)&=\mathbb{E}(\beta_0 +\beta_1X + u) \\
+&= \mathbb{E}(\beta_0) +\mathbb{E}(\beta_1 X) + \mathbb{E}(u) \\
+&= \beta_0 + \beta_1 X +0 &&\text{Assume X is a fixed constant at given values} \\
+\bar{Y} &= \beta_0 + \beta_1 X \\
+\end{align*}$$
+
+. . .
+
+- Therefore, for a given value of $X$, the regression line tells us the average value of $Y$ (i.e $\mathbb{E}(Y_i | X_i)$)
+
+. . .
+
+- $\beta_0$ is the expected value of $Y$ when $X$ is zero; $\beta_1$ is the expected change in $Y$ when $X$ changes by one unit
+
 
 # Our Class Size Example in R {.centered background-color="#314f4f"}
 
@@ -1079,7 +1100,7 @@ school_reg %>% tidy(conf.int = T)
 ## Tidy Regression with `broom`: `glance()`
 
 - `glance()` shows us a lot of overall regression statistics and diagnostics
-    - We'll interpret these in next class and beyond
+    - We'll interpret these soon
 
 ```{r}
 #| echo: true
@@ -1108,6 +1129,7 @@ school_reg %>%
 
 - Using OLS, we find:
 $$\widehat{\text{test score}_i}=689.93-2.28 \, str_i$$ 
+
 . . .
 
 - $\hat{\beta_0} = 689.93$: test score for $str=0$
@@ -1127,6 +1149,7 @@ $$\text{test score}_i = 689.93 - 2.28 \, str_i + \hat{u}_i$$
 . . .
 
 $$\hat{u}_i = \text{test score}_i - \widehat{\text{test score}}_i$$
+
 . . .
 
 $$\hat{u}_i = \text{test score}_i - (689.93-2.28 \, str_i)$$
