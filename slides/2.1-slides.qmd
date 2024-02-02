@@ -1334,7 +1334,7 @@ ggplot(rightskew,aes(x=x))+
 1. Minimum value
 2. 25<sup>th</sup> percentile $(Q_1$, median of first 50% of data)
 3. 50<sup>th</sup> percentile (median, $Q_2)$
-4. 25<sup>th</sup> percentile $(Q_3$, median of last 50% of data)
+4. 75<sup>th</sup> percentile $(Q_3$, median of last 50% of data)
 5. Maximum value
 
 :::
