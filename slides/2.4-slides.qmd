@@ -79,7 +79,7 @@ school_reg_tidy <- tidy(school_reg)
 
 \begin{align*}
 \color{#0047AB}{Y_i} &= \color{#047806}{\hat{Y}_i} + \color{#D7250E}{\hat{u}_i} \\
-\color{#0047AB}{\text{Observed}_i} &= \color{#047806}{\text{Model}_i} + \color{#D7250E}{\text{Error}_i} \\
+\color{#0047AB}{\text{Observed}_i} &= \color{#047806}{\text{Model}_i} + \color{#D7250E}{\text{Resid}_i} \\
 \end{align*}
 
 > “All models are wrong. But some are useful. — George Box”
@@ -104,7 +104,7 @@ scatter +
 
 . . .
 
-$$\underbrace{\color{#0047AB}{Y_i}}_{\color{#0047AB}{Observed}}=\underbrace{\color{#047806}{\hat{Y}_i}}_{\color{#047806}{Model}}+\underbrace{\color{#D7250E}{\hat{u}_i}}_{\color{#D7250E}{Error}}$$
+$$\underbrace{\color{#0047AB}{Y_i}}_{\color{#0047AB}{Observed}}=\underbrace{\color{#047806}{\hat{Y}_i}}_{\color{#047806}{Model}}+\underbrace{\color{#D7250E}{\hat{u}_i}}_{\color{#D7250E}{Resid}}$$
 
 - Recall OLS estimators chosen to **minimize** [**Sum of Squared Residuals (SSR)**]{.red}: $\left(\displaystyle \sum^n_{i=1}\hat{u_i}^2\right)$
 
