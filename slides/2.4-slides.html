@@ -443,7 +443,7 @@
 <li><p>Quantify <strong>how much variation in <span class="math inline">\(\color{#0047AB}{Y_i}\)</span> is “explained” by the model, <span class="math inline">\(\color{#047806}{\hat{Y}_i}\)</span></strong></p></li>
 </ul>
 <div class="fragment">
-<p><span class="math display">\[\underbrace{\color{#0047AB}{Y_i}}_{\color{#0047AB}{Observed}}=\underbrace{\color{#047806}{\hat{Y}_i}}_{\color{#047806}{Model}}+\underbrace{\color{#D7250E}{\hat{u}_i}}_{\color{#D7250E}{Error}}\]</span></p>
+<p><span class="math display">\[\underbrace{\color{#0047AB}{Y_i}}_{\color{#0047AB}{Observed}}=\underbrace{\color{#047806}{\hat{Y}_i}}_{\color{#047806}{Model}}+\underbrace{\color{#D7250E}{\hat{u}_i}}_{\color{#D7250E}{Resid}}\]</span></p>
 <ul>
 <li>Recall OLS estimators chosen to <strong>minimize</strong> <span class="red"><strong>Sum of Squared Residuals (SSR)</strong></span>: <span class="math inline">\(\left(\displaystyle \sum^n_{i=1}\hat{u_i}^2\right)\)</span></li>
 </ul>
@@ -503,7 +503,7 @@
 <li><span class="red"><strong>Unexplained variation in Y: Area A</strong></span> <span class="math display">\[\color{#D7250E}{SSR} = \sum^n_{i=1}(\hat{u_i})^2\]</span></li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><span class="math display">\[R^2 = \frac{SSM}{SST} = \frac{\color{purple}{C}}{\color{red}{A}+\color{purple}{C}}\]</span></p>
+<p><span class="math display">\[R^2 = \frac{SSE}{SST} = \frac{\color{purple}{C}}{\color{red}{A}+\color{purple}{C}}\]</span></p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img data-src="2.4-slides_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
@@ -11581,7 +11581,11 @@ r_sq
 <section id="standard-error-of-the-regression" class="slide level2">
 <h2>Standard Error of the Regression</h2>
 <ul>
-<li><span class="hi">Standard Error of the Regression</span> <span class="math inline">\(\color{#e64173}{\hat{\sigma}_u}\)</span> is an estimator of the standard deviation of <span class="math inline">\(u_i\)</span></li>
+<li>Another measure of how well the model fits the data is the <span class="hi">standard error of the regression</span> <span class="math inline">\(\color{#e64173}{\hat{\sigma}_u}\)</span>, which is an estimator of the standard deviation of <span class="math inline">\(u_i\)</span>. It is in the same units as dependent variable.
+<ul>
+<li>Also know as root mean squared error (root MSE in Stata) or residual standard error (R)</li>
+<li>If the SSR is the variance of the residuals (in squared units of dependent variable), <span class="math inline">\(\hat{\sigma}_u\)</span> is the standard deviation of the residuals</li>
+</ul></li>
 </ul>
 <div class="fragment">
 <p><span class="math display">\[\hat{\sigma_u}=\sqrt{\frac{SSR}{n-2}}=\sqrt{\frac{\sum \hat{u}_i^2}{n-2}}\]</span></p>
@@ -11641,7 +11645,7 @@ SER
 </div>
 </div>
 <div class="fragment">
-<p>In large samples (where <span class="math inline">\(n-2 \approx n)\)</span>, SER <span class="math inline">\(\rightarrow\)</span> standard deviation of the residuals. This is why it is important to have large samples! Standard errors will be smaller</p>
+<p>In large samples (where <span class="math inline">\(n-2 \approx n)\)</span>, SER <span class="math inline">\(\rightarrow\)</span> standard deviation of the residuals. This is why it is important to have large samples! Standard errors will be smaller which means we can fit the data better and make better statistical inference</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>school_reg <span class="sc">%&gt;%</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
@@ -11675,6 +11679,7 @@ sd_resid
 </section>
 <section id="goodness-of-fit-looking-at-r-i" class="slide level2">
 <h2>Goodness of Fit: Looking at R I</h2>
+<p>Luckily, we generally don’t need to calculate all these statistics by hand. R does it for us!</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>school_reg <span class="sc">%&gt;%</span> <span class="fu">summary</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -11870,7 +11875,7 @@ nobs
 <div class="columns">
 <div class="column" style="width:50%;">
 <ol type="1">
-<li><span class="hi">Causal inference</span>: what is the affect of SNAP on poverty reduction?</li>
+<li><span class="hi">Causal inference</span>: what is the effect of SNAP on poverty reduction?</li>
 </ol>
 </div><div class="column" style="width:50;">
 <ol start="2" type="1">
@@ -11899,7 +11904,7 @@ nobs
 <div class="columns">
 <div class="column" style="width:50%;">
 <ol type="1">
-<li><span class="hi">Causal inference</span>: how does the time of day affect what shows people select?</li>
+<li><span class="hi">Causal inference</span>: how does the time of day impact what shows people select?</li>
 </ol>
 </div><div class="column" style="width:50;">
 <ol start="2" type="1">
@@ -11964,7 +11969,7 @@ nobs
 </div>
 <div class="fragment">
 <ul>
-<li><span class="hi-purple"><em>Sampling</em> randomness</span>: different samples will generate different OLS estimators
+<li><span class="hi-purple"><em>Sampling</em> randomness</span>: different samples will generate different OLS estimates
 <ul>
 <li>Thus, <span class="math inline">\(\hat{\beta_0}, \hat{\beta_1}\)</span> are <em>also</em> <strong>random variables</strong>, with their own <span class="hi-purple">sampling distribution</span></li>
 </ul></li>
@@ -12265,6 +12270,7 @@ nobs
 <li><p>For simple cross-sectional data, this is rarely an issue</p></li>
 <li><p>Time-series &amp; panel data nearly always contain <span class="hi">serial correlation</span> or <span class="hi">autocorrelation</span> between errors</p></li>
 <li><p>e.g.&nbsp;“this week’s sales look a lot like last week’s sales, which look like…etc”</p></li>
+<li><p>Autocorrelation won’t impact estimates but rather inference</p></li>
 <li><p>There are fixes to deal with autocorrelation (coming much later)</p></li>
 </ul>
 </div><div class="column" style="width:40%;">
@@ -12355,13 +12361,13 @@ nobs
 <p><img data-src="images/biasvariability.png"></p>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>Technically, we also care about <span class="hi-purple">consistency</span>: minimizing uncertainty about the correct value. The Law of Large Numbers, similar to CLT, permits this. We don’t need to get too advanced about probability in this class.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>Technically, we also care about <span class="hi-purple">consistency</span>: minimizing uncertainty about the correct value. The Law of Large Numbers (as the sample size grows (<span class="math inline">\(n \rightarrow \infty\)</span>) the mean of the sample gets closer to the population avg), similar to CLT, permits this. We don’t need to get too advanced about probability in this class.</p></li></ol></aside></section>
 <section id="exogeneity-and-unbiasedness-ii" class="slide level2">
 <h2>Exogeneity and Unbiasedness II</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li><p><span class="math inline">\(\mathbf{\hat{\beta_1}}\)</span> is the <span class="hi">Best Linear Unbiased Estimator (BLUE)</span> estimator of <span class="math inline">\(\mathbf{\beta_1}\)</span> <strong>when <span class="math inline">\(X\)</span> is exogenous</strong><sup>1</sup></p></li>
+<li><p><span class="hi-turquoise">Gauss-Markov Theorem</span>: The OLS estimator <span class="math inline">\(\mathbf{\hat{\beta_1}}\)</span> is the <span class="hi">Best (most effecient) Linear Unbiased Estimator (BLUE)</span> estimator of <span class="math inline">\(\mathbf{\beta_1}\)</span> <strong>when <span class="math inline">\(X\)</span> is exogenous</strong></p></li>
 <li><p>No systematic difference, on average, between sample values of <span class="math inline">\(\hat{\beta_1}\)</span> and the true population <span class="math inline">\(\beta_1\)</span>:</p></li>
 </ul>
 <p><span class="math display">\[E[\hat{\beta_1}]=\beta_1\]</span></p>
@@ -12372,7 +12378,7 @@ nobs
 <p><img data-src="images/biasvariability.png"></p>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn3"><p>The proof for this is known as the famous <a href="https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem">Gauss-Markov Theorem</a>. We will prove this now.</p></li></ol></aside></section>
+</section>
 <section id="exogeneity-and-unbiasedness-iii" class="slide level2">
 <h2>Exogeneity and Unbiasedness III</h2>
 <ul>
@@ -12390,6 +12396,7 @@ nobs
 <li><p>For any known value of <span class="math inline">\(X\)</span>, the expected value of <span class="math inline">\(u\)</span> is 0</p></li>
 <li><p>Knowing the value of <span class="math inline">\(X\)</span> must tell us <em>nothing</em> about the value of <span class="math inline">\(u\)</span> (anything else relevant to <span class="math inline">\(Y\)</span> other than <span class="math inline">\(X\)</span>)</p></li>
 <li><p>We can then confidently assert causation: <span class="math inline">\(X \rightarrow Y\)</span></p></li>
+<li><p>Let’s show that assuming exogeniety implies unbiased OLS estimates</p></li>
 </ul>
 </div>
 </section>
@@ -12444,7 +12451,7 @@ nobs
 <li><span class="hi-turquoise">Negative</span> <span class="math inline">\(cor(X,u)\)</span> underestimates the true <span class="math inline">\(\beta_1\)</span> <span class="math inline">\((\hat{\beta_1}\)</span> is too low)</li>
 </ul>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn4"><p>We will prove this now</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn3"><p>We will prove this now</p></li></ol></aside></section>
 <section id="endogeneity-and-bias-example-i" class="slide level2">
 <h2>Endogeneity and Bias: Example I</h2>
 <div class="callout callout-tip callout-titled callout-style-default">

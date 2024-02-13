@@ -165,7 +165,7 @@ $$\color{#D7250E}{SSR} = \sum^n_{i=1}(\hat{u_i})^2$$
 :::
 ::: {.column width="50%"}
 
-$$R^2 = \frac{SSM}{SST} = \frac{\color{purple}{C}}{\color{red}{A}+\color{purple}{C}}$$
+$$R^2 = \frac{SSE}{SST} = \frac{\color{purple}{C}}{\color{red}{A}+\color{purple}{C}}$$
 
 ```{r}
 library(ggforce)
@@ -314,7 +314,9 @@ $$R^2 = \frac{var(\hat{Y})}{var(Y)} = \frac{\color{red}{\frac{1}{n-1}}\sum^n_{i=
 
 ## Standard Error of the Regression
 
-- [Standard Error of the Regression]{.hi} $\color{#e64173}{\hat{\sigma}_u}$ is an estimator of the standard deviation of $u_i$
+- Another measure of how well the model fits the data is the [standard error of the regression]{.hi} $\color{#e64173}{\hat{\sigma}_u}$, which is an estimator of the standard deviation of $u_i$. It is in the same units as dependent variable.
+  - Also know as root mean squared error (root MSE in Stata) or residual standard error (R)
+  - If the SSR is the variance of the residuals (in squared units of dependent variable), $\hat{\sigma}_u$ is the standard deviation of the residuals
 
 . . . 
 
@@ -340,7 +342,7 @@ school_reg %>%
 
 . . .
 
-In large samples (where $n-2 \approx n)$, SER $\rightarrow$ standard deviation of the residuals. This is why it is important to have large samples! Standard errors will be smaller
+In large samples (where $n-2 \approx n)$, SER $\rightarrow$ standard deviation of the residuals. This is why it is important to have large samples! Standard errors will be smaller which means we can fit the data better and make better statistical inference
 
 ```{r}
 #| echo: true
@@ -351,6 +353,7 @@ school_reg %>%
 ```
 
 ## Goodness of Fit: Looking at R I
+Luckily, we generally don't need to calculate all these statistics by hand. R does it for us!
 ```{r}
 #| echo: true
 #| output-location: fragment
@@ -427,7 +430,7 @@ Supplemental Nutrition Assistance Program (SNAP aka “Food Stamps”) is a fede
 
 ::: columns
 ::: {.column width="50%"}
-1. [Causal inference]{.hi}: what is the affect of SNAP on poverty reduction?
+1. [Causal inference]{.hi}: what is the effect of SNAP on poverty reduction?
 
 :::
 
@@ -449,7 +452,7 @@ Netflix uses your past viewing history, the day of the week, and the time of the
 
 ::: columns
 ::: {.column width="50%"}
-1. [Causal inference]{.hi}: how does the time of day affect what shows people select?
+1. [Causal inference]{.hi}: how does the time of day impact what shows people select?
 
 :::
 
@@ -500,7 +503,7 @@ $$Y_i = \beta_0+\beta_1 X_i+u_i$$
 
 . . .
 
-- [*Sampling* randomness]{.hi-purple}: different samples will generate different OLS estimators
+- [*Sampling* randomness]{.hi-purple}: different samples will generate different OLS estimates
     - Thus, $\hat{\beta_0}, \hat{\beta_1}$ are *also* **random variables**, with their own [sampling distribution]{.hi-purple}
 
 ## Inferential Statistics and Sampling Distributions
@@ -839,6 +842,8 @@ $$cor(u_i,u_j)=0 \quad \forall i \neq j$$
 
 - e.g. "this week's sales look a lot like last week's sales, which look like...etc"
 
+- Autocorrelation won't impact estimates but rather inference
+
 - There are fixes to deal with autocorrelation (coming much later)
 
 :::
@@ -908,7 +913,7 @@ We want to estimate the average height (H) of U.S. adults (population) and have 
 
 ::: columns
 ::: {.column width="50%"}
-- What makes one estimator (e.g. $\bar{H}$) better than another (e.g. $H_1$)?^[Technically, we also care about [consistency]{.hi-purple}: minimizing uncertainty about the correct value. The Law of Large Numbers, similar to CLT, permits this. We don't need to get too advanced about probability in this class.]
+- What makes one estimator (e.g. $\bar{H}$) better than another (e.g. $H_1$)?^[Technically, we also care about [consistency]{.hi-purple}: minimizing uncertainty about the correct value. The Law of Large Numbers (as the sample size grows ($n \rightarrow \infty$) the mean of the sample gets closer to the population avg), similar to CLT, permits this. We don't need to get too advanced about probability in this class.]
 
 1. [Unbiasedness]{.hi-purple}: does the estimator give us the true parameter *on average*?  
 
@@ -925,7 +930,7 @@ We want to estimate the average height (H) of U.S. adults (population) and have 
 
 ::: columns
 ::: {.column width="50%"}
-- $\mathbf{\hat{\beta_1}}$ is the [Best Linear Unbiased Estimator (BLUE)]{.hi} estimator of  $\mathbf{\beta_1}$ **when $X$ is exogenous**^[The proof for this is known as the famous [Gauss-Markov Theorem](https://en.wikipedia.org/wiki/Gauss%E2%80%93Markov_theorem). We will prove this now.]
+- [Gauss-Markov Theorem]{.hi-turquoise}: The OLS estimator $\mathbf{\hat{\beta_1}}$ is the [Best (most effecient) Linear Unbiased Estimator (BLUE)]{.hi} estimator of  $\mathbf{\beta_1}$ **when $X$ is exogenous**
 
 - No systematic difference, on average, between sample values of $\hat{\beta_1}$ and the true population $\beta_1$:
 
@@ -959,6 +964,8 @@ $$E(u|X)=0$$
 - Knowing the value of $X$ must tell us *nothing* about the value of $u$ (anything else relevant to $Y$ other than $X$)
 
 - We can then confidently assert causation: $X \rightarrow Y$
+
+- Let's show that assuming exogeniety implies unbiased OLS estimates
 
 ## Endogeneity and Bias
 
