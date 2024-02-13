@@ -292,7 +292,8 @@ ggplot(data = venn_df)+
 ```{r, echo=T}
 library(broom)
 school_reg %>%
-  augment()
+  augment() %>% 
+  head(n=5)
 ```
 
 ## Calculating $R^2$ in `R` II
