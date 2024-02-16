@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Q6
-Start by loading in tidyverse in the data
+Start by loading in tidyverse and the data
 ```{r, message=FALSE}
 library(tidyverse)
 data("mtcars")
