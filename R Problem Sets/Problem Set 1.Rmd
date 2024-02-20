@@ -7,8 +7,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Q6
-Start by loading in tidyverse in the data
+## Q10
+Start by loading in tidyverse and the data
 ```{r, message=FALSE}
 library(tidyverse)
 data("mtcars")
@@ -50,11 +50,11 @@ abline(v = median(mtcars$mpg), col = 'red' )
 ```
 The distribution is not symmetric and appears to be skewed right, which is further supported by the mean being greater than the median.
 
-## Q7
-Let's start by loading the data in. Not that the directory I'm using is unique to my computer and yours should be different
+## Q11
+Let's start by loading the data in. Note that the directory I'm using is unique to my computer and yours should be different
 
 ```{r, results= 'hide'}
-disease_data <- read.csv("C:\\Users\\jorda\\Desktop\\Metrics\\R Problem Sets\\Cali_Disease.csv", header = T)
+disease_data <- read.csv("C:\\Users\\jizenwas\\Desktop\\Metrics\\Data for PS\\disease.csv", header = T)
 
 disease_data <- disease_data %>% 
   filter(County != "California")
