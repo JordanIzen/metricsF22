@@ -8,7 +8,7 @@
 <link href="2.5-slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="2.5-slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="2.5-slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.3.450">
 
   <title>slides</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -399,7 +399,6 @@
 <p><span class="custom-title">2.5 — Precision and Diagnostics</span></p>
 <p><span class="custom-subtitle">ECON 4470 • Econometrics</span></p>
 <p><span class="custom-author">Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD</span></p>
-<p><span class="custom-institution"><a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br></span></p>
 </section>
 <section id="contents" class="slide level2" data-background-color="#314f4f">
 <h2>Contents</h2>
@@ -429,7 +428,7 @@
 <div class="column" style="width:50%;">
 <p><span class="math display">\[\hat{\beta_1} \sim N(\mathbb{E}[\hat{\beta_1}], \sigma_{\hat{\beta_1}})\]</span></p>
 <ol type="1">
-<li><span class="hi-purple">Center</span><sup>1</sup> of the distribution: <span class="math inline">\(\mathbb{E}[\hat{\beta_1}]\)</span> (<strong>last class</strong>)</li>
+<li><span class="hi-purple">Center</span><sup>1</sup> of the distribution: <span class="math inline">\(\mathbb{E}[\hat{\beta_1}]\)</span> (<strong>last lecture</strong>)</li>
 </ol>
 </div><div class="column" style="width:50%;">
 <div class="cell">
@@ -446,8 +445,8 @@
 <div class="column" style="width:50%;">
 <p><span class="math display">\[\hat{\beta_1} \sim N(\mathbb{E}[\hat{\beta_1}], \sigma_{\hat{\beta_1}})\]</span></p>
 <ol type="1">
-<li><p><span class="hi-purple">Center</span><sup>1</sup> of the distribution: <span class="math inline">\(\mathbb{E}[\hat{\beta_1}]\)</span> (<strong>last class</strong>)</p></li>
-<li><p><span class="hi-purple">Precision</span> or <span class="hi-purple">uncertainty</span> of the estimate (<strong>today</strong>)</p>
+<li><p><span class="hi-purple">Center</span><sup>1</sup> of the distribution: <span class="math inline">\(\mathbb{E}[\hat{\beta_1}]\)</span> (<strong>last lecture</strong>)</p></li>
+<li><p><span class="hi-purple">Precision</span> or <span class="hi-purple">uncertainty</span> of the estimate (<strong>this lecture</strong>)</p>
 <ul>
 <li><span class="hi-purple">Variance <span class="math inline">\(\sigma^2_{\hat{\beta}_1}\)</span></span></li>
 <li><span class="hi-purple">Standard error</span><sup>2</sup> <span class="hi-purple"><span class="math inline">\(\sigma_{\hat{\beta}_1} = \sqrt{var(\hat{\beta}_1)}\)</span></span></li>
@@ -461,15 +460,15 @@
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>Under the 4 assumptions about <span class="math inline">\(u\)</span>, particularly, <span class="math inline">\(cor(X,u)=0\)</span></p></li><li id="fn3"><p>Standard <strong>“error”</strong> is the analog of standard <em>deviation</em> when talking about the <em>sampling distribution</em> of a sample statistic (such as <span class="math inline">\(\bar{X}\)</span> or <span class="math inline">\(\hat{\beta_1})\)</span></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>Under the 4 assumptions about <span class="math inline">\(u\)</span>, particularly, <span class="math inline">\(cor(X,u)=0\)</span></p></li><li id="fn3"><p>Standard <strong>error</strong> is the analog of standard <em>deviation</em> when talking about the <em>sampling distribution</em> of a sample statistic (such as <span class="math inline">\(\bar{X}\)</span> or <span class="math inline">\(\hat{\beta_1})\)</span></p></li></ol></aside></section>
 <section id="the-sampling-distribution-of-hatbeta_1-3" class="slide level2">
 <h2>The Sampling Distribution of <span class="math inline">\(\hat{\beta_1}\)</span></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">\[\hat{\beta_1} \sim N(\mathbb{E}[\hat{\beta_1}], \sigma_{\hat{\beta_1}})\]</span></p>
 <ol type="1">
-<li><p><span class="hi-purple">Center</span><sup>1</sup> of the distribution: <span class="math inline">\(\mathbb{E}[\hat{\beta_1}]\)</span> (<strong>last class</strong>)</p></li>
-<li><p><span class="hi-purple">Precision</span> or <span class="hi-purple">uncertainty</span> of the estimate (<strong>today</strong>)</p>
+<li><p><span class="hi-purple">Center</span><sup>1</sup> of the distribution: <span class="math inline">\(\mathbb{E}[\hat{\beta_1}]\)</span> (<strong>last lecture</strong>)</p></li>
+<li><p><span class="hi-purple">Precision</span> or <span class="hi-purple">uncertainty</span> of the estimate (<strong>this lecture</strong>)</p>
 <ul>
 <li><span class="hi-purple">Variance <span class="math inline">\(\sigma^2_{\hat{\beta}_1}\)</span></span></li>
 <li><span class="hi-purple">Standard error</span><sup>2</sup> <span class="hi-purple"><span class="math inline">\(\sigma_{\hat{\beta}_1} = \sqrt{var(\hat{\beta}_1)}\)</span></span></li>
@@ -483,7 +482,7 @@
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn4"><p>Under the 4 assumptions about <span class="math inline">\(u\)</span>, particularly, <span class="math inline">\(cor(X,u)=0\)</span></p></li><li id="fn5"><p>Standard <strong>“error”</strong> is the analog of standard <em>deviation</em> when talking about the <em>sampling distribution</em> of a sample statistic (such as <span class="math inline">\(\bar{X}\)</span> or <span class="math inline">\(\hat{\beta_1})\)</span></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn4"><p>Under the 4 assumptions about <span class="math inline">\(u\)</span>, particularly, <span class="math inline">\(cor(X,u)=0\)</span></p></li><li id="fn5"><p>Standard <strong>error</strong> is the analog of standard <em>deviation</em> when talking about the <em>sampling distribution</em> of a sample statistic (such as <span class="math inline">\(\bar{X}\)</span> or <span class="math inline">\(\hat{\beta_1})\)</span></p></li></ol></aside></section>
 <section>
 <section id="variation-in-hatbeta_1" class="title-slide slide level1 centered center" data-background-color="#314f4f">
 <h1>Variation in <span class="math inline">\(\hat{\beta}_1\)</span></h1>
@@ -1143,6 +1142,14 @@ nobs
 <h1>Diagnostics About Regression</h1>
 
 </section>
+<section id="diagnostics" class="slide level2">
+<h2>Diagnostics</h2>
+<ul>
+<li><p>Diagnostics inform us on the validity of a model</p></li>
+<li><p>That is, we want to see if the assumptions of the model are satisfied</p></li>
+<li><p>For regressions, we care about the distribution of the errors, checking for homoskedasticity, and the presence of outliers</p></li>
+</ul>
+</section>
 <section id="diagnostics-residuals-i" class="slide level2">
 <h2>Diagnostics: Residuals I</h2>
 <ul>
@@ -1494,9 +1501,9 @@ sd_u
 <ul>
 <li>We often plot a <span class="hi">residual plot</span> to see any odd patterns about residuals
 <ul>
-<li><span class="math inline">\(x\)</span>-axis are <span class="math inline">\(\hat{Y}_i\)</span> values (<code>.fitted</code>)</li>
-<li><span class="math inline">\(y\)</span>-axis are <span class="math inline">\(u_i\)</span> values (<code>.resid</code>)</li>
+<li><span class="math inline">\(x\)</span>-axis are <span class="math inline">\(\hat{Y}_i\)</span> values (<code>.fitted</code>), <span class="math inline">\(y\)</span>-axis are <span class="math inline">\(\hat{u_i}\)</span> values (<code>.resid</code>)</li>
 </ul></li>
+<li>Scatter should be random, with most of mass around 0. If there is a pattern or trend then we may need to tweak the model</li>
 </ul>
 <div class="panel-tabset">
 <ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Plot</a></li><li><a href="#tabset-2-2">Code</a></li></ul>
@@ -1564,7 +1571,7 @@ sd_u
 <section id="heteroskedasticity-iii" class="slide level2">
 <h2>Heteroskedasticity III</h2>
 <ul>
-<li>A better formula for estimating standard errors that are <strong>robust</strong> to heteroskedasticity (called <span class="hi">“robust standard errors”</span>):</li>
+<li>A better formula for estimating standard errors that are <strong>robust</strong> to heteroskedasticity (called <span class="hi">robust standard errors</span>):</li>
 </ul>
 <p><span class="math display">\[se(\hat{\beta_1})=\sqrt{\frac{\displaystyle\sum^n_{i=1}(X_i-\bar{X})^2\hat{u}^2}{\big[\displaystyle\sum^n_{i=1}(X_i-\bar{X})^2\big]^2}}\]</span></p>
 <ul>
@@ -1744,7 +1751,7 @@ BP = 5.7936, df = 1, p-value = 0.01608</code></pre>
 <li>Since <span class="math inline">\(p&lt;0.05\)</span>, can reject <span class="math inline">\(H_0\)</span> that errors are homoskedastic and conclude they are <em>heteroskedastic</em></li>
 </ul>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn8"><p>More on hypothesis testing next week!</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn8"><p>More on hypothesis testing soon!</p></li></ol></aside></section>
 <section id="how-about-the-wages-regression" class="slide level2">
 <h2>How About the Wages Regression?</h2>
 <div class="fragment">
@@ -1765,14 +1772,14 @@ BP = 15.306, df = 1, p-value = 9.144e-05</code></pre>
 <section id="fixing-heteroskedasticity-i" class="slide level2">
 <h2>Fixing Heteroskedasticity I</h2>
 <ul>
-<li>Heteroskedasticity is easy to fix with software that can calculate <span class="hi">robust standard errors</span> (using the more complicated formula above)</li>
+<li>Heteroskedasticity is easy to fix with software that can calculate <span class="hi">robust standard errors</span> (using the more complicated formula earlier)</li>
 </ul>
 <div class="fragment">
 <ul>
 <li>Easiest method is to use <code>estimatr</code> package
 <ul>
 <li><code>lm_robust()</code> command (<em>instead</em> of <code>lm</code>) to run regression</li>
-<li>set <code>se_type = "stata"</code> to calculate robust SEs using the formula above<sup>1</sup></li>
+<li>set <code>se_type = "stata"</code> to calculate robust SEs using the formula above</li>
 </ul></li>
 </ul>
 </div>
@@ -1782,7 +1789,7 @@ BP = 15.306, df = 1, p-value = 9.144e-05</code></pre>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="fu">library</span>(estimatr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn9"><p>This uses the method that Stata uses with the <code>robust</code> command, one advantage Stata has over <code>R</code>.</p></li></ol></aside></section>
+</section>
 <section id="fixing-heteroskedasticity-ii" class="slide level2">
 <h2>Fixing Heteroskedasticity II</h2>
 <div class="cell">

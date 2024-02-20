@@ -125,11 +125,11 @@ beta_dist+
 ::: {.column width="50%"}
 $$\hat{\beta_1} \sim N(\mathbb{E}[\hat{\beta_1}], \sigma_{\hat{\beta_1}})$$
 
-1. [Center]{.hi-purple}^[Under the 4 assumptions about $u$, particularly, $cor(X,u)=0$] of the distribution: $\mathbb{E}[\hat{\beta_1}]$ (**last class**)
+1. [Center]{.hi-purple}^[Under the 4 assumptions about $u$, particularly, $cor(X,u)=0$] of the distribution: $\mathbb{E}[\hat{\beta_1}]$ (**last lecture**)
 
-2. [Precision]{.hi-purple} or [uncertainty]{.hi-purple} of the estimate (**today**)
+2. [Precision]{.hi-purple} or [uncertainty]{.hi-purple} of the estimate (**this lecture**)
     - [Variance $\sigma^2_{\hat{\beta}_1}$]{.hi-purple}
-    - [Standard error]{.hi-purple}^[Standard **“error”** is the analog of standard *deviation* when talking about the *sampling distribution* of a sample statistic (such as $\bar{X}$ or $\hat{\beta_1})$] [$\sigma_{\hat{\beta}_1} = \sqrt{var(\hat{\beta}_1)}$]{.hi-purple}
+    - [Standard error]{.hi-purple}^[Standard **error** is the analog of standard *deviation* when talking about the *sampling distribution* of a sample statistic (such as $\bar{X}$ or $\hat{\beta_1})$] [$\sigma_{\hat{\beta}_1} = \sqrt{var(\hat{\beta}_1)}$]{.hi-purple}
 :::
 
 ::: {.column width="50%"}
@@ -158,11 +158,11 @@ ggplot(data = tibble(x=-4:4))+
 ::: {.column width="50%"}
 $$\hat{\beta_1} \sim N(\mathbb{E}[\hat{\beta_1}], \sigma_{\hat{\beta_1}})$$
 
-1. [Center]{.hi-purple}^[Under the 4 assumptions about $u$, particularly, $cor(X,u)=0$] of the distribution: $\mathbb{E}[\hat{\beta_1}]$ (**last class**)
+1. [Center]{.hi-purple}^[Under the 4 assumptions about $u$, particularly, $cor(X,u)=0$] of the distribution: $\mathbb{E}[\hat{\beta_1}]$ (**last lecture**)
 
-2. [Precision]{.hi-purple} or [uncertainty]{.hi-purple} of the estimate (**today**)
+2. [Precision]{.hi-purple} or [uncertainty]{.hi-purple} of the estimate (**this lecture**)
     - [Variance $\sigma^2_{\hat{\beta}_1}$]{.hi-purple}
-    - [Standard error]{.hi-purple}^[Standard **“error”** is the analog of standard *deviation* when talking about the *sampling distribution* of a sample statistic (such as $\bar{X}$ or $\hat{\beta_1})$] [$\sigma_{\hat{\beta}_1} = \sqrt{var(\hat{\beta}_1)}$]{.hi-purple}
+    - [Standard error]{.hi-purple}^[Standard **error** is the analog of standard *deviation* when talking about the *sampling distribution* of a sample statistic (such as $\bar{X}$ or $\hat{\beta_1})$] [$\sigma_{\hat{\beta}_1} = \sqrt{var(\hat{\beta}_1)}$]{.hi-purple}
 :::
 
 ::: {.column width="50%"}
@@ -767,6 +767,13 @@ school_reg %>%
 
 # Diagnostics About Regression {.centered background-color="#314f4f"}
 
+## Diagnostics
+- Diagnostics inform us on the validity of a model
+
+- That is, we want to see if the assumptions of the model are satisfied 
+
+- For regressions, we care about the distribution of the errors, checking for homoskedasticity, and the presence of outliers
+
 ## Diagnostics: Residuals I
 
 - We often look at the residuals of a regression to get more insight about its **goodness of fit** and its **bias**
@@ -879,8 +886,8 @@ aug_reg %>%
 ## Residual Plot
 
 - We often plot a [residual plot]{.hi} to see any odd patterns about residuals
-    - $x$-axis are $\hat{Y}_i$ values (`.fitted`)
-    - $y$-axis are $u_i$ values (`.resid`)
+    - $x$-axis are $\hat{Y}_i$ values (`.fitted`), $y$-axis are $\hat{u_i}$ values (`.resid`)
+- Scatter should be random, with most of mass around 0. If there is a pattern or trend then we may need to tweak the model
 
 ::: {.panel-tabset}
 
@@ -948,7 +955,7 @@ $$se(\hat{\beta_1})=\sqrt{var(\hat{\beta_1})} = \frac{SER}{\sqrt{n} \times sd(X)
 
 ## Heteroskedasticity III
 
-- A better formula for estimating standard errors that are **robust** to heteroskedasticity (called [“robust standard errors”]{.hi}):
+- A better formula for estimating standard errors that are **robust** to heteroskedasticity (called [robust standard errors]{.hi}):
 
 $$se(\hat{\beta_1})=\sqrt{\frac{\displaystyle\sum^n_{i=1}(X_i-\bar{X})^2\hat{u}^2}{\big[\displaystyle\sum^n_{i=1}(X_i-\bar{X})^2\big]^2}}$$
 
@@ -1258,7 +1265,7 @@ wage_reg %>% bptest()
 
 - Easiest method is to use `estimatr` package
   - `lm_robust()` command (*instead* of `lm`) to run regression
-  - set `se_type = "stata"` to calculate robust SEs using the formula above^[This uses the method that Stata uses with the `robust` command, one advantage Stata has over `R`.]
+  - set `se_type = "stata"` to calculate robust SEs using the formula above
 
 . . .
 
