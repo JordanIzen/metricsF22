@@ -1,0 +1,199 @@
+---
+title: "Problem Set 2 Solutions"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Q4
+Start by loading in tidyverse and the data
+```{r, message=FALSE}
+library(tidyverse)
+ACS_data <- read.csv("C:\\Users\\jizenwas\\Desktop\\Metrics\\ACS.csv")
+```
+### (a) 
+```{r}
+ACS_sample <- ACS_data %>% 
+  filter(INCWAGE != 0,
+         TRANTIME != 0,
+         INCWAGE < 999998) %>% 
+  mutate(wage_thous = INCWAGE/1000) %>% 
+  rename(Commute = TRANTIME)
+```
+### (b)
+```{r}
+ACS_sample %>% 
+  summarize(cor = cor(wage_thous,Commute))
+
+```
+### (c)
+```{r}
+ggplot(data = ACS_sample) +
+  aes(x = Commute,
+      y = wage_thous) +
+  geom_point(color = "blue") +
+  geom_smooth(method = "lm", color = "red") +
+  labs(x = "Commute Time (in minutes)",
+       y= "Wages (in thousands)") +
+  theme_bw()
+```
+
+Most observation seem to have short commute times and wages less than 100K. There is, however, considerable vriation in both. Based on the regression line, there appears to be a positive realtionship between commute time and wage.
+
+### (d)
+```{r}
+reg <- lm(wage_thous ~ Commute, 
+          data = ACS_sample)
+summary(reg)
+
+```
+$\hat{\beta_1}=0.254$. This means that every additional minute of a commute is associated with a \$254 increase in wages, on average. It is significant at the 1% level, indicated by the very small p-value. $\hat{\beta_0}=50.855$. This means when someone does not commute, there annual wages are about \$50,000, on average.
+
+### (e)
+We construct a 95% confidence interval by $C.I=\hat{\beta_1} \pm MOE$ where the MOE is the marigin of error found by $1.96*se(\hat{\beta_1})$. Thus, $C.I = 0.254 \pm 1.96*0.04645 = (0.16296, 0.34504)$. We are 95% confident that in similarly constructed samples, the true effect is between 0.16296 and 0.34504.
+
+### (f)
+The estimated marginal effect, $\hat{\beta_1}$, is biased since it is endogenous. For example, we don't observe the mode of transportation the individuals commute with. Higher income individuals are less likely to use public transit which will impact commute times. Since the correlation between wages and transit choice is positive (assuming we can view the quality of transit on a scale, where higher quality transit is used by higher income individuals) we likely overestimate the effect of commute times on wages. Since our regressor is endogenous we can't interpret the marginal effect as causal. 
+
+### (g)
+Let $W$ be wages in thousands. Then, $\hat{W} = 50.85 + 0.25 \text{commute time}$
+
+### (h)
+```{r}
+commute_time <- tibble(Commute = 45)
+predict(reg,
+        newdata = commute_time)
+
+```
+
+### (i)
+Let's look at the regression results again.
+```{r}
+summary(reg)
+
+```
+$R^2=0.007171$. This means that .7171 percent of the variation in wages is described by commute times. From this, we can conclude the model does not fit the data well. The $SER = 69.65$. This means the average wage is about $69,650 above/below the models prediction. This implies the model does not fit the data well.
+
+### (j)
+For the histogram, we will use the \textsf{augment()} function from the \textsf{broom} package. 
+```{r}
+library(broom)
+
+aug_reg <- reg %>% 
+  augment()
+
+ggplot(data = aug_reg)+
+  aes(x = .resid)+
+  geom_histogram(color="white", fill = "pink")+
+  labs(x = expression(paste("Residual, ", hat(u))))+
+  scale_y_continuous()+
+  theme_light()
+
+```
+
+The residuals appear to be skewed right. The expected value may be zero since most of the mass Of the density function is at zero, but this is hard to tell visually.
+
+For the residual plot:
+```{r}
+ggplot(data = aug_reg)+
+  aes(x = .fitted,
+      y = .resid)+
+  geom_point(color = "blue")+
+  geom_hline(aes(yintercept = 0), color = "red")+
+  labs(x = expression(paste("Predicted Test Score,", hat(y)[i])),
+       y = expression(paste("Residual, ", hat(u)[i])))+
+  theme_light()
+```
+
+The residual plot indicates that the residuals may not be random.
+
+### (k)
+```{r}
+library(lmtest)
+reg %>% bptest()
+```
+$H_0:\text{Homoskedasticity}$. Since the p-value is greater than 0.05, we fail to reject the null at the 5% level.
+
+### (l)
+```{r}
+library(estimatr)
+
+reg_robust <- lm_robust(wage_thous ~ Commute, 
+                        data = ACS_sample,
+                        se_type = "stata")
+
+reg_robust
+
+```
+Point estimates are the same since running a robust regression only impacts the standard errors. Standard errors are approxomatly the same. This is becuase robust se correct for heteroskedasticty. From the BP test, we failed to reject the null of homoskedasitiy, therefore it is intutive that the se's don't change. Becuase of this, the significance of our values doesn't change either.
+
+### (m)
+```{r}
+subsample <- ACS_sample %>% 
+  sample_n(15)
+
+reg_sub <- lm(wage_thous ~ Commute, 
+          data = subsample)
+summary(reg_sub)
+```
+Estimates are much different from the smaller sample size. Further, standard errors are much larger. This is becuase of how se are calculated. The smaller the sample, the larger the se. We loose significance on our slope coeffecient since the se are much larger.
+
+### (n)
+```{r}
+library(car)
+
+outlierTest(reg)
+
+```
+
+### (o)
+```{r}
+no_outliers <- ACS_sample %>% 
+  slice(-c(654,1071,3166,282,177,942,3368,168,933,287))
+
+reg_outliers <- lm(wage_thous ~ Commute, 
+          data = no_outliers)
+summary(reg_outliers)
+
+```
+The slope estimate was reduced, in addition to its standard error. The $R^2$ is also smaller. Our estimates are still significant.
+
+### (p)
+```{r}
+predict(reg_outliers,
+        newdata = commute_time)
+```
+The predicted value is smaller. This makes since since our slope coeffecient and intereept are smaller.
+
+### (q)
+```{r}
+library(infer)
+
+beta_1 <- 0.25401
+
+simulated_data <- ACS_sample %>% 
+  specify(wage_thous ~ Commute) %>% 
+  hypothesize(null = "independence") %>% # H0: slope = 0
+  generate(1000,
+           type = "permute") %>% # Draw 1000 samples assuming H0 is true
+  calculate(stat = "slope") # Estimate slope for each sample
+
+simulated_data
+
+# Calculate p-value
+simulated_data %>% 
+  get_p_value(obs_stat = beta_1,
+              direction = "both") # 2 sided alternate hypothesis: slope =/= 0
+```
+The p-value is approximately zero. This is numerically smaller but essentially the Same as part d.
+
+### (r)
+```{r}
+simulated_data %>% 
+  visualize() +
+  shade_p_value(obs_stat = beta_1,
+                direction = "both")
+```
+This plot shows the sampling distribution of $\hat{\beta_1}$ assuming the null is true (the population value equals zero). Since our estimated coefficient (the red line) does not overlap the distribution we can conclude our estimate is different than zero.
