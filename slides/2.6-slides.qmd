@@ -123,7 +123,6 @@ $$Y_i = \beta_0+\beta_1 X_i+u_i$$
 . . .
 
 - We want to [identify]{.hi} causal relationships between **population** variables
-  - Logically first thing to consider
   - [Endogeneity problem]{.hi-purple}
 
 . . .
@@ -310,7 +309,7 @@ sim_scatter
 
 . . .
 
-$$\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1}X \color{#6A5ACD}{\xrightarrow{\text{🤞 hopefully 🤞}}} Y_i=\beta_0+\beta_1X+u_i$$ 
+$$\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1}X \color{#6A5ACD}{\xrightarrow{\text{hopefully }}} Y_i=\beta_0+\beta_1X+u_i$$ 
 
 - We can’t yet make [*causal* inferences]{.hi} about whether/how $X$ *causes* $Y$
   - coming soon!
@@ -323,7 +322,7 @@ $$\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1}X \color{#6A5ACD}{\xrightarrow{\text{🤞
 
 - But we can use our errors to learn how well our model statistics likely estimate the true parameters
 
-- Use $\hat{\beta_1}$ and its standard error, $se(\hat{\beta_1})$ for statistical inference about true $\beta_1$
+- Use $\hat{\beta_1}$ and its standard error, $se(\hat{\beta_1})$, for statistical inference about true $\beta_1$
 
 - We have two options...
 
@@ -366,7 +365,7 @@ $$\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1}X \color{#6A5ACD}{\xrightarrow{\text{🤞
 
 - This allows us to approximate the sampling distribution of $\hat{\beta_1}$ by simulation!
 
-![](images/bootstraps.png){fig-align="center"}
+
 :::
 ::: {.column width="50%"}
 ```{r}
@@ -423,9 +422,9 @@ library(infer)
 
 1. `specify()` a model
 
-2. `generate()` a bootstrap distribution 
+2. `generate()` a bootstrap distribution based on a certain number of random draws
 
-3. `calculate()` the confidence interval
+3. `calculate()` $\hat{\beta_1}$ for each sample; create confidence intervals 
 
 4. `visualize()` with a histogram (optional)
 :::
@@ -474,7 +473,7 @@ ca_school %>%
 
 ```
 
-👆 Bootstrapped from Our Sample
+Results Bootstrapped from Our Sample
 
 :::
 :::
@@ -684,8 +683,8 @@ boot <- ca_school %>%
 ```{r}
 #| echo: true
 ci <- boot %>%
-  summarize(lower = quantile(stat, 0.025),
-            upper = quantile(stat, 0.975))
+  summarize(lower = quantile(stat, 0.025), # Value that contains 2.5% of data
+            upper = quantile(stat, 0.975)) # Value that contains 97.5% of data
 ci
 
 ```
@@ -715,8 +714,8 @@ sampling_dist
 ```{r}
 #| echo: true
 ci <- boot %>%
-  summarize(lower = quantile(stat, 0.025),
-            upper = quantile(stat, 0.975))
+  summarize(lower = quantile(stat, 0.025), # Value that contains 2.5% of data
+            upper = quantile(stat, 0.975)) # Value that contains 97.5% of data
 ci
 
 ```
@@ -749,6 +748,8 @@ sampling_dist+
 
 :::
 ::: {.column width="70%"}
+
+R can grab the bounds of the C.I as well
 ```{r}
 #| echo: true
 ca_school %>% #<< # save this
@@ -889,6 +890,9 @@ $\bigg( \big[$ estimate - MOE $\big]$, $\big[$ estimate + MOE $\big] \bigg)$
   - $\color{#6A5ACD}{\alpha}$ is the [“significance level”]{.hi-purple} that we use in hypothesis testing
   - $\color{#6A5ACD}{\alpha}=$ probability that the true parameter is *not* contained within our interval
 
+
+- [Critical value]{.hi-purple} - value of a distribution used to construct C.I and conduct hypothesis testing
+
 - Typical levels: 90%, 95%, 99%
   - 95% is especially common, $\alpha=0.05$
 
@@ -936,41 +940,30 @@ ggplot(data = tibble(x=-4:4))+
 :::
 :::
 
-## Confidence Levels and the Empirical Rule
 
-::: columns
-::: {.column width="50%"}
-- Recall the [68-95-99.7% empirical rule]{.hi-purple} for (standard) normal distributions!^[I’m playing fast and loose here, we can’t actually use the normal distribution, we use the Student’s t-distribution with n-k-1 degrees of freedom. But there’s no need to complicate things you don’t need to know about.]
 
-- 95% of data falls within 2 standard deviations of the mean
+## t-Distribution 
 
-- Thus, in 95% of samples, the true parameter is likely to fall within *about* 2 standard deviations of the sample estimate
+- In practice, we never know the true population sd of $\beta_1$, $\sigma_{\beta_1}$. We also may have a small sample size of $n<30$.
 
-:::
-::: {.column width="50%"}
-```{r}
-ggplot(data = tibble(x=-4:4))+
-  aes(x = x)+
-  stat_function(fun = dnorm, size=2, geom="area", fill="gray", alpha=0.5)+
-  stat_function(fun = dnorm, size=2, xlim=c(-2,2), geom="area", fill="#e64173")+
-  labs(x = "Z (Standard Deviations from mean)",
-       y = "Probability")+
-  annotate("segment", x = -2, xend = 2, y = 0.10, yend = 0.10, colour = "#000000", size=0.5, linetype = 2, alpha=1, arrow=arrow(length=unit(0.25,"cm"), ends="both", type="closed"))+
-  annotate("text", x = 0, y = 0.11, label = "95%", color="#000000")+
-  annotate("segment", x = -4, xend = -1.96, y = 0.05, yend = 0.05, colour = "#000000", size=0.5, linetype = 2, alpha=1, arrow=arrow(length=unit(0.25,"cm"), ends="both", type="closed"))+
-  annotate("text", x = -3, y = 0.075, label = "2.5%", color="#000000")+
-  
-  annotate("segment", x = 1.96, xend = 4, y = 0.05, yend = 0.05, colour = "#000000", size=0.5, linetype = 2, alpha=1, arrow=arrow(length=unit(0.25,"cm"), ends="both", type="closed"))+
-  annotate("text", x = 3, y = 0.075, label = "2.5%", color="#000000")+
-  scale_x_continuous(breaks=seq(-4,4,1))+
-  scale_y_continuous(breaks=NULL,
-                     limits=c(0,0.45),
-                     expand=c(0,0))+
-  theme_classic(base_family = "Fira Sans Condensed",
-           base_size=20)
-```
-:::
-:::
+- If either of these are true, we can't use the Central Limit Theorem to assume that $\hat{\beta_1}$ has a standard normal distribution. 
+
+- Instead, it has a [Student's t-distribution]{.hi-purple} with n-1 degrees of freedom
+
+- As n grows, the t-distribution approximates a normal distribution, so in practice we will use critical values which correspond to z-scores. However, we still always use the t-distribution for C.I and hypothesis testing 
+
+. . .
+
+- If $\alpha=0.1$, we have a 90% confidence level and $Z_{critical} = \pm 1.645$
+- If $\alpha=0.05$, we have a 95% confidence level and $Z_{critical} = \pm 1.96$
+- If $\alpha=0.01$, we have a 99% confidence level and $Z_{critical} = \pm 2.58$
+
+
+
+## Calculating C.I Using Theory
+- Exactly 95% of data falls withing 1.96 standard deviations of the mean, thus we often use a critical value of 1.96
+- To construct a C.I of our str coefficient we would then
+$$([-2.28-(1.96)*0.4798], [-2.228 + (1.96)*0.4798]) = (-3.22,-1.33)$$
 
 ## Interpretting Confidence Intervals
 
@@ -992,24 +985,4 @@ ggplot(data = tibble(x=-4:4))+
 
 ✅ [We are 95% confident that in similarly constructed samples, the true effect is between  -3.22 and -1.33]{.green}
 
-## Estimating in `R`
 
-- `base R` doesn't show confidence intervals in the `lm summary()` output, need the `confint` command
-
-```{r}
-#| echo: true
-#| output-location: fragment
-
-confint(school_reg)
-```
-
-## Estimating with `broom`
-
-- `broom`'s `tidy()` command can include confidence intervals
-
-```{r}
-#| echo: true
-#| output-location: fragment
-school_reg %>%
-  tidy(conf.int = TRUE)
-```

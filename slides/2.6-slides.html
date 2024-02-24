@@ -8,7 +8,7 @@
 <link href="2.6-slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="2.6-slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="2.6-slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.3.450">
 
   <title>slides</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -479,7 +479,6 @@
 <ul>
 <li>We want to <span class="hi">identify</span> causal relationships between <strong>population</strong> variables
 <ul>
-<li>Logically first thing to consider</li>
 <li><span class="hi-purple">Endogeneity problem</span></li>
 </ul></li>
 </ul>
@@ -579,7 +578,7 @@
 </ul>
 </div>
 <div class="fragment">
-<p><span class="math display">\[\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1}X \color{#6A5ACD}{\xrightarrow{\text{🤞 hopefully 🤞}}} Y_i=\beta_0+\beta_1X+u_i\]</span></p>
+<p><span class="math display">\[\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1}X \color{#6A5ACD}{\xrightarrow{\text{hopefully }}} Y_i=\beta_0+\beta_1X+u_i\]</span></p>
 <ul>
 <li>We can’t yet make <span class="hi"><em>causal</em> inferences</span> about whether/how <span class="math inline">\(X\)</span> <em>causes</em> <span class="math inline">\(Y\)</span>
 <ul>
@@ -595,7 +594,7 @@
 <ul>
 <li><p>Our problem with <span class="hi-purple">uncertainty</span> is we don’t know whether our sample estimate is <em>close</em> or <em>far</em> from the unknown population parameter</p></li>
 <li><p>But we can use our errors to learn how well our model statistics likely estimate the true parameters</p></li>
-<li><p>Use <span class="math inline">\(\hat{\beta_1}\)</span> and its standard error, <span class="math inline">\(se(\hat{\beta_1})\)</span> for statistical inference about true <span class="math inline">\(\beta_1\)</span></p></li>
+<li><p>Use <span class="math inline">\(\hat{\beta_1}\)</span> and its standard error, <span class="math inline">\(se(\hat{\beta_1})\)</span>, for statistical inference about true <span class="math inline">\(\beta_1\)</span></p></li>
 <li><p>We have two options…</p></li>
 </ul>
 </div><div class="column" style="width:50%;">
@@ -648,11 +647,6 @@
 </ul></li>
 <li>This allows us to approximate the sampling distribution of <span class="math inline">\(\hat{\beta_1}\)</span> by simulation!</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/bootstraps.png"></p>
-</figure>
-</div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
@@ -696,8 +690,8 @@
 </ul>
 <ol type="1">
 <li><p><code>specify()</code> a model</p></li>
-<li><p><code>generate()</code> a bootstrap distribution</p></li>
-<li><p><code>calculate()</code> the confidence interval</p></li>
+<li><p><code>generate()</code> a bootstrap distribution based on a certain number of random draws</p></li>
+<li><p><code>calculate()</code> <span class="math inline">\(\hat{\beta_1}\)</span> for each sample; create confidence intervals</p></li>
 <li><p><code>visualize()</code> with a histogram (optional)</p></li>
 </ol>
 </div>
@@ -750,7 +744,7 @@
 </div>
 </div>
 </div>
-<p>👆 Bootstrapped from Our Sample</p>
+<p>Results Bootstrapped from Our Sample</p>
 </div>
 </div>
 <div class="fragment">
@@ -927,8 +921,8 @@
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>ci <span class="ot">&lt;-</span> boot <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">summarize</span>(<span class="at">lower =</span> <span class="fu">quantile</span>(stat, <span class="fl">0.025</span>),</span>
-<span id="cb6-3"><a href="#cb6-3"></a>            <span class="at">upper =</span> <span class="fu">quantile</span>(stat, <span class="fl">0.975</span>))</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">summarize</span>(<span class="at">lower =</span> <span class="fu">quantile</span>(stat, <span class="fl">0.025</span>), <span class="co"># Value that contains 2.5% of data</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>            <span class="at">upper =</span> <span class="fu">quantile</span>(stat, <span class="fl">0.975</span>)) <span class="co"># Value that contains 97.5% of data</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a>ci</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
@@ -965,8 +959,8 @@
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>ci <span class="ot">&lt;-</span> boot <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">summarize</span>(<span class="at">lower =</span> <span class="fu">quantile</span>(stat, <span class="fl">0.025</span>),</span>
-<span id="cb8-3"><a href="#cb8-3"></a>            <span class="at">upper =</span> <span class="fu">quantile</span>(stat, <span class="fl">0.975</span>))</span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">summarize</span>(<span class="at">lower =</span> <span class="fu">quantile</span>(stat, <span class="fl">0.025</span>), <span class="co"># Value that contains 2.5% of data</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>            <span class="at">upper =</span> <span class="fu">quantile</span>(stat, <span class="fl">0.975</span>)) <span class="co"># Value that contains 97.5% of data</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a>ci</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
@@ -999,6 +993,7 @@
 <h3 id="get-confidence-interval">Get Confidence Interval</h3>
 <p><code>%&gt;%</code> <code>get_confidence_interval()</code></p>
 </div><div class="column" style="width:70%;">
+<p>R can grab the bounds of the C.I as well</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>ca_school <span class="sc">%&gt;%</span> <span class="co">#&lt;&lt; # save this</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">specify</span>(testscr <span class="sc">~</span> str) <span class="sc">%&gt;%</span></span>
@@ -1146,12 +1141,13 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li><span class="math inline">\(\color{#6A5ACD}{(1- \alpha)}\)</span> is the <span class="hi-purple">confidence level</span> of our confidence interval
+<li><p><span class="math inline">\(\color{#6A5ACD}{(1- \alpha)}\)</span> is the <span class="hi-purple">confidence level</span> of our confidence interval</p>
 <ul>
 <li><span class="math inline">\(\color{#6A5ACD}{\alpha}\)</span> is the <span class="hi-purple">“significance level”</span> that we use in hypothesis testing</li>
-<li><span class="math inline">\(\color{#6A5ACD}{\alpha}=\)</span> probability that the true parameter is <em>not</em> contained within our interval</li>
+<li><span class="math inline">\(\color{#6A5ACD}{\alpha}=\)</span> probability that the true parameter is <em>not</em> contained within our interval . . .</li>
 </ul></li>
-<li>Typical levels: 90%, 95%, 99%
+<li><p><span class="hi-purple">Critical value</span> - value of a distribution used to construct C.I and conduct hypothesis testing</p></li>
+<li><p>Typical levels: 90%, 95%, 99%</p>
 <ul>
 <li>95% is especially common, <span class="math inline">\(\alpha=0.05\)</span></li>
 </ul></li>
@@ -1178,24 +1174,29 @@
 </div>
 </div>
 </section>
-<section id="confidence-levels-and-the-empirical-rule" class="slide level2">
-<h2>Confidence Levels and the Empirical Rule</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
+<section id="t-distribution" class="slide level2">
+<h2>t-Distribution</h2>
 <ul>
-<li><p>Recall the <span class="hi-purple">68-95-99.7% empirical rule</span> for (standard) normal distributions!<sup>1</sup></p></li>
-<li><p>95% of data falls within 2 standard deviations of the mean</p></li>
-<li><p>Thus, in 95% of samples, the true parameter is likely to fall within <em>about</em> 2 standard deviations of the sample estimate</p></li>
+<li><p>In practice, we never know the true population sd of <span class="math inline">\(\beta_1\)</span>, <span class="math inline">\(\sigma_{\beta_1}\)</span>. We also may have a small sample size of <span class="math inline">\(n&lt;30\)</span>.</p></li>
+<li><p>If either of these are true, we can’t use the Central Limit Theorem to assume that <span class="math inline">\(\hat{\beta_1}\)</span> has a standard normal distribution.</p></li>
+<li><p>Instead, it has a <span class="hi-purple">Student’s t-distribution</span> with n-1 degrees of freedom</p></li>
+<li><p>As n grows, the t-distribution approximates a normal distribution, so in practice we will use critical values which correspond to z-scores. However, we still always use the t-distribution for C.I and hypothesis testing</p></li>
 </ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<p><img data-src="2.6-slides_files/figure-revealjs/unnamed-chunk-31-1.png" width="960"></p>
+<div class="fragment">
+<ul>
+<li>If <span class="math inline">\(\alpha=0.1\)</span>, we have a 90% confidence level and <span class="math inline">\(Z_{critical} = \pm 1.645\)</span></li>
+<li>If <span class="math inline">\(\alpha=0.05\)</span>, we have a 95% confidence level and <span class="math inline">\(Z_{critical} = \pm 1.96\)</span></li>
+<li>If <span class="math inline">\(\alpha=0.01\)</span>, we have a 99% confidence level and <span class="math inline">\(Z_{critical} = \pm 2.58\)</span></li>
+</ul>
 </div>
-</div>
-</div>
-</div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>I’m playing fast and loose here, we can’t actually use the normal distribution, we use the Student’s t-distribution with n-k-1 degrees of freedom. But there’s no need to complicate things you don’t need to know about.</p></li></ol></aside></section>
+</section>
+<section id="calculating-c.i-using-theory" class="slide level2">
+<h2>Calculating C.I Using Theory</h2>
+<ul>
+<li>Exactly 95% of data falls withing 1.96 standard deviations of the mean, thus we often use a critical value of 1.96</li>
+<li>To construct a C.I of our str coefficient we would then <span class="math display">\[([-2.28-(1.96)*0.4798], [-2.228 + (1.96)*0.4798]) = (-3.22,-1.33)\]</span></li>
+</ul>
+</section>
 <section id="interpretting-confidence-intervals" class="slide level2">
 <h2>Interpretting Confidence Intervals</h2>
 <ul>
@@ -1212,49 +1213,12 @@
 </div>
 <div class="fragment">
 <p>✅ <span class="green">We are 95% confident that in similarly constructed samples, the true effect is between -3.22 and -1.33</span></p>
-</div>
-</section>
-<section id="estimating-in-r" class="slide level2">
-<h2>Estimating in <code>R</code></h2>
-<ul>
-<li><code>base R</code> doesn’t show confidence intervals in the <code>lm summary()</code> output, need the <code>confint</code> command</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">confint</span>(school_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment">
-<div class="cell-output cell-output-stdout">
-<pre><code>                2.5 %     97.5 %
-(Intercept) 680.32313 717.542779
-str          -3.22298  -1.336637</code></pre>
-</div>
-</div>
-</section>
-<section id="estimating-with-broom" class="slide level2">
-<h2>Estimating with <code>broom</code></h2>
-<ul>
-<li><code>broom</code>’s <code>tidy()</code> command can include confidence intervals</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>school_reg <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">tidy</span>(<span class="at">conf.int =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment">
-<div class="cell-output-display">
+<p><img src="../images/metrics_hex.png" class="slide-logo"></p>
+<div class="footer footer-default">
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["conf.low"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["conf.high"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"698.932952","3":"9.4674914","4":"73.824514","5":"6.569925e-242","6":"680.32313","7":"717.542779"},{"1":"str","2":"-2.279808","3":"0.4798256","4":"-4.751327","5":"2.783307e-06","6":"-3.22298","7":"-1.336637"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
 </div>
-</div>
-</div>
-
-<img src="../images/metrics_hex.png" class="slide-logo r-stretch"><div class="footer footer-default">
-
 </div>
 </section></section>
-
     </div>
   </div>
 
