@@ -303,47 +303,6 @@ $$p(\delta \geq \delta_i|H_0 \text{ is true})$$
 - If $p \geq \alpha$: *insufficient* evidence to reject $H_0$
   - Note this does **not** mean $H_0$ is true! We merely have *failed* to *reject* $H_0$!
   
-# Digression: p-Values and the Philosophy of Science {.centered background-color="#314f4f"}
-
-## Hypothesis Testing and the Philosophy of Science I
-
-::: columns
-::: {.column width="30%"}
-![](images/rafisher.jpg){fig-align="center" width="400"}
-
-Sir Ronald A. Fisher
-
-(1890-1962)
-
-:::
-
-::: {.column width="70%"}
-
-> "The null hypothesis is never proved or established, but is possibly disproved, in the course of experimentation. Every experiment may be said to exist only in order to give the facts a chance of disproving the null hypothesis."
-
-[Fisher, R.A., 1931, *The Design of Experiments*]{.source}
-
-:::
-:::
-
-## Hypothesis Testing and the Philosophy of Science II
-
-::: columns
-::: {.column width="60%"}
-- Modern philosophy of science is largely based off of hypothesis testing and [falsifiability]{.hi-purple}, which form the "**Scientific Method**"^[Note: economics is a very different kind of "science" with a different methodology!]
-
-- For something to be "scientific", it must be [falsifiable]{.hi-purple}, or at least [testable]{.hi-purple} (at least in principle)
-
-- Hypotheses can be *corroborated* with evidence, but always *tentative* until falsified by data in suggesting an alternative hypothesis
-
-- **"All swans are white"** is a hypothesis rejected upon discovery of a single black swan 
-
-:::
-
-::: {.column width="40%"}
-![](images/blackswan.jpg)
-:::
-:::
 
 ## Hypothesis Testing and p-Values
 
@@ -380,11 +339,6 @@ Sir Ronald A. Fisher
 
 5. **Decide** if $\delta_i$ is statistically significant
 
-## Elements of a Hypothesis Test
-
-![](images/onetest.png){fig-align="center"}
-
-[Alan Downey: “There is still only one test”](https://allendowney.blogspot.com/2016/06/there-is-still-only-one-test.html)
 
 
 ## Hypothesis Testing with the infer Package I
@@ -451,10 +405,6 @@ H_1: \; & \beta_1 \neq 0
   - In econometrics, we use $t$-distributions which have $n-k-1$ degrees of freedom^[$k$ is the number of independent variables our model has, in this case, with just one $X$, $k=1$. We use two degrees of freedom to calculate $\hat{\beta}_0$ and $\hat{\beta}_1$, hence we have $n-2$ df.]
 
 - [Rejection region]{.hi-purple}: if the test statistic reaches a ["critical value"]{.hi-purple} of $\delta$, then we **reject** the null hypothesis
-
-## Theory-Based Inference: Critical Values of Test Statistic
-
-![](images/tdistributionmeme.jpg){fig-align="center"}
 
 
 # Hypothesis Testing by Simulation, with `infer` {.centered background-color="#314f4f"}
@@ -576,7 +526,7 @@ ca_school %>%
 :::
 ::: {.column width="70%"}
 - Describe what the null hypothesis is here
-- In `infer`'s language, `str` and `testscr` are `independent` $(\beta_1=0)$^[See more [here](https://moderndive.netlify.com/9-hypothesis-testing.html) about what other hypotheses you can test with `infer`]
+- In `infer`'s language, `str` and `testscr` are `independent` $(\beta_1=0)$
 
 ```{r}
 #| echo: true
@@ -794,7 +744,7 @@ ca_school %>%
 `  visualize() + shade_p_value()`
 :::
 ::: {.column width="70%"}
-- Add `shade_p_value()` to see what $p$ is
+
 
 ```{r}
 #| echo: true
@@ -933,7 +883,7 @@ $$\text{test statistic} = \frac{\text{estimate} - \text{null hypothesis}}{\text{
 - $t$ same interpretation as $Z$: number of std. dev. away from the sampling distribution's expected value $E[\hat{\beta_1}]$^[The expected value is 0, because our null hypothesis was $\beta_1 =0$] (if $H_0$ were true)
 
 - Compares to a [critical value]{.hi-purple} of $t^*$ (pre-determined by $\alpha$-level & $n-k-1$ df)
-    - For 95% confidence, $\alpha=0.05$, $t^* \approx 2$^[Again, the **68-95-99.7%** empirical rule!]
+    - For 95% confidence, $\alpha=0.05$, $t^* \approx 2$^[Again, the **68-95-99.7%** empirical rule! With a large enough sample, $t^* = 1.96$]
 
 :::
 
@@ -982,7 +932,7 @@ t &= \frac{\hat{\beta_1}-\beta_{1,0}}{se(\hat{\beta_1})}\\
 t &= \frac{-2.28-0}{0.48}\\
 t &= -4.75\\ \end{align*}$$
 
-- .hi[p-value]: prob. of a test statistic at least as large (in magnitude) as ours if the null hypothesis were true
+- [p-value]{.hi-purple}: prob. of a test statistic at least as large (in magnitude) as ours if the null hypothesis were true
   - Continuous distribution implies we need probability of area *beyond* our value
   - p-value is **2-sided** for $H_a: \beta_1 \neq 0$
 
@@ -1169,13 +1119,8 @@ H_a: \, & \beta_a \neq 0\\
 ## Hypothesis Testing vs. Confidence Intervals {.smaller}
 
 - Confidence intervals are all *two-sided* by nature
-$$CI_{0.95}=\left(\left[\hat{\beta_1}-\underbrace{2 \times se(\hat{\beta_1})}_{MOE}\right], \, \left[\hat{\beta_1}+\underbrace{2 \times se(\hat{\beta_1})}_{MOE}\right] \right)$$
+$$CI_{0.95}=\left(\left[\hat{\beta_1}-\underbrace{c.v \times se(\hat{\beta_1})}_{MOE}\right], \, \left[\hat{\beta_1}+\underbrace{c.v \times se(\hat{\beta_1})}_{MOE}\right] \right)$$
 
-- Hypothesis test $(t$-test) of $H_0: \, \beta_1=0$ computes a $t$-value of6[Since our null hypothesis is that $\beta_{1,0}=0$, the test statistic simplifies to this neat fraction.]
-$$t=\frac{\hat{\beta_1}}{se(\hat{\beta_1})}$$
-and $p<0.05$ when $t\geq2$ (approximately)
-
-. . .
 
 - If our confidence interval contains the $H_0$ value (i.e. $0$, for our test), then *we fail to reject* $H_0$.
 
@@ -1214,11 +1159,6 @@ and $p<0.05$ when $t\geq2$ (approximately)
 :::
 :::
 
-## Abusing p-values and “Science”
-
-![](images/chocolatefake.png){fig-align="center"}
-
-[Source: [Washington Post](https://www.washingtonpost.com/news/morning-mix/wp/2015/05/28/how-and-why-a-journalist-tricked-news-outlets-into-thinking-chocolate-makes-you-thin/?hpid=z5)]{.source}
 
 ## Abusing p-Values and “Science” I
 
