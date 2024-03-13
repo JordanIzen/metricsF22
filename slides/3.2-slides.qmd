@@ -96,37 +96,12 @@ Source: [British Medical Journal](https://www.bmj.com/content/363/bmj.k5094)
 :::
 :::
 
-## RCTs and Evidence-Based Policy II
-
-::: columns
-::: {.column width="50%"}
-![](images/rctparachutes1.jpg){width=600 fig-align="center"}
-:::
-::: {.column width="50%"}
-
-:::
-:::
-
-## RCTs and Evidence-Based Policy II
-
-::: columns
-::: {.column width="50%"}
-![](images/rctparachutes1.jpg){width=600 fig-align="center"}
-:::
-::: {.column width="50%"}
-![](images/rctparachutes2.jpg){width=600 fig-align="center"}
-
-:::
-:::
-
-
 
 ## What Does Causation Mean?
 
 ::: columns
 ::: {.column width="50%"}
 - [“Correlation does not imply causation”]{.hi-turquoise}
-  - this is exactly backwards!
   - this is just pointing out that [exogeneity is violated]{.hi-purple}
 
 :::
@@ -140,7 +115,6 @@ Source: [British Medical Journal](https://www.bmj.com/content/363/bmj.k5094)
 ::: columns
 ::: {.column width="50%"}
 - [“Correlation does not imply causation”]{.hi-turquoise}
-  - this is exactly backwards!
   - this is just pointing out that [exogeneity is violated]{.hi-purple}
 
 - [“Correlation implies causation”]{.hi}
@@ -175,31 +149,6 @@ Source: [British Medical Journal](https://www.bmj.com/content/363/bmj.k5094)
 :::
 :::
 
-## The Causal Revolution
-
-::: columns
-::: {.column width="50%"}
-![](images/bookofwhy.jpg)
-:::
-::: {.column width="50%"}
-![](images/judea-pearl.jpg)
-:::
-:::
-
-## Causation Requires Counterfactual Thinking
-
-::: columns
-::: {.column width="50%"}
-![](images/ladderofcausation.png){width=550 fig-align="center"}
-:::
-::: {.column width="50%"}
-![](images/bookofwhy.jpg)
-:::
-:::
-
-##
-
-![](images/twopaths.jpg)
 
 ## Causal Inference
 
@@ -226,7 +175,7 @@ Source: [British Medical Journal](https://www.bmj.com/content/363/bmj.k5094)
 
 :::
 ::: {.column width="50%"}
-- Simultaneous [“credibility revolution”]{.hi} in econometrics (c.1990s—2000s)
+- [“Credibility revolution”]{.hi} in econometrics (c.1990s—2000s)
 
 - Use clever research designs to approximate [natural experiments]{.hi-purple}
 
@@ -262,9 +211,7 @@ ggplot(data = tibble(x=c(0,10),
   theme_void()
 ```
 
-## Correlation and Causation
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Causality isn&#39;t achieved; it&#39;s approached.</p>&mdash; John B. Holbein (@JohnHolbein1) <a href="https://twitter.com/JohnHolbein1/status/982635508089180161?ref_src=twsrc%5Etfw">April 7, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## What Then IS Causation?
 

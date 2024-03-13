@@ -8,7 +8,7 @@
 <link href="3.1-slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="3.1-slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="3.1-slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.3.450">
 
   <title>slides</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -474,7 +474,10 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li><span class="hi-turquoise">Random assignment</span> to groups ensures that the <em>only</em> differences between members of the treatment(s) and control groups is <em>receiving treatment or not</em> (even better with large <span class="math inline">\(n\)</span>)</li>
+<li><p><span class="hi-turquoise">Random assignment</span> to groups ensures that the <em>only</em> differences between members of the treatment(s) and control groups is <em>receiving treatment or not</em> (even better with large <span class="math inline">\(n\)</span>)</p>
+<ul>
+<li>If assignment truly is random (and the sample large enough), then there will be a balance of observable and unobservables between groups</li>
+</ul></li>
 </ul>
 </div><div class="column" style="width:25%;">
 <div class="quarto-figure quarto-figure-center">
@@ -498,7 +501,10 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li><p><span class="hi-turquoise">Random assignment</span> to groups ensures that the <em>only</em> differences between members of the treatment(s) and control groups is <em>receiving treatment or not</em> (even better with large <span class="math inline">\(n\)</span>)</p></li>
+<li><p><span class="hi-turquoise">Random assignment</span> to groups ensures that the <em>only</em> differences between members of the treatment(s) and control groups is <em>receiving treatment or not</em> (even better with large <span class="math inline">\(n\)</span>)</p>
+<ul>
+<li>If assignment truly is random (and the sample large enough), then there will be a balance of observable and unobservables between groups</li>
+</ul></li>
 <li><p><span class="hi-orange">Selection bias:</span> (pre-existing) differences between members of treatment and control groups <em>other</em> than treatment, that affect the outcome</p>
 <ul>
 <li>For example, if only low income individuals are in control group for new medication</li>
@@ -576,7 +582,7 @@
 <li><p><span class="hi-purple">Individual counterfactuals do not exist (“the path not taken”)</span></p></li>
 <li><p>You will always only ever get one of these per individual!</p>
 <ul>
-<li>e.g.&nbsp;what would your life have been like if you did not go to Hood College?? 🧐</li>
+<li>e.g.&nbsp;what would your life have been like if you did not go to Trinity??</li>
 </ul></li>
 <li><p>So what can we do?</p></li>
 </ul>
@@ -597,7 +603,7 @@
 <ul>
 <li><p><strong>Either</strong> we observe individual <span class="math inline">\(i\)</span> in the <span class="hi">treatment group</span> <span class="math inline">\(\color{#e64173}{(T=1)}\)</span>, i.e. <span class="math display">\[\color{#314f4f}{\delta_i} = \color{#e64173}{Y_i^{1}} - \color{red}{?}\]</span></p></li>
 <li><p><strong>Or</strong> we observe individual <span class="math inline">\(i\)</span> in the <span class="hi-purple">control group</span> <span class="math inline">\(\color{#6A5ACD}{(T=0)}\)</span>, i.e. <span class="math display">\[\color{#314f4f}{\delta_i} = \color{red}{?} - \color{#6A5ACD}{Y_i^{0}} \]</span></p></li>
-<li><p><strong>Never both</strong> at the same time:</p></li>
+<li><p><strong>Never both</strong> at the same time for individual <span class="math inline">\(i\)</span>:</p></li>
 </ul>
 <p>✨ <span class="math inline">\(\color{#314f4f}{\delta_i} = \color{#e64173}{Y_i^{1}} - \color{#6A5ACD}{Y_i^{0}}\)</span> ✨</p>
 </section>
@@ -620,6 +626,9 @@
 </div>
 </div>
 </div>
+<ul>
+<li>Can we interpret differences in health between having insurance and not as causal? Is there selection bias?</li>
+</ul>
 </div><div class="column" style="width:50%;">
 <p><img data-src="images/healthcare.jpg"></p>
 </div>
@@ -1219,9 +1228,7 @@ Y_J-Y_M=\underbrace{\color{#e64173}{Y^1_J}-\color{#6A5ACD}{Y^0_J}}_{\color{#314f
 <ul>
 <li>Can’t we just take the difference in group means?</li>
 </ul>
-<p><span class="math display">\[\begin{align*}
-diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
-\end{align*}\]</span></p>
+<p><span class="math display">\[ diff=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)} \]</span></p>
 </div><div class="column" style="width:50%;">
 <p><strong>Actual</strong> (observed) Data</p>
 <table>
@@ -1278,7 +1285,7 @@ diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
 <li>Can’t we just take the difference in group means?</li>
 </ul>
 <p><span class="math display">\[\begin{align*}
-diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
+diff=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
 \end{align*}\]</span></p>
 <ul>
 <li>Suppose a uniform treatment effect, <span class="math inline">\(\color{#314f4f}{\delta_i}\)</span></li>
@@ -1286,7 +1293,7 @@ diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
 <p><span class="math display">\[\begin{align*}
 &amp;= \color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
 &amp;= \color{#e64173}{Avg(}\color{#314f4f}{\delta_i}+\color{#6A5ACD}{Y_i^{0}}\color{#e64173}{|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
-&amp;= \color{#314f4f}{\delta_i}+\underbrace{\color{#e64173}{Avg(}\color{#6A5ACD}{Y_i^{0}}\color{#e64173}{|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}}_{\color{#FFA500}{\text{selection bias}}}\\
+&amp;= \color{#314f4f}{Avg(\delta_i)}+\underbrace{\color{#e64173}{Avg(}\color{#6A5ACD}{Y_i^{0}}\color{#e64173}{|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}}_{\color{#FFA500}{\text{selection bias}}}\\
 &amp;= \color{#314f4f}{ATE} + \color{#FFA500}{\text{selection bias}} \\
 \end{align*}\]</span></p>
 </div><div class="column" style="width:50%;">
@@ -1344,7 +1351,7 @@ diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
 <ul>
 <li>Basic comparisons tell us <em>something</em> about outcomes, but not <span class="hi-slate">ATE</span></li>
 </ul>
-<p><span class="math display">\[diff. = \color{#314f4f}{ATE} + \color{#FFA500}{\text{Selection Bias}}\]</span></p>
+<p><span class="math display">\[diff = \color{#314f4f}{ATE} + \color{#FFA500}{\text{Selection Bias}}\]</span></p>
 <ul>
 <li><p><span class="hi-orange">Selection bias</span>: difference in average <span class="math inline">\(Y^0_i\)</span> between groups pre-treatment</p></li>
 <li><p><span class="math inline">\(Y^0_i\)</span> includes <em>everything</em> about person <span class="math inline">\(i\)</span> relevant to health <em>except</em> treatment (insurance) status</p>
@@ -1407,7 +1414,7 @@ diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
 <div class="column" style="width:50%;">
 <ul>
 <li><p><span class="hi">Treatment group</span> and <span class="hi-purple">control group</span> differ on average, for reasons <em>other</em> than getting treatment or not!</p></li>
-<li><p><span class="hi-purple">Control group</span> is not a good counterfactual for <span class="hi">treatment group</span> without treatment</p>
+<li><p><span class="hi-purple">Control group</span> is not a good counterfactual for <span class="hi">treatment group</span></p>
 <ul>
 <li>Average <em>untreated</em> outcome for the treatment group differs from average untreated outcome for <em>untreated</em> group</li>
 </ul></li>
@@ -1553,31 +1560,6 @@ diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
 <h2>The First Natural Experiment</h2>
 <div class="columns">
 <div class="column" style="width:30%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/jonsnowmeme.jpg" width="400"></p>
-</figure>
-</div>
-</div><div class="column" style="width:70%;">
-<ul>
-<li><p>John Snow utilized the <a href="http://blogs.plos.org/publichealth/2013/03/11/john-snow-the-first-epidemiologist/">first famous natural experiment</a> to establish the foundations of epidemiology and the germ theory of disease</p></li>
-<li><p>Water pumps with sources <em>downstream</em> of a sewage dump in the Thames river spread cholera while water pumps with sources <em>upstream</em> did not</p></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/choleramap.jpg" width="600"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="footer">
-
-</div>
-</section>
-<section id="the-first-natural-experiment-1" class="slide level2">
-<h2>The First Natural Experiment</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
 <p><img data-src="images/johnsnow.jpg"></p>
 <p>1813-1858</p>
 </div><div class="column" style="width:70%;">
@@ -1606,85 +1588,6 @@ diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
 <li>We will look at some of these in greater detail throughout the course</li>
 <li><a href="http://economicspsychologypolicy.blogspot.com/2015/06/list-of-19-natural-experiments.html">A great list, with explanations is here</a></li>
 </ul>
-</section></section>
-<section>
-<section id="attack-ofon-the-randomistas" class="title-slide slide level1 centered center" data-background-color="#314f4f">
-<h1>Attack of/on the Randomistas</h1>
-
-</section>
-<section id="section-2" class="slide level2">
-<h2></h2>
-
-<img data-src="images/rctgoldstandard.png" class="r-stretch"></section>
-<section id="rcts-are-all-the-rage" class="slide level2">
-<h2>RCTs are All the Rage</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<blockquote class="twitter-tweet" data-lang="en">
-<p lang="en" dir="ltr">
-Professors Esther Duflo and Abhijit Banerjee, co-directors of MIT's <a href="https://twitter.com/JPAL?ref_src=twsrc%5Etfw"><span class="citation" data-cites="JPAL">@JPAL</span></a>, receive congratulations on the big news this morning. They share in the <a href="https://twitter.com/hashtag/NobelPrize?src=hash&amp;ref_src=twsrc%5Etfw">#NobelPrize</a> in economic sciences “for their experimental approach to alleviating global poverty.”<br> <br>Photo: Bryce Vickmark <a href="https://t.co/NWeTrjR2Bq">pic.twitter.com/NWeTrjR2Bq</a>
-</p>
-— Massachusetts Institute of Technology (MIT) (<span class="citation" data-cites="MIT">@MIT</span>) <a href="https://twitter.com/MIT/status/1183752282988564480?ref_src=twsrc%5Etfw">October 14, 2019</a>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div><div class="column" style="width:50%;">
-<p><img data-src="images/voxnobelrcts.png"> <a href="https://www.vox.com/future-perfect/2019/10/14/20913928/nobel-prize-economics-duflo-banerjee-kremer">Vox (Oct 14, 2019)</a></p>
-</div>
-</div>
-<div class="footer">
-
-</div>
-</section>
-<section id="but-not-everyone-agrees-i" class="slide level2">
-<h2>But Not Everyone Agrees I</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><img data-src="images/deaton.jpg"></p>
-<p>Angus Deaton</p>
-<p>Economics Nobel 2015</p>
-</div><div class="column" style="width:70%;">
-<blockquote>
-<p>“The RCT is a useful tool, but I think that is a mistake to put method ahead of substance. I have written papers using RCTs…[but] no RCT can ever legitimately claim to have established causality. My theme is that RCTs have no special status, they have no exemption from the problems of inference that econometricians have always wrestled with, and there is nothing that they, and only they, can accomplish.”</p>
-</blockquote>
-<p><span class="source">Deaton, Angus, 2019, <a href="https://scholar.princeton.edu/sites/default/files/deaton/files/deaton_randomization_revisited_v2_2019_01.pdf">“Randomization in the Tropics Revisited: A Theme and Eleven Variations”</a>, Working Paper</span></p>
-</div>
-</div>
-</section>
-<section id="but-not-everyone-agrees-ii" class="slide level2">
-<h2>But Not Everyone Agrees II</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/pritchett.jpg" width="400"></p>
-</figure>
-</div>
-<p>Lant Pritchett</p>
-</div><div class="column" style="width:70%;">
-<blockquote>
-<p>“People keep saying that the recent Nobelists ‘studied global poverty.’ This is exactly wrong. They made a commitment to a method, not a subject, and their commitment to method prevented them from studying global poverty.”</p>
-</blockquote>
-<blockquote>
-<p>“At a conference at Brookings in 2008 Paul Romer [2018 Nobelist] said:”You guys are like going to a doctor who says you have an allergy and you have cancer. With the skin rash we can divide you skin into areas and test variety of substances and identify with precision and some certainty the cause. Cancer we have some ideas how to treat it but there are a variety of approaches and since we cannot be sure and precise about which is best for you, we will ignore the cancer and not treat it.”</p>
-</blockquote>
-<p><span class="source"><a href="https://www.facebook.com/lant.pritchett/posts/10218688602381690">Source</a></span></p>
-</div>
-</div>
-</section>
-<section id="but-not-everyone-agrees-iii" class="slide level2">
-<h2>But Not Everyone Agrees III</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><img data-src="images/deaton.jpg"></p>
-<p>Angus Deaton</p>
-<p>Economics Nobel 2015</p>
-</div><div class="column" style="width:70%;">
-<blockquote>
-<p>“Lant Pritchett is so fun to listen to, sometimes you could forget that he is completely full of shit.”</p>
-</blockquote>
-<p><span class="source">[Source](https://medium.com/<span class="citation" data-cites="ismailalimanik/lant-pritchett-the-debate-about-rcts-in-development-is-over-ec7a28a82c17">@ismailalimanik/lant-pritchett-the-debate-about-rcts-in-development-is-over-ec7a28a82c17</span></span></p>
-</div>
-</div>
 </section>
 <section id="rcts-and-evidence-based-policy" class="slide level2">
 <h2>RCTs and “Evidence-Based Policy”</h2>

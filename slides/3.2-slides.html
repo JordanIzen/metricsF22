@@ -8,7 +8,7 @@
 <link href="3.2-slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="3.2-slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="3.2-slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.3.450">
 
   <title>slides</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -449,38 +449,6 @@
 </div>
 </div>
 </section>
-<section id="rcts-and-evidence-based-policy-ii" class="slide level2">
-<h2>RCTs and Evidence-Based Policy II</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/rctparachutes1.jpg" width="600"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-
-</div>
-</div>
-</section>
-<section id="rcts-and-evidence-based-policy-ii-1" class="slide level2">
-<h2>RCTs and Evidence-Based Policy II</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/rctparachutes1.jpg" width="600"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/rctparachutes2.jpg" width="600"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
 <section id="what-does-causation-mean" class="slide level2">
 <h2>What Does Causation Mean?</h2>
 <div class="columns">
@@ -488,7 +456,6 @@
 <ul>
 <li><span class="hi-turquoise">“Correlation does not imply causation”</span>
 <ul>
-<li>this is exactly backwards!</li>
 <li>this is just pointing out that <span class="hi-purple">exogeneity is violated</span></li>
 </ul></li>
 </ul>
@@ -504,7 +471,6 @@
 <ul>
 <li><span class="hi-turquoise">“Correlation does not imply causation”</span>
 <ul>
-<li>this is exactly backwards!</li>
 <li>this is just pointing out that <span class="hi-purple">exogeneity is violated</span></li>
 </ul></li>
 <li><span class="hi">“Correlation implies causation”</span>
@@ -541,34 +507,6 @@
 </div>
 </div>
 </section>
-<section id="the-causal-revolution-1" class="slide level2">
-<h2>The Causal Revolution</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="images/bookofwhy.jpg"></p>
-</div><div class="column" style="width:50%;">
-<p><img data-src="images/judea-pearl.jpg"></p>
-</div>
-</div>
-</section>
-<section id="causation-requires-counterfactual-thinking" class="slide level2">
-<h2>Causation Requires Counterfactual Thinking</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ladderofcausation.png" width="550"></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<p><img data-src="images/bookofwhy.jpg"></p>
-</div>
-</div>
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-
-<img data-src="images/twopaths.jpg" class="r-stretch"></section>
 <section id="causal-inference" class="slide level2">
 <h2>Causal Inference</h2>
 <div class="columns">
@@ -600,7 +538,7 @@ BREAKING NEWS: <br>The 2021 Sveriges Riksbank Prize in Economic Sciences in Memo
 <p>]</p>
 </div><div class="column" style="width:50%;">
 <ul>
-<li><p>Simultaneous <span class="hi">“credibility revolution”</span> in econometrics (c.1990s—2000s)</p></li>
+<li><p><span class="hi">“Credibility revolution”</span> in econometrics (c.1990s—2000s)</p></li>
 <li><p>Use clever research designs to approximate <span class="hi-purple">natural experiments</span></p></li>
 </ul>
 </div>
@@ -610,16 +548,6 @@ BREAKING NEWS: <br>The 2021 Sveriges Riksbank Prize in Economic Sciences in Memo
 <h2>Clever Research Designs Identify Causality</h2>
 
 <img data-src="3.2-slides_files/figure-revealjs/unnamed-chunk-2-1.png" width="1536" class="r-stretch quarto-figure-center"></section>
-<section id="correlation-and-causation-1" class="slide level2">
-<h2>Correlation and Causation</h2>
-<blockquote class="twitter-tweet">
-<p lang="en" dir="ltr">
-Causality isn't achieved; it's approached.
-</p>
-— John B. Holbein (<span class="citation" data-cites="JohnHolbein1">@JohnHolbein1</span>) <a href="https://twitter.com/JohnHolbein1/status/982635508089180161?ref_src=twsrc%5Etfw">April 7, 2018</a>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</section>
 <section id="what-then-is-causation" class="slide level2">
 <h2>What Then IS Causation?</h2>
 <div class="columns">
@@ -753,7 +681,7 @@ Causality isn't achieved; it's approached.
 <ul>
 <li>A surprisingly simple, yet rigorous and powerful method of modeling DGPs is using a <span class="hi">causal diagram</span> or <span class="hi">DAG</span>:
 <ul>
-<li><span class="hi">Directed</span>: Each node has arrows that points to another node</li>
+<li><span class="hi">Directed</span>: Each node has arrow pointing to other nodes in only one direction</li>
 <li><span class="hi">Acyclic</span>: Arrows cannot loop back</li>
 <li><span class="hi">Graph</span></li>
 </ul></li>
@@ -1458,7 +1386,7 @@ u1 _||_ year</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li>Confounders are the DAG-equivalent of <span class="hi">omitted variable bias</span> (next class)</li>
+<li>Confounders are the DAG-equivalent of <span class="hi">omitted variable bias</span> (more soon)</li>
 </ul>
 <p><span class="math display">\[Y_i=\beta_0+\beta_1 X_i\]</span></p>
 <ul>
@@ -1551,7 +1479,7 @@ u1 _||_ year</code></pre>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li><p>Using our terminology from last class, we have an outcome <span class="math inline">\((Y)\)</span>, and some treatment</p></li>
+<li><p>Using our terminology, we have an outcome <span class="math inline">\((Y)\)</span>, and some treatment</p></li>
 <li><p>But there are <strong>unobserved factors</strong> <span class="math inline">\((u)\)</span></p></li>
 </ul>
 <p><span class="math display">\[Y_i = \beta_0 + \beta_1 Treatment + u_i\]</span></p>

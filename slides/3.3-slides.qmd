@@ -131,6 +131,7 @@ dagify(Y~X+Z,
 **1. $\mathbf{Z}$ is a determinant of $Y$**
 
 - i.e. $Z$ is in the error term, $u_i$
+- $Z$ is part of the data generating process for $Y$
 
 **2. $\mathbf{Z}$ is correlated with the regressor $X$**
 
@@ -163,7 +164,7 @@ dagify(Y~X+Z,
 
 - Violates **zero conditional mean assumption**
 $$\mathbb{E}(u_i|X_i)\neq 0 \implies$$ 
-  - knowing $X_i$ tells you something about $u_i$ (i.e. something about $Y$ *not* by way of $X$)!
+  - knowing $X_i$ tells you something about $u_i$ 
 
 :::
 ::: {.column width="50%"}
@@ -234,25 +235,7 @@ $$\text{Test score}_i = \beta_0 + \beta_1 \text{STR}_i + u_i$$
 
 3. $Z_i$: percent of ESL students
 
-## Recall: Endogeneity and Bias
 
-- The true expected value of $\hat{\beta_1}$ is actually: 
-
-$$E[\hat{\beta_1}]=\beta_1+cor(X,u)\frac{\sigma_u}{\sigma_X}$$
-
-. . .
-
-1. If $X$ is exogenous: $cor(X,u)=0$, we're just left with $\beta_1$
-
-. . .
-
-2. The larger $cor(X,u)$ is, larger [bias]{.hi-purple}: $\left(E[\hat{\beta_1}]-\beta_1 \right)$
-
-. . .
-
-3. We can [“sign”]{.hi-turquoise} the direction of the bias based on $cor(X,u)$
-  - [Positive]{.hi-turquoise} $cor(X,u)$ overestimates the true $\beta_1$ $(\hat{\beta_1}$ is too high)
-  - [Negative]{.hi-turquoise} $cor(X,u)$ underestimates the true $\beta_1$ $(\hat{\beta_1}$ is too low)
 
 ## Endogeneity and Bias: Correlations I
 
@@ -429,6 +412,7 @@ $\mathbb{E}[\hat{\beta_1}]=$ [$\beta_1$]{.red} $+$ [$cor(X,u)$]{.blue} $\frac{\s
 - [Bias]{.blue} from $\%EL$ is positive
   - Since $\color{red}{\beta_1}$ is negative, it’s made to be a *larger* negative number than it truly is
   - Implies that our $\color{red}{\hat{\beta}_1}$ __*over*states__ the effect of reducing STR on improving Test Scores
+    - This is different than over- and underestimating 
 
 ## Omitted Variable Bias: Messing with Causality I
 
@@ -446,7 +430,7 @@ $\mathbb{E}[\hat{\beta_1}]=$ [$\beta_1$]{.red} $+$ [$cor(X,u)$]{.blue} $\frac{\s
 
 ::: columns
 ::: {.column width="50%"}
-- Consider an ideal [random controlled trial (RCT)]{.hi-turquoise}
+- Let's construct an ideal [random controlled trial (RCT)]{.hi-turquoise} to test the effect of str on test scores
 
 - [Randomly]{.hi-turquoise} assign experimental units (e.g. people, cities, etc) into two (or more) groups:
   - [Treatment group(s)]{.hi}: gets a (certain type or level of) treatment
@@ -707,7 +691,7 @@ $$Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_k X_k + u$$
 ## Marginal Effects I
 
 $$Y_i= \beta_0+\beta_1 X_{1i} + \beta_2 X_{2i}+u_i$$
-. . .
+
 
 - Consider changing $X_1$ by $\Delta X_1$ while holding $X_2$ constant:
 

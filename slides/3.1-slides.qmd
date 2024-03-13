@@ -166,6 +166,8 @@ where $\color{orange}{Y}$ is numeric:
 ::: {.column width="50%"}
 - [Random assignment]{.hi-turquoise} to groups ensures that the *only* differences between members of the treatment(s) and control groups is *receiving treatment or not* (even better with large $n$)
 
+  - If assignment truly is random (and the sample large enough), then there will be a balance of observable and unobservables between groups
+
 :::
 ::: {.column width="25%"}
 ![Treatment Group](images/3apples.jpg){height=400}
@@ -182,6 +184,8 @@ where $\color{orange}{Y}$ is numeric:
 ::: columns
 ::: {.column width="50%"}
 - [Random assignment]{.hi-turquoise} to groups ensures that the *only* differences between members of the treatment(s) and control groups is *receiving treatment or not* (even better with large $n$)
+
+  - If assignment truly is random (and the sample large enough), then there will be a balance of observable and unobservables between groups
 
 - [Selection bias:]{.hi-orange} (pre-existing) differences between members of treatment and control groups *other* than treatment, that affect the outcome 
   - For example, if only low income individuals are in control group for new medication 
@@ -289,6 +293,8 @@ What is the effect of having health insurance on health outcomes?
 
 - **Treatment $(X)$**: Having health insurance  (vs. not)
 :::
+
+- Can we interpret differences in health between having insurance and not as causal? Is there selection bias?
 
 :::
 ::: {.column width="50%"}
@@ -709,9 +715,9 @@ data %>%
 ::: {.column width="50%"}
 - Can’t we just take the difference in group means?
 
-\begin{align*}
-diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
-\end{align*}
+
+$$ diff=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)} $$
+
 
 :::
 ::: {.column width="50%"}
@@ -737,7 +743,7 @@ diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
 - Can’t we just take the difference in group means?
 
 \begin{align*}
-diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
+diff=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
 \end{align*}
 
 - Suppose a uniform treatment effect, $\color{#314f4f}{\delta_i}$
@@ -745,7 +751,7 @@ diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
 \begin{align*}
 &= \color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
 &= \color{#e64173}{Avg(}\color{#314f4f}{\delta_i}+\color{#6A5ACD}{Y_i^{0}}\color{#e64173}{|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
-&= \color{#314f4f}{\delta_i}+\underbrace{\color{#e64173}{Avg(}\color{#6A5ACD}{Y_i^{0}}\color{#e64173}{|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}}_{\color{#FFA500}{\text{selection bias}}}\\
+&= \color{#314f4f}{Avg(\delta_i)}+\underbrace{\color{#e64173}{Avg(}\color{#6A5ACD}{Y_i^{0}}\color{#e64173}{|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}}_{\color{#FFA500}{\text{selection bias}}}\\
 &= \color{#314f4f}{ATE} + \color{#FFA500}{\text{selection bias}} \\
 \end{align*}
 
@@ -772,7 +778,7 @@ diff.=\color{#e64173}{Avg(Y_i^{1}|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}\\
 ::: {.column width="50%"}
 - Basic comparisons tell us *something* about outcomes, but not [ATE]{.hi-slate}
 
-$$diff. = \color{#314f4f}{ATE} + \color{#FFA500}{\text{Selection Bias}}$$
+$$diff = \color{#314f4f}{ATE} + \color{#FFA500}{\text{Selection Bias}}$$
 
 - [Selection bias]{.hi-orange}: difference in average $Y^0_i$ between groups pre-treatment
 
@@ -803,7 +809,7 @@ $$diff. = \color{#314f4f}{ATE} + \color{#FFA500}{\text{Selection Bias}}$$
 ::: {.column width="50%"}
 - [Treatment group]{.hi} and [control group]{.hi-purple} differ on average, for reasons *other* than getting treatment or not!
 
-- [Control group]{.hi-purple} is not a good counterfactual for [treatment group]{.hi} without treatment
+- [Control group]{.hi-purple} is not a good counterfactual for [treatment group]{.hi} 
   - Average *untreated* outcome for the treatment group differs from average untreated outcome for *untreated* group
 
 $$\color{#e64173}{Avg(}\color{#6A5ACD}{Y_i^{0}}\color{#e64173}{|T=1)}-\color{#6A5ACD}{Avg(Y_i^{0}|T=0)}$$
@@ -971,85 +977,8 @@ Control Group
 - We will look at some of these in greater detail throughout the course
 - [A great list, with explanations is here](http://economicspsychologypolicy.blogspot.com/2015/06/list-of-19-natural-experiments.html)
 
-# Attack of/on the Randomistas {.centered background-color="#314f4f"}
-
-## 
-
-![](images/rctgoldstandard.png)
 
 
-## RCTs are All the Rage
-
-::: columns
-::: {.column width="50%"}
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Professors Esther Duflo and Abhijit Banerjee, co-directors of MIT&#39;s <a href="https://twitter.com/JPAL?ref_src=twsrc%5Etfw">@JPAL</a>, receive congratulations on the big news this morning. They share in the <a href="https://twitter.com/hashtag/NobelPrize?src=hash&amp;ref_src=twsrc%5Etfw">#NobelPrize</a> in economic sciences “for their experimental approach to alleviating global poverty.”<br> <br>Photo: Bryce Vickmark <a href="https://t.co/NWeTrjR2Bq">pic.twitter.com/NWeTrjR2Bq</a></p>&mdash; Massachusetts Institute of Technology (MIT) (@MIT) <a href="https://twitter.com/MIT/status/1183752282988564480?ref_src=twsrc%5Etfw">October 14, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-
-:::
-::: {.column width="50%"}
-
-![](images/voxnobelrcts.png)
-[Vox (Oct 14, 2019)](https://www.vox.com/future-perfect/2019/10/14/20913928/nobel-prize-economics-duflo-banerjee-kremer)
-
-:::
-:::
-
-::: footer
-:::
-
-## But Not Everyone Agrees I
-
-::: columns
-::: {.column width="30%"}
-![](images/deaton.jpg)
-
-Angus Deaton
-
-Economics Nobel 2015
-:::
-::: {.column width="70%"}
-
-> “The RCT is a useful tool, but I think that is a mistake to put method ahead of substance. I have written papers using RCTs...[but] no RCT can ever legitimately claim to have established causality. My theme is that RCTs have no special status, they have no exemption from the problems of inference that econometricians have always wrestled with, and there is nothing that they, and only they, can accomplish.”
-
-[Deaton, Angus, 2019, [“Randomization in the Tropics Revisited: A Theme and Eleven Variations”](https://scholar.princeton.edu/sites/default/files/deaton/files/deaton_randomization_revisited_v2_2019_01.pdf), Working Paper]{.source}
-:::
-:::
-
-
-## But Not Everyone Agrees II
-
-::: columns
-::: {.column width="30%"}
-![](images/pritchett.jpg){fig-align="center" width=400}
-
-Lant Pritchett
-:::
-::: {.column width="70%"}
-
-> “People keep saying that the recent Nobelists ‘studied global poverty.’ This is exactly wrong. They made a commitment to a method, not a subject, and their commitment to method prevented them from studying global poverty.”
-
-> “At a conference at Brookings in 2008 Paul Romer [2018 Nobelist] said: "You guys are like going to a doctor who says you have an allergy and you have cancer. With the skin rash we can divide you skin into areas and test variety of substances and identify with precision and some certainty the cause. Cancer we have some ideas how to treat it but there are a variety of approaches and since we cannot be sure and precise about which is best for you, we will ignore the cancer and not treat it.”
-
-[[Source](https://www.facebook.com/lant.pritchett/posts/10218688602381690)]{.source}
-:::
-:::
-
-## But Not Everyone Agrees III
-
-::: columns
-::: {.column width="30%"}
-![](images/deaton.jpg)
-
-Angus Deaton
-
-Economics Nobel 2015
-:::
-::: {.column width="70%"}
-
-> “Lant Pritchett is so fun to listen to, sometimes you could forget that he is completely full of shit.”
-
-[[Source](https://medium.com/@ismailalimanik/lant-pritchett-the-debate-about-rcts-in-development-is-over-ec7a28a82c17]{.source}
-:::
-:::
 
 ## RCTs and "Evidence-Based Policy”
 
