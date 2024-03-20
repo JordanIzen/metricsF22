@@ -3,7 +3,6 @@ format:
   revealjs:
     theme: [default, custom.scss]
     logo: "../images/metrics_hex.png"
-    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
     height: 900
     width: 1600
     df-print: paged
@@ -20,11 +19,9 @@ execute:
 
 [4.3 --- Categorical Data]{.custom-title}
 
-[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+[ECON 4470 • Econometrics]{.custom-subtitle}
 
-[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
-
-[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+[Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD]{.custom-author}
 
 ```{r}
 #| label: setup
@@ -200,7 +197,7 @@ How much higher wages, on average, do men earn compared to women?
 ::: columns
 ::: {.column width="50%"}
 
-- Basic statistics: can test for statistically significant difference in group means with a **t-test**^[See [today’s appendix](/resources/appendix/4.3-appendix) for this example], let:
+- Basic statistics: can test for statistically significant difference in group means with a **t-test**, let:
 
 - [$Y_M$]{.blue}: average earnings of a sample of [$n_M$]{.blue} men
 

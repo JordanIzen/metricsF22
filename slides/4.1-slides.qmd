@@ -318,6 +318,7 @@ $$\color{#0047AB}{\alpha_1}=\color{#047806}{\beta_1}+\color{#D7250E}{\beta_2} \c
 - The [“True” Regression]{.hi-green} $(Y_i$ on $X_{1i}$ and $X_{2i})$
 
 $$\color{#047806}{\widehat{\text{Test Score}_i}=686.03-1.10\text{ STR}_i-0.65\text{ %EL}_i}$$
+
 . . .
 
 ```{r}
@@ -581,7 +582,7 @@ $$se(\hat{\beta_j})=\sqrt{var(\hat{\beta_j})}$$
 
 :::
 ::: {.column width="50%"}
-- Variation in $\hat{\beta_j}$ is affected by **four** things now^[See [Class 2.5](/content/2.5-content) for a reminder of variation with just one X variable.]:
+- Variation in $\hat{\beta_j}$ is affected by **four** things now:
 
 1. [Goodness of fit of the model (SER)]{.hi-purple}
     - Larger $SER$ $\rightarrow$ larger $var(\hat{\beta_j})$
@@ -876,30 +877,7 @@ vif(reg3)
 - Including `expn_stu` reduces bias but increases variance of $\beta_1$ by 1.68x (68%)
   - and variance of $\beta_2$ by 1.04x (4%)
 
-## Multicollinearity Increases Variance {.smaller}
 
-```{r}
-library(modelsummary)
-modelsummary(models = list("Test Scores" = school_reg,
-                           "Test Scores" = el_reg,
-                           "Test Scores" = reg3),
-             fmt = 2,
-       coef_rename = c("(Intercept)" = "Constant",
-                       "str" = "Student Teacher Ratio",
-                       "el_pct" = "Percent ESL Students",
-                       "expn_stu" = "Spending per Student"),
-       gof_map = list(
-               list("raw" = "nobs", "clean" = "n", "fmt" = 0),
-               list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
-               #list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
-               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
-             ),
-             escape = FALSE,
-             stars = c('*' = .1, '**' = .05, '***' = 0.01))
-```
-
-<!--- We can see $SE(\hat{\beta_1}$ on Student Teacher Ratio increases from 0.48 to 0.61 when we add Percent ESL Students
--->
 
 ## Perfect Multicollinearity
 
@@ -1041,7 +1019,7 @@ $$SER=\frac{SSR}{n-\mathbf{k}-1}$$
 
 - A measure of the spread of the observations around the regression line (in units of $Y$), the average "size" of the residual
 
-- [Only new change:]{.hi-purple} divided by $n-\color{#6A5ACD}{k}-1$ due to use of $k+1$ degrees of freedom to first estimate $\beta_0$ and then all of the other $\beta$'s for the $k$ number of regressors^[Again, because your textbook defines *k* as including the constant, the denominator would be *n-k* instead of *n-k-1*.]
+- [Only new change:]{.hi-purple} divided by $n-\color{#6A5ACD}{k}-1$ due to use of $k+1$ degrees of freedom to first estimate $\beta_0$ and then all of the other $\beta$'s for the $k$ number of regressors^[Your textbook defines *k* as including the constant, the denominator would be *n-k* instead of *n-k-1*.]
 
 ## (Updated) Measures of Fit: $R^2$
 
@@ -1068,7 +1046,6 @@ $$SSM = \sum^n_{i=1}(\hat{Y_i}-\bar{Y})^2$$
 
 - [Unexplained variation in Y]{.hi-red}: [Area A]{.hi-red}
 $$SSR = \sum^n_{i=1}(\hat{u_i})^2$$
-[Compare with one X variable](https://metricsf22.classes.ryansafner.com/slides/2.4-slides#visualizing-r2-i)
 
 :::
 ::: {.column width="50%"}
@@ -1227,82 +1204,3 @@ glance(elreg)
 - Base $R^2$ (`R` calls it “`Multiple R-squared`”) went up 
 - `Adjusted R-squared` $(\bar{R}^2)$ went down 
 
-## Coefficient Plots (with `modelsummary`)
-
-::: {.panel-tabset}
-
-## Plot
-
-```{r}
-#| fig-width: 14
-#| fig-align: center
-library(modelsummary)
-modelplot(reg3,  # our regression object
-          coef_omit = 'Intercept') # don't show intercept
-```
-
-## Code
-
-```{r}
-#| echo: true
-#| eval: false
-library(modelsummary)
-modelplot(reg3,  # our regression object
-          coef_omit = 'Intercept') # don't show intercept
-```
-
-:::
-
-## Regression Table (with `modelsummary`) {.smaller}
-
-::: {.panel-tabset}
-
-## Output
-
-```{r}
-modelsummary(models = list("Simple Model" = school_reg,
-                           "MV Model 1" = elreg,
-                           "MV Model 2" = reg3),
-             fmt = 2, # round to 2 decimals
-             output = "html",
-             coef_rename = c("(Intercept)" = "Constant",
-                             "str" = "STR",
-                             "el_pct" = "% ESL Students",
-                             "expn_stu" = "Spending per Student"),
-             gof_map = list(
-               list("raw" = "nobs", "clean" = "N", "fmt" = 0),
-               #list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
-               list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
-               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
-             ),
-             escape = FALSE,
-             stars = c('*' = .1, '**' = .05, '***' = 0.01) 
-)
-```
-
-## Code
-
-```{r}
-#| echo: true
-#| eval: false
-modelsummary(models = list("Simple Model" = school_reg,
-                           "MV Model 1" = elreg,
-                           "MV Model 2" = reg3),
-             fmt = 2, # round to 2 decimals
-             output = "html",
-             coef_rename = c("(Intercept)" = "Constant",
-                             "str" = "STR",
-                             "el_pct" = "% ESL Students",
-                             "expn_stu" = "Spending per Student"),
-             gof_map = list(
-               list("raw" = "nobs", "clean" = "N", "fmt" = 0),
-               #list("raw" = "r.squared", "clean" = "R<sup>2</sup>", "fmt" = 2),
-               list("raw" = "adj.r.squared", "clean" = "Adj. R<sup>2</sup>", "fmt" = 2),
-               list("raw" = "rmse", "clean" = "SER", "fmt" = 2)
-             ),
-             escape = FALSE,
-             stars = c('*' = .1, '**' = .05, '***' = 0.01)
-)
-```
-
-:::

@@ -8,7 +8,7 @@
 <link href="4.1-slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="4.1-slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="4.1-slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.3.353">
 
   <title>slides</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -386,8 +386,6 @@
     }
   </style>
   
-  <script src="4.1-slides_files/libs/kePrint-0.0.1/kePrint.js"></script>
-  <link href="4.1-slides_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
   <link href="4.1-slides_files/libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
   <script src="4.1-slides_files/libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
@@ -688,7 +686,8 @@ Y_i&amp;=(\underbrace{\beta_0+\beta_2 \color{#6A5ACD}{\delta_0}}_{\color{#0047AB
 <ul>
 <li>The <span class="hi-green">“True” Regression</span> <span class="math inline">\((Y_i\)</span> on <span class="math inline">\(X_{1i}\)</span> and <span class="math inline">\(X_{2i})\)</span></li>
 </ul>
-<p><span class="math display">\[\color{#047806}{\widehat{\text{Test Score}_i}=686.03-1.10\text{ STR}_i-0.65\text{ %EL}_i}\]</span> . . .</p>
+<p><span class="math display">\[\color{#047806}{\widehat{\text{Test Score}_i}=686.03-1.10\text{ STR}_i-0.65\text{ %EL}_i}\]</span></p>
+<div class="fragment">
 <div class="cell">
 <div class="cell-output-display">
 
@@ -696,6 +695,7 @@ Y_i&amp;=(\underbrace{\beta_0+\beta_2 \color{#6A5ACD}{\delta_0}}_{\color{#0047AB
   <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":["term"],"name":[1],"type":["chr"],"align":["left"]},{"label":["estimate"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["std.error"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["statistic"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["p.value"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"(Intercept)","2":"686.0322487","3":"7.41131248","4":"92.565554","5":"3.871501e-280"},{"1":"str","2":"-1.1012959","3":"0.38027832","4":"-2.896026","5":"3.978056e-03"},{"1":"el_pct","2":"-0.6497768","3":"0.03934255","4":"-16.515879","5":"1.657506e-47"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
+</div>
 </div>
 </div>
 </div>
@@ -901,7 +901,7 @@ Y_i&amp;=(\underbrace{\beta_0+\beta_2 \color{#6A5ACD}{\delta_0}}_{\color{#0047AB
 <p><span class="math display">\[se(\hat{\beta_j})=\sqrt{var(\hat{\beta_j})}\]</span></p>
 </div><div class="column" style="width:50%;">
 <ul>
-<li>Variation in <span class="math inline">\(\hat{\beta_j}\)</span> is affected by <strong>four</strong> things now<sup>1</sup>:</li>
+<li>Variation in <span class="math inline">\(\hat{\beta_j}\)</span> is affected by <strong>four</strong> things now:</li>
 </ul>
 <ol type="1">
 <li><span class="hi-purple">Goodness of fit of the model (SER)</span>
@@ -927,7 +927,7 @@ Y_i&amp;=(\underbrace{\beta_0+\beta_2 \color{#6A5ACD}{\delta_0}}_{\color{#0047AB
 <div class="footer">
 
 </div>
-<aside><ol class="aside-footnotes"><li id="fn3"><p>See <a href="/content/2.5-content">Class 2.5</a> for a reminder of variation with just one X variable.</p></li></ol></aside></section>
+</section>
 <section id="vif-and-multicollinearity-i" class="slide level2">
 <h2>VIF and Multicollinearity I</h2>
 <ul>
@@ -1253,103 +1253,6 @@ expn_stu  0.1912728 -0.6199821 -0.07139604  1.00000000</code></pre>
 </ul>
 </div>
 </section>
-<section id="multicollinearity-increases-variance" class="slide level2 smaller">
-<h2>Multicollinearity Increases Variance</h2>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table" data-quarto-postprocess="true" style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Test Scores</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Test Scores</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Test Scores</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Constant</td>
-<td style="text-align: center;">698.93***</td>
-<td style="text-align: center;">686.03***</td>
-<td style="text-align: center;">649.58***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(9.47)</td>
-<td style="text-align: center;">(7.41)</td>
-<td style="text-align: center;">(15.21)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Student Teacher Ratio</td>
-<td style="text-align: center;">−2.28***</td>
-<td style="text-align: center;">−1.10***</td>
-<td style="text-align: center;">−0.29</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(0.48)</td>
-<td style="text-align: center;">(0.38)</td>
-<td style="text-align: center;">(0.48)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Percent ESL Students</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">−0.65***</td>
-<td style="text-align: center;">−0.66***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">(0.04)</td>
-<td style="text-align: center;">(0.04)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Spending per Student</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">0.00***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(0.00)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">n</td>
-<td style="text-align: center;">420</td>
-<td style="text-align: center;">420</td>
-<td style="text-align: center;">420</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">R<sup>2</sup></td>
-<td style="text-align: center;">0.05</td>
-<td style="text-align: center;">0.43</td>
-<td style="text-align: center;">0.44</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">SER</td>
-<td style="text-align: center;">18.54</td>
-<td style="text-align: center;">14.41</td>
-<td style="text-align: center;">14.28</td>
-</tr>
-</tbody><tfoot>
-<tr class="even">
-<td style="text-align: left; padding: 0;"><sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tfoot>
-
-</table>
-
-
-</div>
-</div>
-<!--- We can see $SE(\hat{\beta_1}$ on Student Teacher Ratio increases from 0.48 to 0.61 when we add Percent ESL Students
--->
-</section>
 <section id="perfect-multicollinearity" class="slide level2">
 <h2>Perfect Multicollinearity</h2>
 <ul>
@@ -1427,7 +1330,7 @@ expn_stu  0.1912728 -0.6199821 -0.07139604  1.00000000</code></pre>
 <section id="perfect-multicollinearity-example-iii" class="slide level2">
 <h2>Perfect Multicollinearity: Example III</h2>
 
-<img data-src="4.1-slides_files/figure-revealjs/unnamed-chunk-20-1.png" width="1536" class="r-stretch quarto-figure-center"></section>
+<img data-src="4.1-slides_files/figure-revealjs/unnamed-chunk-19-1.png" width="1536" class="r-stretch quarto-figure-center"></section>
 <section id="perfect-multicollinearity-example-iv" class="slide level2 smaller">
 <h2>Perfect Multicollinearity Example IV</h2>
 <div class="columns">
@@ -1535,7 +1438,7 @@ Y_i&amp;=\hat{Y_i}+\hat{u_i}\\
 <li><p>A measure of the spread of the observations around the regression line (in units of <span class="math inline">\(Y\)</span>), the average “size” of the residual</p></li>
 <li><p><span class="hi-purple">Only new change:</span> divided by <span class="math inline">\(n-\color{#6A5ACD}{k}-1\)</span> due to use of <span class="math inline">\(k+1\)</span> degrees of freedom to first estimate <span class="math inline">\(\beta_0\)</span> and then all of the other <span class="math inline">\(\beta\)</span>’s for the <span class="math inline">\(k\)</span> number of regressors<sup>1</sup></p></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn4"><p>Again, because your textbook defines <em>k</em> as including the constant, the denominator would be <em>n-k</em> instead of <em>n-k-1</em>.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn3"><p>Your textbook defines <em>k</em> as including the constant, the denominator would be <em>n-k</em> instead of <em>n-k-1</em>.</p></li></ol></aside></section>
 <section id="updated-measures-of-fit-r2" class="slide level2">
 <h2>(Updated) Measures of Fit: <span class="math inline">\(R^2\)</span></h2>
 <p><span class="math display">\[\begin{align*}
@@ -1560,13 +1463,13 @@ R^2&amp;=\frac{SSM}{SST}\\
 </ul>
 <p><span class="math display">\[SSM = \sum^n_{i=1}(\hat{Y_i}-\bar{Y})^2\]</span></p>
 <ul>
-<li><span class="hi-red">Unexplained variation in Y</span>: <span class="hi-red">Area A</span> <span class="math display">\[SSR = \sum^n_{i=1}(\hat{u_i})^2\]</span> <a href="https://metricsf22.classes.ryansafner.com/slides/2.4-slides#visualizing-r2-i">Compare with one X variable</a></li>
+<li><span class="hi-red">Unexplained variation in Y</span>: <span class="hi-red">Area A</span> <span class="math display">\[SSR = \sum^n_{i=1}(\hat{u_i})^2\]</span></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p><span class="math display">\[R^2 = \frac{SSM}{SST} = \frac{D+E+G}{\color{red}{A}+D+E+G}\]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="4.1-slides_files/figure-revealjs/unnamed-chunk-23-1.png" width="960"></p>
+<p><img data-src="4.1-slides_files/figure-revealjs/unnamed-chunk-22-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1621,7 +1524,7 @@ R^2&amp;=\frac{SSM}{SST}\\
 <p><span class="math display">\[R^2 = \frac{SSM}{SST} = \frac{D+E+G}{\color{red}{A}+D+E+G}\]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img data-src="4.1-slides_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
+<p><img data-src="4.1-slides_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
 </div>
 </div>
 </div>
@@ -1642,7 +1545,7 @@ R^2&amp;=\frac{SSM}{SST}\\
 </ul>
 <p><span class="math display">\[\bar{R}^2 = 1- \underbrace{\frac{n-1}{n-k-1}}_{penalty} \times \frac{SSR}{SST}\]</span> - In the end, recall <span class="hi-turquoise"><span class="math inline">\(R^2\)</span> was never that useful</span><sup>1</sup>, so don’t worry about the formula - Large sample sizes <span class="math inline">\((n)\)</span> make <span class="math inline">\(R^2\)</span> and <span class="math inline">\(\bar{R}^2\)</span> very close</p>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn5"><p>…for measuring causal effects (our goal). It <em>is</em> useful if you care about prediction instead!</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn4"><p>…for measuring causal effects (our goal). It <em>is</em> useful if you care about prediction instead!</p></li></ol></aside></section>
 <section id="barr2-in-r" class="slide level2 smaller">
 <h2><span class="math inline">\(\bar{R}^2\)</span> In R</h2>
 <div class="columns">
@@ -1689,156 +1592,6 @@ F-statistic:   155 on 2 and 417 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li>Base <span class="math inline">\(R^2\)</span> (<code>R</code> calls it “<code>Multiple R-squared</code>”) went up</li>
 <li><code>Adjusted R-squared</code> <span class="math inline">\((\bar{R}^2)\)</span> went down</li>
 </ul>
-</section>
-<section id="coefficient-plots-with-modelsummary" class="slide level2">
-<h2>Coefficient Plots (with <code>modelsummary</code>)</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Plot</a></li><li><a href="#tabset-1-2">Code</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="4.1-slides_files/figure-revealjs/unnamed-chunk-28-1.png" width="1344"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<div id="tabset-1-2">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">library</span>(modelsummary)</span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">modelplot</span>(reg3,  <span class="co"># our regression object</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a>          <span class="at">coef_omit =</span> <span class="st">'Intercept'</span>) <span class="co"># don't show intercept</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="regression-table-with-modelsummary" class="slide level2 smaller">
-<h2>Regression Table (with <code>modelsummary</code>)</h2>
-<div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Output</a></li><li><a href="#tabset-2-2">Code</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1">
-<div class="cell">
-<div class="cell-output-display">
-<table class="table" data-quarto-postprocess="true" style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">Simple Model</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;MV Model 1</th>
-<th style="text-align: center;" data-quarto-table-cell-role="th">&nbsp;MV Model 2</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Constant</td>
-<td style="text-align: center;">698.93***</td>
-<td style="text-align: center;">686.03***</td>
-<td style="text-align: center;">649.58***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(9.47)</td>
-<td style="text-align: center;">(7.41)</td>
-<td style="text-align: center;">(15.21)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">STR</td>
-<td style="text-align: center;">−2.28***</td>
-<td style="text-align: center;">−1.10***</td>
-<td style="text-align: center;">−0.29</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;">(0.48)</td>
-<td style="text-align: center;">(0.38)</td>
-<td style="text-align: center;">(0.48)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">% ESL Students</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">−0.65***</td>
-<td style="text-align: center;">−0.66***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">(0.04)</td>
-<td style="text-align: center;">(0.04)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Spending per Student</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">0.00***</td>
-</tr>
-<tr class="even">
-<td style="text-align: left; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;"></td>
-<td style="text-align: center; box-shadow: 0px 1.5px;">(0.00)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">N</td>
-<td style="text-align: center;">420</td>
-<td style="text-align: center;">420</td>
-<td style="text-align: center;">420</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Adj. R<sup>2</sup></td>
-<td style="text-align: center;">0.05</td>
-<td style="text-align: center;">0.42</td>
-<td style="text-align: center;">0.43</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">SER</td>
-<td style="text-align: center;">18.54</td>
-<td style="text-align: center;">14.41</td>
-<td style="text-align: center;">14.28</td>
-</tr>
-</tbody><tfoot>
-<tr class="even">
-<td style="text-align: left; padding: 0;"><sup></sup> * p &lt; 0.1, ** p &lt; 0.05, *** p &lt; 0.01</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-</tfoot>
-
-</table>
-
-
-</div>
-</div>
-</div>
-<div id="tabset-2-2">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">modelsummary</span>(<span class="at">models =</span> <span class="fu">list</span>(<span class="st">"Simple Model"</span> <span class="ot">=</span> school_reg,</span>
-<span id="cb24-2"><a href="#cb24-2"></a>                           <span class="st">"MV Model 1"</span> <span class="ot">=</span> elreg,</span>
-<span id="cb24-3"><a href="#cb24-3"></a>                           <span class="st">"MV Model 2"</span> <span class="ot">=</span> reg3),</span>
-<span id="cb24-4"><a href="#cb24-4"></a>             <span class="at">fmt =</span> <span class="dv">2</span>, <span class="co"># round to 2 decimals</span></span>
-<span id="cb24-5"><a href="#cb24-5"></a>             <span class="at">output =</span> <span class="st">"html"</span>,</span>
-<span id="cb24-6"><a href="#cb24-6"></a>             <span class="at">coef_rename =</span> <span class="fu">c</span>(<span class="st">"(Intercept)"</span> <span class="ot">=</span> <span class="st">"Constant"</span>,</span>
-<span id="cb24-7"><a href="#cb24-7"></a>                             <span class="st">"str"</span> <span class="ot">=</span> <span class="st">"STR"</span>,</span>
-<span id="cb24-8"><a href="#cb24-8"></a>                             <span class="st">"el_pct"</span> <span class="ot">=</span> <span class="st">"% ESL Students"</span>,</span>
-<span id="cb24-9"><a href="#cb24-9"></a>                             <span class="st">"expn_stu"</span> <span class="ot">=</span> <span class="st">"Spending per Student"</span>),</span>
-<span id="cb24-10"><a href="#cb24-10"></a>             <span class="at">gof_map =</span> <span class="fu">list</span>(</span>
-<span id="cb24-11"><a href="#cb24-11"></a>               <span class="fu">list</span>(<span class="st">"raw"</span> <span class="ot">=</span> <span class="st">"nobs"</span>, <span class="st">"clean"</span> <span class="ot">=</span> <span class="st">"N"</span>, <span class="st">"fmt"</span> <span class="ot">=</span> <span class="dv">0</span>),</span>
-<span id="cb24-12"><a href="#cb24-12"></a>               <span class="co">#list("raw" = "r.squared", "clean" = "R&lt;sup&gt;2&lt;/sup&gt;", "fmt" = 2),</span></span>
-<span id="cb24-13"><a href="#cb24-13"></a>               <span class="fu">list</span>(<span class="st">"raw"</span> <span class="ot">=</span> <span class="st">"adj.r.squared"</span>, <span class="st">"clean"</span> <span class="ot">=</span> <span class="st">"Adj. R&lt;sup&gt;2&lt;/sup&gt;"</span>, <span class="st">"fmt"</span> <span class="ot">=</span> <span class="dv">2</span>),</span>
-<span id="cb24-14"><a href="#cb24-14"></a>               <span class="fu">list</span>(<span class="st">"raw"</span> <span class="ot">=</span> <span class="st">"rmse"</span>, <span class="st">"clean"</span> <span class="ot">=</span> <span class="st">"SER"</span>, <span class="st">"fmt"</span> <span class="ot">=</span> <span class="dv">2</span>)</span>
-<span id="cb24-15"><a href="#cb24-15"></a>             ),</span>
-<span id="cb24-16"><a href="#cb24-16"></a>             <span class="at">escape =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb24-17"><a href="#cb24-17"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">'*'</span> <span class="ot">=</span> .<span class="dv">1</span>, <span class="st">'**'</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">'***'</span> <span class="ot">=</span> <span class="fl">0.01</span>)</span>
-<span id="cb24-18"><a href="#cb24-18"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</div>
 
 <img src="../images/metrics_hex.png" class="slide-logo r-stretch"><div class="footer footer-default">
 
