@@ -8,7 +8,7 @@
 <link href="4.3-slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="4.3-slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="4.3-slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.3.450">
 
   <title>slides</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -584,7 +584,7 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
-<li><p>Basic statistics: can test for statistically significant difference in group means with a <strong>t-test</strong><sup>1</sup>, let:</p></li>
+<li><p>Basic statistics: can test for statistically significant difference in group means with a <strong>t-test</strong>, let:</p></li>
 <li><p><span class="blue"><span class="math inline">\(Y_M\)</span></span>: average earnings of a sample of <span class="blue"><span class="math inline">\(n_M\)</span></span> men</p></li>
 <li><p><span class="pink"><span class="math inline">\(Y_W\)</span></span>: average earnings of a sample of <span class="pink"><span class="math inline">\(n_M\)</span></span> women</p></li>
 <li><p><strong>Difference</strong> in group averages: <span class="math inline">\(d=\)</span> <span class="blue"><span class="math inline">\(\bar{Y}_M\)</span></span> <span class="math inline">\(-\)</span> <span class="pink"><span class="math inline">\(\bar{Y}_W\)</span></span></p></li>
@@ -602,7 +602,7 @@
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>See <a href="/resources/appendix/4.3-appendix">today’s appendix</a> for this example</p></li></ol></aside></section>
+</section>
 <section id="plotting-factors-in-r" class="slide level2 smaller">
 <h2>Plotting <code>factors</code> in <code>R</code></h2>
 <ul>
@@ -687,7 +687,7 @@
 <li>Again, <span class="math inline">\(\hat{\beta_1}\)</span> makes less sense as the “slope” of a line in this context</li>
 </ul>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn2"><p>Also called a <span class="hi">binary variable</span> or <span class="hi">dichotomous variable</span> since it only takes on 2 values.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Also called a <span class="hi">binary variable</span> or <span class="hi">dichotomous variable</span> since it only takes on 2 values.</p></li></ol></aside></section>
 <section id="comparing-groups-in-regression-scatterplot" class="slide level2">
 <h2>Comparing Groups in Regression: Scatterplot</h2>
 <div class="panel-tabset">
@@ -1752,8 +1752,7 @@ F-statistic: 3.099 on 3 and 522 DF,  p-value: 0.02646</code></pre>
 </div>
 <div class="fragment">
 <ul>
-<li><p>Special models to properly interpret and extend this (<span class="hi">logistic “logit”</span>, <span class="hi">probit</span>, etc)</p></li>
-<li><p>Feel free to write papers with dummy <span class="math inline">\(Y\)</span> variables!</p></li>
+<li>Special models to properly interpret and extend this (<span class="hi">logistic “logit”</span>, <span class="hi">probit</span>, etc)</li>
 </ul>
 </div>
 </section></section>
@@ -1850,15 +1849,18 @@ F-statistic: 3.099 on 3 and 522 DF,  p-value: 0.02646</code></pre>
 <ul>
 <li>We can model an interaction by introducing a variable that is an .hi[interaction term] capturing the interaction between two variables:</li>
 </ul>
-<p><span class="math display">\[Y_i=\beta_0+\beta_1X_i+\beta_2 D_i+\color{#e64173}{\beta_3(X_i \times D_i)} \quad \text{ where } D_i=\{0,1\}\]</span> . . .</p>
+<p><span class="math display">\[Y_i=\beta_0+\beta_1X_i+\beta_2 D_i+\color{#e64173}{\beta_3(X_i \times D_i)} \quad \text{ where } D_i=\{0,1\}\]</span></p>
+<div class="fragment">
 <ul>
 <li><span class="math inline">\(\color{#e64173}{\beta_3}\)</span> estimates the <span class="hi">interaction effect</span> between <span class="math inline">\(X_i\)</span> and <span class="math inline">\(D_i\)</span> on <span class="math inline">\(Y_i\)</span></li>
 </ul>
+</div>
 <div class="fragment">
 <ul>
 <li>What do the different coefficients <span class="math inline">\((\beta)\)</span>’s tell us?
 <ul>
 <li>Again, think logically by examining each group <span class="math inline">\((D_i=0\)</span> or <span class="math inline">\(D_i=1)\)</span></li>
+<li>We will build some intuition about how we interpret this sort of interaction now</li>
 </ul></li>
 </ul>
 </div>
@@ -2107,7 +2109,7 @@ F-statistic: 3.099 on 3 and 522 DF,  p-value: 0.02646</code></pre>
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn3"><p>There are several options here. (1) Using <code>:</code>, running <code>y ~ x1:x2</code> will run <span class="math inline">\(Y = \beta_0 + \beta_3 (X_1 \times X_2)\)</span> only (i.e.&nbsp;not including <code>x1</code> and <code>x2</code> terms). You of course can add them in yourself by running <code>y ~ x1 + x2 + x1:x2</code> as in my example above. (2) Using <code>*</code>, running <code>y ~ x1*x2</code> will run the full <span class="math inline">\(Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)\)</span> only (i.e.&nbsp;including <code>x1</code> and <code>x2</code> terms)</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>There are several options here. (1) Using <code>:</code>, running <code>y ~ x1:x2</code> will run <span class="math inline">\(Y = \beta_0 + \beta_3 (X_1 \times X_2)\)</span> only (i.e.&nbsp;not including <code>x1</code> and <code>x2</code> terms). You of course can add them in yourself by running <code>y ~ x1 + x2 + x1:x2</code> as in my example above. (2) Using <code>*</code>, running <code>y ~ x1*x2</code> will run the full <span class="math inline">\(Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \beta_3 (X_1 \times X_2)\)</span> only (i.e.&nbsp;including <code>x1</code> and <code>x2</code> terms)</p></li></ol></aside></section>
 <section id="interactions-in-our-example-regression" class="slide level2 smaller">
 <h2>Interactions in Our Example: Regression</h2>
 <div class="cell">
@@ -2221,7 +2223,9 @@ F-statistic: 3.099 on 3 and 522 DF,  p-value: 0.02646</code></pre>
 <h2>Interactions in Our Example: As Two Regressions I</h2>
 <p><span class="math display">\[\widehat{\text{wage}}_i=6.16+0.05 \, \text{experience}_i - 1.55 \, \text{female}_i - 0.06 \, (\text{experience}_i \times \text{female}_i)\]</span></p>
 <div class="fragment">
-<p><span class="blue">Regression for men <span class="math inline">\(female=0\)</span></span> <span class="math display">\[\widehat{\text{wage}}_i=6.16+0.05 \, \text{experience}_i\]</span> . . .</p>
+<p><span class="blue">Regression for men <span class="math inline">\(female=0\)</span></span> <span class="math display">\[\widehat{\text{wage}}_i=6.16+0.05 \, \text{experience}_i\]</span></p>
+</div>
+<div class="fragment">
 <ul>
 <li>Men with 0 years of experience earn $6.16 on average</li>
 </ul>
@@ -2331,7 +2335,7 @@ F-statistic: 3.099 on 3 and 522 DF,  p-value: 0.02646</code></pre>
 <li>As always, best to think logically about possibilities (when each dummy <span class="math inline">\(=0\)</span> or <span class="math inline">\(=1)\)</span></li>
 </ul>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn4"><p>And the effect on <span class="math inline">\(Y\)</span> of going from $<span class="math inline">\(D_2=0\)</span> to <span class="math inline">\(D_2=1\)</span> when <span class="math inline">\(D_1=1\)</span> vs.&nbsp;<span class="math inline">\(D_1=0\)</span>.</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn3"><p>And the effect on <span class="math inline">\(Y\)</span> of going from $<span class="math inline">\(D_2=0\)</span> to <span class="math inline">\(D_2=1\)</span> when <span class="math inline">\(D_1=1\)</span> vs.&nbsp;<span class="math inline">\(D_1=0\)</span>.</p></li></ol></aside></section>
 <section id="dummy-interaction-interpretting-coefficients" class="slide level2 smaller">
 <h2>2 Dummy Interaction: Interpretting Coefficients</h2>
 <p><span class="math display">\[Y_i=\beta_0+\beta_1D_{1i}+\beta_2 D_{2i}+\beta_3 \color{#e64173}{(D_{1i} \times D_{2i})}\]</span></p>
@@ -2868,7 +2872,8 @@ E(Y|D_{1}&amp;=\color{#44C1C4}{1}, D_{2}=\mathbf{d_2}) = \beta_0+\beta_1(\color{
 </section>
 <section id="continuous-variables-interaction-marginal-effects" class="slide level2">
 <h2>Continuous Variables Interaction: Marginal Effects</h2>
-<p><span class="math display">\[\widehat{\text{wage}}_i=-2.860+0.602 \, \text{education}_i+0.047 \, \text{experience}_i+0.002\, (\text{education}_i \times \text{experience}_i)\]</span> . . .</p>
+<p><span class="math display">\[\widehat{\text{wage}}_i=-2.860+0.602 \, \text{education}_i+0.047 \, \text{experience}_i+0.002\, (\text{education}_i \times \text{experience}_i)\]</span></p>
+<div class="fragment">
 <p>Marginal Effect of <em>Education</em> on Wages by Years of <em>Experience</em>:</p>
 <table>
 <colgroup>
@@ -2899,6 +2904,7 @@ E(Y|D_{1}&amp;=\color{#44C1C4}{1}, D_{2}=\mathbf{d_2}) = \beta_0+\beta_1(\color{
 <ul>
 <li>Marginal effect of education <span class="math inline">\(\rightarrow\)</span> wages <strong>increases</strong> with more experience</li>
 </ul>
+</div>
 </section>
 <section id="continuous-variables-interaction-marginal-effects-1" class="slide level2">
 <h2>Continuous Variables Interaction: Marginal Effects</h2>
@@ -2934,8 +2940,7 @@ E(Y|D_{1}&amp;=\color{#44C1C4}{1}, D_{2}=\mathbf{d_2}) = \beta_0+\beta_1(\color{
 </div>
 <div class="fragment">
 <ul>
-<li><p>Marginal effect of experience <span class="math inline">\(\rightarrow\)</span> wages <strong>increases</strong> with more education</p></li>
-<li><p>If you want to estimate the marginal effects more precisely, and graph them, see the appendix in <a href="resources/appendices/4.3-appendix">today’s appendix</a></p></li>
+<li>Marginal effect of experience <span class="math inline">\(\rightarrow\)</span> wages <strong>increases</strong> with more education</li>
 </ul>
 <p><img src="../images/metrics_hex.png" class="slide-logo"></p>
 <div class="footer footer-default">

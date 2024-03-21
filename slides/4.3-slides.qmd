@@ -1149,7 +1149,6 @@ $$\widehat{\text{Admitted}}_i=\hat{\beta_0}+\hat{\beta_1} \, GPA_i \quad \text{ 
 
 - Special models to properly interpret and extend this ([logistic “logit”]{.hi}, [probit]{.hi}, etc)
 
-- Feel free to write papers with dummy $Y$ variables!
 
 # Interaction Effects {.centered background-color="#314f4f"}
 
@@ -1224,6 +1223,7 @@ $$Y_i=\beta_0+\beta_1X_{1i}+\beta_2 X_{2i}+\beta_3 \color{#e64173}{(X_{1i} \time
 - We can model an interaction by introducing a variable that is an .hi[interaction term] capturing the interaction between two variables:
 
 $$Y_i=\beta_0+\beta_1X_i+\beta_2 D_i+\color{#e64173}{\beta_3(X_i \times D_i)} \quad \text{ where } D_i=\{0,1\}$$
+
 . . .
 
 - $\color{#e64173}{\beta_3}$ estimates the [interaction effect]{.hi} between $X_i$ and $D_i$ on $Y_i$
@@ -1232,6 +1232,7 @@ $$Y_i=\beta_0+\beta_1X_i+\beta_2 D_i+\color{#e64173}{\beta_3(X_i \times D_i)} \q
 
 - What do the different coefficients $(\beta)$’s tell us? 
   - Again, think logically by examining each group $(D_i=0$ or $D_i=1)$
+  - We will build some intuition about how we interpret this sort of interaction now
 
 ## Dummy-Continuous Interaction Effects as Two Regressions I {.smaller}
 
@@ -1522,6 +1523,7 @@ $$\widehat{\text{wage}}_i=6.16+0.05 \, \text{experience}_i - 1.55 \, \text{femal
 
 [Regression for men $female=0$]{.blue}
 $$\widehat{\text{wage}}_i=6.16+0.05 \, \text{experience}_i$$
+
 . . .
 
 - Men with 0 years of experience earn $6.16 on average
@@ -1893,6 +1895,7 @@ modelsummary(models = list("Wage" = reg_cont),
 ## Continuous Variables Interaction: Marginal Effects
 
 $$\widehat{\text{wage}}_i=-2.860+0.602 \, \text{education}_i+0.047 \, \text{experience}_i+0.002\, (\text{education}_i \times \text{experience}_i)$$
+
 . . .
 
 Marginal Effect of *Education* on Wages by Years of *Experience*: 
@@ -1923,5 +1926,5 @@ Marginal Effect of *Experience* on Wages by Years of *Education*:
 
 - Marginal effect of experience $\rightarrow$ wages **increases** with more education
 
-- If you want to estimate the marginal effects more precisely, and graph them, see the appendix in [today’s appendix](resources/appendices/4.3-appendix)
+
 
