@@ -411,6 +411,7 @@ $\mathbb{E}[\hat{\beta_1}]=$ [$\beta_1$]{.red} $+$ [$cor(X,u)$]{.blue} $\frac{\s
 
 - [Bias]{.blue} from $\%EL$ is positive
   - Since $\color{red}{\beta_1}$ is negative, it’s made to be a *larger* negative number than it truly is
+  - This is because larger classes are more likely to contain more ESL students and having more ESL students is associated with lower test scores. Thus our effect is too negative due to the omitted variable!
   - Implies that our $\color{red}{\hat{\beta}_1}$ __*over*states__ the effect of reducing STR on improving Test Scores
     - This is different than over- and underestimating 
 
