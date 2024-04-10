@@ -3,7 +3,6 @@ format:
   revealjs:
     theme: [default, custom.scss]
     logo: "../images/metrics_hex.png"
-    footer: "[ECON 480 — Econometrics](https://metricsF22.classes.ryansafner.com)"
     height: 900
     width: 1600
     df-print: paged
@@ -18,13 +17,11 @@ execute:
 
 ##  {data-menu-title="Title Slide" background-image="images/metrics_title_slide.png"}
 
-[4.3 --- Nonlinearity & Transformations]{.custom-title}
+[4.4 --- Nonlinearity & Transformations]{.custom-title}
 
-[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+[ECON 4470 • Econometrics]{.custom-subtitle}
 
-[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
-
-[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+[Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD]{.custom-author}
 
 ```{r}
 #| label: setup
@@ -73,15 +70,11 @@ wages<-wages %>%
 
 ### [Log-Log Model](#log-log-model)
 
-### [Standardizing & Comparing Across Units](#standardizing-comparing-across-units)
-
 ### [Joint Hypothesis Testing](#joint-hypothesis-testing)
 
 # Nonlinear Effects {.centered background-color="#314f4f"}
 
 ## *Linear* Regression
-
-- OLS is commonly known as “[_linear_ regression]{.hi}” as it fits a **straight line** to data points
 
 - Often, data and relationships between variables may *not* be linear
 
@@ -424,7 +417,7 @@ $$\hat{Y_i} = \hat{\beta_0} + \hat{\beta_1} X_i + \hat{\beta_2} X_i^2$$
 . . .
 
 - How to interpret coefficients (betas)?
-  - $\beta_0$ as “intercept” and $\beta_1$ as “slope” makes no sense  🧐
+  - $\beta_0$ as “intercept” and $\beta_1$ as “slope” makes no sense  
   - $\beta_1$ as effect $X_i \rightarrow Y_i$ holding $X_i^2$ constant??^[Note: this is *not* a perfect multicollinearity problem! Correlation only measures *linear* relationships!]
 
 . . .
@@ -647,65 +640,6 @@ ggplot(data = gapminder)+
            base_size=16)
 ```
 
-## Quadratic Model: Maxima and Minima I
-
-- For a polynomial model, we can also find the predicted **maximum** or **minimum** of $\hat{Y_i}$
-
-. . .
-
-- A quadratic model has a single global maximum or minimum (1 bend)
-
-. . .
-
-- By calculus, a minimum or maximum occurs where:
-
-\begin{align*}
-		\frac{ \partial \, Y_i}{\partial \, X_i} &=0\\
-		\beta_1 + 2\beta_2 X_i &= 0\\
-		2\beta_2 X_i&= -\beta_1\\
-		X_i^*&=-\frac{\beta_1}{2\beta_2}\\
-\end{align*}
-
-## Quadratic Model: Maxima and Minima II
-
-```{r}
-tidy(reg1)
-```
-
-
-\begin{align*}
-GDP_i^*&=-\frac{\beta_1}{2\beta_2}\\
-GDP_i^*&=-\frac{(1.55)}{2(-0.015)}\\
-GDP_i^*& \approx 51.67\\
-\end{align*}
-
-
-## Quadratic Model: Maxima and Minima III
-
-```{r}
-#| fig-align: center
-#| fig-width: 14
-#| echo: true
-#| code-fold: true
-
-ggplot(data = gapminder)+
-  aes(x = GDP_t,
-      y = lifeExp)+
-  geom_point(color = "blue", alpha=0.5)+
-  stat_smooth(method = "lm",
-              formula = y ~ x + I(x^2),
-              color = "green")+
-  geom_vline(xintercept=51.67, linetype="dashed", color="red", size = 1)+
-  geom_label(x=51.67, y=90, label="$51.67", color="red")+
-  scale_x_continuous(labels = scales::dollar,
-                     breaks = seq(0,120,10))+
-  scale_y_continuous(breaks = seq(0,100,10),
-                     limits = c(0,100))+
-  labs(x = "GDP per Capita (in Thousands)",
-       y = "Life Expectancy (Years)")+
-  theme_bw(base_family = "Fira Sans Condensed",
-           base_size=16)
-```
 
 ## Determining If Polynomials Are Necessary I
 
@@ -764,7 +698,7 @@ $$\color{#6A5ACD}{\widehat{\text{Life Expectancy}_i} = \hat{\beta_0}+\hat{\beta_
 
 - Or clear data patterns that have multiple “bends”
 
-- Recall, [we care more](https://metricsf22.classes.ryansafner.com/slides/3.1-slides.html#/two-types-of-uses-for-regression) about accurately measuring the causal effect of $X \rightarrow Y$, rather than getting the most accurate prediction possible for $\hat{Y}$
+- Recall, we care more about accurately measuring the causal effect of $X \rightarrow Y$, rather than getting the most accurate prediction possible for $\hat{Y}$
 
 ```{r}
 #| fig-align: center
@@ -920,67 +854,6 @@ ggplot(data.frame(x=0:10),aes(x=x))+
 :::
 :::
 
-## The Natural Logarithm
-
-```{r}
-#| fig-align: center
-#| fig-asp: 1
-
-ggplot(data.frame(x=0:10),aes(x=x))+
-    stat_function(fun=log, color="blue",size =2)+
-    stat_function(fun=exp, color="red", size =2)+
-  stat_function(fun=function(x){x}, size=2, linetype="dashed")+
-  geom_label(x=4,y=log(4), label=expression(Y==ln(X)), color="blue", size=5)+
-  geom_label(x=1,y=exp(1), label=expression(Y==e^{X}), color="red", size=5)+
-  scale_x_continuous(breaks=seq(0,5,1),
-                     limits=c(0,5),
-                     expand=c(0,0))+
-  scale_y_continuous(limits=c(0,5),
-                     expand=c(0,0))+
-  labs(x = "X",
-       y = "Y")+
-  theme_classic(base_family = "Fira Sans Condensed",
-           base_size=20)
-```
-
-- The [exponential function]{.red}, $Y=e^X$ or $Y=exp(X)$, where base $e=2.71828...$
-
-- [Natural logarithm]{.blue} is the inverse, $Y=ln(X)$
-
-## The Natural Logarithm: Review I {.smaller}
-
-- [Exponents]{.hi} are defined as
-$$\color{#6A5ACD}{b}^{\color{#e64173}{n}}=\underbrace{\color{#6A5ACD}{b} \times \color{#6A5ACD}{b} \times \cdots \times \color{#6A5ACD}{b}}_{\color{#e64173}{n} \text{ times}}$$
-  - where base $\color{#6A5ACD}{b}$ is multiplied by itself $\color{#e64173}{n}$ times
-
-. . .
-
-- [**Example**]{.green}: $\color{#6A5ACD}{2}^{\color{#e64173}{3}}=\underbrace{\color{#6A5ACD}{2} \times \color{#6A5ACD}{2} \times \color{#6A5ACD}{2}}_{\color{#e64173}{n=3}}=\color{#314f4f}{8}$
-
-. . .
-
-- [Logarithms]{.hi-purple} are the inverse, defined as the exponents in the expressions above
-$$\text{If } \color{#6A5ACD}{b}^{\color{#e64173}{n}}=\color{#314f4f}{y}\text{, then }log_{\color{#6A5ACD}{b}}(\color{#314f4f}{y})=\color{#e64173}{n}$$
-  - $\color{#e64173}{n}$ is the number you must raise $\color{#6A5ACD}{b}$ to in order to get $\color{#314f4f}{y}$
-
-. . .
-
-- [**Example**]{.green}: $log_{\color{#6A5ACD}{2}}(\color{#314f4f}{8})=\color{#e64173}{3}$
-
-## The Natural Logarithm: Review II
-
-- Logarithms can have any base, but common to use the [natural logarithm]{.hi-purple} $(\ln)$ with base $\mathbf{e=2.71828...}$
-
-$$\text{If } e^n=y\text{, then } \ln(y)=n$$
-
-## The Natural Logarithm: Properties
-
-- Natural logs have a lot of useful properties:
-  1. $\ln(\frac{1}{x})=-\ln(x)$
-  2. $\ln(ab)=\ln(a)+\ln(b)$
-  3.  $\ln(\frac{x}{a})=\ln(x)-\ln(a)$
-  4. $\ln(x^a)=a \, \ln(x)$
-  5.  $\frac{d  \, \ln \, x}{d \, x} = \frac{1}{x}$
 
 ## The Natural Logarithm: Example {.smaller}
 
@@ -1319,6 +1192,7 @@ log_log_reg %>% tidy()
 . . .
 
 $$\widehat{\text{ln Life Expectancy}}_i=2.864+0.147 \, \text{ln GDP}_i$$
+
 . . .
 
 - A **1% change in GDP** $\rightarrow$ a **0.147% increase** in Life Expectancy
@@ -1415,145 +1289,6 @@ modelsummary(models = list("Life Exp." = lin_log_reg,
   - Categorical variables (season, gender, political party)
   - Time variables (year, week, day)
 
-# Standardizing & Comparing Across Units {.centered background-color="#314f4f"}
-
-## Comparing Coefficients of Different Units I
-
-$$\hat{Y_i}=\beta_0+\beta_1 X_1+\beta_2 X_2$$
-- We often want to compare coefficients to see which variable $X_1$ or $X_2$ has a bigger effect on $Y$
-
-- What if $X_1$ and $X_2$ are different units?
-
-. . .
-
-::: callout-tip
-## Example
-
-\begin{align*}
-\widehat{\text{Salary}_i}&=\beta_0+\beta_1\, \text{Batting average}_i+\beta_2\, \text{Home runs}_i\\
-\widehat{\text{Salary}_i}&=-\text{2,869,439.40}+\text{12,417,629.72} \, \text{Batting average}_i+\text{129,627.36}\, \text{Home runs}_i\\
-\end{align*}
-
-:::
-
-## Comparing Coefficients of Different Units II
-
-- An easy way is to [standardize]{.hi}^[Also called “centering” or “scaling.”] the variables (i.e. take the $Z$-score) 
-
-$$X_Z=\frac{X_i-\overline{X}}{sd(X)}$$
-
-- Note doing this will make the constant 0, as both distributions of $X$ and $Y$ are now centered at 0.
-
-## Comparing Coefficients of Different Units: Example {.smaller}
-
-| Variable | Mean | Std. Dev. |
-|----------|------|-----------|
-| Salary | $2,024,616 | $2,764,512 |
-| Batting Average | 0.267 | 0.031 |
-| Home Runs | 12.11 | 10.31 |
-
-. . .
-
-\begin{align*}\scriptsize  
-	\widehat{\text{Salary}_i}&=-\text{2,869,439.40}+\text{12,417,629.72} \, \text{Batting average}_i+\text{129,627.36} \, \text{Home runs}_i\\ 
-	\widehat{\text{Salary}_Z}&=\text{0.00}+\text{0.14} \, \text{Batting average}_Z+\text{0.48} \, \text{Home runs}_Z\\
-\end{align*}
-
-. . .
-
-- [Marginal effects]{.hi-purple} on $Y$ (in *standard deviations* of $Y$) from 1 *standard deviation* change in $X$:
-
-. . .
-
-- $\hat{\beta_1}$: a 1 standard deviation increase in Batting Average increases Salary by 0.14 standard deviations
-
-$$0.14 \times \$2,764,512=\$387,032$$
-
-. . .
-
-- $\hat{\beta_2}$: a 1 standard deviation increase in Home Runs increases Salary by 0.48 standard deviations
-  
-$$0.48 \times \$2,764,512=\$1,326,966$$
-
-## Standardizing in `R`
-
-| Variable | Mean | SD |
-|----------|-----:|---:|
-| `LifeExp` | 59.47 | 12.92 |
-| `gdpPercap` | $7215.32 | $9857.46 |
-
-. . .
-
-- Use the `scale()` command inside `mutate()` function to standardize a variable
-
-. . .
-
-```{r}
-#| echo: true
-#| code-fold: true
-#| output-location: fragment
-gapminder <- gapminder %>%
-  mutate(life_Z = scale(lifeExp),
-         gdp_Z = scale(gdpPercap))
-
-std_reg <- lm(life_Z ~ gdp_Z, data = gapminder)
-tidy(std_reg)
-```
-
-. . .
-
-- A 1 standard deviation increase in `gdpPercap` will increase `lifeExp` by 0.584 standard deviations $(0.584 \times 12.92 = 7.55$ years)
-
-::: footer
-:::
-## Rescaling: Visually
-
-```{r}
-#| echo: true
-#| code-fold: true
-#| fig-align: center
-#| fig-width: 14
-ggplot(data = gapminder)+
-  aes(x = gdpPercap,
-      y = lifeExp)+
-  geom_point(color = "blue", alpha = 0.5)+
-  labs(x = "GDP per Capita",
-       y = "Life Expectancy (Years)")+
-  theme_bw(base_family = "Fira Sans Condensed",
-           base_size = 16)
-```
-
-## Rescaling: Visually
-
-```{r}
-#| echo: true
-#| code-fold: true
-#| fig-align: center
-#| fig-width: 14
-ggplot(data = gapminder)+
-  aes(x = gdp_Z,
-      y = life_Z)+
-  geom_point(color = "blue", alpha = 0.5)+
-  geom_hline(yintercept = 0)+
-  geom_vline(xintercept = 0)+
-    labs(x = "GDP per Capita (Standardized)",
-       y = "Life Expectancy (Standardized)")+
-  theme_bw(base_family = "Fira Sans Condensed",
-           base_size = 16)
-```
-
-
-## Rescaling: Visually
-
-- Both $X$ and $Y$ now have means of 0 and sd of 1
-
-```{r}
-#| echo: true
-#| code-fold: true
-gapminder %>%
-  summarize(mean_gdp = mean(gdp_Z), sd_gdp = sd(gdp_Z), mean_life = mean(life_Z), sd_life = sd(life_Z)) %>%
-  round(1)
-```
 
 # Joint Hypothesis Testing {.centered background-color="#314f4f"}
 
@@ -1663,6 +1398,7 @@ $$\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i+\hat{\bet
 - [Restricted model]{.hi-purple}:
 
 $$\widehat{\text{Wage}}_i=\hat{\beta_0}+\hat{\beta_1} \, \text{Male}_i$$
+
 . . .
 
 - $F$-test: **does going from [restricted]{.hi-purple} to [unrestricted]{.hi} model statistically significantly improve $R^2$?**
@@ -1739,8 +1475,7 @@ $$F_{q,(n-k-1)}=\cfrac{\left(\displaystyle\frac{(R^2_u-R^2_r)}{q}\right)}{\left(
 ::: {.column width="50%"}
 - [Key takeaway]{.hi-purple}: The bigger the difference between $(R^2_u-R^2_r)$, the greater the improvement in fit by adding variables, the larger the $F$!
 
-- This formula is (believe it or not) actually a simplified version (assuming homoskedasticity)
-  - I give you this formula to **build your intuition of what F is measuring**
+
 
 :::
 :::
