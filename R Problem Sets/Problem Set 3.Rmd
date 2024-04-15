@@ -1,0 +1,59 @@
+---
+title: "Problem Set 3 Solutions"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Q5
+Start by loading in tidyverse and the data
+```{r, message=FALSE}
+library(tidyverse)
+lead_data <- read.csv("C:\\Users\\jizenwas\\Desktop\\LeadMortality.csv")
+```
+### (a) 
+```{r}
+mean_lead <- lead_data %>%
+    filter(lead == 1) %>%
+    summarize(mean(infrate)) %>%
+    pull()
+
+mean_lead
+
+mean_no_lead <- lead_data %>%
+    filter(lead == 0) %>%
+    summarize(mean(infrate)) %>%
+    pull()
+
+mean_no_lead
+```
+### (b)
+```{r}
+lead_reg <- lm(infrate ~ lead, data = lead_data)
+summary(lead_reg)
+
+```
+$\widehat{infrate}_i=0.38117 + 0.022\text{lead}_i$
+
+### (c)
+With lead pipes the mortality rate is $\widehat{\beta_0}=0.38$. With lead pipes the mortality rate is $\widehat{\beta_0} + widehat{\beta_0} = 0.4$. The difference is 0.02.
+
+### (d)
+```{r}
+lead_reg_ph <- lm(infrate ~ lead + ph, data = lead_data)
+summary(lead_reg_ph)
+
+```
+pH matters since it is a significant estimate. For every additional pH (i.e the more basic water becomes), it decreases infant mortality. Further, the estimate on lead became significant and increased in magnitude.
+
+
+
+
+### (e)
+```{r}
+lead_reg_inter <- lm(infrate ~ lead + ph + lead:ph, data = lead_data)
+summary(lead_reg_inter)
+```
+An additional value of pH decreases infant mortality when the pipes have lead by 0.05. The marginal effect of a higher pH depends on lead and is -0.07518 -0.05686*lead.
