@@ -20,11 +20,9 @@ execute:
 
 [5.3 --- Instrumental Variables]{.custom-title}
 
-[ECON 480 • Econometrics • Fall 2022]{.custom-subtitle}
+[ECON 4470 • Econometrics]{.custom-subtitle}
 
-[Dr. Ryan Safner <br> Associate Professor of Economics]{.custom-author}
-
-[<a href="mailto:safner@hood.edu"><i class="fa fa-paper-plane fa-fw"></i>safner\@hood.edu</a> <br> <a href="https://github.com/ryansafner/metricsF22"><i class="fa fa-github fa-fw"></i>ryansafner/metricsF22</a><br> <a href="https://metricsF22.classes.ryansafner.com"> <i class="fa fa-globe fa-fw"></i>metricsF22.classes.ryansafner.com</a><br>]{.custom-institution}
+[Jordan Izenwasser <br> Slides Adapated from Ryan Safner, PhD]{.custom-author}
 
 ```{r}
 #| label: setup
@@ -98,7 +96,6 @@ ggplot(data = tibble(x=c(0,10),
 
 - Diff-n-diff/fixed effects are one strategy to minimize endogeneity
   - *Requires* panel data
-  - Can't use time-varying omitted variables that are correlated with regressors
 
 - Another strategy to is to find some source of exogenous variation that removes the endogeneity of a variable, using that source as a [instrumental variable]{.hi}
 
@@ -295,7 +292,7 @@ $$\text{Earnings}_{i}=\beta_0+\beta_1 \, \text{Veteran}_{i}+\text{u}_{i}$$
 We want an instrument $I$ for Veteran$_i$ which is:
 
 1. [Relevant:]{.hi-purple} $cor(Veteran_i, I)\neq 0$
-2. [Exogenous:]{.hi-purple} $cor(I, u_i)\neq 0$
+2. [Exogenous:]{.hi-purple} $cor(I, u_i) = 0$
 
 
 :::
@@ -673,6 +670,7 @@ $$\color{green}{\text{Earnings}_i} = \beta_0 + \beta_1 \,  \color{red}{\text{Vet
 1. Effect of [instrument]{.blue} on the [endogenous variable]{.red}
 
 $$\color{red}{\text{Veteran}_i} = \gamma_0 + \mathbf{\gamma_1} \, \color{blue}{\text{Draft}_i} + w_i$$
+
 . . .
 
 2. Effect of [instrument]{.blue} on the [outcome variable]{.green} ([“reduced form”]{.hi})
